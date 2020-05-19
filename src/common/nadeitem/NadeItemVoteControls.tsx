@@ -9,9 +9,16 @@ import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   nadeId: string;
+  upVoteCount?: number;
+  downVoteCount?: number;
 };
 
-export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
+export const NadeItemVoteControls: FC<Props> = ({
+  nadeId,
+  downVoteCount,
+  upVoteCount,
+}) => {
+  const [score, setScore] = useState(setInitialScore(upVoteCount, downVoteCount));
   const { colors } = useTheme();
   const [voteValue, setVoteValue] = useState(0);
   const { event } = useAnalytics();
@@ -39,6 +46,7 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
 
     if (isUpvoted) {
       setVoteValue(0);
+      setScore(score - 1);
       clearVote(nadeId);
       event({
         category: "Vote",
@@ -46,6 +54,7 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
         label: nadeId,
       });
     } else {
+      setScore(score + 1);
       setVoteValue(1);
       castVote(nadeId, 1);
       event({
@@ -66,6 +75,7 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
 
     if (isDownvoted) {
       setVoteValue(0);
+      setScore(score + 1);
       clearVote(nadeId);
       event({
         category: "Vote",
@@ -75,6 +85,7 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
     } else {
       setVoteValue(-1);
       castVote(nadeId, -1);
+      setScore(score - 1);
       event({
         category: "Vote",
         action: "Down",
@@ -99,7 +110,7 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
           }
         />
 
-        <span>{}</span>
+        <span className="score">{score}</span>
 
         <Popup
           content="Down Vote"
@@ -142,21 +153,35 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
           outline: none;
           background: rgba(0, 0, 0, 0.5);
           width: 36px;
-          height: 36px;
+          height: 26px;
           cursor: pointer;
-          border-radius: 5px;
-          margin-bottom: 5px;
+
           border: none;
           display: flex;
           align-items: center;
           justify-content: space-around;
         }
 
+        .score {
+          background: rgba(0, 0, 0, 0.5);
+          color: white;
+          width: 36px;
+          font-size: 12px;
+          font-weight: 500;
+          text-align: center;
+          border-top: 1px solid rgba(0, 0, 0, 0.8);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
         .up {
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
           color: ${isUpvoted ? colors.SUCCESS : "white"};
         }
 
         .down {
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
           color: ${isDownvoted ? colors.ERROR : "white"};
         }
 
@@ -173,3 +198,16 @@ export const NadeItemVoteControls: FC<Props> = ({ nadeId }) => {
     </>
   );
 };
+
+function setInitialScore(upvotes?: number, downvotes?: number) {
+  const ups = upvotes || 0;
+  const downs = downvotes || 0;
+  const voteCount = ups + downs;
+  const score = ups - downs;
+
+  if (score < 0 && voteCount < 5) {
+    return 0;
+  }
+
+  return score;
+}

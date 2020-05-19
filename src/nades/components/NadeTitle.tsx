@@ -17,10 +17,22 @@ type Props = {
   subTitle?: string;
   canEdit?: boolean;
   map?: CsgoMap;
+  upVoteCount?: number;
+  downVoteCount?: number;
 };
 
 export const NadeTitle: FC<Props> = memo(
-  ({ title, subTitle, nadeId, canEdit, nadeSlug, inModal, map }) => {
+  ({
+    title,
+    subTitle,
+    nadeId,
+    canEdit,
+    nadeSlug,
+    inModal,
+    map,
+    downVoteCount,
+    upVoteCount,
+  }) => {
     const isSignedIn = useIsSignedIn();
     const { colors } = useTheme();
 
@@ -29,7 +41,11 @@ export const NadeTitle: FC<Props> = memo(
         <div className="title">
           <div id="left-controls">
             {inModal && isBrowser && isSignedIn && (
-              <NadeItemVoteControls nadeId={nadeId} />
+              <NadeItemVoteControls
+                nadeId={nadeId}
+                downVoteCount={downVoteCount}
+                upVoteCount={upVoteCount}
+              />
             )}
             {!inModal && (
               <div id="back">

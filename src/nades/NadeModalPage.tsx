@@ -69,6 +69,8 @@ export const NadeModalPage: FC<Props> = memo(({ nade, nadeLight }) => {
             nadeSlug={nadeLight.slug}
             map={nade?.map}
             inModal={true}
+            downVoteCount={nadeLight.downVoteCount}
+            upVoteCount={nadeLight.upVoteCount}
           />
           <TickWarning tickrate={nadeLight.tickrate} />
           <div id="nade-page-main">

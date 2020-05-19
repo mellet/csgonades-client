@@ -12,6 +12,8 @@ type Props = {
   smallVideoUrl?: string;
   avgColor?: string;
   gfyId: string;
+  upVoteCount?: number;
+  downVoteCount?: number;
 };
 
 export const GfycatThumbnail: FC<Props> = ({
@@ -22,6 +24,8 @@ export const GfycatThumbnail: FC<Props> = ({
   disableAction,
   avgColor,
   gfyId,
+  downVoteCount,
+  upVoteCount,
 }) => {
   const [renderBackControls, setRenderBackControls] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -46,6 +50,8 @@ export const GfycatThumbnail: FC<Props> = ({
     setHovering(false);
   }
 
+  const displayBack = hovering && !!smallVideoUrl;
+
   return (
     <>
       <div
@@ -64,23 +70,27 @@ export const GfycatThumbnail: FC<Props> = ({
           )}
         </div>
 
-        {hovering && !!smallVideoUrl && (
-          <div className="back">
-            <MiniGfycatIframe gfyId={gfyId} />
-            {renderBackControls && (
-              <div className="back-controls">
-                <div className="vote-controls">
-                  <NadeItemVoteControls nadeId={nadeId} />
-                </div>
-                <NadeItemFavBtn
-                  nadeId={nadeId}
-                  slug={nadeSlug}
-                  disableAction={disableAction}
-                />
-              </div>
-            )}
+        <div className={displayBack ? "back visible" : "back"}>
+          {displayBack && <MiniGfycatIframe gfyId={gfyId} />}
+          <div
+            className={
+              renderBackControls ? "back-controls visisble" : "back-controls"
+            }
+          >
+            <div className="vote-controls">
+              <NadeItemVoteControls
+                nadeId={nadeId}
+                downVoteCount={downVoteCount}
+                upVoteCount={upVoteCount}
+              />
+            </div>
+            <NadeItemFavBtn
+              nadeId={nadeId}
+              slug={nadeSlug}
+              disableAction={disableAction}
+            />
           </div>
-        )}
+        </div>
       </div>
       <style jsx global>{`
         .front img {
@@ -150,14 +160,14 @@ export const GfycatThumbnail: FC<Props> = ({
           bottom: 0;
           right: 0;
           opacity: 0;
+          display: none;
+        }
+
+        .visible {
+          display: block;
           animation-name: revealVideo;
           animation-duration: 0.8s;
           animation-fill-mode: forwards;
-        }
-
-        .back video {
-          width: 101%;
-          display: block;
         }
 
         @keyframes revealVideo {

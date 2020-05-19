@@ -86,6 +86,8 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             nadeId={nade.id}
             nadeSlug={nade.slug}
             map={nade.map}
+            downVoteCount={nade.downVoteCount}
+            upVoteCount={nade.upVoteCount}
           />
         </div>
 
