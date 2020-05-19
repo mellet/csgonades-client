@@ -38,7 +38,7 @@ export const GfycatThumbnail: FC<Props> = ({
       if (hovering) {
         setRenderBackControls(true);
       }
-    }, 1500);
+    }, 750);
     return () => clearTimeout(delay);
   }, [hovering]);
 
@@ -74,7 +74,7 @@ export const GfycatThumbnail: FC<Props> = ({
           {displayBack && <MiniGfycatIframe gfyId={gfyId} />}
           <div
             className={
-              renderBackControls ? "back-controls visisble" : "back-controls"
+              renderBackControls ? "back-controls visible" : "back-controls"
             }
           >
             <div className="vote-controls">
@@ -111,6 +111,8 @@ export const GfycatThumbnail: FC<Props> = ({
           position: absolute;
           top: 10px;
           right: 10px;
+          display: none;
+          opacity: 0;
         }
 
         .vote-controls {
@@ -168,6 +170,7 @@ export const GfycatThumbnail: FC<Props> = ({
           animation-name: revealVideo;
           animation-duration: 0.8s;
           animation-fill-mode: forwards;
+          opacity: 1;
         }
 
         @keyframes revealVideo {
