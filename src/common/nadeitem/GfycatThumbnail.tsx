@@ -38,7 +38,7 @@ export const GfycatThumbnail: FC<Props> = ({
       if (hovering) {
         setRenderBackControls(true);
       }
-    }, 750);
+    }, 1500);
     return () => clearTimeout(delay);
   }, [hovering]);
 
