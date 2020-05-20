@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
 import { MiniGfycatIframe } from "./MiniGfycatIframe";
@@ -27,20 +27,7 @@ export const GfycatThumbnail: FC<Props> = ({
   downVoteCount,
   upVoteCount,
 }) => {
-  const [renderBackControls, setRenderBackControls] = useState(false);
   const [hovering, setHovering] = useState(false);
-
-  useEffect(() => {
-    if (!hovering) {
-      setRenderBackControls(false);
-    }
-    const delay = setTimeout(() => {
-      if (hovering) {
-        setRenderBackControls(true);
-      }
-    }, 750);
-    return () => clearTimeout(delay);
-  }, [hovering]);
 
   function onMouseEnter() {
     setHovering(true);
@@ -73,17 +60,18 @@ export const GfycatThumbnail: FC<Props> = ({
         <div className={displayBack ? "back visible" : "back"}>
           {displayBack && <MiniGfycatIframe gfyId={gfyId} />}
           <div
-            className={
-              renderBackControls ? "back-controls visible" : "back-controls"
-            }
+            className={displayBack ? "back-controls visible" : "back-controls"}
           >
-            <div className="vote-controls">
-              <NadeItemVoteControls
-                nadeId={nadeId}
-                downVoteCount={downVoteCount}
-                upVoteCount={upVoteCount}
-              />
-            </div>
+            {false && (
+              <div className="vote-controls">
+                <NadeItemVoteControls
+                  nadeId={nadeId}
+                  downVoteCount={downVoteCount}
+                  upVoteCount={upVoteCount}
+                />
+              </div>
+            )}
+
             <NadeItemFavBtn
               nadeId={nadeId}
               slug={nadeSlug}
@@ -100,10 +88,10 @@ export const GfycatThumbnail: FC<Props> = ({
       <style jsx>{`
         .player {
           position: relative;
-          width: 101%;
+          width: 100%;
           overflow: hidden;
           display: block;
-          padding-top: 56.25%;
+          padding-top: 56%;
           background: ${avgColor || "black"};
         }
 

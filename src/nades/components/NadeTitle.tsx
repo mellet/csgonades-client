@@ -5,9 +5,6 @@ import { FaEdit, FaChevronLeft } from "react-icons/fa";
 import { TitleFavBtn } from "./TitleFavBtn";
 import { TitleReportBtn } from "./TileReportBtn";
 import { CsgoMap } from "../../models/Nade/CsGoMap";
-import { NadeItemVoteControls } from "../../common/nadeitem/NadeItemVoteControls";
-import { isBrowser } from "react-device-detect";
-import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
 
 type Props = {
   inModal?: boolean;
@@ -22,31 +19,13 @@ type Props = {
 };
 
 export const NadeTitle: FC<Props> = memo(
-  ({
-    title,
-    subTitle,
-    nadeId,
-    canEdit,
-    nadeSlug,
-    inModal,
-    map,
-    downVoteCount,
-    upVoteCount,
-  }) => {
-    const isSignedIn = useIsSignedIn();
+  ({ title, subTitle, nadeId, canEdit, nadeSlug, inModal, map }) => {
     const { colors } = useTheme();
 
     return (
       <>
         <div className="title">
           <div id="left-controls">
-            {inModal && isBrowser && isSignedIn && (
-              <NadeItemVoteControls
-                nadeId={nadeId}
-                downVoteCount={downVoteCount}
-                upVoteCount={upVoteCount}
-              />
-            )}
             {!inModal && (
               <div id="back">
                 <Link href="/maps/[map]" as={`/maps/${map}`}>
