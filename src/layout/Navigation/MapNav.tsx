@@ -18,17 +18,6 @@ export const MapNav: FC<Props> = ({}) => {
           <div id="map-nav">
             <ul>
               <li>
-                <MapPageLink map="dust2">
-                  <span
-                    className={
-                      selectedMap === "dust2" ? "map-link selected" : "map-link"
-                    }
-                  >
-                    Dust2
-                  </span>
-                </MapPageLink>
-              </li>
-              <li>
                 <MapPageLink map="mirage">
                   <span
                     className={
@@ -41,6 +30,7 @@ export const MapNav: FC<Props> = ({}) => {
                   </span>
                 </MapPageLink>
               </li>
+
               <li>
                 <MapPageLink map="inferno">
                   <span
@@ -51,6 +41,17 @@ export const MapNav: FC<Props> = ({}) => {
                     }
                   >
                     Inferno
+                  </span>
+                </MapPageLink>
+              </li>
+              <li>
+                <MapPageLink map="dust2">
+                  <span
+                    className={
+                      selectedMap === "dust2" ? "map-link selected" : "map-link"
+                    }
+                  >
+                    Dust2
                   </span>
                 </MapPageLink>
               </li>
@@ -68,15 +69,13 @@ export const MapNav: FC<Props> = ({}) => {
                 </MapPageLink>
               </li>
               <li>
-                <MapPageLink map="vertigo">
+                <MapPageLink map="cache">
                   <span
                     className={
-                      selectedMap === "vertigo"
-                        ? "map-link selected"
-                        : "map-link"
+                      selectedMap === "cache" ? "map-link selected" : "map-link"
                     }
                   >
-                    Vertigo
+                    Cache
                   </span>
                 </MapPageLink>
               </li>
@@ -91,6 +90,7 @@ export const MapNav: FC<Props> = ({}) => {
                   </span>
                 </MapPageLink>
               </li>
+
               <li>
                 <MapPageLink map="nuke">
                   <span
@@ -103,13 +103,15 @@ export const MapNav: FC<Props> = ({}) => {
                 </MapPageLink>
               </li>
               <li>
-                <MapPageLink map="cache">
+                <MapPageLink map="vertigo">
                   <span
                     className={
-                      selectedMap === "cache" ? "map-link selected" : "map-link"
+                      selectedMap === "vertigo"
+                        ? "map-link selected"
+                        : "map-link"
                     }
                   >
-                    Cache
+                    Vertigo
                   </span>
                 </MapPageLink>
               </li>
