@@ -27,6 +27,18 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const nadeIdOrSlug = query.nade as string;
 
+  const idIsOnlyNumbers = /^\d+$/.test(nadeIdOrSlug);
+
+  // Old site urls are no longer available
+  if (nadeIdOrSlug.length <= 3 && idIsOnlyNumbers) {
+    res.statusCode = 410;
+    return {
+      props: {
+        nade: null,
+      },
+    };
+  }
+
   const requestedSlug = checkIsSlug(nadeIdOrSlug);
 
   const result = await NadeApi.byId(nadeIdOrSlug);
