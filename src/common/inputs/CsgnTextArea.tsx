@@ -5,8 +5,9 @@ type Props = {
   label: string;
   defaultValue?: string;
   value?: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   placeholder?: string;
+  onBlur?: (value: string) => void;
 };
 
 export const CsgnTextArea: FC<Props> = ({
@@ -15,8 +16,21 @@ export const CsgnTextArea: FC<Props> = ({
   label,
   placeholder,
   defaultValue,
+  onBlur,
 }) => {
   const { colors } = useTheme();
+
+  function onTABlur(e: any) {
+    if (onBlur) {
+      onBlur(e.target.value);
+    }
+  }
+
+  function onTAChange(e: any) {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  }
 
   return (
     <>
@@ -26,7 +40,8 @@ export const CsgnTextArea: FC<Props> = ({
           defaultValue={defaultValue}
           placeholder={placeholder}
           value={value}
-          onBlur={(e) => onChange(e.target.value)}
+          onBlur={onTABlur}
+          onChange={onTAChange}
         />
       </div>
       <style jsx>{`
