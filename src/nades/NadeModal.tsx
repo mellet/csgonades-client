@@ -44,9 +44,7 @@ export const NadeModal: FC = memo(() => {
     clearNadeForModal();
     if (prevPath) {
       window.history.pushState("", "", prevPath);
-      setTimeout(() => {
-        pageView({ path: prevPath });
-      }, 1000);
+      pageView({ path: prevPath });
     }
   }
 
