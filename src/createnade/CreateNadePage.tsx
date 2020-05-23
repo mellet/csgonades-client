@@ -57,11 +57,12 @@ export const CreateNadePage: FC<Props> = ({}) => {
     const res = await NadeApi.save(body, token);
 
     if (res.isErr()) {
+      console.error(res.error);
       dispatch({ type: "CreateNade/SetNotLoading" });
       return showToast({
         severity: "error",
-        message: "Failed to add nade, check if you forgot to add something",
-        durationSeconds: 15,
+        message: `Failed to add nade, check if you forgot to add something. Error: ${res.error.message}`,
+        durationSeconds: 20,
       });
     }
 
