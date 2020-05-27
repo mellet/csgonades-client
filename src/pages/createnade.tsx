@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { CreateNadePage } from "../createnade/CreateNadePage";
 
-type Props = {};
-
-const CreateNade: FC<Props> = ({}) => {
+const CreateNade: FC = () => {
   return <CreateNadePage />;
 };
 

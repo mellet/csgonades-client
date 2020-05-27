@@ -9,6 +9,7 @@ import { FaStar } from "react-icons/fa";
 import { useMapFavCount } from "../../store/MapStore/hooks/useMapFavCount";
 import { useAnalytics } from "../../utils/Analytics";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
+import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 
 type Props = {
   nadeId: string;
@@ -17,6 +18,7 @@ type Props = {
 };
 
 export const NadeItemFavBtn: FC<Props> = ({ nadeId, slug, disableAction }) => {
+  const displayToast = useDisplayToast();
   const [nadeIsFavorite, setNadeIsFavorite] = useState(false);
   const { setSignInWarning } = useSignInWarning();
   const { event } = useAnalytics();
@@ -42,7 +44,11 @@ export const NadeItemFavBtn: FC<Props> = ({ nadeId, slug, disableAction }) => {
     }
 
     if (isFavoriteInProgress) {
-      return;
+      return displayToast({
+        severity: "warning",
+        message:
+          "Allready trying to favorite nade, please wait or refresh the page.",
+      });
     }
     if (isFavorite) {
       setNadeIsFavorite(false);

@@ -25,9 +25,7 @@ import { SEO } from "../layout/SEO2";
 import { TickrateSelector } from "./components/TickrateSelector";
 import { GuideLinesModal } from "./guidelines/GuideLinesModal";
 
-type Props = {};
-
-export const CreateNadePage: FC<Props> = ({}) => {
+export const CreateNadePage: FC = ({}) => {
   const router = useRouter();
   const showToast = useDisplayToast();
   const getToken = useGetOrUpdateToken();

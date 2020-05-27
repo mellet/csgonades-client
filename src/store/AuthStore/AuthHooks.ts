@@ -10,6 +10,7 @@ import { userSelector } from "./AuthSelectors";
 import { getUserFavorites } from "../../api/FavoriteApi";
 import { addAllFavoritesAction } from "../FavoriteStore/FavoriteActions";
 import Axios from "axios";
+import { useDisplayToast } from "../ToastStore/hooks/useDisplayToast";
 
 export const useSignedInUser = () => {
   const user = useSelector(userSelector);
@@ -81,6 +82,7 @@ export const useSignOut = () => {
 };
 
 export const usePreloadUser = () => {
+  const displayToast = useDisplayToast();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -88,6 +90,11 @@ export const usePreloadUser = () => {
       const backendOnline = await backendIsOnline();
 
       if (!backendOnline) {
+        displayToast({
+          severity: "warning",
+          message:
+            "Looks like our servers are slow or offline. If you see this issue please report it on our Discord.",
+        });
         // Don't try signing in if backend is offline
         return;
       }
@@ -106,9 +113,15 @@ export const usePreloadUser = () => {
 
       if (result.isOk()) {
         dispatch(addAllFavoritesAction(result.value));
+      } else {
+        displayToast({
+          severity: "warning",
+          message:
+            "Failed to get your favorites, refresh the page or report this issue on our Discord.",
+        });
       }
     })();
-  }, [dispatch]);
+  }, [dispatch, displayToast]);
 };
 
 async function backendIsOnline() {
@@ -150,6 +163,7 @@ async function trySignInFunc() {
 }
 
 export const useOnSignIn = () => {
+  const displayToast = useDisplayToast();
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -157,6 +171,10 @@ export const useOnSignIn = () => {
     (async () => {
       const { userDetails, userToken } = await trySignInFunc();
       if (!userDetails || !userToken) {
+        displayToast({
+          message: "Could not sign you in. Report this issue on our Discord.",
+          severity: "error",
+        });
         router.push("/", "/");
         return;
       }
