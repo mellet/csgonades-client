@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { isSafari } from "react-device-detect";
 
 type Props = {
   gfyId: string;
@@ -9,6 +10,8 @@ export const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
   const [loaded, setLoaded] = useState(false);
   const { colors } = useTheme();
 
+  const videoSpeed = isSafari ? 1 : 3;
+
   return (
     <>
       <div className="gfycat-super-wrap">
@@ -16,7 +19,7 @@ export const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
           <iframe
             onLoad={() => setLoaded(true)}
             className="gfycat-iframe"
-            src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=3`}
+            src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=${videoSpeed}`}
             frameBorder="0"
             scrolling="no"
             width="100%"
