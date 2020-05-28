@@ -2,7 +2,6 @@ import { FC, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
 import { MiniGfycatIframe } from "./MiniGfycatIframe";
-import { NadeItemVoteControls } from "./NadeItemVoteControls";
 
 type Props = {
   disableAction?: boolean;
@@ -24,10 +23,9 @@ export const GfycatThumbnail: FC<Props> = ({
   disableAction,
   avgColor,
   gfyId,
-  downVoteCount,
-  upVoteCount,
 }) => {
   const [hovering, setHovering] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   function onMouseEnter() {
     setHovering(true);
@@ -35,9 +33,15 @@ export const GfycatThumbnail: FC<Props> = ({
 
   function onMouseLeave() {
     setHovering(false);
+    setVideoLoaded(false);
+  }
+
+  function onVideoLoaded() {
+    setVideoLoaded(true);
   }
 
   const displayBack = hovering && !!smallVideoUrl;
+  const displayFavBtn = videoLoaded && hovering && !!smallVideoUrl;
 
   return (
     <>
@@ -58,20 +62,14 @@ export const GfycatThumbnail: FC<Props> = ({
         </div>
 
         <div className={displayBack ? "back visible" : "back"}>
-          {displayBack && <MiniGfycatIframe gfyId={gfyId} />}
+          {displayBack && (
+            <MiniGfycatIframe gfyId={gfyId} onVideoReady={onVideoLoaded} />
+          )}
           <div
-            className={displayBack ? "back-controls visible" : "back-controls"}
+            className={
+              displayFavBtn ? "back-controls visible" : "back-controls"
+            }
           >
-            {false && (
-              <div className="vote-controls">
-                <NadeItemVoteControls
-                  nadeId={nadeId}
-                  downVoteCount={downVoteCount}
-                  upVoteCount={upVoteCount}
-                />
-              </div>
-            )}
-
             <NadeItemFavBtn
               nadeId={nadeId}
               slug={nadeSlug}
@@ -156,7 +154,7 @@ export const GfycatThumbnail: FC<Props> = ({
         .visible {
           display: block;
           animation-name: revealVideo;
-          animation-duration: 0.8s;
+          animation-duration: 0.3s;
           animation-fill-mode: forwards;
           opacity: 1;
         }

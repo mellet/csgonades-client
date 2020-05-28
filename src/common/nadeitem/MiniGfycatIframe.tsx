@@ -4,20 +4,26 @@ import { isSafari } from "react-device-detect";
 
 type Props = {
   gfyId: string;
+  onVideoReady: () => void;
 };
 
-export const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
+export const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
   const [loaded, setLoaded] = useState(false);
   const { colors } = useTheme();
 
   const videoSpeed = isSafari ? 1 : 3;
+
+  function onVideoLoaded() {
+    setLoaded(true);
+    onVideoReady();
+  }
 
   return (
     <>
       <div className="gfycat-super-wrap">
         <div className="gfycat-wrap">
           <iframe
-            onLoad={() => setLoaded(true)}
+            onLoad={onVideoLoaded}
             className="gfycat-iframe"
             src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=${videoSpeed}`}
             frameBorder="0"
