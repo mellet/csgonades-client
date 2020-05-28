@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps<any, { map: CsgoMap }> = async ({
       map: mapName,
       ssrNades: ssrNades,
       // Beta
-      unstable_revalidate: 2,
+      unstable_revalidate: 10,
     },
   };
 };
