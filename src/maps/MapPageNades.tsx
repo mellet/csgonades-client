@@ -9,6 +9,7 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { TopContributorList } from "./TopContributor";
 import { AdUnit } from "../common/adunits/AdUnit";
+import { AffUnit } from "../common/adunits/AffUnit";
 
 type Props = {
   allNades: NadeLight[];
@@ -42,7 +43,11 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           data={nades}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
-          firstAd={<AdUnit tagType="300x250" />}
+          firstAd={
+            <>
+              <AffUnit />
+            </>
+          }
           topRightComp={
             <div className="mini-sidebar">
               {allNades && <TopContributorList nades={allNades} />}
@@ -50,7 +55,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           }
           secondAd={
             <div className="ph-incontent">
-              <AdUnit tagType="300x250-incontent" />
+              <AdUnit tagType="300x250" />
             </div>
           }
         />
