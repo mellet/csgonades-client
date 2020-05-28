@@ -20,7 +20,7 @@ type MapOption = {
   value: CsgoMapKeys;
 };
 
-export function nadeMapOptions() {
+export function nadeMapOptions(): MapOption[] {
   const options: MapOption[] = [];
   for (const key in CsGoMaps) {
     const map = key as CsgoMapKeys;
@@ -33,6 +33,15 @@ export function nadeMapOptions() {
   return options;
 }
 
-export function mapString(csgoMap: CsgoMap) {
+export function mapString(csgoMap: CsgoMap): string {
   return CsGoMaps[csgoMap];
+}
+
+export function getAllCsGoMaps(): CsgoMap[] {
+  const maps: CsgoMap[] = [];
+  for (const key in CsGoMaps) {
+    const map = key as CsgoMapKeys;
+    maps.push(map);
+  }
+  return maps;
 }
