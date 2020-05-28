@@ -17,6 +17,11 @@ export const AffUnit: FC = ({}) => {
         .aff-unit {
           display: flex;
           justify-content: space-around;
+          height: 250px;
+          background: rgba(255, 255, 255, 0.15) url("/noph.svg");
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+          background-size: 18px;
         }
       `}</style>
     </>
