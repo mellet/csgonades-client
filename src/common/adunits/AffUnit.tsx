@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 const units = [
   {
@@ -25,9 +25,17 @@ const units = [
     height: 250,
     alt: "Get the #1 monthly mystery box for geeks & gamers!",
   },
+  {
+    name: "turtlebeach",
+    link: "https://www.dpbolvw.net/click-8411959-13835878",
+    img: "https://www.ftjcfx.com/image-8411959-13835878",
+    width: 300,
+    height: 250,
+    alt: "Elite Pro 2 Headsets",
+  },
 ];
 
-export const AffUnit: FC = ({}) => {
+export const AffUnit: FC = memo(({}) => {
   const randomAff = units[Math.floor(Math.random() * units.length)];
 
   return (
@@ -55,4 +63,4 @@ export const AffUnit: FC = ({}) => {
       `}</style>
     </>
   );
-};
+});
