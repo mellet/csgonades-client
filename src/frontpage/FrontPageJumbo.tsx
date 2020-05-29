@@ -1,6 +1,6 @@
-import { FC, memo, useState, useEffect } from "react";
+import { FC, memo } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { SiteStats, StatsApi } from "../api/StatsApi";
+import { SiteStats } from "../api/StatsApi";
 import { Twemoji } from "../common/Twemoji";
 
 type Props = {
@@ -8,20 +8,7 @@ type Props = {
 };
 
 export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
-  const [newestStats, setNewestStats] = useState(stats);
   const { colors } = useTheme();
-
-  useEffect(() => {
-    StatsApi.getStats()
-      .then((res) => {
-        if (res.isOk()) {
-          setNewestStats(res.value);
-        }
-      })
-      .catch((_) => {
-        // no-op
-      });
-  }, []);
 
   return (
     <>
@@ -51,14 +38,14 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
           <img src="/images/ilustration.svg" />
         </div>
 
-        {newestStats && (
+        {stats && (
           <div className="stats">
             <div className="stat-item">
-              <span className="stat-count">{newestStats.numUsers}</span>
+              <span className="stat-count">{stats.numUsers}</span>
               <span className="stat-label">Users</span>
             </div>
             <div className="stat-item">
-              <span className="stat-count">{newestStats.numNades}</span>
+              <span className="stat-count">{stats.numNades}</span>
               <span className="stat-label">Nades</span>
             </div>
           </div>
