@@ -36,7 +36,7 @@ const units = [
 ];
 
 export const AffUnit: FC = memo(({}) => {
-  const randomAff = units[Math.floor(Math.random() * units.length)];
+  const randomAff = getCurrentAffiliateBanner();
 
   return (
     <>
@@ -64,3 +64,24 @@ export const AffUnit: FC = memo(({}) => {
     </>
   );
 });
+
+function getCurrentAffiliateBanner() {
+  const currentDayOfWeek = new Date().getDay();
+
+  switch (currentDayOfWeek) {
+    // Monday
+    case 1:
+      return units[0]; // kinguin
+    // Tuesday
+    case 2:
+      return units[1]; // dayton
+    // Saturday
+    case 6:
+      return units[3]; // turtlebeach
+    // Sunday
+    case 7:
+      return units[2]; // lootbox
+    default:
+      return units[Math.floor(Math.random() * units.length)];
+  }
+}
