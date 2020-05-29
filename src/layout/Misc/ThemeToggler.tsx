@@ -24,6 +24,9 @@ export const ThemeToggler: FC<Props> = ({}) => {
         .darkmode-toggle {
           display: block;
           margin-left: 20px;
+          height: 30px;
+          display: flex;
+          align-items: center;
         }
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
