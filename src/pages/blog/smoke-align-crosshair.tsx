@@ -4,7 +4,7 @@ import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
 import { BlogNadeItem } from "../../blog/BlogNadeItem";
 import { CsConsole } from "../../blog/CsConsole";
-import { AdUnit } from "../../common/adunits/AdUnit";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const blogNadeAlignCrosshair: BlogPost = {
   title: "Smoke Lineup Crosshair Bind for CS:GO",
@@ -60,7 +60,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
         <BlogCodeSnippet code={'bind "X" "toggle cl_crosshairsize 2.5 5000"'} />
 
         <div className="a-tag">
-          <AdUnit tagType="300x250" />
+          <EzoicPlaceholder id="172" />
         </div>
 
         <h3>2. Advanced: Hide on release</h3>
@@ -103,7 +103,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
         />
 
         <div className="a-tag">
-          <AdUnit tagType="728x90" />
+          <EzoicPlaceholder id="173" />
         </div>
 
         <p>Change out X with whatever key you prefer.</p>

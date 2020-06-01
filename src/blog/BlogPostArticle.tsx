@@ -8,8 +8,8 @@ import { NadeShareActions } from "../nades/NadeShareActions";
 import { SEO } from "../layout/SEO2";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";
-import { AdUnit } from "../common/adunits/AdUnit";
 import { PageCentralize } from "../common/PageCentralize";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   data: BlogPost;
@@ -80,7 +80,7 @@ export const BlogPostArticle: FC<Props> = memo(
 
               <div id="blog-sidebar-wrap">
                 <div className="ph-unit">
-                  <AdUnit tagType="160x600" />
+                  <EzoicPlaceholder id="170" />
                 </div>
               </div>
             </aside>

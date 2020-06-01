@@ -3,10 +3,10 @@ import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogNadeItem } from "../../blog/BlogNadeItem";
 import { PageLink } from "../../common/PageLink";
 import { Dimensions } from "../../constants/Constants";
-import { AdUnit } from "../../common/adunits/AdUnit";
 import { FC, useEffect } from "react";
 import Link from "next/link";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const bestDust2Nades: BlogPost = {
   title: "Best Grenade Spots for Dust2 - Must Know!",
@@ -19,7 +19,7 @@ export const bestDust2Nades: BlogPost = {
     "Dust2 is one of the most popular maps in CS:GO. Let's take a look at the essential nades everyone should know to gain an edge on the map.",
 };
 
-const PractiseConfigBlogPost = () => {
+const PractiseConfigBlogPost = (): JSX.Element => {
   const displayToast = useDisplayToast();
 
   useEffect(() => {
@@ -98,7 +98,7 @@ const PractiseConfigBlogPost = () => {
         </div>
 
         <div className="a-tag">
-          <AdUnit tagType="300x250" />
+          <EzoicPlaceholder id="172" />
         </div>
 
         <h2>3. A Site, CT Spawn</h2>

@@ -3,7 +3,7 @@ import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
 import { PageLink } from "../../common/PageLink";
-import { AdUnit } from "../../common/adunits/AdUnit";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const blogJumpthrowBind: BlogPost = {
   title: "Jumpthrow Bind for CS:GO - Ultimate Guide",
@@ -59,7 +59,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <AdUnit tagType="300x250" />
+          <EzoicPlaceholder id="172" />
         </div>
 
         <h3>Alias bind, autoexec</h3>
@@ -81,7 +81,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
         />
 
         <div className="a-tag">
-          <AdUnit tagType="728x90" />
+          <EzoicPlaceholder id="173" />
         </div>
 
         <h2>How to use jumpthrow bind</h2>

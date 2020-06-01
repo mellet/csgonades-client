@@ -2,7 +2,7 @@ import { FC } from "react";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
 import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
-import { AdUnit } from "../../common/adunits/AdUnit";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const blogTickrateAndJumpthrow: BlogPost = {
   title: "Why Jumpthrow Smokes Are Different on 64 and 128 Tick",
@@ -71,7 +71,7 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <AdUnit tagType="300x250" />
+          <EzoicPlaceholder id="172" />
         </div>
 
         <p>
@@ -104,7 +104,7 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
         <br />
 
         <div className="a-tag">
-          <AdUnit tagType="728x90" />
+          <EzoicPlaceholder id="173" />
         </div>
 
         <p>

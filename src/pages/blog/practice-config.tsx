@@ -2,7 +2,7 @@ import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogCopyPaste } from "../../blog/BlogCopyPaste";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
-import { AdUnit } from "../../common/adunits/AdUnit";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const blogPractiseConfig: BlogPost = {
   title: "The Perfect Practice Config for CS:GO",
@@ -51,7 +51,7 @@ const PractiseConfigBlogPost = () => {
         />
 
         <div className="a-tag">
-          <AdUnit tagType="300x250" />
+          <EzoicPlaceholder id="172" />
         </div>
 
         <h2>What does the config do?</h2>
@@ -80,7 +80,7 @@ const PractiseConfigBlogPost = () => {
         </p>
 
         <div className="a-tag">
-          <AdUnit tagType="728x90" />
+          <EzoicPlaceholder id="173" />
         </div>
 
         <h2>Useful commands while practising</h2>
