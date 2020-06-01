@@ -80,7 +80,7 @@ export const BlogPostArticle: FC<Props> = memo(
 
               <div id="blog-sidebar-wrap">
                 <div className="ph-unit">
-                  <EzoicPlaceholder id="170" />
+                  <EzoicPlaceholder id="171" />
                 </div>
               </div>
             </aside>
