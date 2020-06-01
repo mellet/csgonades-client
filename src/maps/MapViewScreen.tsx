@@ -15,9 +15,9 @@ import { FavFilterButton } from "./nadefilter/FavFilterButton";
 import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
 import { ResetFilterButton } from "./nadefilter/ResetFilterButton";
 import { useWindowSize } from "../common/MinSizeRender";
-import { AdUnit } from "../common/adunits/AdUnit";
 import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
 import { FilterByProButton } from "./nadefilter/FilterByProButton";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   map: CsgoMap;
@@ -69,7 +69,7 @@ export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
   return (
     <>
       <div className="ph">
-        <AdUnit tagType="728x90" />
+        <EzoicPlaceholder id="160" />
       </div>
 
       <div id="mapview-wrap">

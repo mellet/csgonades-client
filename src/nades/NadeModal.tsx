@@ -7,11 +7,10 @@ import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { NadeModalPage } from "./NadeModalPage";
 import { useAnalytics } from "../utils/Analytics";
-import { AdUnit } from "../common/adunits/AdUnit";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 export const NadeModal: FC = memo(() => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [hasOpened, setHasOpened] = useState(false);
   const { pageView } = useAnalytics();
   const { colors } = useTheme();
   const { nadeForModal, clearNadeForModal } = useNadeModal();
@@ -20,7 +19,6 @@ export const NadeModal: FC = memo(() => {
 
   useEffect(() => {
     if (nadeForModal) {
-      setHasOpened(true);
       const curPath = window.location.pathname;
       setPrevPath(curPath);
       const nadePath = `/nades/${nadeForModal.slug || nadeForModal.id}`;
@@ -62,11 +60,9 @@ export const NadeModal: FC = memo(() => {
             </div>
           </div>
           <div id="ph">
-            {hasOpened && (
-              <div className="ph-stick">
-                <AdUnit tagType="160x600" />
-              </div>
-            )}
+            <div className="ph-stick">
+              <EzoicPlaceholder id="170" />
+            </div>
           </div>
 
           <div id="center">

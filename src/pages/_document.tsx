@@ -1,7 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  render() {
+  render(): JSX.Element {
     return (
       <>
         <Html lang="en">
@@ -48,15 +48,7 @@ class MyDocument extends Document {
               key="google-font-roboto"
               media="all"
             />
-            <script
-              type="text/javascript"
-              async
-              dangerouslySetInnerHTML={{ __html: consentScript }}
-            />
-            <script
-              src="https://contextual.media.net/dmedianet.js?cid=8CU6HXM23"
-              async
-            ></script>
+            <script src="//www.ezojs.com/ezoic/sa.min.js" />
           </Head>
           <body id="app">
             <Main />
@@ -69,9 +61,3 @@ class MyDocument extends Document {
 }
 
 export default MyDocument;
-
-const consentScript = `
-window._mNHandle = window._mNHandle || {};
-window._mNHandle.queue = window._mNHandle.queue || [];
-medianet_versionId = "3121199";
-`;

@@ -14,12 +14,14 @@ import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { NadeModal } from "../nades/NadeModal";
+import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 
 export const Layout2: FC = memo(({ children }) => {
   const { colors } = useTheme();
   useSetupSession();
   usePageView();
   usePreloadUser();
+  useEzoidAdLoader();
 
   return (
     <>

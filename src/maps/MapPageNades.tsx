@@ -8,8 +8,7 @@ import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNad
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { TopContributorList } from "./TopContributor";
-import { AdUnit } from "../common/adunits/AdUnit";
-import { AffUnit } from "../common/adunits/AffUnit";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   allNades: NadeLight[];
@@ -45,7 +44,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           renderItem={renderItem}
           firstAd={
             <>
-              <AffUnit />
+              <EzoicPlaceholder id="172" />
             </>
           }
           topRightComp={
@@ -55,7 +54,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           }
           secondAd={
             <div className="ph-incontent">
-              <AdUnit tagType="300x250" />
+              <EzoicPlaceholder id="173" />
             </div>
           }
         />
