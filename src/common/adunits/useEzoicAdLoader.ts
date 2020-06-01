@@ -44,12 +44,13 @@ const findAdUnits = () => {
     '[id^="ezoic-pub-ad-placeholder"]'
   );
 
-  const ids: string[] = [];
+  const ids: number[] = [];
 
   adPlaceHolders.forEach((el) => {
     const phId = el.id.match(/\d+/g)?.join("");
     if (phId) {
-      ids.push(phId);
+      const indId = parseInt(phId, 10);
+      ids.push(indId);
     }
   });
 
