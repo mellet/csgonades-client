@@ -8,7 +8,7 @@ export const useEzoidAdLoader = (): void => {
   }, [router.asPath]);
 };
 
-const loadAds = () => {
+const loadAds = async () => {
   try {
     const ez = ezstandalone || {};
 
@@ -19,12 +19,12 @@ const loadAds = () => {
     }
 
     if (ez.hasDisplayedAds) {
-      ez.cmd.push(() => {
-        const adIds = findAdUnits();
-        ez.define(adIds);
-        ez.refresh();
-        console.log("Ads refresh", adIds);
-      });
+      await sleep(500);
+      const adIds = findAdUnits();
+      ez.define(adIds);
+      await sleep(500);
+      ez.refresh();
+      console.log("Ads refresh", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
@@ -57,3 +57,5 @@ const findAdUnits = () => {
 
   return ids;
 };
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
