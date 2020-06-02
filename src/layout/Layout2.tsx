@@ -27,8 +27,6 @@ export const Layout2: FC = memo(({ children }) => {
 
   const enableNadeModal = router.pathname !== "/";
 
-  console.log(router.pathname);
-
   return (
     <>
       <div id="page">

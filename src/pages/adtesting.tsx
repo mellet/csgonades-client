@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { PageCentralize } from "../common/PageCentralize";
-import { PropellerAd } from "../frontpage/PropellerAd";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 const AdTesting: NextPage = () => {
   return (
@@ -8,14 +8,19 @@ const AdTesting: NextPage = () => {
       <PageCentralize>
         <div className="ads">
           <h1>Adtesting</h1>
-          <PropellerAd />
+          <p>Ids: 170,172,173</p>
+          <div className="med-rec">
+            <EzoicPlaceholder id="172" />
+          </div>
+          <div className="med-rec">
+            <EzoicPlaceholder id="173" />
+          </div>
+          <div className="skyskraper">
+            <EzoicPlaceholder id="170" />
+          </div>
         </div>
       </PageCentralize>
       <style jsx>{`
-        .ad-units {
-          display: flex;
-          justify-content: space-around;
-        }
         h1 {
           text-align: center;
         }
@@ -23,7 +28,7 @@ const AdTesting: NextPage = () => {
         .skyskraper {
           background: pink;
           width: 120px;
-          height: 650px;
+          height: 600px;
         }
 
         .med-rec {
