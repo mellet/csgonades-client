@@ -14,7 +14,7 @@ const loadAds = () => {
 
     const adIds = findAdUnits();
 
-    if (!adIds) {
+    if (!adIds.length) {
       return;
     }
 
