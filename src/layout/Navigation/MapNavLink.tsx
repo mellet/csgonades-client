@@ -6,7 +6,13 @@ type Props = {
   map: CsgoMap;
 };
 
+const HARD_LINK = true;
+
 export const MapPageLink: FC<Props> = ({ map, children }) => {
+  if (HARD_LINK) {
+    return <a href={`/maps/${map}`}>{children}</a>;
+  }
+
   return (
     <>
       <Link href="/maps/[map]" as={`/maps/${map}`}>
