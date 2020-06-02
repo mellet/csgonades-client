@@ -55,6 +55,10 @@ export const BlogPostArticle: FC<Props> = memo(
               )}
             </div>
 
+            <div id="ph-under-img">
+              <EzoicPlaceholder id="174" />
+            </div>
+
             <div id="article-content">
               <div className="article-date">{prettyDate(data.createdAt)}</div>
               <p className="lead">{data.intro}</p>
@@ -109,6 +113,13 @@ export const BlogPostArticle: FC<Props> = memo(
 
           aside {
             grid-area: sidebar;
+          }
+
+          #ph-under-img {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-around;
           }
 
           #blog-side-comp {
