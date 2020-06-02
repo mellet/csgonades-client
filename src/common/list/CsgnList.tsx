@@ -85,6 +85,7 @@ const List: FC<Props<any>> = memo(
 
           .ph1 {
             grid-column: 1 / 2;
+            max-height: 250px;
           }
 
           .contrib {
@@ -94,6 +95,7 @@ const List: FC<Props<any>> = memo(
 
           .ph2 {
             grid-column: 3 / 4;
+            max-height: 250px;
           }
 
           @media only screen and (max-width: 1020px) {
