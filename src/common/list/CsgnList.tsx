@@ -89,6 +89,7 @@ const List: FC<Props<any>> = memo(
 
           .contrib {
             grid-column: 2 / 3;
+            height: 250px;
           }
 
           .ph2 {
