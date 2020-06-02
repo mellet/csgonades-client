@@ -27,15 +27,12 @@ const loadAds = async () => {
       ez.define(adIds);
       await sleep(500);
       ez.refresh();
-      console.log("Ads refresh", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
-        ez.setIsPWA();
         ez.define(adIds);
         ez.enable();
         ez.display();
-        console.log("Ads display", adIds);
       });
     }
   } catch (error) {
