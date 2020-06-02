@@ -49,14 +49,12 @@ const List: FC<Props<any>> = memo(
               {renderItem(item)}
             </div>
           ))}
-          {!!topRightComp && (
-            <div className="top-right-comp">{topRightComp}</div>
-          )}
+          {!!topRightComp && <div className="contrib">{topRightComp}</div>}
 
-          {!!firstAd && <div className="first-ph">{firstAd}</div>}
+          {!!firstAd && <div className="ph1">{firstAd}</div>}
 
           {!!secondAd && displayFirstAd && (
-            <div className="second-row-comp">{secondAd}</div>
+            <div className="ph2">{secondAd}</div>
           )}
         </div>
         <style jsx>{`
@@ -76,47 +74,62 @@ const List: FC<Props<any>> = memo(
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           }
 
-          .first-ph {
-            order: 3;
-          }
-
-          .top-right-comp {
+          .ph1,
+          .ph2,
+          .contrib {
             background: ${colors.DP02};
+            grid-row: 2 / 3;
             border-radius: 5px;
             overflow: hidden;
-            align-self: center;
-            order: 5;
           }
 
-          .second-row-comp {
-            order: 13;
+          .ph1 {
+            grid-column: 1 / 2;
+          }
+
+          .contrib {
+            grid-column: 2 / 3;
+          }
+
+          .ph2 {
+            grid-column: 3 / 4;
           }
 
           @media only screen and (max-width: 1020px) {
-            .first-ph {
-              order: 0;
+            .ph1 {
+              grid-row: 2/3;
+              grid-column: 2/3;
             }
 
-            .top-right-comp {
-              order: 3;
+            .contrib {
+              grid-row: 2/3;
+              grid-column: 1/2;
             }
 
-            .second-row-comp {
-              order: 10;
+            .ph2 {
+              grid-row: 5/6;
+              grid-column: 2/3;
             }
           }
 
           @media only screen and (max-width: 600px) {
-            .top-right-comp {
-              order: -1;
+            .contrib {
+              grid-row: 1/2;
+              grid-column: 1/2;
             }
 
-            .first-ph {
-              order: 3;
+            .ph1 {
+              grid-row: 6/7;
+              grid-column: 1/2;
+              margin-left: -15px;
+              margin-right: -15px;
             }
 
-            .second-row-comp {
-              order: 12;
+            .ph2 {
+              grid-row: 14/15;
+              grid-column: 1/2;
+              margin-left: -15px;
+              margin-right: -15px;
             }
           }
         `}</style>

@@ -11,6 +11,8 @@ type Props = {
   isUpdated?: boolean;
 };
 
+const HARD_LINK = true;
+
 export const MapLink: FC<Props> = ({ map, isNew, isUpdated }) => {
   const { colors } = useTheme();
   const { query } = useRouter();
@@ -18,16 +20,30 @@ export const MapLink: FC<Props> = ({ map, isNew, isUpdated }) => {
   const labelString = createLabelString(isNew, isUpdated);
   const showLabel = isNew || isUpdated;
 
+  if (HARD_LINK) {
+  }
+
   return (
     <>
-      <li className={selected ? "nav-selected" : ""}>
-        {showLabel && <span className="new-map">{labelString}</span>}
-        <Link href="/maps/[map]" as={`/maps/${map}`}>
-          <a>
+      {HARD_LINK && (
+        <li className={selected ? "nav-selected" : ""}>
+          {showLabel && <span className="new-map">{labelString}</span>}
+          <a href={`/maps/${map}`}>
             <span className="map-name">{capitalize(map)}</span>
           </a>
-        </Link>
-      </li>
+        </li>
+      )}
+      {!HARD_LINK && (
+        <li className={selected ? "nav-selected" : ""}>
+          {showLabel && <span className="new-map">{labelString}</span>}
+          <Link href="/maps/[map]" as={`/maps/${map}`}>
+            <a>
+              <span className="map-name">{capitalize(map)}</span>
+            </a>
+          </Link>
+        </li>
+      )}
+
       <style jsx>{`
         li {
           position: relative;

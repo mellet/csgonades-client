@@ -67,6 +67,9 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           display: flex;
           align-items: center;
           justify-content: space-around;
+          height: 100%;
+          background: ${colors.DP01};
+          border-radius: 5px;
         }
 
         .mini-sidebar {
