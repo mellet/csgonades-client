@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 export const useEzoidAdLoader = (): void => {
   const router = useRouter();
   useEffect(() => {
+    if (router.asPath.includes("adtesting")) {
+      return;
+    }
     loadAds();
   }, [router.asPath]);
 };
