@@ -77,7 +77,7 @@ const List: FC<Props<any>> = memo(
           }
 
           .first-ph {
-            order: 1;
+            order: 3;
           }
 
           .top-right-comp {
@@ -85,7 +85,6 @@ const List: FC<Props<any>> = memo(
             border-radius: 5px;
             overflow: hidden;
             align-self: center;
-
             order: 5;
           }
 

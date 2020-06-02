@@ -42,9 +42,9 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           firstAd={
-            <>
+            <div className="ph-incontent">
               <EzoicPlaceholder id="172" />
-            </>
+            </div>
           }
           topRightComp={
             <div className="mini-sidebar">
@@ -61,6 +61,12 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
       <style jsx>{`
         .hidden {
           display: none;
+        }
+
+        .ph-incontent {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
         }
 
         .mini-sidebar {
