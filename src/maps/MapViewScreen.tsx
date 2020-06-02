@@ -17,7 +17,6 @@ import { ResetFilterButton } from "./nadefilter/ResetFilterButton";
 import { useWindowSize } from "../common/MinSizeRender";
 import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
 import { FilterByProButton } from "./nadefilter/FilterByProButton";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   map: CsgoMap;
@@ -68,10 +67,6 @@ export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
 
   return (
     <>
-      <div className="ph">
-        <EzoicPlaceholder id="160" />
-      </div>
-
       <div id="mapview-wrap">
         <MapViewSuggested
           onDismiss={() => setSuggestedNades(null)}
@@ -124,11 +119,6 @@ export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
       </div>
 
       <style jsx>{`
-        .ph {
-          margin-bottom: 15px;
-          margin-top: -15px;
-        }
-
         #mapview-wrap {
           position: relative;
           display: grid;

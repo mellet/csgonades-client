@@ -31,13 +31,12 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
     return item.id;
   }
 
-  if (mapView === "overview") {
-    return null;
-  }
+  const mapNadesClassName =
+    mapView === "overview" ? "mappage-nades hidden" : "mappage-nades";
 
   return (
     <>
-      <div className="mappage-nades">
+      <div className={mapNadesClassName}>
         <CsgnList<NadeLight>
           data={nades}
           keyExtractor={keyExtractor}
@@ -60,6 +59,10 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
         />
       </div>
       <style jsx>{`
+        .hidden {
+          display: none;
+        }
+
         .mini-sidebar {
         }
 
