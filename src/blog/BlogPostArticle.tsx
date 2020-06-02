@@ -103,6 +103,7 @@ export const BlogPostArticle: FC<Props> = memo(
             grid-template-areas:
               "title share"
               "image . "
+              "ph ."
               "article sidebar"
               "article sidebar";
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
@@ -116,10 +117,9 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #ph-under-img {
-            margin-top: 15px;
-            margin-bottom: 15px;
             display: flex;
             justify-content: space-around;
+            grid-area: ph;
           }
 
           #blog-side-comp {
