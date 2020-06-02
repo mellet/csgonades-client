@@ -198,6 +198,7 @@ export const BlogPostArticle: FC<Props> = memo(
                 "share"
                 "title"
                 "image"
+                "ph"
                 "article"
                 "article";
             }
