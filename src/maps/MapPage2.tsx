@@ -34,14 +34,14 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
             )}. Browse our large collection of nades for CS:GO.`}
           />
           <MapPageJumbo map={map} nades={allNades} />
+          {isClientSide && !!allNades && (
+            <MapViewScreen map={map} allNades={allNades} />
+          )}
           <div className="ph-top">
             <EzoicPlaceholder id="175" />
           </div>
           <FilterBar />
           <MapPageNades allNades={allNades} />
-          {isClientSide && !!allNades && (
-            <MapViewScreen map={map} allNades={allNades} />
-          )}
         </div>
       </PageCentralize>
 
@@ -57,8 +57,8 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
         }
 
         .ph-top {
-          margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
-          margin-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           justify-content: space-around;
           max-height: 90px;
