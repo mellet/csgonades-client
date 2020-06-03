@@ -43,7 +43,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           renderItem={renderItem}
           firstAd={
             <div className="ph-incontent">
-              <EzoicPlaceholder id="172" />
+              <EzoicPlaceholder id="173" />
             </div>
           }
           topRightComp={
@@ -53,7 +53,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           }
           secondAd={
             <div className="ph-incontent">
-              <EzoicPlaceholder id="173" />
+              <EzoicPlaceholder id="172" />
             </div>
           }
           thirdAd={
