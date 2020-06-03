@@ -46,7 +46,6 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
         .map-welcome {
           background: ${colors.DP01};
           padding: 40px 30px;
-          margin-bottom: 30px;
           border-radius: 5px;
           color: ${colors.TEXT};
           transition: all 0.2s;

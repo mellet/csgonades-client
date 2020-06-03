@@ -25,9 +25,6 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
   return (
     <>
       <PageCentralize>
-        <div className="ph-top">
-          <EzoicPlaceholder id="175" />
-        </div>
         <div key={"map-" + map} id="map-page">
           <SEO
             title={mapPageTitleSeo(map)}
@@ -37,6 +34,9 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
             )}. Browse our large collection of nades for CS:GO.`}
           />
           <MapPageJumbo map={map} nades={allNades} />
+          <div className="ph-top">
+            <EzoicPlaceholder id="175" />
+          </div>
           <FilterBar />
           <MapPageNades allNades={allNades} />
           {isClientSide && !!allNades && (
@@ -48,7 +48,7 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
       <style jsx>{`
         #map-page {
           grid-area: main;
-          margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
           min-height: calc(
             100vh - ${Dimensions.HEADER_HEIGHT}px -
               ${Dimensions.GUTTER_SIZE * 3}px
@@ -57,9 +57,11 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
         }
 
         .ph-top {
-          padding-top: ${Dimensions.GUTTER_SIZE / 2}px;
+          margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
           display: flex;
           justify-content: space-around;
+          max-height: 90px;
         }
 
         @media only screen and (max-width: 100px) {
