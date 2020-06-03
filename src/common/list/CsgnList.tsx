@@ -9,6 +9,7 @@ type Props<T> = {
   topRightComp?: JSX.Element;
   firstAd?: JSX.Element;
   secondAd?: JSX.Element;
+  thirdAd?: JSX.Element;
 };
 
 function ListBase<T>(props: Props<T>) {
@@ -25,7 +26,15 @@ function ListBase<T>(props: Props<T>) {
 }
 
 const List: FC<Props<any>> = memo(
-  ({ data, keyExtractor, renderItem, topRightComp, firstAd, secondAd }) => {
+  ({
+    data,
+    keyExtractor,
+    renderItem,
+    topRightComp,
+    firstAd,
+    secondAd,
+    thirdAd,
+  }) => {
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
@@ -53,9 +62,9 @@ const List: FC<Props<any>> = memo(
 
           {!!firstAd && <div className="ph1">{firstAd}</div>}
 
-          {!!secondAd && displayFirstAd && (
-            <div className="ph2">{secondAd}</div>
-          )}
+          {!!secondAd && <div className="ph2">{secondAd}</div>}
+
+          {!!thirdAd && displayFirstAd && <div className="ph3">{thirdAd}</div>}
         </div>
         <style jsx>{`
           .empty-list {
@@ -74,51 +83,61 @@ const List: FC<Props<any>> = memo(
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           }
 
-          .ph1,
-          .ph2,
           .contrib {
-            background: ${colors.DP02};
             grid-row: 2 / 3;
+            grid-column: 2 / 3;
+            height: 250px;
+            background: ${colors.DP02};
             border-radius: 5px;
             overflow: hidden;
           }
 
           .ph1 {
-            grid-column: 1 / 2;
-            max-height: 250px;
-          }
-
-          .contrib {
+            grid-row: 4 / 5;
             grid-column: 2 / 3;
-            height: 250px;
+            max-height: 250px;
+            align-self: center;
           }
 
           .ph2 {
-            grid-column: 3 / 4;
+            grid-row: 8 / 9;
+            grid-column: 2 / 3;
+            max-height: 250px;
+            align-self: center;
+          }
+
+          .ph3 {
+            grid-row: 13 / 14;
+            grid-column: 1 / 4;
             max-height: 250px;
           }
 
           @media only screen and (max-width: 1020px) {
-            .ph1 {
-              grid-row: 2/3;
+            .contrib {
+              grid-row: 1/2;
               grid-column: 2/3;
             }
 
-            .contrib {
-              grid-row: 2/3;
-              grid-column: 1/2;
+            .ph1 {
+              grid-row: 5 / 6;
+              grid-column: 1 / 2;
             }
 
             .ph2 {
-              grid-row: 5/6;
+              grid-row: 5 / 6;
               grid-column: 2/3;
+            }
+
+            .ph3 {
+              grid-row: 10 / 11;
+              grid-column: 1 / 3;
             }
           }
 
           @media only screen and (max-width: 600px) {
             .contrib {
-              grid-row: 1/2;
-              grid-column: 1/2;
+              grid-row: 1 / 2;
+              grid-column: 1 / 2;
             }
 
             .ph1 {
@@ -129,7 +148,14 @@ const List: FC<Props<any>> = memo(
             }
 
             .ph2 {
-              grid-row: 14/15;
+              grid-row: 12/13;
+              grid-column: 1/2;
+              margin-left: -15px;
+              margin-right: -15px;
+            }
+
+            .ph3 {
+              grid-row: 20/21;
               grid-column: 1/2;
               margin-left: -15px;
               margin-right: -15px;
