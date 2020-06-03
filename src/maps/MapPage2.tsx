@@ -61,7 +61,6 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           justify-content: space-around;
-          max-height: 90px;
         }
 
         @media only screen and (max-width: 100px) {
