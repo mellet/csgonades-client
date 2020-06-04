@@ -19,7 +19,6 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
 import { Nade } from "../models/Nade/Nade";
 import { TickWarning } from "./components/TickWarning";
-import Head from "next/head";
 
 type Props = {
   nade: Nade;
@@ -52,7 +51,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
 
   return (
     <>
-      <Head></Head>
       <ArticleJsonLd
         key={`ld-${nade.id}`}
         url={`https://www.csgonades.com/nades/${nade.slug || nade.id}`}
