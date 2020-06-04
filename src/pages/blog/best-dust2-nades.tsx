@@ -76,6 +76,8 @@ const PractiseConfigBlogPost = (): JSX.Element => {
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-t-spawn" />
         </div>
 
+        <EzoicPlaceholder id="175" />
+
         <h2>2. Long Corner Smoke</h2>
         <p>
           Why do we throw this smoke? It forces the CT to have to go wide to
@@ -97,10 +99,6 @@ const PractiseConfigBlogPost = (): JSX.Element => {
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-outside-long" />
         </div>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="172" />
-        </div>
-
         <h2>3. A Site, CT Spawn</h2>
         <p>
           Almost there, let&apos;s plant A site! Nothing can stop us now... Oh,
@@ -112,6 +110,7 @@ const PractiseConfigBlogPost = (): JSX.Element => {
         <div className="nade-list">
           <BlogNadeItem nadeSlug="dust2-smoke-ct-spawn-from-long-doors" />
         </div>
+
         <h2>4. The Mid to B Smoke</h2>
         <p>
           Rush B!? Rush A!!.. Nah... Let&apos;s go mid to B instead. Throw this
@@ -121,6 +120,10 @@ const PractiseConfigBlogPost = (): JSX.Element => {
         <div className="nade-list">
           <BlogNadeItem nadeSlug="dust2-smoke-ct-spawn-from-xbox" />
           <BlogNadeItem nadeSlug="flash-mid-doors-from-xbox" />
+        </div>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="172" />
         </div>
 
         <h2>5. B Door Smoke</h2>
