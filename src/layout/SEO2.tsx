@@ -37,7 +37,7 @@ export const SEO: FC<Props> = memo(
           <meta name="description" content={pageDescription} />
           <meta
             name="keywords"
-            content="gaming dust2 train mirage inferno cobblestone overpass cache nades flashbang smoke incendiary molotov grenade csgo cs:go counter-strike global offensive"
+            content="gaming dust2 train mirage inferno cobblestone overpass cache nades flashbang smoke incendiary molotov grenade csgo cs:go learn practice improve counter-strike global offensive"
           />
           <meta property="og:description" content={pageDescription} />
           <meta property="og:title" content={pageTitle} />
