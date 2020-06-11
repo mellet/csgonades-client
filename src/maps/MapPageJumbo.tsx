@@ -27,8 +27,8 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
     <>
       <div className={classNames}>
         <h1>
-          Find the best smoke, flashbang, molotov and grenade spots for{" "}
-          {capitalize(map)}.
+          Find and learn the best smoke, flashbang, molotov and grenade spots
+          for {capitalize(map)}.
         </h1>
         <h2>
           Don&apos;t be like BOT Bob <Twemoji emoji="🤖" />, get some nades.
