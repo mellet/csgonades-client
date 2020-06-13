@@ -31,7 +31,7 @@ const PractiseConfigBlogPost = (): JSX.Element => {
         title: "Psst...",
         durationSeconds: 20,
       });
-    }, 1000 * 10);
+    }, 1000 * 30);
     return () => clearTimeout(delay);
   }, [displayToast]);
 
@@ -60,11 +60,7 @@ const PractiseConfigBlogPost = (): JSX.Element => {
         <p>
           Aaah... Xbox. Everyone wants to smoke Xbox. Why? Because there is
           always an annoying AWP in mid stopping you from going short. So here
-          are two options for you. For 64 tick and 128 tick, both use{" "}
-          <PageLink href="/blog/jumpthrow-bind" as="/blog/jumpthrow-bind">
-            jumpthrow bind
-          </PageLink>
-          .
+          are two options for you.
         </p>
         <p className="tip">
           <strong>
@@ -73,7 +69,7 @@ const PractiseConfigBlogPost = (): JSX.Element => {
         </p>
         <div className="nade-list">
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-t-spawn-7Nn" />
-          <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-t-spawn" />
+          <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-lower-tunnels-gXs" />
         </div>
 
         <EzoicPlaceholder id="175" />
