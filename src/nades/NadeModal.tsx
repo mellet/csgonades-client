@@ -6,12 +6,10 @@ import { FaTimes } from "react-icons/fa";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { NadeModalPage } from "./NadeModalPage";
-import { useAnalytics } from "../utils/Analytics";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 export const NadeModal: FC = memo(() => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const { pageView } = useAnalytics();
   const { colors } = useTheme();
   const { nadeForModal, clearNadeForModal } = useNadeModal();
   const [prevPath, setPrevPath] = useState<string | undefined>();
