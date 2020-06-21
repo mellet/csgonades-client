@@ -8,8 +8,9 @@ export type AppError = {
 
 export type AppResult<T> = Promise<Result<T, AppError>>;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const extractApiError = (badError: any): Result<any, AppError> => {
-  let error: AxiosError = badError;
+  const error: AxiosError = badError;
   if (error.response) {
     if (typeof error.response.data === "object") {
       const apiError = error.response.data as AppError;
@@ -17,7 +18,7 @@ export const extractApiError = (badError: any): Result<any, AppError> => {
     } else {
       const apiError: AppError = {
         status: error.response.status,
-        message: error.response.statusText
+        message: error.response.statusText,
       };
       return err(apiError);
     }
@@ -25,10 +26,13 @@ export const extractApiError = (badError: any): Result<any, AppError> => {
 
   const unknownError: AppError = {
     status: 500,
-    message: "Unknown error"
+    message: "Unknown error",
   };
 
-  console.warn("# Unknown error", error, error.response);
+  console.warn("# Unknown error");
+  console.warn(`# Code`, error.code);
+  console.warn(`# Res`, error.response);
+  console.warn(`# Msg`, error.message);
 
   return err(unknownError);
 };
