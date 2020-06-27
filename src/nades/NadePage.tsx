@@ -19,6 +19,7 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
 import { Nade } from "../models/Nade/Nade";
 import { TickWarning } from "./components/TickWarning";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   nade: Nade;
@@ -73,6 +74,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
       />
 
       <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
+
+      <div id="top-ph">
+        <EzoicPlaceholder id="174" />
+      </div>
 
       <div id="nade-page-grid" key={`main-${nade.id}`}>
         <div className="matchmake-warning">
@@ -136,6 +141,11 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
       </div>
 
       <style jsx>{`
+        #top-ph {
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+
         .matchmake-warning {
           grid-area: warning;
         }
