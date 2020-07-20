@@ -6,7 +6,7 @@ type Props = {
   map: CsgoMap;
 };
 
-const HARD_LINK = true;
+const HARD_LINK = false;
 
 export const MapPageLink: FC<Props> = ({ map, children }) => {
   if (HARD_LINK) {
