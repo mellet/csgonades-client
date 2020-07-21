@@ -22,10 +22,10 @@ const loadAds = async () => {
     }
 
     if (ez.hasDisplayedAds) {
-      await sleep(500);
+      //await sleep(500);
       const adIds = findAdUnits();
       ez.define(adIds);
-      await sleep(500);
+      //await sleep(500);
       ez.refresh();
       console.log("Ez Refresh", adIds);
     } else {
@@ -60,4 +60,4 @@ const findAdUnits = () => {
   return ids;
 };
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+//const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
