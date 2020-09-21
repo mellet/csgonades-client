@@ -125,6 +125,7 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         <div id="nade-actions">
           <div className="nade-action">
             <NadeShareActions
+              vertical
               title={generateTitle(
                 nade.title,
                 nade.startPosition,
@@ -138,6 +139,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             />
           </div>
         </div>
+
+        <div id="advert">
+          <EzoicPlaceholder id="177" />
+        </div>
       </div>
 
       <style jsx>{`
@@ -150,23 +155,14 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           grid-area: warning;
         }
 
-        .share-label {
-          background: ${colors.DP01};
-          padding: 15px 20px 15px 20px;
-          font-weight: normal;
-          font-size: 14px;
-        }
-
-        #share-buttons {
-          padding: 15px 30px 30px 30px;
-        }
-
         #misc {
           grid-area: misc;
         }
 
         #nade-actions {
-          grid-area: actions;
+          position: fixed;
+          left: 20px;
+          top: ${Dimensions.HEADER_HEIGHT + 20}px;
           padding-right: ${inModal ? Dimensions.GUTTER_SIZE : 0}px;
         }
 
@@ -178,17 +174,22 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           margin-top: ${inModal ? "0px" : `${Dimensions.GUTTER_SIZE}px`};
           margin-bottom: ${inModal ? "0px" : `100px`};
           display: grid;
-          grid-template-columns: 1fr 1fr ${inModal ? "190px" : "160px"};
+          grid-template-columns: 1fr 1fr ${inModal ? "190px" : "300px"};
           grid-template-areas:
             "title title title"
             "warning warning warning"
             "video video video"
             "meta meta meta"
-            "info info actions"
+            "info info advert"
             "comments comments .";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           width: 100%;
           border-radius: 5px;
+        }
+
+        #advert {
+          grid-area: advert;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-meta {
@@ -248,6 +249,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           #nade-page-grid {
             margin-right: 30px;
           }
+
+          #nade-actions {
+            display: none;
+          }
         }
 
         @media only screen and (max-width: 800px) {
@@ -259,7 +264,7 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
               "warning warning warning"
               "video video video"
               "meta meta meta"
-              "ad ad ad"
+              "advert advert advert"
               "info info info"
               "comments comments comments"
               "misc misc misc";

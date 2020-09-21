@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import {
   RedditShareButton,
   FacebookShareButton,
@@ -13,6 +13,7 @@ type Props = {
   url: string;
   title: string;
   image?: string;
+  vertical?: boolean;
 };
 
 export const NadeShareActions: FC<Props> = ({
@@ -20,6 +21,7 @@ export const NadeShareActions: FC<Props> = ({
   url,
   title,
   image,
+  vertical,
 }) => {
   const { event } = useAnalytics();
   const shareUrl = `https://www.csgonades.com${url}`;
@@ -32,13 +34,21 @@ export const NadeShareActions: FC<Props> = ({
     });
   }
 
+  const classNameBuilder = useMemo(() => {
+    const classes = ["share-buttons"];
+    if (vertical) {
+      classes.push("vertical");
+    }
+    return classes.join(" ");
+  }, [vertical]);
+
   if (!visisble) {
     return null;
   }
 
   return (
     <>
-      <div className="share-buttons">
+      <div className={classNameBuilder}>
         <div className="share-wrap" onClick={() => onSosialShare("Reddit")}>
           <RedditShareButton url={shareUrl} title={title}>
             <div className="share-icon">
@@ -71,9 +81,13 @@ export const NadeShareActions: FC<Props> = ({
       <style jsx>{`
         .share-buttons {
           display: flex;
+          border-radius: 5px;
+          background: #454545;
+          overflow: hidden;
         }
 
-        .share-buttons div {
+        .vertical {
+          flex-direction: column;
         }
 
         .share-icon {
@@ -84,7 +98,7 @@ export const NadeShareActions: FC<Props> = ({
           align-items: center;
           justify-content: space-around;
           color: #fff;
-          background: #454545;
+          background: transparent;
           transition: background 0.2s;
         }
 

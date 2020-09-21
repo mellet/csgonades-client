@@ -19,7 +19,7 @@ type Props = {
 };
 
 export const NadeTitle: FC<Props> = memo(
-  ({ title, subTitle, nadeId, canEdit, nadeSlug, inModal, map }) => {
+  ({ title, subTitle, nadeId, canEdit, nadeSlug, inModal }) => {
     const { colors } = useTheme();
 
     return (
@@ -27,13 +27,14 @@ export const NadeTitle: FC<Props> = memo(
         <div className="title">
           <div id="left-controls">
             {!inModal && (
-              <div id="back">
-                <Link href="/maps/[map]" as={`/maps/${map}`}>
-                  <button>
-                    <FaChevronLeft />
-                  </button>
-                </Link>
-              </div>
+              <button
+                id="back"
+                onClick={() => {
+                  window.history.back();
+                }}
+              >
+                <FaChevronLeft />
+              </button>
             )}
           </div>
 
@@ -86,7 +87,7 @@ export const NadeTitle: FC<Props> = memo(
             display: flex;
           }
 
-          #back button {
+          #back {
             color: ${colors.TEXT};
             font-size: 24px;
             display: block;
@@ -160,8 +161,8 @@ export const NadeTitle: FC<Props> = memo(
             .title {
               grid-template-columns: 50px 1fr 50px;
               grid-template-areas:
-                "backbtn title actions"
-                "backbtn title actions";
+                "controls title actions"
+                "controls title actions";
               padding-left: 10px;
               padding-right: 10px;
             }
@@ -183,8 +184,8 @@ export const NadeTitle: FC<Props> = memo(
             .title {
               grid-template-columns: 30px 1fr 30px;
               grid-template-areas:
-                "backbtn title actions"
-                "backbtn title actions";
+                "controls title actions"
+                "controls title actions";
               padding-left: 10px;
               padding-right: 10px;
             }

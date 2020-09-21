@@ -5,7 +5,6 @@ import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { GfycatThumbnail } from "./GfycatThumbnail";
 import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
-import { useNadeModal } from "../../store/MapStore/hooks/useNadeModal";
 import Link from "next/link";
 
 interface Props {
@@ -13,9 +12,10 @@ interface Props {
 }
 
 export const NadeItem: FC<Props> = memo(({ nade }) => {
-  const { setNadeForModal } = useNadeModal();
+  //const { setNadeForModal } = useNadeModal();
   const { colors } = useTheme();
 
+  /*
   function onItemClick(e: any) {
     // Don't open modal if ctrl or command used in click
     if (e.ctrlKey || e.metaKey) {
@@ -24,11 +24,12 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
     e.preventDefault();
     setNadeForModal(nade);
   }
+  */
 
   return (
     <>
       <Link href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
-        <a onClick={onItemClick}>
+        <a>
           <div className={"nadebox"} style={{ display: "inline-block" }}>
             <NadeItemTitle
               startPosition={nade.startPosition}
