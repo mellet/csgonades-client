@@ -265,7 +265,7 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           }
         }
 
-        @media only screen and (max-width: 1450px) {
+        @media only screen and (max-width: 1400px) {
           #sidebar-ph {
             display: none;
           }
