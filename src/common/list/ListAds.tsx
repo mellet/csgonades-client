@@ -22,14 +22,19 @@ export const ListAds: FC<Props> = ({ numNades }) => {
     "187",
   ];
 
-  const numberOfAds = Math.floor(numNades / 16);
+  const numberOfAds = Math.floor(numNades / 13);
 
   const ads = new Array(numberOfAds).fill(0);
 
   return (
     <>
       {ads.map((_, i) => {
-        return <ListAdUnit key={`ad-${i}`} adId={adIds[i]} position={i + 1} />;
+        const adId = adIds[i] || null;
+        if (adId) {
+          return <ListAdUnit key={`ad-${i}`} adId={adIds[i]} position={i} />;
+        } else {
+          return null;
+        }
       })}
     </>
   );
@@ -44,11 +49,10 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
   const { colors } = useTheme();
 
   function getRowStart() {
-    if (isMobileOnly) {
-      return position * 10 - 5;
-    }
+    const startRow = isMobileOnly ? 5 : 3;
+    const adSpacing = isMobileOnly ? 10 : 5;
 
-    return position * 6 - 3;
+    return startRow + adSpacing * position;
   }
 
   const rowStart = getRowStart();
