@@ -27,14 +27,12 @@ const loadAds = async () => {
       ez.define(adIds);
       //await sleep(500);
       ez.refresh();
-      console.log("Ez Refresh", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
         ez.define(adIds);
         ez.enable();
         ez.display();
-        console.log("Ez Display", adIds);
       });
     }
   } catch (error) {

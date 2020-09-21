@@ -150,7 +150,6 @@ type Actions =
   | UnSetIsPro;
 
 const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
-  console.log(action.type, action);
   switch (action.type) {
     case "EditNade/ToggleLineupImageAdder":
       return {
@@ -345,7 +344,6 @@ export const useEditNadeState = (nade: Nade) => {
 };
 
 function createNadeUpdateBody(state: EditNadeState): NadeUpdateBody {
-  //console.log("CurState", state);
   const { originalNade } = state;
 
   const updateBody: NadeUpdateBody = {

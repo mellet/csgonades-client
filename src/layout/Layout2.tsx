@@ -15,17 +15,17 @@ import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { NadeModal } from "../nades/NadeModal";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 export const Layout2: FC = memo(({ children }) => {
-  const router = useRouter();
+  // const router = useRouter();
   const { colors } = useTheme();
   useSetupSession();
   usePageView();
   usePreloadUser();
   useEzoidAdLoader();
 
-  const enableNadeModal = router.pathname !== "/";
+  const enableNadeModal = false; // router.pathname !== "/";
 
   return (
     <>

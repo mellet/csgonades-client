@@ -66,10 +66,6 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
     setDeleteConfirmVisible(false);
   }
 
-  console.log({
-    nadeComment,
-  });
-
   return (
     <>
       <div className="nade-comment-item">

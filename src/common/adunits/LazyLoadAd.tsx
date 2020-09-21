@@ -1,8 +1,6 @@
 import { FC, useState, RefObject, useEffect, useRef } from "react";
 
-type Props = {};
-
-export const LazyLoadAd: FC<Props> = ({ children }) => {
+export const LazyLoadAd: FC = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [displayUnit, setDisplayUnit] = useState(false);
 
@@ -15,7 +13,7 @@ export const LazyLoadAd: FC<Props> = ({ children }) => {
   );
 };
 
-const useVisibility = (ref: RefObject<HTMLElement>, callback: Function) => {
+const useVisibility = (ref: RefObject<HTMLElement>, callback: any) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -34,8 +32,8 @@ const useVisibility = (ref: RefObject<HTMLElement>, callback: Function) => {
     );
 
     if (ref.current) {
-      console.log("> Observing");
       observer.observe(ref.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

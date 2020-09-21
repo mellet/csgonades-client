@@ -6,10 +6,6 @@ class MyDocument extends Document {
       <>
         <Html lang="en">
           <Head>
-            <meta
-              name="viewport"
-              content="initial-scale=1.0, width=device-width"
-            />
             <meta charSet="utf-8" />
             <link
               rel="shortcut icon"
