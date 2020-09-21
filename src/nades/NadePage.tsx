@@ -149,7 +149,19 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         <EzoicPlaceholder id="178" />
       </div>
 
+      <div id="sidebar-ph">
+        <EzoicPlaceholder id="170" />
+      </div>
+
       <style jsx>{`
+        #sidebar-ph {
+          position: fixed;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          right: ${Dimensions.GUTTER_SIZE}px;
+          width: 160px;
+          height: 600px;
+        }
+
         #top-ph {
           margin-top: 15px;
           margin-bottom: 15px;
@@ -236,22 +248,11 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           padding-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
-        #placement-bottom {
-          padding-top: ${Dimensions.GUTTER_SIZE}px;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-        }
-
         #title {
           grid-area: title;
           background: ${colors.DP01};
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
-        }
-
-        #side-bar-ad {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
 
         @media only screen and (max-width: 1210px) {
@@ -260,6 +261,12 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           }
 
           #nade-actions {
+            display: none;
+          }
+        }
+
+        @media only screen and (max-width: 1500px) {
+          #sidebar-ph {
             display: none;
           }
         }
