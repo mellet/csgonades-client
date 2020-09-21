@@ -8,7 +8,6 @@ import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNad
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { TopContributorList } from "./TopContributor";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   allNades: NadeLight[];
@@ -41,24 +40,9 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           data={nades}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
-          firstAd={
-            <div className="ph-incontent">
-              <EzoicPlaceholder id="173" />
-            </div>
-          }
           topRightComp={
             <div className="mini-sidebar">
               {allNades && <TopContributorList nades={allNades} />}
-            </div>
-          }
-          secondAd={
-            <div className="ph-incontent">
-              <EzoicPlaceholder id="172" />
-            </div>
-          }
-          thirdAd={
-            <div className="ph-incontent">
-              <EzoicPlaceholder id="176" />
             </div>
           }
         />

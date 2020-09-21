@@ -1,18 +1,16 @@
 import { FC, memo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
+import { ListAds } from "./ListAds";
 
 type Props<T> = {
   data: T[];
   renderItem: (item: T) => JSX.Element;
   keyExtractor: (item: T) => string;
   topRightComp?: JSX.Element;
-  firstAd?: JSX.Element;
-  secondAd?: JSX.Element;
-  thirdAd?: JSX.Element;
 };
 
-function ListBase<T>(props: Props<T>) {
+function ListBase<T>(props: Props<T>): JSX.Element {
   const { data, renderItem, keyExtractor } = props;
 
   return (
@@ -26,20 +24,10 @@ function ListBase<T>(props: Props<T>) {
 }
 
 const List: FC<Props<any>> = memo(
-  ({
-    data,
-    keyExtractor,
-    renderItem,
-    topRightComp,
-    firstAd,
-    secondAd,
-    thirdAd,
-  }) => {
+  ({ data, keyExtractor, renderItem, topRightComp }) => {
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
-
-    const displayFirstAd = numItems >= 15;
 
     return (
       <>
@@ -60,11 +48,7 @@ const List: FC<Props<any>> = memo(
           ))}
           {!!topRightComp && <div className="contrib">{topRightComp}</div>}
 
-          {!!firstAd && <div className="ph1">{firstAd}</div>}
-
-          {!!secondAd && <div className="ph2">{secondAd}</div>}
-
-          {!!thirdAd && displayFirstAd && <div className="ph3">{thirdAd}</div>}
+          <ListAds numNades={numItems} />
         </div>
         <style jsx>{`
           .empty-list {
@@ -90,26 +74,6 @@ const List: FC<Props<any>> = memo(
             background: ${colors.DP02};
             border-radius: 5px;
             overflow: hidden;
-          }
-
-          .ph1 {
-            grid-row: 4 / 5;
-            grid-column: 2 / 3;
-            max-height: 250px;
-            align-self: center;
-          }
-
-          .ph2 {
-            grid-row: 8 / 9;
-            grid-column: 2 / 3;
-            max-height: 250px;
-            align-self: center;
-          }
-
-          .ph3 {
-            grid-row: 13 / 14;
-            grid-column: 1 / 4;
-            max-height: 250px;
           }
 
           @media only screen and (max-width: 1020px) {
