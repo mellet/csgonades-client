@@ -157,8 +157,7 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         #sidebar-ph {
           position: fixed;
           top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
-          right: 10px;
-          width: 160px;
+          right: ${Dimensions.GUTTER_SIZE}px;
           height: 600px;
         }
 
