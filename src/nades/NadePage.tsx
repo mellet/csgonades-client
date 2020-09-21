@@ -173,8 +173,12 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         }
 
         #bottom-ph {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
+          padding-top: ${Dimensions.GUTTER_SIZE}px;
+          padding-bottom: 200px;
+          max-width: ${Dimensions.PAGE_WIDTH}px;
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
+          margin: 0 auto;
         }
 
         .matchmake-warning {
