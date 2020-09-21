@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
@@ -42,7 +43,15 @@ type AdUnitProps = {
 const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
   const { colors } = useTheme();
 
-  const rowStart = position * 6 - 3;
+  function getRowStart() {
+    if (isMobileOnly) {
+      return position * 10 - 5;
+    }
+
+    return position * 6 - 3;
+  }
+
+  const rowStart = getRowStart();
 
   return (
     <>
@@ -60,6 +69,18 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        @media only screen and (max-width: 1020px) {
+          .ph-inlist {
+            grid-column: 2 / 3;
+          }
+        }
+
+        @media only screen and (max-width: 600px) {
+          .ph-inlist {
+            grid-column: 1 / 2;
+          }
         }
       `}</style>
     </>

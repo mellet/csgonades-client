@@ -81,48 +81,12 @@ const List: FC<Props<any>> = memo(
               grid-row: 1/2;
               grid-column: 2/3;
             }
-
-            .ph1 {
-              grid-row: 5 / 6;
-              grid-column: 1 / 2;
-            }
-
-            .ph2 {
-              grid-row: 5 / 6;
-              grid-column: 2/3;
-            }
-
-            .ph3 {
-              grid-row: 10 / 11;
-              grid-column: 1 / 3;
-            }
           }
 
           @media only screen and (max-width: 600px) {
             .contrib {
               grid-row: 1 / 2;
               grid-column: 1 / 2;
-            }
-
-            .ph1 {
-              grid-row: 6/7;
-              grid-column: 1/2;
-              margin-left: -15px;
-              margin-right: -15px;
-            }
-
-            .ph2 {
-              grid-row: 12/13;
-              grid-column: 1/2;
-              margin-left: -15px;
-              margin-right: -15px;
-            }
-
-            .ph3 {
-              grid-row: 20/21;
-              grid-column: 1/2;
-              margin-left: -15px;
-              margin-right: -15px;
             }
           }
         `}</style>
