@@ -145,8 +145,17 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         </div>
       </div>
 
+      <div id="bottom-ph">
+        <EzoicPlaceholder id="178" />
+      </div>
+
       <style jsx>{`
         #top-ph {
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+
+        #bottom-ph {
           margin-top: 15px;
           margin-bottom: 15px;
         }
