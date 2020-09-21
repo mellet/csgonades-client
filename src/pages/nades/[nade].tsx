@@ -3,7 +3,6 @@ import { NadeApi } from "../../api/NadeApi";
 import { Nade } from "../../models/Nade/Nade";
 import { NadeNotFound } from "../../nades/NadeNotFound";
 import { NadePage } from "../../nades/NadePage";
-import { PageCentralize } from "../../common/PageCentralize";
 
 type Props = {
   nade: Nade;
@@ -14,11 +13,7 @@ const NadePageComponent: NextPage<Props> = ({ nade }) => {
     return <NadeNotFound />;
   }
 
-  return (
-    <PageCentralize>
-      <NadePage key={nade.id} nade={nade} />
-    </PageCentralize>
-  );
+  return <NadePage key={nade.id} nade={nade} />;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({

@@ -20,6 +20,7 @@ import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
 import { Nade } from "../models/Nade/Nade";
 import { TickWarning } from "./components/TickWarning";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { PageCentralizeSidebars } from "../common/PageCentralizeSidebars";
 
 type Props = {
   nade: Nade;
@@ -73,92 +74,97 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         video={nade.gfycat.smallVideoUrl}
       />
 
-      <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
+      <PageCentralizeSidebars
+        leftSideBar={
+          <div id="nade-actions" className="stick-top">
+            <div className="nade-action">
+              <NadeShareActions
+                vertical
+                title={generateTitle(
+                  nade.title,
+                  nade.startPosition,
+                  nade.endPosition,
+                  nade.type,
+                  nade.oneWay
+                )}
+                visisble={nade.status === "accepted"}
+                url={`/nades/${nade?.slug || nade?.id}`}
+                image={nade.images.thumbnailUrl}
+              />
+            </div>
+          </div>
+        }
+        rightSideBar={
+          <div id="sidebar-ph" className="stick-top">
+            <div className="sidebar-ph">
+              <EzoicPlaceholder id="170" />
+            </div>
+          </div>
+        }
+      >
+        <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
 
-      <div id="nade-page-grid" key={`main-${nade.id}`}>
-        <div className="matchmake-warning">
-          <TickWarning />
-        </div>
+        <div id="nade-page-grid" key={`main-${nade.id}`}>
+          <div className="matchmake-warning">
+            <TickWarning />
+          </div>
 
-        <div id="title">
-          <NadeTitle
-            title={layoutTitle}
-            subTitle={subTitle}
-            canEdit={canEdit}
-            nadeId={nade.id}
-            nadeSlug={nade.slug}
-            map={nade.map}
-            downVoteCount={nade.downVoteCount}
-            upVoteCount={nade.upVoteCount}
-          />
-        </div>
-
-        <div id="nade-meta">
-          <NadeMeta
-            type={nade.type}
-            movement={nade.movement}
-            technique={nade.technique}
-            tickrate={nade.tickrate}
-            rounded
-          />
-        </div>
-
-        <div id="nade-page-main">
-          <NadeVideoContainer
-            lineUpUrl={nade.images.lineupUrl}
-            gfyId={nade.gfycat.gfyId}
-          />
-        </div>
-
-        <div id="top-ph">
-          <EzoicPlaceholder id="174" />
-        </div>
-
-        <div id="nade-info-container">
-          <NadeInfoContainer nade={nade} />
-        </div>
-
-        <div id="nade-comment-container">
-          <NadeComments nadeId={nade.id} />
-        </div>
-
-        <div id="nade-actions">
-          <div className="nade-action">
-            <NadeShareActions
-              vertical
-              title={generateTitle(
-                nade.title,
-                nade.startPosition,
-                nade.endPosition,
-                nade.type,
-                nade.oneWay
-              )}
-              visisble={nade.status === "accepted"}
-              url={`/nades/${nade?.slug || nade?.id}`}
-              image={nade.images.thumbnailUrl}
+          <div id="title">
+            <NadeTitle
+              title={layoutTitle}
+              subTitle={subTitle}
+              canEdit={canEdit}
+              nadeId={nade.id}
+              nadeSlug={nade.slug}
+              map={nade.map}
+              downVoteCount={nade.downVoteCount}
+              upVoteCount={nade.upVoteCount}
             />
           </div>
-        </div>
 
-        <div id="advert">
-          <EzoicPlaceholder id="177" />
+          <div id="nade-meta">
+            <NadeMeta
+              type={nade.type}
+              movement={nade.movement}
+              technique={nade.technique}
+              tickrate={nade.tickrate}
+              rounded
+            />
+          </div>
+
+          <div id="nade-page-main">
+            <NadeVideoContainer
+              lineUpUrl={nade.images.lineupUrl}
+              gfyId={nade.gfycat.gfyId}
+            />
+          </div>
+
+          <div id="top-ph">
+            <EzoicPlaceholder id="174" />
+          </div>
+
+          <div id="nade-info-container">
+            <NadeInfoContainer nade={nade} />
+          </div>
+
+          <div id="nade-comment-container">
+            <NadeComments nadeId={nade.id} />
+          </div>
+
+          <div id="advert">
+            <EzoicPlaceholder id="177" />
+          </div>
         </div>
-      </div>
+      </PageCentralizeSidebars>
 
       <div id="bottom-ph">
         <EzoicPlaceholder id="178" />
       </div>
 
-      <div id="sidebar-ph">
-        <EzoicPlaceholder id="170" />
-      </div>
-
       <style jsx>{`
-        #sidebar-ph {
-          position: fixed;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
-          right: ${Dimensions.GUTTER_SIZE}px;
+        .sidebar-ph {
           height: 600px;
+          width: 160px;
         }
 
         #top-ph {
@@ -180,21 +186,24 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         }
 
         #nade-actions {
-          position: fixed;
-          left: 20px;
-          top: ${Dimensions.HEADER_HEIGHT + 20}px;
-          padding-right: ${inModal ? Dimensions.GUTTER_SIZE : 0}px;
+          display: flex;
+          justify-content: flex-end;
         }
 
         .nade-action {
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          width: 40px;
+          height: 200px;
+        }
+
+        .stick-top {
+          position: sticky;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE * 2}px;
         }
 
         #nade-page-grid {
-          margin-top: ${inModal ? "0px" : `${Dimensions.GUTTER_SIZE}px`};
-          margin-bottom: ${inModal ? "0px" : `100px`};
+          grid-area: main;
           display: grid;
-          grid-template-columns: 1fr 1fr ${inModal ? "190px" : "300px"};
+          grid-template-columns: 1fr 1fr 300px;
           grid-template-areas:
             "title title title"
             "warning warning warning"
@@ -258,16 +267,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         @media only screen and (max-width: 1210px) {
           #nade-page-grid {
             margin-right: 30px;
-          }
-
-          #nade-actions {
-            display: none;
-          }
-        }
-
-        @media only screen and (max-width: 1400px) {
-          #sidebar-ph {
-            display: none;
           }
         }
 
