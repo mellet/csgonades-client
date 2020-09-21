@@ -33,13 +33,17 @@ export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
               map
             )}. Browse our large collection of nades for CS:GO.`}
           />
+
           <MapPageJumbo map={map} nades={allNades} />
-          {isClientSide && !!allNades && (
-            <MapViewScreen map={map} allNades={allNades} />
-          )}
+
           <div className="ph-top">
             <EzoicPlaceholder id="175" />
           </div>
+
+          {isClientSide && !!allNades && (
+            <MapViewScreen map={map} allNades={allNades} />
+          )}
+
           <FilterBar />
           <MapPageNades allNades={allNades} />
         </div>
