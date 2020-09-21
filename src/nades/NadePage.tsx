@@ -75,10 +75,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
 
       <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
 
-      <div id="top-ph">
-        <EzoicPlaceholder id="174" />
-      </div>
-
       <div id="nade-page-grid" key={`main-${nade.id}`}>
         <div className="matchmake-warning">
           <TickWarning />
@@ -112,6 +108,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             lineUpUrl={nade.images.lineupUrl}
             gfyId={nade.gfycat.gfyId}
           />
+        </div>
+
+        <div id="top-ph">
+          <EzoicPlaceholder id="174" />
         </div>
 
         <div id="nade-info-container">
@@ -163,8 +163,8 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         }
 
         #top-ph {
-          margin-top: 15px;
-          margin-bottom: 15px;
+          grid-area: topph;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #bottom-ph {
@@ -201,6 +201,7 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             "warning warning warning"
             "video video video"
             "meta meta meta"
+            "topph topph topph"
             "info info advert"
             "comments comments .";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
@@ -280,10 +281,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
               "warning warning warning"
               "video video video"
               "meta meta meta"
-              "advert advert advert"
+              "topph topph topph"
               "info info info"
               "comments comments comments"
-              "misc misc misc";
+              "advert advert advert";
           }
         }
       `}</style>
