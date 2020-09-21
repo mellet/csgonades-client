@@ -15,8 +15,9 @@ import { FavFilterButton } from "./nadefilter/FavFilterButton";
 import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
 import { ResetFilterButton } from "./nadefilter/ResetFilterButton";
 import { useWindowSize } from "../common/MinSizeRender";
-import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
+//import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
 import { FilterByProButton } from "./nadefilter/FilterByProButton";
+import Router from "next/router";
 
 type Props = {
   map: CsgoMap;
@@ -24,7 +25,7 @@ type Props = {
 };
 
 export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
-  const { setNadeForModal } = useNadeModal();
+  //const { setNadeForModal } = useNadeModal();
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
@@ -55,7 +56,9 @@ export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
     const suggested = filterByCoords(filteredNades, pos);
 
     if (suggested.length === 1) {
-      return setNadeForModal(suggested[0]);
+      const nade = suggested[0];
+      return Router.push("/nades/[nade]", `/nades/${nade.slug || nade.id}`);
+      //return setNadeForModal(suggested[0]);
     }
 
     setSuggestedNades(suggested);
