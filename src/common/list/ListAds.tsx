@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
+import { Twemoji } from "../Twemoji";
 
 type Props = {
   numNades: number;
@@ -30,12 +31,53 @@ export const ListAds: FC<Props> = ({ numNades }) => {
     "187",
   ];
 
-  const numberOfAds = Math.floor(numNades / 13);
+  const numberOfAds = useMemo(() => {
+    const nadeCalc = Math.floor(numNades / 13);
+
+    if (nadeCalc < 5) {
+      return nadeCalc;
+    }
+
+    return 5;
+  }, [numNades]);
 
   const ads = new Array(numberOfAds).fill(0);
 
   if (isAdBlockEnabled) {
-    return null;
+    return (
+      <>
+        <div className="block-msg">
+          <strong>Oh no!</strong> You have adblock on.
+          <br />
+          Consider disabling it on this site to keep it running{" "}
+          <Twemoji emoji="🤩" />
+        </div>
+        <style jsx>{`
+          .block-msg {
+            grid-row: 1;
+            grid-column: 1 / 4;
+            background: #87a600;
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+            text-align: center;
+          }
+
+          @media only screen and (max-width: 1020px) {
+            .block-msg {
+              grid-column: 1 / 2;
+            }
+          }
+
+          @media only screen and (max-width: 600px) {
+            .block-msg {
+              grid-row: 2;
+              grid-column: 1 / 2;
+            }
+          }
+        `}</style>
+      </>
+    );
   }
 
   return (
@@ -61,7 +103,7 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
   const { colors } = useTheme();
 
   function getRowStart() {
-    const startRow = isMobileOnly ? 5 : 3;
+    const startRow = isMobileOnly ? 4 : 3;
     const adSpacing = isMobileOnly ? 10 : 5;
 
     return startRow + adSpacing * position;
