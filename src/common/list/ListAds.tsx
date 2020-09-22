@@ -46,19 +46,28 @@ export const ListAds: FC<Props> = ({ numNades }) => {
   if (isAdBlockEnabled) {
     return (
       <>
-        <div className="block-msg">
-          <strong>Oh no!</strong> You have adblock on.
-          <br />
-          Consider disabling it on this site to keep it running{" "}
-          <Twemoji emoji="🤩" />
+        <div className="block-msg-wrap">
+          <div className="block-msg">
+            <strong>Oh no!</strong> You have AdBlock enabled{" "}
+            <Twemoji emoji="😢" />
+            <br />
+            Consider disabling it on this site to support my work{" "}
+            <Twemoji emoji="😍" />
+            <br />
+          </div>
         </div>
         <style jsx>{`
-          .block-msg {
+          .block-msg-wrap {
             grid-row: 1;
             grid-column: 1 / 4;
+            display: flex;
+            justify-content: center;
+          }
+
+          .block-msg {
             background: #87a600;
             border-radius: 5px;
-            padding: 10px;
+            padding: 15px 30px;
             color: white;
             text-align: center;
           }
