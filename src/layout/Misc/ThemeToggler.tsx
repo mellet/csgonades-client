@@ -1,18 +1,28 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import DarkModeToggle from "react-dark-mode-toggle";
 
 export const ThemeToggler: FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const { toggleTheme, theme } = useTheme();
 
-  const checked = theme === "dark";
-
-  console.log(`Theme(${theme}), checked(${checked})`);
+  useEffect(() => {
+    if (theme === "dark") {
+      setIsDarkMode(true);
+    } else {
+      setIsDarkMode(false);
+    }
+  }, [theme]);
 
   return (
     <>
       <div className="darkmode-toggle">
-        <DarkModeToggle checked={checked} onChange={toggleTheme} size={45} />
+        <DarkModeToggle
+          checked={isDarkMode}
+          onChange={toggleTheme}
+          size={45}
+          speed={3}
+        />
       </div>
       <style jsx>{`
         .darkmode-toggle {
