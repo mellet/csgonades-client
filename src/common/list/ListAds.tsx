@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
@@ -8,6 +8,14 @@ type Props = {
 };
 
 export const ListAds: FC<Props> = ({ numNades }) => {
+  const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
+
+  useEffect(() => {
+    if (!window.ezstandalone) {
+      setIsAdBlockEnabled(true);
+    }
+  }, []);
+
   const adIds = [
     "173",
     "172",
@@ -25,6 +33,10 @@ export const ListAds: FC<Props> = ({ numNades }) => {
   const numberOfAds = Math.floor(numNades / 13);
 
   const ads = new Array(numberOfAds).fill(0);
+
+  if (isAdBlockEnabled) {
+    return null;
+  }
 
   return (
     <>
