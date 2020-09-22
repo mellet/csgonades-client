@@ -8289,10 +8289,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dark-mode-toggle@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/react-dark-mode-toggle/-/react-dark-mode-toggle-0.0.9.tgz#3a4aabee5d680de0af05fd44739d56101a8c9881"
-  integrity sha512-v5b0BjvSgB2IS+KyosKJEO4Xu7uZKeHv/it82FtjGnT8jHK3aknB/ZNZ3L5AZjF9ZXvPl3xZ/C18sfq5C+/V2Q==
+react-dark-mode-toggle@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-dark-mode-toggle/-/react-dark-mode-toggle-0.0.7.tgz#92bf8f2241fcc7c70865ba5d575980637944d7eb"
+  integrity sha512-xshSQDPb6aDELdlBIihZqMhcb481uCQULRp7SxfK2mvkqCxcUXhGaPCyKNMFzrehcQktbiMvVJx2F1gIkJgChg==
   dependencies:
     lottie-react-web "^2.1.4"
     parse-unit "^1.0.1"
