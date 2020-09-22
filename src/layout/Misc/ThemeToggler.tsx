@@ -7,21 +7,17 @@ export const ThemeToggler: FC = () => {
 
   const checked = theme === "dark";
 
+  console.log(`Theme(${theme}), checked(${checked})`);
+
   return (
     <>
       <div className="darkmode-toggle">
-        <DarkModeToggle
-          checked={checked}
-          onChange={toggleTheme}
-          size={45}
-          speed={3}
-        />
+        <DarkModeToggle checked={checked} onChange={toggleTheme} size={45} />
       </div>
       <style jsx>{`
         .darkmode-toggle {
           display: block;
           margin-left: 20px;
-          height: 30px;
           display: flex;
           align-items: center;
         }
