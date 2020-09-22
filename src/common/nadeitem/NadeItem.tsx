@@ -12,19 +12,7 @@ interface Props {
 }
 
 export const NadeItem: FC<Props> = memo(({ nade }) => {
-  //const { setNadeForModal } = useNadeModal();
   const { colors } = useTheme();
-
-  /*
-  function onItemClick(e: any) {
-    // Don't open modal if ctrl or command used in click
-    if (e.ctrlKey || e.metaKey) {
-      return;
-    }
-    e.preventDefault();
-    setNadeForModal(nade);
-  }
-  */
 
   return (
     <>

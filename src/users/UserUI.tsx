@@ -26,6 +26,7 @@ export const UserUI: FC<Props> = ({ user }) => {
         setNades(res.value);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function renderItem(item: NadeLight) {

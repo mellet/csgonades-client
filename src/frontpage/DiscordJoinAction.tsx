@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaDiscord } from "react-icons/fa";
 
-export const FooterDiscord: FC = () => {
+export const DiscordJoinAction: FC = () => {
   return (
     <>
       <div className="actions-wrapper">
@@ -10,13 +10,10 @@ export const FooterDiscord: FC = () => {
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
-          <div className="action discord">
-            <p className="discord-msg">
+          <div className="action">
+            <div className="discord-msg">
               Join us on <b>Discord</b>
-            </p>
-
-            <p className="sub-msg">One of us... one of us!</p>
-
+            </div>
             <div className="discord-logo">
               <FaDiscord />
             </div>
@@ -24,30 +21,26 @@ export const FooterDiscord: FC = () => {
         </a>
       </div>
       <style jsx>{`
+        .actions-wrapper {
+          width: 100%;
+          margin-top: 10px;
+        }
+
         .action {
-          padding: 20px;
+          display: flex;
+          padding: 10px 20px;
           color: white;
-          border-radius: 5px;
-          transition: transform 0.2s;
-          min-height: 200px;
+          justify-content: space-between;
+          align-items: center;
           background: #7289da;
-          transition: background 0.1s;
-          width: 200px;
         }
 
         .action:hover {
-          background: #5c70b8;
+          background: #6276bd;
         }
 
         .discord-msg {
-          margin-bottom: 10px;
           font-size: 18px;
-          line-height: 28px;
-        }
-
-        .sub-msg {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.7);
         }
 
         .discord {
@@ -55,10 +48,7 @@ export const FooterDiscord: FC = () => {
         }
 
         .discord-logo {
-          position: absolute;
-          bottom: 15px;
-          right: 15px;
-          font-size: 50px;
+          font-size: 40px;
           opacity: 0.2;
           color: #fff;
         }

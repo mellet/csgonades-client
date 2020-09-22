@@ -2,9 +2,7 @@ import { FC, useState } from "react";
 import { Modal } from "semantic-ui-react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
-type Props = {};
-
-export const GuideLinesModal: FC<Props> = ({}) => {
+export const GuideLinesModal: FC = () => {
   const { colors } = useTheme();
   const [isOpen, setIsOpen] = useState(true);
 
@@ -19,7 +17,7 @@ export const GuideLinesModal: FC<Props> = ({}) => {
               getting accepted
             </em>
             <p>
-              Hi! So you wan't to add a nade?
+              Hi! So you wan&apos;t to add a nade?
               <br />
               Your going to need:
               <br />
@@ -70,10 +68,10 @@ export const GuideLinesModal: FC<Props> = ({}) => {
               <em>
                 Go into Settings and find the Crosshair section.
                 <br />
-                Click "Share or Import" and paste the code above.
+                Click &quot;Share or Import&quot; and paste the code above.
                 <br />
-                Remember to backup your own by first clicking "Copy your code"
-                and paste it somewhere you can find it later.
+                Remember to backup your own by first clicking &quot;Copy your
+                code&quot; and paste it somewhere you can find it later.
               </em>
               <img
                 className="crosshair-example"

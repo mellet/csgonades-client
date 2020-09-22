@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { UserApi } from "../../api/UserApi";
 import { User } from "../../models/User";
 import { UserPage } from "../../users/UsersPage";
-import { SEO } from "../../layout/SEO2";
+import { SEO } from "../../layout/SEO";
 
 type Props = {
   user: User | null;
@@ -21,7 +21,7 @@ const UserPageComponent: NextPage<Props> = ({ user }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const steamId = context.query.user as string;
 
   const result = await UserApi.fetchUser(steamId);

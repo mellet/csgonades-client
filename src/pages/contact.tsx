@@ -6,7 +6,7 @@ import { CsgnInput } from "../common/inputs/CsgnInput";
 import { CsgnTextArea } from "../common/inputs/CsgnTextArea";
 import { ConctactDTO } from "../models/Contact";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { PageCentralize } from "../common/PageCentralize";
 
 const ContactPageContainer: NextPage = () => {

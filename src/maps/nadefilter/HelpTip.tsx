@@ -1,35 +1,20 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { useAnalytics } from "../../utils/Analytics";
 
 type Props = {
   hintLabel: string;
 };
 
-export const HelpTip: FC<Props> = ({ children, hintLabel }) => {
-  const [eventSent, setEventSent] = useState(false);
-  const { event } = useAnalytics();
+export const HelpTip: FC<Props> = ({ children }) => {
   const { colors } = useTheme();
-
-  function onTipOpen() {
-    if (!eventSent) {
-      event({
-        category: "MapPage",
-        action: "Show Hint",
-        label: hintLabel,
-      });
-    }
-    setEventSent(true);
-  }
 
   return (
     <>
       <Popup
         content={<span>{children}</span>}
         position="top center"
-        onOpen={onTipOpen}
         on="click"
         inverted
         size="mini"

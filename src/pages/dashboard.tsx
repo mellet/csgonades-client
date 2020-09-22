@@ -1,9 +1,7 @@
-import { FC } from "react";
+import { NextPage } from "next";
 import { DashboardPage } from "../dashboard/DashboardPage";
 
-type Props = {};
-
-const Dashboard: FC<Props> = ({}) => {
+const Dashboard: NextPage = () => {
   return <DashboardPage />;
 };
 

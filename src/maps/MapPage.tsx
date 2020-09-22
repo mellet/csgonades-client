@@ -5,7 +5,7 @@ import { MapPageNades } from "./MapPageNades";
 import { MapPageJumbo } from "./MapPageJumbo";
 import { Dimensions } from "../constants/Constants";
 import { useMapChangeHandler } from "../store/MapStore/hooks/useMapChangeHandler";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { capitalize } from "../utils/Common";
 import { PageCentralize } from "../common/PageCentralize";
 import { FilterBar } from "./nadefilter/FilterBar";
@@ -18,7 +18,7 @@ type Props = {
   allNades: NadeLight[];
 };
 
-export const MapPage2: FC<Props> = memo(({ map, allNades }) => {
+export const MapPage: FC<Props> = memo(({ map, allNades }) => {
   const isClientSide = useIsClientSide();
   useMapChangeHandler(allNades);
 

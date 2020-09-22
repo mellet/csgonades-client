@@ -21,7 +21,7 @@ import { NadeApi } from "../api/NadeApi";
 import { useGetOrUpdateToken } from "../store/AuthStore/hooks/useGetToken";
 import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
 import { useRouter } from "next/router";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { TickrateSelector } from "./components/TickrateSelector";
 import { GuideLinesModal } from "./guidelines/GuideLinesModal";
 

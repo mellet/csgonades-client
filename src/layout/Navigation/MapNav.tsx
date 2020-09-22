@@ -4,9 +4,7 @@ import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { useRouter } from "next/router";
 import { MapPageLink } from "./MapNavLink";
 
-type Props = {};
-
-export const MapNav: FC<Props> = ({}) => {
+export const MapNav: FC = () => {
   const { colors } = useTheme();
   const { query } = useRouter();
   const selectedMap = query.map as string;

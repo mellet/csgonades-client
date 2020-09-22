@@ -3,7 +3,7 @@ import { UserLight } from "../models/User";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { NadeLight } from "../models/Nade/Nade";
 import { Twemoji } from "../common/Twemoji";
-import { DiscordJoinAction } from "../frontpage/FrontpageActions";
+import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { pluralize } from "../utils/Common";
 import Link from "next/link";
 

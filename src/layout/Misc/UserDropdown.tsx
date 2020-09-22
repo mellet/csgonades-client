@@ -18,6 +18,7 @@ export const UserDropdown: FC<Props> = ({ user }) => {
 
   useEffect(() => {
     fetchVotes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function onDashboardClick() {

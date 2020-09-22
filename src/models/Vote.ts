@@ -6,8 +6,3 @@ export type Vote = {
   createdAt: Date;
   updatedAt?: Date;
 };
-
-export type VoteCreateDTO = {
-  nadeId: string;
-  vote: number;
-};

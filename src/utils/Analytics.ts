@@ -8,7 +8,7 @@ import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
 const IS_BROWSER = typeof window !== "undefined";
 const IS_PROD = process.env.NODE_ENV === "production";
 
-export const usePageView = () => {
+export const usePageView = (): void => {
   const { clearNadeForModal } = useNadeModal();
   const { closeNav } = useNavigation();
   const { asPath } = useRouter();

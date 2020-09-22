@@ -8,9 +8,7 @@ import { ThemeToggler } from "./Misc/ThemeToggler";
 import { Dimensions } from "../constants/Constants";
 import { PageCentralize } from "../common/PageCentralize";
 
-type Props = {};
-
-export const Header: FC<Props> = memo(({}) => {
+export const Header: FC = memo(() => {
   const { colors } = useTheme();
 
   return (

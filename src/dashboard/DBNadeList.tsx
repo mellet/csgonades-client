@@ -21,9 +21,7 @@ import {
 } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 
-type Props = {};
-
-export const DBNadeList: FC<Props> = ({}) => {
+export const DBNadeList: FC = () => {
   const { colors } = useTheme();
   const user = useSignedInUser();
   const [userNades, setUserNades] = useState<NadeLight[]>([]);

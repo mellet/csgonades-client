@@ -5,9 +5,7 @@ import { NadeItem } from "../common/nadeitem/NadeItem";
 import { useGetOrUpdateToken } from "../store/AuthStore/hooks/useGetToken";
 import { NadeApi } from "../api/NadeApi";
 
-type Props = {};
-
-export const AdminDeclined: FC<Props> = ({}) => {
+export const AdminDeclined: FC = () => {
   const getToken = useGetOrUpdateToken();
   const [declinedNades, setDeclinedNades] = useState<NadeLight[]>([]);
 
@@ -24,6 +22,7 @@ export const AdminDeclined: FC<Props> = ({}) => {
         setDeclinedNades(res.value);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function renderItem(item: NadeLight) {

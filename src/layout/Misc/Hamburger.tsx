@@ -3,9 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { useNavigation } from "../../store/GlobalStore/GlobalHooks";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
-type Props = {};
-
-export const Hamburger: FC<Props> = memo(({}) => {
+export const Hamburger: FC = memo(({}) => {
   const { colors } = useTheme();
   const { toggleNav } = useNavigation();
 

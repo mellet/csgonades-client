@@ -5,9 +5,7 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 import { HelpTip } from "./nadefilter/HelpTip";
 
-type Props = {};
-
-export const SortingMethodSelector: FC<Props> = () => {
+export const SortingMethodSelector: FC = () => {
   const { colors } = useTheme();
   const { byMethod, filterBySortingMethod } = useFilterByMethod();
 

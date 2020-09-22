@@ -5,9 +5,7 @@ import { useNavigation } from "../../store/GlobalStore/GlobalHooks";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { NewNav } from "../NewNav";
 
-type Props = {};
-
-export const MobileNav: FC<Props> = memo(({}) => {
+export const MobileNav: FC = memo(() => {
   const { colors } = useTheme();
   const { toggleNav } = useNavigation();
   const { isNavOpen } = useNavigation();

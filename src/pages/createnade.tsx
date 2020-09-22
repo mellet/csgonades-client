@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { NextPage } from "next";
 import { CreateNadePage } from "../createnade/CreateNadePage";
 
-const CreateNade: FC = () => {
+const CreateNade: NextPage = () => {
   return <CreateNadePage />;
 };
 

@@ -14,7 +14,7 @@ type MovementOption = {
   value: MovementKeys;
 };
 
-export function nadeMovementOptions() {
+export function nadeMovementOptions(): MovementOption[] {
   const options: MovementOption[] = [];
   for (const key in NadeMovements) {
     const movement = key as MovementKeys;

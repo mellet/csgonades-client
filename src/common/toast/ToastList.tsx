@@ -33,6 +33,7 @@ export const ToastList: FC = memo(() => {
         message: "This is a info toast.",
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

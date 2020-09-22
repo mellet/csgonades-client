@@ -13,11 +13,11 @@ type TechniqueOption = {
   value: Technique;
 };
 
-export function techniqueString(tech: Technique) {
+export function techniqueString(tech: Technique): string {
   return TechniqueValues[tech];
 }
 
-export function nadeTechniqueOptions() {
+export function nadeTechniqueOptions(): TechniqueOption[] {
   const options: TechniqueOption[] = [];
   for (const key in TechniqueValues) {
     const objKey = key as Technique;

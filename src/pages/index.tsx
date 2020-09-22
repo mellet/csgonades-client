@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
 import { FrontPage } from "../frontpage/FrontPage";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { StatsApi, SiteStats } from "../api/StatsApi";
 
 type Props = {

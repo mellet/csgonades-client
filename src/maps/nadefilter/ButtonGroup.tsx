@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
-type Props = {};
-
-export const ButtonGroup: FC<Props> = ({ children }) => {
+export const ButtonGroup: FC = ({ children }) => {
   const { colors } = useTheme();
 
   return (

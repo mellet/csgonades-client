@@ -2,7 +2,6 @@ import { FC, memo, useState } from "react";
 import { GfycatIframe } from "./components/GfycatIframe";
 import { CrossHair } from "./CrossHair";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { useAnalytics } from "../utils/Analytics";
 
 type Props = {
   lineUpUrl?: string;
@@ -14,24 +13,15 @@ type Tabs = "video" | "lineup";
 const CROSSHAIR_SIZE = 7;
 
 export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
-  const { event } = useAnalytics();
   const { colors } = useTheme();
   const [currentTab, setCurrentTab] = useState<Tabs>("video");
 
   function onSetVideoTab() {
     setCurrentTab("video");
-    event({
-      category: "Nade Tab",
-      action: "Video Tab Click",
-    });
   }
 
   function onSetLineUpTab() {
     setCurrentTab("lineup");
-    event({
-      category: "Nade Tab",
-      action: "Lineup Tab Click",
-    });
   }
 
   const hasLineUp = !!lineUpUrl;

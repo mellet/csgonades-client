@@ -3,9 +3,7 @@ import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import DarkModeToggle from "react-dark-mode-toggle";
 
-type Props = {};
-
-export const ThemeToggler: FC<Props> = ({}) => {
+export const ThemeToggler: FC = () => {
   const { toggleTheme, theme } = useTheme();
 
   const checked = theme === "dark";

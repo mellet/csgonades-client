@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { FaPaypal } from "react-icons/fa";
 
-type Props = {};
-
-export const FooterPaypal: FC<Props> = ({}) => {
+export const FooterPaypal: FC = () => {
   return (
     <>
       <div className="actions-wrapper">

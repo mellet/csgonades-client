@@ -2,9 +2,7 @@ import { FC } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { MapLink } from "../layout/Navigation/MapLink";
 
-type Props = {};
-
-export const NewNav: FC<Props> = ({}) => {
+export const NewNav: FC = () => {
   const { colors } = useTheme();
   return (
     <>

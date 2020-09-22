@@ -10,9 +10,7 @@ import { useSetMapView } from "../../store/MapStore/hooks/useSetMapView";
 import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
 import { FilterByProButton } from "./FilterByProButton";
 
-type Props = {};
-
-export const FilterBar: FC<Props> = memo(({}) => {
+export const FilterBar: FC = memo(({}) => {
   const isSignedIn = useIsSignedIn();
   const { mapView } = useSetMapView();
 

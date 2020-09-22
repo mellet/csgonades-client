@@ -1,8 +1,6 @@
 import { FC } from "react";
 
-type Props = {};
-
-export const CrossHair: FC<Props> = ({}) => {
+export const CrossHair: FC = () => {
   return (
     <>
       <svg width={43} height={44} viewBox="0 0 43 44">

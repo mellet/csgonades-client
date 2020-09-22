@@ -1,34 +1,6 @@
-import { FC, useState, useEffect, useLayoutEffect, memo } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 
-type Props = {
-  minSize: number;
-};
-
-export const MinSizeRender: FC<Props> = memo((props) => {
-  const [render, setRender] = useState(false);
-
-  useEffect(() => {
-    setRender(true);
-  }, []);
-
-  if (!render) {
-    return null;
-  }
-
-  return <MinSizedComp {...props} />;
-});
-
-const MinSizedComp: FC<Props> = memo(({ children, minSize }) => {
-  const [width] = useWindowSize();
-
-  if (width < minSize) {
-    return null;
-  }
-
-  return <>{children}</>;
-});
-
-export function useWindowSize() {
+export function useWindowSize(): number[] {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(() => {
     function updateSize() {
@@ -41,7 +13,7 @@ export function useWindowSize() {
   return size;
 }
 
-export const useIsClientSide = () => {
+export const useIsClientSide = (): boolean => {
   const [isClientSide, setIsClientSide] = useState(false);
   useEffect(() => {
     setIsClientSide(true);

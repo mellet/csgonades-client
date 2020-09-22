@@ -89,7 +89,10 @@ const createSitemap = async () => {
   return xml;
 };
 
-const siteMap = async (_: NextApiRequest, res: NextApiResponse) => {
+const siteMap = async (
+  _: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/xml");
 

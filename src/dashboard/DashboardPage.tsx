@@ -4,11 +4,9 @@ import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { PageCentralize } from "../common/PageCentralize";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 
-type Props = {};
-
-export const DashboardPage: FC<Props> = ({}) => {
+export const DashboardPage: FC = () => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
 

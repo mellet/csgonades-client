@@ -3,9 +3,7 @@ import { FC, memo } from "react";
 import { useIsAdminOrModerator } from "../../store/AuthStore/AuthHooks";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
-type Props = {};
-
-export const AdminLink: FC<Props> = memo(({}) => {
+export const AdminLink: FC = memo(() => {
   const { colors } = useTheme();
   const isAdminOrMod = useIsAdminOrModerator();
 

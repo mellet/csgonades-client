@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { NadeTitle } from "./components/NadeTitle";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { NadeInfoContainer } from "./NadeInfoContainer";
 import { NadeVideoContainer } from "./NadeVideoContainer";
 import { NadeShareActions } from "./NadeShareActions";

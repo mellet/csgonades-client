@@ -7,7 +7,6 @@ import { useUnfavorite } from "../../store/FavoriteStore/hooks/useUnFavorite";
 import { Popup } from "semantic-ui-react";
 import { FaStar } from "react-icons/fa";
 import { useMapFavCount } from "../../store/MapStore/hooks/useMapFavCount";
-import { useAnalytics } from "../../utils/Analytics";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 
@@ -17,11 +16,10 @@ type Props = {
   disableAction?: boolean;
 };
 
-export const NadeItemFavBtn: FC<Props> = ({ nadeId, slug, disableAction }) => {
+export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
   const displayToast = useDisplayToast();
   const [nadeIsFavorite, setNadeIsFavorite] = useState(false);
   const { setSignInWarning } = useSignInWarning();
-  const { event } = useAnalytics();
   const isSignedIn = useIsSignedIn();
   const isFavoriteInProgress = useIsFavoriteInProgress();
   const isFavorite = useIsFavorited(nadeId);
@@ -54,20 +52,10 @@ export const NadeItemFavBtn: FC<Props> = ({ nadeId, slug, disableAction }) => {
       setNadeIsFavorite(false);
       unFavorite(isFavorite.id);
       decrementNadeFavCount(nadeId);
-      event({
-        category: "Favorite",
-        action: "Unfavorite from Thumbnail",
-        label: slug,
-      });
     } else {
       setNadeIsFavorite(true);
       addFavorite(nadeId);
       incrementNadeFavCount(nadeId);
-      event({
-        category: "Favorite",
-        action: "Favorite from Thumbnail",
-        label: slug || nadeId,
-      });
     }
   }
 

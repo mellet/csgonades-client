@@ -15,6 +15,7 @@ export const NotificationList: FC<Props> = ({ visble }) => {
     if (visble) {
       setNotificationsAsViewed();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visble]);
 
   if (!visble) {

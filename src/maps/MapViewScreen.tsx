@@ -3,7 +3,7 @@ import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { Dimensions } from "../constants/Constants";
 import { useNadesForMapView } from "../store/MapStore/hooks/useNadesForMapView";
 import { NadeLight } from "../models/Nade/Nade";
-import { MapPosIcon } from "./mapview2/MapPosIcon";
+import { MapPosIcon } from "./mapview/MapPosIcon";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { filterByCoords } from "../store/MapStore/hooks/helpers";
 import { MapViewSuggested } from "./MapViewSuggested";
@@ -15,7 +15,6 @@ import { FavFilterButton } from "./nadefilter/FavFilterButton";
 import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
 import { ResetFilterButton } from "./nadefilter/ResetFilterButton";
 import { useWindowSize } from "../common/MinSizeRender";
-//import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
 import { FilterByProButton } from "./nadefilter/FilterByProButton";
 import Router from "next/router";
 
@@ -25,7 +24,6 @@ type Props = {
 };
 
 export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
-  //const { setNadeForModal } = useNadeModal();
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();

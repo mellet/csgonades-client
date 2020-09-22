@@ -1,5 +1,4 @@
 import ReactMarkdown from "react-markdown";
-// @ts-ignore
 import breaks from "remark-breaks";
 
 import { FC } from "react";

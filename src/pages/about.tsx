@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { PageCentralize } from "../common/PageCentralize";
 import { Dimensions } from "../constants/Constants";
 

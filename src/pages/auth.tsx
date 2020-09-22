@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useOnSignIn } from "../store/AuthStore/AuthHooks";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { useEffect, useState } from "react";
 
 const Auth: NextPage = () => {

@@ -14,10 +14,3 @@ export const UserPage: React.FC<Props> = ({ user }) => {
     </>
   );
 };
-
-/**
-      <Layout2
-      title={user ? user.nickname : "User not found"}
-      canonical={user?.steamId ? `/users/${user?.steamId}` : undefined}
-    >
-    */

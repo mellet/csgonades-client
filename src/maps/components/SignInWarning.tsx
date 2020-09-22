@@ -6,9 +6,7 @@ import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning
 import { Twemoji } from "../../common/Twemoji";
 import { FaCheckCircle } from "react-icons/fa";
 
-type Props = {};
-
-export const SignInWarning: FC<Props> = memo(() => {
+export const SignInWarning: FC = memo(() => {
   const { signInWarning, clearSignInWarning } = useSignInWarning();
   const { event } = useAnalytics();
 

@@ -20,7 +20,7 @@ import { PreviewNade } from "../createnade/PreviewNades";
 import { SumbitBtn } from "../createnade/components/SubmitBtn";
 import { ImageUploader } from "../newnade/ImageUploader";
 import { OneWaySelector } from "../createnade/components/OneWaySelector";
-import { SEO } from "../layout/SEO2";
+import { SEO } from "../layout/SEO";
 import { StatusSelector } from "./comp/StatusSelector";
 import {
   useIsAdminOrModerator,

@@ -6,7 +6,7 @@ export const NadeTickrate = {
 
 export type Tickrate = keyof typeof NadeTickrate;
 
-export function tickrateString(tick: Tickrate) {
+export function tickrateString(tick: Tickrate): string {
   return NadeTickrate[tick];
 }
 
@@ -16,7 +16,7 @@ type TickrateOption = {
   value: Tickrate;
 };
 
-export function nadeTickrateOptions() {
+export function nadeTickrateOptions(): TickrateOption[] {
   const options: TickrateOption[] = [];
   for (const key in NadeTickrate) {
     const objKey = key as Tickrate;

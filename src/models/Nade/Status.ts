@@ -13,11 +13,11 @@ type NadeStatusOption = {
   value: Status;
 };
 
-export function nadeStatusString(status: Status) {
+export function nadeStatusString(status: Status): string {
   return StatusValues[status];
 }
 
-export function nadeStatusOptions() {
+export function nadeStatusOptions(): NadeStatusOption[] {
   const options: NadeStatusOption[] = [];
   for (const key in StatusValues) {
     const objKey = key as Status;

@@ -2,9 +2,7 @@ import { FC, memo, useMemo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { PageLink } from "../../common/PageLink";
 
-type Props = {};
-
-export const Logo: FC<Props> = memo(({}) => {
+export const Logo: FC = memo(() => {
   const { theme } = useTheme();
 
   const logoUrl = useMemo(() => {

@@ -13,7 +13,6 @@ import { dateMinutesAgo } from "../../../utils/DateUtils";
 import { Popup } from "semantic-ui-react";
 import { Movement } from "../../../models/Nade/NadeMovement";
 import { Technique } from "../../../models/Nade/Technique";
-import { useAnalytics } from "../../../utils/Analytics";
 import { StatItem } from "./StatItem";
 
 type Props = {
@@ -41,7 +40,6 @@ export const NadeStats: FC<Props> = ({
   commentCount,
   isPro,
 }) => {
-  const { event } = useAnalytics();
   const { colors } = useTheme();
   const favoriteIconColor = isFavorited ? colors.FAV_YELLOW : colors.GREY;
   const hasMovement =
@@ -119,12 +117,6 @@ export const NadeStats: FC<Props> = ({
               inverted
               size="tiny"
               openOnTriggerClick={false}
-              onOpen={() => {
-                event({
-                  category: "Hint",
-                  action: "Pro Hint Opened",
-                });
-              }}
               position="top center"
               content={
                 <div className="center">

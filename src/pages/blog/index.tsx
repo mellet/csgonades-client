@@ -2,7 +2,7 @@ import { FC } from "react";
 import { blogTickrateAndJumpthrow } from "./tickrate-and-jumpthrow-bind";
 import { BlogList } from "../../blog/BlogList";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { SEO } from "../../layout/SEO2";
+import { SEO } from "../../layout/SEO";
 import { blogPractiseConfig } from "./practice-config";
 import { blogNadeAlignCrosshair } from "./smoke-align-crosshair";
 import { bestDust2Nades } from "./best-dust2-nades";
@@ -10,9 +10,7 @@ import { blogJumpthrowBind } from "./jumpthrow-bind";
 import { PageCentralize } from "../../common/PageCentralize";
 import { Dimensions } from "../../constants/Constants";
 
-type Props = {};
-
-const BlogPage: FC<Props> = ({}) => {
+const BlogPage: FC = () => {
   const { colors } = useTheme();
   const blogPosts = [
     blogJumpthrowBind,
