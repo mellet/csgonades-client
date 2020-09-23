@@ -7,8 +7,14 @@ import { BlogList } from "../blog/BlogList";
 import { blogJumpthrowBind } from "../pages/blog/jumpthrow-bind";
 import { Dimensions } from "../constants/Constants";
 import { PageCentralize } from "../common/PageCentralize";
+import { blogPractiseConfig } from "../pages/blog/practice-config";
 
-const recentPosts = [blogJumpthrowBind, bestDust2Nades, blogNadeAlignCrosshair];
+const recentPosts = [
+  blogJumpthrowBind,
+  bestDust2Nades,
+  blogNadeAlignCrosshair,
+  blogPractiseConfig,
+];
 
 type Props = {
   stats: SiteStats | null;

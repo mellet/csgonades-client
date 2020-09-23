@@ -3,9 +3,8 @@ import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogNadeItem } from "../../blog/BlogNadeItem";
 import { PageLink } from "../../common/PageLink";
 import { Dimensions } from "../../constants/Constants";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import Link from "next/link";
-import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const bestDust2Nades: BlogPost = {
@@ -19,22 +18,7 @@ export const bestDust2Nades: BlogPost = {
     "Dust2 is one of the most popular maps in CS:GO. Let's take a look at the essential nades everyone should know to gain an edge on the map.",
 };
 
-const PractiseConfigBlogPost = (): JSX.Element => {
-  const displayToast = useDisplayToast();
-
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      displayToast({
-        severity: "info",
-        message:
-          "Sorry to disturb 😏 You can click on Dust2 in the navigation to see even more nades for the map. Carry on!🖖",
-        title: "Psst...",
-        durationSeconds: 20,
-      });
-    }, 1000 * 30);
-    return () => clearTimeout(delay);
-  }, [displayToast]);
-
+const BestDust2NadesBlogPost = (): JSX.Element => {
   return (
     <>
       <BlogPostArticle SideBarComp={BlogSideBar} data={bestDust2Nades}>
@@ -294,4 +278,4 @@ const BlogSideBar: FC = () => {
   );
 };
 
-export default PractiseConfigBlogPost;
+export default BestDust2NadesBlogPost;
