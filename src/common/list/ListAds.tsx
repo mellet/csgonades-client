@@ -1,4 +1,5 @@
 import { FC, useEffect, useMemo, useState } from "react";
+import { isMobile } from "react-device-detect";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
@@ -17,6 +18,7 @@ export const ListAds: FC<Props> = ({ numNades }) => {
   }, []);
 
   const adIds = [
+    "188",
     "173",
     "172",
     "176",
@@ -69,12 +71,38 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
   const { colors } = useTheme();
 
   const order = useMemo(() => {
-    if (position === 0) {
-      return 4;
-    } else {
-      return 11 * position;
-    }
+    return 2 + 5 * position;
   }, [position]);
+
+  if (position === 0 && !isMobile) {
+    return (
+      <>
+        <div className="ph-inlist">
+          <EzoicPlaceholder id={adId} />
+        </div>
+        <style jsx>{`
+          .ph-inlist {
+            width: 100%;
+            background: ${colors.DP02};
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            grid-row: 2 / 4;
+            grid-column: 3;
+            max-height: 600px;
+          }
+
+          @media only screen and (max-width: 1020px) {
+            .ph-inlist {
+              display: none;
+            }
+          }
+        `}</style>
+      </>
+    );
+  }
 
   return (
     <>
@@ -83,7 +111,8 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
       </div>
       <style jsx>{`
         .ph-inlist {
-          order: ${order};
+          grid-row: ${order};
+          grid-column: 2;
           max-height: 263px;
           background: ${colors.DP02};
           border-radius: 5px;
@@ -95,13 +124,13 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
 
         @media only screen and (max-width: 1020px) {
           .ph-inlist {
-            grid-column: 2 / 3;
+            grid-column: 2;
           }
         }
 
         @media only screen and (max-width: 600px) {
           .ph-inlist {
-            grid-column: 1 / 2;
+            grid-column: 1;
           }
         }
       `}</style>
