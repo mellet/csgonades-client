@@ -8,7 +8,6 @@ type Props = {
 };
 
 export const ListAds: FC<Props> = ({ numNades }) => {
-  const [initialNumNades] = useState(numNades);
   const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
 
   useEffect(() => {
@@ -33,14 +32,14 @@ export const ListAds: FC<Props> = ({ numNades }) => {
   ];
 
   const numberOfAds = useMemo(() => {
-    const nadeCalc = Math.floor(initialNumNades / 13);
+    const nadeCalc = Math.floor(numNades / 13);
 
     if (nadeCalc < 5) {
       return nadeCalc;
     }
 
     return 5;
-  }, [initialNumNades]);
+  }, [numNades]);
 
   const ads = new Array(numberOfAds).fill(0);
 
@@ -111,7 +110,7 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
       </div>
       <style jsx>{`
         .ph-inlist {
-          grid-row: ${order};
+          grid-row: ${order} / ${order + 1};
           grid-column: 2;
           max-height: 263px;
           background: ${colors.DP02};
