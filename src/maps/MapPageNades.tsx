@@ -40,6 +40,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           data={nades}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
+          enableAds={true}
           topRightComp={
             <div className="mini-sidebar">
               {allNades && <TopContributorList nades={allNades} />}

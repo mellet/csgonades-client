@@ -8,6 +8,7 @@ type Props<T> = {
   renderItem: (item: T) => JSX.Element;
   keyExtractor: (item: T) => string;
   topRightComp?: JSX.Element;
+  enableAds?: boolean;
 };
 
 function ListBase<T>(props: Props<T>): JSX.Element {
@@ -24,7 +25,7 @@ function ListBase<T>(props: Props<T>): JSX.Element {
 }
 
 const List: FC<Props<any>> = memo(
-  ({ data, keyExtractor, renderItem, topRightComp }) => {
+  ({ data, keyExtractor, renderItem, topRightComp, enableAds = false }) => {
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
@@ -48,7 +49,7 @@ const List: FC<Props<any>> = memo(
           ))}
           {!!topRightComp && <div className="contrib">{topRightComp}</div>}
 
-          <ListAds numNades={numItems} />
+          {enableAds && <ListAds numNades={numItems} />}
         </div>
         <style jsx>{`
           .empty-list {
