@@ -24,6 +24,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
 
   return (
     <>
+      <TopAdPlaceholder />
       <LayoutWithSidebar
         key={"map-" + map}
         sidebar={<MapPageSidebar map={map} nades={allNades} />}
@@ -41,8 +42,6 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
         )}
 
         <FilterBar />
-
-        <TopAdPlaceholder />
 
         <MapPageNades allNades={allNades} />
       </LayoutWithSidebar>

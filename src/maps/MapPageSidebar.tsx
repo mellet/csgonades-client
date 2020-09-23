@@ -4,6 +4,8 @@ import { Dimensions } from "../constants/Constants";
 import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { NadeLight } from "../models/Nade/Nade";
+import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
+import { SidebarMediumAd } from "./components/SidebarMediumAd";
 import { MapPageJumbo } from "./MapPageJumbo";
 import { TopContributorList } from "./TopContributor";
 
@@ -13,12 +15,17 @@ type Props = {
 };
 
 export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
+  const { mapView } = useSetMapView();
+
   return (
     <>
       <>
-        <div className="spacer">
-          <MapPageJumbo map={map} nades={nades} />
-        </div>
+        {mapView === "list" && (
+          <div className="spacer">
+            <MapPageJumbo map={map} nades={nades} />
+          </div>
+        )}
+
         <div className="spacer">
           <DiscordJoinAction />
         </div>
@@ -27,10 +34,10 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         </div>
 
         <div className="spacer sticky">
-          <TopContributorList csMap={map} nades={nades} />
-          <div className="sticky-ph">
-            <EzoicPlaceholder id="172" />
+          <div className="spacer">
+            <TopContributorList csMap={map} nades={nades} />
           </div>
+          <SidebarMediumAd />
         </div>
       </>
       <style jsx>{`
