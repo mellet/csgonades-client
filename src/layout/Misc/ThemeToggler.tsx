@@ -1,28 +1,14 @@
-import { FC, useEffect, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import DarkModeToggle from "react-dark-mode-toggle";
+import { Checkbox } from "semantic-ui-react";
 
-export const ThemeToggler: FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+export const ThemeToggler: FC = memo(() => {
   const { toggleTheme, theme } = useTheme();
-
-  useEffect(() => {
-    if (theme === "dark") {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, [theme]);
 
   return (
     <>
       <div className="darkmode-toggle">
-        <DarkModeToggle
-          checked={isDarkMode}
-          onChange={toggleTheme}
-          size={45}
-          speed={3}
-        />
+        <Checkbox toggle checked={theme === "dark"} onClick={toggleTheme} />
       </div>
       <style jsx>{`
         .darkmode-toggle {
@@ -34,4 +20,4 @@ export const ThemeToggler: FC = () => {
       `}</style>
     </>
   );
-};
+});

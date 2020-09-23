@@ -11,7 +11,7 @@ import { PageCentralize } from "../common/PageCentralize";
 import { FilterBar } from "./nadefilter/FilterBar";
 import { MapViewScreen } from "./MapViewScreen";
 import { useIsClientSide } from "../common/MinSizeRender";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { TopAdPlaceholder } from "./components/TopAdPlaceholder";
 
 type Props = {
   map: CsgoMap;
@@ -36,9 +36,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
 
           <MapPageJumbo map={map} nades={allNades} />
 
-          <div className="ph-top">
-            <EzoicPlaceholder id="175" />
-          </div>
+          <TopAdPlaceholder />
 
           {isClientSide && !!allNades && (
             <MapViewScreen map={map} allNades={allNades} />
@@ -58,13 +56,6 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
               ${Dimensions.GUTTER_SIZE * 3}px
           );
           margin-bottom: 50px;
-        }
-
-        .ph-top {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          display: flex;
-          justify-content: space-around;
         }
 
         @media only screen and (max-width: 100px) {
