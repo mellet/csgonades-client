@@ -81,10 +81,6 @@ export const BlogPostArticle: FC<Props> = memo(
               )}
             </div>
 
-            <div id="ph-under-img">
-              <EzoicPlaceholder id="174" />
-            </div>
-
             <div id="article-content">
               <div className="article-date">{prettyDate(data.createdAt)}</div>
               <p className="lead">{data.intro}</p>
@@ -106,7 +102,6 @@ export const BlogPostArticle: FC<Props> = memo(
             grid-template-areas:
               "title"
               "image"
-              "ph"
               "article"
               "article";
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
@@ -114,13 +109,10 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-share {
-            width: calc(40px * 4);
-          }
-
-          #ph-under-img {
             display: flex;
-            justify-content: space-around;
-            grid-area: ph;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #blog-side-comp {

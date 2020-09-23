@@ -56,6 +56,10 @@ const PractiseConfigBlogPost = (): JSX.Element => {
           to find your own preferrences.
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="175" />
+        </div>
+
         <h2>1. Xbox Smoke</h2>
         <p>
           Aaah... Xbox. Everyone wants to smoke Xbox. Why? Because there is
@@ -71,8 +75,6 @@ const PractiseConfigBlogPost = (): JSX.Element => {
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-t-spawn-7Nn" />
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-lower-tunnels-gXs" />
         </div>
-
-        <EzoicPlaceholder id="175" />
 
         <h2>2. Long Corner Smoke</h2>
         <p>
@@ -118,10 +120,6 @@ const PractiseConfigBlogPost = (): JSX.Element => {
           <BlogNadeItem nadeSlug="flash-mid-doors-from-xbox" />
         </div>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="172" />
-        </div>
-
         <h2>5. B Door Smoke</h2>
         <p>
           Recently the skybox in tunnels was removed on Dust2; thrown some
@@ -150,6 +148,10 @@ const PractiseConfigBlogPost = (): JSX.Element => {
           enjoy!
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="172" />
+        </div>
+
         <p>And as always, when playing Dust2, rush B!</p>
         <div className="video-container">
           <iframe
@@ -165,6 +167,9 @@ const PractiseConfigBlogPost = (): JSX.Element => {
       <style jsx>{`
         .a-tag {
           margin: 30px 0px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .tip {
@@ -249,7 +254,6 @@ const BlogSideBar: FC = () => {
       </div>
       <style jsx>{`
         .blog-sidebar {
-          margin-bottom: 50vh;
         }
 
         .cta {
