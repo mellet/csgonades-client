@@ -215,7 +215,12 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             "meta meta meta"
             "topph topph topph"
             "info info advert"
-            "comments comments .";
+            "comments comments advert"
+            "comments comments advert"
+            "comments comments advert"
+            "comments comments advert"
+            "comments comments advert"
+            "comments comments advert";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           width: 100%;
           border-radius: 5px;
