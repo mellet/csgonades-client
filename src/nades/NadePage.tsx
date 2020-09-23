@@ -157,10 +157,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         </div>
       </PageCentralizeSidebars>
 
-      <div id="bottom-ph">
-        <EzoicPlaceholder id="178" />
-      </div>
-
       <style jsx>{`
         .sidebar-ph {
           height: 600px;
