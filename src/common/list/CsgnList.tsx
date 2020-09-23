@@ -42,7 +42,7 @@ const List: FC<Props<any>> = memo(
             <div
               className="list-item"
               key={keyExtractor(item)}
-              style={{ order: i }}
+              style={{ order: i + 1 }}
             >
               {renderItem(item)}
             </div>
@@ -69,7 +69,7 @@ const List: FC<Props<any>> = memo(
           }
 
           .contrib {
-            order: 1;
+            order: 2;
             height: 263px;
             background: ${colors.DP02};
             border-radius: 5px;

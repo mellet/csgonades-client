@@ -68,7 +68,13 @@ type AdUnitProps = {
 const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
   const { colors } = useTheme();
 
-  const order = 5 + 11 * position;
+  const order = useMemo(() => {
+    if (position === 0) {
+      return 4;
+    } else {
+      return 11 * position;
+    }
+  }, [position]);
 
   return (
     <>
