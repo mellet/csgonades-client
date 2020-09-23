@@ -18,9 +18,12 @@ const ContactPageContainer: NextPage = () => {
   const [error, setError] = useState<null | string>(null);
 
   async function onSubmit() {
-    if (email.length === 0 || name.length === 0 || message.length === 0) {
-      setError("Something missing");
-      return;
+    if (!email.length) {
+      return setError("Missing e-mail.");
+    } else if (!name.length) {
+      return setError("Missing name.");
+    } else if (!message.length) {
+      return setError("Missing message.");
     }
 
     const contactMessage: ConctactDTO = {
@@ -50,20 +53,20 @@ const ContactPageContainer: NextPage = () => {
           <h1>Contact me 📨</h1>
           {!!error && <p>{error}</p>}
 
-          <CsgnInput label="Name" value={name} onChange={setName} />
-          <CsgnInput label="E-mail" value={email} onChange={setEmail} />
-          <CsgnTextArea label="Message" value={message} onChange={setMessage} />
-
-          <Button positive onClick={onSubmit}>
-            Send
-          </Button>
-
           {success && (
             <Message positive>
               <Message.Header>Message sent</Message.Header>
               <p>Your message has been sent.</p>
             </Message>
           )}
+
+          <CsgnInput label="Name" initialValue={name} onChange={setName} />
+          <CsgnInput label="E-mail" initialValue={email} onChange={setEmail} />
+          <CsgnTextArea label="Message" value={message} onChange={setMessage} />
+
+          <Button positive onClick={onSubmit}>
+            Send
+          </Button>
         </div>
       </PageCentralize>
       <style jsx>{`
