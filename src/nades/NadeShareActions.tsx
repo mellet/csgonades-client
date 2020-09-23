@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import {
   RedditShareButton,
   FacebookShareButton,
@@ -7,6 +7,8 @@ import {
 } from "react-share";
 import { useAnalytics } from "../utils/Analytics";
 import { FaVk, FaTwitter, FaRedditAlien, FaFacebookF } from "react-icons/fa";
+import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { Dimensions } from "../constants/Constants";
 
 type Props = {
   visisble: boolean;
@@ -21,8 +23,8 @@ export const NadeShareActions: FC<Props> = ({
   url,
   title,
   image,
-  vertical,
 }) => {
+  const { colors } = useTheme();
   const { event } = useAnalytics();
   const shareUrl = `https://www.csgonades.com${url}`;
 
@@ -34,56 +36,66 @@ export const NadeShareActions: FC<Props> = ({
     });
   }
 
-  const classNameBuilder = useMemo(() => {
-    const classes = ["share-buttons"];
-    if (vertical) {
-      classes.push("vertical");
-    }
-    return classes.join(" ");
-  }, [vertical]);
-
   if (!visisble) {
     return null;
   }
 
   return (
     <>
-      <div className={classNameBuilder}>
-        <div className="share-wrap" onClick={() => onSosialShare("Reddit")}>
-          <RedditShareButton url={shareUrl} title={title}>
-            <div className="share-icon">
-              <FaRedditAlien />
-            </div>
-          </RedditShareButton>
-        </div>
-        <div className="share-wrap" onClick={() => onSosialShare("Facebook")}>
-          <FacebookShareButton url={shareUrl} quote={title}>
-            <div className="share-icon">
-              <FaFacebookF />
-            </div>
-          </FacebookShareButton>
-        </div>
-        <div className="share-wrap" onClick={() => onSosialShare("Twitter")}>
-          <TwitterShareButton url={shareUrl} title={title}>
-            <div className="share-icon">
-              <FaTwitter />
-            </div>
-          </TwitterShareButton>
-        </div>
-        <div className="share-wrap" onClick={() => onSosialShare("VK")}>
-          <VKShareButton url={shareUrl} title={title} image={image}>
-            <div className="share-icon vk">
-              <FaVk />
-            </div>
-          </VKShareButton>
+      <div className="share-container">
+        <div className="label">Share</div>
+        <div className="share-buttons">
+          <div className="share-wrap" onClick={() => onSosialShare("Reddit")}>
+            <RedditShareButton url={shareUrl} title={title}>
+              <div className="share-icon">
+                <FaRedditAlien />
+              </div>
+            </RedditShareButton>
+          </div>
+          <div className="share-wrap" onClick={() => onSosialShare("Facebook")}>
+            <FacebookShareButton url={shareUrl} quote={title}>
+              <div className="share-icon">
+                <FaFacebookF />
+              </div>
+            </FacebookShareButton>
+          </div>
+          <div className="share-wrap" onClick={() => onSosialShare("Twitter")}>
+            <TwitterShareButton url={shareUrl} title={title}>
+              <div className="share-icon">
+                <FaTwitter />
+              </div>
+            </TwitterShareButton>
+          </div>
+          <div className="share-wrap" onClick={() => onSosialShare("VK")}>
+            <VKShareButton url={shareUrl} title={title} image={image}>
+              <div className="share-icon vk">
+                <FaVk />
+              </div>
+            </VKShareButton>
+          </div>
         </div>
       </div>
       <style jsx>{`
+        .share-container {
+          background ${colors.DP02};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
+        }
+
+        .label {
+          background: ${colors.DP01};
+          border-bottom: 1px solid ${colors.BORDER};
+          color: ${colors.TEXT};
+          padding: 10px 20px;
+          text-align: center;
+          font-size: 16px;
+        }
+
         .share-buttons {
           display: flex;
-          border-radius: 5px;
-          background: #454545;
+          justify-content: space-between;
           overflow: hidden;
+          padding: 10px 20px;
         }
 
         .vertical {
@@ -98,18 +110,9 @@ export const NadeShareActions: FC<Props> = ({
           align-items: center;
           justify-content: space-around;
           color: #fff;
-          background: transparent;
+          background: #454545;
           transition: background 0.2s;
-        }
-
-        .share-wrap:first-child .share-icon {
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-        }
-
-        .share-wrap:last-child .share-icon {
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-radius: 5px;
         }
 
         .share-icon:hover {

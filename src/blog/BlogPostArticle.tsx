@@ -109,9 +109,6 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-share {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 

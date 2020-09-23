@@ -12,21 +12,19 @@ type Props = {
 export const NadePageSidebar: FC<Props> = ({ nade }) => {
   return (
     <>
-      <div id="nade-actions" className="stick-top">
-        <div className="nade-action">
-          <NadeShareActions
-            title={generateTitle(
-              nade.title,
-              nade.startPosition,
-              nade.endPosition,
-              nade.type,
-              nade.oneWay
-            )}
-            visisble={nade.status === "accepted"}
-            url={`/nades/${nade?.slug || nade?.id}`}
-            image={nade.images.thumbnailUrl}
-          />
-        </div>
+      <div id="nade-actions">
+        <NadeShareActions
+          title={generateTitle(
+            nade.title,
+            nade.startPosition,
+            nade.endPosition,
+            nade.type,
+            nade.oneWay
+          )}
+          visisble={nade.status === "accepted"}
+          url={`/nades/${nade?.slug || nade?.id}`}
+          image={nade.images.thumbnailUrl}
+        />
       </div>
       <div className="sidebar-ph">
         <EzoicPlaceholder id="170" />
@@ -38,7 +36,6 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
       <style jsx>{`
         #nade-actions {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          width: calc(40px * 4);
         }
 
         .sidebar-ph {
