@@ -112,6 +112,10 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
       </div>
       <style jsx>{`
         .cont-list {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
         }
 
         .cont-desc {

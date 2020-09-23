@@ -1,5 +1,4 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
@@ -8,6 +7,7 @@ type Props = {
 };
 
 export const ListAds: FC<Props> = ({ numNades }) => {
+  const [initialNumNades] = useState(numNades);
   const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
 
   useEffect(() => {
@@ -31,14 +31,14 @@ export const ListAds: FC<Props> = ({ numNades }) => {
   ];
 
   const numberOfAds = useMemo(() => {
-    const nadeCalc = Math.floor(numNades / 13);
+    const nadeCalc = Math.floor(initialNumNades / 13);
 
     if (nadeCalc < 5) {
       return nadeCalc;
     }
 
     return 5;
-  }, [numNades]);
+  }, [initialNumNades]);
 
   const ads = new Array(numberOfAds).fill(0);
 
@@ -68,14 +68,7 @@ type AdUnitProps = {
 const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
   const { colors } = useTheme();
 
-  function getRowStart() {
-    const startRow = isMobileOnly ? 4 : 3;
-    const adSpacing = isMobileOnly ? 10 : 5;
-
-    return startRow + adSpacing * position;
-  }
-
-  const rowStart = getRowStart();
+  const order = 5 + 11 * position;
 
   return (
     <>
@@ -84,8 +77,7 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
       </div>
       <style jsx>{`
         .ph-inlist {
-          grid-row: ${rowStart} / ${rowStart + 1};
-          grid-column: 2 / 3;
+          order: ${order};
           max-height: 263px;
           background: ${colors.DP02};
           border-radius: 5px;

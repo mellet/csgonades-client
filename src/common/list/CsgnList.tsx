@@ -69,9 +69,8 @@ const List: FC<Props<any>> = memo(
           }
 
           .contrib {
-            grid-row: 2 / 3;
-            grid-column: 2 / 3;
-            height: 250px;
+            order: 1;
+            height: 263px;
             background: ${colors.DP02};
             border-radius: 5px;
             overflow: hidden;

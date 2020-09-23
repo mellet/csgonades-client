@@ -60,6 +60,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
         }
 
         .mini-sidebar {
+          height: 100%;
         }
 
         #displaying-coords-wrap {
