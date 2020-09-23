@@ -46,6 +46,13 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
               "side side";
           }
         }
+
+        @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
+          #layout-with-sidebar {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
       `}</style>
     </>
   );
