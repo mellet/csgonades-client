@@ -2,16 +2,16 @@ import { FC, memo } from "react";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { NadeLight } from "../models/Nade/Nade";
 import { MapPageNades } from "./MapPageNades";
-import { MapPageJumbo } from "./MapPageJumbo";
 import { Dimensions } from "../constants/Constants";
 import { useMapChangeHandler } from "../store/MapStore/hooks/useMapChangeHandler";
 import { SEO } from "../layout/SEO";
 import { capitalize } from "../utils/Common";
-import { PageCentralize } from "../common/PageCentralize";
 import { FilterBar } from "./nadefilter/FilterBar";
 import { MapViewScreen } from "./MapViewScreen";
 import { useIsClientSide } from "../common/MinSizeRender";
 import { TopAdPlaceholder } from "./components/TopAdPlaceholder";
+import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
+import { MapPageSidebar } from "./MapPageSidebar";
 
 type Props = {
   map: CsgoMap;
@@ -24,28 +24,28 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
 
   return (
     <>
-      <PageCentralize>
-        <div key={"map-" + map} id="map-page">
-          <SEO
-            title={mapPageTitleSeo(map)}
-            canonical={`/maps/${map}`}
-            description={`Find and learn the best smoke, flashbang, molotov and grenade spots for ${capitalize(
-              map
-            )}. Browse our large collection of nades for CS:GO.`}
-          />
+      <LayoutWithSidebar
+        key={"map-" + map}
+        sidebar={<MapPageSidebar map={map} nades={allNades} />}
+      >
+        <SEO
+          title={mapPageTitleSeo(map)}
+          canonical={`/maps/${map}`}
+          description={`Find and learn the best smoke, flashbang, molotov and grenade spots for ${capitalize(
+            map
+          )}. Browse our large collection of nades for CS:GO.`}
+        />
 
-          <MapPageJumbo map={map} nades={allNades} />
+        {isClientSide && !!allNades && (
+          <MapViewScreen map={map} allNades={allNades} />
+        )}
 
-          <TopAdPlaceholder />
+        <FilterBar />
 
-          {isClientSide && !!allNades && (
-            <MapViewScreen map={map} allNades={allNades} />
-          )}
+        <TopAdPlaceholder />
 
-          <FilterBar />
-          <MapPageNades allNades={allNades} />
-        </div>
-      </PageCentralize>
+        <MapPageNades allNades={allNades} />
+      </LayoutWithSidebar>
 
       <style jsx>{`
         #map-page {

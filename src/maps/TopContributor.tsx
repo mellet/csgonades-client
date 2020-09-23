@@ -3,9 +3,10 @@ import { UserLight } from "../models/User";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { NadeLight } from "../models/Nade/Nade";
 import { Twemoji } from "../common/Twemoji";
-import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { pluralize } from "../utils/Common";
 import Link from "next/link";
+import { Dimensions } from "../constants/Constants";
+import { CsgoMap, mapString } from "../models/Nade/CsGoMap";
 
 interface UserContribution extends UserLight {
   nadeCount: number;
@@ -16,9 +17,10 @@ interface UserContribution extends UserLight {
 
 type ContListProps = {
   nades: NadeLight[];
+  csMap: CsgoMap;
 };
 
-export const TopContributorList: FC<ContListProps> = ({ nades }) => {
+export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
   const { colors } = useTheme();
   const contributors = useMemo(() => {
     const contCount: { [key: string]: UserContribution } = {};
@@ -75,7 +77,7 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
   return (
     <>
       <div className="cont-list">
-        <div className="label">TOP NADE CONTRIBUTORS</div>
+        <div className="label">Top {mapString(csMap)} Contributors</div>
         {contributors.gold && (
           <>
             <div className="gold">
@@ -108,14 +110,13 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
             </div>
           </>
         )}
-        <DiscordJoinAction />
       </div>
       <style jsx>{`
         .cont-list {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          height: 100%;
+          background: ${colors.DP01};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
+          padding-bottom: 15px;
         }
 
         .cont-desc {
@@ -144,7 +145,7 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
         }
 
         .cont-list span {
-          font-size: 1.5em;
+          font-size: 1.2em;
           margin-right: 10px;
           display: block;
         }

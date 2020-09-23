@@ -2,12 +2,12 @@ import { FC, memo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
 import { ListAds } from "./ListAds";
+import { isMobileOnly } from "react-device-detect";
 
 type Props<T> = {
   data: T[];
   renderItem: (item: T) => JSX.Element;
   keyExtractor: (item: T) => string;
-  topRightComp?: JSX.Element;
   enableAds?: boolean;
 };
 
@@ -25,10 +25,12 @@ function ListBase<T>(props: Props<T>): JSX.Element {
 }
 
 const List: FC<Props<any>> = memo(
-  ({ data, keyExtractor, renderItem, topRightComp, enableAds = false }) => {
+  ({ data, keyExtractor, renderItem, enableAds = false }) => {
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
+
+    const enableInListAds = enableAds && isMobileOnly;
 
     return (
       <>
@@ -47,9 +49,8 @@ const List: FC<Props<any>> = memo(
               {renderItem(item)}
             </div>
           ))}
-          {!!topRightComp && <div className="contrib">{topRightComp}</div>}
 
-          {enableAds && <ListAds numNades={numItems} />}
+          {enableInListAds && <ListAds numNades={numItems} />}
         </div>
         <style jsx>{`
           .empty-list {

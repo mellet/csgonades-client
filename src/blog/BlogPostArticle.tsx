@@ -8,8 +8,8 @@ import { NadeShareActions } from "../nades/NadeShareActions";
 import { SEO } from "../layout/SEO";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";
-import { PageCentralize } from "../common/PageCentralize";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 
 type Props = {
   data: BlogPost;
@@ -39,7 +39,33 @@ export const BlogPostArticle: FC<Props> = memo(
           description={data.intro}
           thumbnail={data.thumbnailUrl}
         />
-        <PageCentralize>
+
+        <LayoutWithSidebar
+          sidebar={
+            <>
+              <div id="blog-share">
+                <NadeShareActions
+                  url={`/blog/${data.slug}`}
+                  title={data.title}
+                  image={data.thumbnailUrl}
+                  visisble={true}
+                />
+              </div>
+
+              {!!SideBarComp && (
+                <div id="blog-side-comp">
+                  <SideBarComp />
+                </div>
+              )}
+
+              <div id="blog-sidebar-wrap">
+                <div className="ph-unit">
+                  <EzoicPlaceholder id="171" />
+                </div>
+              </div>
+            </>
+          }
+        >
           <article id="blog-article">
             <div id="article-title">
               <h1>{data.title}</h1>
@@ -65,55 +91,30 @@ export const BlogPostArticle: FC<Props> = memo(
               {children}
               <BlogAuthor />
             </div>
-
-            <div id="blog-share">
-              <NadeShareActions
-                url={`/blog/${data.slug}`}
-                title={data.title}
-                image={data.thumbnailUrl}
-                visisble={true}
-              />
-            </div>
-
-            <aside>
-              {!!SideBarComp && (
-                <div id="blog-side-comp">
-                  <SideBarComp />
-                </div>
-              )}
-
-              <div id="blog-sidebar-wrap">
-                <div className="ph-unit">
-                  <EzoicPlaceholder id="171" />
-                </div>
-              </div>
-            </aside>
           </article>
-        </PageCentralize>
+        </LayoutWithSidebar>
 
         <style jsx>{`
           #blog-article {
             display: grid;
-            grid-template-columns: 1fr 160px;
+            grid-template-columns: 1fr;
             grid-template-rows:
               min-content
               min-content
               min-content
               min-content;
             grid-template-areas:
-              "title share"
-              "image . "
-              "ph ."
-              "article sidebar"
-              "article sidebar";
+              "title"
+              "image"
+              "ph"
+              "article"
+              "article";
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-            margin-bottom: 100px;
-            margin-top: ${Dimensions.GUTTER_SIZE}px;
           }
 
-          aside {
-            grid-area: sidebar;
+          #blog-share {
+            width: calc(40px * 4);
           }
 
           #ph-under-img {
@@ -123,10 +124,11 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-side-comp {
+            margin-top: ${Dimensions.GUTTER_SIZE}px;
+            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 
           .ph-unit {
-            margin-top: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #article-title {
@@ -148,10 +150,9 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-sidebar-wrap {
-            grid-area: ad;
             position: sticky;
             top: calc(
-              ${Dimensions.HEADER_HEIGHT}px + ${Dimensions.GUTTER_SIZE * 2}px
+              ${Dimensions.HEADER_HEIGHT}px + ${Dimensions.GUTTER_SIZE * 2.5}px
             );
           }
 
@@ -189,23 +190,6 @@ export const BlogPostArticle: FC<Props> = memo(
 
           .image-credit a:hover {
             text-decoration: underline;
-          }
-
-          @media only screen and (max-width: 850px) {
-            #blog-article {
-              grid-template-columns: 1fr;
-              grid-template-areas:
-                "share"
-                "title"
-                "image"
-                "ph"
-                "article"
-                "article";
-            }
-
-            aside {
-              display: none;
-            }
           }
         `}</style>
       </>

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { FaDiscord } from "react-icons/fa";
+import { Dimensions } from "../constants/Constants";
 
 export const DiscordJoinAction: FC = () => {
   return (
@@ -23,7 +24,8 @@ export const DiscordJoinAction: FC = () => {
       <style jsx>{`
         .actions-wrapper {
           width: 100%;
-          margin-top: 10px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
         }
 
         .action {

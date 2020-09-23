@@ -11,7 +11,7 @@ export const Config = {
 };
 
 export const Dimensions = {
-  PAGE_WIDTH: 1050,
+  PAGE_WIDTH: 1200 + 4 * 30,
   GUTTER_SIZE: 30,
   SIDEBAR_WIDTH: "180px",
   HEADER_HEIGHT: 60,

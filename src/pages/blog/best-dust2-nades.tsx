@@ -230,19 +230,19 @@ const BlogSideBar: FC = () => {
       <div className="blog-sidebar">
         <Link href="/maps/[map]" as="/maps/dust2">
           <button className="cta">
-            <span>Find Dust2 Smokes</span>{" "}
+            <span>More Dust2 Smokes</span>{" "}
             <img src="/icons/grenades/smoke.png" />
           </button>
         </Link>
         <Link href="/maps/[map]" as="/maps/dust2">
           <button className="cta">
-            <span>Find Dust2 Flashes</span>{" "}
+            <span>More Dust2 Flashes</span>{" "}
             <img src="/icons/grenades/flash.png" />
           </button>
         </Link>
         <Link href="/maps/[map]" as="/maps/dust2">
           <button className="cta">
-            <span>Find Dust2 Molotovs</span>{" "}
+            <span>More Dust2 Molotovs</span>{" "}
             <img src="/icons/grenades/molotov.png" />
           </button>
         </Link>
@@ -253,14 +253,16 @@ const BlogSideBar: FC = () => {
         }
 
         .cta {
+          border: 2px solid #106b5c;
           width: 100%;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          justify-content: center;
           align-items: center;
-          padding: 10px;
-          background: #106b5c;
+          padding: 15px 30px;
+          background: transparent;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          border-radius: 5px;
+          border-radius: 30px;
           cursor: pointer;
         }
 
@@ -268,16 +270,20 @@ const BlogSideBar: FC = () => {
           background: #0b4d42;
         }
 
+        .cta:hover > span {
+          color: white;
+        }
+
         .cta span {
           white-space: nowrap;
-          color: white;
-          margin-bottom: 5px;
+          color: #106b5c;
         }
 
         .cta img {
           width: 30px;
           height: 30px;
           display: block;
+          margin-left: 15px;
         }
       `}</style>
     </>

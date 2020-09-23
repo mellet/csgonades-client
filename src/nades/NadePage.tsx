@@ -3,13 +3,11 @@ import { NadeTitle } from "./components/NadeTitle";
 import { SEO } from "../layout/SEO";
 import { NadeInfoContainer } from "./NadeInfoContainer";
 import { NadeVideoContainer } from "./NadeVideoContainer";
-import { NadeShareActions } from "./NadeShareActions";
 import { NadeComments } from "./comments/NadeComments";
 import NadeStatus from "./components/NadeStatus";
 import { ArticleJsonLd } from "next-seo";
 import {
   descriptionSimplify,
-  generateTitle,
   generateSeoTitle,
   generateNadeItemTitle,
 } from "../utils/Common";
@@ -20,7 +18,8 @@ import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
 import { Nade } from "../models/Nade/Nade";
 import { TickWarning } from "./components/TickWarning";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
-import { PageCentralizeSidebars } from "../common/PageCentralizeSidebars";
+import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
+import { NadePageSidebar } from "./NadePageSidebar";
 
 type Props = {
   nade: Nade;
@@ -74,37 +73,11 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         video={nade.gfycat.smallVideoUrl}
       />
 
-      <PageCentralizeSidebars
-        leftSideBar={
-          <div id="nade-actions" className="stick-top">
-            <div className="nade-action">
-              <NadeShareActions
-                vertical
-                title={generateTitle(
-                  nade.title,
-                  nade.startPosition,
-                  nade.endPosition,
-                  nade.type,
-                  nade.oneWay
-                )}
-                visisble={nade.status === "accepted"}
-                url={`/nades/${nade?.slug || nade?.id}`}
-                image={nade.images.thumbnailUrl}
-              />
-            </div>
-          </div>
-        }
-        rightSideBar={
-          <div id="sidebar-ph" className="stick-top">
-            <div className="sidebar-ph">
-              <EzoicPlaceholder id="170" />
-            </div>
-          </div>
-        }
+      <LayoutWithSidebar
+        key={`main-${nade.id}`}
+        sidebar={<NadePageSidebar nade={nade} />}
       >
-        <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
-
-        <div id="nade-page-grid" key={`main-${nade.id}`}>
+        <div id="nade-page-grid">
           <div className="matchmake-warning">
             <TickWarning />
           </div>
@@ -150,12 +123,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           <div id="nade-comment-container">
             <NadeComments nadeId={nade.id} />
           </div>
-
-          <div id="advert">
-            <EzoicPlaceholder id="177" />
-          </div>
         </div>
-      </PageCentralizeSidebars>
+      </LayoutWithSidebar>
+
+      <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
 
       <style jsx>{`
         .sidebar-ph {
@@ -166,15 +137,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         #top-ph {
           grid-area: topph;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-
-        #bottom-ph {
-          padding-top: ${Dimensions.GUTTER_SIZE}px;
-          padding-bottom: 200px;
-          max-width: ${Dimensions.PAGE_WIDTH}px;
-          margin-left: ${Dimensions.GUTTER_SIZE}px;
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
-          margin: 0 auto;
         }
 
         .matchmake-warning {
@@ -210,13 +172,8 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             "video video video"
             "meta meta meta"
             "topph topph topph"
-            "info info advert"
-            "comments comments advert"
-            "comments comments advert"
-            "comments comments advert"
-            "comments comments advert"
-            "comments comments advert"
-            "comments comments advert";
+            "info info info"
+            "comments comments comments";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           width: 100%;
           border-radius: 5px;

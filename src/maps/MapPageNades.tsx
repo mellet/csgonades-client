@@ -7,7 +7,6 @@ import { NadeItemMobile } from "../common/nadeitem/NadeItemMobile";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
-import { TopContributorList } from "./TopContributor";
 
 type Props = {
   allNades: NadeLight[];
@@ -41,11 +40,6 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           keyExtractor={keyExtractor}
           renderItem={renderItem}
           enableAds={true}
-          topRightComp={
-            <div className="mini-sidebar">
-              {allNades && <TopContributorList nades={allNades} />}
-            </div>
-          }
         />
       </div>
       <style jsx>{`
