@@ -24,6 +24,11 @@ const NadeAlignCrosshairBlogPost: FC = () => {
           If you already know what the jumpthrow bind is, skip to the end where
           you can copy the bind.
         </p>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
+
         <h2>Is jumpthrow bind legal?</h2>
         <p>
           <a href="https://www.pcgamesn.com/counter-strike-global-offensive/jumpthrow-bind">
@@ -58,10 +63,6 @@ const NadeAlignCrosshairBlogPost: FC = () => {
           <em>Change out X with your prefered key.</em>
         </p>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="172" />
-        </div>
-
         <h3>Alias bind, autoexec</h3>
         <p>
           If you don’t have a autoexec config file allready, you can follow{" "}
@@ -81,7 +82,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
         />
 
         <div className="a-tag">
-          <EzoicPlaceholder id="173" />
+          <EzoicPlaceholder id="190" />
         </div>
 
         <h2>How to use jumpthrow bind</h2>

@@ -26,6 +26,10 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
           below.
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
+
         <h2>What is tickrate?</h2>
         <p>
           Tick rate is a networking term for game servers. It tells us how often
@@ -71,7 +75,7 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="172" />
+          <EzoicPlaceholder id="190" />
         </div>
 
         <p>
@@ -102,10 +106,6 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
           ></iframe>
         </div>
         <br />
-
-        <div className="a-tag">
-          <EzoicPlaceholder id="173" />
-        </div>
 
         <p>
           Using the jumpthrow bind will give you the same result every time, if

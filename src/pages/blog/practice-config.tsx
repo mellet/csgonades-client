@@ -43,16 +43,16 @@ const PractiseConfigBlogPost = () => {
           }
         />
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
+
         <h2>The config</h2>
         <BlogCodeSnippet
           code={
             "sv_cheats 1\nbot_kick\nmp_limitteams 0\nmp_autoteambalance 0\nmp_maxmoney 60000\nmp_startmoney 60000\nmp_buytime 9999\nmp_buy_anywhere 1\nmp_freezetime 0\nmp_roundtime 60\nmp_roundtime_defuse 60\nmp_respawn_on_death_ct 1\nmp_respawn_on_death_t 1\nsv_infinite_ammo 1\nsv_grenade_trajectory 1\nsv_grenade_trajectory_time 15\nsv_showimpacts 1\nsv_showimpacts_time 10\nammo_grenade_limit_total 5\nmp_warmup_end\nmp_restartgame 1"
           }
         />
-
-        <div className="a-tag">
-          <EzoicPlaceholder id="172" />
-        </div>
 
         <h2>What does the config do?</h2>
         <h3>Basics</h3>
@@ -78,10 +78,6 @@ const PractiseConfigBlogPost = () => {
           Enables impacts (red marking where you shoot), so you can test out
           wall bangs and see if bullets can penetrate walls.
         </p>
-
-        <div className="a-tag">
-          <EzoicPlaceholder id="173" />
-        </div>
 
         <h2>Useful commands while practising</h2>
         <p>
@@ -116,6 +112,10 @@ const PractiseConfigBlogPost = () => {
         </p>
 
         <BlogCodeSnippet code="bind X cl_sim_grenade_trajectory" />
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="190" />
+        </div>
 
         <h3>3. Preview grenade trajectory</h3>
         <p>

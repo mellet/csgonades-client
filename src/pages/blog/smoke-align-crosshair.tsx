@@ -31,6 +31,11 @@ const NadeAlignCrosshairBlogPost: FC = () => {
           big. And when you release it, it goes back to normal. But you will
           have to edit your config file.
         </p>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
+
         <h2>How to set it up</h2>
         <h3>1. Simple: Toggle crosshair</h3>
         <p>
@@ -60,7 +65,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
         <BlogCodeSnippet code={'bind "X" "toggle cl_crosshairsize 2.5 5000"'} />
 
         <div className="a-tag">
-          <EzoicPlaceholder id="172" />
+          <EzoicPlaceholder id="190" />
         </div>
 
         <h3>2. Advanced: Hide on release</h3>
@@ -101,10 +106,6 @@ const NadeAlignCrosshairBlogPost: FC = () => {
             'bind "X" "+crosshairsmoke"\nalias "-crosshairsmoke" "cl_crosshairsize 2.5;cl_crosshairdot 0;cl_crosshairgap -1"\nalias "+crosshairsmoke" "cl_crosshairsize 1337;cl_crosshairdot 1;cl_crosshairgap 10"\n'
           }
         />
-
-        <div className="a-tag">
-          <EzoicPlaceholder id="173" />
-        </div>
 
         <p>Change out X with whatever key you prefer.</p>
         <p>

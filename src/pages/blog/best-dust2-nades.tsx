@@ -41,7 +41,7 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="175" />
+          <EzoicPlaceholder id="189" />
         </div>
 
         <h2>1. Xbox Smoke</h2>
@@ -133,7 +133,7 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="172" />
+          <EzoicPlaceholder id="190" />
         </div>
 
         <p>And as always, when playing Dust2, rush B!</p>
