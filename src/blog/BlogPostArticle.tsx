@@ -69,18 +69,20 @@ export const BlogPostArticle: FC<Props> = memo(
           }
         >
           <article id="blog-article">
-            <div id="article-title">
-              <h1>{data.title}</h1>
-            </div>
-            <div id="article-image">
-              {!!data.imageCredit && !!data.imageCreditUrl && (
-                <div className="image-credit">
-                  Photo by{" "}
-                  <a href={data.imageCreditUrl} target="_top">
-                    {data.imageCredit}
-                  </a>
-                </div>
-              )}
+            <div id="title-image">
+              <div id="article-title">
+                <h1>{data.title}</h1>
+              </div>
+              <div id="article-image">
+                {!!data.imageCredit && !!data.imageCreditUrl && (
+                  <div className="image-credit">
+                    Photo by{" "}
+                    <a href={data.imageCreditUrl} target="_top">
+                      {data.imageCredit}
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div id="article-content">
@@ -102,12 +104,39 @@ export const BlogPostArticle: FC<Props> = memo(
               min-content
               min-content;
             grid-template-areas:
-              "title"
-              "image"
-              "article"
+              "title-img"
               "article";
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
+          }
+
+          #title-image {
+            grid-area: title-img;
+            position: relative;
+          }
+
+          #article-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px 30px;
+            color: white;
+            z-index: 1;
+            background: linear-gradient(
+              180deg,
+              rgba(17, 17, 17, 0) 0%,
+              rgba(32, 32, 32, 0.4) 100%
+            );
+            height: 50%;
+            display: flex;
+            align-items: flex-end;
+          }
+
+          #article-title h1 {
+            font-weight: 300;
+            font-size: 32px;
           }
 
           .sticky {
@@ -119,16 +148,6 @@ export const BlogPostArticle: FC<Props> = memo(
 
           .spacer {
             margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          }
-
-          #article-title {
-            width: 100%;
-            grid-area: title;
-          }
-
-          #article-title h1 {
-            font-weight: 300;
-            font-size: 32px;
           }
 
           #article-content {
@@ -151,11 +170,12 @@ export const BlogPostArticle: FC<Props> = memo(
             position: relative;
             grid-area: image;
             width: 100%;
-            padding-bottom: 56.25%;
+            padding-bottom: 40%;
             border-radius: 5px;
             overflow: hidden;
             background: url(${data.imageUrl});
             background-size: cover;
+            background-position: center;
           }
 
           .image-credit {
