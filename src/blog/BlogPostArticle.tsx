@@ -8,8 +8,9 @@ import { NadeShareActions } from "../nades/NadeShareActions";
 import { SEO } from "../layout/SEO";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
+import { SidebarMediumAd } from "../common/adunits/SidebarMediumAd";
+import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
 
 type Props = {
   data: BlogPost;
@@ -43,7 +44,7 @@ export const BlogPostArticle: FC<Props> = memo(
         <LayoutWithSidebar
           sidebar={
             <>
-              <div id="blog-share">
+              <div id="blog-share" className="spacer">
                 <NadeShareActions
                   url={`/blog/${data.slug}`}
                   title={data.title}
@@ -52,17 +53,18 @@ export const BlogPostArticle: FC<Props> = memo(
                 />
               </div>
 
+              <div id="blog-sidebar-wrap" className="spacer">
+                <SidebarSkyskraperAd />
+              </div>
+
               {!!SideBarComp && (
-                <div id="blog-side-comp">
-                  <SideBarComp />
+                <div id="blog-side-comp" className="spacer sticky">
+                  <div className="spacer">
+                    <SideBarComp />
+                  </div>
+                  <SidebarMediumAd />
                 </div>
               )}
-
-              <div id="blog-sidebar-wrap">
-                <div className="ph-unit">
-                  <EzoicPlaceholder id="171" />
-                </div>
-              </div>
             </>
           }
         >
@@ -108,16 +110,15 @@ export const BlogPostArticle: FC<Props> = memo(
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           }
 
-          #blog-share {
-            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          .sticky {
+            position: sticky;
+            top: calc(
+              ${Dimensions.HEADER_HEIGHT}px + ${Dimensions.GUTTER_SIZE * 2.5}px
+            );
           }
 
-          #blog-side-comp {
-            margin-top: ${Dimensions.GUTTER_SIZE}px;
+          .spacer {
             margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          }
-
-          .ph-unit {
           }
 
           #article-title {
@@ -139,10 +140,6 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-sidebar-wrap {
-            position: sticky;
-            top: calc(
-              ${Dimensions.HEADER_HEIGHT}px + ${Dimensions.GUTTER_SIZE * 2.5}px
-            );
           }
 
           .article-date {

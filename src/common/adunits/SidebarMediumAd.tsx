@@ -1,9 +1,11 @@
 import { FC, useEffect, useState } from "react";
-import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-import { Twemoji } from "../../common/Twemoji";
+import { EzoicPlaceholder } from "./EzoicPlaceholder";
+import { Twemoji } from "../Twemoji";
 import { Dimensions } from "../../constants/Constants";
+import { isMobile } from "react-device-detect";
 
 export const SidebarMediumAd: FC = ({}) => {
+  const disabled = isMobile;
   const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
 
   useEffect(() => {
@@ -11,6 +13,10 @@ export const SidebarMediumAd: FC = ({}) => {
       setIsAdBlockEnabled(true);
     }
   }, []);
+
+  if (disabled) {
+    return null;
+  }
 
   return (
     <>

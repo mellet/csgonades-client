@@ -5,7 +5,7 @@ import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { NadeLight } from "../models/Nade/Nade";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
-import { SidebarMediumAd } from "./components/SidebarMediumAd";
+import { SidebarMediumAd } from "../common/adunits/SidebarMediumAd";
 import { MapPageJumbo } from "./MapPageJumbo";
 import { TopContributorList } from "./TopContributor";
 
