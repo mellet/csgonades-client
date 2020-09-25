@@ -9,7 +9,6 @@ import { SEO } from "../layout/SEO";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
-import { SidebarMediumAd } from "../common/adunits/SidebarMediumAd";
 import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
 
 type Props = {
@@ -62,7 +61,6 @@ export const BlogPostArticle: FC<Props> = memo(
                   <div className="spacer">
                     <SideBarComp />
                   </div>
-                  <SidebarMediumAd />
                 </div>
               )}
             </>

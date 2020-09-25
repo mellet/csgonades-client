@@ -6,6 +6,7 @@ import { Dimensions } from "../../constants/Constants";
 import { FC } from "react";
 import Link from "next/link";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
+import { SidebarMediumAd } from "../../common/adunits/SidebarMediumAd";
 
 export const bestDust2Nades: BlogPost = {
   title: "Best Grenade Spots for Dust2 - Must Know!",
@@ -216,7 +217,7 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
 const BlogSideBar: FC = () => {
   return (
     <>
-      <div className="blog-sidebar">
+      <div className="blog-sidebar spacer">
         <Link href="/maps/[map]" as="/maps/dust2">
           <button className="cta">
             <span>More Dust2 Smokes</span>{" "}
@@ -236,10 +237,8 @@ const BlogSideBar: FC = () => {
           </button>
         </Link>
       </div>
+      <SidebarMediumAd />
       <style jsx>{`
-        .blog-sidebar {
-        }
-
         .cta {
           border: 2px solid #106b5c;
           width: 100%;
@@ -272,6 +271,10 @@ const BlogSideBar: FC = () => {
           height: 30px;
           display: block;
           margin-left: 15px;
+        }
+
+        .spacer {
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>
