@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import { Dimensions } from "../constants/Constants";
 import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { CsgoMap } from "../models/Nade/CsGoMap";
@@ -8,6 +7,7 @@ import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { SidebarMediumAd } from "../common/adunits/SidebarMediumAd";
 import { MapPageJumbo } from "./MapPageJumbo";
 import { TopContributorList } from "./TopContributor";
+import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
 
 type Props = {
   map: CsgoMap;
@@ -29,8 +29,9 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         <div className="spacer">
           <DiscordJoinAction />
         </div>
+
         <div className="spacer ph">
-          <EzoicPlaceholder id="188" />
+          <SidebarSkyskraperAd />
         </div>
 
         <div className="spacer sticky">

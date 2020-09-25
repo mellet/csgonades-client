@@ -13,7 +13,7 @@ export const SidebarSkyskraperAd: FC = ({}) => {
   return (
     <>
       <div className="ph">
-        <EzoicPlaceholder id="172" />
+        <EzoicPlaceholder id="188" />
       </div>
 
       <style jsx>{`
