@@ -18,23 +18,18 @@ export const useEzoidAdLoader = (): void => {
 };
 
 const loadAds = async () => {
-  await sleep(500);
   try {
     const ez = ezstandalone || {};
 
     const adIds = findAdUnits();
-
-    console.log("> Phz", adIds);
 
     if (!adIds.length) {
       return;
     }
 
     if (ez.hasDisplayedAds) {
-      //await sleep(500);
       const adIds = findAdUnits();
       ez.define(adIds);
-      //await sleep(500);
       ez.refresh();
     } else {
       ez.cmd.push(() => {
@@ -67,4 +62,4 @@ const findAdUnits = () => {
   return ids;
 };
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
