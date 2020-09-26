@@ -8,6 +8,7 @@ import { blogJumpthrowBind } from "../pages/blog/jumpthrow-bind";
 import { Dimensions } from "../constants/Constants";
 import { PageCentralize } from "../common/PageCentralize";
 import { blogPractiseConfig } from "../pages/blog/practice-config";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -30,13 +31,14 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
           <div className="recent-wrap">
             <BlogList posts={recentPosts} />
           </div>
+
+          <div className="bottom-ph">
+            <EzoicPlaceholder id="174" />
+          </div>
         </PageCentralize>
       </div>
 
       <style jsx>{`
-        .placement {
-        }
-
         #front-page {
           grid-area: main;
           margin: ${Dimensions.GUTTER_SIZE}px;
