@@ -7,8 +7,14 @@ export const useEzoidAdLoader = (): void => {
     if (router.asPath.includes("adtesting")) {
       return;
     }
+
     loadAds();
-  }, [router.asPath]);
+
+    router.events.on("routeChangeComplete", loadAds);
+
+    return () => router.events.off("routeChangeComplete", loadAds);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 const loadAds = async () => {
