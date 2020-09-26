@@ -12,6 +12,7 @@ export const useEzoidAdLoader = (): void => {
 };
 
 const loadAds = async () => {
+  await sleep(500);
   try {
     const ez = ezstandalone || {};
 
@@ -60,4 +61,4 @@ const findAdUnits = () => {
   return ids;
 };
 
-//const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
