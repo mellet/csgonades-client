@@ -17,6 +17,8 @@ const loadAds = async () => {
 
     const adIds = findAdUnits();
 
+    console.log("> Phz", adIds);
+
     if (!adIds.length) {
       return;
     }
