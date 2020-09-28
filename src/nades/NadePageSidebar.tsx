@@ -3,6 +3,7 @@ import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import { Dimensions } from "../constants/Constants";
 import { Nade } from "../models/Nade/Nade";
 import { generateTitle } from "../utils/Common";
+import { NadeMeta } from "./components/NadeMeta";
 import { NadeShareActions } from "./NadeShareActions";
 
 type Props = {
@@ -12,6 +13,16 @@ type Props = {
 export const NadePageSidebar: FC<Props> = ({ nade }) => {
   return (
     <>
+      <div id="meta">
+        <NadeMeta
+          type={nade.type}
+          movement={nade.movement}
+          technique={nade.technique}
+          tickrate={nade.tickrate}
+          rounded
+        />
+      </div>
+
       <div id="nade-actions">
         <NadeShareActions
           title={generateTitle(
@@ -26,12 +37,14 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
           image={nade.images.thumbnailUrl}
         />
       </div>
+
       <div className="sidebar-ph">
         <EzoicPlaceholder id="170" />
       </div>
 
       <style jsx>{`
-        #nade-actions {
+        #nade-actions,
+        #meta {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 

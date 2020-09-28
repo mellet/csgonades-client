@@ -43,9 +43,9 @@ export const NadeMeta: FC<Props> = memo(
         <style jsx>{`
           .nade-meta {
             display: flex;
+            flex-direction: column;
             color: white;
-            border-bottom-left-radius: ${rounded ? "5px" : 0};
-            border-bottom-right-radius: ${rounded ? "5px" : 0};
+            border-radius: ${rounded ? "5px" : 0};
             overflow: hidden;
           }
 
@@ -55,7 +55,7 @@ export const NadeMeta: FC<Props> = memo(
             white-space: nowrap;
             padding: 10px;
             background: #729b79;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
           }
 
           .nade-meta-item:last-child {

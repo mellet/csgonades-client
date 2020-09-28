@@ -11,7 +11,6 @@ import {
   generateSeoTitle,
   generateNadeItemTitle,
 } from "../utils/Common";
-import { NadeMeta } from "./components/NadeMeta";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
@@ -95,16 +94,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             />
           </div>
 
-          <div id="nade-meta">
-            <NadeMeta
-              type={nade.type}
-              movement={nade.movement}
-              technique={nade.technique}
-              tickrate={nade.tickrate}
-              rounded
-            />
-          </div>
-
           <div id="nade-page-main">
             <NadeVideoContainer
               lineUpUrl={nade.images.lineupUrl}
@@ -137,6 +126,8 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         #top-ph {
           grid-area: topph;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          background: pink;
+          height: 250px;
         }
 
         .matchmake-warning {
@@ -170,9 +161,8 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             "title title title"
             "warning warning warning"
             "video video video"
-            "meta meta meta"
-            "topph topph topph"
             "info info info"
+            "topph topph topph"
             "comments comments comments";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           width: 100%;
@@ -184,11 +174,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
-        #nade-meta {
-          grid-area: meta;
-          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-
         #nade-info-container {
           grid-area: info;
           padding-bottom: ${Dimensions.GUTTER_SIZE}px;
@@ -197,6 +182,10 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
 
         #nade-page-main {
           grid-area: video;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          overflow: hidden;
         }
 
         #sidebar-right {
@@ -240,9 +229,8 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
               "title title title"
               "warning warning warning"
               "video video video"
-              "meta meta meta"
-              "topph topph topph"
               "info info info"
+              "topph topph topph"
               "comments comments comments"
               "advert advert advert";
           }
