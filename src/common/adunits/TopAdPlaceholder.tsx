@@ -26,7 +26,6 @@ export const TopAdPlaceholder: FC = () => {
               </strong>
               <br />
               Disable it to support my work <Twemoji emoji="😍" />
-              <br />
             </div>
           )}
           {!isAdBlockEnabled && <EzoicPlaceholder id="175" />}

@@ -23,12 +23,11 @@ export const SidebarMediumAd: FC = ({}) => {
       {isAdBlockEnabled && (
         <div className="block-msg-wrap">
           <div className="block-msg">
-            <strong>Oh no!</strong> You have AdBlock enabled{" "}
-            <Twemoji emoji="😢" />
+            <strong>
+              AdBlock is enabled <Twemoji emoji="😢" />
+            </strong>
             <br />
-            Consider disabling it on this site to support my work{" "}
-            <Twemoji emoji="😍" />
-            <br />
+            Disable it to support my work <Twemoji emoji="😍" />
           </div>
         </div>
       )}
