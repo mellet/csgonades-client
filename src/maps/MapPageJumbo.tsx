@@ -23,10 +23,6 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
         <h2>
           Don&apos;t be like BOT Bob <Twemoji emoji="🤖" />, get some nades.
         </h2>
-        <p>
-          Channel your inner Global Elite. Sign in and add a nade to the list{" "}
-          <Twemoji emoji="🏆" />
-        </p>
       </div>
       <style jsx>{`
         .hidden {
@@ -35,7 +31,7 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
 
         .map-welcome {
           background: ${colors.DP01};
-          padding: 40px 30px;
+          padding: 20px 30px;
           border-radius: 5px;
           color: ${colors.TEXT};
           transition: all 0.2s;
@@ -43,13 +39,6 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
 
         .map-welcome-wrap {
           display: flex;
-          min-height: 100px;
-        }
-
-        .welcome-msg {
-          align-self: center;
-          margin-right: 30px;
-          flex: 1;
         }
 
         .top-placement {
@@ -60,7 +49,7 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
 
         .map-welcome h1,
         .map-welcome h2 {
-          font-size: 24px;
+          font-size: 22px;
           color: ${colors.TEXT};
           font-weight: 300;
           flex: 1;
@@ -69,10 +58,9 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
         }
 
         .map-welcome h2 {
-          font-size: 20px;
+          font-size: 18px;
           margin: 0;
           margin-top: 20px;
-          margin-bottom: 20px;
         }
 
         @media only screen and (max-width: 1200px) {

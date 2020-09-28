@@ -21,34 +21,34 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
     <>
       <>
         {mapView === "list" && (
-          <div className="spacer">
+          <div className="jumbo spacer">
             <MapPageJumbo map={map} nades={nades} />
           </div>
         )}
-
-        <div className="spacer">
-          <DiscordJoinAction />
-        </div>
 
         <div className="spacer ph">
           <SidebarSkyskraperAd />
         </div>
 
+        <div className="spacer">
+          <TopContributorList csMap={map} nades={nades} />
+        </div>
+
         <div className="spacer sticky">
           <div className="spacer">
-            <TopContributorList csMap={map} nades={nades} />
+            <DiscordJoinAction />
           </div>
           <SidebarMediumAd />
         </div>
       </>
       <style jsx>{`
+        .jumbo {
+          margin-top: 100px;
+        }
+
         .sticky {
           position: sticky;
           top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE * 2.5}px;
-        }
-
-        .sticky-ph {
-          margin-top: 20px;
         }
 
         .spacer {
