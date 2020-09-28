@@ -85,8 +85,6 @@ export const Layout2: FC = memo(({ children }) => {
         #footer-ph {
           grid-area: footer-ph;
           margin-bottom: 100px;
-          height: 90px;
-          background: orange;
         }
 
         footer {
