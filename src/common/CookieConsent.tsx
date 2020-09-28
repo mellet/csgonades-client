@@ -37,12 +37,10 @@ export const CookieConsent: FC = memo(() => {
           </div>
 
           <div className="consent-txt">
-            <p>
-              In order to give you a better service CSGO Nades uses{" "}
-              <a href="/policy">cookies</a> for analytics and advertising.
-              <br /> By continuing to browse the site you are agreeing to our
-              use of cookies.
-            </p>
+            In order to give you a better service CSGO Nades uses{" "}
+            <a href="/policy">cookies</a> for analytics and advertising.
+            <br /> By continuing to browse the site you are agreeing to our use
+            of cookies.
           </div>
 
           <div className="close-button">
@@ -54,30 +52,25 @@ export const CookieConsent: FC = memo(() => {
       </div>
       <style jsx>{`
         .cookie-consent-wrapper {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
           background: rgba(0, 0, 0, 0.9);
-          z-index: 999;
           display: flex;
           justify-content: space-around;
-          display: flex;
-          transform: translateY(200%);
-          transition: transform 0.15s;
-          padding ${Dimensions.GUTTER_SIZE}px;
+          max-height: 0;
+          height:auto;
+          overflow: hidden;
+          transition: max-height 0.3s ease-out;
         }
 
         .visible {
-          transform: translateY(0);
+          max-height: 100px;
         }
 
         .cookie-consent {
-          border-radius: 5px;
+          padding ${Dimensions.GUTTER_SIZE / 2}px;
           color: #fff;
           display: flex;
           flex-direction: row;
-          font-size: 18px;
+          font-size: 16px;
         }
 
         .cookie-icon {
@@ -88,7 +81,7 @@ export const CookieConsent: FC = memo(() => {
         }
 
         .consent-txt {
-          font-size: 16px;
+          font-size: 12px;
           margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
@@ -108,7 +101,7 @@ export const CookieConsent: FC = memo(() => {
           font-weight: 400;
           border: none;
           cursor: pointer;
-          font-size: 16px;
+          font-size: 14px;
           outline: none;
         }
 

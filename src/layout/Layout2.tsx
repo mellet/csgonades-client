@@ -80,6 +80,10 @@ export const Layout2: FC = memo(({ children }) => {
           z-index: 899;
         }
 
+        #concent {
+          grid-area: concent;
+        }
+
         #footer-ph {
           grid-area: footer-ph;
           margin-bottom: 100px;
