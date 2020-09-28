@@ -9,7 +9,7 @@ import { capitalize } from "../utils/Common";
 import { FilterBar } from "./nadefilter/FilterBar";
 import { MapViewScreen } from "./MapViewScreen";
 import { useIsClientSide } from "../common/MinSizeRender";
-import { TopAdPlaceholder } from "./components/TopAdPlaceholder";
+import { TopAdPlaceholder } from "../common/adunits/TopAdPlaceholder";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { MapPageSidebar } from "./MapPageSidebar";
 
