@@ -30,9 +30,6 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
         <EzoicPlaceholder id="170" />
       </div>
 
-      <div className="sidebar-ph-small">
-        <EzoicPlaceholder id="177" />
-      </div>
       <style jsx>{`
         #nade-actions {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
