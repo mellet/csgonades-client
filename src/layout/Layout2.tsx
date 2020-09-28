@@ -15,6 +15,7 @@ import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { PageCentralize } from "../common/PageCentralize";
 
 export const Layout2: FC = memo(({ children }) => {
   const { colors } = useTheme();
@@ -37,7 +38,9 @@ export const Layout2: FC = memo(({ children }) => {
         <main>{children}</main>
 
         <div id="footer-ph">
-          <EzoicPlaceholder id="191" />
+          <PageCentralize>
+            <EzoicPlaceholder id="191" />
+          </PageCentralize>
         </div>
 
         <footer>
