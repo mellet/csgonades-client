@@ -118,16 +118,9 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
       <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
 
       <style jsx>{`
-        .sidebar-ph {
-          height: 600px;
-          width: 160px;
-        }
-
         #top-ph {
           grid-area: topph;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          background: pink;
-          height: 250px;
         }
 
         .matchmake-warning {
