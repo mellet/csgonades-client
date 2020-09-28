@@ -26,10 +26,6 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
           below.
         </p>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="189" />
-        </div>
-
         <h2>What is tickrate?</h2>
         <p>
           Tick rate is a networking term for game servers. It tells us how often
@@ -47,6 +43,10 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
           depending on what you play the most on, you know what throws will work
           for you and which won&apos;t.
         </p>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
 
         <h2>What is the jump throw bind?</h2>
         <p>
@@ -74,10 +74,6 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
           command.
         </p>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="190" />
-        </div>
-
         <p>
           Since the server and client communicate less frequently on 64 tick,
           the server will receive slightly different movement speeds during your
@@ -89,6 +85,11 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
           In the video below, you can see that the release happens at slightly
           different heights on the two tickrates.
         </p>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="190" />
+        </div>
+
         <div
           style={{
             position: "relative",

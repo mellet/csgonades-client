@@ -25,10 +25,6 @@ const NadeAlignCrosshairBlogPost: FC = () => {
           you can copy the bind.
         </p>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="189" />
-        </div>
-
         <h2>Is jumpthrow bind legal?</h2>
         <p>
           <a href="https://www.pcgamesn.com/counter-strike-global-offensive/jumpthrow-bind">
@@ -63,6 +59,10 @@ const NadeAlignCrosshairBlogPost: FC = () => {
           <em>Change out X with your prefered key.</em>
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
+
         <h3>Alias bind, autoexec</h3>
         <p>
           If you don’t have a autoexec config file allready, you can follow{" "}
@@ -81,16 +81,16 @@ const NadeAlignCrosshairBlogPost: FC = () => {
           }
         />
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="190" />
-        </div>
-
         <h2>How to use jumpthrow bind</h2>
         <p>
           Take out your smoke, hold down either your left, right or both mouse
           buttons. Then press the button you selected for your bind. The script
           will jump, and release both mouse buttons for you.
         </p>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="190" />
+        </div>
 
         <b>Normal range jumpthrow</b>
         <p>
