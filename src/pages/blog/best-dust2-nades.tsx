@@ -41,10 +41,6 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
           to find your own preferrences.
         </p>
 
-        <div className="a-tag">
-          <EzoicPlaceholder id="189" />
-        </div>
-
         <h2>1. Xbox Smoke</h2>
         <p>
           Aaah... Xbox. Everyone wants to smoke Xbox. Why? Because there is
@@ -59,6 +55,10 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
         <div className="nade-list">
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-t-spawn-7Nn" />
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-lower-tunnels-gXs" />
+        </div>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
         </div>
 
         <h2>2. Long Corner Smoke</h2>

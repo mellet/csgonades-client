@@ -71,16 +71,14 @@ export const BlogPostArticle: FC<Props> = memo(
               <div id="article-title">
                 <h1>{data.title}</h1>
               </div>
-              <div id="article-image">
-                {!!data.imageCredit && !!data.imageCreditUrl && (
-                  <div className="image-credit">
-                    Photo by{" "}
-                    <a href={data.imageCreditUrl} target="_top">
-                      {data.imageCredit}
-                    </a>
-                  </div>
-                )}
-              </div>
+              {!!data.imageCredit && !!data.imageCreditUrl && (
+                <div className="image-credit">
+                  Photo by{" "}
+                  <a href={data.imageCreditUrl} target="_top">
+                    {data.imageCredit}
+                  </a>
+                </div>
+              )}
             </div>
 
             <div id="article-content">
@@ -111,6 +109,16 @@ export const BlogPostArticle: FC<Props> = memo(
           #title-image {
             grid-area: title-img;
             position: relative;
+            height: 40vh;
+            background: url(${data.imageUrl});
+            border-radius: ${Dimensions.BORDER_RADIUS};
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+          }
+
+          #blog-share {
+            height: 40vh;
           }
 
           #article-title {
