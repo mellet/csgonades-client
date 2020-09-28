@@ -28,17 +28,21 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
         <PageCentralize>
           <FrontPageJumbo stats={stats} />
 
-          <div className="recent-wrap">
-            <BlogList posts={recentPosts} />
+          <div className="ph">
+            <EzoicPlaceholder id="174" />
           </div>
 
-          <div className="bottom-ph">
-            <EzoicPlaceholder id="174" />
+          <div className="recent-wrap">
+            <BlogList posts={recentPosts} />
           </div>
         </PageCentralize>
       </div>
 
       <style jsx>{`
+        .ph {
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         #front-page {
           grid-area: main;
           margin: ${Dimensions.GUTTER_SIZE}px;

@@ -14,6 +14,7 @@ import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 export const Layout2: FC = memo(({ children }) => {
   const { colors } = useTheme();
@@ -34,6 +35,10 @@ export const Layout2: FC = memo(({ children }) => {
         </nav>
 
         <main>{children}</main>
+
+        <div id="footer-ph">
+          <EzoicPlaceholder id="191" />
+        </div>
 
         <footer>
           <Footer />
@@ -58,6 +63,7 @@ export const Layout2: FC = memo(({ children }) => {
             "header"
             "nav"
             "main"
+            "footer-ph"
             "footer";
         }
 
@@ -74,6 +80,10 @@ export const Layout2: FC = memo(({ children }) => {
           top: ${Dimensions.HEADER_HEIGHT}px;
           grid-area: nav;
           z-index: 899;
+        }
+
+        #footer-ph {
+          margin-bottom: 100px;
         }
 
         footer {
