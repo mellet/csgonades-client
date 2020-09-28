@@ -14,8 +14,6 @@ import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
-import { PageCentralize } from "../common/PageCentralize";
 
 export const Layout2: FC = memo(({ children }) => {
   const { colors } = useTheme();
@@ -27,6 +25,10 @@ export const Layout2: FC = memo(({ children }) => {
   return (
     <>
       <div id="page">
+        <div id="concent">
+          <CookieConsent />
+        </div>
+
         <header>
           <Header />
         </header>
@@ -37,12 +39,6 @@ export const Layout2: FC = memo(({ children }) => {
 
         <main>{children}</main>
 
-        <div id="footer-ph">
-          <PageCentralize>
-            <EzoicPlaceholder id="191" />
-          </PageCentralize>
-        </div>
-
         <footer>
           <Footer />
         </footer>
@@ -52,7 +48,6 @@ export const Layout2: FC = memo(({ children }) => {
       <ToastList />
       <MobileNav />
       <AdminLink />
-      <CookieConsent />
       <SignInWarning />
 
       <style jsx>{`
@@ -63,10 +58,10 @@ export const Layout2: FC = memo(({ children }) => {
           background: ${colors.DP00};
           grid-template-columns: 1fr;
           grid-template-areas:
+            "concent"
             "header"
             "nav"
             "main"
-            "footer-ph"
             "footer";
         }
 
@@ -101,6 +96,7 @@ export const Layout2: FC = memo(({ children }) => {
         @media only screen and (max-width: 910px) {
           #page {
             grid-template-areas:
+              "concent concent concent"
               "header header header"
               "main main main"
               "sidebar sidebar sidebar"

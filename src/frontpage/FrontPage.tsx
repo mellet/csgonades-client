@@ -28,12 +28,12 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
         <PageCentralize>
           <FrontPageJumbo stats={stats} />
 
-          <div className="ph">
-            <EzoicPlaceholder id="174" />
-          </div>
-
           <div className="recent-wrap">
             <BlogList posts={recentPosts} />
+          </div>
+
+          <div className="ph">
+            <EzoicPlaceholder id="174" />
           </div>
         </PageCentralize>
       </div>

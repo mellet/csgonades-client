@@ -75,6 +75,7 @@ export const Footer: FC = memo(() => {
           grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           color: ${colors.footerColor};
           width: 100%;
+          padding-bottom: 100px;
         }
 
         #discord-join {
