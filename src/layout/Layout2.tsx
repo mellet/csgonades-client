@@ -83,7 +83,10 @@ export const Layout2: FC = memo(({ children }) => {
         }
 
         #footer-ph {
+          grid-area: footer-ph;
           margin-bottom: 100px;
+          height: 90px;
+          background: orange;
         }
 
         footer {
@@ -100,6 +103,7 @@ export const Layout2: FC = memo(({ children }) => {
               "header header header"
               "main main main"
               "sidebar sidebar sidebar"
+              "footer-ph footer-ph footer-ph"
               "footer footer footer";
           }
 
