@@ -4,7 +4,7 @@ import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { NadeLight } from "../models/Nade/Nade";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
-import { SidebarMediumAd } from "../common/adunits/SidebarMediumAd";
+import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
 import { MapPageJumbo } from "./MapPageJumbo";
 import { TopContributorList } from "./TopContributor";
 import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
@@ -38,7 +38,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           <div className="spacer">
             <DiscordJoinAction />
           </div>
-          <SidebarMediumAd />
+          <SidebarAdSticky />
         </div>
       </>
       <style jsx>{`

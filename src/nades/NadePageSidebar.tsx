@@ -23,6 +23,10 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
         />
       </div>
 
+      <div className="sidebar-ph">
+        <EzoicPlaceholder id="170" />
+      </div>
+
       <div id="nade-actions">
         <NadeShareActions
           title={generateTitle(
@@ -36,10 +40,6 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
           url={`/nades/${nade?.slug || nade?.id}`}
           image={nade.images.thumbnailUrl}
         />
-      </div>
-
-      <div className="sidebar-ph">
-        <EzoicPlaceholder id="170" />
       </div>
 
       <style jsx>{`

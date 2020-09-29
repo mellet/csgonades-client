@@ -4,7 +4,7 @@ import { Twemoji } from "../Twemoji";
 import { Dimensions } from "../../constants/Constants";
 import { isMobile } from "react-device-detect";
 
-export const SidebarMediumAd: FC = ({}) => {
+export const SidebarAdSticky: FC = ({}) => {
   const disabled = isMobile;
   const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
 
