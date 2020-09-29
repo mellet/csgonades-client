@@ -45,7 +45,7 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
 
         #front-page {
           grid-area: main;
-          margin: ${Dimensions.GUTTER_SIZE}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
           margin-bottom: 100px;
         }
 
@@ -77,7 +77,7 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
 
         @media only screen and (max-width: 910px) {
           #front-page {
-            margin: 15px;
+            margin: 0px;
           }
         }
 

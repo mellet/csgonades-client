@@ -10,7 +10,9 @@ export const SignInnButton: FC = () => {
           <div className="steam-logo">
             <FaSteam />
           </div>
-          <div className="steam-text">Sign in with STEAM</div>
+          <div className="steam-text">
+            Sign in with <span className="steam-name">STEAM</span>
+          </div>
         </a>
       </div>
       <style jsx>{`
@@ -21,32 +23,40 @@ export const SignInnButton: FC = () => {
 
         .steam-login {
           display: flex;
-          border-radius: 5px;
+          border-radius: 10px;
           align-items: center;
           color: white;
-          transition: background 0.15s;
-          background: #444;
-          transition: background 0.2s;
-          padding: 10px 15px;
+          background: #2295c9;
+          padding: 6px 12px;
+          transition: background 0.25s;
         }
 
         .steam-logo {
-          transition: transform 0.2s;
+          transition: transform 0.25s;
           margin-right: 10px;
           font-size: 20px;
           position: relative;
           top: 3px;
+          transform: scale(1.3);
         }
 
         .steam-text {
-          font-weight: 300;
+          font-weight: 400;
           font-size: 14px;
           white-space: nowrap;
           align-self: center;
         }
 
+        .steam-name {
+          font-weight: 500;
+        }
+
         .steam-login:hover {
-          background: #222;
+          background: #0688bd;
+        }
+
+        .steam-login:hover > .steam-logo {
+          transform: scale(1.5);
         }
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {

@@ -30,17 +30,17 @@ export const Header: FC = memo(() => {
 
       <style jsx>{`
         #header {
-          padding: 10px;
-          padding-left: ${Dimensions.GUTTER_SIZE}px;
-          padding-right: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.DP03};
           height: ${Dimensions.HEADER_HEIGHT}px;
+        }
+
+        #header.scrolled {
         }
 
         .header-wrap {
           display: flex;
           align-items: center;
-          height: 100%;
+          height: ${Dimensions.HEADER_HEIGHT}px;
         }
 
         .spacer {
@@ -53,11 +53,6 @@ export const Header: FC = memo(() => {
         }
 
         @media only screen and (max-width: 910px) {
-          #header {
-            padding-left: 15px;
-            padding-right: 15px;
-          }
-
           #theme-toggle {
             display: none;
           }

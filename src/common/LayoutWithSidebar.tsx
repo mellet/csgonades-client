@@ -49,8 +49,8 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
           #layout-with-sidebar {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
           }
         }
       `}</style>

@@ -14,7 +14,7 @@ export const Dimensions = {
   PAGE_WIDTH: 1200 + 4 * 30,
   GUTTER_SIZE: 30,
   SIDEBAR_WIDTH: "180px",
-  HEADER_HEIGHT: 60,
+  HEADER_HEIGHT: 50,
   NAV_HEIGHT: 40,
   PADDING_SMALL: "6px",
   PADDING_MEDIUM: "12px",

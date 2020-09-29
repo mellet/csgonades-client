@@ -19,11 +19,10 @@ export const Logo: FC = memo(() => {
       <style jsx>{`
         #logo {
           display: block;
-          width: 60px;
         }
 
         #logo img {
-          width: 100%;
+          height: 35px;
           display: block;
         }
       `}</style>

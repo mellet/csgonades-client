@@ -15,8 +15,8 @@ export const PageCentralize: FC = ({ children }) => {
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
           .page-centralize {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
           }
         }
       `}</style>
