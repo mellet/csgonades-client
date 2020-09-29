@@ -46,7 +46,6 @@ export const SidebarAdSticky: FC = ({}) => {
         .block-msg-wrap {
           display: flex;
           justify-content: center;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 

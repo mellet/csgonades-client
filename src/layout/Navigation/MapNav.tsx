@@ -3,6 +3,7 @@ import { PageCentralize } from "../../common/PageCentralize";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { useRouter } from "next/router";
 import { MapPageLink } from "./MapNavLink";
+import { Dimensions } from "../../constants/Constants";
 
 export const MapNav: FC = () => {
   const { colors } = useTheme();
@@ -138,6 +139,7 @@ export const MapNav: FC = () => {
           overflow: hidden;
           border: 1px solid rgba(0, 0, 0, 0.5);
           border-top: 0;
+          height: ${Dimensions.NAV_HEIGHT}px;
         }
 
         #map-nav {
@@ -147,6 +149,7 @@ export const MapNav: FC = () => {
           border-bottom-right-radius: 5px;
           display: inline-block;
           margin: 0 auto;
+          height: ${Dimensions.NAV_HEIGHT}px;
         }
 
         ul {
@@ -154,6 +157,7 @@ export const MapNav: FC = () => {
           margin: 0;
           padding: 0;
           display: flex;
+          height: ${Dimensions.NAV_HEIGHT}px;
         }
 
         ul li {
@@ -162,12 +166,13 @@ export const MapNav: FC = () => {
         .map-link {
           display: flex;
           border-right: 1px solid rgba(0, 0, 0, 0.5);
-          padding: 10px 15px;
+          padding: 6px 15px;
           color: white;
           font-size: 14px;
           align-items: center;
           font-weight: 400;
           transition: background 0.1s;
+          height: 100%;
         }
 
         .map-link:hover {

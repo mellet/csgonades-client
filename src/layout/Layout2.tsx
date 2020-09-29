@@ -78,6 +78,7 @@ export const Layout2: FC = memo(({ children }) => {
           top: ${Dimensions.HEADER_HEIGHT}px;
           grid-area: nav;
           z-index: 899;
+          height: ${Dimensions.NAV_HEIGHT}px;
         }
 
         #concent {

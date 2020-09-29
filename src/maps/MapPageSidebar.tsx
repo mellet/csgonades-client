@@ -34,11 +34,13 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           <TopContributorList csMap={map} nades={nades} />
         </div>
 
-        <div className="spacer sticky">
-          <div className="spacer">
+        <div className="sticky">
+          <div className="half-spacer">
             <DiscordJoinAction />
           </div>
-          <SidebarAdSticky />
+          <div className="ph">
+            <SidebarAdSticky />
+          </div>
         </div>
       </>
       <style jsx>{`
@@ -48,11 +50,15 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
 
         .sticky {
           position: sticky;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE * 2.5}px;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.NAV_HEIGHT + 15}px;
         }
 
         .spacer {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .half-spacer {
+          margin-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .ph {
