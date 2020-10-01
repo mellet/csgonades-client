@@ -37,7 +37,7 @@ export const TopAdPlaceholder: FC = () => {
           justify-content: space-around;
           align-items: center;
           margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
-          min-height: 90px;
+          min-height: 250px;
           background: ${colors.DP01};
           border-radius: 5px;
         }
