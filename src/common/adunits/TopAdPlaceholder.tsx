@@ -5,6 +5,8 @@ import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Twemoji } from "../Twemoji";
 
+//
+
 export const TopAdPlaceholder: FC = () => {
   const { colors } = useTheme();
   const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
