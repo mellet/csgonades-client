@@ -57,7 +57,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
           margin-bottom: 50px;
         }
 
-        @media only screen and (max-width: 100px) {
+        @media only screen and (max-width: 1000px) {
           #map-page {
             margin: 15px;
           }

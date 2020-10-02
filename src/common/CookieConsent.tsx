@@ -52,11 +52,16 @@ export const CookieConsent: FC = memo(() => {
       </div>
       <style jsx>{`
         .cookie-consent-wrapper {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
           background: rgba(0, 0, 0, 0.9);
           display: flex;
           justify-content: space-around;
           transform: translateY(100%);
-          transition: max-height 0.3s ease-out;
+          transition: all 0.3s ease-out;
+          z-index: 999;
         }
 
         .visible {

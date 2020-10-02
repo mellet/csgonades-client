@@ -25,9 +25,7 @@ export const Layout2: FC = memo(({ children }) => {
   return (
     <>
       <div id="page">
-        <div id="concent">
-          <CookieConsent />
-        </div>
+        <CookieConsent />
 
         <header>
           <Header />
@@ -78,14 +76,6 @@ export const Layout2: FC = memo(({ children }) => {
           grid-area: nav;
           z-index: 899;
           height: ${Dimensions.NAV_HEIGHT}px;
-        }
-
-        #concent {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 999;
         }
 
         #footer-ph {

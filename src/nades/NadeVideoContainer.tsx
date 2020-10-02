@@ -2,6 +2,7 @@ import { FC, memo, useState } from "react";
 import { GfycatIframe } from "./components/GfycatIframe";
 import { CrossHair } from "./CrossHair";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { Dimensions } from "../constants/Constants";
 
 type Props = {
   lineUpUrl?: string;
@@ -74,41 +75,37 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
       </div>
       <style jsx>{`
         .tab-selector {
-          width: 200px;
           position: absolute;
-          top: 0px;
-          left: calc(50% - 100px);
+          top: 15px;
+          right: 15px;
           z-index: 100;
           display: flex;
-          justify-content: center;
+          border-radius: 10px;
+          background: ${colors.filterBgHover};
+          transition: all 0.2s;
         }
 
         .tab-btn {
-          width: 100px;
-          border: 1px solid rgba(0, 0, 0, 1);
-          border-top: none;
-          background: ${colors.filterBg};
+          background: ${colors.filterBgHover};
+          border: 1px solid ${colors.filterBgHover};
           cursor: pointer;
           outline: none;
-          padding: 8px;
-          color: rgba(255, 255, 255, 0.9);
+          padding: 15px 20px;
+          color: rgba(255, 255, 255, 0.5);
           text-transform: uppercase;
           font-size: 12px;
           font-weight: 500;
+          border-radius: 10px;
         }
 
-        .tab-btn:first-child {
-          border-bottom-left-radius: 10px;
-          border-right: none;
+        .tab-btn:hover {
+          color: rgba(255, 255, 255, 1);
         }
 
-        .tab-btn:last-child {
-          border-bottom-right-radius: 10px;
-        }
-
-        .tab-btn:hover,
         .selected {
-          background: ${colors.filterBgHover};
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          color: rgba(255, 255, 255, 1);
+          background: ${colors.filterBg};
         }
 
         .video-wrap {
@@ -175,15 +172,15 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
 
         .crosshair {
           position: absolute;
-          top: 1px;
+          top: 0px;
           right: 0px;
           bottom: 0px;
-          left: 1px;
+          left: 0px;
           opacity: 0.55;
           display: flex;
           justify-content: center;
           align-items: center;
-          transform: scale(0.5);
+          transform: scale(0.4);
         }
 
         .vertical-line,
@@ -220,6 +217,12 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
           bottom: calc(50% - ${CROSSHAIR_SIZE + 4}px);
           left: calc(50% - 1px);
           outline: 1px solid rgba(0, 0, 0, 0.8);
+        }
+
+        @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
+          .tab-btn {
+            padding: 10px 10px;
+          }
         }
       `}</style>
     </>
