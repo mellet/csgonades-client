@@ -218,7 +218,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           #nade-page-grid {
             grid-template-columns: 1fr 200px 1fr;
             grid-template-areas:
-              "actions actions actions"
               "title title title"
               "warning warning warning"
               "video video video"
@@ -226,6 +225,12 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
               "topph topph topph"
               "comments comments comments"
               "advert advert advert";
+          }
+
+          #title,
+          #nade-page-main {
+            margin-left: -15px;
+            margin-right: -15px;
           }
         }
       `}</style>
