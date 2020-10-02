@@ -58,7 +58,6 @@ export const Layout2: FC = memo(({ children }) => {
           background: ${colors.DP00};
           grid-template-columns: 1fr;
           grid-template-areas:
-            "concent"
             "header"
             "nav"
             "main"
@@ -82,7 +81,11 @@ export const Layout2: FC = memo(({ children }) => {
         }
 
         #concent {
-          grid-area: concent;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
         }
 
         #footer-ph {
@@ -101,7 +104,6 @@ export const Layout2: FC = memo(({ children }) => {
         @media only screen and (max-width: 910px) {
           #page {
             grid-template-areas:
-              "concent concent concent"
               "header header header"
               "main main main"
               "sidebar sidebar sidebar"

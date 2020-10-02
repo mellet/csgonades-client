@@ -55,14 +55,12 @@ export const CookieConsent: FC = memo(() => {
           background: rgba(0, 0, 0, 0.9);
           display: flex;
           justify-content: space-around;
-          max-height: 0;
-          height:auto;
-          overflow: hidden;
+          transform: translateY(100%);
           transition: max-height 0.3s ease-out;
         }
 
         .visible {
-          max-height: 100px;
+          transform: translateY(0%);
         }
 
         .cookie-consent {
