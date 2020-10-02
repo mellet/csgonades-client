@@ -219,7 +219,14 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
           outline: 1px solid rgba(0, 0, 0, 0.8);
         }
 
-        @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
+        @media only screen and (max-width: ${Dimensions.TABLET_THRESHHOLD}) {
+          .tab-selector {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: auto;
+          }
+
           .tab-btn {
             padding: 10px 10px;
           }
