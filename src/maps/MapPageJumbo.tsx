@@ -22,25 +22,10 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
         <h2>Don&apos;t be like BOT Bob, get some nades</h2>
       </div>
       <style jsx>{`
-        .hidden {
-          display: none;
-        }
-
         .map-welcome {
           color: ${colors.TEXT};
           transition: all 0.2s;
         }
-
-        .map-welcome-wrap {
-          display: flex;
-        }
-
-        .top-placement {
-          width: 730px;
-          display: flex;
-          align-items: center;
-        }
-
         .map-welcome h1,
         .map-welcome h2 {
           font-size: 22px;
@@ -55,12 +40,6 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
           font-size: 18px;
           margin: 0;
           margin-top: 10px;
-        }
-
-        @media only screen and (max-width: 1200px) {
-          .top-placement {
-            display: none;
-          }
         }
       `}</style>
     </>

@@ -28,11 +28,13 @@ export const MapPageNewJumbo: FC<Props> = ({ csMap, nades }) => {
         #jumbo {
           margin-top: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
+          border: 1px solid red;
           justify-content: space-between;
         }
 
         #welcome {
           padding-right: ${Dimensions.GUTTER_SIZE}px;
+          max-width: 500px;
         }
 
         .placeholder {
