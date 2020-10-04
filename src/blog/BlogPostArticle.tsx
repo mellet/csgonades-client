@@ -148,9 +148,7 @@ export const BlogPostArticle: FC<Props> = memo(
 
           .sticky {
             position: sticky;
-            top: calc(
-              ${Dimensions.HEADER_HEIGHT}px + ${Dimensions.GUTTER_SIZE * 2.5}px
-            );
+            top: calc(${Dimensions.NAV_HEIGHT}px + ${Dimensions.GUTTER_SIZE}px);
           }
 
           .spacer {

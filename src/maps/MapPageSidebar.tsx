@@ -35,7 +35,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         </div>
 
         <div className="sticky">
-          <div className="half-spacer">
+          <div className="spacer">
             <DiscordJoinAction />
           </div>
           <div className="ph">
@@ -50,7 +50,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
 
         .sticky {
           position: sticky;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.NAV_HEIGHT + 15}px;
+          top: ${Dimensions.NAV_HEIGHT + Dimensions.GUTTER_SIZE}px;
         }
 
         .spacer {
