@@ -19,7 +19,7 @@ export const MapPageNewJumbo: FC<Props> = ({ csMap, nades }) => {
           <div id="welcome">
             <MapPageJumbo map={csMap} nades={nades} />
           </div>
-          <div id="placeholder">
+          <div className="placeholder">
             <EzoicPlaceholder id="193" />
           </div>
         </div>
@@ -35,9 +35,8 @@ export const MapPageNewJumbo: FC<Props> = ({ csMap, nades }) => {
           padding-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
-        #placeholder {
+        .placeholder {
           height: 90px;
-          overflow: hidden;
           max-width: 728px;
         }
 
