@@ -36,7 +36,8 @@ export const MapPageNewJumbo: FC<Props> = ({ csMap, nades }) => {
         }
 
         #placeholder {
-          min-height: 90px;
+          height: 90px;
+          overflow: hidden;
         }
 
         @media only screen and (max-width: 1100px) {
