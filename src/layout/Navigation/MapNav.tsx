@@ -274,9 +274,8 @@ export const MapNav: FC = () => {
         }
 
         .anubis-icon {
-          background: ${colors.DP00};
+          background: url("/mapicons/anubis.png");
           background-size: 100%;
-          border-radius: 10px;
         }
       `}</style>
     </>
