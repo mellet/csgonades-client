@@ -226,56 +226,51 @@ export const MapNav: FC = () => {
           opacity: 1;
         }
 
-        .nav-icon {
-          width: 20px;
-          height: 20px;
-          margin-left: 6px;
-          opacity: 0.7;
-        }
-
         .mirage-icon {
           background: url("/mapicons/mirage.png");
-          background-size: 100%;
         }
 
         .inferno-icon {
           background: url("/mapicons/inferno.png");
-          background-size: 100%;
         }
 
         .dust2-icon {
           background: url("/mapicons/dust2.png");
-          background-size: 100%;
         }
 
         .overpass-icon {
           background: url("/mapicons/overpass.png");
-          background-size: 100%;
         }
 
         .cache-icon {
           background: url("/mapicons/cache.png");
-          background-size: 100%;
         }
 
         .train-icon {
           background: url("/mapicons/train.png");
-          background-size: 100%;
         }
 
         .nuke-icon {
           background: url("/mapicons/nuke.png");
-          background-size: 100%;
         }
 
         .vertigo-icon {
           background: url("/mapicons/vertigo.png");
-          background-size: 100%;
         }
 
         .anubis-icon {
           background: url("/mapicons/anubis.png");
-          background-size: 100%;
+        }
+
+        .nav-icon {
+          width: 22px;
+          height: 22px;
+          margin-left: 6px;
+          border-radius: 50%;
+          opacity: 0.7;
+          border: 1px solid ${colors.PRIMARY};
+          background-size: 125%;
+          background-position: center;
         }
       `}</style>
     </>
