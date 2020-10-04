@@ -64,15 +64,12 @@ export const Layout2: FC = memo(({ children }) => {
 
         header {
           grid-area: header;
-          position: sticky;
-          top: 0;
-          z-index: 900;
           height: ${Dimensions.HEADER_HEIGHT}px;
         }
 
         nav {
           position: sticky;
-          top: ${Dimensions.HEADER_HEIGHT}px;
+          top: 0px;
           grid-area: nav;
           z-index: 899;
           height: ${Dimensions.NAV_HEIGHT}px;

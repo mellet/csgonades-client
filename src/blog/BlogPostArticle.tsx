@@ -104,6 +104,7 @@ export const BlogPostArticle: FC<Props> = memo(
               "article";
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
+            color: ${colors.TEXT};
           }
 
           #title-image {

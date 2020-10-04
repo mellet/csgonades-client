@@ -4,7 +4,6 @@ import { Hamburger } from "./Misc/Hamburger";
 import { Logo } from "./Misc/Logo";
 import { SiteNav } from "./Navigation/SiteNav";
 import { UserNav } from "./Navigation/UserNav";
-import { ThemeToggler } from "./Misc/ThemeToggler";
 import { Dimensions } from "../constants/Constants";
 import { PageCentralize } from "../common/PageCentralize";
 
@@ -18,9 +17,7 @@ export const Header: FC = memo(() => {
           <div className="header-wrap">
             <Hamburger />
             <Logo />
-            <div id="theme-toggle">
-              <ThemeToggler />
-            </div>
+
             <div className="spacer"></div>
             <SiteNav />
             <UserNav />
@@ -32,6 +29,7 @@ export const Header: FC = memo(() => {
         #header {
           background: ${colors.DP03};
           height: ${Dimensions.HEADER_HEIGHT}px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         #header.scrolled {
