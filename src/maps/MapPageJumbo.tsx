@@ -3,7 +3,6 @@ import { capitalize } from "../utils/Common";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { NadeLight } from "../models/Nade/Nade";
-import { Twemoji } from "../common/Twemoji";
 
 type Props = {
   map: CsgoMap;
@@ -17,12 +16,10 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
     <>
       <div className={"map-welcome"}>
         <h1>
-          Find and learn the best smoke, flashbang, molotov and grenade spots
-          for {capitalize(map)}.
+          Find the best smokes, flashbangs, molotovs and grenades for{" "}
+          {capitalize(map)}
         </h1>
-        <h2>
-          Don&apos;t be like BOT Bob <Twemoji emoji="🤖" />, get some nades.
-        </h2>
+        <h2>Don&apos;t be like BOT Bob, get some nades</h2>
       </div>
       <style jsx>{`
         .hidden {
@@ -30,9 +27,6 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
         }
 
         .map-welcome {
-          background: ${colors.DP01};
-          padding: 20px 30px;
-          border-radius: 5px;
           color: ${colors.TEXT};
           transition: all 0.2s;
         }
@@ -60,7 +54,7 @@ export const MapPageJumbo: FC<Props> = memo(({ map }) => {
         .map-welcome h2 {
           font-size: 18px;
           margin: 0;
-          margin-top: 20px;
+          margin-top: 10px;
         }
 
         @media only screen and (max-width: 1200px) {

@@ -9,9 +9,9 @@ import { capitalize } from "../utils/Common";
 import { FilterBar } from "./nadefilter/FilterBar";
 import { MapViewScreen } from "./MapViewScreen";
 import { useIsClientSide } from "../common/MinSizeRender";
-import { TopAdPlaceholder } from "../common/adunits/TopAdPlaceholder";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { MapPageSidebar } from "./MapPageSidebar";
+import { MapPageNewJumbo } from "./MapPageNewJumbo";
 
 type Props = {
   map: CsgoMap;
@@ -24,7 +24,8 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
 
   return (
     <>
-      <TopAdPlaceholder />
+      <MapPageNewJumbo csMap={map} nades={allNades} />
+
       <LayoutWithSidebar
         key={"map-" + map}
         sidebar={<MapPageSidebar map={map} nades={allNades} />}

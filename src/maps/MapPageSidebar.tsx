@@ -3,9 +3,7 @@ import { Dimensions } from "../constants/Constants";
 import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { CsgoMap } from "../models/Nade/CsGoMap";
 import { NadeLight } from "../models/Nade/Nade";
-import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
-import { MapPageJumbo } from "./MapPageJumbo";
 import { TopContributorList } from "./TopContributor";
 import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
 
@@ -15,18 +13,10 @@ type Props = {
 };
 
 export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
-  const { mapView } = useSetMapView();
-
   return (
     <>
       <>
-        {mapView === "list" && (
-          <div className="jumbo spacer">
-            <MapPageJumbo map={map} nades={nades} />
-          </div>
-        )}
-
-        <div className="spacer ph">
+        <div className="spacer ph top">
           <SidebarSkyskraperAd />
         </div>
 
@@ -44,7 +34,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         </div>
       </>
       <style jsx>{`
-        .jumbo {
+        .top {
           margin-top: 100px;
         }
 
