@@ -65,13 +65,14 @@ export const Layout2: FC = memo(({ children }) => {
         header {
           grid-area: header;
           height: ${Dimensions.HEADER_HEIGHT}px;
+          z-index: 1000;
         }
 
         nav {
           position: sticky;
           top: 0px;
           grid-area: nav;
-          z-index: 899;
+          z-index: 900;
           height: ${Dimensions.NAV_HEIGHT}px;
         }
 
