@@ -21,7 +21,7 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
           padding-bottom: 100px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1fr 300px;
+          grid-template-columns: 1fr 336px;
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-template-areas:
             "main side"

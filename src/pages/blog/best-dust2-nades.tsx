@@ -237,7 +237,9 @@ const BlogSideBar: FC = () => {
           </button>
         </Link>
       </div>
-      <SidebarMediumAd />
+      <div className="center">
+        <SidebarMediumAd />
+      </div>
       <style jsx>{`
         .cta {
           border: 2px solid #106b5c;
@@ -275,6 +277,12 @@ const BlogSideBar: FC = () => {
 
         .spacer {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .center {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
         }
       `}</style>
     </>

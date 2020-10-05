@@ -164,6 +164,9 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-sidebar-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
 
           .article-date {

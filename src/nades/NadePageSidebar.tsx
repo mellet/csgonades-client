@@ -52,19 +52,19 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
-        .sidebar-ph {
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        .sidebar-ph,
+        .side-mini-ph {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
         }
 
-        .sidebar-ph-small {
+        .sidebar-ph {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .side-mini-ph {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
         }
       `}</style>
     </>
