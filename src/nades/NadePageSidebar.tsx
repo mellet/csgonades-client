@@ -13,20 +13,6 @@ type Props = {
 export const NadePageSidebar: FC<Props> = ({ nade }) => {
   return (
     <>
-      <div id="meta">
-        <NadeMeta
-          type={nade.type}
-          movement={nade.movement}
-          technique={nade.technique}
-          tickrate={nade.tickrate}
-          rounded
-        />
-      </div>
-
-      <div className="sidebar-ph">
-        <EzoicPlaceholder id="170" />
-      </div>
-
       <div id="nade-actions">
         <NadeShareActions
           title={generateTitle(
@@ -42,6 +28,24 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
         />
       </div>
 
+      <div className="side-mini-ph">
+        <EzoicPlaceholder id="194" />
+      </div>
+
+      <div id="meta">
+        <NadeMeta
+          type={nade.type}
+          movement={nade.movement}
+          technique={nade.technique}
+          tickrate={nade.tickrate}
+          rounded
+        />
+      </div>
+
+      <div className="sidebar-ph">
+        <EzoicPlaceholder id="170" />
+      </div>
+
       <style jsx>{`
         #nade-actions,
         #meta {
@@ -54,6 +58,13 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
 
         .sidebar-ph-small {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .side-mini-ph {
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
         }
       `}</style>
     </>
