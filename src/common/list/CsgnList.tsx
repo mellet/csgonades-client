@@ -2,7 +2,8 @@ import { FC, memo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
 import { ListAds } from "./ListAds";
-import { isMobileOnly } from "react-device-detect";
+import { isMobile } from "react-device-detect";
+import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
 type Props<T> = {
   data: T[];
@@ -30,7 +31,8 @@ const List: FC<Props<any>> = memo(
     const numItems = data.length;
     const isEmpty = numItems === 0;
 
-    const enableInListAds = enableAds && isMobileOnly;
+    const enableInListAds = enableAds && isMobile;
+    const enableBigAd = enableAds && !isMobile;
 
     return (
       <>
@@ -50,6 +52,12 @@ const List: FC<Props<any>> = memo(
             </div>
           ))}
 
+          {enableBigAd && (
+            <div className="ph-1">
+              <EzoicPlaceholder id="195" />
+            </div>
+          )}
+
           {enableInListAds && <ListAds numNades={numItems} />}
         </div>
         <style jsx>{`
@@ -66,27 +74,21 @@ const List: FC<Props<any>> = memo(
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
-            grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           }
 
-          .contrib {
-            order: 2;
-            height: 263px;
-            background: ${colors.DP02};
-            border-radius: 5px;
-            overflow: hidden;
+          .ph-1 {
+            grid-column: 1 / 4;
+            grid-row: 5 / 6;
           }
 
           @media only screen and (max-width: 1020px) {
-            .contrib {
-              grid-row: 1/2;
-              grid-column: 2/3;
+            .ph-1 {
+              grid-column: 1 / 3;
             }
           }
 
           @media only screen and (max-width: 600px) {
-            .contrib {
-              grid-row: 1 / 2;
+            .ph-1 {
               grid-column: 1 / 2;
             }
           }

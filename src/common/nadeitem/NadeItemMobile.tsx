@@ -118,6 +118,7 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
           overflow: hidden;
           position: relative;
           border-radius: ${Dimensions.BORDER_RADIUS};
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .media-canvas {
