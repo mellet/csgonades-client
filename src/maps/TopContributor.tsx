@@ -61,16 +61,19 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
         Math.log(b.totalScore || 2) + Math.log(b.nadeCount || 2) / 4;
       return bScore - aScore;
     });
-    sortedContributors = sortedContributors.slice(0, 3);
 
     const gold = sortedContributors.shift();
     const silver = sortedContributors.shift();
     const bronce = sortedContributors.shift();
+    const fourth = sortedContributors.shift();
+    const fifth = sortedContributors.shift();
 
     return {
       gold,
       silver,
       bronce,
+      fourth,
+      fifth,
     };
   }, [nades]);
 
@@ -110,6 +113,24 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
             </div>
           </>
         )}
+
+        {contributors.fourth && (
+          <>
+            <div className="split">
+              <span></span>
+              <TopContributor user={contributors.fourth} />
+            </div>
+          </>
+        )}
+
+        {contributors.fifth && (
+          <>
+            <div className="split">
+              <span></span>
+              <TopContributor user={contributors.fifth} />
+            </div>
+          </>
+        )}
       </div>
       <style jsx>{`
         .cont-list {
@@ -138,7 +159,8 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
 
         .gold,
         .silver,
-        .bronze {
+        .bronze,
+        .split {
           display: flex;
           align-items: center;
           padding: 10px 20px;
@@ -148,6 +170,7 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
           font-size: 1.2em;
           margin-right: 10px;
           display: block;
+          min-width: 24px;
         }
 
         #gold {
