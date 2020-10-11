@@ -78,7 +78,7 @@ const List: FC<Props<any>> = memo(
 
           .ph-1 {
             grid-column: 1 / 4;
-            grid-row: 6 / 7;
+            grid-row: 7 / 8;
             display: flex;
             align-items: center;
             justify-content: center;
