@@ -12,15 +12,9 @@ export const SidebarSkyskraperAd: FC = ({}) => {
 
   return (
     <>
-      <div className="ph">
-        <EzoicPlaceholder id="188" />
-      </div>
+      <EzoicPlaceholder id="188" />
 
       <style jsx>{`
-        .ph {
-          width: 100%;
-        }
-
         .block-msg-wrap {
           display: flex;
           justify-content: center;

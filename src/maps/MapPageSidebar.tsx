@@ -16,7 +16,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
   return (
     <>
       <>
-        <div className="ph spacer ph top">
+        <div className="ph spacer top">
           <SidebarSkyskraperAd />
         </div>
 
@@ -52,8 +52,6 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         }
 
         .ph {
-          width: 100%;
-          display: flex;
         }
       `}</style>
     </>

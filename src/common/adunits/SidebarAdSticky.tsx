@@ -41,7 +41,6 @@ export const SidebarAdSticky: FC = ({}) => {
 
       <style jsx>{`
         .ph {
-          width: 100%;
         }
 
         .block-msg-wrap {

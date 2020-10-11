@@ -19,20 +19,24 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
       <style jsx>{`
         .ad-wrapper {
           background: ${colors.DP03};
-          border-radius: ${Dimensions.BORDER_RADIUS};
-          padding: 5px 0px 5px 0px;
-          width: 100%;
+          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
+          border-top-right-radius: ${Dimensions.BORDER_RADIUS};
           display: flex;
           align-items: center;
           justify-content: space-around;
           flex-direction: column;
+          overflow: hidden;
         }
 
         .ad-label {
           font-size: 10px;
           font-weight: 400;
           width: 100%;
-          padding-left: 5px;
+          text-align: center;
+          padding: 2px;
+          margin: 0px;
+          background: ${colors.DP02};
+          color: ${colors.TEXT};
         }
 
         .ez {
