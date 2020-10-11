@@ -20,7 +20,7 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
         .ad-wrapper {
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};
-          padding: 5px;
+          padding: 5px 0px 5px 0px;
           width: 100%;
           display: flex;
           align-items: center;
@@ -29,10 +29,10 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
         }
 
         .ad-label {
-          display: inline-block;
           font-size: 10px;
           font-weight: 400;
           width: 100%;
+          padding-left: 5px;
         }
 
         .ez {
