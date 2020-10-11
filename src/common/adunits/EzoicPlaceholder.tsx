@@ -18,7 +18,7 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
       </div>
       <style jsx>{`
         .ad-wrapper {
-          background: ${colors.DP02};
+          background: ${colors.DP03};
           border-radius: ${Dimensions.BORDER_RADIUS};
           padding: 5px 0px 5px 0px;
           width: 100%;
