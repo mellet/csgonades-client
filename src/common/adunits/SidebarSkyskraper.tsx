@@ -18,6 +18,7 @@ export const SidebarSkyskraperAd: FC = ({}) => {
 
       <style jsx>{`
         .ph {
+          width: 100%;
         }
 
         .block-msg-wrap {

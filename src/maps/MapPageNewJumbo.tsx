@@ -29,6 +29,7 @@ export const MapPageNewJumbo: FC<Props> = ({ csMap, nades }) => {
           margin-top: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           justify-content: space-between;
+          min-height: 130px;
         }
 
         #welcome {
@@ -37,9 +38,9 @@ export const MapPageNewJumbo: FC<Props> = ({ csMap, nades }) => {
         }
 
         .placeholder {
-          height: 90px;
           max-width: 728px;
           overflow: hidden;
+          width: 100%;
         }
 
         @media only screen and (max-width: 1100px) {

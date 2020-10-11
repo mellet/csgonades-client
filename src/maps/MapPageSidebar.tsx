@@ -54,8 +54,6 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         .ph {
           width: 100%;
           display: flex;
-          justify-content: space-around;
-          align-items: center;
         }
       `}</style>
     </>
