@@ -28,10 +28,6 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
         />
       </div>
 
-      <div className="side-mini-ph">
-        <EzoicPlaceholder id="194" />
-      </div>
-
       <div id="meta">
         <NadeMeta
           type={nade.type}
