@@ -82,6 +82,9 @@ const List: FC<Props<any>> = memo(
             display: flex;
             align-items: center;
             justify-content: center;
+            background: ${colors.DP02};
+            border-radius: ${Dimensions.BORDER_RADIUS};
+            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 
           @media only screen and (max-width: 1020px) {
