@@ -288,7 +288,7 @@ export const CreateNadePage: FC = ({}) => {
           right: 0;
           bottom: 0;
           background: rgba(0, 0, 0, 0.9);
-          z-index: 999;
+          z-index: 1000;
           overflow-y: auto;
         }
 
