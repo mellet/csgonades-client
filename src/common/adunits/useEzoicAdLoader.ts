@@ -34,6 +34,7 @@ const loadAds = async () => {
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
+        ez.setIsPWA();
         ez.define(adIds);
         ez.enable();
         ez.display();
