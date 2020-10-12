@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { Dimensions } from "../../constants/Constants";
 import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
 type Props = {
@@ -64,8 +64,6 @@ type AdUnitProps = {
 };
 
 const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
-  const { colors } = useTheme();
-
   const order = useMemo(() => {
     return 5 + 5 * position;
   }, [position]);
@@ -79,13 +77,10 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
         .ph-inlist {
           grid-row: ${order} / ${order + 1};
           grid-column: 2;
-          max-height: 263px;
-          background: ${colors.DP02};
-          border-radius: 5px;
-          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         @media only screen and (max-width: 1020px) {
