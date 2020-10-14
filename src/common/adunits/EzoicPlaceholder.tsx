@@ -12,11 +12,20 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
   const ezoicId = `ezoic-pub-ad-placeholder-${id}`;
   return (
     <>
-      <div className="ad-wrapper">
-        <div className="ad-label">ADVERTISEMENT</div>
-        <div className="ez" id={ezoicId} />
+      <div className="ad-center">
+        <div className="ad-wrapper">
+          <div className="ad-label">ADVERTISEMENT</div>
+          <div className="ez" id={ezoicId} />
+        </div>
       </div>
       <style jsx>{`
+        .ad-center {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+        }
+
         .ad-wrapper {
           background: ${colors.DP03};
           border-top-left-radius: ${Dimensions.BORDER_RADIUS};
