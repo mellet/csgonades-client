@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/camelcase */
 
 declare namespace ezstandalone {
   let useHost: boolean;
@@ -8,8 +7,9 @@ declare namespace ezstandalone {
   let DEBUG: boolean;
   let hasDisplayedAds: boolean;
   let initialized: boolean;
-  let cmd: Function[];
+  let cmd: { push: (cb: () => void) => void };
   let selectedPlaceholders: { [key: string]: boolean };
+  let targetingMap: { [key: string]: string };
   function define(...args: any): void;
   function enable(): void;
   function display(): void;
@@ -36,7 +36,7 @@ declare namespace ezstandalone {
     callDisplay?: boolean,
     callDefine?: boolean,
     newPageview?: boolean,
-    callback?: Function
+    callback?: () => void
   ): void;
   function loadMore(slots: number[]): void;
   function load(): void;

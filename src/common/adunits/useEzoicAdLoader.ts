@@ -34,7 +34,7 @@ const loadAds = async () => {
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
-        //ez.setIsPWA();
+        ez.targetingMap = createTargetingMap();
         ez.define(adIds);
         ez.enable();
         ez.display();
@@ -64,3 +64,7 @@ const findAdUnits = () => {
 };
 
 // const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const createTargetingMap = (): { [key: string]: string } => ({
+  interests: "gaming",
+});
