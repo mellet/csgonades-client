@@ -4,7 +4,7 @@ import { useIsAdminOrModerator } from "../store/AuthStore/AuthHooks";
 import { useAdminRoute } from "../store2/AdminStore/hooks";
 import { AdminNav } from "./AdminNav";
 import { AdminPendingNades } from "./AdminPendingNades";
-import { AdminReports } from "./AdminReports";
+import { AdminReports } from "./reports/AdminReports";
 import { AdminUsers } from "./AdminUsers";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { AdminDeclined } from "./AdminDeclined";

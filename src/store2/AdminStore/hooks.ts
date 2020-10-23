@@ -5,6 +5,7 @@ import { UserApi } from "../../api/UserApi";
 import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
 import { NadeApi } from "../../api/NadeApi";
 import { NadeLight } from "../../models/Nade/Nade";
+import { ReportApi } from "../../api/ReportApi";
 
 export const useAdminRoute = () => {
   const { dispatch, state } = useContext(AdminStoreContext);
@@ -46,7 +47,30 @@ export const useAdminPendingNades = () => {
 };
 
 export const useAdminReports = () => {
-  const { state } = useContext(AdminStoreContext);
+  const getToken = useGetOrUpdateToken();
+  const { state, dispatch } = useContext(AdminStoreContext);
+
+  useEffect(() => {
+    (async () => {
+      const token = await getToken();
+      if (!token) {
+        return;
+      }
+      const res = await ReportApi.getAll(token);
+      if (res.isOk()) {
+        console.log({
+          reports: res.value,
+        });
+
+        dispatch({
+          type: "@@admin/ADD_REPORTS",
+          reports: res.value,
+        });
+      } else {
+        console.error("Failed to fetch reports");
+      }
+    })();
+  }, []);
 
   return {
     reports: state.reports,
