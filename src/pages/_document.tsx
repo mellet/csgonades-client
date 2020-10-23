@@ -48,6 +48,13 @@ class MyDocument extends Document {
             <script src="//www.ezojs.com/ezoic/sa.min.js" />
           </Head>
           <body id="app">
+            <div
+              hidden
+              dangerouslySetInnerHTML={{
+                __html:
+                  '<span hidden className="ezTargeting" name="interest" value="gaming"></span>',
+              }}
+            ></div>
             <Main />
             <NextScript />
           </body>
