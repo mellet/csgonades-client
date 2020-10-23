@@ -29,12 +29,13 @@ const loadAds = async () => {
 
     if (ez.hasDisplayedAds) {
       const adIds = findAdUnits();
+
       ez.define(adIds);
       ez.refresh();
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
-        ez.targetingMap = createTargetingMap();
+        ez.setEzoicAnchorAd(false);
         ez.define(adIds);
         ez.enable();
         ez.display();
@@ -64,7 +65,3 @@ const findAdUnits = () => {
 };
 
 // const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const createTargetingMap = (): { [key: string]: string } => ({
-  interests: "gaming",
-});

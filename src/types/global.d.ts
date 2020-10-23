@@ -51,4 +51,5 @@ declare namespace ezstandalone {
   function get_cors(): void;
   function setDisablePersonalizedStatistics(): void;
   function setDisablePersonalizedAds(): void;
+  function setEzoicAnchorAd(val: boolean): void;
 }
