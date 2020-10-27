@@ -38,7 +38,7 @@ export const CookieConsent: FC = memo(() => {
 
           <div className="consent-txt">
             In order to give you a better service CSGO Nades uses{" "}
-            <a href="/policy">cookies</a> for analytics and advertising.
+            <a href="/privacypolicy">cookies</a> for analytics and advertising.
             <br /> By continuing to browse the site you are agreeing to our use
             of cookies.
           </div>
