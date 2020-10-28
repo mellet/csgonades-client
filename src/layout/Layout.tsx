@@ -184,9 +184,11 @@ const useGlobalAnalyticsEvents = () => {
   const onExitingSite = () => {
     event({
       category: "Tracking",
-      action: `Nades visited ${numNadesVisited}`,
+      action: "NumNadesVisited",
+      value: numNadesVisited,
       nonInteraction: true,
     });
+    console.log("> NadesVisisted", numNadesVisited);
   };
 
   useEffect(() => {
