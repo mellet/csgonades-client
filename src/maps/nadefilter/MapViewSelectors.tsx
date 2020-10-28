@@ -3,7 +3,6 @@ import { useSetMapView } from "../../store/MapStore/hooks/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { useShowViewSelectorHint } from "../../store/GlobalStore/hooks/useShowViewSelectorHint";
 
 type Props = {
   vertical?: boolean;
@@ -12,16 +11,9 @@ type Props = {
 export const MapViewSelector: FC<Props> = ({ vertical }) => {
   const { colors } = useTheme();
   const { mapView, setMapView } = useSetMapView();
-  const {
-    shouldShowViewSelectorHint,
-    hideViewSelectorHint,
-  } = useShowViewSelectorHint();
 
   function onSwitchToOverview() {
     setMapView("overview");
-    if (shouldShowViewSelectorHint) {
-      hideViewSelectorHint();
-    }
   }
 
   return (
