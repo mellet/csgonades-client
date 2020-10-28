@@ -183,8 +183,10 @@ const useGlobalAnalyticsEvents = () => {
 
   const onExitingSite = () => {
     event({
-      category: "Exit Event",
-      action: `Num Nades Visisted(${numNadesVisited})`,
+      category: "CloseAnalytics",
+      action: "Num Nades Visited",
+      label: `Value(${numNadesVisited})`,
+      value: numNadesVisited,
       nonInteraction: true,
     });
   };
