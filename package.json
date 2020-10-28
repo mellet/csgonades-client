@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^9.5.3",
+    "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.20.0",
     "cross-env": "^7.0.2",
     "nanoid": "^3.1.12",

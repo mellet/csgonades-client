@@ -9,6 +9,7 @@ import { ToastReducer } from "./ToastStore/ToastReducer";
 import { MapStoreReducer } from "./MapStore/reducer";
 import { AdReducer } from "./AdStore/reducer";
 import { VoteReducer } from "./VoteStore/VoteReducer";
+import TrackerReducer from "../features/tracker/TrackerSlice";
 
 const rootReducer = combineReducers({
   authStore: AuthReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   mapStore: MapStoreReducer,
   adStore: AdReducer,
   voteStore: VoteReducer,
+  trackerStore: TrackerReducer,
 });
 
 function createMiddleware() {

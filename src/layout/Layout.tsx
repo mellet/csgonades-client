@@ -1,8 +1,8 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import { ToastList } from "../common/toast/ToastList";
 import { usePreloadUser } from "../store/AuthStore/AuthHooks";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { usePageView } from "../utils/Analytics";
+import { useAnalytics, usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -14,9 +14,11 @@ import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
+import { useNumNadesVisited } from "../features/tracker/useTracker";
 
-export const Layout2: FC = memo(({ children }) => {
+export const Layout: FC = memo(({ children }) => {
   const { colors } = useTheme();
+  useGlobalAnalyticsEvents();
   useSetupSession();
   usePageView();
   usePreloadUser();
@@ -174,3 +176,25 @@ export const Layout2: FC = memo(({ children }) => {
     </>
   );
 });
+
+const useGlobalAnalyticsEvents = () => {
+  const { event } = useAnalytics();
+  const numNadesVisited = useNumNadesVisited();
+
+  const onExitingSite = () => {
+    event({
+      category: "Tracking",
+      action: "Num nades visisted",
+      value: numNadesVisited,
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", onExitingSite);
+
+    return () => {
+      window.removeEventListener("beforeunload", onExitingSite);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [numNadesVisited]);
+};

@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import { NadeTitle } from "./components/NadeTitle";
 import { SEO } from "../layout/SEO";
 import { NadeInfoContainer } from "./NadeInfoContainer";
@@ -19,6 +19,7 @@ import { TickWarning } from "./components/TickWarning";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { NadePageSidebar } from "./NadePageSidebar";
+import { useIncrementNumNadesVisisted } from "../features/tracker/useTracker";
 
 type Props = {
   nade: Nade;
@@ -26,8 +27,14 @@ type Props = {
 };
 
 export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
+  const incrementNumNadesVisisted = useIncrementNumNadesVisisted();
   const { colors } = useTheme();
   const canEdit = useCanEditNade(nade.steamId);
+
+  useEffect(() => {
+    incrementNumNadesVisisted();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [layoutTitle, subTitle] = generateNadeItemTitle(
     nade.title,

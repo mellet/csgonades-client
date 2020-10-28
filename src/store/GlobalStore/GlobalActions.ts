@@ -1,59 +1,28 @@
 import { SiteStats } from "../../api/StatsApi";
-
-type AddSiteStats = {
-  readonly type: "Global/AddSiteStats";
-  readonly stats: SiteStats;
-};
-
-type ToggleNavigation = {
-  readonly type: "Global/ToggleNavigation";
-};
-
-type CloseNavigation = {
-  readonly type: "Global/CloseNavigation";
-};
-
-type AcceptCookieConcent = {
-  readonly type: "Global/AcceptCookieConcent";
-};
-
-type HideViewSelectorHint = {
-  type: "Global/HideViewSelectorHint";
-};
+import { createAction } from "@reduxjs/toolkit";
 
 export type SignInWarningType = "favorite" | "filterpro" | "vote";
 
-type SetSignInWarning = {
-  type: "Global/SetSignInWarning";
-  warningType: SignInWarningType;
-};
+export const toggleNavigationAction = createAction<void>(
+  "Global/ToggleNavigation"
+);
 
-type ClearSignInWarning = {
-  type: "Global/ClearSignInWarning";
-};
+export const addSiteStatsAction = createAction<SiteStats>(
+  "Global/AddSiteStats"
+);
 
-export type GlobalActions =
-  | AddSiteStats
-  | ToggleNavigation
-  | CloseNavigation
-  | AcceptCookieConcent
-  | HideViewSelectorHint
-  | SetSignInWarning
-  | ClearSignInWarning;
+export const acceptCookieConcentAction = createAction<void>(
+  "Global/AcceptCookieConcent"
+);
 
-export const addSiteStatsActon = (stats: SiteStats): AddSiteStats => ({
-  type: "Global/AddSiteStats",
-  stats,
-});
+export const closeNavigationAction = createAction<void>(
+  "Global/CloseNavigation"
+);
 
-export const acceptCookieConcentAction = (): AcceptCookieConcent => ({
-  type: "Global/AcceptCookieConcent",
-});
+export const displaySignInWarningAction = createAction<SignInWarningType>(
+  "Global/DisplaySignInWarning"
+);
 
-export const toggleNavigationAction = (): ToggleNavigation => ({
-  type: "Global/ToggleNavigation",
-});
-
-export const closeNavigationAction = (): CloseNavigation => ({
-  type: "Global/CloseNavigation",
-});
+export const clearSignInWarningAction = createAction<void>(
+  "Global/ClearSignInWarning"
+);
