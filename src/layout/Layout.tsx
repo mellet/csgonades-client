@@ -188,7 +188,6 @@ const useGlobalAnalyticsEvents = () => {
       value: numNadesVisited,
       nonInteraction: true,
     });
-    console.log("> NadesVisisted", numNadesVisited);
   };
 
   useEffect(() => {
