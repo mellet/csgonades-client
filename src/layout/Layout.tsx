@@ -186,7 +186,7 @@ const useGlobalAnalyticsEvents = () => {
       category: "Tracking",
       action: "Num nades visisted",
       value: numNadesVisited,
-      label: `${numNadesVisited}`,
+      label: `Num: ${numNadesVisited}`,
       nonInteraction: true,
     });
     console.log("> NadesVisisted", numNadesVisited);
