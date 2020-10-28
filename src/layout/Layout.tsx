@@ -185,7 +185,6 @@ const useGlobalAnalyticsEvents = () => {
     event({
       category: "Exit Event",
       action: "Num Nades Visited",
-      label: `Value(${numNadesVisited})`,
       value: numNadesVisited,
       nonInteraction: true,
     });
