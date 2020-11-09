@@ -49,8 +49,8 @@ const loadAds = async () => {
       ez.define(adIds);
       //@ts-ignore
       ez.displayMore(adIds);
-      ez.refresh();
-      console.log("> ez refresh", adIds);
+      //ez.refresh();
+      console.log("> ez load more", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
