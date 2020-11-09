@@ -33,7 +33,6 @@ const destroyAds = async () => {
 };
 
 const loadAds = async () => {
-  await sleep(500);
   try {
     const ez = ezstandalone || {};
 
@@ -45,12 +44,12 @@ const loadAds = async () => {
 
     if (ez.hasDisplayedAds) {
       const adIds = findAdUnits();
-
-      //ez.define(adIds);
-      //@ts-ignore
+      // @ts-ignore
       ez.displayMore(adIds);
-      //ez.refresh();
-      console.log("> ez load more", adIds);
+      await sleep(500);
+      ez.define(adIds);
+      ez.refresh();
+      console.log("> ez refresh", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
