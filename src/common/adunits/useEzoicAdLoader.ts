@@ -29,20 +29,20 @@ const loadAds = async () => {
 
     if (ez.hasDisplayedAds) {
       const adIds = findAdUnits();
-
       ez.define(adIds);
       ez.refresh();
+      console.log("> ez refresh", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
-        ez.setEzoicAnchorAd(false);
         ez.define(adIds);
         ez.enable();
         ez.display();
+        console.log("> ez display", adIds);
       });
     }
   } catch (error) {
-    console.warn(error);
+    console.warn("> ez err", error);
   }
 };
 
