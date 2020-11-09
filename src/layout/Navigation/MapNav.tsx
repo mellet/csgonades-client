@@ -5,11 +5,13 @@ import { useRouter } from "next/router";
 import { MapPageLink } from "./MapNavLink";
 import { Dimensions } from "../../constants/Constants";
 import { ThemeToggler } from "../Misc/ThemeToggler";
+import { NavItem } from "./NavItem";
+import { CsgoMap } from "../../models/Nade/CsGoMap";
 
 export const MapNav: FC = () => {
   const { colors } = useTheme();
   const { query } = useRouter();
-  const selectedMap = query.map as string;
+  const selectedMap = query.map as CsgoMap;
 
   return (
     <>
@@ -20,130 +22,73 @@ export const MapNav: FC = () => {
               <ul>
                 <li>
                   <MapPageLink map="mirage">
-                    <span
-                      className={
-                        selectedMap === "mirage"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon mirage-icon"></span>
-                      <span className="map-link-label">Mirage</span>
-                    </span>
+                    <NavItem
+                      csMap={"mirage"}
+                      selected={selectedMap === "mirage"}
+                    />
                   </MapPageLink>
                 </li>
 
                 <li>
                   <MapPageLink map="inferno">
-                    <span
-                      className={
-                        selectedMap === "inferno"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon inferno-icon"></span>
-                      <span className="map-link-label">Inferno</span>
-                    </span>
+                    <NavItem
+                      csMap={"inferno"}
+                      selected={selectedMap === "inferno"}
+                    />
                   </MapPageLink>
                 </li>
                 <li>
                   <MapPageLink map="dust2">
-                    <span
-                      className={
-                        selectedMap === "dust2"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon dust2-icon"></span>
-                      <span className="map-link-label">Dust2</span>
-                    </span>
+                    <NavItem
+                      csMap={"dust2"}
+                      selected={selectedMap === "dust2"}
+                    />
                   </MapPageLink>
                 </li>
                 <li>
                   <MapPageLink map="overpass">
-                    <span
-                      className={
-                        selectedMap === "overpass"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon overpass-icon"></span>
-                      <span className="map-link-label">Overpass</span>
-                    </span>
+                    <NavItem
+                      csMap={"overpass"}
+                      selected={selectedMap === "overpass"}
+                    />
                   </MapPageLink>
                 </li>
                 <li>
                   <MapPageLink map="cache">
-                    <span
-                      className={
-                        selectedMap === "cache"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon cache-icon"></span>
-                      <span className="map-link-label">Cache</span>
-                    </span>
+                    <NavItem
+                      csMap={"cache"}
+                      selected={selectedMap === "cache"}
+                    />
                   </MapPageLink>
                 </li>
                 <li>
                   <MapPageLink map="train">
-                    <span
-                      className={
-                        selectedMap === "train"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon train-icon"></span>
-                      <span className="map-link-label">Train</span>
-                    </span>
+                    <NavItem
+                      csMap={"train"}
+                      selected={selectedMap === "train"}
+                    />
                   </MapPageLink>
                 </li>
 
                 <li>
                   <MapPageLink map="nuke">
-                    <span
-                      className={
-                        selectedMap === "nuke"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon nuke-icon"></span>
-                      <span className="map-link-label">Nuke</span>
-                    </span>
+                    <NavItem csMap={"nuke"} selected={selectedMap === "nuke"} />
                   </MapPageLink>
                 </li>
                 <li>
                   <MapPageLink map="vertigo">
-                    <span
-                      className={
-                        selectedMap === "vertigo"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon vertigo-icon"></span>
-                      <span className="map-link-label">Vertigo</span>
-                    </span>
+                    <NavItem
+                      csMap={"vertigo"}
+                      selected={selectedMap === "vertigo"}
+                    />
                   </MapPageLink>
                 </li>
                 <li>
                   <MapPageLink map="anubis">
-                    <span
-                      className={
-                        selectedMap === "anubis"
-                          ? "map-link selected"
-                          : "map-link"
-                      }
-                    >
-                      <span className="nav-icon anubis-icon"></span>
-                      <span className="map-link-label">Anubis</span>
-                    </span>
+                    <NavItem
+                      csMap={"anubis"}
+                      selected={selectedMap === "anubis"}
+                    />
                   </MapPageLink>
                 </li>
               </ul>
@@ -171,9 +116,6 @@ export const MapNav: FC = () => {
           height: ${Dimensions.NAV_HEIGHT}px;
         }
 
-        #map-nav {
-        }
-
         ul {
           list-style: none;
           margin: 0;
@@ -182,95 +124,6 @@ export const MapNav: FC = () => {
         }
 
         ul li {
-        }
-
-        .map-link {
-          display: flex;
-          font-size: 14px;
-          font-weight: 400;
-          transition: background 0.1s;
-          height: 100%;
-          border-radius: 10px;
-          background: transparent;
-          color: #111;
-          margin-right: 10px;
-          align-items: center;
-          color: rgb(88, 102, 126);
-          font-weight: 400;
-        }
-
-        .map-link:hover {
-          background: ${colors.DP01};
-        }
-
-        .map-link:hover > .nav-icon {
-          opacity: 1;
-        }
-
-        .selected {
-          background: ${colors.DP01};
-          color: ${colors.TEXT};
-        }
-
-        .map-link-label {
-          padding: 6px;
-          color: ${colors.TEXT};
-          opacity: 0.8;
-        }
-
-        .selected .nav-icon {
-          opacity: 1;
-        }
-
-        .selected .map-link-label {
-          opacity: 1;
-        }
-
-        .mirage-icon {
-          background: url("/mapicons/mirage.png");
-        }
-
-        .inferno-icon {
-          background: url("/mapicons/inferno.png");
-        }
-
-        .dust2-icon {
-          background: url("/mapicons/dust2.png");
-        }
-
-        .overpass-icon {
-          background: url("/mapicons/overpass.png");
-        }
-
-        .cache-icon {
-          background: url("/mapicons/cache.png");
-        }
-
-        .train-icon {
-          background: url("/mapicons/train.png");
-        }
-
-        .nuke-icon {
-          background: url("/mapicons/nuke.png");
-        }
-
-        .vertigo-icon {
-          background: url("/mapicons/vertigo.png");
-        }
-
-        .anubis-icon {
-          background: url("/mapicons/anubis.png");
-        }
-
-        .nav-icon {
-          width: 22px;
-          height: 22px;
-          margin-left: 6px;
-          border-radius: 50%;
-          opacity: 0.7;
-          border: 1px solid ${colors.PRIMARY};
-          background-size: 125%;
-          background-position: center;
         }
       `}</style>
     </>
