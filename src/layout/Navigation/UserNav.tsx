@@ -6,7 +6,7 @@ import { SignInnButton } from "../Misc/SignInnButton";
 import { UserDropdown } from "../Misc/UserDropdown";
 import { Dimensions } from "../../constants/Constants";
 
-export const UserNav: FC = memo(() => {
+const UserNav: FC = memo(() => {
   const user = useSelector(userSelector);
 
   if (!user) {
@@ -42,3 +42,5 @@ export const UserNav: FC = memo(() => {
     );
   }
 });
+
+export default UserNav;

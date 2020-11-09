@@ -1,11 +1,13 @@
-import { FC, memo } from "react";
+import React, { FC, memo, Suspense } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Hamburger } from "./Misc/Hamburger";
 import { Logo } from "./Misc/Logo";
 import { SiteNav } from "./Navigation/SiteNav";
-import { UserNav } from "./Navigation/UserNav";
 import { Dimensions } from "../constants/Constants";
 import { PageCentralize } from "../common/PageCentralize";
+
+const UserNav = React.lazy(() => import("./Navigation/UserNav"));
+const isServer = typeof window === "undefined";
 
 export const Header: FC = memo(() => {
   const { colors } = useTheme();
@@ -20,7 +22,11 @@ export const Header: FC = memo(() => {
 
             <div className="spacer"></div>
             <SiteNav />
-            <UserNav />
+            {!isServer && (
+              <Suspense fallback={<div />}>
+                <UserNav />
+              </Suspense>
+            )}
           </div>
         </PageCentralize>
       </div>
