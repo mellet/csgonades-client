@@ -97,7 +97,7 @@ export const AddGfycat: FC<Props> = ({ addGfycat, clearError, onError }) => {
             label="Gfycat Url"
             loading={loading}
             value={gfyValue}
-            onChange={e => {
+            onChange={(e) => {
               setGfyValue(e.target.value);
             }}
           />

@@ -1,6 +1,7 @@
 import { FC, memo, useMemo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { PageLink } from "../../common/PageLink";
+import Image from "next/image";
 
 export const Logo: FC = memo(() => {
   const { theme } = useTheme();
@@ -12,18 +13,20 @@ export const Logo: FC = memo(() => {
   return (
     <>
       <PageLink href="/" as="/">
-        <div id="logo">
-          <img key={logoUrl} src={logoUrl} alt="CSGO Nades" />
+        <div key={logoUrl} id="logo">
+          <Image
+            priority
+            src={logoUrl}
+            height={35}
+            width={55}
+            alt="CSGO Nades"
+          />
         </div>
       </PageLink>
       <style jsx>{`
         #logo {
           display: block;
-        }
-
-        #logo img {
           height: 35px;
-          display: block;
         }
       `}</style>
     </>
