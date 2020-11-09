@@ -10,14 +10,30 @@ export const useEzoidAdLoader = (): void => {
 
     loadAds();
 
+    router.events.on("routeChangeStart", destroyAds);
     router.events.on("routeChangeComplete", loadAds);
 
-    return () => router.events.off("routeChangeComplete", loadAds);
+    return () => {
+      router.events.off("routeChangeComplete", loadAds);
+      router.events.off("routeChangeStart", destroyAds);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
+const destroyAds = async () => {
+  try {
+    const ez = ezstandalone || {};
+
+    ez.destroy();
+    console.log("> cleared ads");
+  } catch (e) {
+    // no-op
+  }
+};
+
 const loadAds = async () => {
+  await sleep(500);
   try {
     const ez = ezstandalone || {};
 
@@ -64,4 +80,4 @@ const findAdUnits = () => {
   return ids;
 };
 
-// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
