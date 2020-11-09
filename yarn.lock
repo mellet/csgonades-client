@@ -2043,10 +2043,10 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-axios@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
-  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+axios@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
+  integrity sha512-fmkJBknJKoZwem3/IKSSLpkdNXZeBu5Q7GA/aRsr2btgrptmSCxi2oFjZHqGdK9DoTil9PIHlPIZw2EcRJXRvw==
   dependencies:
     follow-redirects "^1.10.0"
 
@@ -5294,10 +5294,10 @@ next-redux-wrapper@^6.0.2:
   resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-6.0.2.tgz#b8dcd214e7b5cedd7a2a611ddb60422384d24374"
   integrity sha512-I9CnIYhQwI/qEoNdc9VAPjIyuq4rFFhCTa4rKhoDHWEVHGB1DXZy8TAyGpwvWizESd8IoTI/OKlP6bFpCbXsOw==
 
-next-seo@^4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.7.3.tgz#8da82dca4f425c84392c4a8462f215dfcb4195b0"
-  integrity sha512-hEl6fVbYU6h0EqGTqsVM3aEbn+ejlV7JjjIRLzT8at5TDxXQWs1Ypd0UA9oalHfVo7rDbWawD9rrvMe+PWl4kw==
+next-seo@^4.15.1:
+  version "4.15.1"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.15.1.tgz#d1cb51615739690040110b581bfb51d979307a1f"
+  integrity sha512-jRYUOKbSFirwNRTaYFThu0BLBA1oWJIUq076QQ8uXBP6GG6Eh2/aPcXDoeOt33S1qghTJ60MwW1BkCbN889MIg==
 
 next-tick@~1.0.0:
   version "1.0.0"
@@ -6242,10 +6242,10 @@ react-dom@^17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.1"
 
-react-ga@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.1.2.tgz#e13f211c51a2e5c401ea69cf094b9501fe3c51ce"
-  integrity sha512-OJrMqaHEHbodm+XsnjA6ISBEHTwvpFrxco65mctzl/v3CASMSLSyUkFqz9yYrPDKGBUfNQzKCjuMJwctjlWBbw==
+react-ga@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.2.0.tgz#a8ea91e8e681f49d30afcee72d71fc5c71b67d57"
+  integrity sha512-YHHG5QIzRdDToB9ST1/BrGQhLZPzkrNjoeTu3SZLgwdqzeA9F2XOStuOGXAp1ak/SAo9pyR1Uo/hY0C5wZwfqA==
 
 react-icons@^3.11.0:
   version "3.11.0"

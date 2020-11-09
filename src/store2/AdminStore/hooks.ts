@@ -58,10 +58,6 @@ export const useAdminReports = () => {
       }
       const res = await ReportApi.getAll(token);
       if (res.isOk()) {
-        console.log({
-          reports: res.value,
-        });
-
         dispatch({
           type: "@@admin/ADD_REPORTS",
           reports: res.value,

@@ -7,6 +7,9 @@ const base = {
   typescript: {
     ignoreDevErrors: true,
   },
+  images: {
+    domains: ["storage.googleapis.com"],
+  },
 };
 
 module.exports = withBundleAnalyzer(base);

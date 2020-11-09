@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
 import { MiniGfycatIframe } from "./MiniGfycatIframe";
+import Image from "next/image";
 
 type Props = {
   disableAction?: boolean;
@@ -52,12 +52,14 @@ export const GfycatThumbnail: FC<Props> = ({
       >
         <div className="front">
           {thumbnailUrl && (
-            <LazyLoadImage
-              effect="blur"
-              alt={`nade thumbnail`}
-              src={thumbnailUrl} // use normal <img> attributes as props
-              width={"100%"}
-            />
+            <div className="thumb-img">
+              <Image
+                src={thumbnailUrl}
+                width={400}
+                height={400 * (9 / 16)}
+                alt="nade thumbnail"
+              />
+            </div>
           )}
         </div>
 
@@ -79,7 +81,7 @@ export const GfycatThumbnail: FC<Props> = ({
         </div>
       </div>
       <style jsx global>{`
-        .front img {
+        .thumb-img {
           filter: saturate(115%) brightness(105%);
         }
       `}</style>
@@ -134,11 +136,6 @@ export const GfycatThumbnail: FC<Props> = ({
         .video-icon {
           color: rgba(0, 0, 0, 0.5);
           font-size: 0.7em;
-        }
-
-        .front img {
-          width: 100%;
-          display: block;
         }
 
         .back {

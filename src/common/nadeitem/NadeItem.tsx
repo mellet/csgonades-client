@@ -64,6 +64,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
           overflow: hidden;
           width: 100%;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          min-width: 250px;
         }
 
         .nadebox:hover {
