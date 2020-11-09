@@ -25,7 +25,6 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
               height={imgSize}
               layout="fixed"
               alt="Mirage icon"
-              style={{}}
             />
           </div>
         </div>

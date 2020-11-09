@@ -1,6 +1,5 @@
 import "../utils/css/normalize.css";
 import "semantic-ui-css/semantic.min.css";
-import "react-image-crop/dist/ReactCrop.css";
 import "../utils/css/Global.css";
 import { Layout } from "../layout/Layout";
 import { withRedux } from "../utils/WithRedux";

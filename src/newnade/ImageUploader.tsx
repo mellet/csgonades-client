@@ -1,8 +1,9 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useRef, useState, FC } from "react";
 import ReactCrop from "react-image-crop";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 import { useWindowSize } from "../common/MinSizeRender";
+import "react-image-crop/dist/ReactCrop.css";
 
 type AspectRatio = "1:1" | "16:9";
 
@@ -13,7 +14,7 @@ type Props = {
   onImageCropped: (croppedImageBase64: string) => void;
 };
 
-export const ImageUploader = ({
+export const ImageUploader: FC<Props> = ({
   onImageCropped,
   onDismiss,
   aspectRatio,
