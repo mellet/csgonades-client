@@ -25,5 +25,5 @@ export const useDisplayToast = () => {
 
 const notificationDeleteDelay = (seconds?: number) => {
   const time = seconds ? seconds * 1000 : 8 * 1000;
-  return new Promise((resolve) => setTimeout(() => resolve(), time));
+  return new Promise<void>((resolve) => setTimeout(() => resolve(), time));
 };
