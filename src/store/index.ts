@@ -8,7 +8,6 @@ import { PersistedSettingsReducer } from "./SettingsStore/SettingsReducer";
 import { ToastReducer } from "./ToastStore/ToastReducer";
 import { MapStoreReducer } from "./MapStore/reducer";
 import { AdReducer } from "./AdStore/reducer";
-import { VoteReducer } from "./VoteStore/VoteReducer";
 import TrackerReducer from "../features/tracker/TrackerSlice";
 
 const rootReducer = combineReducers({
@@ -20,7 +19,6 @@ const rootReducer = combineReducers({
   settingsStore: PersistedSettingsReducer,
   mapStore: MapStoreReducer,
   adStore: AdReducer,
-  voteStore: VoteReducer,
   trackerStore: TrackerReducer,
 });
 

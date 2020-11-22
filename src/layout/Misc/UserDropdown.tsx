@@ -1,10 +1,9 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { User } from "../../models/User";
 import { useSignOut } from "../../store/AuthStore/AuthHooks";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Dropdown } from "semantic-ui-react";
 import { useRouter } from "next/router";
-import { useVotes } from "../../store/VoteStore/hooks/useVotes";
 
 type Props = {
   user: User;
@@ -12,14 +11,8 @@ type Props = {
 
 export const UserDropdown: FC<Props> = ({ user }) => {
   const router = useRouter();
-  const { fetchVotes } = useVotes();
   const { colors } = useTheme();
   const signOut = useSignOut();
-
-  useEffect(() => {
-    fetchVotes();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   function onDashboardClick() {
     router.push("/dashboard", "/dashboard");
