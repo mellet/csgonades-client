@@ -1,5 +1,5 @@
 import React, { FC, useReducer } from "react";
-import { Nade } from "../../models/Nade/Nade";
+import { Nade } from "../../nade-data/Nade/Nade";
 import { NadeActions } from "./actions";
 import {
   nadePageInitialState,
@@ -12,8 +12,7 @@ type ContextApi = {
   dispatch: React.Dispatch<NadeActions>;
 };
 
-// @ts-ignore
-export const NadePageStoreContext = React.createContext<ContextApi>(null);
+export let NadePageStoreContext: React.Context<ContextApi>;
 
 type Props = {
   nade: Nade;
@@ -26,6 +25,8 @@ export const NadePageStoreProvider: FC<Props> = ({ children, nade }) => {
   });
 
   const value = { state, dispatch };
+
+  NadePageStoreContext = React.createContext<ContextApi>(value);
 
   return (
     <NadePageStoreContext.Provider value={value}>

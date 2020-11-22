@@ -1,9 +1,9 @@
 import { Reducer } from "redux";
 import { MapStoreActions } from "./actions";
-import { NadeLight, MapCoordinates } from "../../models/Nade/Nade";
-import { CsgoMap } from "../../models/Nade/CsGoMap";
-import { NadeType } from "../../models/Nade/NadeType";
-import { Tickrate } from "../../models/Nade/NadeTickrate";
+import { NadeLight, MapCoordinates } from "../../nade-data/Nade/Nade";
+import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
+import { NadeType } from "../../nade-data/Nade/NadeType";
+import { Tickrate } from "../../nade-data/Nade/NadeTickrate";
 import { PersistConfig, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import {

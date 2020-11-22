@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react";
-import { NadeLight } from "../../models/Nade/Nade";
-import { NadeType } from "../../models/Nade/NadeType";
+import { NadeLight } from "../../nade-data/Nade/Nade";
+import { NadeType } from "../../nade-data/Nade/NadeType";
 
 type Props = {
   nade: NadeLight;

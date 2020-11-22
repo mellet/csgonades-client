@@ -4,19 +4,19 @@ import {
   Nade,
   MapCoordinates,
   NadeUpdateBody,
-} from "../../models/Nade/Nade";
-import { Status } from "../../models/Nade/Status";
-import { CsgoMap } from "../../models/Nade/CsGoMap";
-import { GfycatData } from "../../models/Nade/GfycatData";
-import { NadeType } from "../../models/Nade/NadeType";
-import { Movement } from "../../models/Nade/NadeMovement";
-import { Technique } from "../../models/Nade/Technique";
+} from "../../nade-data/Nade/Nade";
+import { Status } from "../../nade-data/Nade/Status";
+import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
+import { GfycatData } from "../../nade-data/Nade/GfycatData";
+import { NadeType } from "../../nade-data/Nade/NadeType";
+import { Movement } from "../../nade-data/Nade/NadeMovement";
+import { Technique } from "../../nade-data/Nade/Technique";
 import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
-import { NadeApi } from "../../api/NadeApi";
+import { NadeApi } from "../../nade-data/NadeApi";
 import { useRouter } from "next/router";
 import { assertNever } from "../../utils/Common";
-import { Tickrate } from "../../models/Nade/NadeTickrate";
+import { Tickrate } from "../../nade-data/Nade/NadeTickrate";
 
 interface EditNadeState extends Partial<NadeCreateBody> {
   originalNade: Nade;

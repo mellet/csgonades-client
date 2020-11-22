@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, useMemo } from "react";
-import { NadeLight } from "../models/Nade/Nade";
-import { Status } from "../models/Nade/Status";
-import { NadeApi } from "../api/NadeApi";
+import { NadeLight } from "../nade-data/Nade/Nade";
+import { Status } from "../nade-data/Nade/Status";
+import { NadeApi } from "../nade-data/NadeApi";
 import { useSignedInUser } from "../store/AuthStore/AuthHooks";
 import { sortByDate, generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../common/PageLink";

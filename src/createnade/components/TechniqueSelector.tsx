@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { MiniLabel } from "./MiniLabel";
 import { CsGnDropdown } from "./CsGnDropdown";
-import { Technique, nadeTechniqueOptions } from "../../models/Nade/Technique";
+import {
+  Technique,
+  nadeTechniqueOptions,
+} from "../../nade-data/Nade/Technique";
 
 type Props = {
   defaultValue?: Technique;

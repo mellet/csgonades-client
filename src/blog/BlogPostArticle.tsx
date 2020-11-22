@@ -4,7 +4,7 @@ import { BlogPost } from "./BlogPost";
 import { Dimensions } from "../constants/Constants";
 import { prettyDate } from "../utils/DateUtils";
 import { BlogAuthor } from "./BlogAuthor";
-import { NadeShareActions } from "../nades/NadeShareActions";
+import { NadeShareActions } from "../nade-ui/NadeShareActions";
 import { SEO } from "../layout/SEO";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";

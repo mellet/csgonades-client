@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import { NadeApi } from "../api/NadeApi";
-import { NadeLight } from "../models/Nade/Nade";
+import { NadeApi } from "../nade-data/NadeApi";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { User } from "../models/User";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { UserDetails } from "./UserDetails";

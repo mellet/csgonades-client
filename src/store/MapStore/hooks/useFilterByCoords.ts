@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { MapCoordinates } from "../../../models/Nade/Nade";
+import { MapCoordinates } from "../../../nade-data/Nade/Nade";
 import { useMapStoreDispatch } from "./helpers";
 export const useFilterByCoords = () => {
   const dispatch = useMapStoreDispatch();

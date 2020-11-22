@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { MapCoordinates, NadeLight } from "../../../models/Nade/Nade";
-import { Tickrate } from "../../../models/Nade/NadeTickrate";
-import { NadeType } from "../../../models/Nade/NadeType";
+import { MapCoordinates, NadeLight } from "../../../nade-data/Nade/Nade";
+import { Tickrate } from "../../../nade-data/Nade/NadeTickrate";
+import { NadeType } from "../../../nade-data/Nade/NadeType";
 import { favoritedNadeIdsSelector } from "../../../store/FavoriteStore/FavoriteSelectors";
 import {
   addFavoriteToNades,
@@ -25,7 +25,9 @@ import {
 } from "../selectors";
 import { NadeSortingMethod } from "../reducer";
 
-export const useFilterServerSideNades = (ssrNades: NadeLight[]) => {
+export const useFilterServerSideNades = (
+  ssrNades: NadeLight[]
+): NadeLight[] => {
   const currentMap = useSelector(currentMapSelector);
   const byCoords = useSelector(filterByCoordsSelector);
   const byTickrate = useSelector(filterByTickrateSelector);
@@ -74,7 +76,7 @@ export function filterNades(
   byType?: NadeType,
   byTickrate?: Tickrate,
   byPro?: boolean
-) {
+): NadeLight[] {
   let thenades = [...nades];
   thenades.sort(sortByScore);
 

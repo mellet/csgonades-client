@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
-import { CsgoMap } from "../models/Nade/CsGoMap";
-import { NadeLight } from "../models/Nade/Nade";
+import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPageNades } from "./MapPageNades";
 import { Dimensions } from "../constants/Constants";
 import { useMapChangeHandler } from "../store/MapStore/hooks/useMapChangeHandler";

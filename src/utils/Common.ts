@@ -1,15 +1,15 @@
 import Router from "next/router";
-import { NadeType } from "../models/Nade/NadeType";
+import { NadeType } from "../nade-data/Nade/NadeType";
 import removeMd from "remove-markdown";
-import { nadeTypeString } from "../models/Nade/NadeType";
-import { CsgoMap } from "../models/Nade/CsGoMap";
+import { nadeTypeString } from "../nade-data/Nade/NadeType";
+import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 
-export const capitalize = (s: string) => {
+export const capitalize = (s: string): string => {
   if (typeof s !== "string") return "";
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-export const redirectUserPage = (steamId: string, edit?: boolean) => {
+export const redirectUserPage = (steamId: string, edit?: boolean): void => {
   if (edit) {
     Router.push(`/users/[user]`, `/users/${steamId}?edit=true`);
   } else {
@@ -17,11 +17,11 @@ export const redirectUserPage = (steamId: string, edit?: boolean) => {
   }
 };
 
-export const redirectNadePage = (nadeId: string) => {
+export const redirectNadePage = (nadeId: string): void => {
   Router.push(`/nades/[nade]`, `/nades/${nadeId}`);
 };
 
-export function iconFromType(type?: NadeType) {
+export function iconFromType(type?: NadeType): string | null {
   switch (type) {
     case "flash":
       return "/icons/grenades/flash.png";
@@ -36,7 +36,7 @@ export function iconFromType(type?: NadeType) {
   }
 }
 
-export function kFormatter(num: number) {
+export function kFormatter(num: number): number {
   const isBelow1k = Math.abs(num) > 999;
 
   if (isBelow1k) {
@@ -60,14 +60,14 @@ export function cleanGfycatUrl(gfycatIdOrUrl: string): string {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function assertNever(_: never) {
+export function assertNever(_: never): void {
   // no-op
 }
 
-export const pluralize = (count: number, noun: string, suffix = "s") =>
+export const pluralize = (count: number, noun: string, suffix = "s"): string =>
   `${count} ${noun}${count !== 1 ? suffix : ""}`;
 
-export function LightenDarkenColor(col: string, amt: number) {
+export function LightenDarkenColor(col: string, amt: number): string {
   let usePound = false;
 
   if (col[0] == "#") {
@@ -102,7 +102,7 @@ export function LightenDarkenColor(col: string, amt: number) {
   return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
 }
 
-export const descriptionSimplify = (value?: string) => {
+export const descriptionSimplify = (value?: string): string => {
   if (!value) {
     return "CSGO Nades is a website that collects nades for Counter-Strike Global Offensive. You can browse smokes, flashbangs, molotovs or he-grenades for the most popular maps in CS:GO.";
   }
@@ -123,7 +123,7 @@ function escapeHtml(unsafe: string) {
     .replace(/'/g, "&#039;");
 }
 
-function truncateString(str, num) {
+function truncateString(str: string, num: number) {
   // If the length of str is less than or equal to num
   // just return str--don't truncate it.
   if (str.length <= num) {
@@ -133,7 +133,7 @@ function truncateString(str, num) {
   return str.slice(0, num) + "...";
 }
 
-export function sortByDate(a: Date | string, b: Date | string) {
+export function sortByDate(a: Date | string, b: Date | string): number {
   const first = new Date(a);
   const second = new Date(b);
   return first > second ? -1 : first < second ? 1 : 0;
@@ -145,7 +145,7 @@ export function generateTitle(
   endPosition?: string,
   nadeType?: NadeType,
   oneWay?: boolean
-) {
+): string {
   if (oneWay && endPosition && nadeType) {
     return `${endPosition} One-Way ${nadeTypeString(nadeType)}`;
   }
@@ -169,7 +169,7 @@ export function generateSeoTitle(
   nadeType?: NadeType,
   oneWay?: boolean,
   map?: CsgoMap
-) {
+): string {
   if (oneWay && endPosition && nadeType && map) {
     return `${capitalize(map)} ${endPosition} One-Way ${nadeTypeString(
       nadeType
@@ -197,7 +197,7 @@ export function generateNadeItemTitle(
   nadeType?: NadeType,
   oneWay?: boolean,
   map?: CsgoMap
-) {
+): string[] {
   if (oneWay && endPosition && nadeType) {
     return [
       `${

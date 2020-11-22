@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CsgnInput } from "../../common/inputs/CsgnInput";
-import { NadeApi } from "../../api/NadeApi";
+import { NadeApi } from "../../nade-data/NadeApi";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 
 type Props = {

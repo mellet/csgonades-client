@@ -2,8 +2,8 @@ import { FC } from "react";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import { PageCentralize } from "../common/PageCentralize";
 import { Dimensions } from "../constants/Constants";
-import { CsgoMap } from "../models/Nade/CsGoMap";
-import { NadeLight } from "../models/Nade/Nade";
+import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPageJumbo } from "./MapPageJumbo";
 
 type Props = {

@@ -1,12 +1,12 @@
 import { FC, useMemo } from "react";
 import { UserLight } from "../models/User";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { NadeLight } from "../models/Nade/Nade";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { Twemoji } from "../common/Twemoji";
 import { pluralize } from "../utils/Common";
 import Link from "next/link";
 import { Dimensions } from "../constants/Constants";
-import { CsgoMap, mapString } from "../models/Nade/CsGoMap";
+import { CsgoMap, mapString } from "../nade-data/Nade/CsGoMap";
 
 interface UserContribution extends UserLight {
   nadeCount: number;

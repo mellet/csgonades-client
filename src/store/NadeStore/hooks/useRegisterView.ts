@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
-import { NadeApi } from "../../../api/NadeApi";
+import { NadeApi } from "../../../nade-data/NadeApi";
 import { userSelector } from "../../AuthStore/AuthSelectors";
 
 export const useRegisterView = () => {

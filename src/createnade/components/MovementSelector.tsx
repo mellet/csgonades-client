@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { MiniLabel } from "./MiniLabel";
 import { CsGnDropdown } from "./CsGnDropdown";
-import { Movement, nadeMovementOptions } from "../../models/Nade/NadeMovement";
+import {
+  Movement,
+  nadeMovementOptions,
+} from "../../nade-data/Nade/NadeMovement";
 
 type Props = {
   defaultValue?: Movement;

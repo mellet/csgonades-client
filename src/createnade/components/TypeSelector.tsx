@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { MiniLabel } from "./MiniLabel";
 import { CsGnDropdown } from "./CsGnDropdown";
-import { nadeTypeOptions, NadeType } from "../../models/Nade/NadeType";
+import { nadeTypeOptions, NadeType } from "../../nade-data/Nade/NadeType";
 
 type Props = {
   defaultValue?: NadeType;

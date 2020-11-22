@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { AnimationTimings, Dimensions } from "../../constants/Constants";
-import { NadeLight } from "../../models/Nade/Nade";
+import { NadeLight } from "../../nade-data/Nade/Nade";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { GfycatThumbnail } from "./GfycatThumbnail";
 import { NadeItemTitle } from "./NadeItemTitle";

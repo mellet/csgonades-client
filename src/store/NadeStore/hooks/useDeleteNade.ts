@@ -1,6 +1,6 @@
 import Router from "next/router";
 import { useCallback } from "react";
-import { NadeApi } from "../../../api/NadeApi";
+import { NadeApi } from "../../../nade-data/NadeApi";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
 import { useDisplayToast } from "../../ToastStore/hooks/useDisplayToast";
 

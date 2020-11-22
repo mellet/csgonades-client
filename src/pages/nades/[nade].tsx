@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from "next";
-import { NadeApi } from "../../api/NadeApi";
-import { Nade } from "../../models/Nade/Nade";
-import { NadeNotFound } from "../../nades/NadeNotFound";
-import { NadePage } from "../../nades/NadePage";
+import { NadeApi } from "../../nade-data/NadeApi";
+import { Nade } from "../../nade-data/Nade/Nade";
+import { NadeNotFound } from "../../nade-ui/NadeNotFound";
+import { NadePage } from "../../nade-ui";
 
 type Props = {
   nade: Nade;

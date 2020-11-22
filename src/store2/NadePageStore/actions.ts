@@ -1,4 +1,4 @@
-import { Nade } from "../../models/Nade/Nade";
+import { Nade } from "../../nade-data/Nade/Nade";
 
 export type OnFavoriteNadeAction = {
   type: "@@nades/ON_FAVORITE_NADE";

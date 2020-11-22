@@ -1,12 +1,12 @@
 import { Reducer, useReducer, useMemo } from "react";
-import { CsgoMap } from "../models/Nade/CsGoMap";
-import { GfycatData } from "../models/Nade/GfycatData";
-import { NadeCreateBody, MapCoordinates } from "../models/Nade/Nade";
-import { NadeType } from "../models/Nade/NadeType";
-import { Movement } from "../models/Nade/NadeMovement";
-import { Technique } from "../models/Nade/Technique";
+import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { GfycatData } from "../nade-data/Nade/GfycatData";
+import { NadeCreateBody, MapCoordinates } from "../nade-data/Nade/Nade";
+import { NadeType } from "../nade-data/Nade/NadeType";
+import { Movement } from "../nade-data/Nade/NadeMovement";
+import { Technique } from "../nade-data/Nade/Technique";
 import { assertNever } from "../utils/Common";
-import { Tickrate } from "../models/Nade/NadeTickrate";
+import { Tickrate } from "../nade-data/Nade/NadeTickrate";
 
 interface CreateNadeState extends Partial<NadeCreateBody> {
   showImageAdder: boolean;

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { MiniLabel } from "../../createnade/components/MiniLabel";
 import { CsGnDropdown } from "../../createnade/components/CsGnDropdown";
-import { nadeStatusOptions, Status } from "../../models/Nade/Status";
+import { nadeStatusOptions, Status } from "../../nade-data/Nade/Status";
 
 type Props = {
   initValue: Status;

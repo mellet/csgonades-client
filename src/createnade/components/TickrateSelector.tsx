@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { MiniLabel } from "./MiniLabel";
 import { CsGnDropdown } from "./CsGnDropdown";
-import { Tickrate, nadeTickrateOptions } from "../../models/Nade/NadeTickrate";
+import {
+  Tickrate,
+  nadeTickrateOptions,
+} from "../../nade-data/Nade/NadeTickrate";
 
 type Props = {
   defaultValue?: Tickrate;

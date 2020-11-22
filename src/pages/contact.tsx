@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import { Button, Message } from "semantic-ui-react";
-import { ContactApi } from "../api/ContactApi";
+import { ContactApi } from "../admin/data/ContactApi";
 import { CsgnInput } from "../common/inputs/CsgnInput";
 import { CsgnTextArea } from "../common/inputs/CsgnTextArea";
-import { ConctactDTO } from "../models/Contact";
+import { AddConctactDTO } from "../admin/data/ContactDTOs";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { SEO } from "../layout/SEO";
 import { PageCentralize } from "../common/PageCentralize";
@@ -26,7 +26,7 @@ const ContactPageContainer: NextPage = () => {
       return setError("Missing message.");
     }
 
-    const contactMessage: ConctactDTO = {
+    const contactMessage: AddConctactDTO = {
       name,
       email,
       message,

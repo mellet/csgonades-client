@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 import { capitalize } from "../utils/Common";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { CsgoMap } from "../models/Nade/CsGoMap";
-import { NadeLight } from "../models/Nade/Nade";
+import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { NadeLight } from "../nade-data/Nade/Nade";
 
 type Props = {
   map: CsgoMap;

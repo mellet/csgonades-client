@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { Nade } from "../models/Nade/Nade";
+import { Nade } from "../nade-data/Nade/Nade";
 import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
 import { PageCentralize } from "../common/PageCentralize";
 import { Dimensions } from "../constants/Constants";
@@ -12,7 +12,7 @@ import { EndPosInput } from "../createnade/components/EndPosInput";
 import { ThrownFromInput } from "../createnade/components/ThrownFromInput";
 import { DescriptionInput } from "../createnade/components/DescriptionInput";
 import { ImageSelector } from "../createnade/components/ImageSelector";
-import { MapPositionEditor } from "../nades/components/MapPositionEditor";
+import { MapPositionEditor } from "../nade-ui/components/MapPositionEditor";
 import { TypeSelector } from "../createnade/components/TypeSelector";
 import { MovementSelector } from "../createnade/components/MovementSelector";
 import { TechniqueSelector } from "../createnade/components/TechniqueSelector";

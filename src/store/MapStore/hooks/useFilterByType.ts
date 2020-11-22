@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { NadeType } from "../../../models/Nade/NadeType";
+import { NadeType } from "../../../nade-data/Nade/NadeType";
 import { useSelector } from "react-redux";
 import { filterByTypeSelector } from "../selectors";
 import { useMapStoreDispatch } from "./helpers";

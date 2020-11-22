@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CsGnDropdown } from "./CsGnDropdown";
 import { MiniLabel } from "./MiniLabel";
-import { CsgoMap, nadeMapOptions } from "../../models/Nade/CsGoMap";
+import { CsgoMap, nadeMapOptions } from "../../nade-data/Nade/CsGoMap";
 
 type Props = {
   defaultValue?: CsgoMap;

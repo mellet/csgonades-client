@@ -1,5 +1,5 @@
 import { useCallback, useContext } from "react";
-import { Nade } from "../../../models/Nade/Nade";
+import { Nade } from "../../../nade-data/Nade/Nade";
 import { NadePageStoreContext } from "../context";
 
 export const useReplaceNade = () => {

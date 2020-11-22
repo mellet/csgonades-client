@@ -1,6 +1,6 @@
 import { FC, memo, useState, useEffect } from "react";
-import { Nade } from "../models/Nade/Nade";
-import { NadeApi } from "../api/NadeApi";
+import { Nade } from "../nade-data/Nade/Nade";
+import { NadeApi } from "../nade-data/NadeApi";
 import { isMobile } from "react-device-detect";
 import { NadeItemMobile } from "../common/nadeitem/NadeItemMobile";
 import { NadeItem } from "../common/nadeitem/NadeItem";

@@ -1,7 +1,7 @@
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import { NadeApi } from "../../api/NadeApi";
-import { CsgoMap, getAllCsGoMaps } from "../../models/Nade/CsGoMap";
-import { NadeLight } from "../../models/Nade/Nade";
+import { NadeApi } from "../../nade-data/NadeApi";
+import { CsgoMap, getAllCsGoMaps } from "../../nade-data/Nade/CsGoMap";
+import { NadeLight } from "../../nade-data/Nade/Nade";
 import { MapPage } from "../../maps/MapPage";
 
 interface Props {

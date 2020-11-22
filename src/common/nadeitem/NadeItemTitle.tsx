@@ -1,8 +1,8 @@
 import { FC, useMemo } from "react";
-import { Status } from "../../models/Nade/Status";
+import { Status } from "../../nade-data/Nade/Status";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { iconFromType, generateNadeItemTitle } from "../../utils/Common";
-import { NadeType } from "../../models/Nade/NadeType";
+import { NadeType } from "../../nade-data/Nade/NadeType";
 
 type Props = {
   type?: NadeType;

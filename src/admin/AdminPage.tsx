@@ -1,14 +1,15 @@
 import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
 import { useIsAdminOrModerator } from "../store/AuthStore/AuthHooks";
-import { useAdminRoute } from "../store2/AdminStore/hooks";
-import { AdminNav } from "./AdminNav";
-import { AdminPendingNades } from "./AdminPendingNades";
-import { AdminReports } from "./reports/AdminReports";
-import { AdminUsers } from "./AdminUsers";
+import { useAdminRoute } from "./data/hooks";
+import { AdminNav } from "./components/AdminNav";
+import { AdminPendingNades } from "./containers/AdminPendingNades";
+import { AdminReports } from "./containers/AdminReports";
+import { AdminUsers } from "./containers/AdminUsers";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { AdminDeclined } from "./AdminDeclined";
+import { AdminDeclined } from "./containers/AdminDeclined";
 import { PageCentralize } from "../common/PageCentralize";
+import { AdminContacts } from "./containers/AdminContacts";
 
 export const AdminPage: FC = () => {
   const { colors } = useTheme();
@@ -29,6 +30,8 @@ export const AdminPage: FC = () => {
         return <AdminReports />;
       case "declined-nades":
         return <AdminDeclined />;
+      case "contact":
+        return <AdminContacts />;
       default:
         return null;
     }

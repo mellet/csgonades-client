@@ -2,9 +2,15 @@ import { useSelector } from "react-redux";
 import { nadeIdForModalSelector } from "../selectors";
 import { useCallback } from "react";
 import { useMapStoreDispatch } from "./helpers";
-import { NadeLight } from "../../../models/Nade/Nade";
+import { NadeLight } from "../../../nade-data/Nade/Nade";
 
-export const useNadeModal = () => {
+type UseNadeModalReturn = {
+  nadeForModal?: NadeLight;
+  clearNadeForModal: () => void;
+  setNadeForModal: (nade: NadeLight) => void;
+};
+
+export const useNadeModal = (): UseNadeModalReturn => {
   const dispatch = useMapStoreDispatch();
   const nadeForModal = useSelector(nadeIdForModalSelector);
 

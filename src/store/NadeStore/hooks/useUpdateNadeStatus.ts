@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { NadeApi } from "../../../api/NadeApi";
-import { NadeStatusDTO } from "../../../models/Nade/Nade";
+import { NadeApi } from "../../../nade-data/NadeApi";
+import { NadeStatusDTO } from "../../../nade-data/Nade/Nade";
 import { useReplaceNade } from "../../../store2/NadePageStore/hooks/useReplaceNade";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
 import { useDisplayToast } from "../../ToastStore/hooks/useDisplayToast";

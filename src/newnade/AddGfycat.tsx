@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Button, Input, Message } from "semantic-ui-react";
-import { NadeApi } from "../api/NadeApi";
-import { GfycatData } from "../models/Nade/GfycatData";
+import { NadeApi } from "../nade-data/NadeApi";
+import { GfycatData } from "../nade-data/Nade/GfycatData";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { cleanGfycatUrl } from "../utils/Common";
 

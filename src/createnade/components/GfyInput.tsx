@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { CsgnInput } from "../../common/inputs/CsgnInput";
 import { cleanGfycatUrl } from "../../utils/Common";
-import { NadeApi } from "../../api/NadeApi";
-import { GfycatData } from "../../models/Nade/GfycatData";
+import { NadeApi } from "../../nade-data/NadeApi";
+import { GfycatData } from "../../nade-data/Nade/GfycatData";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 
 type Props = {

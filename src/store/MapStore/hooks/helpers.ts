@@ -1,17 +1,17 @@
 import { useDispatch } from "react-redux";
 import { Dispatch } from "redux";
 import { MapStoreActions } from "../actions";
-import { MapCoordinates, NadeLight } from "../../../models/Nade/Nade";
-import { Tickrate } from "../../../models/Nade/NadeTickrate";
-import { NadeType } from "../../../models/Nade/NadeType";
+import { MapCoordinates, NadeLight } from "../../../nade-data/Nade/Nade";
+import { Tickrate } from "../../../nade-data/Nade/NadeTickrate";
+import { NadeType } from "../../../nade-data/Nade/NadeType";
 import { NadeSortingMethod } from "../reducer";
 import { dateMinutesAgo } from "../../../utils/DateUtils";
 
-export const useMapStoreDispatch = () => {
+export const useMapStoreDispatch = (): Dispatch<MapStoreActions> => {
   return useDispatch<Dispatch<MapStoreActions>>();
 };
 
-export function filterByPro(nades: NadeLight[], byPro?: boolean) {
+export function filterByPro(nades: NadeLight[], byPro?: boolean): NadeLight[] {
   if (byPro) {
     return nades.filter((n) => n.isPro);
   }
@@ -21,7 +21,7 @@ export function filterByPro(nades: NadeLight[], byPro?: boolean) {
 export function filterBySortMethod(
   nades: NadeLight[],
   byMethod: NadeSortingMethod
-) {
+): NadeLight[] {
   switch (byMethod) {
     case "new":
       return nades.sort(sortByDate);
@@ -57,7 +57,10 @@ export function filterByType(
   }
 }
 
-export function filterByFavorite(nades: NadeLight[], byFavorite: boolean) {
+export function filterByFavorite(
+  nades: NadeLight[],
+  byFavorite: boolean
+): NadeLight[] {
   if (!byFavorite) {
     return nades;
   }
@@ -78,7 +81,10 @@ export function filterByTickrate(
   }
 }
 
-export function filterByCoords(nades: NadeLight[], coords?: MapCoordinates) {
+export function filterByCoords(
+  nades: NadeLight[],
+  coords?: MapCoordinates
+): NadeLight[] {
   if (!coords) {
     return nades;
   }
@@ -99,7 +105,10 @@ export function filterByCoords(nades: NadeLight[], coords?: MapCoordinates) {
   });
 }
 
-export function addFavoriteToNades(nades: NadeLight[], favIds: string[]) {
+export function addFavoriteToNades(
+  nades: NadeLight[],
+  favIds: string[]
+): NadeLight[] {
   return nades.map((n) => {
     if (favIds.includes(n.id)) {
       return {

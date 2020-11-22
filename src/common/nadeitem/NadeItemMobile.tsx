@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { FaChevronRight, FaPlay, FaStop } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Dimensions } from "../../constants/Constants";
-import { NadeLight } from "../../models/Nade/Nade";
+import { NadeLight } from "../../nade-data/Nade/Nade";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";

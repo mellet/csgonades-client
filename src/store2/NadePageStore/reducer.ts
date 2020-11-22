@@ -1,5 +1,5 @@
 import { Reducer } from "redux";
-import { Nade } from "../../models/Nade/Nade";
+import { Nade } from "../../nade-data/Nade/Nade";
 import { assertNever } from "../../utils/Common";
 import { NadeActions } from "./actions";
 

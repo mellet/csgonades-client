@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
 import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
-import { CsgoMap } from "../models/Nade/CsGoMap";
-import { NadeLight } from "../models/Nade/Nade";
+import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
 import { TopContributorList } from "./TopContributor";
 import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";

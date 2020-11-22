@@ -1,7 +1,7 @@
-import { CsgoMap } from "../../models/Nade/CsGoMap";
-import { NadeLight, MapCoordinates } from "../../models/Nade/Nade";
-import { NadeType } from "../../models/Nade/NadeType";
-import { Tickrate } from "../../models/Nade/NadeTickrate";
+import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
+import { NadeLight, MapCoordinates } from "../../nade-data/Nade/Nade";
+import { NadeType } from "../../nade-data/Nade/NadeType";
+import { Tickrate } from "../../nade-data/Nade/NadeTickrate";
 import { NadeSortingMethod, MapView } from "./reducer";
 
 type ReplaceNadesForMap = {

@@ -7,12 +7,12 @@ import {
   FaCommentDots,
 } from "react-icons/fa";
 import { RiMouseLine } from "react-icons/ri";
-import { tickrateString, Tickrate } from "../../../models/Nade/NadeTickrate";
+import { tickrateString, Tickrate } from "../../../nade-data/Nade/NadeTickrate";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { dateMinutesAgo } from "../../../utils/DateUtils";
 import { Popup } from "semantic-ui-react";
-import { Movement } from "../../../models/Nade/NadeMovement";
-import { Technique } from "../../../models/Nade/Technique";
+import { Movement } from "../../../nade-data/Nade/NadeMovement";
+import { Technique } from "../../../nade-data/Nade/Technique";
 import { StatItem } from "./StatItem";
 
 type Props = {

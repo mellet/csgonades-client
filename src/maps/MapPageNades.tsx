@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { NadeLight } from "../models/Nade/Nade";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { CsgnList } from "../common/list/CsgnList";
 import { NadeItem } from "../common/nadeitem/NadeItem";
 import { isMobileOnly } from "react-device-detect";

@@ -6,7 +6,7 @@ import { MapPageLink } from "./MapNavLink";
 import { Dimensions } from "../../constants/Constants";
 import { ThemeToggler } from "../Misc/ThemeToggler";
 import { NavItem } from "./NavItem";
-import { CsgoMap } from "../../models/Nade/CsGoMap";
+import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
 
 export const MapNav: FC = () => {
   const { colors } = useTheme();
