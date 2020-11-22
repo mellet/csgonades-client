@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 type Props = {
   gfyId: string;
@@ -7,12 +7,24 @@ type Props = {
 export const GfycatIframe: FC<Props> = ({ gfyId }) => {
   const [loaded, setLoaded] = useState(false);
 
+  function onIframeLoaded() {
+    setLoaded(true);
+  }
+
+  // Show anyway if loading is taking a while
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className="gfycat-super-wrap">
         <div className="gfycat-wrap">
           <iframe
-            onLoad={() => setLoaded(true)}
+            onLoad={onIframeLoaded}
             className="gfycat-iframe"
             src={`https://gfycat.com/ifr/${gfyId}?hd=1`}
             frameBorder="0"
