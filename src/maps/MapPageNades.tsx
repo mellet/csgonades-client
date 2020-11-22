@@ -3,10 +3,14 @@ import { NadeLight } from "../nade-data/Nade/Nade";
 import { CsgnList } from "../common/list/CsgnList";
 import { NadeItem } from "../common/nadeitem/NadeItem";
 import { isMobileOnly } from "react-device-detect";
-import { NadeItemMobile } from "../common/nadeitem/NadeItemMobile";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
+import dynamic from "next/dynamic";
+
+const NadeItemMobile = dynamic(() =>
+  import("../common/nadeitem/NadeItemMobile").then((mod) => mod.NadeItemMobile)
+);
 
 type Props = {
   allNades: NadeLight[];
