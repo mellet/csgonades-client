@@ -3,7 +3,7 @@ import { CSGNModal } from "../../common/CSGNModal";
 import { useAnalytics } from "../../utils/Analytics";
 import { SignInnButton } from "../../layout/Misc/SignInnButton";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
-import { Twemoji } from "../../common/Twemoji";
+import { Twemoji } from "../../common/Twemoj/Twemoji";
 import { FaCheckCircle } from "react-icons/fa";
 
 export const SignInWarning: FC = memo(() => {

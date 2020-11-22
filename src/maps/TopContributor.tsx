@@ -2,7 +2,7 @@ import { FC, useMemo } from "react";
 import { UserLight } from "../models/User";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { NadeLight } from "../nade-data/Nade/Nade";
-import { Twemoji } from "../common/Twemoji";
+import { Twemoji } from "../common/Twemoj/Twemoji";
 import { pluralize } from "../utils/Common";
 import Link from "next/link";
 import { Dimensions } from "../constants/Constants";

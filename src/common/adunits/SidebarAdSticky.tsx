@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { EzoicPlaceholder } from "./EzoicPlaceholder";
-import { Twemoji } from "../Twemoji";
+import { Twemoji } from "../Twemoj/Twemoji";
 import { Dimensions } from "../../constants/Constants";
 import { isMobile } from "react-device-detect";
 

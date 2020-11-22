@@ -1,7 +1,11 @@
 import React, { memo } from "react";
 import twemoji from "twemoji";
 
-export const Twemoji = memo(({ emoji }: any) => (
+type Props = {
+  emoji: any;
+};
+
+const TwemojiLazy = memo<Props>(({ emoji }) => (
   <>
     <span
       dangerouslySetInnerHTML={{
@@ -21,3 +25,5 @@ export const Twemoji = memo(({ emoji }: any) => (
     `}</style>
   </>
 ));
+
+export default TwemojiLazy;

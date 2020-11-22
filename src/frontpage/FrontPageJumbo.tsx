@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { SiteStats } from "../api/StatsApi";
-import { Twemoji } from "../common/Twemoji";
+import { Twemoji } from "../common/Twemoj/Twemoji";
 
 type Props = {
   stats: SiteStats | null;

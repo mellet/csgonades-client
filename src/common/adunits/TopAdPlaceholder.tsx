@@ -3,7 +3,7 @@ import { EzoicPlaceholder } from "./EzoicPlaceholder";
 import { PageCentralize } from "../PageCentralize";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { Twemoji } from "../Twemoji";
+import { Twemoji } from "../Twemoj/Twemoji";
 
 //
 
