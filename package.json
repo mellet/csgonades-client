@@ -37,7 +37,7 @@
     "remove-markdown": "^0.3.0",
     "reselect": "^4.0.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^1.2.1",
+    "semantic-ui-react": "^2.0.1",
     "twemoji": "^13.0.1"
   },
   "devDependencies": {
