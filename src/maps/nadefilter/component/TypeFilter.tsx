@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { ButtonGroup } from "./ButtonGroup";
 import { NadeTypeButton } from "./NadeTypeButton";
-import { useFilterByType } from "../../store/MapStore/hooks/useFilterByType";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useFilterByType } from "../../../store/MapStore/hooks/useFilterByType";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   vertical?: boolean;

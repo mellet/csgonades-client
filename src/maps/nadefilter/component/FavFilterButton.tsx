@@ -1,52 +1,36 @@
 import { FC } from "react";
-import { FaCheckCircle } from "react-icons/fa";
-import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { Dimensions } from "../../constants/Constants";
-import { useFilterByPro } from "../../store/MapStore/hooks/useFilterByPro";
-import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
-import { HelpTip } from "./HelpTip";
+import { FaStar } from "react-icons/fa";
+import { useIsSignedIn } from "../../../store/AuthStore/AuthHooks";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useFilterByFavorites } from "../../../store/MapStore/hooks/useFilterByFavorites";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   vertical?: boolean;
 };
 
-export const FilterByProButton: FC<Props> = ({ vertical }) => {
+export const FavFilterButton: FC<Props> = ({ vertical }) => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
-  const { byPro, toggleFilterByPro } = useFilterByPro();
-  const { setSignInWarning } = useSignInWarning();
+  const { byFavorites, filterByFavorites } = useFilterByFavorites();
 
-  const active = byPro ? "active" : "";
+  const active = byFavorites ? "active" : "";
 
-  function onFilterByPro() {
+  function onFilterByFavorite() {
     if (isSignedIn) {
-      toggleFilterByPro();
-    } else {
-      setSignInWarning("filterpro");
+      filterByFavorites();
     }
   }
 
   return (
     <>
       <div className="fav-filter-wrap">
-        <div className="label">
-          PRO
-          <HelpTip hintLabel="pro">
-            <div>
-              <b>PRO:</b>
-              <br />
-              Only show nades thrown by
-              <br />
-              professional CS:GO players.
-            </div>
-          </HelpTip>
-        </div>
+        <div className="label">FAV</div>
         <button
           className={`filter-btn favorite ${active}`}
-          onClick={onFilterByPro}
+          onClick={onFilterByFavorite}
         >
-          <FaCheckCircle />
+          <FaStar style={{ marginLeft: -1, marginTop: 0 }} />
         </button>
       </div>
 
@@ -56,7 +40,6 @@ export const FilterByProButton: FC<Props> = ({ vertical }) => {
           font-weight: 500;
           margin-bottom: 5px;
           color: ${vertical ? "white" : colors.TEXT};
-          display: flex;
         }
 
         .filter-btn {
@@ -76,7 +59,7 @@ export const FilterByProButton: FC<Props> = ({ vertical }) => {
         }
 
         .favorite {
-          color: #00b8d9;
+          color: rgb(250, 200, 0);
         }
 
         .filter-btn:hover {

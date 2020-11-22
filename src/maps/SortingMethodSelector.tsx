@@ -3,7 +3,7 @@ import { FaRocket, FaLongArrowAltUp, FaSith } from "react-icons/fa";
 import { useFilterByMethod } from "../store/MapStore/hooks/useFilterByMethod";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
-import { HelpTip } from "./nadefilter/HelpTip";
+import { HelpTip } from "./nadefilter/component/HelpTip";
 
 export const SortingMethodSelector: FC = () => {
   const { colors } = useTheme();

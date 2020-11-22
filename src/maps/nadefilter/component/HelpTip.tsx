@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   hintLabel: string;

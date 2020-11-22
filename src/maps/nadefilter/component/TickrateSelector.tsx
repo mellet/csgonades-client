@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { useFilterByTickrate } from "../../store/MapStore/hooks/useFilterByTickrate";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useFilterByTickrate } from "../../../store/MapStore/hooks/useFilterByTickrate";
 import { ButtonGroup } from "./ButtonGroup";
-import { Dimensions } from "../../constants/Constants";
+import { Dimensions } from "../../../constants/Constants";
 import { HelpTip } from "./HelpTip";
 import Link from "next/link";
 

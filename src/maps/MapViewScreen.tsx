@@ -8,14 +8,14 @@ import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { filterByCoords } from "../store/MapStore/hooks/helpers";
 import { MapViewSuggested } from "./MapViewSuggested";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
-import { TypeFilter } from "./nadefilter/TypeFilter";
-import { MapViewSelector } from "./nadefilter/MapViewSelectors";
-import { TickrateSelector } from "./nadefilter/TickrateSelector";
-import { FavFilterButton } from "./nadefilter/FavFilterButton";
+import { TypeFilter } from "./nadefilter/component/TypeFilter";
+import { MapViewSelector } from "./nadefilter/component/MapViewSelectors";
+import { TickrateSelector } from "./nadefilter/component/TickrateSelector";
+import { FavFilterButton } from "./nadefilter/component/FavFilterButton";
 import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
-import { ResetFilterButton } from "./nadefilter/ResetFilterButton";
+import { ResetFilterButton } from "./nadefilter/component/ResetFilterButton";
 import { useWindowSize } from "../common/MinSizeRender";
-import { FilterByProButton } from "./nadefilter/FilterByProButton";
+import { FilterByProButton } from "./nadefilter/component/FilterByProButton";
 import Router from "next/router";
 
 type Props = {
@@ -23,7 +23,7 @@ type Props = {
   allNades: NadeLight[];
 };
 
-export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
+const MapViewScreen: FC<Props> = ({ allNades, map }) => {
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
@@ -176,3 +176,5 @@ export const MapViewScreen: FC<Props> = ({ allNades, map }) => {
     </>
   );
 };
+
+export default MapViewScreen;

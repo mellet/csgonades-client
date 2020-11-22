@@ -1,16 +1,16 @@
 import { FC, memo } from "react";
 import { SortingMethodSelector } from "../SortingMethodSelector";
-import { TypeFilter } from "./TypeFilter";
-import { TickrateSelector } from "./TickrateSelector";
-import { FavFilterButton } from "./FavFilterButton";
-import { MapViewSelector } from "./MapViewSelectors";
-import { ResetFilterButton } from "./ResetFilterButton";
+import { TypeFilter } from "./component/TypeFilter";
+import { TickrateSelector } from "./component/TickrateSelector";
+import { FavFilterButton } from "./component/FavFilterButton";
+import { MapViewSelector } from "./component/MapViewSelectors";
+import { ResetFilterButton } from "./component/ResetFilterButton";
 import { Dimensions } from "../../constants/Constants";
 import { useSetMapView } from "../../store/MapStore/hooks/useSetMapView";
 import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
-import { FilterByProButton } from "./FilterByProButton";
+import { FilterByProButton } from "./component/FilterByProButton";
 
-export const FilterBar: FC = memo(({}) => {
+const FilterBar: FC = memo(({}) => {
   const isSignedIn = useIsSignedIn();
   const { mapView } = useSetMapView();
 
@@ -121,3 +121,5 @@ export const FilterBar: FC = memo(({}) => {
     </>
   );
 });
+
+export default FilterBar;

@@ -1,8 +1,8 @@
 import { FC, memo, useMemo } from "react";
-import { NadeType } from "../../nade-data/Nade/NadeType";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { iconFromType } from "../../utils/Common";
-import { Dimensions } from "../../constants/Constants";
+import { NadeType } from "../../../nade-data/Nade/NadeType";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { iconFromType } from "../../../utils/Common";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   type: NadeType;

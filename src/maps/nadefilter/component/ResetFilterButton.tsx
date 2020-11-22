@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 import { FaUndo } from "react-icons/fa";
-import { useFilterReset } from "../../store/MapStore/hooks/useFilterReset";
-import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useFilterReset } from "../../../store/MapStore/hooks/useFilterReset";
+import { Dimensions } from "../../../constants/Constants";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   vertical?: boolean;

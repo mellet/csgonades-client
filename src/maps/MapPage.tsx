@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import React, { FC, memo, Suspense } from "react";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPageNades } from "./MapPageNades";
@@ -6,12 +6,15 @@ import { Dimensions } from "../constants/Constants";
 import { useMapChangeHandler } from "../store/MapStore/hooks/useMapChangeHandler";
 import { SEO } from "../layout/SEO";
 import { capitalize } from "../utils/Common";
-import { FilterBar } from "./nadefilter/FilterBar";
-import { MapViewScreen } from "./MapViewScreen";
 import { useIsClientSide } from "../common/MinSizeRender";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { MapPageSidebar } from "./MapPageSidebar";
 import { MapPageNewJumbo } from "./MapPageNewJumbo";
+import { FilterBarLazy } from "./nadefilter/FilterBarLazy";
+
+const MapViewScreen = React.lazy(() => import("./MapViewScreen"));
+
+const isServer = typeof window === "undefined";
 
 type Props = {
   map: CsgoMap;
@@ -38,11 +41,13 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
           )}. Browse our large collection of nades for CS:GO.`}
         />
 
-        {isClientSide && !!allNades && (
-          <MapViewScreen map={map} allNades={allNades} />
+        {!isServer && isClientSide && !!allNades && (
+          <Suspense fallback={<></>}>
+            <MapViewScreen map={map} allNades={allNades} />
+          </Suspense>
         )}
 
-        <FilterBar />
+        <FilterBarLazy />
 
         <MapPageNades allNades={allNades} />
       </LayoutWithSidebar>
