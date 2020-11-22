@@ -1,12 +1,12 @@
 import { FC, useMemo } from "react";
-import { UserLight } from "../models/User";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { NadeLight } from "../nade-data/Nade/Nade";
-import { Twemoji } from "../common/Twemoj/Twemoji";
-import { pluralize } from "../utils/Common";
+import { UserLight } from "../../../models/User";
+import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { Twemoji } from "../../../common/Twemoj/Twemoji";
+import { pluralize } from "../../../utils/Common";
 import Link from "next/link";
-import { Dimensions } from "../constants/Constants";
-import { CsgoMap, mapString } from "../nade-data/Nade/CsGoMap";
+import { Dimensions } from "../../../constants/Constants";
+import { mapString } from "../../../nade-data/Nade/CsGoMap";
+import { ContListProps } from "./topContributorsProps";
 
 interface UserContribution extends UserLight {
   nadeCount: number;
@@ -14,11 +14,6 @@ interface UserContribution extends UserLight {
   totalScore: number;
   score: number;
 }
-
-type ContListProps = {
-  nades: NadeLight[];
-  csMap: CsgoMap;
-};
 
 export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
   const { colors } = useTheme();

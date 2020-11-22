@@ -4,8 +4,8 @@ import { DiscordJoinAction } from "../frontpage/DiscordJoinAction";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../nade-data/Nade/Nade";
 import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
-import { TopContributorList } from "./TopContributor";
 import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
+import { TopContributorsLazy } from "./components/TopContributors/TopContributorsLazy";
 
 type Props = {
   map: CsgoMap;
@@ -21,7 +21,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         </div>
 
         <div className="spacer">
-          <TopContributorList csMap={map} nades={nades} />
+          <TopContributorsLazy csMap={map} nades={nades} />
         </div>
 
         <div className="sticky">
