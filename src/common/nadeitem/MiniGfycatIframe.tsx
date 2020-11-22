@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { isSafari } from "react-device-detect";
 
@@ -7,7 +7,7 @@ type Props = {
   onVideoReady: () => void;
 };
 
-export const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
+const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
   const [loaded, setLoaded] = useState(false);
   const { colors } = useTheme();
 
@@ -17,6 +17,14 @@ export const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
     setLoaded(true);
     onVideoReady();
   }
+
+  // Force load if it takes to long
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoaded(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -66,3 +74,5 @@ export const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
     </>
   );
 };
+
+export default MiniGfycatIframe;

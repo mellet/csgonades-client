@@ -1,21 +1,10 @@
 import { FC } from "react";
-import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
 import { BlogNadeItem } from "../../blog/BlogNadeItem";
 import { CsConsole } from "../../blog/CsConsole";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-
-export const blogNadeAlignCrosshair: BlogPost = {
-  title: "Smoke Lineup Crosshair Bind for CS:GO",
-  slug: "smoke-align-crosshair",
-  imageUrl: "/blogimg/nade-align-crosshair/align-crosshair.jpg",
-  thumbnailUrl: "/blogimg/nade-align-crosshair/align-crosshair_thumb.jpg",
-  createdAt: "2020-03-29T20:00:00.000Z",
-  updatedAt: "2020-04-23T12:07:00.000Z",
-  intro:
-    "Create a fullscreen crosshair to line up smokes and other nades. For particular smokes, it can be hard to find something natural to place your crosshair at to hit that perfect smoke. This key bind will help you align those hard nades.",
-};
+import { blogNadeAlignCrosshair } from "../../blog/ArticleData/blogPosts";
 
 const NadeAlignCrosshairBlogPost: FC = () => {
   return (

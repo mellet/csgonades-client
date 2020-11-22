@@ -1,21 +1,8 @@
-import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogCopyPaste } from "../../blog/BlogCopyPaste";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-
-export const blogPractiseConfig: BlogPost = {
-  title: "The Perfect Practice Config for CS:GO",
-  slug: "practice-config",
-  imageUrl: "/blogimg/prac-config.jpg",
-  thumbnailUrl: "/blogimg/prac-config_thumb.jpg",
-  createdAt: "2020-03-27T21:00:00.000Z",
-  imageCredit: "Fredrick Tendong",
-  imageCreditUrl:
-    "https://unsplash.com/@frdx?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
-  intro:
-    "Do you want to find some new smokes? Fly around on Inferno, or maybe test out some wall bangs? Then you need this practise config!",
-};
+import { blogPractiseConfig } from "../../blog/ArticleData/blogPosts";
 
 const PractiseConfigBlogPost = () => {
   return (

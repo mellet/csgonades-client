@@ -1,7 +1,9 @@
 import { FC, useState } from "react";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
-import { MiniGfycatIframe } from "./MiniGfycatIframe";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
 
 type Props = {
   disableAction?: boolean;

@@ -1,20 +1,9 @@
 import { FC } from "react";
-import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
 import { PageLink } from "../../common/PageLink";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-
-export const blogJumpthrowBind: BlogPost = {
-  title: "Jumpthrow Bind for CS:GO - Ultimate Guide",
-  slug: "jumpthrow-bind",
-  imageUrl: "/blogimg/jump.jpg",
-  thumbnailUrl: "/blogimg/jump_thumb.jpg",
-  createdAt: "2020-04-27T09:30:00.000Z",
-  updatedAt: "2020-05-01T19:05:00.000Z",
-  intro:
-    "Adding a jumpthrow bind allows you to throw long range smokes consistently. The bind jumps and releases the nade with a single button.",
-};
+import { blogJumpthrowBind } from "../../blog/ArticleData/blogPosts";
 
 const NadeAlignCrosshairBlogPost: FC = () => {
   return (

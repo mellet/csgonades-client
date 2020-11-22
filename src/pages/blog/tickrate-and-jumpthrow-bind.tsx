@@ -1,18 +1,8 @@
 import { FC } from "react";
+import { blogTickrateAndJumpthrow } from "../../blog/ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../../blog/BlogCodeSnippet";
-import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-
-export const blogTickrateAndJumpthrow: BlogPost = {
-  title: "Why Jumpthrow Smokes Are Different on 64 and 128 Tick",
-  slug: "tickrate-and-jumpthrow-bind",
-  imageUrl: "/blogimg/jump.jpg",
-  thumbnailUrl: "/blogimg/jump_thumb.jpg",
-  createdAt: "2020-03-15T07:51:30.196Z",
-  intro:
-    "You just set up jumpthrow bind and practised offline for a sick smoke for Mirage. Your friends ask you to join a game on FACEIT, and you throw your smoke, but it missed! What the heck? You just tried it out... Why did this happen?",
-};
 
 const TickRateAndJumpthrowBindBlogPost: FC = () => {
   return (

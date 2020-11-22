@@ -1,4 +1,3 @@
-import { BlogPost } from "../../blog/BlogPost";
 import { BlogPostArticle } from "../../blog/BlogPostArticle";
 import { BlogNadeItem } from "../../blog/BlogNadeItem";
 import { PageLink } from "../../common/PageLink";
@@ -7,17 +6,7 @@ import { FC } from "react";
 import Link from "next/link";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 import { SidebarMediumAd } from "../../common/adunits/SidebarMediumAd";
-
-export const bestDust2Nades: BlogPost = {
-  title: "Best Grenade Spots for Dust2 - Must Know!",
-  slug: "best-dust2-nades",
-  imageUrl: "/blogimg/dust2-b.jpg",
-  thumbnailUrl: "/blogimg/dust2-b_thumb.jpg",
-  createdAt: "2020-04-23T02:32:00.000Z",
-  updatedAt: "2020-05-09T12:48:37.104Z",
-  intro:
-    "Dust2 is one of the most popular maps in CS:GO. Let's take a look at the essential nades everyone should know to gain an edge on the map.",
-};
+import { bestDust2Nades } from "../../blog/ArticleData/blogPosts";
 
 const BestDust2NadesBlogPost = (): JSX.Element => {
   return (

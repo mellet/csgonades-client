@@ -1,14 +1,16 @@
 import { FC, memo } from "react";
 import { FrontPageJumbo } from "./FrontPageJumbo";
 import { SiteStats } from "../api/StatsApi";
-import { blogNadeAlignCrosshair } from "../pages/blog/smoke-align-crosshair";
-import { bestDust2Nades } from "../pages/blog/best-dust2-nades";
 import { BlogList } from "../blog/BlogList";
-import { blogJumpthrowBind } from "../pages/blog/jumpthrow-bind";
 import { Dimensions } from "../constants/Constants";
 import { PageCentralize } from "../common/PageCentralize";
-import { blogPractiseConfig } from "../pages/blog/practice-config";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import {
+  bestDust2Nades,
+  blogJumpthrowBind,
+  blogNadeAlignCrosshair,
+  blogPractiseConfig,
+} from "../blog/ArticleData/blogPosts";
 
 const recentPosts = [
   blogJumpthrowBind,
