@@ -5,7 +5,6 @@ import { GlobalReducer } from "./GlobalStore/GlobalReducer";
 import { NotificationReducer } from "./NotificationStore/NotificationReducer";
 import { ToastReducer } from "./ToastStore/ToastReducer";
 import { MapStoreReducer } from "./MapStore/slice";
-import { AdReducer } from "./AdStore/reducer";
 import TrackerReducer from "../features/tracker/TrackerSlice";
 import { SettingsReducer } from "./SettingsStore/SettingsSlice";
 
@@ -17,7 +16,6 @@ const rootReducer = combineReducers({
   notificationStore: NotificationReducer,
   settingsStore: SettingsReducer,
   mapStore: MapStoreReducer,
-  adStore: AdReducer,
   trackerStore: TrackerReducer,
 });
 
