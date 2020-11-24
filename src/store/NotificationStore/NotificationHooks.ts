@@ -6,8 +6,8 @@ import {
   FavoriteNotificationAgregate,
 } from "../../models/Notification";
 import { useGetOrUpdateToken } from "../AuthStore/hooks/useGetToken";
-import { markNotificationAsSeenAction } from "./NotificationActions";
 import { NotificationApi } from "../../api/NotificationApi";
+import { markNotificationAsSeenAction } from "./NotificationSlice";
 
 type NotificationAggregateMap = { [key: string]: FavoriteNotificationAgregate };
 
