@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from "react";
 import { FaTimes } from "react-icons/fa";
 import { AnimationTimings } from "../../constants/Constants";
-import { useNavigation } from "../../store/GlobalStore/GlobalHooks";
+import { useNavigation } from "../../store/GlobalStore/hooks/useNavigation";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { NewNav } from "../NewNav";
 

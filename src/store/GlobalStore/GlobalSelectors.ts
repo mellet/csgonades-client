@@ -1,6 +1,6 @@
 import { AppState } from "..";
 import { SiteStats } from "../../api/StatsApi";
-import { SignInWarningType } from "./GlobalActions";
+import { SignInWarningType } from "./GlobalStore";
 
 export const siteStatsSelector = (state: AppState): SiteStats =>
   state.globalStore.stats;
