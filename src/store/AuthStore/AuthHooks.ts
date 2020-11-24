@@ -7,10 +7,10 @@ import { User } from "../../models/User";
 import { dateMinutesAgo } from "../../utils/DateUtils";
 import { userSelector } from "./AuthSelectors";
 import { getUserFavorites } from "../../api/FavoriteApi";
-import { addAllFavoritesAction } from "../FavoriteStore/FavoriteActions";
 import Axios from "axios";
 import { useDisplayToast } from "../ToastStore/hooks/useDisplayToast";
 import { setTokenAction, setUserAction, signOutAction } from "./AuthSlice";
+import { addAllFavoritesAction } from "../FavoriteStore/FavoriteSlice";
 
 export const useSignedInUser = () => {
   const user = useSelector(userSelector);
