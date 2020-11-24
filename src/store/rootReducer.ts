@@ -3,11 +3,11 @@ import { AuthReducer } from "./AuthStore/AuthReducer";
 import { FavoriteReducer } from "./FavoriteStore/FavoriteReducer";
 import { GlobalReducer } from "./GlobalStore/GlobalReducer";
 import { NotificationReducer } from "./NotificationStore/NotificationReducer";
-import { PersistedSettingsReducer } from "./SettingsStore/SettingsReducer";
 import { ToastReducer } from "./ToastStore/ToastReducer";
 import { MapStoreReducer } from "./MapStore/slice";
 import { AdReducer } from "./AdStore/reducer";
 import TrackerReducer from "../features/tracker/TrackerSlice";
+import { SettingsReducer } from "./SettingsStore/SettingsSlice";
 
 const rootReducer = combineReducers({
   authStore: AuthReducer,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   favoriteStore: FavoriteReducer,
   globalStore: GlobalReducer,
   notificationStore: NotificationReducer,
-  settingsStore: PersistedSettingsReducer,
+  settingsStore: SettingsReducer,
   mapStore: MapStoreReducer,
   adStore: AdReducer,
   trackerStore: TrackerReducer,
