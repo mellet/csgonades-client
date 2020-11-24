@@ -1,16 +1,14 @@
 import { filterByProSelector } from "../selectors";
-import { useSelector } from "react-redux";
-import { useMapStoreDispatch } from "./helpers";
+import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
+import { toggleProNadesAction } from "../slice";
 
 export const useFilterByPro = () => {
   const byPro = useSelector(filterByProSelector);
-  const dispatch = useMapStoreDispatch();
+  const dispatch = useDispatch();
 
   const toggleFilterByPro = useCallback(() => {
-    dispatch({
-      type: "MapStore/FilterToggleByPro",
-    });
+    dispatch(toggleProNadesAction());
   }, [dispatch]);
 
   return {

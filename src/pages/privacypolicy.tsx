@@ -112,7 +112,6 @@ const PrivacyPolicyPageContainer: NextPage = () => {
       <style jsx>{`
         .privacy-policy {
           margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
           color: ${colors.TEXT};
           background: ${colors.DP01};
           padding: 20px 30px;

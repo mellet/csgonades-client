@@ -1,39 +1,42 @@
-import { combineReducers, createStore, Store } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { AuthReducer } from "./AuthStore/AuthReducer";
-import { FavoriteReducer } from "./FavoriteStore/FavoriteReducer";
-import { GlobalReducer } from "./GlobalStore/GlobalReducer";
-import { NotificationReducer } from "./NotificationStore/NotificationReducer";
-import { PersistedSettingsReducer } from "./SettingsStore/SettingsReducer";
-import { ToastReducer } from "./ToastStore/ToastReducer";
-import { MapStoreReducer } from "./MapStore/reducer";
-import { AdReducer } from "./AdStore/reducer";
-import TrackerReducer from "../features/tracker/TrackerSlice";
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-const rootReducer = combineReducers({
-  authStore: AuthReducer,
-  toastStore: ToastReducer,
-  favoriteStore: FavoriteReducer,
-  globalStore: GlobalReducer,
-  notificationStore: NotificationReducer,
-  settingsStore: PersistedSettingsReducer,
-  mapStore: MapStoreReducer,
-  adStore: AdReducer,
-  trackerStore: TrackerReducer,
-});
+import { configureStore, Action, getDefaultMiddleware } from "@reduxjs/toolkit";
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from "redux-persist";
+import { ThunkAction } from "redux-thunk";
+import rootReducer from "./rootReducer";
 
-function createMiddleware() {
-  const isProduction = process.env.NODE_ENV === "production";
-
-  if (isProduction) {
-    return undefined;
-  } else {
-    return composeWithDevTools();
-  }
-}
+const isProduction = process.env.NODE_ENV === "production";
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export const initReduxStore = (initialState?: AppState): Store<AppState> => {
-  return createStore(rootReducer, initialState, createMiddleware());
-};
+const applicationStore = configureStore({
+  reducer: rootReducer,
+  devTools: !isProduction,
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+});
+
+//@ts-ignore
+if (process.env.NODE_ENV === "development" && module.hot) {
+  //@ts-ignore
+  module.hot.accept("./rootReducer", () => {
+    const newRootReducer = require("./rootReducer").default;
+    applicationStore.replaceReducer(newRootReducer);
+  });
+}
+
+export type AppDispatch = typeof applicationStore.dispatch;
+
+export type AppThunk = ThunkAction<void, AppState, null, Action<string>>;
+
+export default applicationStore;

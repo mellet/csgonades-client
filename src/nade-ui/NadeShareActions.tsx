@@ -78,7 +78,6 @@ export const NadeShareActions: FC<Props> = ({
       <style jsx>{`
         .share-container {
           background ${colors.DP02};
-          border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
         }
 

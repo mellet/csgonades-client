@@ -36,7 +36,6 @@ const BlogPage: FC = () => {
           color: ${colors.TEXT};
           grid-area: main;
           margin-top: 30px;
-          margin-bottom: 100px;
         }
 
         h1 {

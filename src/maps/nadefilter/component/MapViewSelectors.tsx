@@ -19,9 +19,6 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
   return (
     <>
       <div className="view-selector">
-        <div className="label">
-          <span>VIEW</span>
-        </div>
         <div className="view-selector-btns">
           <button
             className={

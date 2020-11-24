@@ -57,7 +57,6 @@ export const AdminPage: FC = () => {
           border-radius: 5px;
           overflow: hidden;
           padding: 20px 30px;
-          margin-bottom: 100px;
         }
 
         .admin-nav {

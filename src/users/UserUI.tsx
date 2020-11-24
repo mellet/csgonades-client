@@ -63,7 +63,6 @@ export const UserUI: FC<Props> = ({ user }) => {
           grid-area: main;
           position: relative;
           margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
           display: flex;
           flex-direction: column;
           min-height: 60vh;

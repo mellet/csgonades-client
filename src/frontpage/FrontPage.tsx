@@ -48,7 +48,6 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
         #front-page {
           grid-area: main;
           margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
         }
 
         .recent-wrap {
@@ -63,8 +62,6 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
         .recent {
           display: flex;
           flex-direction: row;
-          margin-top: 100px;
-          margin-bottom: 100px;
         }
 
         @media only screen and (max-width: 1210px) {

@@ -128,7 +128,6 @@ export const FinishProfile: FC<Props> = ({ user }) => {
           padding: 20px 30px;
           background: ${colors.DP01};
           margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
         }
 
         .label {

@@ -9,7 +9,7 @@ type Props = {
   vertical?: boolean;
 };
 
-export const FavFilterButton: FC<Props> = ({ vertical }) => {
+export const FavFilterButton: FC<Props> = ({}) => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
   const { byFavorites, filterByFavorites } = useFilterByFavorites();
@@ -25,7 +25,6 @@ export const FavFilterButton: FC<Props> = ({ vertical }) => {
   return (
     <>
       <div className="fav-filter-wrap">
-        <div className="label">FAV</div>
         <button
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByFavorite}
@@ -35,13 +34,6 @@ export const FavFilterButton: FC<Props> = ({ vertical }) => {
       </div>
 
       <style jsx>{`
-        .label {
-          font-size: 12px;
-          font-weight: 500;
-          margin-bottom: 5px;
-          color: ${vertical ? "white" : colors.TEXT};
-        }
-
         .filter-btn {
           border: none;
           outline: none;

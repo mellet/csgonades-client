@@ -1,12 +1,11 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { MapCoordinates, NadeLight } from "../../../nade-data/Nade/Nade";
+import { NadeLight } from "../../../nade-data/Nade/Nade";
 import { Tickrate } from "../../../nade-data/Nade/NadeTickrate";
 import { NadeType } from "../../../nade-data/Nade/NadeType";
 import { favoritedNadeIdsSelector } from "../../../store/FavoriteStore/FavoriteSelectors";
 import {
   addFavoriteToNades,
-  filterByCoords,
   filterByFavorite,
   filterByTickrate,
   filterByType,
@@ -14,7 +13,6 @@ import {
   filterByPro,
 } from "./helpers";
 import {
-  filterByCoordsSelector,
   filterByTickrateSelector,
   filterByFavoritesSelector,
   filterByTypeSelector,
@@ -23,13 +21,12 @@ import {
   allNadesSelector,
   filterByProSelector,
 } from "../selectors";
-import { NadeSortingMethod } from "../reducer";
+import { NadeSortingMethod } from "../slice";
 
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]
 ): NadeLight[] => {
   const currentMap = useSelector(currentMapSelector);
-  const byCoords = useSelector(filterByCoordsSelector);
   const byTickrate = useSelector(filterByTickrateSelector);
   const byFavorites = useSelector(filterByFavoritesSelector);
   const byType = useSelector(filterByTypeSelector);
@@ -48,14 +45,12 @@ export const useFilterServerSideNades = (
       favoritedNades,
       byFavorites,
       bySortingMethod,
-      byCoords,
       byType,
       byTickrate,
       byPro
     );
   }, [
     byPro,
-    byCoords,
     byTickrate,
     byFavorites,
     byType,
@@ -72,7 +67,6 @@ export function filterNades(
   favoritedNades: string[],
   byFavorites: boolean,
   byMethod: NadeSortingMethod,
-  byCoords?: MapCoordinates,
   byType?: NadeType,
   byTickrate?: Tickrate,
   byPro?: boolean
@@ -81,7 +75,6 @@ export function filterNades(
   thenades.sort(sortByScore);
 
   thenades = addFavoriteToNades(thenades, favoritedNades);
-  thenades = filterByCoords(thenades, byCoords);
   thenades = filterByType(thenades, byType);
   thenades = filterByTickrate(thenades, byTickrate);
   thenades = filterByFavorite(thenades, byFavorites);

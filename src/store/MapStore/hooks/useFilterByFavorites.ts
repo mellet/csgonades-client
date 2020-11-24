@@ -1,14 +1,13 @@
 import { useCallback } from "react";
-import { useMapStoreDispatch } from "./helpers";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterByFavoritesSelector } from "../selectors";
+import { toggleFavoritesAction } from "../slice";
 
 export const useFilterByFavorites = () => {
   const byFavorites = useSelector(filterByFavoritesSelector);
-  const dispatch = useMapStoreDispatch();
+  const dispatch = useDispatch();
 
-  const toggleFavFilter = () =>
-    dispatch({ type: "MapStore/FilterToggleFavorites" });
+  const toggleFavFilter = () => dispatch(toggleFavoritesAction());
 
   const filterByFavorites = useCallback(toggleFavFilter, [dispatch]);
 

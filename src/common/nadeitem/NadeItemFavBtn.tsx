@@ -6,7 +6,6 @@ import { useAddFavorite } from "../../store/FavoriteStore/hooks/useAddFavorite";
 import { useUnfavorite } from "../../store/FavoriteStore/hooks/useUnFavorite";
 import { Popup } from "semantic-ui-react";
 import { FaStar } from "react-icons/fa";
-import { useMapFavCount } from "../../store/MapStore/hooks/useMapFavCount";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 
@@ -25,7 +24,6 @@ export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
   const isFavorite = useIsFavorited(nadeId);
   const addFavorite = useAddFavorite();
   const unFavorite = useUnfavorite();
-  const { incrementNadeFavCount, decrementNadeFavCount } = useMapFavCount();
 
   useEffect(() => {
     if (isFavorite) {
@@ -51,11 +49,9 @@ export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
     if (isFavorite) {
       setNadeIsFavorite(false);
       unFavorite(isFavorite.id);
-      decrementNadeFavCount(nadeId);
     } else {
       setNadeIsFavorite(true);
       addFavorite(nadeId);
-      incrementNadeFavCount(nadeId);
     }
   }
 

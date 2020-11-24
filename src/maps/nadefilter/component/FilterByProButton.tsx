@@ -5,7 +5,6 @@ import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../../constants/Constants";
 import { useFilterByPro } from "../../../store/MapStore/hooks/useFilterByPro";
 import { useSignInWarning } from "../../../store/GlobalStore/hooks/useSignInWarning";
-import { HelpTip } from "./HelpTip";
 
 type Props = {
   vertical?: boolean;
@@ -30,18 +29,6 @@ export const FilterByProButton: FC<Props> = ({ vertical }) => {
   return (
     <>
       <div className="fav-filter-wrap">
-        <div className="label">
-          PRO
-          <HelpTip hintLabel="pro">
-            <div>
-              <b>PRO:</b>
-              <br />
-              Only show nades thrown by
-              <br />
-              professional CS:GO players.
-            </div>
-          </HelpTip>
-        </div>
         <button
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByPro}

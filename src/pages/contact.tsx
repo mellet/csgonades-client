@@ -72,7 +72,6 @@ const ContactPageContainer: NextPage = () => {
       <style jsx>{`
         .contact {
           margin-top: 30px;
-          margin-bottom: 100px;
           padding: 20px 30px;
           color: ${colors.TEXT};
           background: ${colors.DP01};

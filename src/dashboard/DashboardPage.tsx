@@ -55,7 +55,6 @@ export const DashboardPage: FC = () => {
             "dbnades dbnades dbnades";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
           overflow: hidden;
         }
 

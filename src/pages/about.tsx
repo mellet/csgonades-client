@@ -53,7 +53,6 @@ const AboutPageContainer: NextPage = () => {
       <style jsx>{`
         .about {
           margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
           padding: 20px 30px;
           color: ${colors.TEXT};
           background: ${colors.DP02};

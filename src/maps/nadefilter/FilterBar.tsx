@@ -7,20 +7,18 @@ import { MapViewSelector } from "./component/MapViewSelectors";
 import { ResetFilterButton } from "./component/ResetFilterButton";
 import { Dimensions } from "../../constants/Constants";
 import { useSetMapView } from "../../store/MapStore/hooks/useSetMapView";
-import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
 import { FilterByProButton } from "./component/FilterByProButton";
 
 const FilterBar: FC = memo(({}) => {
-  const isSignedIn = useIsSignedIn();
   const { mapView } = useSetMapView();
-
-  if (mapView === "overview") {
-    return null;
-  }
 
   return (
     <>
       <div id="filters">
+        <div id="filter-fav">
+          <FavFilterButton />
+        </div>
+
         {mapView === "list" && (
           <div id="filter-sort">
             <SortingMethodSelector />
@@ -33,11 +31,6 @@ const FilterBar: FC = memo(({}) => {
         <div id="filter-tick">
           <TickrateSelector />
         </div>
-        {isSignedIn && (
-          <div id="filter-fav">
-            <FavFilterButton />
-          </div>
-        )}
 
         <div id="filter-pro">
           <FilterByProButton />
@@ -62,10 +55,8 @@ const FilterBar: FC = memo(({}) => {
             1fr
             min-content
             min-content;
-          grid-template-areas: "typefilter tickfilter filterpro favfilter resetfilter sortfilter viewselector";
-          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
-          grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-          height: 70px;
+          grid-template-areas: "favfilter typefilter tickfilter filterpro resetfilter sortfilter viewselector";
+          grid-column-gap: 16px;
         }
 
         #filter-pro {

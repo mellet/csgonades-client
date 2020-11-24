@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const NadeMeta: FC<Props> = memo(
-  ({ movement, type, technique, tickrate, rounded }) => {
+  ({ movement, type, technique, tickrate }) => {
     return (
       <>
         <div className="nade-meta">
@@ -45,21 +45,15 @@ export const NadeMeta: FC<Props> = memo(
             display: flex;
             flex-direction: column;
             color: white;
-            border-radius: ${rounded ? "5px" : 0};
-            overflow: hidden;
           }
 
           .nade-meta-item {
             text-align: center;
             flex: 1;
             white-space: nowrap;
-            padding: 10px;
+            padding: 10px 16px;
             background: #729b79;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-          }
-
-          .nade-meta-item:last-child {
-            border-right: none;
           }
 
           h4 {

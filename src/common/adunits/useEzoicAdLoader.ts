@@ -42,6 +42,8 @@ const loadAds = async () => {
       return;
     }
 
+    ez.setEzoicAnchorAd(false);
+
     if (ez.hasDisplayedAds) {
       const adIds = findAdUnits();
       // @ts-ignore

@@ -44,8 +44,9 @@ export const NadeTitle: FC<Props> = memo(
           </div>
 
           <h1 className="nade-title">
-            <span className="main-title">{title}</span>
-            <span className="sub-title">{subTitle}</span>
+            <span className="main-title">
+              {title} {subTitle}
+            </span>
           </h1>
 
           {canEdit && (
@@ -66,13 +67,12 @@ export const NadeTitle: FC<Props> = memo(
           .title {
             position: relative;
             display: grid;
-            grid-template-columns: 50px 100px 1fr 100px 50px;
+            grid-template-columns: min-content min-content 1fr min-content;
             grid-template-areas:
-              "controls controls title actions actions"
-              "controls controls title actions actions";
+              "controls title . actions"
+              "controls title . actions";
             width: 100%;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: 16px;
           }
 
           #left-controls {
@@ -83,16 +83,15 @@ export const NadeTitle: FC<Props> = memo(
           #actions {
             grid-area: actions;
             align-self: center;
-            justify-self: end;
             display: flex;
           }
 
           #back {
             color: ${colors.TEXT};
-            font-size: 24px;
+            font-size: 30px;
             display: block;
             position: relative;
-            top: 0px;
+            top: -2px;
             background: transparent;
             border: none;
             outline: none;
@@ -102,11 +101,12 @@ export const NadeTitle: FC<Props> = memo(
             display: block;
             width: 30px;
             height: 24px;
+            margin-right: 12px;
           }
 
           .nade-title {
             grid-area: title;
-            padding-top: 15px;
+            align-self: center;
           }
 
           .edit {
@@ -140,21 +140,8 @@ export const NadeTitle: FC<Props> = memo(
             margin: 0;
             padding: 0;
             font-weight: 300;
-            padding: 10px 0px;
             color: ${colors.TEXT};
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-          }
-
-          .main-title {
-          }
-
-          .sub-title {
-            font-size: 15px;
-            opacity: 0.75;
-            margin-top: -8px;
+            white-space: nowrap;
           }
 
           @media only screen and (max-width: 700px) {

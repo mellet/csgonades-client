@@ -71,7 +71,6 @@ export const NewNadePage: FC = () => {
           .nade-new-container {
             grid-area: main;
             margin-top: 30px;
-            margin-bottom: 100px;
           }
 
           .new-nade-step {
