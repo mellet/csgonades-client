@@ -5,12 +5,12 @@ import { AuthApi } from "../../api/TokenApi";
 import { UserApi } from "../../api/UserApi";
 import { User } from "../../models/User";
 import { dateMinutesAgo } from "../../utils/DateUtils";
-import { setToken, setUserAction, signOutUser } from "./AuthActions";
 import { userSelector } from "./AuthSelectors";
 import { getUserFavorites } from "../../api/FavoriteApi";
 import { addAllFavoritesAction } from "../FavoriteStore/FavoriteActions";
 import Axios from "axios";
 import { useDisplayToast } from "../ToastStore/hooks/useDisplayToast";
+import { setTokenAction, setUserAction, signOutAction } from "./AuthSlice";
 
 export const useSignedInUser = () => {
   const user = useSelector(userSelector);
@@ -75,7 +75,7 @@ export const useSignOut = () => {
   const dispatch = useDispatch();
   const signOut = useCallback(() => {
     AuthApi.signOut().then(() => {
-      dispatch(signOutUser());
+      dispatch(signOutAction());
     });
   }, [dispatch]);
   return signOut;
@@ -102,12 +102,12 @@ export const usePreloadUser = () => {
       const { userDetails, userToken } = await trySignInFunc();
 
       if (!userDetails || !userToken) {
-        dispatch(signOutUser());
+        dispatch(signOutAction());
         return;
       }
 
-      setUserAction(dispatch, userDetails);
-      dispatch(setToken(userToken));
+      dispatch(setUserAction(userDetails));
+      dispatch(setTokenAction(userToken));
 
       const result = await getUserFavorites(userToken);
 
@@ -179,8 +179,8 @@ export const useOnSignIn = () => {
         return;
       }
 
-      dispatch(setToken(userToken));
-      setUserAction(dispatch, userDetails);
+      dispatch(setTokenAction(userToken));
+      dispatch(setUserAction(userDetails));
 
       const isFirstSignIn = checkIsFirstSignIn(userDetails);
 
@@ -190,7 +190,7 @@ export const useOnSignIn = () => {
         router.push("/", "/");
       }
     })();
-  }, [dispatch, router]);
+  }, [dispatch, router, displayToast]);
 };
 
 function checkIsFirstSignIn(user: User): boolean {
