@@ -66,13 +66,11 @@ export const MapPosIcon: FC<Props> = ({
           position: absolute;
           width: ${scaledIconSize}px;
           height: ${scaledIconSize}px;
-          pointer-events: none;
-          opacity: 0.8;
           transform: scale(1);
           cursor: pointer;
           pointer-events: all;
           z-index: ${zIndexByType(nade.type)};
-          transition: all 0.2s;
+          transition: transform 0.15s, opacity 0.15s;
           font-size: 18px;
         }
 
@@ -86,11 +84,13 @@ export const MapPosIcon: FC<Props> = ({
           display: flex;
           align-items: center;
           justify-content: center;
+          transform: scale(1);
+          transition: transform 0.15s;
         }
 
         .num span {
-          color: rgba(218, 196, 245, 1);
-          font-size: ${scaledIconSize * 0.45}px;
+          color: rgba(196, 245, 227, 1);
+          font-size: ${scaledIconSize * 0.5}px;
           font-weight: 400;
           text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
           font-family: "Changa One", cursive;
@@ -99,12 +99,20 @@ export const MapPosIcon: FC<Props> = ({
         .point img {
           width: 100%;
           display: block;
+          opacity: 0.85;
         }
 
         .point:hover {
           transform: scale(1.1);
-          opacity: 1;
           z-index: 500;
+        }
+
+        .point:hover > img {
+          opacity: 1;
+        }
+
+        .point:hover > .num {
+          transform: scale(1.1);
         }
       `}</style>
     </>

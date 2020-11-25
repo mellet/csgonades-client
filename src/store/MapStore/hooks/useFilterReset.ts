@@ -26,7 +26,7 @@ export const useFilterReset = () => {
     if (byTickrate !== "any") {
       return true;
     }
-    if (byType) {
+    if (byType !== "smoke") {
       return true;
     }
     if (byPro) {
