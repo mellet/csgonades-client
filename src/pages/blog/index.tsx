@@ -2,7 +2,6 @@ import { FC } from "react";
 import { BlogList } from "../../blog/BlogList";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { SEO } from "../../layout/SEO";
-import { PageCentralize } from "../../common/PageCentralize";
 import { Dimensions } from "../../constants/Constants";
 import {
   bestDust2Nades,
@@ -25,17 +24,16 @@ const BlogPage: FC = () => {
   return (
     <>
       <SEO title="Blog" canonical="/blog" />
-      <PageCentralize>
-        <div className="blog-posts">
-          <h1>Blog</h1>
-          <BlogList posts={blogPosts} />
-        </div>
-      </PageCentralize>
+      <div className="blog-posts">
+        <h1>Blog</h1>
+        <BlogList posts={blogPosts} />
+      </div>
       <style jsx>{`
         .blog-posts {
           color: ${colors.TEXT};
           grid-area: main;
           margin-top: 30px;
+          margin: ${Dimensions.GUTTER_SIZE}px;
         }
 
         h1 {

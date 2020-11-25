@@ -3,7 +3,6 @@ import { FrontPageJumbo } from "./FrontPageJumbo";
 import { SiteStats } from "../api/StatsApi";
 import { BlogList } from "../blog/BlogList";
 import { Dimensions } from "../constants/Constants";
-import { PageCentralize } from "../common/PageCentralize";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import {
   bestDust2Nades,
@@ -27,17 +26,15 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
   return (
     <>
       <div id="front-page">
-        <PageCentralize>
-          <FrontPageJumbo stats={stats} />
+        <FrontPageJumbo stats={stats} />
 
-          <div className="recent-wrap">
-            <BlogList posts={recentPosts} />
-          </div>
+        <div className="recent-wrap">
+          <BlogList posts={recentPosts} />
+        </div>
 
-          <div className="ph">
-            <EzoicPlaceholder id="174" />
-          </div>
-        </PageCentralize>
+        <div className="ph">
+          <EzoicPlaceholder id="174" />
+        </div>
       </div>
 
       <style jsx>{`
@@ -47,7 +44,7 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
 
         #front-page {
           grid-area: main;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          margin: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .recent-wrap {
