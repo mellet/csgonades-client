@@ -58,6 +58,10 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           overflow-y: auto;
           padding: ${Dimensions.GUTTER_SIZE}px;
           overflow: hidden;
+          opacity: 0;
+          animation-name: fadeId;
+          animation-duration: 0.3s;
+          animation-fill-mode: forwards;
         }
 
         .nades {
@@ -80,8 +84,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           right: -10%;
           bottom: -10%;
           background: white;
-          opacity: 0.75;
-          backdrop-filter: blur(4px);
+          opacity: 0.8;
+          backdrop-filter: blur(5px);
         }
 
         .title {
@@ -115,7 +119,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           opacity: 1;
         }
 
-        @keyframes slide-down {
+        @keyframes fadeId {
           from {
             opacity: 0;
           }
