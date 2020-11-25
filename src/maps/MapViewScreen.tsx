@@ -2,7 +2,7 @@ import { FC, useRef, useState, useEffect } from "react";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { Dimensions } from "../constants/Constants";
 import { useNadeClusters } from "../store/MapStore/hooks/useNadesForMapView";
-import { MapCoordinates, NadeLight } from "../nade-data/Nade/Nade";
+import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPosIcon } from "./mapview/MapPosIcon";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
@@ -11,10 +11,10 @@ import { useWindowSize } from "../common/MinSizeRender";
 type Props = {
   map: CsgoMap;
   allNades: NadeLight[];
-  onNadePositionClick: (coords: MapCoordinates) => void;
+  onClusterClick: (cluster: NadeLight[]) => void;
 };
 
-const MapViewScreen: FC<Props> = ({ allNades, map, onNadePositionClick }) => {
+const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
@@ -72,7 +72,7 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onNadePositionClick }) => {
                     cluster={cluster}
                     mapWidth={canvasSize}
                     numNades={cluster.length}
-                    onPress={onNadePositionClick}
+                    onPress={() => onClusterClick(cluster)}
                   />
                 );
               })}

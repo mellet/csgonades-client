@@ -10,8 +10,7 @@ import { MapPageSidebar } from "./MapPageSidebar";
 import { Dimensions } from "../constants/Constants";
 import FilterBar from "./nadefilter/FilterBar";
 import { MapViewSuggested } from "./MapViewSuggested";
-import { useOnNadeClick } from "./SuggestedNades/useOnNadeClick";
-import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
+import { useOnNadeClusterClick } from "./SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 
 const MapViewScreen = React.lazy(() => import("./MapViewScreen"));
@@ -26,11 +25,12 @@ type Props = {
 export const MapPage: FC<Props> = memo(({ map, allNades }) => {
   const { mapView } = useSetMapView();
   useMapChangeHandler(allNades);
-  const filteredNades = useFilterServerSideNades(allNades);
 
-  const { onNadeClick, suggestedNades, dismissSuggested } = useOnNadeClick(
-    filteredNades
-  );
+  const {
+    onNadeClusterClick,
+    suggestedNades,
+    dismissSuggested,
+  } = useOnNadeClusterClick();
 
   const displayMapOverview: boolean = mapView === "overview" && !isServer;
 
@@ -66,7 +66,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
                 <MapViewScreen
                   map={map}
                   allNades={allNades}
-                  onNadePositionClick={onNadeClick}
+                  onClusterClick={onNadeClusterClick}
                 />
               </Suspense>
             )}
