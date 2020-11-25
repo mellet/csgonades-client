@@ -3,20 +3,35 @@ import { NadeLight } from "../../nade-data/Nade/Nade";
 import { NadeType } from "../../nade-data/Nade/NadeType";
 
 type Props = {
+  cluster: NadeLight[];
   nade: NadeLight;
   mapWidth: number;
   onPress: (pos: { x: number; y: number }) => void;
+  numNades: number;
 };
 
-export const MapPosIcon: FC<Props> = ({ nade, mapWidth, onPress }) => {
+export const MapPosIcon: FC<Props> = ({
+  nade,
+  mapWidth,
+  onPress,
+  numNades,
+  cluster,
+}) => {
   const position = useMemo(() => {
+    const averageX =
+      cluster.reduce((acc, cur) => acc + (cur.mapEndCoord?.x || 0), 0) /
+      cluster.length;
+
+    const averageY =
+      cluster.reduce((acc, cur) => acc + (cur.mapEndCoord?.y || 0), 0) /
+      cluster.length;
+
     const sizeRatio = 1024 / mapWidth;
-    const { mapEndCoord } = nade;
     return {
-      x: mapEndCoord ? mapEndCoord.x / sizeRatio : 0,
-      y: mapEndCoord ? mapEndCoord.y / sizeRatio : 0,
+      x: averageX / sizeRatio,
+      y: averageY / sizeRatio,
     };
-  }, [nade, mapWidth]);
+  }, [mapWidth, cluster]);
 
   function onClick() {
     if (nade.mapEndCoord) {
@@ -27,7 +42,7 @@ export const MapPosIcon: FC<Props> = ({ nade, mapWidth, onPress }) => {
     }
   }
 
-  const scaledIconSize = mapWidth / 21;
+  const scaledIconSize = mapWidth / 19;
 
   return (
     <>
@@ -40,6 +55,11 @@ export const MapPosIcon: FC<Props> = ({ nade, mapWidth, onPress }) => {
         onClick={onClick}
       >
         <img src={`/icons/grenades/${nade.type}.png`} />
+        {numNades > 1 && (
+          <div className="num">
+            <span>{numNades}</span>
+          </div>
+        )}
       </div>
       <style jsx>{`
         .point {
@@ -53,6 +73,27 @@ export const MapPosIcon: FC<Props> = ({ nade, mapWidth, onPress }) => {
           pointer-events: all;
           z-index: ${zIndexByType(nade.type)};
           transition: all 0.2s;
+          font-size: 18px;
+        }
+
+        .num {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: ${scaledIconSize}px;
+          height: ${scaledIconSize}px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .num span {
+          color: rgba(218, 196, 245, 1);
+          font-size: ${scaledIconSize * 0.45}px;
+          font-weight: 400;
+          text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
+          font-family: "Changa One", cursive;
         }
 
         .point img {

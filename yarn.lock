@@ -2627,6 +2627,11 @@ clsx@^1.1.1:
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
+clusters@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/clusters/-/clusters-0.0.4.tgz#f6d603139788b1443415fee42fe1d4ececea8379"
+  integrity sha1-9tYDE5eIsUQ0Ff7kL+HU7Ozqg3k=
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"

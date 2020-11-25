@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { NadeLight } from "../../../nade-data/Nade/Nade";
 import { favoritedNadeIdsSelector } from "../../../store/FavoriteStore/FavoriteSelectors";
+import { custerNades } from "../../../utils/Cluster";
 import {
   filterByTickrateSelector,
   filterByFavoritesSelector,
@@ -48,6 +49,19 @@ export const useNadesForMapView = (nades: NadeLight[]): NadeLight[] => {
     }
     return unqiueNades;
   }, [nades, byType, byTickrate, byFavorites, favoritedNades, byPro]);
+
+  return unqiueNadesForPosition;
+};
+
+export const useNadeClusters = (nades: NadeLight[]): NadeLight[][] => {
+  const unqiueNadesForPosition = useMemo(() => {
+    if (!nades) {
+      return [];
+    }
+
+    const cluster = custerNades(nades);
+    return cluster;
+  }, [nades]);
 
   return unqiueNadesForPosition;
 };

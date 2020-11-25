@@ -1,7 +1,7 @@
 import { FC, useRef, useState, useEffect } from "react";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { Dimensions } from "../constants/Constants";
-import { useNadesForMapView } from "../store/MapStore/hooks/useNadesForMapView";
+import { useNadeClusters } from "../store/MapStore/hooks/useNadesForMapView";
 import { MapCoordinates, NadeLight } from "../nade-data/Nade/Nade";
 import { MapPosIcon } from "./mapview/MapPosIcon";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
@@ -20,8 +20,8 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onNadePositionClick }) => {
   const { mapView } = useSetMapView();
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapSize, setMapSize] = useState(0);
-  const nades = useNadesForMapView(filteredNades);
   const mapViewRef = useRef<HTMLDivElement>(null);
+  const clusters = useNadeClusters(filteredNades);
 
   function recalcMapSize(offsetHeight: number, offsetWidth) {
     if (offsetHeight < offsetWidth) {
@@ -63,14 +63,19 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onNadePositionClick }) => {
               onLoad={onMapViewImageLoaded}
             />
             {mapLoaded &&
-              nades.map((n) => (
-                <MapPosIcon
-                  key={n.id}
-                  nade={n}
-                  mapWidth={canvasSize}
-                  onPress={onNadePositionClick}
-                />
-              ))}
+              clusters.map((cluster) => {
+                const nade = cluster[0];
+                return (
+                  <MapPosIcon
+                    key={nade.id}
+                    nade={nade}
+                    cluster={cluster}
+                    mapWidth={canvasSize}
+                    numNades={cluster.length}
+                    onPress={onNadePositionClick}
+                  />
+                );
+              })}
           </div>
         </div>
 
