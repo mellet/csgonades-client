@@ -61,8 +61,6 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
               onDismiss={dismissSuggested}
             />
 
-            {mapView === "list" && <MapPageNades allNades={allNades} />}
-
             {displayMapOverview && (
               <Suspense fallback={<></>}>
                 <MapViewScreen
