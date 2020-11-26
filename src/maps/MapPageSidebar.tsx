@@ -6,6 +6,7 @@ import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
 import { TopContributorsLazy } from "./components/TopContributors/TopContributorsLazy";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { capitalize } from "../utils/Common";
+import { PaypalAction } from "../frontpage/PaypalAction";
 
 type Props = {
   map: CsgoMap;
@@ -39,6 +40,9 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
         <div className="discord">
           <DiscordJoinAction />
         </div>
+        <div className="paypal">
+          <PaypalAction />
+        </div>
       </div>
       <style jsx>{`
         .mappage-sidebar {
@@ -46,6 +50,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           display: flex;
           flex-direction: column;
           overflow-y: auto;
+          background: ${colors.DP02};
         }
 
         .jumbo {
@@ -73,7 +78,12 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           border-top: 1px solid ${colors.BORDER};
         }
 
-        .discord {
+        .discord,
+        .paypal {
+          padding: 16px 16px 0px 16px;
+        }
+
+        .paypal {
           padding: 16px;
         }
       `}</style>
