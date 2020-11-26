@@ -7,6 +7,7 @@ import { MapPosIcon } from "./mapview/MapPosIcon";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
 import { useWindowSize } from "../common/MinSizeRender";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   map: CsgoMap;
@@ -79,7 +80,9 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
           </div>
         </div>
 
-        <div id="ph"></div>
+        <div id="ph">
+          <EzoicPlaceholder id="193" />
+        </div>
       </div>
 
       <style jsx>{`
@@ -110,8 +113,9 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
           left: 0px;
           right: 0px;
           bottom: 0px;
-          background: rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.1);
           height: 90px;
+          overflow: hidden;
         }
 
         #mapview {

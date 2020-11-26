@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
-import { Dimensions } from "../constants/Constants";
 import { Nade } from "../nade-data/Nade/Nade";
 import { generateTitle } from "../utils/Common";
 import { NadeMeta } from "./components/NadeMeta";
@@ -23,10 +22,6 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
           />
         </div>
 
-        <div className="sidebar-ph">
-          <EzoicPlaceholder id="170" />
-        </div>
-
         <NadeShareActions
           title={generateTitle(
             nade.title,
@@ -39,6 +34,10 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
           url={`/nades/${nade?.slug || nade?.id}`}
           image={nade.images.thumbnailUrl}
         />
+
+        <div className="sidebar-ph">
+          <EzoicPlaceholder id="170" />
+        </div>
       </div>
 
       <style jsx>{`
