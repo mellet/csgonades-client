@@ -3,12 +3,9 @@ import { useSetMapView } from "../../../store/MapStore/hooks/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { FilterLabel } from "./FilterLabel";
 
-type Props = {
-  vertical?: boolean;
-};
-
-export const MapViewSelector: FC<Props> = ({ vertical }) => {
+export const MapViewSelector: FC = () => {
   const { colors } = useTheme();
   const { mapView, setMapView } = useSetMapView();
 
@@ -19,9 +16,7 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
   return (
     <>
       <div className="view-selector">
-        <div className="label">
-          <span>VIEW</span>
-        </div>
+        <FilterLabel value="VIEW" />
         <div className="view-selector-btns">
           <button
             className={
@@ -40,36 +35,9 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
         </div>
       </div>
       <style jsx>{`
-        .view-hint {
-        }
-
-        .view-hint button {
-          background: transparent;
-          color: white;
-          border: 1px solid white;
-          outline: none;
-          margin-top: 5px;
-          padding: 7px;
-          width: 100%;
-          font-weight: 400;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-
-        .view-hint button:hover {
-          background: ${colors.filterBgHover};
-        }
-
-        .label {
-          font-size: 12px;
-          font-weight: 500;
-          margin-bottom: 5px;
-          color: ${vertical ? "white" : colors.TEXT};
-        }
-
         .view-selector-btns {
           display: flex;
-          flex-direction: ${vertical ? "column" : "row"};
+          flex-direction: column;
           background: ${colors.filterBg};
           overflow: hidden;
           border-radius: 5px;

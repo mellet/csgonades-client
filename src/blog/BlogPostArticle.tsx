@@ -58,9 +58,7 @@ export const BlogPostArticle: FC<Props> = memo(
 
               {!!SideBarComp && (
                 <div id="blog-side-comp" className="spacer sticky">
-                  <div className="spacer">
-                    <SideBarComp />
-                  </div>
+                  <SideBarComp />
                 </div>
               )}
             </>
@@ -105,6 +103,7 @@ export const BlogPostArticle: FC<Props> = memo(
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
             color: ${colors.TEXT};
+            margin: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #title-image {
@@ -119,7 +118,6 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #blog-share {
-            height: 40vh;
           }
 
           #article-title {

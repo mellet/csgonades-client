@@ -17,8 +17,8 @@ export const Logo: FC = memo(() => {
           <Image
             priority
             src={logoUrl}
-            height={35}
-            width={55}
+            height={40}
+            width={62}
             alt="CSGO Nades"
           />
         </div>
@@ -26,7 +26,7 @@ export const Logo: FC = memo(() => {
       <style jsx>{`
         #logo {
           display: block;
-          height: 35px;
+          height: 40px;
         }
       `}</style>
     </>

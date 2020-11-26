@@ -7,7 +7,7 @@ import { CsgnTextArea } from "../common/inputs/CsgnTextArea";
 import { AddConctactDTO } from "../admin/data/ContactDTOs";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { SEO } from "../layout/SEO";
-import { PageCentralize } from "../common/PageCentralize";
+import { Dimensions } from "../constants/Constants";
 
 const ContactPageContainer: NextPage = () => {
   const { colors } = useTheme();
@@ -48,31 +48,28 @@ const ContactPageContainer: NextPage = () => {
   return (
     <>
       <SEO title="Contact" canonical="/contact" />
-      <PageCentralize>
-        <div className="contact">
-          <h1>Contact me 📨</h1>
-          {!!error && <p>{error}</p>}
+      <div className="contact">
+        <h1>Contact me 📨</h1>
+        {!!error && <p>{error}</p>}
 
-          {success && (
-            <Message positive>
-              <Message.Header>Message sent</Message.Header>
-              <p>Your message has been sent.</p>
-            </Message>
-          )}
+        {success && (
+          <Message positive>
+            <Message.Header>Message sent</Message.Header>
+            <p>Your message has been sent.</p>
+          </Message>
+        )}
 
-          <CsgnInput label="Name" initialValue={name} onChange={setName} />
-          <CsgnInput label="E-mail" initialValue={email} onChange={setEmail} />
-          <CsgnTextArea label="Message" value={message} onChange={setMessage} />
+        <CsgnInput label="Name" initialValue={name} onChange={setName} />
+        <CsgnInput label="E-mail" initialValue={email} onChange={setEmail} />
+        <CsgnTextArea label="Message" value={message} onChange={setMessage} />
 
-          <Button positive onClick={onSubmit}>
-            Send
-          </Button>
-        </div>
-      </PageCentralize>
+        <Button positive onClick={onSubmit}>
+          Send
+        </Button>
+      </div>
       <style jsx>{`
         .contact {
-          margin-top: 30px;
-          margin-bottom: 100px;
+          margin: ${Dimensions.GUTTER_SIZE}px;
           padding: 20px 30px;
           color: ${colors.TEXT};
           background: ${colors.DP01};

@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signInWarningSelector } from "../GlobalSelectors";
-import { useGlobalDispatch } from "./helpers";
 import { useCallback } from "react";
 import {
   displaySignInWarningAction,
   SignInWarningType,
-} from "../GlobalActions";
+  clearSignInWarningAction,
+} from "../GlobalStore";
 
 export const useSignInWarning = () => {
-  const dispatch = useGlobalDispatch();
+  const dispatch = useDispatch();
   const signInWarning = useSelector(signInWarningSelector);
 
   const setSignInWarning = useCallback(
@@ -19,9 +19,7 @@ export const useSignInWarning = () => {
   );
 
   const clearSignInWarning = useCallback(() => {
-    dispatch({
-      type: "Global/ClearSignInWarning",
-    });
+    dispatch(clearSignInWarningAction());
   }, [dispatch]);
 
   return {

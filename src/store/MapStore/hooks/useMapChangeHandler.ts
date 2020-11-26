@@ -1,13 +1,14 @@
-import { useMapStoreDispatch } from "./helpers";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { CsgoMap } from "../../../nade-data/Nade/CsGoMap";
 import { useReplaceNadesForMap } from "./useReplaceNadesForMap";
 import { NadeLight } from "../../../nade-data/Nade/Nade";
+import { useDispatch } from "react-redux";
+import { setCurrentMapAction } from "../slice";
 
 export const useMapChangeHandler = (nades: NadeLight[]): void => {
   const { query } = useRouter();
-  const dispatch = useMapStoreDispatch();
+  const dispatch = useDispatch();
   const replaceNadesForMap = useReplaceNadesForMap();
 
   useEffect(() => {
@@ -27,9 +28,6 @@ export const useMapChangeHandler = (nades: NadeLight[]): void => {
       return;
     }
 
-    dispatch({
-      type: "MapStore/SetCurrentMap",
-      map: csGoMap,
-    });
+    dispatch(setCurrentMapAction(csGoMap));
   }, [query, dispatch]);
 };

@@ -2,14 +2,8 @@ import { FC, memo } from "react";
 import { FaUndo } from "react-icons/fa";
 import { useFilterReset } from "../../../store/MapStore/hooks/useFilterReset";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 
-type Props = {
-  vertical?: boolean;
-};
-
-export const ResetFilterButton: FC<Props> = memo(({ vertical }) => {
-  const { colors } = useTheme();
+export const ResetFilterButton: FC = memo(() => {
   const { canReset, resetFilter } = useFilterReset();
 
   function onReset() {
@@ -23,7 +17,6 @@ export const ResetFilterButton: FC<Props> = memo(({ vertical }) => {
   return (
     <>
       <div className={`reset ${visible}`}>
-        <div className="label">RESET</div>
         <button className={`filter-btn`} onClick={onReset}>
           <FaUndo />
         </button>
@@ -50,19 +43,6 @@ export const ResetFilterButton: FC<Props> = memo(({ vertical }) => {
           height: ${Dimensions.BUTTON_HEIGHT}px;
           width: ${Dimensions.BUTTON_HEIGHT}px;
           cursor: pointer;
-        }
-
-        .label {
-          font-size: 12px;
-          margin-bottom: 5px;
-          font-weight: 500;
-          color: ${vertical ? "white" : colors.TEXT};
-        }
-
-        .icon {
-          font-size: 11px;
-          position: relative;
-          top: 1px;
         }
 
         .visible {

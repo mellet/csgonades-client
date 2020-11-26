@@ -2,13 +2,13 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { FavoriteApi } from "../../../api/FavoriteApi";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
+import { useDisplayToast } from "../../ToastStore/hooks/useDisplayToast";
 import {
   addAllFavoritesAction,
   favoriteInProgressBeginAction,
   favoriteInProgressEndAction,
   removeFavoriteAction,
-} from "../FavoriteActions";
-import { useDisplayToast } from "../../ToastStore/hooks/useDisplayToast";
+} from "../FavoriteSlice";
 
 export const useUnfavorite = () => {
   const displayToast = useDisplayToast();

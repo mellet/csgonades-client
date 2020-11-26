@@ -1,7 +1,7 @@
 import { FC, memo, useEffect, useMemo, useState } from "react";
 import { FaCookieBite } from "react-icons/fa";
 import { Dimensions } from "../constants/Constants";
-import { useCookieConcent } from "../store/GlobalStore/GlobalHooks";
+import { useCookieConcent } from "../store/GlobalStore/hooks/useCookieConcent";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 export const CookieConsent: FC = memo(() => {

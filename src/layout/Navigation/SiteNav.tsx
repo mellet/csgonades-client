@@ -19,19 +19,21 @@ export const SiteNav: FC = memo(({}) => {
       <style jsx>{`
         .site-nav {
           display: flex;
+          flex-direction: column;
         }
 
         .nav-item {
           display: block;
-          margin-right: 20px;
-          padding: 10px;
+          padding: 10px 16px;
           color: ${colors.TEXT};
-          font-size: 14px;
+          font-size: 16px;
           cursor: pointer;
+          background: ${colors.DP01};
+          border-top: 1px solid ${colors.BORDER};
         }
 
         .nav-item:hover {
-          text-decoration: underline;
+          background: ${colors.DP02};
         }
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {

@@ -8,7 +8,6 @@ import { CsgnList } from "../common/list/CsgnList";
 import { NadeItemMobile } from "../common/nadeitem/NadeItemMobile";
 import { isMobileOnly } from "react-device-detect";
 import { NadeItem } from "../common/nadeitem/NadeItem";
-import { PageCentralize } from "../common/PageCentralize";
 import { Dimensions } from "../constants/Constants";
 
 type Props = {
@@ -43,27 +42,24 @@ export const UserUI: FC<Props> = ({ user }) => {
 
   return (
     <>
-      <PageCentralize>
-        <div className="user-container">
-          <div className="user-details">
-            <UserDetails user={user} />
-          </div>
-          <div className="user-nades">
-            <h2>Nades by {user.nickname}</h2>
-            <CsgnList<NadeLight>
-              data={nades}
-              keyExtractor={keyExtractor}
-              renderItem={renderItem}
-            />
-          </div>
+      <div className="user-container">
+        <div className="user-details">
+          <UserDetails user={user} />
         </div>
-      </PageCentralize>
+        <div className="user-nades">
+          <h2>Nades by {user.nickname}</h2>
+          <CsgnList<NadeLight>
+            data={nades}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+          />
+        </div>
+      </div>
       <style jsx>{`
         .user-container {
           grid-area: main;
           position: relative;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-          margin-bottom: 100px;
+          margin: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           flex-direction: column;
           min-height: 60vh;

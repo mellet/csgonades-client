@@ -3,7 +3,6 @@ import { FaRocket, FaLongArrowAltUp, FaSith } from "react-icons/fa";
 import { useFilterByMethod } from "../store/MapStore/hooks/useFilterByMethod";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
-import { HelpTip } from "./nadefilter/component/HelpTip";
 
 export const SortingMethodSelector: FC = () => {
   const { colors } = useTheme();
@@ -36,20 +35,6 @@ export const SortingMethodSelector: FC = () => {
   return (
     <>
       <div className="sorting-wrapper">
-        <div className="sorting-label">
-          SORT{" "}
-          <HelpTip hintLabel="Sort">
-            <div>
-              <b>Hot:</b> By submit time and favorite count
-            </div>
-            <div>
-              <b>New:</b> By date, newest first
-            </div>
-            <div>
-              <b>Top:</b> By most favorited
-            </div>
-          </HelpTip>
-        </div>
         <div className="sorthing-method-selector">
           <div className="sorting-btns">
             <button

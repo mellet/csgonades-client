@@ -11,8 +11,8 @@ export const ButtonGroup: FC = ({ children }) => {
         .button-group {
           border-radius: 5px;
           background: ${colors.primaryBtnBg};
-          display: inline-flex;
           overflow: hidden;
+          display: inline-block;
         }
       `}</style>
     </>

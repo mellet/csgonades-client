@@ -44,6 +44,10 @@ class MyDocument extends Document {
               key="google-font-roboto"
               media="all"
             />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap"
+              rel="stylesheet"
+            />
             <script src="//www.ezojs.com/ezoic/sa.min.js" />
           </Head>
           <body id="app">

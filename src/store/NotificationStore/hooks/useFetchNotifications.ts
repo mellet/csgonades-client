@@ -2,11 +2,11 @@ import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NotificationApi } from "../../../api/NotificationApi";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
-import { addUnreadNotificationsAction } from "../NotificationActions";
 import { useRouter } from "next/router";
 import { lastNotificationFetchSelector } from "../NotificationSelectors";
 import { dateMinutesAgo } from "../../../utils/DateUtils";
 import { useIsSignedIn } from "../../AuthStore/AuthHooks";
+import { addUnreadNotificationsAction } from "../NotificationSlice";
 
 export const useFetchNotifications = () => {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export const useFetchNotifications = () => {
     }
 
     fetchNotifications();
-  }, [isSignedIn]);
+  }, [isSignedIn, fetchNotifications]);
 
   // On page change, check if we should refetch
   useEffect(() => {
@@ -53,5 +53,5 @@ export const useFetchNotifications = () => {
     }
 
     fetchNotifications();
-  }, [isSignedIn, lastNotificationFetch, asPath]);
+  }, [isSignedIn, lastNotificationFetch, asPath, fetchNotifications]);
 };

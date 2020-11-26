@@ -8,7 +8,6 @@ import {
 import { useAnalytics } from "../utils/Analytics";
 import { FaVk, FaTwitter, FaRedditAlien, FaFacebookF } from "react-icons/fa";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { Dimensions } from "../constants/Constants";
 
 type Props = {
   visisble: boolean;
@@ -78,8 +77,8 @@ export const NadeShareActions: FC<Props> = ({
       <style jsx>{`
         .share-container {
           background ${colors.DP02};
-          border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .label {

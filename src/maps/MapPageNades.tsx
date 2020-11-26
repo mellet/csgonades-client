@@ -43,7 +43,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           data={nades}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
-          enableAds={true}
+          enableAds={false}
         />
       </div>
       <style jsx>{`

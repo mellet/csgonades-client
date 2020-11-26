@@ -4,6 +4,7 @@ import { NadeItem } from "../common/nadeitem/NadeItem";
 import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../common/list/CsgnList";
 import { Dimensions } from "../constants/Constants";
+import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 type Props = {
   nades: NadeLight[] | null;
@@ -11,6 +12,8 @@ type Props = {
 };
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
+  const { colors } = useTheme();
+
   function renderItem(item: NadeLight) {
     return <NadeItem nade={item} />;
   }
@@ -25,19 +28,22 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
   return (
     <>
-      <div className="suggested-nades" onClick={onDismiss}>
-        <div className="title">
-          <div className="label">Found multiple nades for location</div>
-          <div className="close-btn" onClick={onDismiss}>
-            <FaTimes />
+      <div className="suggested-nades">
+        <div className="bg" />
+        <div className="nades">
+          <div className="title">
+            <div className="label">Found multiple nades for location</div>
+            <div className="close-btn" onClick={onDismiss}>
+              <FaTimes />
+            </div>
           </div>
-        </div>
-        <div className="nade-list-wrap">
-          <CsgnList<NadeLight>
-            data={nades}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
-          />
+          <div className="nade-list-wrap">
+            <CsgnList<NadeLight>
+              data={nades}
+              renderItem={renderItem}
+              keyExtractor={keyExtractor}
+            />
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -47,45 +53,51 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           bottom: 0;
           right: 0;
           left: 0;
-          border-radius: 5px;
-          background: rgba(0, 0, 0, 0.9);
           z-index: 800;
-          animation-name: slide-down;
-          animation-duration: 0.25s;
-          animation-fill-mode: forwards;
+          background: transparent;
           overflow-y: auto;
           padding: ${Dimensions.GUTTER_SIZE}px;
+          overflow: hidden;
+          opacity: 0;
+          animation-name: fadeId;
+          animation-duration: 0.3s;
+          animation-fill-mode: forwards;
         }
 
-        .suggested-nades::-webkit-scrollbar {
-          width: 10px;
+        .nades {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+          padding: 16px;
+          overflow-y: auto;
         }
 
-        /* Track */
-        .suggested-nades::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.1);
+        .nade-list-wrap {
         }
 
-        /* Handle */
-        .suggested-nades::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Handle on hover */
-        .suggested-nades::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.8);
+        .bg {
+          position: absolute;
+          top: -10%;
+          left: -10%;
+          right: -10%;
+          bottom: -10%;
+          background: ${colors.DP00};
+          opacity: 0.95;
         }
 
         .title {
-          color: white;
+          color: ${colors.TEXT};
           text-transform: uppercase;
           text-align: center;
-          font-size: 14px;
-          font-weight: 500;
-          margin-bottom: 20px;
+          font-size: 18px;
+          font-weight: 400;
+          margin-bottom: 16px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-areas: ". msg close";
+          height: 40px;
         }
 
         .label {
@@ -94,11 +106,19 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
         .close-btn {
           grid-area: close;
-          font-size: 24px;
+          font-size: 40px;
           justify-self: end;
+          color: #850b0b;
+          cursor: pointer;
+          opacity: 0.8;
+          transition: opacity 0.15s;
         }
 
-        @keyframes slide-down {
+        .close-btn:hover {
+          opacity: 1;
+        }
+
+        @keyframes fadeId {
           from {
             opacity: 0;
           }

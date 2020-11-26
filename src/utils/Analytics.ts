@@ -2,14 +2,12 @@ import { useCallback, useEffect } from "react";
 import ReactGA from "react-ga";
 import { useIsAdmin } from "../store/AuthStore/AuthHooks";
 import { useRouter } from "next/router";
-import { useNavigation } from "../store/GlobalStore/GlobalHooks";
-import { useNadeModal } from "../store/MapStore/hooks/useNadeModal";
+import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
 
 const IS_BROWSER = typeof window !== "undefined";
 const IS_PROD = process.env.NODE_ENV === "production";
 
 export const usePageView = (): void => {
-  const { clearNadeForModal } = useNadeModal();
   const { closeNav } = useNavigation();
   const { asPath } = useRouter();
   const { pageView } = useAnalytics();
@@ -17,7 +15,6 @@ export const usePageView = (): void => {
   function onPathChange(path: string) {
     closeNav();
     pageView({ path });
-    clearNadeForModal();
   }
 
   useEffect(() => {

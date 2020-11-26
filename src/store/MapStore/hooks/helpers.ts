@@ -1,15 +1,8 @@
-import { useDispatch } from "react-redux";
-import { Dispatch } from "redux";
-import { MapStoreActions } from "../actions";
 import { MapCoordinates, NadeLight } from "../../../nade-data/Nade/Nade";
 import { Tickrate } from "../../../nade-data/Nade/NadeTickrate";
 import { NadeType } from "../../../nade-data/Nade/NadeType";
-import { NadeSortingMethod } from "../reducer";
+import { NadeSortingMethod } from "../slice";
 import { dateMinutesAgo } from "../../../utils/DateUtils";
-
-export const useMapStoreDispatch = (): Dispatch<MapStoreActions> => {
-  return useDispatch<Dispatch<MapStoreActions>>();
-};
 
 export function filterByPro(nades: NadeLight[], byPro?: boolean): NadeLight[] {
   if (byPro) {

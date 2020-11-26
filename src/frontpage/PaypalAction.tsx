@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { FaPaypal } from "react-icons/fa";
+import { Dimensions } from "../constants/Constants";
 
-export const FooterPaypal: FC = () => {
+export const PaypalAction: FC = () => {
   return (
     <>
       <div className="actions-wrapper">
@@ -10,14 +11,10 @@ export const FooterPaypal: FC = () => {
           target="_blank"
           rel="noopener noreferrer nofollow"
         >
-          <div className="action discord">
-            <p className="discord-msg">
-              Love the site?
-              <br />
-              <br />
-              Consider supporting me on <b>PayPal</b>
-            </p>
-
+          <div className="action">
+            <div className="discord-msg">
+              Support me on <b>PayPal</b>
+            </div>
             <div className="discord-logo">
               <FaPaypal />
             </div>
@@ -25,30 +22,27 @@ export const FooterPaypal: FC = () => {
         </a>
       </div>
       <style jsx>{`
+        .actions-wrapper {
+          width: 100%;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
+        }
+
         .action {
-          padding: 20px;
+          display: flex;
+          padding: 10px 20px;
           color: white;
-          border-radius: 5px;
-          transition: transform 0.2s;
-          min-height: 200px;
+          justify-content: space-between;
+          align-items: center;
           background: #00659d;
-          transition: background 0.1s;
-          width: 200px;
         }
 
         .action:hover {
-          background: #005380;
+          background: #6276bd;
         }
 
         .discord-msg {
-          margin-bottom: 10px;
           font-size: 18px;
-          line-height: 28px;
-        }
-
-        .sub-msg {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.7);
         }
 
         .discord {
@@ -56,10 +50,7 @@ export const FooterPaypal: FC = () => {
         }
 
         .discord-logo {
-          position: absolute;
-          bottom: 15px;
-          right: 15px;
-          font-size: 50px;
+          font-size: 40px;
           opacity: 0.2;
           color: #fff;
         }

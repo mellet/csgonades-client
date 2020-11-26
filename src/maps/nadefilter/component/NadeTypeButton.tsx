@@ -55,11 +55,11 @@ export const NadeTypeButton: FC<Props> = memo(
             width: ${Dimensions.BUTTON_HEIGHT}px;
             height: ${Dimensions.BUTTON_HEIGHT}px;
             background: ${colors.filterBg};
-            border-right: 1px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
           }
 
           .nade-type-btn:last-child {
-            margin-right: 0px;
+            margin-bottom: 0px;
           }
 
           .type-icon {

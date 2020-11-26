@@ -37,7 +37,7 @@ export const SignInWarning: FC = memo(() => {
   return (
     <>
       <CSGNModal
-        title="Woopsy doopsy!"
+        title="Sign In Required"
         visible={!!signInWarning}
         onDismiss={onDismiss}
       >
@@ -55,9 +55,6 @@ export const SignInWarning: FC = memo(() => {
               Filter proffesional nades
             </div>
           )}
-          <div className="section">
-            <Twemoji emoji="👍" /> Up and Down vote nades
-          </div>
           <div className="section">
             <Twemoji emoji="🤩" /> Favorite nades
           </div>
@@ -93,13 +90,12 @@ export const SignInWarning: FC = memo(() => {
         }
 
         .sign-in-warning {
-          padding: 30px;
-          min-width: 30vw;
+          padding: 16px;
         }
 
         .msg {
           text-align: center;
-          padding: 20px;
+          padding: 16px;
         }
 
         .btn {
@@ -112,7 +108,6 @@ export const SignInWarning: FC = memo(() => {
         }
 
         .btn {
-          margin-top: 20px;
         }
       `}</style>
     </>

@@ -1,19 +1,15 @@
 import { useCallback } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterByMethodSelector } from "../selectors";
-import { useMapStoreDispatch } from "./helpers";
-import { NadeSortingMethod } from "../reducer";
+import { NadeSortingMethod, setSortingMethodAction } from "../slice";
 
 export const useFilterByMethod = () => {
   const byMethod = useSelector(filterByMethodSelector);
-  const dispatch = useMapStoreDispatch();
+  const dispatch = useDispatch();
 
   const filterBySortingMethod = useCallback(
     (sortingMethod: NadeSortingMethod) =>
-      dispatch({
-        type: "MapStore/SetSortingMethod",
-        method: sortingMethod,
-      }),
+      dispatch(setSortingMethodAction(sortingMethod)),
     [dispatch]
   );
 

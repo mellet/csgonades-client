@@ -3,14 +3,9 @@ import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { useFilterByTickrate } from "../../../store/MapStore/hooks/useFilterByTickrate";
 import { ButtonGroup } from "./ButtonGroup";
 import { Dimensions } from "../../../constants/Constants";
-import { HelpTip } from "./HelpTip";
-import Link from "next/link";
+import { FilterLabel } from "./FilterLabel";
 
-type Props = {
-  vertical?: boolean;
-};
-
-export const TickrateSelector: FC<Props> = ({ vertical }) => {
+export const TickrateSelector: FC = () => {
   const { colors } = useTheme();
   const { byTickrate, filterByTickrate } = useFilterByTickrate();
 
@@ -25,30 +20,10 @@ export const TickrateSelector: FC<Props> = ({ vertical }) => {
   const tick64active = byTickrate === "tick64" ? "active" : "";
   const tick128active = byTickrate === "tick128" ? "active" : "";
 
-  const labelText = vertical ? "TICK" : "TICKRATE";
-
   return (
     <>
       <div className="tick-filter-wrap">
-        <div className="label">
-          {labelText}{" "}
-          <HelpTip hintLabel="Tickrate">
-            <div>
-              <b>Matchmaking:</b> 64 Tick
-            </div>
-            <div>
-              <b>3rd Party Services:</b> 128 Tick
-            </div>
-            <div>
-              <Link
-                href="/blog/tickrate-and-jumpthrow-bind"
-                as="/blog/tickrate-and-jumpthrow-bind"
-              >
-                <a>Read why.</a>
-              </Link>
-            </div>
-          </HelpTip>
-        </div>
+        <FilterLabel value="TICK" />
         <div className="filter-tick">
           <ButtonGroup>
             <div className="filter-btns">
@@ -72,17 +47,7 @@ export const TickrateSelector: FC<Props> = ({ vertical }) => {
       <style jsx>{`
         .filter-btns {
           display: flex;
-          flex-direction: ${vertical ? "column" : "row"};
-          margin-right: -1px;
-        }
-
-        .label {
-          font-size: 12px;
-          font-weight: 500;
-          margin-bottom: 5px;
-          color: ${vertical ? "white" : colors.TEXT};
-          display: flex;
-          align-items: center;
+          flex-direction: column;
         }
 
         .filter-tick {

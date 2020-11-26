@@ -2,10 +2,12 @@ import "../utils/css/normalize.css";
 import "semantic-ui-css/semantic.min.css";
 import "../utils/css/Global.css";
 import { Layout } from "../layout/Layout";
-import { withRedux } from "../utils/WithRedux";
 import Head from "next/head";
+import { AppProps } from "next/app";
+import { FC } from "react";
+import { withRedux } from "../utils/WithRedux";
 
-const App = ({ Component, pageProps }: any) => {
+const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>

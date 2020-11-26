@@ -5,7 +5,6 @@ import { Dimensions } from "../../constants/Constants";
 import { FC } from "react";
 import Link from "next/link";
 import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-import { SidebarMediumAd } from "../../common/adunits/SidebarMediumAd";
 import { bestDust2Nades } from "../../blog/ArticleData/blogPosts";
 
 const BestDust2NadesBlogPost = (): JSX.Element => {
@@ -226,12 +225,9 @@ const BlogSideBar: FC = () => {
           </button>
         </Link>
       </div>
-      <div className="center">
-        <SidebarMediumAd />
-      </div>
       <style jsx>{`
         .cta {
-          border: 2px solid #106b5c;
+          border: 1px solid #106b5c;
           width: 100%;
           display: flex;
           flex-direction: row;
@@ -240,7 +236,7 @@ const BlogSideBar: FC = () => {
           padding: 15px 30px;
           background: transparent;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          border-radius: 30px;
+          border-radius: 5px;
           cursor: pointer;
         }
 
@@ -272,6 +268,10 @@ const BlogSideBar: FC = () => {
           display: flex;
           align-items: center;
           justify-content: space-around;
+        }
+
+        .blog-sidebar {
+          margin: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

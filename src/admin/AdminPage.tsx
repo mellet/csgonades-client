@@ -8,7 +8,6 @@ import { AdminReports } from "./containers/AdminReports";
 import { AdminUsers } from "./containers/AdminUsers";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { AdminDeclined } from "./containers/AdminDeclined";
-import { PageCentralize } from "../common/PageCentralize";
 import { AdminContacts } from "./containers/AdminContacts";
 
 export const AdminPage: FC = () => {
@@ -39,25 +38,22 @@ export const AdminPage: FC = () => {
 
   return (
     <>
-      <PageCentralize>
-        <div className="admin-container">
-          <aside className="admin-nav">
-            <AdminNav />
-          </aside>
-          <div className="admin-content">{pageContent()}</div>
-        </div>
-      </PageCentralize>
+      <div className="admin-container">
+        <aside className="admin-nav">
+          <AdminNav />
+        </aside>
+        <div className="admin-content">{pageContent()}</div>
+      </div>
 
       <style jsx>{`
         .admin-container {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          margin: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           flex-direction: row;
           background: ${colors.DP01};
           border-radius: 5px;
           overflow: hidden;
           padding: 20px 30px;
-          margin-bottom: 100px;
         }
 
         .admin-nav {

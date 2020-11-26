@@ -4,9 +4,10 @@ import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   id: string;
+  disableAdLabel?: boolean;
 };
 
-export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
+export const EzoicPlaceholder: FC<Props> = memo(({ id, disableAdLabel }) => {
   const { colors } = useTheme();
 
   const ezoicId = `ezoic-pub-ad-placeholder-${id}`;
@@ -14,7 +15,7 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id }) => {
     <>
       <div className="ad-center">
         <div className="ad-wrapper">
-          <div className="ad-label">ADVERTISEMENT</div>
+          {!disableAdLabel && <div className="ad-label">ADVERTISEMENT</div>}
           <div className="ez" id={ezoicId} />
         </div>
       </div>

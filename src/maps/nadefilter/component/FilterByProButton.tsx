@@ -5,13 +5,9 @@ import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../../constants/Constants";
 import { useFilterByPro } from "../../../store/MapStore/hooks/useFilterByPro";
 import { useSignInWarning } from "../../../store/GlobalStore/hooks/useSignInWarning";
-import { HelpTip } from "./HelpTip";
+import { FilterLabel } from "./FilterLabel";
 
-type Props = {
-  vertical?: boolean;
-};
-
-export const FilterByProButton: FC<Props> = ({ vertical }) => {
+export const FilterByProButton: FC = () => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
   const { byPro, toggleFilterByPro } = useFilterByPro();
@@ -30,18 +26,7 @@ export const FilterByProButton: FC<Props> = ({ vertical }) => {
   return (
     <>
       <div className="fav-filter-wrap">
-        <div className="label">
-          PRO
-          <HelpTip hintLabel="pro">
-            <div>
-              <b>PRO:</b>
-              <br />
-              Only show nades thrown by
-              <br />
-              professional CS:GO players.
-            </div>
-          </HelpTip>
-        </div>
+        <FilterLabel value="PRO" />
         <button
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByPro}
@@ -51,14 +36,6 @@ export const FilterByProButton: FC<Props> = ({ vertical }) => {
       </div>
 
       <style jsx>{`
-        .label {
-          font-size: 12px;
-          font-weight: 500;
-          margin-bottom: 5px;
-          color: ${vertical ? "white" : colors.TEXT};
-          display: flex;
-        }
-
         .filter-btn {
           border: none;
           outline: none;

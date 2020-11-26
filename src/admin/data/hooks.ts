@@ -53,7 +53,7 @@ export const useAdminPendingNades = () => {
         setPendingNades(res.value);
       }
     })();
-  }, []);
+  }, [getToken]);
 
   return {
     pendingNades,
@@ -80,7 +80,7 @@ export const useAdminReports = () => {
         console.error("Failed to fetch reports");
       }
     })();
-  }, []);
+  }, [getToken, dispatch]);
 
   return {
     reports: state.reports,
@@ -142,7 +142,7 @@ export const useAdminContact = () => {
         console.error("Failed to fetch reports");
       }
     })();
-  }, []);
+  }, [dispatch, getToken]);
 
   return {
     contactMessages: state.contactMessages,

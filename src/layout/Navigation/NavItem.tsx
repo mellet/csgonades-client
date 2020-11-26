@@ -11,8 +11,9 @@ type Props = {
 
 export const NavItem: FC<Props> = ({ selected, csMap }) => {
   const { colors } = useTheme();
-  const containerSize = 22;
-  const imgSize = 26;
+  const containerSize = 24;
+  const imgSize = 28;
+
   return (
     <>
       <span className={selected ? "map-link selected" : "map-link"}>
@@ -31,25 +32,19 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
         <span className="map-link-label">{capitalize(csMap)}</span>
       </span>
       <style jsx>{`
-        .map-link-label {
-          padding: 6px;
-          color: ${colors.TEXT};
-          opacity: 0.8;
-        }
-
         .map-link {
           display: flex;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 400;
           transition: background 0.1s;
           height: 100%;
-          border-radius: 10px;
           background: transparent;
           color: #111;
-          margin-right: 10px;
           align-items: center;
           color: rgb(88, 102, 126);
           font-weight: 400;
+          padding: 12px 60px 12px 16px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .map-link:hover {
@@ -58,6 +53,29 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
 
         .map-link:hover > .nav-icon {
           opacity: 1;
+        }
+
+        .map-link-label {
+          margin-left: 10px;
+          color: ${colors.TEXT};
+          opacity: 0.8;
+        }
+
+        .nav-icon {
+          position: relative;
+          width: ${containerSize}px;
+          height: ${containerSize}px;
+          opacity: 0.8;
+          border-radius: 50%;
+          border: 1px solid ${colors.PRIMARY};
+          overflow: hidden;
+        }
+
+        .nav-icon-img {
+          position: absolute;
+          top: -3px;
+          left: -3px;
+          margin: auto;
         }
 
         .selected {
@@ -71,24 +89,6 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
 
         .selected .map-link-label {
           opacity: 1;
-        }
-
-        .nav-icon {
-          position: relative;
-          width: ${containerSize}px;
-          height: ${containerSize}px;
-          margin-left: 6px;
-          opacity: 0.8;
-          border-radius: 50%;
-          border: 1px solid ${colors.PRIMARY};
-          overflow: hidden;
-        }
-
-        .nav-icon-img {
-          position: absolute;
-          top: -3px;
-          left: -3px;
-          margin: auto;
         }
       `}</style>
     </>

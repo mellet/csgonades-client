@@ -6,7 +6,6 @@ import { useAnalytics, usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { MobileNav } from "./Navigation/MobileNav";
 import { ServiceDown } from "./ServiceDown";
 import { AdminLink } from "./Misc/AdminLink";
 import { CookieConsent } from "../common/CookieConsent";
@@ -15,9 +14,16 @@ import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 import { useNumNadesVisited } from "../features/tracker/useTracker";
+import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
+import { SiteNav } from "./Navigation/SiteNav";
 
-export const Layout: FC = memo(({ children }) => {
+type Props = {
+  sideBar?: JSX.Element;
+};
+
+export const Layout: FC<Props> = memo(({ children }) => {
   const { colors } = useTheme();
+  const { isNavOpen } = useNavigation();
   useGlobalAnalyticsEvents();
   useSetupSession();
   usePageView();
@@ -33,20 +39,19 @@ export const Layout: FC = memo(({ children }) => {
           <Header />
         </header>
 
-        <nav>
+        <nav className={isNavOpen ? "open" : "closed"}>
           <MapNav />
+          <SiteNav />
+          <Footer />
         </nav>
 
         <main>{children}</main>
 
-        <footer>
-          <Footer />
-        </footer>
+        <aside></aside>
       </div>
 
       <ServiceDown />
       <ToastList />
-      <MobileNav />
       <AdminLink />
       <SignInWarning />
 
@@ -56,121 +61,72 @@ export const Layout: FC = memo(({ children }) => {
           min-height: 100vh;
           width: 100%;
           background: ${colors.DP00};
-          grid-template-columns: 1fr;
+          grid-template-columns: min-content 1fr;
+          overflow: hidden;
           grid-template-areas:
-            "header"
-            "nav"
-            "main"
-            "footer";
+            "header header"
+            "nav main"
+            "nav main"
+            "nav main";
         }
 
         header {
           grid-area: header;
           height: ${Dimensions.HEADER_HEIGHT}px;
-          z-index: 1000;
         }
 
         nav {
-          position: sticky;
-          top: 0px;
           grid-area: nav;
-          z-index: 900;
-          height: ${Dimensions.NAV_HEIGHT}px;
+          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+          background: ${colors.DP02};
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          border-right: 1px solid ${colors.BORDER};
         }
 
         #footer-ph {
           grid-area: footer-ph;
-          margin-bottom: 100px;
-        }
-
-        footer {
-          grid-area: footer;
         }
 
         main {
-          min-height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+          grid-area: main;
+          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+          overflow-y: auto;
         }
 
-        @media only screen and (max-width: 910px) {
+        @media only screen and (max-width: 1195px) {
           #page {
             grid-template-areas:
-              "header header header"
-              "main main main"
-              "sidebar sidebar sidebar"
-              "footer-ph footer-ph footer-ph"
-              "footer footer footer";
+              "header header"
+              "main main"
+              "main main"
+              "main main";
           }
 
           nav {
-            display: none;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            top: ${Dimensions.HEADER_HEIGHT}px;
+            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+            z-index: 1000;
           }
-        }
-      `}</style>
 
-      <style jsx global>{`
-        body {
-          background: ${colors.DP00};
-        }
+          main {
+            height: auto;
+          }
 
-        /** Ad styles */
-        .qc-cmp-button,
-        .qc-cmp-button.qc-cmp-secondary-button:hover {
-          background-color: #000000 !important;
-          border-color: #000000 !important;
-        }
-        .qc-cmp-button:hover,
-        .qc-cmp-button.qc-cmp-secondary-button {
-          background-color: transparent !important;
-          border-color: #000000 !important;
-        }
-        .qc-cmp-alt-action,
-        .qc-cmp-link {
-          color: #000000 !important;
-        }
-        .qc-cmp-button,
-        .qc-cmp-button.qc-cmp-secondary-button:hover {
-          color: #ffffff !important;
-        }
-        .qc-cmp-button:hover,
-        .qc-cmp-button.qc-cmp-secondary-button {
-          color: #000000 !important;
-        }
-        .qc-cmp-small-toggle,
-        .qc-cmp-toggle {
-          background-color: #000000 !important;
-          border-color: #000000 !important;
-        }
-        .qc-cmp-main-messaging,
-        .qc-cmp-messaging,
-        .qc-cmp-sub-title,
-        .qc-cmp-privacy-settings-title,
-        .qc-cmp-purpose-list,
-        .qc-cmp-tab,
-        .qc-cmp-title,
-        .qc-cmp-vendor-list,
-        .qc-cmp-vendor-list-title,
-        .qc-cmp-enabled-cell,
-        .qc-cmp-toggle-status,
-        .qc-cmp-table,
-        .qc-cmp-table-header {
-          color: #000000 !important;
-        }
+          .open {
+            transform: translateX(0px);
+          }
 
-        .qc-cmp-ui {
-          background-color: #ffffff !important;
-        }
-
-        .qc-cmp-table,
-        .qc-cmp-table-row {
-          border: 1px solid !important;
-          border-color: #000000 !important;
-        }
-        #qcCmpButtons a {
-          text-decoration: none !important;
-        }
-
-        .qc-cmp-qc-link-container {
-          display: none;
+          .closed {
+            transform: translateX(-100%);
+          }
         }
       `}</style>
     </>

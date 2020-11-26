@@ -1,15 +1,14 @@
 import { useCallback } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { mapViewSelector } from "../selectors";
-import { useMapStoreDispatch } from "./helpers";
-import { MapView } from "../reducer";
+import { MapView, setMapViewAction } from "../slice";
 
 export const useSetMapView = () => {
   const mapView = useSelector(mapViewSelector);
-  const dispatch = useMapStoreDispatch();
+  const dispatch = useDispatch();
 
   const setMapView = useCallback(
-    (view: MapView) => dispatch({ type: "MapStore/SetView", view }),
+    (view: MapView) => dispatch(setMapViewAction(view)),
     [dispatch]
   );
   return {

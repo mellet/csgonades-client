@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaTimes } from "react-icons/fa";
-import { Dimensions, LayerPosition } from "../constants/Constants";
+import { LayerPosition } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 type Props = {
@@ -85,7 +85,7 @@ export const CSGNModal: FC<Props> = ({
 
         .modal {
           align-self: center;
-          border-radius: ${Dimensions.BORDER_RADIUS};
+          border-radius: 6px;
           max-width: 90vw;
           max-height: 90vh;
           background: ${colors.DP01};

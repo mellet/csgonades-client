@@ -4,28 +4,30 @@ import { useIsSignedIn } from "../../../store/AuthStore/AuthHooks";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { useFilterByFavorites } from "../../../store/MapStore/hooks/useFilterByFavorites";
 import { Dimensions } from "../../../constants/Constants";
+import { useSignInWarning } from "../../../store/GlobalStore/hooks/useSignInWarning";
 
 type Props = {
   vertical?: boolean;
 };
 
-export const FavFilterButton: FC<Props> = ({ vertical }) => {
+export const FavFilterButton: FC<Props> = ({}) => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
   const { byFavorites, filterByFavorites } = useFilterByFavorites();
-
+  const { setSignInWarning } = useSignInWarning();
   const active = byFavorites ? "active" : "";
 
   function onFilterByFavorite() {
     if (isSignedIn) {
       filterByFavorites();
+    } else {
+      setSignInWarning("favorite");
     }
   }
 
   return (
     <>
       <div className="fav-filter-wrap">
-        <div className="label">FAV</div>
         <button
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByFavorite}
@@ -35,13 +37,6 @@ export const FavFilterButton: FC<Props> = ({ vertical }) => {
       </div>
 
       <style jsx>{`
-        .label {
-          font-size: 12px;
-          font-weight: 500;
-          margin-bottom: 5px;
-          color: ${vertical ? "white" : colors.TEXT};
-        }
-
         .filter-btn {
           border: none;
           outline: none;

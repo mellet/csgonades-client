@@ -11,22 +11,18 @@ import {
   generateSeoTitle,
   generateNadeItemTitle,
 } from "../../utils/Common";
-import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { useCanEditNade } from "../../store/NadeStore/hooks/useCanEditNade";
 import { Nade } from "../../nade-data/Nade/Nade";
-import { TickWarning } from "../components/TickWarning";
-import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 import { LayoutWithSidebar } from "../../common/LayoutWithSidebar";
 import { NadePageSidebar } from "../NadePageSidebar";
 import { useIncrementNumNadesVisisted } from "../../features/tracker/useTracker";
 
 type Props = {
   nade: Nade;
-  inModal?: boolean;
 };
 
-export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
+export const NadePage: FC<Props> = memo(({ nade }) => {
   const incrementNumNadesVisisted = useIncrementNumNadesVisisted();
   const { colors } = useTheme();
   const canEdit = useCanEditNade(nade.steamId);
@@ -84,10 +80,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
         sidebar={<NadePageSidebar nade={nade} />}
       >
         <div id="nade-page-grid">
-          <div className="matchmake-warning">
-            <TickWarning />
-          </div>
-
           <div id="title">
             <NadeTitle
               title={layoutTitle}
@@ -108,10 +100,6 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
             />
           </div>
 
-          <div id="top-ph">
-            <EzoicPlaceholder id="174" />
-          </div>
-
           <div id="nade-info-container">
             <NadeInfoContainer nade={nade} />
           </div>
@@ -125,13 +113,26 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
       <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
 
       <style jsx>{`
-        #top-ph {
-          grid-area: topph;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        #nade-page-grid {
+          grid-area: main;
+          display: grid;
+          grid-template-columns: 1fr 1fr 300px;
+          grid-template-areas:
+            "title title title"
+            "warning warning warning"
+            "video video video"
+            "info info info"
+            "comments comments comments";
+          width: 100%;
+          padding-bottom: 20vh;
         }
 
-        .matchmake-warning {
-          grid-area: warning;
+        #title {
+          grid-area: title;
+          background: ${colors.DP01};
+          position: sticky;
+          top: 0;
+          z-index: 100;
         }
 
         #misc {
@@ -143,102 +144,16 @@ export const NadePage: FC<Props> = memo(({ nade, inModal }) => {
           justify-content: flex-end;
         }
 
-        .nade-action {
-          width: 40px;
-          height: 200px;
-        }
-
-        .stick-top {
-          position: sticky;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE * 2}px;
-        }
-
-        #nade-page-grid {
-          grid-area: main;
-          display: grid;
-          grid-template-columns: 1fr 1fr 300px;
-          grid-template-areas:
-            "title title title"
-            "warning warning warning"
-            "video video video"
-            "info info info"
-            "topph topph topph"
-            "comments comments comments";
-          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
-          width: 100%;
-          border-radius: 5px;
-        }
-
-        #advert {
-          grid-area: advert;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-
         #nade-info-container {
           grid-area: info;
-          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
-          padding-left: ${inModal ? Dimensions.GUTTER_SIZE : 0}px;
         }
 
         #nade-page-main {
           grid-area: video;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
-          overflow: hidden;
-        }
-
-        #sidebar-right {
-          grid-area: sidebar;
-          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-
-        #nade-buttons {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        #nade-buttons .nade-btn {
-          width: 47%;
         }
 
         #nade-comment-container {
           grid-area: comments;
-          padding-left: ${inModal ? Dimensions.GUTTER_SIZE : 0}px;
-          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-
-        #title {
-          grid-area: title;
-          background: ${colors.DP01};
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-        }
-
-        @media only screen and (max-width: 1210px) {
-          #nade-page-grid {
-            margin-right: 30px;
-          }
-        }
-
-        @media only screen and (max-width: 800px) {
-          #nade-page-grid {
-            grid-template-columns: 1fr 200px 1fr;
-            grid-template-areas:
-              "title title title"
-              "warning warning warning"
-              "video video video"
-              "info info info"
-              "topph topph topph"
-              "comments comments comments"
-              "advert advert advert";
-          }
-
-          #title,
-          #nade-page-main {
-            margin-left: -15px;
-            margin-right: -15px;
-          }
         }
       `}</style>
     </>
