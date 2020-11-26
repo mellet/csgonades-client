@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { UserApi } from "../../../api/UserApi";
 import { UserUpdateDTO } from "../../../models/User";
-import { setUserAction } from "../../AuthStore/AuthActions";
+import { setUserAction } from "../../AuthStore/AuthSlice";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
 
 export const useFinishProfile = () => {
@@ -23,7 +23,7 @@ export const useFinishProfile = () => {
         return;
       }
 
-      setUserAction(dispatch, result.value);
+      dispatch(setUserAction(result.value));
     },
     [dispatch, getToken]
   );
