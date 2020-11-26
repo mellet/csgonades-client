@@ -108,24 +108,6 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
             </div>
           </>
         )}
-
-        {contributors.fourth && (
-          <>
-            <div className="split">
-              <span></span>
-              <TopContributor user={contributors.fourth} />
-            </div>
-          </>
-        )}
-
-        {contributors.fifth && (
-          <>
-            <div className="split">
-              <span></span>
-              <TopContributor user={contributors.fifth} />
-            </div>
-          </>
-        )}
       </div>
       <style jsx>{`
         .cont-list {
@@ -133,23 +115,17 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
           border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
           padding-bottom: 15px;
-        }
-
-        .cont-desc {
-          font-size: 12px;
-          color: #bbb;
-          text-align: center;
-          padding: 10px 20px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .label {
           background: ${colors.DP01};
           border-bottom: 1px solid ${colors.BORDER};
           color: ${colors.TEXT};
-          padding: 10px 20px;
+          padding: 10px 16px;
           margin-bottom: 10px;
           text-align: center;
-          font-size: 16px;
+          font-size: 18px;
         }
 
         .gold,
@@ -158,14 +134,15 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
         .split {
           display: flex;
           align-items: center;
-          padding: 10px 20px;
+          padding: 8px 16px;
         }
 
         .cont-list span {
           font-size: 1.2em;
-          margin-right: 10px;
+          margin-right: 8px;
           display: block;
-          min-width: 24px;
+          position: relative;
+          top: 1px;
         }
 
         #gold {
@@ -214,8 +191,8 @@ const TopContributor: FC<Props> = ({ user }) => {
           </a>
         </Link>
         <div className="nade-count">
-          {pluralize(user.totalScore, "favorite")} on{" "}
-          {pluralize(user.nadeCount, "nade")}
+          {pluralize(user.nadeCount, "nade")} (
+          {pluralize(user.totalScore, "favorite")})
         </div>
       </div>
 
