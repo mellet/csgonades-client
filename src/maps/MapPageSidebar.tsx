@@ -55,6 +55,7 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
 
         .jumbo {
           padding: 16px;
+          color: ${colors.TEXT};
         }
 
         .jumbo h1 {

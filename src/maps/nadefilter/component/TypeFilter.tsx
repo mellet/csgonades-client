@@ -2,17 +2,15 @@ import { FC } from "react";
 import { ButtonGroup } from "./ButtonGroup";
 import { NadeTypeButton } from "./NadeTypeButton";
 import { useFilterByType } from "../../../store/MapStore/hooks/useFilterByType";
+import { FilterLabel } from "./FilterLabel";
 
-type Props = {
-  vertical?: boolean;
-};
-
-export const TypeFilter: FC<Props> = ({ vertical }) => {
+export const TypeFilter: FC = () => {
   const { byType, filterByType } = useFilterByType();
 
   return (
     <>
       <div id="type-filter">
+        <FilterLabel value="TYPE" />
         <ButtonGroup>
           <div className="filter-btns">
             <NadeTypeButton
@@ -41,8 +39,7 @@ export const TypeFilter: FC<Props> = ({ vertical }) => {
       <style jsx>{`
         .filter-btns {
           display: flex;
-          flex-direction: ${vertical ? "column" : "row"};
-          margin-right: -1px;
+          flex-direction: column;
         }
       `}</style>
     </>

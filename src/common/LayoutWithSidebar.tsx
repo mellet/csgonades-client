@@ -37,6 +37,7 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
           border-left: 1px solid ${colors.BORDER};
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
+          overflow-x: hidden;
         }
 
         @media only screen and (max-width: 1000px) {

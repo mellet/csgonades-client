@@ -12,6 +12,7 @@ import FilterBar from "./nadefilter/FilterBar";
 import { MapViewSuggested } from "./MapViewSuggested";
 import { useOnNadeClusterClick } from "./SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
+import { FixedBottomClosabeleAd } from "../common/adunits/FixedBottomClosableAd";
 
 const MapViewScreen = React.lazy(() => import("./MapViewScreen"));
 
@@ -49,11 +50,10 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
         sidebar={<MapPageSidebar map={map} nades={allNades} />}
       >
         <div id="nade-page">
+          <div id="filter">
+            <FilterBar />
+          </div>
           <div id="nade-nades">
-            <div id="extra-options">
-              <FilterBar></FilterBar>
-            </div>
-
             {mapView === "list" && <MapPageNades allNades={allNades} />}
 
             <MapViewSuggested
@@ -72,13 +72,22 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
             )}
           </div>
         </div>
+        {false && <FixedBottomClosabeleAd />}
       </LayoutWithSidebar>
       <style jsx>{`
         #nade-page {
           position: relative;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           width: 100%;
-          overflow: hidden;
+          display: grid;
+          grid-template-columns: min-content 1fr;
+          grid-template-areas: "filter nades";
+        }
+
+        #filter {
+          grid-area: filter;
+          position: sticky;
+          top: 16px;
         }
 
         #nade-nades {
@@ -86,12 +95,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           padding: 16px;
           overflow-y: auto;
-          grid-area: overview;
-        }
-
-        #extra-options {
-          margin-bottom: 16px;
-          height: 40px;
+          grid-area: nades;
         }
       `}</style>
     </>

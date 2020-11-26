@@ -83,9 +83,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           left: -10%;
           right: -10%;
           bottom: -10%;
-          background: white;
-          opacity: 0.8;
-          backdrop-filter: blur(5px);
+          background: ${colors.DP00};
+          opacity: 0.95;
         }
 
         .title {
