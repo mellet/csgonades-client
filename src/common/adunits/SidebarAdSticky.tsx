@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { EzoicPlaceholder } from "./EzoicPlaceholder";
 import { Twemoji } from "../Twemoj/Twemoji";
-import { Dimensions } from "../../constants/Constants";
 import { isMobile } from "react-device-detect";
 
 export const SidebarAdSticky: FC = ({}) => {
@@ -23,10 +22,11 @@ export const SidebarAdSticky: FC = ({}) => {
       {isAdBlockEnabled && (
         <div className="block-msg-wrap">
           <div className="block-msg">
-            <strong>Oh no!</strong> You have AdBlock enabled{" "}
-            <Twemoji emoji="😢" />
-            <br />
-            Consider disabling it on this site to support my work{" "}
+            <div className="block-msg-header">
+              <strong>Oh no!</strong> You have AdBlock enabled{" "}
+              <Twemoji emoji="😢" />
+            </div>
+            Consider disabling it on this site so I can buy some artisan tea{" "}
             <Twemoji emoji="😍" />
             <br />
           </div>
@@ -40,21 +40,19 @@ export const SidebarAdSticky: FC = ({}) => {
       )}
 
       <style jsx>{`
-        .ph {
-        }
-
         .block-msg-wrap {
           display: flex;
           justify-content: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .block-msg-header {
+          margin-bottom: 10px;
         }
 
         .block-msg {
           background: #87a600;
-          border-radius: 5px;
-          padding: 15px 30px;
+          padding: 12px 16px;
           color: white;
-          text-align: center;
         }
       `}</style>
     </>

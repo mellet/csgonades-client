@@ -8,7 +8,6 @@ import {
 import { useAnalytics } from "../utils/Analytics";
 import { FaVk, FaTwitter, FaRedditAlien, FaFacebookF } from "react-icons/fa";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { Dimensions } from "../constants/Constants";
 
 type Props = {
   visisble: boolean;

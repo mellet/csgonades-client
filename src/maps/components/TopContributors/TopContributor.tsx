@@ -4,7 +4,6 @@ import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { Twemoji } from "../../../common/Twemoj/Twemoji";
 import { pluralize } from "../../../utils/Common";
 import Link from "next/link";
-import { Dimensions } from "../../../constants/Constants";
 import { mapString } from "../../../nade-data/Nade/CsGoMap";
 import { ContListProps } from "./topContributorsProps";
 
