@@ -89,6 +89,8 @@ export const Layout: FC<Props> = memo(({ children }) => {
 
         main {
           grid-area: main;
+          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+          overflow-y: auto;
         }
 
         @media only screen and (max-width: 1195px) {
@@ -109,6 +111,10 @@ export const Layout: FC<Props> = memo(({ children }) => {
             transform: translateX(-100%);
             transition: transform 0.3s;
             z-index: 1000;
+          }
+
+          main {
+            height: auto;
           }
 
           .open {

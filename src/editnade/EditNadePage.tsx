@@ -1,7 +1,6 @@
 import { FC, useMemo } from "react";
 import { Nade } from "../nade-data/Nade/Nade";
 import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
-import { PageCentralize } from "../common/PageCentralize";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { BigLabel } from "../createnade/components/BigLabel";
@@ -57,7 +56,7 @@ export const EditNadePage: FC<Props> = ({ nade }) => {
 
   return (
     <>
-      <PageCentralize>
+      <div id="edit-nade-page-wrap">
         <SEO
           key={`seo-${nade.id}`}
           title={"Edit nade"}
@@ -312,8 +311,12 @@ export const EditNadePage: FC<Props> = ({ nade }) => {
             </div>
           )}
         </div>
-      </PageCentralize>
+      </div>
       <style jsx>{`
+        #edit-nade-page-wrap {
+          margin: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         .lineup-msg {
           background: rgba(255, 255, 255, 0.8);
           color: #111;

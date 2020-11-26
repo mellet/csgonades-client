@@ -3,7 +3,6 @@ import { DBNadeList } from "./DBNadeList";
 import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { PageCentralize } from "../common/PageCentralize";
 import { SEO } from "../layout/SEO";
 
 export const DashboardPage: FC = () => {
@@ -17,7 +16,7 @@ export const DashboardPage: FC = () => {
   return (
     <>
       <SEO canonical="/dashboard" title="Dashboard" />
-      <PageCentralize>
+      <div id="dashboard-page-wrap">
         <div id="message">
           There is currently and issue updating the view count for nades.
           I&apos;m investigating the issue. I have hidden the view count in the
@@ -31,8 +30,12 @@ export const DashboardPage: FC = () => {
             <DBNadeList />
           </div>
         </div>
-      </PageCentralize>
+      </div>
       <style jsx>{`
+        #dashboard-page-wrap {
+          margin: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         #message {
           display: none;
           margin-top: ${Dimensions.GUTTER_SIZE}px;

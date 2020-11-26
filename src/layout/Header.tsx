@@ -60,6 +60,16 @@ export const Header: FC = memo(() => {
             display: none;
           }
         }
+
+        @media only screen and (max-width: 1195px) {
+          #header {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+          }
+        }
       `}</style>
     </>
   );

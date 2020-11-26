@@ -1,6 +1,5 @@
 import Router from "next/router";
 import { FC, useState } from "react";
-import { PageCentralize } from "../common/PageCentralize";
 import { User } from "../models/User";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useFinishProfile } from "../store/UsersStore/hooks/useFinishProfile";
@@ -45,46 +44,44 @@ export const FinishProfile: FC<Props> = ({ user }) => {
 
   return (
     <>
-      <PageCentralize>
-        <div className="finish-profile">
-          <div className="welcome">
-            <h1>Hi {user.nickname}, let&apos;s finish your profile!</h1>
-            <h2>Then go favorite some nades or add your own 👊</h2>
-          </div>
+      <div className="finish-profile">
+        <div className="welcome">
+          <h1>Hi {user.nickname}, let&apos;s finish your profile!</h1>
+          <h2>Then go favorite some nades or add your own 👊</h2>
         </div>
-        {!!error && (
-          <div className="error">
-            <h3>Error</h3>
-            <p>{error}</p>
-          </div>
-        )}
-        <div className="profile-form">
-          <span className="label">
-            Nickname <span className="require">*</span>
-          </span>
-          <input
-            value={nickname}
-            placeholder="Nickname"
-            onChange={(e) => setNickname(e.target.value)}
-          />
-          <span className="label">E-mail</span>
-          <input
-            value={email}
-            placeholder="E-mail"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <span className="label">Bio</span>
-          <textarea
-            value={bio}
-            placeholder="Write something funny... Or keep it blank if your mysterious."
-            onChange={(e) => setBio(e.target.value)}
-            rows={10}
-          />
-          <button disabled={loading} className="save-btn" onClick={onSubmit}>
-            SAVE
-          </button>
+      </div>
+      {!!error && (
+        <div className="error">
+          <h3>Error</h3>
+          <p>{error}</p>
         </div>
-      </PageCentralize>
+      )}
+      <div className="profile-form">
+        <span className="label">
+          Nickname <span className="require">*</span>
+        </span>
+        <input
+          value={nickname}
+          placeholder="Nickname"
+          onChange={(e) => setNickname(e.target.value)}
+        />
+        <span className="label">E-mail</span>
+        <input
+          value={email}
+          placeholder="E-mail"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <span className="label">Bio</span>
+        <textarea
+          value={bio}
+          placeholder="Write something funny... Or keep it blank if your mysterious."
+          onChange={(e) => setBio(e.target.value)}
+          rows={10}
+        />
+        <button disabled={loading} className="save-btn" onClick={onSubmit}>
+          SAVE
+        </button>
+      </div>
       <style jsx>{`
         .finish-profile {
           background: linear-gradient(
@@ -92,7 +89,7 @@ export const FinishProfile: FC<Props> = ({ user }) => {
             ${colors.jumboGradientEnd} 33.44%,
             ${colors.jumboGradientStart} 66.89%
           );
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          margin: ${Dimensions.GUTTER_SIZE}px;
           border-radius: 5px;
         }
 
