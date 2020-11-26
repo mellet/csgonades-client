@@ -15,6 +15,7 @@ import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 import { useNumNadesVisited } from "../features/tracker/useTracker";
 import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
+import { SiteNav } from "./Navigation/SiteNav";
 
 type Props = {
   sideBar?: JSX.Element;
@@ -40,6 +41,7 @@ export const Layout: FC<Props> = memo(({ children }) => {
 
         <nav className={isNavOpen ? "open" : "closed"}>
           <MapNav />
+          <SiteNav />
           <Footer />
         </nav>
 
@@ -76,11 +78,12 @@ export const Layout: FC<Props> = memo(({ children }) => {
         nav {
           grid-area: nav;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-          background: ${colors.DP01};
+          background: ${colors.DP02};
           overflow-y: auto;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          border-right: 1px solid ${colors.BORDER};
         }
 
         #footer-ph {

@@ -79,6 +79,7 @@ export const NadeShareActions: FC<Props> = ({
         .share-container {
           background ${colors.DP02};
           overflow: hidden;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .label {

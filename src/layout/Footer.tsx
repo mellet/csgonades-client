@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FC, memo } from "react";
-import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 export const Footer: FC = memo(() => {
@@ -46,7 +45,6 @@ export const Footer: FC = memo(() => {
         .footer-wrap {
           background: ${colors.PRIMARY};
           padding: 16px;
-          margin-right: 1px;
         }
 
         a {
@@ -58,15 +56,15 @@ export const Footer: FC = memo(() => {
         }
 
         .copyright {
-          font-size: 14px;
+          font-size: 16px;
           white-space: nowrap;
           color: #fff;
         }
 
         .footer-links {
           border-top: 1px solid rgba(255, 255, 255, 0.2);
-          margin-top: 6px;
-          padding-top: 6px;
+          margin-top: 8px;
+          padding-top: 8px;
         }
 
         .footer-links ul {
@@ -76,26 +74,20 @@ export const Footer: FC = memo(() => {
         }
 
         .footer-links a {
-          margin-right: 10px;
-          padding-right: 10px;
-          border-right: 1px solid ${colors.footerColor};
           white-space: nowrap;
-          font-size: 14px;
-        }
-
-        .footer-links a:last-child {
-          margin-right: 0;
-          padding-right: 0;
-          border-right: 0px;
+          font-size: 16px;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          display: block;
         }
 
         .powered-by {
           white-space: nowrap;
           color: #fff;
-          font-size: 14px;
+          font-size: 16px;
           border-top: 1px solid rgba(255, 255, 255, 0.2);
-          margin-top: 6px;
-          padding-top: 6px;
+          margin-top: 8px;
+          padding-top: 8px;
         }
       `}</style>
     </>

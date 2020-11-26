@@ -111,8 +111,7 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
       </div>
       <style jsx>{`
         .cont-list {
-          background: ${colors.DP01};
-          border-radius: ${Dimensions.BORDER_RADIUS};
+          background: ${colors.DP02};
           overflow: hidden;
           padding-bottom: 15px;
           border-bottom: 1px solid ${colors.BORDER};

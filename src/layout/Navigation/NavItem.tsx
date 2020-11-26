@@ -43,7 +43,8 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
           align-items: center;
           color: rgb(88, 102, 126);
           font-weight: 400;
-          padding: 16px 60px 16px 16px;
+          padding: 12px 60px 12px 16px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .map-link:hover {

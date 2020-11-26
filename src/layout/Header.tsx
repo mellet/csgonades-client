@@ -2,8 +2,8 @@ import React, { FC, memo, Suspense } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Hamburger } from "./Misc/Hamburger";
 import { Logo } from "./Misc/Logo";
-import { SiteNav } from "./Navigation/SiteNav";
 import { Dimensions } from "../constants/Constants";
+import { ThemeToggler } from "./Misc/ThemeToggler";
 
 const UserNav = React.lazy(() => import("./Navigation/UserNav"));
 const isServer = typeof window === "undefined";
@@ -19,7 +19,9 @@ export const Header: FC = memo(() => {
           <Logo />
 
           <div className="spacer"></div>
-          <SiteNav />
+          <div id="theme-toggler">
+            <ThemeToggler />
+          </div>
           {!isServer && (
             <Suspense fallback={<div />}>
               <UserNav />
@@ -55,10 +57,8 @@ export const Header: FC = memo(() => {
           margin-bottom: -10px;
         }
 
-        @media only screen and (max-width: 910px) {
-          #theme-toggle {
-            display: none;
-          }
+        #theme-toggler {
+          margin-right: 16px;
         }
 
         @media only screen and (max-width: 1195px) {

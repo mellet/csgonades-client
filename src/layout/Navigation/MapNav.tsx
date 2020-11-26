@@ -1,13 +1,10 @@
 import { FC } from "react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { useRouter } from "next/router";
 import { MapPageLink } from "./MapNavLink";
-import { ThemeToggler } from "../Misc/ThemeToggler";
 import { NavItem } from "./NavItem";
 import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
 
 export const MapNav: FC = () => {
-  const { colors } = useTheme();
   const { query } = useRouter();
   const selectedMap = query.map as CsgoMap;
 
@@ -81,20 +78,11 @@ export const MapNav: FC = () => {
               </li>
             </ul>
           </div>
-
-          <div id="right-options">
-            <div id="theme-toggle">
-              <ThemeToggler />
-            </div>
-          </div>
         </div>
       </div>
       <style jsx>{`
         #secondary-nav {
-          background: ${colors.DP03};
-          border-right: 1px solid ${colors.BORDER};
           height: 100%;
-          padding-top: 20px;
         }
 
         #map-nav-wrap {
