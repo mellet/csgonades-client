@@ -38,6 +38,24 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
         }
+
+        @media only screen and (max-width: 1000px) {
+          #layout-with-sidebar {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              "main"
+              "side";
+          }
+
+          #lws-main,
+          #lws-sidebar,
+          #layout-with-sidebar {
+            height: auto;
+          }
+
+          #lws-sidebar {
+          }
+        }
       `}</style>
     </>
   );

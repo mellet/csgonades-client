@@ -23,7 +23,7 @@ export const Hamburger: FC = memo(({}) => {
           color: ${colors.TEXT};
         }
 
-        @media only screen and (max-width: 910px) {
+        @media only screen and (max-width: 1195px) {
           .hamburger {
             display: block;
           }

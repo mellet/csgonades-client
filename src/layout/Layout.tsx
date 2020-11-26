@@ -6,7 +6,6 @@ import { useAnalytics, usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import { MobileNav } from "./Navigation/MobileNav";
 import { ServiceDown } from "./ServiceDown";
 import { AdminLink } from "./Misc/AdminLink";
 import { CookieConsent } from "../common/CookieConsent";
@@ -15,6 +14,7 @@ import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 import { useNumNadesVisited } from "../features/tracker/useTracker";
+import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
 
 type Props = {
   sideBar?: JSX.Element;
@@ -22,6 +22,7 @@ type Props = {
 
 export const Layout: FC<Props> = memo(({ children }) => {
   const { colors } = useTheme();
+  const { isNavOpen } = useNavigation();
   useGlobalAnalyticsEvents();
   useSetupSession();
   usePageView();
@@ -37,9 +38,7 @@ export const Layout: FC<Props> = memo(({ children }) => {
           <Header />
         </header>
 
-        <div id="navigation"></div>
-
-        <nav>
+        <nav className={isNavOpen ? "open" : "closed"}>
           <MapNav />
           <Footer />
         </nav>
@@ -51,14 +50,13 @@ export const Layout: FC<Props> = memo(({ children }) => {
 
       <ServiceDown />
       <ToastList />
-      <MobileNav />
       <AdminLink />
       <SignInWarning />
 
       <style jsx>{`
         #page {
           display: grid;
-          height: 100vh;
+          min-height: 100vh;
           width: 100%;
           background: ${colors.DP00};
           grid-template-columns: min-content 1fr;
@@ -90,8 +88,36 @@ export const Layout: FC<Props> = memo(({ children }) => {
         }
 
         main {
-          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           grid-area: main;
+        }
+
+        @media only screen and (max-width: 1195px) {
+          #page {
+            grid-template-areas:
+              "header header"
+              "main main"
+              "main main"
+              "main main";
+          }
+
+          nav {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            top: ${Dimensions.HEADER_HEIGHT}px;
+            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+            z-index: 1000;
+          }
+
+          .open {
+            transform: translateX(0px);
+          }
+
+          .closed {
+            transform: translateX(-100%);
+          }
         }
       `}</style>
     </>
