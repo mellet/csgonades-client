@@ -31,7 +31,9 @@ export const FilterByProButton: FC = () => {
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByPro}
         >
-          <FaCheckCircle size={Dimensions.BUTTON_HEIGHT - 14} />
+          <div className="icon-wrap">
+            <FaCheckCircle size={Dimensions.BUTTON_HEIGHT - 14} />
+          </div>
         </button>
       </div>
 
@@ -61,6 +63,11 @@ export const FilterByProButton: FC = () => {
 
         .active {
           background: ${colors.filterBgHover};
+        }
+
+        .icon-wrap {
+          position: relative;
+          top: 2px;
         }
       `}</style>
     </>

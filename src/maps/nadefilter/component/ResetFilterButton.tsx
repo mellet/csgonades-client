@@ -18,7 +18,9 @@ export const ResetFilterButton: FC = memo(() => {
     <>
       <div className={`reset ${visible}`}>
         <button className={`filter-btn`} onClick={onReset}>
-          <FaUndo size={Dimensions.BUTTON_HEIGHT - 16} />
+          <div className="icon-wrap">
+            <FaUndo size={Dimensions.BUTTON_HEIGHT - 16} />
+          </div>
         </button>
       </div>
       <style jsx>{`
@@ -48,6 +50,11 @@ export const ResetFilterButton: FC = memo(() => {
         .visible {
           pointer-events: auto;
           opacity: 1;
+        }
+
+        .icon-wrap {
+          position: relative;
+          top: 2px;
         }
       `}</style>
     </>
