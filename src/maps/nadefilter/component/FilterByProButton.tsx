@@ -31,7 +31,7 @@ export const FilterByProButton: FC = () => {
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByPro}
         >
-          <FaCheckCircle size={Dimensions.BUTTON_HEIGHT / 1.6} />
+          <FaCheckCircle size={Dimensions.BUTTON_HEIGHT - 14} />
         </button>
       </div>
 
