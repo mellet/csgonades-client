@@ -32,7 +32,9 @@ export const FavFilterButton: FC<Props> = ({}) => {
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByFavorite}
         >
-          <FaStar size={Dimensions.BUTTON_HEIGHT / 1.55} />
+          <div className="icon-wrap">
+            <FaStar size={Dimensions.BUTTON_HEIGHT / 1.55} />
+          </div>
         </button>
       </div>
 
@@ -50,6 +52,11 @@ export const FavFilterButton: FC<Props> = ({}) => {
           cursor: pointer;
           overflow: hidden;
           border-radius: 5px;
+        }
+
+        .icon-wrap {
+          position: relative;
+          top: 1px;
         }
 
         .favorite {
