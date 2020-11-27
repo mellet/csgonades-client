@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { FaDiscord } from "react-icons/fa";
-import { Dimensions } from "../constants/Constants";
 
 export const DiscordJoinAction: FC = () => {
   return (
