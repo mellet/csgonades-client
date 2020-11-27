@@ -1,4 +1,4 @@
-import React, { FC, memo, Suspense } from "react";
+import React, { FC, memo } from "react";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPageNades } from "./MapPageNades";
@@ -13,10 +13,7 @@ import { MapViewSuggested } from "./MapViewSuggested";
 import { useOnNadeClusterClick } from "./SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { FixedBottomClosabeleAd } from "../common/adunits/FixedBottomClosableAd";
-
-const MapViewScreen = React.lazy(() => import("./MapViewScreen"));
-
-const isServer = typeof window === "undefined";
+import MapViewScreen from "./MapViewScreen";
 
 type Props = {
   map: CsgoMap;
@@ -32,8 +29,6 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
     suggestedNades,
     dismissSuggested,
   } = useOnNadeClusterClick();
-
-  const displayMapOverview: boolean = mapView === "overview" && !isServer;
 
   return (
     <>
@@ -61,15 +56,11 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
               onDismiss={dismissSuggested}
             />
 
-            {displayMapOverview && (
-              <Suspense fallback={<></>}>
-                <MapViewScreen
-                  map={map}
-                  allNades={allNades}
-                  onClusterClick={onNadeClusterClick}
-                />
-              </Suspense>
-            )}
+            <MapViewScreen
+              map={map}
+              allNades={allNades}
+              onClusterClick={onNadeClusterClick}
+            />
           </div>
         </div>
         {false && <FixedBottomClosabeleAd />}
