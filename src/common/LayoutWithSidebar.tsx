@@ -18,7 +18,7 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
       <style jsx>{`
         #layout-with-sidebar {
           display: grid;
-          grid-template-columns: 1fr 300px;
+          grid-template-columns: 1fr 310px;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           grid-template-areas:
             "main side"
