@@ -42,7 +42,7 @@ export const MapPosIcon: FC<Props> = ({
     }
   }
 
-  const scaledIconSize = mapWidth / 19;
+  const scaledIconSize = mapWidth / 17;
 
   return (
     <>

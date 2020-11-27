@@ -51,7 +51,7 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
     return null;
   }
 
-  const canvasSize = mapSize - 0;
+  const canvasSize = mapSize;
 
   return (
     <>
