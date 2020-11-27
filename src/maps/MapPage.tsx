@@ -7,7 +7,6 @@ import { SEO } from "../layout/SEO";
 import { capitalize } from "../utils/Common";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { MapPageSidebar } from "./MapPageSidebar";
-import { Dimensions } from "../constants/Constants";
 import FilterBar from "./nadefilter/FilterBar";
 import { MapViewSuggested } from "./MapViewSuggested";
 import { useOnNadeClusterClick } from "./SuggestedNades/useOnNadeClick";
@@ -58,7 +57,9 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
       >
         <div id="nade-page">
           <div id="filter">
-            <FilterBar />
+            <div className="sticky">
+              <FilterBar />
+            </div>
           </div>
           <div id="nade-nades">
             {mapView === "list" && <MapPageNades allNades={allNades} />}
@@ -82,7 +83,6 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
       <style jsx>{`
         #nade-page {
           position: relative;
-          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           width: 100%;
           display: grid;
           grid-template-columns: min-content 1fr;
@@ -91,15 +91,16 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
 
         #filter {
           grid-area: filter;
+        }
+
+        .sticky {
           position: sticky;
           top: 16px;
         }
 
         #nade-nades {
           flex: 1;
-          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           padding: 16px;
-          overflow-y: auto;
           grid-area: nades;
         }
       `}</style>
