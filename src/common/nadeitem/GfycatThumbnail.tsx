@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -26,11 +26,21 @@ export const GfycatThumbnail: FC<Props> = ({
   avgColor,
   gfyId,
 }) => {
+  const [isReadyForHover, setIsReadyForHover] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsReadyForHover(true);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   function onMouseEnter() {
-    setHovering(true);
+    if (isReadyForHover) {
+      setHovering(true);
+    }
   }
 
   function onMouseLeave() {
