@@ -15,6 +15,8 @@ import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { FixedBottomClosabeleAd } from "../common/adunits/FixedBottomClosableAd";
 import MapViewScreen from "./MapViewScreen";
 
+const isServer = typeof window === "undefined";
+
 type Props = {
   map: CsgoMap;
   allNades: NadeLight[];
@@ -29,6 +31,8 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
     suggestedNades,
     dismissSuggested,
   } = useOnNadeClusterClick();
+
+  const displayMapOverview: boolean = mapView === "overview" && !isServer;
 
   return (
     <>
@@ -56,11 +60,13 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
               onDismiss={dismissSuggested}
             />
 
-            <MapViewScreen
-              map={map}
-              allNades={allNades}
-              onClusterClick={onNadeClusterClick}
-            />
+            {displayMapOverview && (
+              <MapViewScreen
+                map={map}
+                allNades={allNades}
+                onClusterClick={onNadeClusterClick}
+              />
+            )}
           </div>
         </div>
         {false && <FixedBottomClosabeleAd />}
