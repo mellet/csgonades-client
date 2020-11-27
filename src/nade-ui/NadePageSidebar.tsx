@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
 import { Nade } from "../nade-data/Nade/Nade";
 import { generateTitle } from "../utils/Common";
 import { NadeMeta } from "./components/NadeMeta";
@@ -36,7 +36,7 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
         />
 
         <div className="sidebar-ph">
-          <EzoicPlaceholder id="170" />
+          <SidebarAdSticky />
         </div>
       </div>
 
