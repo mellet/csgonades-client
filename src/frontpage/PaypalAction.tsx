@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { FaPaypal } from "react-icons/fa";
-import { Dimensions } from "../constants/Constants";
 
 export const PaypalAction: FC = () => {
   return (
@@ -13,7 +12,7 @@ export const PaypalAction: FC = () => {
         >
           <div className="action">
             <div className="discord-msg">
-              Support me on <b>PayPal</b>
+              Donate on <b>PayPal</b>
             </div>
             <div className="discord-logo">
               <FaPaypal />
@@ -24,13 +23,12 @@ export const PaypalAction: FC = () => {
       <style jsx>{`
         .actions-wrapper {
           width: 100%;
-          border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
         }
 
         .action {
           display: flex;
-          padding: 10px 20px;
+          padding: 10px 16px;
           color: white;
           justify-content: space-between;
           align-items: center;
@@ -38,11 +36,11 @@ export const PaypalAction: FC = () => {
         }
 
         .action:hover {
-          background: #6276bd;
+          background: #005685;
         }
 
         .discord-msg {
-          font-size: 18px;
+          font-size: 16px;
         }
 
         .discord {
@@ -50,7 +48,7 @@ export const PaypalAction: FC = () => {
         }
 
         .discord-logo {
-          font-size: 40px;
+          font-size: 30px;
           opacity: 0.2;
           color: #fff;
         }

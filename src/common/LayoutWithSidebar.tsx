@@ -18,7 +18,7 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
       <style jsx>{`
         #layout-with-sidebar {
           display: grid;
-          grid-template-columns: 1fr 310px;
+          grid-template-columns: 1fr 300px;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           grid-template-areas:
             "main side"
@@ -36,8 +36,12 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
           background: ${colors.DP02};
           border-left: 1px solid ${colors.BORDER};
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-          overflow-y: auto;
+          overflow-y: hidden;
           overflow-x: hidden;
+        }
+
+        #lws-sidebar:hover {
+          overflow-y: auto;
         }
 
         @media only screen and (max-width: 1000px) {

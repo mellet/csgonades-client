@@ -24,13 +24,12 @@ export const DiscordJoinAction: FC = () => {
       <style jsx>{`
         .actions-wrapper {
           width: 100%;
-          border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
         }
 
         .action {
           display: flex;
-          padding: 10px 20px;
+          padding: 10px 16px;
           color: white;
           justify-content: space-between;
           align-items: center;
@@ -42,7 +41,7 @@ export const DiscordJoinAction: FC = () => {
         }
 
         .discord-msg {
-          font-size: 18px;
+          font-size: 16px;
         }
 
         .discord {
@@ -50,7 +49,7 @@ export const DiscordJoinAction: FC = () => {
         }
 
         .discord-logo {
-          font-size: 40px;
+          font-size: 30px;
           opacity: 0.2;
           color: #fff;
         }

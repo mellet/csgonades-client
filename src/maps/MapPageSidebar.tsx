@@ -37,11 +37,13 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
 
         <div className="spacer"></div>
 
-        <div className="discord">
-          <DiscordJoinAction />
-        </div>
-        <div className="paypal">
-          <PaypalAction />
+        <div className="ctas">
+          <div className="cta">
+            <DiscordJoinAction />
+          </div>
+          <div className="cta">
+            <PaypalAction />
+          </div>
         </div>
       </div>
       <style jsx>{`
@@ -49,8 +51,8 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           min-height: 100%;
           display: flex;
           flex-direction: column;
-          overflow-y: auto;
           background: ${colors.DP02};
+          width: 300px;
         }
 
         .jumbo {
@@ -79,13 +81,12 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           border-top: 1px solid ${colors.BORDER};
         }
 
-        .discord,
-        .paypal {
-          padding: 16px 16px 0px 16px;
+        .ctas {
+          display: flex;
         }
 
-        .paypal {
-          padding: 16px;
+        .cta {
+          width: 50%;
         }
       `}</style>
     </>

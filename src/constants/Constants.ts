@@ -24,7 +24,7 @@ export const Dimensions = {
   TABLET_THRESHHOLD: "1024px",
   MEDIUM_DEVIDE: "1280px",
   BORDER_RADIUS: "5px",
-  BUTTON_HEIGHT: 40,
+  BUTTON_HEIGHT: 36,
 };
 
 export const AnimationTimings = {

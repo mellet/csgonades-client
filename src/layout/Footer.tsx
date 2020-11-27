@@ -11,32 +11,24 @@ export const Footer: FC = memo(() => {
     <>
       <div className="footer-wrap">
         <div className="footer">
-          <div className="copyright">© {year} CSGO Nades</div>
-
           <div className="footer-links">
-            <ul>
-              <li>
-                <Link
-                  href="/privacypolicy"
-                  as="/privacypolicy"
-                  prefetch={false}
-                >
-                  <a>Privacy Policy</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" as="/contact" prefetch={false}>
-                  <a>Contact</a>
-                </Link>
-              </li>
-            </ul>
+            <Link href="/privacypolicy" as="/privacypolicy" prefetch={false}>
+              <a>Privacy Policy</a>
+            </Link>
+            <Link href="/contact" as="/contact" prefetch={false}>
+              <a>Contact</a>
+            </Link>
           </div>
 
-          <div className="powered-by">
-            Powered by{" "}
-            <a href="https://steamcommunity.com/" rel="nofollow">
-              Steam
-            </a>
+          <div className="footer-bottom">
+            <div className="powered-by">
+              Powered by{" "}
+              <a href="https://steamcommunity.com/" rel="nofollow">
+                Steam
+              </a>
+            </div>
+
+            <div className="copyright">© {year} CSGO Nades</div>
           </div>
         </div>
       </div>
@@ -44,7 +36,6 @@ export const Footer: FC = memo(() => {
       <style jsx>{`
         .footer-wrap {
           background: ${colors.PRIMARY};
-          padding: 16px;
         }
 
         a {
@@ -55,39 +46,36 @@ export const Footer: FC = memo(() => {
           text-decoration: underline;
         }
 
-        .copyright {
-          font-size: 16px;
-          white-space: nowrap;
-          color: #fff;
-        }
-
         .footer-links {
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-          margin-top: 8px;
-          padding-top: 8px;
-        }
-
-        .footer-links ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
+          padding: 10px 16px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .footer-links a {
           white-space: nowrap;
-          font-size: 16px;
-          padding-top: 6px;
-          padding-bottom: 6px;
+          font-size: 14px;
           display: block;
+        }
+
+        .footer-bottom {
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 10px 16px;
         }
 
         .powered-by {
           white-space: nowrap;
           color: #fff;
-          font-size: 16px;
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-          margin-top: 8px;
-          padding-top: 8px;
+          font-size: 14px;
+          text-align: center;
+        }
+
+        .copyright {
+          font-size: 14px;
+          white-space: nowrap;
+          color: #fff;
+          text-align: center;
         }
       `}</style>
     </>

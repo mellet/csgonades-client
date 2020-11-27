@@ -40,9 +40,14 @@ export const Layout: FC<Props> = memo(({ children }) => {
         </header>
 
         <nav className={isNavOpen ? "open" : "closed"}>
-          <MapNav />
-          <SiteNav />
-          <Footer />
+          <div id="nav-main">
+            <MapNav />
+            <SiteNav />
+            <div id="nav-shadow"></div>
+          </div>
+          <div id="nav-footer">
+            <Footer />
+          </div>
         </nav>
 
         <main>{children}</main>
@@ -79,11 +84,33 @@ export const Layout: FC<Props> = memo(({ children }) => {
           grid-area: nav;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           background: ${colors.DP02};
-          overflow-y: auto;
+          overflow-y: hidden;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           border-right: 1px solid ${colors.BORDER};
+          width: 190px;
+        }
+
+        #nav-main {
+          position: relative;
+          flex: 1;
+          overflow-y: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+
+        #nav-main:hover {
+          overflow-y: auto;
+        }
+
+        #nav-footer {
+          box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .example {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
         }
 
         #footer-ph {
