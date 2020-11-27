@@ -41,7 +41,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
         .video-wrap {
           position: relative;
           overflow: hidden;
-          padding-bottom: calc(59.5%);
+          padding-bottom: calc(56.25% + 44px);
         }
 
         .media-container {

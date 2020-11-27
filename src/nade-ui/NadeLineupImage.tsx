@@ -11,7 +11,7 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
     <>
       <div className={"lineup-tab"}>
         <div className="img-container">
-          <Image src={url} width={1920} height={1920 * 0.61} />
+          <Image src={url} width={1920} height={1920 * 0.5625} />
         </div>
         <div className="line-up-img">
           <div className="crosshair">
@@ -43,6 +43,8 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
 
         .img-container {
           transition: transform 0.3s;
+          margin-top: 22px;
+          transform: scale(1.083);
         }
 
         .lineup-tab:hover .crosshair {
