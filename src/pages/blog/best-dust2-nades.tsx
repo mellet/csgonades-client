@@ -21,6 +21,15 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
           need to excel on Dust2.
         </p>
 
+        <div className="dust2-nades">
+          <span>There are many nades to discover on dust2!</span>
+          <Link href="/maps/[map]" as="/maps/dust2">
+            <a>
+              <img src="/blogimg/dust2nades.jpg" />
+            </a>
+          </Link>
+        </div>
+
         <p>
           This list is my personal favorites, but you can also browse{" "}
           <Link href="/maps/[map]" as="/maps/dust2">
@@ -138,6 +147,30 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
         </div>
       </BlogPostArticle>
       <style jsx>{`
+        .dust2-nades {
+          background: rgb(21, 21, 21);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 5px;
+          color: white;
+          padding: 16px;
+        }
+
+        .dust2-nades span {
+          font-size: 18px;
+          margin-bottom: 5px;
+        }
+
+        .dust2-nades img {
+          max-width: 400px;
+          opacity: 0.8;
+        }
+
+        .dust2-nades img:hover {
+          opacity: 1;
+        }
+
         .a-tag {
           margin: 30px 0px;
           display: flex;
