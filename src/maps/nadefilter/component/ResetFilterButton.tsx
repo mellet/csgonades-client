@@ -18,7 +18,7 @@ export const ResetFilterButton: FC = memo(() => {
     <>
       <div className={`reset ${visible}`}>
         <button className={`filter-btn`} onClick={onReset}>
-          <FaUndo />
+          <FaUndo size={Dimensions.BUTTON_HEIGHT / 1.8} />
         </button>
       </div>
       <style jsx>{`

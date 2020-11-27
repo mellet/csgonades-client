@@ -32,7 +32,7 @@ export const FavFilterButton: FC<Props> = ({}) => {
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByFavorite}
         >
-          <FaStar style={{ marginLeft: -1, marginTop: 0 }} />
+          <FaStar size={Dimensions.BUTTON_HEIGHT / 1.55} />
         </button>
       </div>
 
@@ -47,7 +47,6 @@ export const FavFilterButton: FC<Props> = ({}) => {
           align-items: center;
           justify-content: space-around;
           color: #767676;
-          font-size: ${Dimensions.BUTTON_HEIGHT / 2}px;
           cursor: pointer;
           overflow: hidden;
           border-radius: 5px;

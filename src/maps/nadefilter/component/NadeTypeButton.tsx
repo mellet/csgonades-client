@@ -3,6 +3,7 @@ import { NadeType } from "../../../nade-data/Nade/NadeType";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { iconFromType } from "../../../utils/Common";
 import { Dimensions } from "../../../constants/Constants";
+import Image from "next/image";
 
 type Props = {
   type: NadeType;
@@ -34,14 +35,26 @@ export const NadeTypeButton: FC<Props> = memo(
         {mobile && (
           <button className={classNameBuilder} onClick={onClick}>
             <div className="type-icon">
-              {iconUrl && <img src={iconUrl} width="70%" />}
+              {iconUrl && (
+                <Image
+                  src={iconUrl}
+                  width={Dimensions.BUTTON_HEIGHT}
+                  height={Dimensions.BUTTON_HEIGHT}
+                />
+              )}
             </div>
           </button>
         )}
         {!mobile && (
           <button className={classNameBuilder} onClick={onClick}>
             <div className="type-icon">
-              {iconUrl && <img src={iconUrl} width="100%" />}
+              {iconUrl && (
+                <Image
+                  src={iconUrl}
+                  width={Dimensions.BUTTON_HEIGHT}
+                  height={Dimensions.BUTTON_HEIGHT}
+                />
+              )}
             </div>
           </button>
         )}
@@ -56,6 +69,8 @@ export const NadeTypeButton: FC<Props> = memo(
             height: ${Dimensions.BUTTON_HEIGHT}px;
             background: ${colors.filterBg};
             border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            padding: 0;
+            margin: 0;
           }
 
           .nade-type-btn:last-child {
@@ -63,11 +78,11 @@ export const NadeTypeButton: FC<Props> = memo(
           }
 
           .type-icon {
-            width: 100%;
-            height: 100%;
+            width: ${Dimensions.BUTTON_HEIGHT}px;
+            height: ${Dimensions.BUTTON_HEIGHT}px;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: center;
           }
 
           .nade-type-btn:hover {
@@ -76,6 +91,11 @@ export const NadeTypeButton: FC<Props> = memo(
 
           .active {
             background: ${colors.filterBgHover};
+          }
+        `}</style>
+        <style global jsx>{`
+          .type-icon img {
+            transform: scale(0.75);
           }
         `}</style>
       </>

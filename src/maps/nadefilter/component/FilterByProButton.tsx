@@ -31,7 +31,7 @@ export const FilterByProButton: FC = () => {
           className={`filter-btn favorite ${active}`}
           onClick={onFilterByPro}
         >
-          <FaCheckCircle />
+          <FaCheckCircle size={Dimensions.BUTTON_HEIGHT / 1.6} />
         </button>
       </div>
 
@@ -46,7 +46,6 @@ export const FilterByProButton: FC = () => {
           align-items: center;
           justify-content: space-around;
           color: #767676;
-          font-size: ${Dimensions.BUTTON_HEIGHT / 2}px;
           cursor: pointer;
           overflow: hidden;
           border-radius: 5px;

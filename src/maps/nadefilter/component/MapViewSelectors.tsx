@@ -24,13 +24,13 @@ export const MapViewSelector: FC = () => {
             }
             onClick={onSwitchToOverview}
           >
-            <FaMap />
+            <FaMap size={Dimensions.BUTTON_HEIGHT / 1.8} />
           </button>
           <button
             className={mapView === "list" ? "selector selected" : "selector"}
             onClick={() => setMapView("list")}
           >
-            <FaListUl />
+            <FaListUl size={Dimensions.BUTTON_HEIGHT / 1.8} />
           </button>
         </div>
       </div>
