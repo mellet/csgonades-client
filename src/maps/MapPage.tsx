@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect } from "react";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPageNades } from "./MapPageNades";
@@ -14,6 +14,7 @@ import { useOnNadeClusterClick } from "./SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { FixedBottomClosabeleAd } from "../common/adunits/FixedBottomClosableAd";
 import MapViewScreen from "./MapViewScreen";
+import { isMobileOnly } from "react-device-detect";
 
 const isServer = typeof window === "undefined";
 
@@ -23,8 +24,15 @@ type Props = {
 };
 
 export const MapPage: FC<Props> = memo(({ map, allNades }) => {
-  const { mapView } = useSetMapView();
+  const { mapView, setMapView } = useSetMapView();
+
   useMapChangeHandler(allNades);
+
+  useEffect(() => {
+    if (isMobileOnly) {
+      setMapView("list");
+    }
+  }, [setMapView]);
 
   const {
     onNadeClusterClick,

@@ -7,6 +7,7 @@ import { MapViewSelector } from "./component/MapViewSelectors";
 import { ResetFilterButton } from "./component/ResetFilterButton";
 import { Dimensions } from "../../constants/Constants";
 import { FilterByProButton } from "./component/FilterByProButton";
+import { isMobileOnly } from "react-device-detect";
 
 const FilterBar: FC = memo(({}) => {
   return (
@@ -34,9 +35,11 @@ const FilterBar: FC = memo(({}) => {
           <FilterByProButton />
         </div>
 
-        <div id="view-selector" className="spacer">
-          <MapViewSelector />
-        </div>
+        {!isMobileOnly && (
+          <div id="view-selector" className="spacer">
+            <MapViewSelector />
+          </div>
+        )}
 
         <div id="filter-reset">
           <ResetFilterButton />
