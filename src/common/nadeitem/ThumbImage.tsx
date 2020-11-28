@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC } from "react";
 import { CrossHair } from "../../nade-ui/CrossHair";
 
@@ -12,12 +13,25 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
   return (
     <>
       <div className="thumb-image">
-        <div className="result-image"></div>
-        {hasLineUpImage && (
+        <div className="result-image">
+          {thumbUrl && (
+            <Image src={thumbUrl} layout="fill" objectFit="cover"></Image>
+          )}
+        </div>
+        {lineupThumbUrl && (
           <>
             <div className="lineup-border"></div>
             <div className="lineup-image">
-              <CrossHair size={20} />
+              <div className="lineup-img-wrap">
+                <Image
+                  src={lineupThumbUrl}
+                  layout="fill"
+                  objectFit="cover"
+                ></Image>
+              </div>
+              <div className="crosshair">
+                <CrossHair size={20} />
+              </div>
             </div>
           </>
         )}
@@ -29,12 +43,12 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
         }
 
         .result-image {
-          background: blue;
-          width: ${hasLineUpImage ? "70%" : "100%"};
+          width: 100%;
           height: 100%;
-          background: url(${thumbUrl});
-          background-position: center;
-          background-size: cover;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: translateX(${hasLineUpImage ? "-17%" : 0});
         }
 
         .lineup-border {
@@ -43,7 +57,7 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
           right: 0;
           bottom: 0;
           clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-          width: 41%;
+          width: 40.5%;
           background: white;
         }
 
@@ -53,14 +67,15 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
           right: 0;
           bottom: 0;
           clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-          background: pink;
           width: 40%;
-          background: url(${lineupThumbUrl});
-          background-position: center;
-          background-size: cover;
         }
 
-        .lineup-image {
+        .crosshair {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
           display: flex;
           align-items: center;
           justify-content: center;
