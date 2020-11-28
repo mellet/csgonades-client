@@ -12,7 +12,6 @@ import {
   generateNadeItemTitle,
 } from "../../utils/Common";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { useCanEditNade } from "../../store/NadeStore/hooks/useCanEditNade";
 import { Nade } from "../../nade-data/Nade/Nade";
 import { LayoutWithSidebar } from "../../common/LayoutWithSidebar";
 import { NadePageSidebar } from "../NadePageSidebar";
@@ -25,7 +24,6 @@ type Props = {
 export const NadePage: FC<Props> = memo(({ nade }) => {
   const incrementNumNadesVisisted = useIncrementNumNadesVisisted();
   const { colors } = useTheme();
-  const canEdit = useCanEditNade(nade.steamId);
 
   useEffect(() => {
     incrementNumNadesVisisted();
@@ -84,12 +82,8 @@ export const NadePage: FC<Props> = memo(({ nade }) => {
             <NadeTitle
               title={layoutTitle}
               subTitle={subTitle}
-              canEdit={canEdit}
               nadeId={nade.id}
-              nadeSlug={nade.slug}
               map={nade.map}
-              downVoteCount={nade.downVoteCount}
-              upVoteCount={nade.upVoteCount}
             />
           </div>
 

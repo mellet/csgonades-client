@@ -1,7 +1,6 @@
 import { FC, memo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import Link from "next/link";
-import { FaEdit, FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 import { TitleFavBtn } from "./TitleFavBtn";
 import { TitleReportBtn } from "./TileReportBtn";
 import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
@@ -9,17 +8,13 @@ import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
 type Props = {
   inModal?: boolean;
   nadeId: string;
-  nadeSlug?: string;
   title: string;
   subTitle?: string;
-  canEdit?: boolean;
   map?: CsgoMap;
-  upVoteCount?: number;
-  downVoteCount?: number;
 };
 
 export const NadeTitle: FC<Props> = memo(
-  ({ title, subTitle, nadeId, canEdit, nadeSlug, inModal }) => {
+  ({ title, subTitle, nadeId, inModal }) => {
     const { colors } = useTheme();
 
     return (
@@ -48,19 +43,6 @@ export const NadeTitle: FC<Props> = memo(
               {title} {subTitle}
             </span>
           </h1>
-
-          {canEdit && (
-            <div className="edit">
-              <Link
-                href="/nades/[...slug]"
-                as={`/nades/${nadeSlug || nadeId}/edit`}
-              >
-                <button className="edit-btn">
-                  <FaEdit /> EDIT
-                </button>
-              </Link>
-            </div>
-          )}
         </div>
 
         <style jsx>{`
@@ -107,32 +89,6 @@ export const NadeTitle: FC<Props> = memo(
           .nade-title {
             grid-area: title;
             align-self: center;
-          }
-
-          .edit {
-            position: absolute;
-            top: 0;
-            left: calc(50% - 50px);
-            width: 100px;
-            display: flex;
-            justify-content: center;
-          }
-
-          .edit-btn {
-            background: ${colors.filterBg};
-            border: none;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            color: white;
-            padding: 5px 10px;
-            outline: none;
-            font-size: 10px;
-            cursor: pointer;
-            white-space: nowrap;
-          }
-
-          .edit-btn:hover {
-            background: ${colors.filterBgHover};
           }
 
           h1 {

@@ -2,6 +2,7 @@ import { FC } from "react";
 import { SidebarAdSticky } from "../common/adunits/SidebarAdSticky";
 import { Nade } from "../nade-data/Nade/Nade";
 import { generateTitle } from "../utils/Common";
+import { NadeEditButton } from "./components/NadeEditButton";
 import { NadeMeta } from "./components/NadeMeta";
 import { NadeShareActions } from "./NadeShareActions";
 
@@ -13,6 +14,8 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
   return (
     <>
       <div id="nade-actions">
+        <NadeEditButton nade={nade} />
+
         <div id="meta">
           <NadeMeta
             type={nade.type}
