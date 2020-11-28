@@ -1,66 +1,66 @@
 type AcceptedNadeNotification = {
+  createdAt: Date;
   id: string;
-  type: "accepted-nade";
   nadeId: string;
   nadeSlug?: string;
   subjectSteamId: string;
-  viewed: boolean;
-  createdAt: Date;
   thumnailUrl?: string;
+  type: "accepted-nade";
+  viewed: boolean;
 };
 
 type DeclinedNadeNotification = {
+  createdAt: Date;
   id: string;
-  type: "declined-nade";
   nadeId: string;
   nadeSlug?: string;
   subjectSteamId: string;
-  viewed: boolean;
-  createdAt: Date;
   thumnailUrl?: string;
+  type: "declined-nade";
+  viewed: boolean;
 };
 
 export type FavoriteNotification = {
+  byNickname: string;
+  bySteamId: string;
+  createdAt: Date;
   id: string;
-  type: "favorite";
   nadeId: string;
   nadeSlug?: string;
-  bySteamId: string;
-  byNickname: string;
   subjectSteamId: string;
-  viewed: boolean;
-  createdAt: Date;
   thumnailUrl?: string;
+  type: "favorite";
+  viewed: boolean;
 };
 
 type NewContactNotification = {
-  id: string;
-  type: "contact-msg";
-  subjectSteamId: string;
-  viewed: boolean;
   createdAt: Date;
+  id: string;
+  subjectSteamId: string;
+  type: "contact-msg";
+  viewed: boolean;
 };
 
 type NewNadeNotification = {
+  createdAt: Date;
   id: string;
-  type: "new-nade";
   nadeId: string;
   nadeSlug?: string;
   subjectSteamId: string;
+  type: "new-nade";
   viewed: boolean;
-  createdAt: Date;
 };
 
 type NewCommentNotification = {
+  byNickname: string;
+  bySteamId: string;
+  createdAt: Date;
   id: string;
-  type: "new-comment";
   nadeId: string;
   nadeSlug?: string;
-  bySteamId: string;
-  byNickname: string;
   subjectSteamId: string;
   thumnailUrl?: string;
-  createdAt: Date;
+  type: "new-comment";
   viewed: boolean;
 };
 

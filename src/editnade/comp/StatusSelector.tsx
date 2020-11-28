@@ -19,7 +19,6 @@ export const StatusSelector: FC<Props> = ({ initValue, onChange }) => {
           options={nadeStatusOptions()}
         />
       </div>
-      <style jsx>{``}</style>
     </>
   );
 };

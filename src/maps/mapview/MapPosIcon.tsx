@@ -4,18 +4,18 @@ import { NadeType } from "../../nade-data/Nade/NadeType";
 
 type Props = {
   cluster: NadeLight[];
-  nade: NadeLight;
   mapWidth: number;
-  onPress: (pos: { x: number; y: number }) => void;
+  nade: NadeLight;
   numNades: number;
+  onPress: (pos: { x: number; y: number }) => void;
 };
 
 export const MapPosIcon: FC<Props> = ({
-  nade,
-  mapWidth,
-  onPress,
-  numNades,
   cluster,
+  mapWidth,
+  nade,
+  numNades,
+  onPress,
 }) => {
   const position = useMemo(() => {
     const averageX =

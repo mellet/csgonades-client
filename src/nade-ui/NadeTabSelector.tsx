@@ -3,8 +3,8 @@ import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 type Props = {
-  selectedTab: "video" | "lineup";
   onChangeTab: (newTab: "video" | "lineup") => void;
+  selectedTab: "video" | "lineup";
 };
 
 export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {

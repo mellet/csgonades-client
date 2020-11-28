@@ -10,12 +10,12 @@ import { NotificationReducer } from "./NotificationStore/NotificationSlice";
 
 const rootReducer = combineReducers({
   authStore: AuthReducer,
-  toastStore: ToastReducer,
   favoriteStore: FavoriteReducer,
   globalStore: GlobalReducer,
+  mapStore: MapStoreReducer,
   notificationStore: NotificationReducer,
   settingsStore: SettingsReducer,
-  mapStore: MapStoreReducer,
+  toastStore: ToastReducer,
   trackerStore: TrackerReducer,
 });
 

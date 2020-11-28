@@ -1,8 +1,8 @@
 const StatusValues = {
-  pending: "Pending",
   accepted: "Accepted",
   declined: "Declined",
   deleted: "Deleted",
+  pending: "Pending",
 };
 
 export type Status = keyof typeof StatusValues;

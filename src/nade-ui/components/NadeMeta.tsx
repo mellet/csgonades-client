@@ -6,11 +6,11 @@ import { capitalize } from "../../utils/Common";
 import { Movement } from "../../nade-data/Nade/NadeMovement";
 
 type Props = {
-  type?: NadeType;
   movement?: Movement;
+  rounded?: boolean;
   technique?: Technique;
   tickrate?: Tickrate;
-  rounded?: boolean;
+  type?: NadeType;
 };
 
 export const NadeMeta: FC<Props> = memo(

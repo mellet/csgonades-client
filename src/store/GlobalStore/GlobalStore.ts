@@ -6,18 +6,18 @@ import storage from "redux-persist/lib/storage";
 export type SignInWarningType = "favorite" | "filterpro" | "vote";
 
 type GlobalState = {
-  readonly stats: SiteStats;
-  readonly isNavOpen: boolean;
   readonly acceptedCookieConcent: boolean;
+  readonly isNavOpen: boolean;
   readonly signInWarning?: SignInWarningType;
+  readonly stats: SiteStats;
 };
 
 const initialState: GlobalState = {
   stats: {
-    numNades: 0,
-    numUsers: 0,
-    numPending: 0,
     ezoicEnabled: false,
+    numNades: 0,
+    numPending: 0,
+    numUsers: 0,
   },
   isNavOpen: false,
   acceptedCookieConcent: false,
@@ -53,17 +53,17 @@ const globalStore = createSlice({
 
 const persistConfig: PersistConfig<GlobalState> = {
   key: "globalStore",
-  whitelist: ["acceptedCookieConcent"],
   storage,
+  whitelist: ["acceptedCookieConcent"],
 };
 
 export const GlobalReducer = persistReducer(persistConfig, globalStore.reducer);
 
 export const {
-  toggleNavigationAction,
-  addSiteStatsAction,
   acceptCookieConcentAction,
+  addSiteStatsAction,
   clearSignInWarningAction,
   closeNavigationAction,
   displaySignInWarningAction,
+  toggleNavigationAction,
 } = globalStore.actions;

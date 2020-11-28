@@ -4,8 +4,8 @@ import { User } from "../../models/User";
 import storage from "redux-persist/lib/storage";
 
 export type AuthState = {
-  user?: User;
   token?: string;
+  user?: User;
 };
 
 const initialState: AuthState = {};

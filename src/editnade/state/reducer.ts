@@ -19,10 +19,10 @@ import { assertNever } from "../../utils/Common";
 import { Tickrate } from "../../nade-data/Nade/NadeTickrate";
 
 interface EditNadeState extends Partial<NadeCreateBody> {
+  loading: boolean;
   originalNade: Nade;
   showImageAdder: boolean;
   showLineupImgAdder: boolean;
-  loading: boolean;
   slug?: string;
   status?: Status;
 }
@@ -127,26 +127,26 @@ type UnSetIsPro = {
 };
 
 type Actions =
-  | SetMap
-  | SetGfyData
-  | SetEndPosition
-  | SetStartPosition
   | SetDescription
-  | SetNadeType
-  | SetMovement
-  | SetImage
-  | ShowImageSelector
   | SetEndPosCoords
-  | SetTechnique
+  | SetEndPosition
+  | SetGfyData
+  | SetImage
+  | SetIsPro
+  | SetLineUpImage
   | SetLoading
+  | SetMap
+  | SetMovement
+  | SetNadeStatus
+  | SetNadeType
   | SetNotLoading
   | SetOneWay
-  | SetNadeStatus
-  | ToggleLineupImageAdder
-  | SetLineUpImage
-  | SetTickrate
   | SetSlug
-  | SetIsPro
+  | SetStartPosition
+  | SetTechnique
+  | SetTickrate
+  | ShowImageSelector
+  | ToggleLineupImageAdder
   | UnSetIsPro;
 
 const reducer: Reducer<EditNadeState, Actions> = (state, action) => {

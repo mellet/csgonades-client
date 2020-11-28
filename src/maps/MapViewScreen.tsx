@@ -9,8 +9,8 @@ import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNad
 import { useWindowSize } from "../common/MinSizeRender";
 
 type Props = {
-  map: CsgoMap;
   allNades: NadeLight[];
+  map: CsgoMap;
   onClusterClick: (cluster: NadeLight[]) => void;
 };
 

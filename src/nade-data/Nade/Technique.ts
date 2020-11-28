@@ -1,8 +1,8 @@
 const TechniqueValues = {
-  left: "Mouse left",
-  right: "Mouse right",
   both: "Mouse both",
   jumpthrow: "Jumpthrow bind",
+  left: "Mouse left",
+  right: "Mouse right",
 };
 
 export type Technique = keyof typeof TechniqueValues;

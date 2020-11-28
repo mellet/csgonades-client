@@ -1,4 +1,4 @@
-import { AppState } from "..";
+import { AppState } from "../rootReducer";
 
 export const notificationsSelector = (state: AppState) =>
   state.notificationStore.notifications;

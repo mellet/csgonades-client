@@ -10,11 +10,9 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import { ThunkAction } from "redux-thunk";
-import rootReducer from "./rootReducer";
+import rootReducer, { AppState } from "./rootReducer";
 
 const isProduction = process.env.NODE_ENV === "production";
-
-export type AppState = ReturnType<typeof rootReducer>;
 
 const applicationStore = configureStore({
   reducer: rootReducer,

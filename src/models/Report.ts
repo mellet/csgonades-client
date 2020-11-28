@@ -1,11 +1,11 @@
 export type Report = {
-  id: string;
-  nadeId: string;
-  message: string;
   createdAt: Date;
+  id: string;
+  message: string;
+  nadeId: string;
 };
 
 export type ReportAddDto = {
-  nadeId: string;
   message: string;
+  nadeId: string;
 };

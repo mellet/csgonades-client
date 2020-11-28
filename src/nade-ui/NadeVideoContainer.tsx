@@ -4,8 +4,8 @@ import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
 
 type Props = {
-  lineUpUrl?: string;
   gfyId: string;
+  lineUpUrl?: string;
 };
 
 type Tabs = "video" | "lineup";

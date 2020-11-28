@@ -7,10 +7,10 @@ import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
 
 type Props = {
   inModal?: boolean;
-  nadeId: string;
-  title: string;
-  subTitle?: string;
   map?: CsgoMap;
+  nadeId: string;
+  subTitle?: string;
+  title: string;
 };
 
 export const NadeTitle: FC<Props> = memo(

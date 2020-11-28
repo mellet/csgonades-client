@@ -1,6 +1,6 @@
 export type NadeImages = {
-  thumbnailId: string;
-  thumbnailUrl: string;
   lineupId?: string;
   lineupUrl?: string;
+  thumbnailId: string;
+  thumbnailUrl: string;
 };

@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Notification } from "../../models/Notification";
 
 type NotificationState = {
-  readonly notifications: Notification[];
-  readonly loading: boolean;
   readonly lastFetch?: Date;
+  readonly loading: boolean;
+  readonly notifications: Notification[];
 };
 
 const initialState: NotificationState = {
-  notifications: [],
   loading: false,
+  notifications: [],
 };
 
 const notificationSlice = createSlice({

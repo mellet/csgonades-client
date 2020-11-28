@@ -8,7 +8,7 @@ import { capitalize } from "../utils/Common";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { MapPageSidebar } from "./MapPageSidebar";
 import FilterBar from "./nadefilter/FilterBar";
-import { MapViewSuggested } from "./MapViewSuggested";
+import { MapViewSuggested } from "./SuggestedNades/MapViewSuggested";
 import { useOnNadeClusterClick } from "./SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { FixedBottomClosabeleAd } from "../common/adunits/FixedBottomClosableAd";

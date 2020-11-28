@@ -9,7 +9,7 @@ import { Dimensions } from "../../constants/Constants";
 import { FilterByProButton } from "./component/FilterByProButton";
 import { isMobileOnly } from "react-device-detect";
 
-const FilterBar: FC = memo(({}) => {
+const FilterBar: FC = memo(() => {
   return (
     <>
       <div id="filters">

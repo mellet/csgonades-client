@@ -18,6 +18,7 @@ export const TickrateSelector: FC = () => {
   }
 
   const tick64active = byTickrate === "tick64" ? "active" : "";
+
   const tick128active = byTickrate === "tick128" ? "active" : "";
 
   return (

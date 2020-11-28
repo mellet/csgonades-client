@@ -53,27 +53,4 @@ export const getStaticProps: GetStaticProps<any, { map: CsgoMap }> = async ({
   };
 };
 
-/*
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const map = context.query.map as CsgoMap;
-
-  const results = await NadeApi.getByMap(map);
-
-  if (results.isOk()) {
-    return {
-      props: {
-        map,
-        ssrNades: results.value,
-      },
-    };
-  } else {
-    return {
-      props: {
-        map,
-        ssrNades: [],
-      },
-    };
-  }
-};
-*/
 export default Map;

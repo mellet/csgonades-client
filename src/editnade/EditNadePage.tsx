@@ -58,9 +58,9 @@ export const EditNadePage: FC<Props> = ({ nade }) => {
     <>
       <div id="edit-nade-page-wrap">
         <SEO
+          canonical={`/nades/${nade.slug || nade.id}/edit`}
           key={`seo-${nade.id}`}
           title={"Edit nade"}
-          canonical={`/nades/${nade.slug || nade.id}/edit`}
         />
 
         <h1 id="title">EDIT NADE</h1>
@@ -113,27 +113,27 @@ export const EditNadePage: FC<Props> = ({ nade }) => {
 
           <div id="result-image">
             <ImageSelector
-              label="Result Image"
               imageIsSet={true}
+              label="Result Image"
               onClick={() => dispatch({ type: "CreateNade/ShowImageSelector" })}
             />
           </div>
 
           <div id="lineup-image">
             <ImageSelector
-              optional
-              label="Line Up Image"
               imageIsSet={!!nade.images.lineupId || !!state.lineUpImageBase64}
+              label="Line Up Image"
               onClick={() =>
                 dispatch({ type: "EditNade/ToggleLineupImageAdder" })
               }
+              optional
             />
           </div>
 
           <div id="map-position-selector">
             <MapPositionEditor
-              map={nade.map}
               endPos={state.mapEndCoord || nade.mapEndCoord}
+              map={nade.map}
               onSave={(coords) =>
                 dispatch({ type: "CreateNade/SetEndPosCoords", coords })
               }
@@ -208,11 +208,11 @@ export const EditNadePage: FC<Props> = ({ nade }) => {
                 map: state.map || nade.map,
                 mapEndCoord: state.mapEndCoord || nade.mapEndCoord,
                 movement: state.movement || nade.movement,
+                oneWay: state.oneWay || nade.oneWay,
                 startPosition: state.startPosition || nade.startPosition,
                 technique: state.technique || nade.technique,
                 tickrate: state.tickrate || nade.tickrate,
                 type: state.type || nade.type,
-                oneWay: state.oneWay || nade.oneWay,
               }}
             />
           </div>

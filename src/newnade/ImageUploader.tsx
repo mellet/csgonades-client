@@ -8,17 +8,17 @@ import "react-image-crop/dist/ReactCrop.css";
 type AspectRatio = "1:1" | "16:9";
 
 type Props = {
-  message: any;
   aspectRatio?: AspectRatio;
+  message: any;
   onDismiss: () => void;
   onImageCropped: (croppedImageBase64: string) => void;
 };
 
 export const ImageUploader: FC<Props> = ({
-  onImageCropped,
-  onDismiss,
   aspectRatio,
   message,
+  onDismiss,
+  onImageCropped,
 }: Props) => {
   const windowSize = useWindowSize();
   const { colors } = useTheme();

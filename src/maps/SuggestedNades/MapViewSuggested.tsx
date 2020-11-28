@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { NadeLight } from "../nade-data/Nade/Nade";
-import { NadeItem } from "../common/nadeitem/NadeItem";
+import { NadeLight } from "../../nade-data/Nade/Nade";
+import { NadeItem } from "../../common/nadeitem/NadeItem";
 import { FaTimes } from "react-icons/fa";
-import { CsgnList } from "../common/list/CsgnList";
-import { Dimensions } from "../constants/Constants";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { CsgnList } from "../../common/list/CsgnList";
+import { Dimensions } from "../../constants/Constants";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   nades: NadeLight[] | null;

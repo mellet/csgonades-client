@@ -1,9 +1,5 @@
-import { AppState } from "..";
-import { SiteStats } from "../../api/StatsApi";
+import { AppState } from "../rootReducer";
 import { SignInWarningType } from "./GlobalStore";
-
-export const siteStatsSelector = (state: AppState): SiteStats =>
-  state.globalStore.stats;
 
 export const isNavOpenSelector = (state: AppState): boolean =>
   state.globalStore.isNavOpen;

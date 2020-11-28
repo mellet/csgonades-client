@@ -7,8 +7,8 @@ import { cleanGfycatUrl } from "../utils/Common";
 
 type Props = {
   addGfycat: (gfyId: GfycatData) => void;
-  onError: (error: string) => void;
   clearError: () => void;
+  onError: (error: string) => void;
 };
 
 export const AddGfycat: FC<Props> = ({ addGfycat, clearError, onError }) => {

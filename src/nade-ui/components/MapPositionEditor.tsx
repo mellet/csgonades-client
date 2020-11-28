@@ -6,9 +6,9 @@ import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { MiniLabel } from "../../createnade/components/MiniLabel";
 
 type Props = {
-  onSave: (coords: MapCoordinates) => void;
-  map?: CsgoMap;
   endPos?: MapCoordinates;
+  map?: CsgoMap;
+  onSave: (coords: MapCoordinates) => void;
 };
 
 export const MapPositionEditor: FC<Props> = ({ onSave, map, endPos }) => {

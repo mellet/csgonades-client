@@ -1,9 +1,9 @@
 export const NadeMovements = {
-  stationary: "Stationary",
   crouching: "Crouching",
-  walking: "Walking",
-  running: "Running",
   crouchwalking: "Crouchwalking",
+  running: "Running",
+  stationary: "Stationary",
+  walking: "Walking",
 };
 
 export type MovementKeys = keyof typeof NadeMovements;

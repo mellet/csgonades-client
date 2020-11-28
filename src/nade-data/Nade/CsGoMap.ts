@@ -1,14 +1,14 @@
 const CsGoMaps = {
+  anubis: "Anubis",
+  cache: "Cache",
+  cobblestone: "Cobblestone",
   dust2: "Dust2",
+  inferno: "Inferno",
   mirage: "Mirage",
   nuke: "Nuke",
-  inferno: "Inferno",
-  cache: "Cache",
   overpass: "Overpass",
-  vertigo: "Vertigo",
   train: "Train",
-  cobblestone: "Cobblestone",
-  anubis: "Anubis",
+  vertigo: "Vertigo",
 };
 
 export type CsgoMap = keyof typeof CsGoMaps;

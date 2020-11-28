@@ -3,7 +3,8 @@ import React, { memo } from "react";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import applicationStore, { AppState } from "../store";
+import applicationStore from "../store";
+import { AppState } from "../store/rootReducer";
 
 type Props = {
   initialReduxState: AppState;

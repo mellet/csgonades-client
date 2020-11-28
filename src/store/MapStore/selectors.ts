@@ -1,4 +1,4 @@
-import { AppState } from "..";
+import { AppState } from "../rootReducer";
 
 export const allNadesSelector = (state: AppState) => state.mapStore.nadeForMap;
 

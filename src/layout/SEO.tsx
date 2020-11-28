@@ -2,14 +2,6 @@ import { FC, memo } from "react";
 import Head from "next/head";
 import { descriptionSimplify } from "../utils/Common";
 
-export type BlogPostSchema = {
-  url: string;
-  title: string;
-  image: { url: string; width: number; height: number };
-  datePublished: string;
-  description: string;
-};
-
 type Props = {
   title?: string;
   description?: string;

@@ -10,13 +10,12 @@ export const Hamburger: FC = memo(({}) => {
   return (
     <>
       <div className="hamburger" onClick={toggleNav}>
-        {isNavOpen && (
+        {isNavOpen ? (
           <FaTimes
             size={30}
             style={{ position: "relative", left: -8, top: 0 }}
           />
-        )}
-        {!isNavOpen && (
+        ) : (
           <FaBars
             size={24}
             style={{ position: "relative", left: -5, top: 2 }}

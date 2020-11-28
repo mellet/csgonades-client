@@ -6,6 +6,7 @@ import { Dimensions } from "../constants/Constants";
 import { ThemeToggler } from "./Misc/ThemeToggler";
 
 const UserNav = React.lazy(() => import("./Navigation/UserNav"));
+
 const isServer = typeof window === "undefined";
 
 export const Header: FC = memo(() => {

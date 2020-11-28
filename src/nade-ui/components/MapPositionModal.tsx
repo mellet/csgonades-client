@@ -7,17 +7,17 @@ import { MapCoordinates } from "../../nade-data/Nade/Nade";
 type Props = {
   map: CsgoMap;
   mapEndCoord?: MapCoordinates;
-  visible: boolean;
   onDismiss: () => void;
   onSave: (coords: MapCoordinates) => void;
+  visible: boolean;
 };
 
 export const MapPositionModal: FC<Props> = ({
-  visible,
-  onDismiss,
   map,
   mapEndCoord,
+  onDismiss,
   onSave,
+  visible,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [elementOffset, setElementOffset] = useState({ left: 0, top: 0 });

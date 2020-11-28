@@ -1,9 +1,5 @@
-import { AppState } from "..";
+import { AppState } from "../rootReducer";
 
-export const userSelector = (state: AppState) => {
-  return state.authStore.user;
-};
+export const userSelector = (state: AppState) => state.authStore.user;
 
-export const tokenSelector = (state: AppState) => {
-  return state.authStore.token;
-};
+export const tokenSelector = (state: AppState) => state.authStore.token;

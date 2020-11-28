@@ -1,26 +1,26 @@
 export type Role = "administrator" | "moderator" | "user";
 
 export type User = {
-  nickname: string;
-  steamId: string;
   avatar: string;
-  role: Role;
-  email?: string;
   bio?: string;
   createdAt: Date;
-  updatedAt: Date;
+  email?: string;
   lastActive: Date;
+  nickname: string;
+  role: Role;
+  steamId: string;
+  updatedAt: Date;
 };
 
 export type UserUpdateDTO = {
-  nickname?: string;
-  email?: string;
   bio?: string;
   createdAt?: Date;
+  email?: string;
+  nickname?: string;
 };
 
 export type UserLight = {
+  avatar: string;
   nickname: string;
   steamId: string;
-  avatar: string;
 };

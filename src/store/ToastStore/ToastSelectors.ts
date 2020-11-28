@@ -1,5 +1,3 @@
-import { AppState } from "..";
+import { AppState } from "../rootReducer";
 
-export const toastSelector = (state: AppState) => {
-  return state.toastStore.toasts;
-};
+export const toastSelector = (state: AppState) => state.toastStore.toasts;

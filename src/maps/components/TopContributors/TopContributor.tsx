@@ -8,10 +8,10 @@ import { mapString } from "../../../nade-data/Nade/CsGoMap";
 import { ContListProps } from "./topContributorsProps";
 
 interface UserContribution extends UserLight {
-  nadeCount: number;
   bestScore: number;
-  totalScore: number;
+  nadeCount: number;
   score: number;
+  totalScore: number;
 }
 
 export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {

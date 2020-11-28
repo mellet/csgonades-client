@@ -6,10 +6,10 @@ import { Dimensions } from "../../../constants/Constants";
 import Image from "next/image";
 
 type Props = {
-  type: NadeType;
   currentType?: NadeType;
   mobile?: boolean;
   onFilterByType: (type: NadeType) => void;
+  type: NadeType;
 };
 
 export const NadeTypeButton: FC<Props> = memo(

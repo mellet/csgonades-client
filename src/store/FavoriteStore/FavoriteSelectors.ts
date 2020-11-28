@@ -1,13 +1,12 @@
 import { createSelector } from "reselect";
-import { AppState } from "..";
+import { AppState } from "../rootReducer";
 
-export const allFavoritesSelector = (state: AppState) => {
-  return state.favoriteStore.favorites;
-};
+export const allFavoritesSelector = (state: AppState) =>
+  state.favoriteStore.favorites;
 
 export const favoritedNadeIdsSelector = createSelector(
   (state: AppState) => state.favoriteStore.favorites,
-  items => items.map(f => f.nadeId)
+  (items) => items.map((f) => f.nadeId)
 );
 
 export const favoriteInProgress = (state: AppState) =>

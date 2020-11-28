@@ -9,28 +9,29 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 type NadesForMap = { [key: string]: NadeLight[] | undefined };
 
 export type NadeSortingMethod = "hot" | "new" | "top";
+
 export type MapView = "overview" | "list";
 
 export type MapStoreState = {
-  view: MapView;
-  nadeForMap: NadesForMap;
   currentMap?: CsgoMap;
   filterByFavorites: boolean;
-  filterByType?: NadeType;
-  filterByTickrate: Tickrate;
   filterByPro?: boolean;
+  filterByTickrate: Tickrate;
+  filterByType?: NadeType;
+  nadeForMap: NadesForMap;
   sortingMethod: NadeSortingMethod;
   suggestedNades?: NadeLight[];
+  view: MapView;
 };
 
 const initialState: MapStoreState = {
-  view: "overview",
-  nadeForMap: {},
   filterByFavorites: false,
   filterByPro: false,
   filterByTickrate: "any",
-  sortingMethod: "hot",
   filterByType: "smoke",
+  nadeForMap: {},
+  sortingMethod: "hot",
+  view: "overview",
 };
 
 const mapStore = createSlice({
@@ -83,10 +84,10 @@ export const {
   replaceNadesForMapAction,
   resetFilterAction,
   setCurrentMapAction,
+  setMapViewAction,
   setSortingMethodAction,
   toggleFavoritesAction,
   toggleProNadesAction,
-  setMapViewAction,
 } = mapStore.actions;
 
 const persistConfig: PersistConfig<MapStoreState> = {

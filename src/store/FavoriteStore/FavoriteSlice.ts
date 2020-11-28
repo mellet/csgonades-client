@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Favorite } from "../../models/Favorite";
 
 export interface FavoritesState {
-  favorites: Favorite[];
   favoriteInProgress: boolean;
+  favorites: Favorite[];
 }
 
 const initialState: FavoritesState = {
-  favorites: [],
   favoriteInProgress: false,
+  favorites: [],
 };
 
 const favoriteSlice = createSlice({
