@@ -19,9 +19,9 @@ export const BlogList: FC<Props> = ({ posts }) => {
       <style jsx>{`
         .blog-post-list {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           width: 100%;
         }
       `}</style>

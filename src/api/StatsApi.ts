@@ -4,10 +4,10 @@ import { Config } from "../constants/Constants";
 import { AppResult, extractApiError } from "../utils/ErrorUtil";
 
 export type SiteStats = {
-  numUsers: number;
+  ezoicEnabled: boolean;
   numNades: number;
   numPending: number;
-  ezoicEnabled: boolean;
+  numUsers: number;
 };
 
 export class StatsApi {

@@ -14,11 +14,6 @@ export const BlogListRecent: FC<Props> = memo(({ posts }) => {
           <BlogPostPreviewHorizontal key={bp.title} blogPost={bp} />
         ))}
       </div>
-
-      <style jsx>{`
-        .blog-post-list {
-        }
-      `}</style>
     </>
   );
 });

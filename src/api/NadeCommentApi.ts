@@ -4,18 +4,18 @@ import { Config } from "../constants/Constants";
 import { AppResult, extractApiError } from "../utils/ErrorUtil";
 
 export type NadeComment = {
-  id: string;
-  nadeId: string;
-  steamId: string;
-  nickname: string;
   avatar: string;
-  message: string;
   createdAt: Date;
+  id: string;
+  message: string;
+  nadeId: string;
+  nickname: string;
+  steamId: string;
 };
 
 export type NadeCommentCreateDTO = {
-  nadeId: string;
   message: string;
+  nadeId: string;
 };
 
 export type NadeCommentUpdateDTO = {

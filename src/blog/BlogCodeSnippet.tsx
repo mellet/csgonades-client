@@ -12,16 +12,13 @@ export const BlogCodeSnippet: FC<Props> = ({ code }) => {
         <pre dangerouslySetInnerHTML={{ __html: code }} />
       </code>
       <style jsx>{`
-        code {
-        }
-
         pre {
-          max-width: 100%;
           background: #444;
-          color: white;
-          padding: 30px;
           border-radius: 5px;
+          color: white;
           margin-bottom: 40px;
+          max-width: 100%;
+          padding: 30px;
           white-space: pre-wrap;
           word-wrap: break-word;
         }

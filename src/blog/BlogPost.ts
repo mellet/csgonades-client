@@ -1,11 +1,11 @@
 export type BlogPost = {
-  title: string;
-  slug: string;
-  thumbnailUrl: string;
-  imageUrl: string;
+  createdAt: string;
   imageCredit?: string;
   imageCreditUrl?: string;
+  imageUrl: string;
   intro: string;
-  createdAt: string;
+  slug: string;
+  thumbnailUrl: string;
+  title: string;
   updatedAt?: string;
 };

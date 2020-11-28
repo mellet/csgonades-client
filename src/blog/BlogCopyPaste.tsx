@@ -42,23 +42,23 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
       </div>
       <style jsx>{`
         .copy-paste {
-          position: relative;
           display: flex;
           margin-bottom: 20px;
           margin-top: 20px;
+          position: relative;
         }
 
         .copy-confirm {
-          position: absolute;
-          bottom: 100%;
-          right: 0;
           background: #79c900;
-          color: white;
-          margin-left: 10px;
-          margin-bottom: 10px;
-          padding: 5px;
           border-radius: 5px;
+          bottom: 100%;
+          color: white;
+          margin-bottom: 10px;
+          margin-left: 10px;
           opacity: 0;
+          padding: 5px;
+          position: absolute;
+          right: 0;
           transition: opacity 0.5s;
           white-space: nowrap;
         }
@@ -68,23 +68,23 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
         }
 
         input {
-          flex: 1;
-          padding: 15px;
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-          border: none;
           background: rgba(201, 101, 0, 0.2);
+          border-bottom-left-radius: 5px;
+          border-top-left-radius: 5px;
+          border: none;
+          flex: 1;
           outline: none;
+          padding: 15px;
         }
 
         button {
-          border: none;
           background: rgba(201, 101, 0, 0.9);
-          padding: 15px;
-          border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
-          cursor: pointer;
+          border-top-right-radius: 5px;
+          border: none;
           color: white;
+          cursor: pointer;
+          padding: 15px;
         }
       `}</style>
     </>

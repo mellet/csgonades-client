@@ -9,7 +9,10 @@ import {
   useRef,
 } from "react";
 
-type InputOutPut = { input: string; output?: string };
+type InputOutPut = {
+  input: string;
+  output?: string;
+};
 
 type Props = {
   actions: InputOutPut[];
@@ -111,59 +114,59 @@ export const CsConsole: FC<Props> = memo(({ actions }) => {
         .console {
           background: #a2a2a3;
           border-radius: 10px;
-          padding-bottom: 15px;
-          min-height: 300px;
           display: flex;
           flex-direction: column;
           margin-bottom: 20px;
+          min-height: 300px;
+          padding-bottom: 15px;
         }
 
         .console-title {
           color: white;
           font-weight: bold;
+          padding-bottom: 5px;
           padding-left: 25px;
           padding-top: 15px;
-          padding-bottom: 5px;
         }
 
         .console-content-wrapper {
           background: #3f3d3e;
           color: white;
-          margin: 0px 15px;
-          padding: 20px;
-          flex: 1;
           display: flex;
           flex-direction: column;
+          flex: 1;
+          margin: 0px 15px;
+          padding: 20px;
         }
 
         .console-content {
           border: 2px solid #363636;
-          padding: 5px;
           flex: 1;
+          padding: 5px;
         }
 
         .console-input {
-          margin-top: 15px;
-          display: flex;
-          height: 40px;
-          display: flex;
           align-items: center;
           border: 2px solid #363636;
+          display: flex;
+          display: flex;
+          height: 40px;
+          margin-top: 15px;
         }
 
         .console-input code {
-          padding: 5px;
           flex: 1;
           margin-right: 20px;
+          padding: 5px;
         }
 
         .console-input button {
-          outline: none;
           background: transparent;
           border: 2px solid #363636;
-          padding: 5px;
-          padding-right: 20px;
           color: white;
+          outline: none;
+          padding-right: 20px;
+          padding: 5px;
         }
       `}</style>
     </>
@@ -172,7 +175,7 @@ export const CsConsole: FC<Props> = memo(({ actions }) => {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const useVisibility = (ref: RefObject<HTMLElement>, callback: Function) => {
+const useVisibility = (ref: RefObject<HTMLElement>, callback: any) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {

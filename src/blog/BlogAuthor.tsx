@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
-type Props = {};
-
-export const BlogAuthor: FC<Props> = ({}) => {
+export const BlogAuthor: FC = ({}) => {
   const { colors } = useTheme();
   const defaultName = "Mellet Solbakk";
   const defaultAvatar = "/mellet.jpeg";
@@ -20,27 +18,24 @@ export const BlogAuthor: FC<Props> = ({}) => {
       <style jsx>{`
         .author {
           background: ${colors.DP02};
-          padding: 20px;
           border-radius: 5px;
-          margin-top: 100px;
           display: flex;
+          margin-top: 100px;
+          padding: 20px;
         }
 
         .author img {
-          width: 60px;
-          height: 60px;
           border-radius: 50%;
+          height: 60px;
           margin-right: 20px;
-        }
-
-        .author-details {
+          width: 60px;
         }
 
         .author-details span {
-          display: block;
-          margin-bottom: 6px;
           color: #bbb;
+          display: block;
           font-size: 16px;
+          margin-bottom: 6px;
         }
 
         .author-details p {

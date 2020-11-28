@@ -33,46 +33,46 @@ export const BlogPostPreviewHorizontal: FC<Props> = ({ blogPost }) => {
       </PageLink>
       <style jsx>{`
         .blog-post-preview {
-          width: 100%;
-          display: flex;
-          overflow: hidden;
-          color: ${colors.TEXT};
           background: ${colors.DP01};
           border-radius: 5px;
           box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-          margin-bottom: 50px;
+          color: ${colors.TEXT};
+          display: flex;
           font-size: 18px;
+          margin-bottom: 50px;
+          overflow: hidden;
+          width: 100%;
         }
 
         .actions {
-          margin-left: 30px;
-          margin-right: 30px;
-          margin-bottom: 30px;
           display: flex;
           justify-content: space-between;
+          margin-bottom: 30px;
+          margin-left: 30px;
+          margin-right: 30px;
         }
 
         .content {
+          align-items: stretch;
           display: flex;
           flex-direction: column;
           flex: 1;
-          align-items: stretch;
         }
 
         .content p {
-          flex: 1;
-          padding: 0px 30px;
-          margin-bottom: 30px;
-          font-size: 18px;
           color: #545454;
           color: ${colors.TEXT};
+          flex: 1;
+          font-size: 18px;
+          margin-bottom: 30px;
+          padding: 0px 30px;
         }
 
         .blog-img {
-          width: 40%;
-          background: url(${thumbnailUrl});
           background-position: center;
           background-size: cover;
+          background: url(${thumbnailUrl});
+          width: 40%;
         }
 
         .actions-read-more {
@@ -85,18 +85,18 @@ export const BlogPostPreviewHorizontal: FC<Props> = ({ blogPost }) => {
         }
 
         .blog-post-preview h3 {
-          margin: 0;
-          padding: 15px 30px;
-          font-weight: 400;
-          font-size: 20px;
           color: #545454;
           color: ${colors.TEXT};
+          font-size: 20px;
+          font-weight: 400;
+          margin: 0;
+          padding: 15px 30px;
         }
 
         .blog-post-date {
-          text-align: right;
           color: #bbb;
           font-size: 16px;
+          text-align: right;
         }
       `}</style>
     </>

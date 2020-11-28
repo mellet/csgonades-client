@@ -90,58 +90,49 @@ export const BlogPostArticle: FC<Props> = memo(
 
         <style jsx>{`
           #blog-article {
+            color: ${colors.TEXT};
             display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows:
-              min-content
-              min-content
-              min-content
-              min-content;
-            grid-template-areas:
-              "title-img"
-              "article";
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-            color: ${colors.TEXT};
+            grid-template-areas: "title-img" "article";
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content min-content min-content min-content;
             margin: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #title-image {
-            grid-area: title-img;
-            position: relative;
-            height: 40vh;
+            background-position: center;
+            background-size: cover;
             background: url(${data.imageUrl});
             border-radius: ${Dimensions.BORDER_RADIUS};
+            grid-area: title-img;
+            height: 40vh;
             overflow: hidden;
-            background-size: cover;
-            background-position: center;
-          }
-
-          #blog-share {
+            position: relative;
           }
 
           #article-title {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 30px 30px;
-            color: white;
-            z-index: 1;
+            align-items: flex-end;
             background: linear-gradient(
               180deg,
               rgba(17, 17, 17, 0) 0%,
               rgba(32, 32, 32, 0.4) 100%
             );
-            height: 50%;
+            background: rgba(0, 0, 0, 0.2);
+            bottom: 0;
+            color: white;
             display: flex;
-            align-items: flex-end;
+            height: 50%;
+            left: 0;
+            padding: 30px 30px;
+            position: absolute;
+            right: 0;
+            z-index: 1;
           }
 
           #article-title h1 {
-            font-weight: 300;
             font-size: 32px;
+            font-weight: 300;
           }
 
           .sticky {
@@ -154,11 +145,11 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #article-content {
-            grid-area: article;
             background: ${colors.DP01};
-            padding: 20px 30px;
             border-radius: 5px;
+            grid-area: article;
             max-width: 100%;
+            padding: 20px 30px;
           }
 
           #blog-sidebar-wrap {
