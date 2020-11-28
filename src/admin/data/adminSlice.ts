@@ -12,7 +12,7 @@ export type AdminRoutes =
   | "contact";
 
 export type AdminState = {
-  route: AdminRoutes;
+  route: AdminRoutes | null;
   pendingNades: NadeLight[];
   users: User[];
   reports: Report[];
@@ -20,7 +20,7 @@ export type AdminState = {
 };
 
 export const initialState: AdminState = {
-  route: "pending-nades",
+  route: null,
   pendingNades: [],
   users: [],
   reports: [],

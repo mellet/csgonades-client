@@ -6,12 +6,11 @@ import { AdminNav } from "./components/AdminNav";
 import { AdminPendingNades } from "./containers/AdminPendingNades";
 import { AdminReports } from "./containers/AdminReports";
 import { AdminUsers } from "./containers/AdminUsers";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { AdminDeclined } from "./containers/AdminDeclined";
 import { AdminContacts } from "./containers/AdminContacts";
+import { AdminWelcome } from "./containers/AdminWelcome";
 
 export const AdminPage: FC = () => {
-  const { colors } = useTheme();
   const allowedToView = useIsAdminOrModerator();
   const { route } = useAdminRoute();
 
@@ -32,7 +31,7 @@ export const AdminPage: FC = () => {
       case "contact":
         return <AdminContacts />;
       default:
-        return null;
+        return <AdminWelcome />;
     }
   }
 
@@ -50,16 +49,12 @@ export const AdminPage: FC = () => {
           margin: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           flex-direction: row;
-          background: ${colors.DP01};
-          border-radius: 5px;
           overflow: hidden;
-          padding: 20px 30px;
         }
 
         .admin-nav {
           grid-area: sidebar;
           margin-right: ${Dimensions.GUTTER_SIZE}px;
-          width: 200px;
         }
 
         .admin-content {
