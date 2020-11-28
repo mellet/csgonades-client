@@ -51,32 +51,34 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
     return null;
   }
 
-  const canvasSize = mapSize;
+  const canvasSize = mapSize - 16;
 
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
         <div id="mapview-screen">
-          <div id="mapview">
-            <img
-              src={`/mapsoverlays/${map}.jpg`}
-              onLoad={onMapViewImageLoaded}
-            />
-            {mapLoaded &&
-              clusters.map((cluster) => {
-                const nade = cluster[0];
-                return (
-                  <MapPosIcon
-                    key={nade.id}
-                    nade={nade}
-                    cluster={cluster}
-                    mapWidth={canvasSize}
-                    numNades={cluster.length}
-                    onPress={() => onClusterClick(cluster)}
-                  />
-                );
-              })}
-          </div>
+          {true && (
+            <div id="mapview">
+              <img
+                src={`/mapsoverlays/${map}.jpg`}
+                onLoad={onMapViewImageLoaded}
+              />
+              {mapLoaded &&
+                clusters.map((cluster) => {
+                  const nade = cluster[0];
+                  return (
+                    <MapPosIcon
+                      key={nade.id}
+                      nade={nade}
+                      cluster={cluster}
+                      mapWidth={canvasSize}
+                      numNades={cluster.length}
+                      onPress={() => onClusterClick(cluster)}
+                    />
+                  );
+                })}
+            </div>
+          )}
         </div>
       </div>
 
@@ -100,16 +102,6 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
           width: ${canvasSize}px;
         }
 
-        #ph {
-          position: absolute;
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-          background: rgba(255, 255, 255, 0.1);
-          height: 90px;
-          overflow: hidden;
-        }
-
         #mapview {
           position: relative;
         }
@@ -117,10 +109,6 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
         #mapview img {
           width: 100%;
           display: block;
-        }
-
-        .space-below {
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>
