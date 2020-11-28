@@ -28,7 +28,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
   return (
     <>
-      <div className="suggested-nades">
+      <div className="suggested-nades" onClick={onDismiss}>
         <div className="bg" />
         <div className="nades">
           <div className="title">

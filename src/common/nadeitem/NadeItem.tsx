@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, MouseEventHandler } from "react";
 import { AnimationTimings, Dimensions } from "../../constants/Constants";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
@@ -14,47 +14,53 @@ interface Props {
 export const NadeItem: FC<Props> = memo(({ nade }) => {
   const { colors } = useTheme();
 
+  const preventBubble: MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
-      <Link href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
-        <a>
-          <div className={"nadebox"} style={{ display: "inline-block" }}>
-            <NadeItemTitle
-              startPosition={nade.startPosition}
-              endPosition={nade.endPosition}
-              type={nade.type}
-              status={nade.status}
-              title={nade.title}
-              oneWay={nade.oneWay}
-            />
-            <div className="video">
-              <GfycatThumbnail
-                nadeId={nade.id}
-                smallVideoUrl={nade.gfycat.smallVideoUrl}
-                thumbnailUrl={nade.images.thumbnailUrl}
-                avgColor={nade.gfycat.avgColor}
-                nadeSlug={nade.slug}
-                gfyId={nade.gfycat.gfyId}
-                upVoteCount={nade.upVoteCount}
+      <div onClick={preventBubble}>
+        <Link href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
+          <a>
+            <div className={"nadebox"} style={{ display: "inline-block" }}>
+              <NadeItemTitle
+                startPosition={nade.startPosition}
+                endPosition={nade.endPosition}
+                type={nade.type}
+                status={nade.status}
+                title={nade.title}
+                oneWay={nade.oneWay}
+              />
+              <div className="video">
+                <GfycatThumbnail
+                  nadeId={nade.id}
+                  smallVideoUrl={nade.gfycat.smallVideoUrl}
+                  thumbnailUrl={nade.images.thumbnailUrl}
+                  avgColor={nade.gfycat.avgColor}
+                  nadeSlug={nade.slug}
+                  gfyId={nade.gfycat.gfyId}
+                  upVoteCount={nade.upVoteCount}
+                  downVoteCount={nade.downVoteCount}
+                />
+              </div>
+              <NadeStats
+                commentCount={nade.commentCount}
+                createdAt={nade.createdAt}
+                favoriteCount={nade.favoriteCount}
+                viewCount={nade.viewCount}
+                isFavorited={nade.isFavorited}
+                movement={nade.movement}
+                technique={nade.technique}
+                tickrate={nade.tickrate}
+                isPro={nade.isPro}
                 downVoteCount={nade.downVoteCount}
+                upVoteCount={nade.upVoteCount}
               />
             </div>
-            <NadeStats
-              commentCount={nade.commentCount}
-              createdAt={nade.createdAt}
-              favoriteCount={nade.favoriteCount}
-              viewCount={nade.viewCount}
-              isFavorited={nade.isFavorited}
-              movement={nade.movement}
-              technique={nade.technique}
-              tickrate={nade.tickrate}
-              isPro={nade.isPro}
-              downVoteCount={nade.downVoteCount}
-              upVoteCount={nade.upVoteCount}
-            />
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </div>
       <style jsx>{`
         .nadebox {
           background: ${colors.DP02};
