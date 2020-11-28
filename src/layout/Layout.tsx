@@ -7,7 +7,6 @@ import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { ServiceDown } from "./ServiceDown";
-import { AdminLink } from "./Misc/AdminLink";
 import { CookieConsent } from "../common/CookieConsent";
 import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
@@ -57,7 +56,6 @@ export const Layout: FC<Props> = memo(({ children }) => {
 
       <ServiceDown />
       <ToastList />
-      <AdminLink />
       <SignInWarning />
 
       <style jsx>{`

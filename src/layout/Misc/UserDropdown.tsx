@@ -26,6 +26,10 @@ export const UserDropdown: FC<Props> = ({ user }) => {
     router.push("/createnade");
   }
 
+  function onModeratorClick() {
+    router.push("/admin");
+  }
+
   return (
     <>
       <div className="user-nav-user">
@@ -55,6 +59,13 @@ export const UserDropdown: FC<Props> = ({ user }) => {
                   text="Profile"
                   onClick={onProfileClick}
                 />
+                {user.role !== "user" && (
+                  <Dropdown.Item
+                    icon="dashboard"
+                    text="Moderator"
+                    onClick={onModeratorClick}
+                  />
+                )}
                 <Dropdown.Divider />
                 <Dropdown.Item
                   icon="sign-out"
