@@ -1,9 +1,13 @@
 import { FC } from "react";
 
-export const CrossHair: FC = () => {
+type Props = {
+  size?: number;
+};
+
+export const CrossHair: FC<Props> = ({ size }) => {
   return (
     <>
-      <svg width={43} height={44} viewBox="0 0 43 44">
+      <svg width={size || 43} height={size ? size + 1 : 44} viewBox="0 0 43 44">
         <style>
           {".prefix__st0{fill:#fff;stroke:#000;stroke-miterlimit:10}"}
         </style>

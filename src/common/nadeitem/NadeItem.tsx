@@ -42,6 +42,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
                   gfyId={nade.gfycat.gfyId}
                   upVoteCount={nade.upVoteCount}
                   downVoteCount={nade.downVoteCount}
+                  lineUpThumnUrl={nade.imageLineupThumbUrl}
                 />
               </div>
               <NadeStats

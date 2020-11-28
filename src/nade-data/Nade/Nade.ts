@@ -50,30 +50,31 @@ export type Nade = {
 
 export type NadeLight = {
   id: string;
-  status: Status;
-  title?: string;
-  startPosition?: string;
-  endPosition?: string;
-  slug?: string;
-  gfycat: GfycatData;
-  images: NadeImages;
-  type?: NadeType;
-  tickrate?: Tickrate;
-  createdAt: Date | string;
-  viewCount: number;
-  favoriteCount: number;
-  mapEndCoord?: MapCoordinates;
-  score: number;
-  user: UserLight;
-  isFavorited?: boolean;
-  technique?: Technique;
   commentCount: number;
+  createdAt: Date | string;
+  downVoteCount?: number;
+  endPosition?: string;
+  favoriteCount: number;
+  gfycat: GfycatData;
+  imageLineupThumbUrl?: string;
+  images: NadeImages;
+  isFavorited?: boolean;
+  isPro?: boolean;
+  mapEndCoord?: MapCoordinates;
   movement?: Movement;
   nextUpdateInHours: number;
   oneWay?: boolean;
-  isPro?: boolean;
+  score: number;
+  slug?: string;
+  startPosition?: string;
+  status: Status;
+  technique?: Technique;
+  tickrate?: Tickrate;
+  title?: string;
+  type?: NadeType;
   upVoteCount?: number;
-  downVoteCount?: number;
+  user: UserLight;
+  viewCount: number;
 };
 
 export type NadeCreateBody = {

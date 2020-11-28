@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
-import Image from "next/image";
 import dynamic from "next/dynamic";
+import { ThumbImage } from "./ThumbImage";
 
 const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
 
@@ -15,16 +15,18 @@ type Props = {
   gfyId: string;
   upVoteCount?: number;
   downVoteCount?: number;
+  lineUpThumnUrl?: string;
 };
 
 export const GfycatThumbnail: FC<Props> = ({
-  thumbnailUrl,
-  smallVideoUrl,
+  avgColor,
+  disableAction,
+  gfyId,
+  lineUpThumnUrl,
   nadeId,
   nadeSlug,
-  disableAction,
-  avgColor,
-  gfyId,
+  smallVideoUrl,
+  thumbnailUrl,
 }) => {
   const [isReadyForHover, setIsReadyForHover] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -63,16 +65,7 @@ export const GfycatThumbnail: FC<Props> = ({
         onMouseLeave={onMouseLeave}
       >
         <div className="front">
-          {thumbnailUrl && (
-            <div className="thumb-img">
-              <Image
-                src={thumbnailUrl}
-                width={400}
-                height={400 * (9 / 16)}
-                alt="nade thumbnail"
-              />
-            </div>
-          )}
+          <ThumbImage thumbUrl={thumbnailUrl} lineupThumbUrl={lineUpThumnUrl} />
         </div>
 
         <div className={displayBack ? "back visible" : "back"}>
