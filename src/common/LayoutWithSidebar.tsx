@@ -29,6 +29,7 @@ export const LayoutWithSidebar: FC<Props> = ({ sidebar, children }) => {
           grid-area: main;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
+          overflow-x: hidden;
         }
 
         #lws-sidebar {

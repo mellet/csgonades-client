@@ -102,6 +102,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
           flex: 1;
           padding: 16px;
           grid-area: nades;
+          width: 100%;
         }
       `}</style>
     </>

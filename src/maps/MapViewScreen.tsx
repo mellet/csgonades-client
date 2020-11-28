@@ -23,7 +23,7 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   const mapViewRef = useRef<HTMLDivElement>(null);
   const clusters = useNadeClusters(filteredNades);
 
-  function recalcMapSize(offsetHeight: number, offsetWidth) {
+  function recalcMapSize(offsetHeight: number, offsetWidth: number) {
     if (offsetHeight < offsetWidth) {
       setMapSize(offsetHeight);
     } else {

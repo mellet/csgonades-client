@@ -219,3 +219,24 @@ export function generateNadeItemTitle(
     return ["No Title", "..."];
   }
 }
+
+export function debounce(func: any, wait: number, immediate?: boolean) {
+  let timeout: NodeJS.Timeout | null;
+  return function () {
+    // eslint-disable-next-line prefer-rest-params
+    const args = arguments;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const context = this;
+
+    const later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    const callNow = immediate && !timeout;
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
