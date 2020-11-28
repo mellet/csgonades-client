@@ -56,7 +56,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           z-index: 800;
           background: transparent;
           overflow-y: auto;
-          padding: ${Dimensions.GUTTER_SIZE}px;
           overflow: hidden;
           opacity: 0;
           animation-name: fadeId;
@@ -70,19 +69,19 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           left: 0px;
           right: 0px;
           bottom: 0px;
-          padding: 16px;
           overflow-y: auto;
         }
 
         .nade-list-wrap {
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .bg {
           position: absolute;
-          top: -10%;
-          left: -10%;
-          right: -10%;
-          bottom: -10%;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           background: ${colors.DP00};
           opacity: 0.95;
         }
@@ -93,20 +92,26 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           text-align: center;
           font-size: 18px;
           font-weight: 400;
-          margin-bottom: 16px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
-          grid-template-areas: ". msg close";
-          height: 40px;
+          grid-template-areas: "msg . close";
+          background: ${colors.DP01};
+          padding: 10px ${Dimensions.GUTTER_SIZE}px;
+          position: sticky;
+          top: 0;
+          z-index: 1;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .label {
           grid-area: msg;
+          white-space: nowrap;
+          align-self: center;
         }
 
         .close-btn {
           grid-area: close;
-          font-size: 40px;
+          font-size: 32px;
           justify-self: end;
           color: #850b0b;
           cursor: pointer;
