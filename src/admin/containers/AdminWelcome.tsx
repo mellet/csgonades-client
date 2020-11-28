@@ -18,9 +18,9 @@ export function AdminWelcome(): JSX.Element {
       <style jsx>{`
         .welcome {
           background: ${colors.DP02};
-          padding: ${Dimensions.GUTTER_SIZE}px;
           border-radius: ${Dimensions.BORDER_RADIUS};
           color: ${colors.TEXT};
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
 
         h1 {

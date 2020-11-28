@@ -46,9 +46,9 @@ export const AdminPage: FC = () => {
 
       <style jsx>{`
         .admin-container {
-          margin: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
           flex-direction: row;
+          margin: ${Dimensions.GUTTER_SIZE}px;
           overflow: hidden;
         }
 

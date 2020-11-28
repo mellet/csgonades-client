@@ -28,18 +28,18 @@ export const ReportItem: FC<Props> = ({ report }) => {
       </div>
       <style jsx>{`
         .report {
-          margin-bottom: 30px;
           background: ${colors.DP03};
           border-radius: ${Dimensions.BORDER_RADIUS};
-          overflow: hidden;
           color: ${colors.TEXT};
+          margin-bottom: 30px;
+          overflow: hidden;
         }
 
         .report-header {
           background: ${colors.DP02};
-          padding: 10px 20px;
           display: flex;
           justify-content: space-between;
+          padding: 10px 20px;
         }
 
         .report-body,

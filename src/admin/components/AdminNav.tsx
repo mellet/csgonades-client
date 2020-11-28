@@ -32,24 +32,24 @@ export const AdminNav: FC = () => {
       </div>
       <style jsx>{`
         .admin-nav {
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.BORDER};
           display: flex;
           flex-direction: column;
-          border: 1px solid ${colors.BORDER};
-          border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
         }
 
         .admin-nav button {
-          border: none;
           background: ${colors.DP01};
-          padding: 15px;
           border-bottom: 1px solid ${colors.BORDER};
-          outline: none;
-          cursor: pointer;
           border-radius: 0;
-          text-align: left;
+          border: none;
           color: ${colors.TEXT};
+          cursor: pointer;
           font-weight: 500;
+          outline: none;
+          padding: 15px;
+          text-align: left;
         }
 
         .admin-nav button:hover {

@@ -2,8 +2,8 @@ import React, { FC, useReducer } from "react";
 import { AdminReducer, AdminState, initialState } from "./adminSlice";
 
 type ContextApi = {
-  state: AdminState;
   dispatch: React.Dispatch<any>;
+  state: AdminState;
 };
 
 export const AdminStoreContext = React.createContext<ContextApi | null>(null);

@@ -12,7 +12,6 @@ export const AdminContacts: FC = () => {
           <ContactMessage key={cM.id} contactMessage={cM} />
         ))}
       </div>
-      <style jsx>{``}</style>
     </>
   );
 };

@@ -11,7 +11,6 @@ export const AdminReports: FC = () => {
       {reports.map((r) => (
         <ReportItem key={r.id} report={r} />
       ))}
-      <style jsx>{``}</style>
     </div>
   );
 };

@@ -29,17 +29,17 @@ export const ContactMessage: FC<Props> = ({ contactMessage }) => {
       </div>
       <style jsx>{`
         .contact-message {
-          margin-bottom: 30px;
           background: ${colors.DP03};
           border-radius: ${Dimensions.BORDER_RADIUS};
+          margin-bottom: 30px;
           overflow: hidden;
         }
 
         .contact-header {
           background: ${colors.DP02};
-          padding: 10px 20px;
           display: flex;
           justify-content: space-between;
+          padding: 10px 20px;
         }
 
         .name-email {

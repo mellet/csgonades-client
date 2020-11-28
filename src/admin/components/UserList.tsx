@@ -57,14 +57,14 @@ export const UserList: FC = () => {
       </div>
       <style jsx>{`
         .user-list {
-          border: 1px solid ${colors.BORDER};
           border-radius: 5px;
+          border: 1px solid ${colors.BORDER};
           overflow: hidden;
         }
 
         #users {
-          width: 100%;
           border-collapse: collapse;
+          width: 100%;
         }
 
         thead td {
@@ -85,9 +85,9 @@ export const UserList: FC = () => {
         }
 
         .avatar img {
-          width: 100%;
           border-radius: 50%;
           display: block;
+          width: 100%;
         }
 
         .nickname {
@@ -102,13 +102,13 @@ export const UserList: FC = () => {
         }
 
         .last-active {
-          width: 80px;
           white-space: nowrap;
+          width: 80px;
         }
 
         .created-at {
-          width: 80px;
           white-space: nowrap;
+          width: 80px;
         }
       `}</style>
     </>

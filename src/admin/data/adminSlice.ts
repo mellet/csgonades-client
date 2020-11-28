@@ -12,39 +12,39 @@ export type AdminRoutes =
   | "contact";
 
 export type AdminState = {
-  route: AdminRoutes | null;
-  pendingNades: NadeLight[];
-  users: User[];
-  reports: Report[];
   contactMessages: ContactDTO[];
+  pendingNades: NadeLight[];
+  reports: Report[];
+  route: AdminRoutes | null;
+  users: User[];
 };
 
 export const initialState: AdminState = {
-  route: null,
-  pendingNades: [],
-  users: [],
-  reports: [],
   contactMessages: [],
+  pendingNades: [],
+  reports: [],
+  route: null,
+  users: [],
 };
 
 const admin = createSlice({
-  name: "adminSlice",
   initialState,
+  name: "adminSlice",
   reducers: {
-    changeRoute(state, action: PayloadAction<AdminRoutes>) {
-      state.route = action.payload;
+    addContactMessages(state, action: PayloadAction<ContactDTO[]>) {
+      state.contactMessages = action.payload;
     },
     addPendingNades(state, action: PayloadAction<NadeLight[]>) {
       state.pendingNades = action.payload;
     },
-    addUsers(state, action: PayloadAction<User[]>) {
-      state.users = action.payload;
-    },
     addReports(state, action: PayloadAction<Report[]>) {
       state.reports = action.payload;
     },
-    addContactMessages(state, action: PayloadAction<ContactDTO[]>) {
-      state.contactMessages = action.payload;
+    addUsers(state, action: PayloadAction<User[]>) {
+      state.users = action.payload;
+    },
+    changeRoute(state, action: PayloadAction<AdminRoutes>) {
+      state.route = action.payload;
     },
   },
 });

@@ -43,7 +43,6 @@ export const AdminDeclined: FC = () => {
           renderItem={renderItem}
         />
       </div>
-      <style jsx>{``}</style>
     </>
   );
 };
