@@ -12,8 +12,8 @@ export const EndPosInput: FC<Props> = ({ onChange, defaultValue }) => {
       <CsgnInput
         initialValue={defaultValue}
         label="Nade end location"
-        placeholder="Example: XBox"
         onChange={onChange}
+        placeholder="Example: XBox"
       />
     </>
   );

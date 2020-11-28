@@ -20,11 +20,11 @@ export function CsGnDropdown<T>(props: Props<T>) {
     <>
       <Dropdown
         fluid
-        selection
-        placeholder="Select..."
-        value={value}
         onChange={onChange}
         options={props.options}
+        placeholder="Select..."
+        selection
+        value={value}
       />
     </>
   );

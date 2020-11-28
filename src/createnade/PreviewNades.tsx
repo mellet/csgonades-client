@@ -12,42 +12,42 @@ type Props = {
 export const PreviewNade: FC<Props> = ({ nade }) => {
   const { colors } = useTheme();
   const {
-    startPosition,
     endPosition,
-    type,
-    imageBase64,
     gfycat,
+    imageBase64,
     movement,
+    oneWay,
+    startPosition,
     technique,
     tickrate,
-    oneWay,
+    type,
   } = nade;
 
   return (
     <>
       <div className="nade-container">
         <NadeItemTitle
-          status="accepted"
-          type={type}
           endPosition={endPosition}
           oneWay={oneWay}
           startPosition={startPosition}
+          status="accepted"
+          type={type}
         />
         <GfycatThumbnail
           disableAction
+          gfyId={gfycat?.gfyId || ""}
           nadeId=""
           smallVideoUrl={gfycat?.smallVideoUrl}
           thumbnailUrl={imageBase64}
-          gfyId={gfycat?.gfyId || ""}
         />
         <NadeStats
           commentCount={10}
-          viewCount={10}
           createdAt={new Date()}
           favoriteCount={100}
           movement={movement}
           technique={technique}
           tickrate={tickrate}
+          viewCount={10}
         />
       </div>
       <style jsx>{`

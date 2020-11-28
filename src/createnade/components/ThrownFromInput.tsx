@@ -12,8 +12,8 @@ export const ThrownFromInput: FC<Props> = ({ onChange, defaultValue }) => {
       <CsgnInput
         initialValue={defaultValue}
         label="Thrown from"
-        placeholder="Example: T Spawn"
         onChange={onChange}
+        placeholder="Example: T Spawn"
       />
     </>
   );

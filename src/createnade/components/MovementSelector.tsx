@@ -17,8 +17,8 @@ export const MovementSelector: FC<Props> = ({ onChange, defaultValue }) => {
       <MiniLabel value="Movement" />
       <CsGnDropdown<Movement>
         defaultValue={defaultValue}
-        options={nadeMovementOptions()}
         onChange={onChange}
+        options={nadeMovementOptions()}
       />
     </>
   );

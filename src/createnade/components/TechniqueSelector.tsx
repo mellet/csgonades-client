@@ -17,8 +17,8 @@ export const TechniqueSelector: FC<Props> = ({ onChange, defaultValue }) => {
       <MiniLabel value="Technique" />
       <CsGnDropdown<Technique>
         defaultValue={defaultValue}
-        options={nadeTechniqueOptions()}
         onChange={onChange}
+        options={nadeTechniqueOptions()}
       />
     </>
   );

@@ -1,8 +1,8 @@
 import { FC, useRef } from "react";
 
 type Props = {
-  onSubmit: () => void;
   disabled?: boolean;
+  onSubmit: () => void;
 };
 
 export const SumbitBtn: FC<Props> = ({ onSubmit, disabled }) => {
@@ -18,10 +18,10 @@ export const SumbitBtn: FC<Props> = ({ onSubmit, disabled }) => {
   return (
     <>
       <button
-        ref={buttonRef}
-        onClick={onSubmitClik}
-        disabled={disabled}
         className="sumbit-btn"
+        disabled={disabled}
+        onClick={onSubmitClik}
+        ref={buttonRef}
       >
         SUBMIT
       </button>

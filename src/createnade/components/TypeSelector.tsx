@@ -14,8 +14,8 @@ export const TypeSelector: FC<Props> = ({ onChange, defaultValue }) => {
       <MiniLabel value="Type" />
       <CsGnDropdown
         defaultValue={defaultValue}
-        options={nadeTypeOptions()}
         onChange={onChange}
+        options={nadeTypeOptions()}
       />
     </>
   );

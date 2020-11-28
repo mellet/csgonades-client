@@ -3,28 +3,28 @@ import packageJson from "../../package.json";
 export const IS_PROD = process.env.NODE_ENV === "production";
 
 export const Config = {
+  ADS_ENABLED: true,
   API_URL: IS_PROD ? "https://api.csgonades.com" : "http://localhost:5000",
   SIGN_IN_URL: IS_PROD
     ? "https://api.csgonades.com/auth/steam"
     : "http://localhost:5000/auth/steam",
-  ADS_ENABLED: true,
 };
 
 export const Dimensions = {
-  PAGE_WIDTH: 1300 + 4 * 30,
-  GUTTER_SIZE: 16,
-  SIDEBAR_WIDTH: "180px",
-  HEADER_HEIGHT: 60,
-  NAV_HEIGHT: 50,
-  PADDING_SMALL: "6px",
-  PADDING_MEDIUM: "12px",
-  PADDING_LARGE: "18px",
-  PADDING_HUGE: "24px",
-  MOBILE_THRESHHOLD: "850px",
-  TABLET_THRESHHOLD: "1024px",
-  MEDIUM_DEVIDE: "1280px",
   BORDER_RADIUS: "5px",
   BUTTON_HEIGHT: 36,
+  GUTTER_SIZE: 16,
+  HEADER_HEIGHT: 60,
+  MEDIUM_DEVIDE: "1280px",
+  MOBILE_THRESHHOLD: "850px",
+  NAV_HEIGHT: 50,
+  PADDING_HUGE: "24px",
+  PADDING_LARGE: "18px",
+  PADDING_MEDIUM: "12px",
+  PADDING_SMALL: "6px",
+  PAGE_WIDTH: 1300 + 4 * 30,
+  SIDEBAR_WIDTH: "180px",
+  TABLET_THRESHHOLD: "1024px",
 };
 
 export const AnimationTimings = {
@@ -35,8 +35,8 @@ export const AnimationTimings = {
 
 export const LayerPosition = {
   MODAL: 999,
-  UNDER_UI: 900,
   UI: 950,
+  UNDER_UI: 900,
 };
 
 export const APP_VERSION = packageJson.version;

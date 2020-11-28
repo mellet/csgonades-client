@@ -3,16 +3,16 @@ import { MiniLabel } from "./MiniLabel";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
+  imageIsSet?: boolean;
   label: string;
   onClick: () => void;
-  imageIsSet?: boolean;
   optional?: boolean;
 };
 
 export const ImageSelector: FC<Props> = ({
-  onClick,
   imageIsSet,
   label,
+  onClick,
   optional,
 }) => {
   const { colors } = useTheme();

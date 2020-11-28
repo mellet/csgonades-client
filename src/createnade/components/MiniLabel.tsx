@@ -2,8 +2,8 @@ import { FC } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
-  value: string;
   optional?: boolean;
+  value: string;
 };
 
 export const MiniLabel: FC<Props> = ({ value, optional }) => {

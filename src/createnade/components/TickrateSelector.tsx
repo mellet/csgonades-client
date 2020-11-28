@@ -18,8 +18,8 @@ export const TickrateSelector: FC<Props> = ({ onChange, defaultValue }) => {
 
       <CsGnDropdown<Tickrate>
         defaultValue={defaultValue}
-        options={nadeTickrateOptions()}
         onChange={onChange}
+        options={nadeTickrateOptions()}
       />
       <em>Jumpthrow bind, please specify tickrate.</em>
 

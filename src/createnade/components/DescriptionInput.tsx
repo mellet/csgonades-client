@@ -15,9 +15,9 @@ export const DescriptionInput: FC<Props> = ({ onChange, defaultValue }) => {
     <>
       <CsgnTextArea
         defaultValue={defaultValue}
-        placeholder="Write how to perform the throw. "
         label="Description"
         onChange={onChange}
+        placeholder="Write how to perform the throw. "
       />
       <em>
         <span>

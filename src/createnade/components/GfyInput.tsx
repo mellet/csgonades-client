@@ -22,9 +22,9 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
       if (!val) {
         displayToast({
           durationSeconds: 20,
-          severity: "error",
           message:
             "Failed to validate Gfycat Url. It is either mistyped or Gfycat is down at the moment.",
+          severity: "error",
         });
       } else {
         onChange(val);
@@ -37,8 +37,8 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
       <CsgnInput
         initialValue={defaultValue}
         label="Gfycat Video Url"
-        placeholder="Example: https://gfycat.com/confusedwiltedamazonparrot"
         onChange={onGfySet}
+        placeholder="Example: https://gfycat.com/confusedwiltedamazonparrot"
       />
     </>
   );

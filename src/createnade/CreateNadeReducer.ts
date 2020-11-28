@@ -9,9 +9,9 @@ import { assertNever } from "../utils/Common";
 import { Tickrate } from "../nade-data/Nade/NadeTickrate";
 
 interface CreateNadeState extends Partial<NadeCreateBody> {
+  loading: boolean;
   showImageAdder: boolean;
   showLineUpAdder: boolean;
-  loading: boolean;
 }
 
 type SetMap = {
@@ -91,22 +91,22 @@ type SetLineUpImage = {
 };
 
 type Actions =
-  | SetMap
-  | SetGfyData
-  | SetEndPosition
-  | SetStartPosition
   | SetDescription
-  | SetNadeType
-  | SetMovement
-  | SetImage
-  | ToggleImageSelector
-  | ToggleLineupImageAdder
   | SetEndPosCoords
-  | SetTechnique
+  | SetEndPosition
+  | SetGfyData
+  | SetImage
+  | SetLineUpImage
   | SetLoading
+  | SetMap
+  | SetMovement
+  | SetNadeType
   | SetNotLoading
+  | SetStartPosition
+  | SetTechnique
   | SetTickrate
-  | SetLineUpImage;
+  | ToggleImageSelector
+  | ToggleLineupImageAdder;
 
 const reducer: Reducer<CreateNadeState, Actions> = (state, action) => {
   switch (action.type) {

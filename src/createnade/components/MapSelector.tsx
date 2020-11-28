@@ -14,10 +14,9 @@ export const MapSelector: FC<Props> = ({ onChange, defaultValue }) => {
       <MiniLabel value="Map" />
       <CsGnDropdown<CsgoMap>
         defaultValue={defaultValue}
-        options={nadeMapOptions()}
         onChange={onChange}
+        options={nadeMapOptions()}
       />
-      <style jsx>{``}</style>
     </>
   );
 };
