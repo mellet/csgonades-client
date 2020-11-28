@@ -32,7 +32,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         <div className="bg" />
         <div className="nades">
           <div className="title">
-            <div className="label">Found multiple nades for location</div>
+            <div className="label">Found multiple nades</div>
             <div className="close-btn" onClick={onDismiss}>
               <FaTimes />
             </div>
@@ -87,11 +87,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         }
 
         .title {
-          color: ${colors.TEXT};
-          text-transform: uppercase;
-          text-align: center;
-          font-size: 18px;
-          font-weight: 400;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-areas: "msg . close";
@@ -107,6 +102,9 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           grid-area: msg;
           white-space: nowrap;
           align-self: center;
+          font-size: 20px;
+          font-weight: 400;
+          color: ${colors.TEXT};
         }
 
         .close-btn {

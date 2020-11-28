@@ -91,7 +91,7 @@ export const themes: Themes = {
     PRIMARY: "#364958",
     PRIMARY_10: "rgba(28, 143, 192, 0.1)",
     PRIMARY_BLACK: "#262626",
-    BORDER: "rgba(0, 0, 0, 0.1)",
+    BORDER: "rgba(0, 0, 0, 0.07)",
     SUCCESS: "#8cc01c",
     ERROR: "#c01c1c",
     WARNING: "#c05b1c",

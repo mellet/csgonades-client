@@ -72,6 +72,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           max-width: 400px;
           min-width: 265px;
+          border: 1px solid ${colors.BORDER};
         }
 
         .nadebox:hover {

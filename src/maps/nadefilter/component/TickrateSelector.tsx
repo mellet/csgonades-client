@@ -69,7 +69,12 @@ export const TickrateSelector: FC = () => {
           font-weight: 300;
           background: ${colors.filterBg};
           color: ${colors.filterColor};
-          border-right: 1px solid rgba(0, 0, 0, 0.5);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 0;
+        }
+
+        .filter-btn:last-child {
+          border-bottom: none;
         }
 
         .filter-btn:hover {
