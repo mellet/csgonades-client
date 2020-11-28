@@ -51,47 +51,58 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
     return null;
   }
 
-  const canvasSize = mapSize - 16;
+  const canvasSize = mapSize;
 
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
-        <div id="mapview-screen">
-          {true && (
-            <div id="mapview">
-              <img
-                src={`/mapsoverlays/${map}.jpg`}
-                onLoad={onMapViewImageLoaded}
-              />
-              {mapLoaded &&
-                clusters.map((cluster) => {
-                  const nade = cluster[0];
-                  return (
-                    <MapPosIcon
-                      key={nade.id}
-                      nade={nade}
-                      cluster={cluster}
-                      mapWidth={canvasSize}
-                      numNades={cluster.length}
-                      onPress={() => onClusterClick(cluster)}
-                    />
-                  );
-                })}
-            </div>
-          )}
+        <div id="mapview-absolute">
+          <div id="mapview-screen">
+            {true && (
+              <div id="mapview">
+                <img
+                  src={`/mapsoverlays/${map}.jpg`}
+                  onLoad={onMapViewImageLoaded}
+                />
+                {mapLoaded &&
+                  clusters.map((cluster) => {
+                    const nade = cluster[0];
+                    return (
+                      <MapPosIcon
+                        key={nade.id}
+                        nade={nade}
+                        cluster={cluster}
+                        mapWidth={canvasSize}
+                        numNades={cluster.length}
+                        onPress={() => onClusterClick(cluster)}
+                      />
+                    );
+                  })}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
         #mapview-wrap {
           position: relative;
-          display: grid;
-          grid-template-rows: 1fr;
-          grid-template-areas: "mpoverview";
           background: #151515;
           border-radius: 5px;
           overflow: hidden;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px - (16px * 2));
+        }
+
+        #mapview-absolute {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          display: grid;
+          grid-template-rows: 1fr;
+          grid-template-areas: "mpoverview";
+          overflow: hidden;
         }
 
         #mapview-screen {
