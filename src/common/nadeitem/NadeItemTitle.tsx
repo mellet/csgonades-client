@@ -5,21 +5,21 @@ import { iconFromType, generateNadeItemTitle } from "../../utils/Common";
 import { NadeType } from "../../nade-data/Nade/NadeType";
 
 type Props = {
-  type?: NadeType;
-  title?: string;
+  endPosition?: string;
   oneWay?: boolean;
   startPosition?: string;
-  endPosition?: string;
   status: Status;
+  title?: string;
+  type?: NadeType;
 };
 
 export const NadeItemTitle: FC<Props> = ({
-  title,
-  type,
-  status,
-  startPosition,
   endPosition,
   oneWay,
+  startPosition,
+  status,
+  title,
+  type,
 }) => {
   const { colors } = useTheme();
   const iconUrl = iconFromType(type);
@@ -52,64 +52,64 @@ export const NadeItemTitle: FC<Props> = ({
 
         {iconUrl && (
           <img
+            alt={`nade icon ${type}`}
             className="nade-type-icon"
             src={iconUrl}
-            alt={`nade icon ${type}`}
           />
         )}
       </div>
       <style jsx>{`
         .title {
-          position: relative;
           background: ${colors.DP02};
           color: ${colors.TEXT};
           overflow: hidden;
+          position: relative;
         }
 
         .nade-type-icon {
-          position: absolute;
           bottom: 0;
+          opacity: 0.5;
+          position: absolute;
           right: 0;
           transform: scale(1) translateY(15px) translateX(10px);
-          opacity: 0.5;
         }
 
         .title-text {
-          grid-area: title;
-          font-size: 17px;
           display: flex;
           flex-direction: column;
-          padding: 0;
+          font-size: 17px;
+          grid-area: title;
           margin: 0;
+          padding: 0;
         }
 
         .main-title {
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          text-align: center;
           display: block;
           margin-bottom: -7px;
           padding-top: 5px;
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         .sub-title {
-          white-space: nowrap;
-          text-align: center;
-          font-size: 12px;
           display: block;
+          font-size: 12px;
           opacity: 0.75;
+          text-align: center;
+          white-space: nowrap;
         }
 
         .title.pending {
-          border: 1px solid ${colors.WARNING};
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
+          border: 1px solid ${colors.WARNING};
         }
 
         .title.declined {
-          border: 1px solid ${colors.ERROR};
           border-top-left-radius: 5px;
           border-top-right-radius: 5px;
+          border: 1px solid ${colors.ERROR};
         }
       `}</style>
     </>

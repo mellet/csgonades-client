@@ -18,15 +18,15 @@ export const SidebarSkyskraperAd: FC = ({}) => {
         .block-msg-wrap {
           display: flex;
           justify-content: center;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .block-msg {
           background: #87a600;
           border-radius: 5px;
-          padding: 15px 30px;
           color: white;
+          padding: 15px 30px;
           text-align: center;
         }
       `}</style>

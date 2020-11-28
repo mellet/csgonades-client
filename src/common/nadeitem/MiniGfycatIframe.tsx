@@ -31,44 +31,44 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
       <div className="gfycat-super-wrap">
         <div className="gfycat-wrap">
           <iframe
-            onLoad={onVideoLoaded}
-            className="gfycat-iframe"
-            src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=${videoSpeed}`}
-            frameBorder="0"
-            scrolling="no"
-            width="100%"
-            height="100%"
             allowFullScreen
+            className="gfycat-iframe"
+            frameBorder="0"
+            height="100%"
+            onLoad={onVideoLoaded}
+            scrolling="no"
+            src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=${videoSpeed}`}
+            width="100%"
           ></iframe>
         </div>
       </div>
 
       <style jsx>{`
         .gfycat-super-wrap {
-          overflow: hidden;
-          cursor: pointer;
-          pointer-events: none;
-          background: #121212 url("/loading.gif");
           background-position: 50% 40%;
           background-repeat: no-repeat;
           background-size: 20px;
+          background: #121212 url("/loading.gif");
+          cursor: pointer;
+          overflow: hidden;
+          pointer-events: none;
         }
 
         .gfycat-wrap {
-          position: relative;
-          padding-bottom: calc(56.25% + 44px);
           background: ${colors.DP01};
-          overflow: hidden;
           opacity: ${loaded ? 1 : 0};
+          overflow: hidden;
+          padding-bottom: calc(56.25% + 44px);
+          position: relative;
           transition: opacity 0.3s;
         }
 
         .gfycat-iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
           bottom: 0;
+          left: 0;
+          position: absolute;
           right: 0;
+          top: 0;
         }
       `}</style>
     </>

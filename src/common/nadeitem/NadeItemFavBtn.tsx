@@ -10,9 +10,9 @@ import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 
 type Props = {
+  disableAction?: boolean;
   nadeId: string;
   slug?: string;
-  disableAction?: boolean;
 };
 
 export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
@@ -78,23 +78,23 @@ export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
       <style jsx global>{`
         .icon-fix-yo {
           font-size: 18px;
+          line-height: 18px;
           margin: 0;
           padding: 0;
-          line-height: 18px;
           position: relative;
         }
       `}</style>
 
       <style jsx>{`
         .fav-btn {
-          background: rgba(0, 0, 0, 0.5);
-          width: 40px;
-          height: 40px;
-          display: flex;
           align-items: center;
-          justify-content: center;
-          color: ${iconColor};
+          background: rgba(0, 0, 0, 0.5);
           border-radius: 5px;
+          color: ${iconColor};
+          display: flex;
+          height: 40px;
+          justify-content: center;
+          width: 40px;
         }
 
         .fav-btn:hover {

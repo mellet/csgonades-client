@@ -3,8 +3,8 @@ import { FC } from "react";
 import { CrossHair } from "../../nade-ui/CrossHair";
 
 type Props = {
-  thumbUrl?: string;
   lineupThumbUrl?: string;
+  thumbUrl?: string;
 };
 
 export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
@@ -38,47 +38,47 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
       </div>
       <style jsx>{`
         .thumb-image {
-          position: relative;
           height: 100%;
+          position: relative;
         }
 
         .result-image {
-          width: 100%;
-          height: 100%;
-          display: flex;
           align-items: center;
+          display: flex;
+          height: 100%;
           justify-content: center;
           transform: translateX(${hasLineUpImage ? "-17%" : 0});
+          width: 100%;
         }
 
         .lineup-border {
-          position: absolute;
-          top: 0;
-          right: 0;
+          background: white;
           bottom: 0;
           clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+          position: absolute;
+          right: 0;
+          top: 0;
           width: 40.5%;
-          background: white;
         }
 
         .lineup-image {
-          position: absolute;
-          top: 0;
-          right: 0;
           bottom: 0;
           clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+          position: absolute;
+          right: 0;
+          top: 0;
           width: 40%;
         }
 
         .crosshair {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          display: flex;
           align-items: center;
+          bottom: 0;
+          display: flex;
           justify-content: center;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
         }
       `}</style>
     </>

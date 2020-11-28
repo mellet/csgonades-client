@@ -16,29 +16,29 @@ import { Technique } from "../../../nade-data/Nade/Technique";
 import { Movement } from "../../../nade-data/Nade/NadeMovement";
 
 type NadeStatsProps = {
-  isFavorited?: boolean;
-  technique?: Technique;
-  movement?: Movement;
-  tickrate?: Tickrate;
-  createdAt: Date | string;
-  viewCount: number;
-  favoriteCount: number;
   commentCount: number;
-  isPro?: boolean;
-  upVoteCount?: number;
+  createdAt: Date | string;
   downVoteCount?: number;
+  favoriteCount: number;
+  isFavorited?: boolean;
+  isPro?: boolean;
+  movement?: Movement;
+  technique?: Technique;
+  tickrate?: Tickrate;
+  upVoteCount?: number;
+  viewCount: number;
 };
 
 export const NadeStats: FC<NadeStatsProps> = ({
-  isFavorited,
-  tickrate,
-  technique,
-  movement,
-  createdAt,
-  viewCount,
-  favoriteCount,
   commentCount,
+  createdAt,
+  favoriteCount,
+  isFavorited,
   isPro,
+  movement,
+  technique,
+  tickrate,
+  viewCount,
 }) => {
   const { colors } = useTheme();
   const favoriteIconColor = isFavorited ? colors.FAV_YELLOW : colors.GREY;
@@ -64,25 +64,25 @@ export const NadeStats: FC<NadeStatsProps> = ({
           )}
 
           <StatItem
+            color={colors.GREY}
             count={favoriteCount}
             icon={<FaStar />}
-            color={colors.GREY}
             iconColor={favoriteIconColor}
           />
 
           <StatItem
-            count={commentCount}
             color={colors.GREY}
+            count={commentCount}
             icon={<FaCommentDots />}
           />
         </div>
         <div className="specials">
           {hasMovement && (
             <Popup
-              inverted
-              size="tiny"
-              position="top center"
               content="Requires movement"
+              inverted
+              position="top center"
+              size="tiny"
               trigger={
                 <div className="special movement">
                   <div className="special-icon">
@@ -96,8 +96,8 @@ export const NadeStats: FC<NadeStatsProps> = ({
           {isJumpThrow && (
             <Popup
               content={tickrateTooltip(tickrate)}
-              position="top center"
               inverted
+              position="top center"
               size="tiny"
               trigger={
                 <div className="special tick">
@@ -115,9 +115,9 @@ export const NadeStats: FC<NadeStatsProps> = ({
           {isPro && (
             <Popup
               inverted
-              size="tiny"
               openOnTriggerClick={false}
               position="top center"
+              size="tiny"
               content={
                 <div className="center">
                   <b>Verified Pro</b>
@@ -143,20 +143,20 @@ export const NadeStats: FC<NadeStatsProps> = ({
       </div>
       <style jsx>{`
         .new-badge {
-          display: flex;
           align-items: center;
+          display: flex;
           margin-right: 15px;
         }
 
         .new-badge span {
-          border-radius: 5px;
           background: #709c14;
+          border-radius: 5px;
           color: white;
-          font-weight: 500;
+          display: inline;
           font-size: 9px;
+          font-weight: 500;
           padding-left: 5px;
           padding-right: 5px;
-          display: inline;
         }
 
         .center {
@@ -165,8 +165,8 @@ export const NadeStats: FC<NadeStatsProps> = ({
 
         .item-bottom {
           display: flex;
-          padding: 6px 16px;
           height: 40px;
+          padding: 6px 16px;
         }
 
         .stats {
@@ -181,9 +181,9 @@ export const NadeStats: FC<NadeStatsProps> = ({
         }
 
         .special {
+          align-items: center;
           color: ${colors.NADE_ITEM_HIGHLIGHT};
           display: flex;
-          align-items: center;
           margin-right: 15px;
         }
 
@@ -192,10 +192,10 @@ export const NadeStats: FC<NadeStatsProps> = ({
         }
 
         .special-icon {
-          position: relative;
-          top: 1px;
           font-size: 12px;
           margin-right: 2px;
+          position: relative;
+          top: 1px;
         }
 
         .special-text {

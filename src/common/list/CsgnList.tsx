@@ -7,9 +7,9 @@ import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
 type Props<T> = {
   data: T[];
-  renderItem: (item: T) => JSX.Element;
-  keyExtractor: (item: T) => string;
   enableAds?: boolean;
+  keyExtractor: (item: T) => string;
+  renderItem: (item: T) => JSX.Element;
 };
 
 function ListBase<T>(props: Props<T>): JSX.Element {
@@ -62,24 +62,24 @@ const List: FC<Props<any>> = memo(
         </div>
         <style jsx>{`
           .empty-list {
-            border: 1px solid ${colors.BORDER};
-            padding: 30px;
-            font-size: 18px;
-            border-radius: 5px;
             background: ${colors.DP02};
+            border-radius: 5px;
+            border: 1px solid ${colors.BORDER};
             color: ${colors.TEXT};
+            font-size: 18px;
+            padding: 30px;
           }
 
           .list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
           }
 
           .ph-1 {
+            display: flex;
             grid-column: 1 / 4;
             grid-row: 7 / 8;
-            display: flex;
             margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 

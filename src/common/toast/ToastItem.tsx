@@ -57,33 +57,33 @@ export const ToastItem: FC<Props> = memo(({ notification }) => {
       </div>
       <style jsx>{`
         .notification-item {
-          position: relative;
-          background: ${colors.DP02};
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-          color: ${colors.TEXT};
-          display: inline-block;
-          border-radius: 5px;
-          opacity: 1;
-          transition: opacity 0.15s;
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 12px;
-          width: 250px;
-          opacity: 0;
-          animation-name: fadeIn;
           animation-duration: 1s;
           animation-fill-mode: forwards;
+          animation-name: fadeIn;
+          background: ${colors.DP02};
+          border-radius: 5px;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+          color: ${colors.TEXT};
+          display: flex;
+          display: inline-block;
+          flex-direction: column;
+          margin-bottom: 12px;
+          opacity: 0;
+          opacity: 1;
           overflow: hidden;
           padding-bottom: 5px;
+          position: relative;
+          transition: opacity 0.15s;
+          width: 250px;
         }
 
         .toast-title {
           background: ${colors.DP01};
-          padding: 8px 12px;
-          display: flex;
-          justify-content: space-between;
-          font-weight: 400;
           color: ${colorFromSeverity(notification.severity)};
+          display: flex;
+          font-weight: 400;
+          justify-content: space-between;
+          padding: 8px 12px;
         }
 
         .toast-close-btn {

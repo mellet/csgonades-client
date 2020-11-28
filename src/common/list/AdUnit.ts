@@ -1,4 +1,4 @@
-type AdSizing = "skyskraper" | "box" | "header";
+type AdSizing = "box" | "header" | "skyskraper";
 
 export type AdUnit = {
   id: string;

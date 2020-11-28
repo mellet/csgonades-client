@@ -71,20 +71,20 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
         )}
 
         <NadeItemTitle
-          title={nade.title}
-          status={nade.status}
-          type={nade.type}
           endPosition={nade.endPosition}
           oneWay={nade.oneWay}
           startPosition={nade.startPosition}
+          status={nade.status}
+          title={nade.title}
+          type={nade.type}
         />
 
         <div className="media-canvas">
           <div className="media-content">
             <div className="media-image">
               <LazyLoadImage
-                effect="blur"
                 alt={`nade thumbnail`}
+                effect="blur"
                 src={nade.images.thumbnailUrl} // use normal <img> attributes as props
                 width={"100%"}
               />
@@ -103,12 +103,12 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
           commentCount={nade.commentCount}
           createdAt={nade.createdAt}
           favoriteCount={nade.favoriteCount}
-          viewCount={nade.viewCount}
           isFavorited={nade.isFavorited}
+          isPro={nade.isPro}
           movement={nade.movement}
           technique={nade.technique}
           tickrate={nade.tickrate}
-          isPro={nade.isPro}
+          viewCount={nade.viewCount}
         />
       </div>
       <style jsx>{`
@@ -122,45 +122,45 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
         }
 
         .media-canvas {
+          background: black;
+          display: block;
+          overflow: hidden;
+          overflow: hidden;
+          padding-top: 56.25%;
           position: relative;
           width: 100%;
-          overflow: hidden;
-          display: block;
-          padding-top: 56.25%;
-          background: black;
-          overflow: hidden;
         }
 
         .context-menu {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          display: flex;
           align-items: center;
+          bottom: 0;
+          display: flex;
           justify-content: space-around;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
           z-index: 997;
         }
 
         .context-btns {
-          padding: 12px;
           display: flex;
+          padding: 12px;
         }
 
         .context-action {
-          border-radius: 20px;
           background: rgba(255, 255, 255, 0.8);
-          padding: 12px 18px;
+          border-radius: 20px;
           margin: 6px;
+          padding: 12px 18px;
         }
 
         .media-content {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
           bottom: 0;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
         }
 
         .media-image img {
@@ -168,11 +168,11 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
         }
 
         .media-video {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
           bottom: 0;
+          left: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
         }
 
         .media-video video {

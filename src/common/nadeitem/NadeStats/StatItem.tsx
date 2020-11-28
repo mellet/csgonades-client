@@ -3,20 +3,20 @@ import { kFormatter } from "../../../utils/Common";
 
 type Props = {
   alwaysShow?: boolean;
-  hidden?: boolean;
-  count: number;
-  icon: any;
   color: string;
+  count: number;
+  hidden?: boolean;
+  icon: any;
   iconColor?: string;
 };
 
 export const StatItem: FC<Props> = ({
-  count,
-  icon,
-  color,
-  hidden,
-  iconColor,
   alwaysShow,
+  color,
+  count,
+  hidden,
+  icon,
+  iconColor,
 }) => {
   if ((hidden || !count) && !alwaysShow) {
     return null;
@@ -38,11 +38,11 @@ export const StatItem: FC<Props> = ({
         }
 
         .icon {
-          position: relative;
-          font-size: 12px;
-          top: 1px;
-          margin-right: 2px;
           color: ${iconColor || color};
+          font-size: 12px;
+          margin-right: 2px;
+          position: relative;
+          top: 1px;
         }
       `}</style>
     </>

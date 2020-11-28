@@ -6,16 +6,16 @@ import { ThumbImage } from "./ThumbImage";
 const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
 
 type Props = {
+  avgColor?: string;
   disableAction?: boolean;
+  downVoteCount?: number;
+  gfyId: string;
+  lineUpThumnUrl?: string;
   nadeId: string;
   nadeSlug?: string;
-  thumbnailUrl?: string;
   smallVideoUrl?: string;
-  avgColor?: string;
-  gfyId: string;
+  thumbnailUrl?: string;
   upVoteCount?: number;
-  downVoteCount?: number;
-  lineUpThumnUrl?: string;
 };
 
 export const GfycatThumbnail: FC<Props> = ({
@@ -78,9 +78,9 @@ export const GfycatThumbnail: FC<Props> = ({
             }
           >
             <NadeItemFavBtn
+              disableAction={disableAction}
               nadeId={nadeId}
               slug={nadeSlug}
-              disableAction={disableAction}
             />
           </div>
         </div>
@@ -92,20 +92,20 @@ export const GfycatThumbnail: FC<Props> = ({
       `}</style>
       <style jsx>{`
         .player {
+          background: ${avgColor || "black"};
+          display: block;
+          overflow: hidden;
+          padding-top: 56%;
           position: relative;
           width: 100%;
-          overflow: hidden;
-          display: block;
-          padding-top: 56%;
-          background: ${avgColor || "black"};
         }
 
         .back-controls {
-          position: absolute;
-          top: 10px;
-          right: 10px;
           display: none;
           opacity: 0;
+          position: absolute;
+          right: 10px;
+          top: 10px;
         }
 
         .vote-controls {
@@ -113,25 +113,25 @@ export const GfycatThumbnail: FC<Props> = ({
         }
 
         .front {
-          position: absolute;
-          top: 0;
-          left: 0;
           bottom: 0;
+          left: 0;
+          position: absolute;
           right: 0;
+          top: 0;
         }
 
         .video-icon-wrapper {
-          position: absolute;
-          top: 0;
-          right: 0;
-          color: #fff;
           background: rgba(255, 255, 255, 0.5);
+          border-radius: 3px;
+          color: #fff;
+          margin: 5px;
           opacity: 1;
           padding: 2px 4px;
-          border-radius: 3px;
-          margin: 5px;
-          z-index: 800;
+          position: absolute;
+          right: 0;
+          top: 0;
           transition: opacity 0.15s;
+          z-index: 800;
         }
 
         .video-icon-wrapper.hidden {
@@ -144,20 +144,20 @@ export const GfycatThumbnail: FC<Props> = ({
         }
 
         .back {
-          position: absolute;
-          top: 0;
-          left: 0;
           bottom: 0;
-          right: 0;
-          opacity: 0;
           display: none;
+          left: 0;
+          opacity: 0;
+          position: absolute;
+          right: 0;
+          top: 0;
         }
 
         .visible {
-          display: block;
-          animation-name: revealVideo;
           animation-duration: 0.3s;
           animation-fill-mode: forwards;
+          animation-name: revealVideo;
+          display: block;
           opacity: 1;
         }
 

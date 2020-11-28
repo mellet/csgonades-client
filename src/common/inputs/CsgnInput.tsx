@@ -4,21 +4,21 @@ import { FaStarOfLife } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 
 type Props = {
-  label?: string;
   initialValue?: string;
-  value?: string;
+  label?: string;
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
+  value?: string;
 };
 
 export const CsgnInput: FC<Props> = ({
-  onChange,
-  value,
   initialValue,
   label,
+  onChange,
   placeholder,
   required,
+  value,
 }) => {
   const { colors } = useTheme();
 
@@ -30,10 +30,10 @@ export const CsgnInput: FC<Props> = ({
             {label}{" "}
             {!!required && (
               <Popup
-                size="tiny"
+                content="Required"
                 inverted
                 position="top center"
-                content="Required"
+                size="tiny"
                 trigger={
                   <span className="req">
                     <FaStarOfLife />
@@ -44,11 +44,11 @@ export const CsgnInput: FC<Props> = ({
           </label>
         )}
         <input
-          value={value}
           defaultValue={initialValue}
-          placeholder={placeholder}
           onBlur={(e) => onChange(e.target.value)}
-        ></input>
+          placeholder={placeholder}
+          value={value}
+        />
       </div>
       <style jsx>{`
         .input-wrapper {
@@ -67,21 +67,21 @@ export const CsgnInput: FC<Props> = ({
         }
 
         label {
-          margin-bottom: 5px;
           color: ${colors.TEXT};
           font-size: 12px;
           font-weight: 500;
+          margin-bottom: 5px;
           text-transform: uppercase;
         }
 
         input {
-          outline: none;
-          border: 1px solid rgba(0, 0, 0, 0.15);
-          padding: 11px 16px;
-          border-radius: 5px;
-          color: ${colors.TEXT};
           background: ${colors.DP03};
+          border-radius: 5px;
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          color: ${colors.TEXT};
           height: 43px;
+          outline: none;
+          padding: 11px 16px;
         }
 
         input:focus {

@@ -45,14 +45,14 @@ export const ToastList: FC = memo(() => {
       </div>
       <style jsx>{`
         .notification-container {
-          position: fixed;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
-          right: ${Dimensions.GUTTER_SIZE}px;
-          z-index: ${LayerPosition.MODAL};
-          display: flex;
-          flex-direction: column;
-          flex-basis: fit-content;
           align-items: flex-end;
+          display: flex;
+          flex-basis: fit-content;
+          flex-direction: column;
+          position: fixed;
+          right: ${Dimensions.GUTTER_SIZE}px;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          z-index: ${LayerPosition.MODAL};
         }
       `}</style>
     </>

@@ -51,8 +51,8 @@ export const SidebarAdSticky: FC = ({}) => {
 
         .block-msg {
           background: #87a600;
-          padding: 12px 16px;
           color: white;
+          padding: 12px 16px;
         }
       `}</style>
     </>

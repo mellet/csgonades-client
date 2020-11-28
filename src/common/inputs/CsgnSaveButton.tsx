@@ -14,12 +14,12 @@ export const CsgnSaveButton: FC<Props> = ({ onClick }) => {
       <style jsx>{`
         button {
           background: ${colors.PRIMARY};
-          padding: 15px 30px;
-          border: none;
-          outline: none;
-          color: white;
           border-radius: 5px;
+          border: none;
+          color: white;
           cursor: pointer;
+          outline: none;
+          padding: 15px 30px;
         }
       `}</style>
     </>

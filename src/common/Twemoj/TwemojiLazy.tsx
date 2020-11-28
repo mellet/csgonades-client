@@ -18,9 +18,9 @@ const TwemojiLazy = memo<Props>(({ emoji }) => (
     <style jsx global>{`
       .emoji {
         display: inline-block;
-        width: auto;
         height: 1em;
         vertical-align: -0.125em;
+        width: auto;
       }
     `}</style>
   </>

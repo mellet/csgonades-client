@@ -59,8 +59,8 @@ export const ListAds: FC<Props> = ({ numNades }) => {
 };
 
 type AdUnitProps = {
-  position: number;
   adId: string;
+  position: number;
 };
 
 const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
@@ -75,10 +75,10 @@ const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
       </div>
       <style jsx>{`
         .ph-inlist {
-          grid-row: ${order} / ${order + 1};
-          grid-column: 2;
-          display: flex;
           align-items: center;
+          display: flex;
+          grid-column: 2;
+          grid-row: ${order} / ${order + 1};
           justify-content: center;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }

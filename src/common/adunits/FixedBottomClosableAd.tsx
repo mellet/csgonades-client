@@ -42,16 +42,16 @@ export function FixedBottomClosabeleAd(): JSX.Element | null {
         }
 
         .ad-bottom-sticky {
-          height: 90px;
-          position: fixed;
           bottom: 0;
-          z-index: 1000;
-          left: 0;
-          right: 0;
           display: flex;
+          height: 90px;
           justify-content: center;
+          left: 0;
+          position: fixed;
+          right: 0;
           transform: translateY(100%);
           transition: transform 0.3s;
+          z-index: 1000;
         }
 
         .open {
@@ -60,31 +60,31 @@ export function FixedBottomClosabeleAd(): JSX.Element | null {
 
         #ad-title {
           background: white;
-          width: 750px;
           display: flex;
           justify-content: space-between;
+          width: 750px;
         }
 
         .ad-label {
-          writing-mode: vertical-rl;
-          text-orientation: mixed;
           background: rgba(255, 255, 255, 1);
           border-top-left-radius: 5px;
+          color: rgba(0, 0, 0, 0.7);
+          font-weight: bold;
           padding: 3px;
           text-align: center;
-          font-weight: bold;
-          color: rgba(0, 0, 0, 0.7);
+          text-orientation: mixed;
+          writing-mode: vertical-rl;
         }
 
         .ad-content {
-          width: 750px;
           background: rgba(255, 255, 255, 0.8);
+          width: 750px;
         }
 
         .close-btn {
           background: rgba(255, 255, 255, 1);
-          border: none;
           border-top-right-radius: 5px;
+          border: none;
           color: rgba(199, 28, 16, 0.7);
           cursor: pointer;
           outline: none;

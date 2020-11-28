@@ -1,12 +1,12 @@
 import { FC, memo, useMemo } from "react";
 
 type Props = {
-  icon: any;
-  onClick?: () => void;
-  value: string;
   backgroundColor: string;
+  icon: any;
   loading?: boolean;
+  onClick?: () => void;
   small?: boolean;
+  value: string;
 };
 
 export const ButtonWithIcon: FC<Props> = memo(
@@ -34,19 +34,19 @@ export const ButtonWithIcon: FC<Props> = memo(
         </button>
         <style jsx>{`
           .btn {
-            width: 100%;
-            cursor: pointer;
-            border: none;
-            outline: none;
+            align-items: center;
             appearance: none;
             background: ${backgroundColor};
             border-radius: 5px;
+            border: none;
+            cursor: pointer;
             display: flex;
-            transition: background 0.15s;
-            align-items: center;
-            overflow: hidden;
             margin: 0;
+            outline: none;
+            overflow: hidden;
             padding: 0;
+            transition: background 0.15s;
+            width: 100%;
           }
 
           .btn:hover {
@@ -58,26 +58,26 @@ export const ButtonWithIcon: FC<Props> = memo(
           }
 
           .loading {
-            width: 100%;
-            height: 40px;
-            display: flex;
             align-items: center;
+            color: white;
+            display: flex;
+            height: 40px;
             justify-content: space-around;
             text-align: center;
-            color: white;
+            width: 100%;
           }
 
           .btn-icon {
-            display: flex;
             align-items: center;
-            justify-content: space-around;
-            font-size: 16px;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-right: 1px solid ${LightenDarkenColor(backgroundColor, -20)};
             background: ${LightenDarkenColor(backgroundColor, -10)};
+            border-right: 1px solid ${LightenDarkenColor(backgroundColor, -20)};
+            color: white;
+            display: flex;
+            font-size: 16px;
+            height: 40px;
+            justify-content: space-around;
             transition: background 0.15s;
+            width: 40px;
           }
 
           .btn-icon-fa {
@@ -86,13 +86,13 @@ export const ButtonWithIcon: FC<Props> = memo(
           }
 
           .btn-label {
-            flex: 1;
-            display: block;
             color: white;
+            display: block;
+            flex: 1;
             font-size: 14px;
+            font-weight: 400;
             text-align: center;
             width: 100%;
-            font-weight: 400;
           }
 
           .small .btn-label {
@@ -102,15 +102,15 @@ export const ButtonWithIcon: FC<Props> = memo(
           }
 
           .small .btn-icon {
+            font-size: 14px;
             height: 35px;
             width: 35px;
-            font-size: 14px;
           }
 
           .small .btn-icon-fa {
+            left: 1px;
             position: relative;
             top: 1px;
-            left: 1px;
           }
         `}</style>
       </>

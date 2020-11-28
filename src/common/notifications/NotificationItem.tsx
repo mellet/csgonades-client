@@ -26,11 +26,11 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
         </div>
         <style jsx>{`
           .notification {
-            white-space: nowrap;
-            padding: 10px 15px;
             border-radius: 4px;
-            margin-bottom: 6px;
             color: black;
+            margin-bottom: 6px;
+            padding: 10px 15px;
+            white-space: nowrap;
           }
 
           .noti-date {
@@ -40,8 +40,8 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
           }
 
           .new {
-            animation-name: indicateUnread;
             animation-duration: 4s;
+            animation-name: indicateUnread;
           }
 
           @keyframes indicateUnread {
@@ -79,18 +79,16 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
       </PageLink>
       <style jsx>{`
         .notification {
-          color: ${colors.TEXT};
-          white-space: nowrap;
-          display: block;
           border-bottom: 1px solid ${colors.BORDER};
+          color: ${colors.TEXT};
+          display: block;
           display: grid;
+          grid-template-areas: "img msg msg" "img date .";
           grid-template-columns: min-content 1fr 1fr;
           grid-template-rows: auto auto;
-          grid-template-areas:
-            "img msg msg"
-            "img date .";
-          width: 100%;
           padding: 15px;
+          white-space: nowrap;
+          width: 100%;
         }
 
         .noti-img {
@@ -99,8 +97,8 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
 
         .noti-msg {
           grid-area: msg;
-          white-space: normal;
           padding-bottom: 10px;
+          white-space: normal;
         }
 
         .noti-date {
@@ -109,9 +107,9 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
         }
 
         .notification img {
-          max-width: 100px;
           border-radius: 5px;
           margin-right: 10px;
+          max-width: 100px;
         }
 
         .noti-msg {
@@ -119,8 +117,8 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
         }
 
         .noti-date {
-          font-size: 0.8em;
           color: ${colors.TEXT};
+          font-size: 0.8em;
         }
       `}</style>
     </>

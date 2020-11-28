@@ -37,23 +37,23 @@ export const NotificationIndicator: FC = memo(() => {
       </div>
       <style jsx>{`
         .notification-wrapper {
-          display: flex;
-          position: relative;
           align-items: center;
+          display: flex;
           font-size: 0.9em;
+          position: relative;
           z-index: 999;
         }
 
         .notification-indicator {
           background: transparent;
-          border: 1px solid ${colors.BORDER};
-          padding: 6px;
           border-radius: 4px;
+          border: 1px solid ${colors.BORDER};
           color: ${colors.GREY};
           cursor: pointer;
           font-weight: bold;
-          transition: border 0.2s, color 0.2s;
           outline: none;
+          padding: 6px;
+          transition: border 0.2s, color 0.2s;
         }
 
         .notification-indicator.active {
@@ -62,8 +62,8 @@ export const NotificationIndicator: FC = memo(() => {
         }
 
         .notification-indicator:hover {
-          color: ${colors.TEXT};
           border: 1px solid ${colors.TEXT};
+          color: ${colors.TEXT};
         }
       `}</style>
     </>

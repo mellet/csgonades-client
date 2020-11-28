@@ -52,13 +52,13 @@ export const CookieConsent: FC = memo(() => {
       </div>
       <style jsx>{`
         .cookie-consent-wrapper {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
           background: rgba(0, 0, 0, 0.9);
+          bottom: 0;
           display: flex;
           justify-content: space-around;
+          left: 0;
+          position: fixed;
+          right: 0;
           transform: translateY(100%);
           transition: all 0.3s ease-out;
           z-index: 999;
@@ -69,16 +69,16 @@ export const CookieConsent: FC = memo(() => {
         }
 
         .cookie-consent {
-          padding ${Dimensions.GUTTER_SIZE / 2}px;
           color: #fff;
           display: flex;
           flex-direction: row;
           font-size: 16px;
+          padding ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .cookie-icon {
-          display: flex;
           align-items: center;
+          display: flex;
           font-size: 1.5em;
           margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
@@ -89,23 +89,23 @@ export const CookieConsent: FC = memo(() => {
         }
 
         .close-button {
-          display: flex;
           align-items: center;
+          display: flex;
         }
 
         .accept-btn {
           appearance: none;
-          border: none;
           background: ${colors.PRIMARY};
-          white-space: nowrap;
-          padding: 10px 20px;
-          color: #fff;
           border-radius: 5px;
-          font-weight: 400;
           border: none;
+          border: none;
+          color: #fff;
           cursor: pointer;
           font-size: 14px;
+          font-weight: 400;
           outline: none;
+          padding: 10px 20px;
+          white-space: nowrap;
         }
 
         .accept-btn:hover {
@@ -114,8 +114,8 @@ export const CookieConsent: FC = memo(() => {
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
           .cookie-consent {
-            flex-direction: column;
             align-items: center;
+            flex-direction: column;
           }
 
           .consent-txt {

@@ -2,21 +2,21 @@ import { FC } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
-  label: string;
   defaultValue?: string;
-  value?: string;
+  label: string;
+  onBlur?: (value: string) => void;
   onChange?: (value: string) => void;
   placeholder?: string;
-  onBlur?: (value: string) => void;
+  value?: string;
 };
 
 export const CsgnTextArea: FC<Props> = ({
-  value,
-  onChange,
-  label,
-  placeholder,
   defaultValue,
+  label,
   onBlur,
+  onChange,
+  placeholder,
+  value,
 }) => {
   const { colors } = useTheme();
 
@@ -38,37 +38,37 @@ export const CsgnTextArea: FC<Props> = ({
         <label>{label}</label>
         <textarea
           defaultValue={defaultValue}
-          placeholder={placeholder}
-          value={value}
           onBlur={onTABlur}
           onChange={onTAChange}
+          placeholder={placeholder}
+          value={value}
         />
       </div>
       <style jsx>{`
         label {
-          margin-bottom: 5px;
           color: ${colors.TEXT};
           font-size: 12px;
           font-weight: 500;
+          margin-bottom: 5px;
           text-transform: uppercase;
         }
 
         .text-area-wrapper {
+          color: ${colors.TEXT};
           display: flex;
           flex-direction: column;
           margin-bottom: 20px;
-          color: ${colors.TEXT};
         }
 
         textarea {
           background: ${colors.DP03};
-          outline: none;
-          min-height: 250px;
-          resize: none;
-          padding: 15px;
           border-radius: 5px;
-          color: ${colors.TEXT};
           border: 1px solid rgba(0, 0, 0, 0.15);
+          color: ${colors.TEXT};
+          min-height: 250px;
+          outline: none;
+          padding: 15px;
+          resize: none;
         }
 
         textarea:focus {

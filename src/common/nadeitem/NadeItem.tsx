@@ -25,38 +25,38 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
           <a>
             <div className={"nadebox"} style={{ display: "inline-block" }}>
               <NadeItemTitle
-                startPosition={nade.startPosition}
                 endPosition={nade.endPosition}
-                type={nade.type}
+                oneWay={nade.oneWay}
+                startPosition={nade.startPosition}
                 status={nade.status}
                 title={nade.title}
-                oneWay={nade.oneWay}
+                type={nade.type}
               />
               <div className="video">
                 <GfycatThumbnail
+                  avgColor={nade.gfycat.avgColor}
+                  downVoteCount={nade.downVoteCount}
+                  gfyId={nade.gfycat.gfyId}
+                  lineUpThumnUrl={nade.imageLineupThumbUrl}
                   nadeId={nade.id}
+                  nadeSlug={nade.slug}
                   smallVideoUrl={nade.gfycat.smallVideoUrl}
                   thumbnailUrl={nade.images.thumbnailUrl}
-                  avgColor={nade.gfycat.avgColor}
-                  nadeSlug={nade.slug}
-                  gfyId={nade.gfycat.gfyId}
                   upVoteCount={nade.upVoteCount}
-                  downVoteCount={nade.downVoteCount}
-                  lineUpThumnUrl={nade.imageLineupThumbUrl}
                 />
               </div>
               <NadeStats
                 commentCount={nade.commentCount}
                 createdAt={nade.createdAt}
+                downVoteCount={nade.downVoteCount}
                 favoriteCount={nade.favoriteCount}
-                viewCount={nade.viewCount}
                 isFavorited={nade.isFavorited}
+                isPro={nade.isPro}
                 movement={nade.movement}
                 technique={nade.technique}
                 tickrate={nade.tickrate}
-                isPro={nade.isPro}
-                downVoteCount={nade.downVoteCount}
                 upVoteCount={nade.upVoteCount}
+                viewCount={nade.viewCount}
               />
             </div>
           </a>
@@ -66,14 +66,14 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
         .nadebox {
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.BORDER};
           cursor: pointer;
-          transition: box-shadow ${AnimationTimings.fast}s;
-          overflow: hidden;
-          width: 100%;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           max-width: 400px;
           min-width: 265px;
-          border: 1px solid ${colors.BORDER};
+          overflow: hidden;
+          transition: box-shadow ${AnimationTimings.fast}s;
+          width: 100%;
         }
 
         .nadebox:hover {

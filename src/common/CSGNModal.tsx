@@ -4,18 +4,18 @@ import { LayerPosition } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 type Props = {
+  empty?: boolean;
+  onDismiss: () => void;
   title?: string;
   visible: boolean;
-  onDismiss: () => void;
-  empty?: boolean;
 };
 
 export const CSGNModal: FC<Props> = ({
   children,
+  empty,
+  onDismiss,
   title,
   visible,
-  onDismiss,
-  empty,
 }) => {
   const { colors } = useTheme();
 
