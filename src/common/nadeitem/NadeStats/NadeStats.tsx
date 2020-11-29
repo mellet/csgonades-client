@@ -60,21 +60,30 @@ export const NadeStats: FC<NadeStatsProps> = ({
           )}
 
           {!nadeIsNew && (
-            <StatItem count={viewCount} icon={<FaEye />} color={colors.GREY} />
+            <div className="stat-item">
+              <StatItem
+                count={viewCount}
+                icon={<FaEye />}
+                color={colors.GREY}
+              />
+            </div>
           )}
+          <div className="stat-item">
+            <StatItem
+              color={colors.GREY}
+              count={favoriteCount}
+              icon={<FaStar />}
+              iconColor={favoriteIconColor}
+            />
+          </div>
 
-          <StatItem
-            color={colors.GREY}
-            count={favoriteCount}
-            icon={<FaStar />}
-            iconColor={favoriteIconColor}
-          />
-
-          <StatItem
-            color={colors.GREY}
-            count={commentCount}
-            icon={<FaCommentDots />}
-          />
+          <div className="stat-item">
+            <StatItem
+              color={colors.GREY}
+              count={commentCount}
+              icon={<FaCommentDots />}
+            />
+          </div>
         </div>
         <div className="specials">
           {hasMovement && (
@@ -142,6 +151,12 @@ export const NadeStats: FC<NadeStatsProps> = ({
         </div>
       </div>
       <style jsx>{`
+        .item-bottom {
+          display: flex;
+          padding: 6px 16px;
+          align-items: center;
+        }
+
         .new-badge {
           align-items: center;
           display: flex;
@@ -163,28 +178,31 @@ export const NadeStats: FC<NadeStatsProps> = ({
           text-align: center;
         }
 
-        .item-bottom {
-          display: flex;
-          height: 40px;
-          padding: 6px 16px;
-        }
-
         .stats {
           display: flex;
           align-items: center;
           flex: 1;
         }
 
+        .stat-item {
+          margin-right: 12px;
+        }
+
+        .stat-item:last-child {
+          margin-right: 0;
+        }
+
         .specials {
           display: flex;
           align-items: center;
+          white-space: nowrap;
         }
 
         .special {
           align-items: center;
           color: ${colors.NADE_ITEM_HIGHLIGHT};
           display: flex;
-          margin-right: 15px;
+          margin-right: 12px;
         }
 
         .special:last-child {

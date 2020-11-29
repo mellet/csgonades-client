@@ -34,13 +34,12 @@ export const StatItem: FC<Props> = ({
           display: flex;
           font-size: 11px;
           font-weight: 400;
-          margin-right: 15px;
         }
 
         .icon {
           color: ${iconColor || color};
           font-size: 12px;
-          margin-right: 2px;
+          margin-right: 3px;
           position: relative;
           top: 1px;
         }
