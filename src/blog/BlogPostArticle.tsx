@@ -10,6 +10,7 @@ import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";
 import { LayoutWithSidebar } from "../common/LayoutWithSidebar";
 import { SidebarSkyskraperAd } from "../common/adunits/SidebarSkyskraper";
+import Image from "next/image";
 
 type Props = {
   data: BlogPost;
@@ -66,6 +67,13 @@ export const BlogPostArticle: FC<Props> = memo(
         >
           <article id="blog-article">
             <div id="title-image">
+              <Image
+                priority
+                src={data.imageUrl}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+              />
               <div id="article-title">
                 <h1>{data.title}</h1>
               </div>
@@ -101,33 +109,30 @@ export const BlogPostArticle: FC<Props> = memo(
           }
 
           #title-image {
-            background-position: center;
-            background-size: cover;
-            background: url(${data.imageUrl});
             border-radius: ${Dimensions.BORDER_RADIUS};
             grid-area: title-img;
-            height: 40vh;
+            height: 50vh;
             overflow: hidden;
             position: relative;
           }
 
           #article-title {
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
             align-items: flex-end;
+            background: rgba(0, 0, 0, 0.2);
             background: linear-gradient(
               180deg,
               rgba(17, 17, 17, 0) 0%,
               rgba(32, 32, 32, 0.4) 100%
             );
-            background: rgba(0, 0, 0, 0.2);
-            bottom: 0;
             color: white;
             display: flex;
-            height: 50%;
-            left: 0;
             padding: 30px 30px;
-            position: absolute;
-            right: 0;
             z-index: 1;
+            height: 40%;
           }
 
           #article-title h1 {

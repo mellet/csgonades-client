@@ -16,10 +16,11 @@ export const Logo: FC = memo(() => {
         <div key={logoUrl} id="logo">
           <Image
             alt="CSGO Nades logo"
-            height={40}
             priority
             src={logoUrl}
-            width={62}
+            layout="fill"
+            objectFit="contain"
+            objectPosition="left"
             quality={100}
           />
         </div>
@@ -28,6 +29,9 @@ export const Logo: FC = memo(() => {
         #logo {
           display: block;
           height: 40px;
+          position: relative;
+          width: 70px;
+          margin-left: -2px;
         }
       `}</style>
     </>

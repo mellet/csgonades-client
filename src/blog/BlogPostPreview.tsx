@@ -3,6 +3,7 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { prettyDate } from "../utils/DateUtils";
 import { BlogPost } from "./BlogPost";
 import { PageLink } from "../common/PageLink";
+import Image from "next/image";
 
 type Props = {
   blogPost: BlogPost;
@@ -18,7 +19,14 @@ export const BlogPostPreview: FC<Props> = ({ blogPost }) => {
       <div className="blog-post-preview">
         <PageLink href={`/blog/${blogPost.slug}`} as={`/blog/${blogPost.slug}`}>
           <span>
-            <div className="blog-img"></div>
+            <div className="blog-img">
+              <Image
+                src={thumbnailUrl}
+                layout="fill"
+                objectFit="cover"
+                quality={100}
+              />
+            </div>
 
             <h3>{title}</h3>
           </span>
@@ -39,19 +47,17 @@ export const BlogPostPreview: FC<Props> = ({ blogPost }) => {
         </div>
       </div>
       <style jsx>{`
+        .blog-img {
+          position: relative;
+          height: 200px;
+        }
+
         .actions {
           display: flex;
           justify-content: space-between;
           margin-bottom: 30px;
           margin-left: 30px;
           margin-right: 30px;
-        }
-
-        .blog-img {
-          background-position: center;
-          background-size: cover;
-          background: url(${thumbnailUrl});
-          height: 200px;
         }
 
         .actions-read-more {

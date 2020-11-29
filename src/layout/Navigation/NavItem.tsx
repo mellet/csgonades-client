@@ -11,30 +11,26 @@ type Props = {
 
 export const NavItem: FC<Props> = ({ selected, csMap }) => {
   const { colors } = useTheme();
-  const containerSize = 24;
-  const imgSize = 28;
 
   return (
     <>
       <span className={selected ? "map-link selected" : "map-link"}>
         <div className="nav-icon">
-          <div className="nav-icon-img">
-            <Image
-              priority
-              src={`/mapicons/${csMap}.png`}
-              width={imgSize}
-              height={imgSize}
-              layout="fixed"
-              alt="Mirage icon"
-            />
-          </div>
+          <Image
+            priority
+            src={`/mapicons/${csMap}.png`}
+            layout="fill"
+            objectFit="contain"
+            quality={100}
+            alt="Mirage icon"
+          />
         </div>
         <span className="map-link-label">{capitalize(csMap)}</span>
       </span>
       <style jsx>{`
         .map-link {
           display: flex;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 400;
           transition: background 0.1s;
           height: 100%;
@@ -63,19 +59,11 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
 
         .nav-icon {
           position: relative;
-          width: ${containerSize}px;
-          height: ${containerSize}px;
+          width: 25px;
+          height: 25px;
           opacity: 0.8;
           border-radius: 50%;
-          border: 1px solid ${colors.PRIMARY};
           overflow: hidden;
-        }
-
-        .nav-icon-img {
-          position: absolute;
-          top: -3px;
-          left: -3px;
-          margin: auto;
         }
 
         .selected {
