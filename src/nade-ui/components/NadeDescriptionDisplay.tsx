@@ -18,7 +18,7 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
         <style jsx>{`
           .no-desc {
             min-height: 200px;
-            margin: 15px 30px;
+            margin: 12px 16px;
             padding: 10px;
             background: ${colors.WARNING};
             color: white;
@@ -41,8 +41,8 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
       </div>
       <style jsx>{`
         .desc-wrap {
-          min-height: 200px;
-          padding: 40px 40px;
+          min-height: 150px;
+          padding: 12px 16px;
           color: ${colors.TEXT};
         }
       `}</style>

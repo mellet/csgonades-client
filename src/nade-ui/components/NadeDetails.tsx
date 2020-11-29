@@ -33,12 +33,12 @@ export const NadeDetails: FC<Props> = ({ nade }) => {
       <style jsx>{`
         .nade-details {
           background: ${colors.boxTitleBg};
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-          padding: 15px 30px;
+          padding: 12px 16px;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          border-bottom: 1px solid ${colors.BORDER};
+          border-top: 1px solid ${colors.BORDER};
         }
 
         .nade-stats {

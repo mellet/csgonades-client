@@ -22,8 +22,7 @@ export const NadeInfo: FC<Props> = ({ nade }) => {
       <style jsx>{`
         .nade-info {
           background: ${colors.DP03};
-          border-radius: 5px;
-          overflow: hidden;
+          border-bottom: 1px solid ${colors.BORDER};
         }
       `}</style>
     </>
