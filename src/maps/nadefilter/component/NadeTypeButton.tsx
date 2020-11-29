@@ -40,6 +40,7 @@ export const NadeTypeButton: FC<Props> = memo(
                   src={iconUrl}
                   width={Dimensions.BUTTON_HEIGHT}
                   height={Dimensions.BUTTON_HEIGHT}
+                  quality={100}
                 />
               )}
             </div>

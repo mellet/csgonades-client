@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { NadeItemFavBtn } from "./NadeItemFavBtn";
 import dynamic from "next/dynamic";
 import { ThumbImage } from "./ThumbImage";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
 
@@ -19,7 +20,6 @@ type Props = {
 };
 
 export const GfycatThumbnail: FC<Props> = ({
-  avgColor,
   disableAction,
   gfyId,
   lineUpThumnUrl,
@@ -28,6 +28,7 @@ export const GfycatThumbnail: FC<Props> = ({
   smallVideoUrl,
   thumbnailUrl,
 }) => {
+  const { colors } = useTheme();
   const [isReadyForHover, setIsReadyForHover] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -92,7 +93,7 @@ export const GfycatThumbnail: FC<Props> = ({
       `}</style>
       <style jsx>{`
         .player {
-          background: ${avgColor || "black"};
+          background: ${colors.DP01};
           display: block;
           overflow: hidden;
           padding-top: 56%;

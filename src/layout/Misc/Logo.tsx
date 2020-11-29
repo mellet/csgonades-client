@@ -20,6 +20,7 @@ export const Logo: FC = memo(() => {
             priority
             src={logoUrl}
             width={62}
+            quality={100}
           />
         </div>
       </PageLink>

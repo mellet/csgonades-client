@@ -1,21 +1,28 @@
 import Image from "next/image";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { CrossHair } from "../../nade-ui/CrossHair";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {
   lineupThumbUrl?: string;
   thumbUrl?: string;
 };
 
-export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
+export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
   const hasLineUpImage = !!lineupThumbUrl;
+  const { colors } = useTheme();
 
   return (
     <>
-      <div className="thumb-image">
+      <div className={"thumb-image"}>
         <div className="result-image">
           {thumbUrl && (
-            <Image src={thumbUrl} layout="fill" objectFit="cover"></Image>
+            <Image
+              src={thumbUrl}
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+            ></Image>
           )}
         </div>
         {lineupThumbUrl && (
@@ -27,7 +34,8 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
                   src={lineupThumbUrl}
                   layout="fill"
                   objectFit="cover"
-                ></Image>
+                  quality={100}
+                />
               </div>
               <div className="crosshair">
                 <CrossHair size={20} />
@@ -38,12 +46,15 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
       </div>
       <style jsx>{`
         .thumb-image {
+          opacity: 1;
           height: 100%;
           position: relative;
-          filter: brightness(1.2) saturate(120%) contrast(105%);
+          filter: brightness(1.1) saturate(120%) contrast(105%);
+          transition: opacity 0.5s;
         }
 
         .result-image {
+          background: ${colors.DP01};
           align-items: center;
           display: flex;
           height: 100%;
@@ -53,7 +64,7 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
         }
 
         .lineup-border {
-          background: white;
+          background: ${colors.DP01};
           bottom: 0;
           clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
           position: absolute;
@@ -84,4 +95,4 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
       `}</style>
     </>
   );
-};
+});
