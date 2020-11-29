@@ -81,17 +81,10 @@ export const MapNav: FC = () => {
         </div>
       </div>
       <style jsx>{`
-        #secondary-nav {
-          height: 100%;
-        }
-
         #map-nav-wrap {
           display: flex;
           flex-direction: column;
           width: 100%;
-        }
-
-        #map-nav {
         }
 
         ul {

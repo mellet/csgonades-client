@@ -42,7 +42,6 @@ export const Layout: FC<Props> = memo(({ children }) => {
           <div id="nav-main">
             <MapNav />
             <SiteNav />
-            <div id="nav-shadow"></div>
           </div>
           <div id="nav-footer">
             <Footer />
@@ -96,6 +95,7 @@ export const Layout: FC<Props> = memo(({ children }) => {
           overflow-y: hidden;
           display: flex;
           flex-direction: column;
+          justify-content: space-between;
         }
 
         #nav-main:hover {
