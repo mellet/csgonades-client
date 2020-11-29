@@ -29,36 +29,42 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
       <style jsx>{`
         .tab-selector {
           position: absolute;
-          top: 15px;
-          right: 15px;
-          z-index: 100;
+          top: 16px;
+          right: 16px;
+          z-index: 1;
           display: flex;
-          border-radius: 10px;
-          background: ${colors.filterBgHover};
+          border-radius: 12px;
+          background: ${colors.DP00};
           transition: all 0.2s;
+          padding: 2px;
+          overflow: hidden;
         }
 
         .tab-btn {
-          background: ${colors.filterBgHover};
-          border: 1px solid ${colors.filterBgHover};
+          background: ${colors.DP00};
+          border: 1px solid transparent;
           cursor: pointer;
           outline: none;
-          padding: 15px 20px;
-          color: rgba(255, 255, 255, 0.5);
+          padding: 10px 16px;
+          color: ${colors.TEXT};
           text-transform: uppercase;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 500;
-          border-radius: 10px;
+          border-radius: 12px;
         }
 
         .tab-btn:hover {
-          color: rgba(255, 255, 255, 1);
+          background: ${colors.DP01};
         }
 
         .selected {
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          color: rgba(255, 255, 255, 1);
-          background: ${colors.filterBg};
+          border: 1px solid ${colors.BORDER};
+          background: ${colors.DP03};
+          border-radius: 12px;
+        }
+
+        .selected:hover {
+          background: ${colors.DP03};
         }
 
         @media only screen and (max-width: ${Dimensions.TABLET_THRESHHOLD}) {
