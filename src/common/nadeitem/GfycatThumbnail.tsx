@@ -104,8 +104,8 @@ export const GfycatThumbnail: FC<Props> = ({
           display: none;
           opacity: 0;
           position: absolute;
-          right: 10px;
-          top: 10px;
+          right: 6px;
+          bottom: 6px;
         }
 
         .vote-controls {

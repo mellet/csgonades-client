@@ -88,13 +88,13 @@ export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
       <style jsx>{`
         .fav-btn {
           align-items: center;
-          background: rgba(0, 0, 0, 0.5);
+          background: rgba(0, 0, 0, 0.8);
           border-radius: 5px;
           color: ${iconColor};
           display: flex;
-          height: 40px;
+          height: 36px;
           justify-content: center;
-          width: 40px;
+          width: 36px;
         }
 
         .fav-btn:hover {
