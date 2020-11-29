@@ -45,10 +45,10 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
 
       <style jsx>{`
         .gfycat-super-wrap {
+          background: rgba(0, 0, 0, 0.65) url("/loading.gif");
           background-position: 50% 40%;
           background-repeat: no-repeat;
           background-size: 20px;
-          background: #121212 url("/loading.gif");
           cursor: pointer;
           overflow: hidden;
           pointer-events: none;
