@@ -81,16 +81,16 @@ export const CommentSubmit: FC<Props> = memo(
           textarea {
             background: ${colors.DP03};
             outline: none;
-            min-height: 200px;
+            min-height: 120px;
             resize: none;
             padding: 15px;
             border-radius: 5px;
             color: ${colors.TEXT};
-            border: 1px solid rgba(0, 0, 0, 0.15);
+            border: 1px dashed ${colors.BORDER};
           }
 
           textarea:focus {
-            border: 1px solid ${colors.filterBgHover};
+            border: 1px solid ${colors.SUCCESS};
           }
 
           textarea::placeholder {

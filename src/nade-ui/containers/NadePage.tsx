@@ -16,6 +16,7 @@ import { Nade } from "../../nade-data/Nade/Nade";
 import { LayoutWithSidebar } from "../../common/LayoutWithSidebar";
 import { NadePageSidebar } from "../NadePageSidebar";
 import { useIncrementNumNadesVisisted } from "../../features/tracker/useTracker";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   nade: Nade;
@@ -148,6 +149,7 @@ export const NadePage: FC<Props> = memo(({ nade }) => {
 
         #nade-comment-container {
           grid-area: comments;
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

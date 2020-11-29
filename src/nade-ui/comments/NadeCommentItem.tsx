@@ -9,6 +9,7 @@ import { CsgnSaveButton } from "../../common/inputs/CsgnSaveButton";
 import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
 import { RenderMarkdown } from "../components/RenderMarkdown";
 import Link from "next/link";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   nadeComment: NadeComment;
@@ -175,6 +176,10 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
         .nade-comment-item {
           background: ${colors.DP02};
           color: ${colors.TEXT};
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
+          border: 1px solid ${colors.BORDER};
         }
 
         .nade-comment-header {
@@ -185,6 +190,7 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .nade-comment-user {

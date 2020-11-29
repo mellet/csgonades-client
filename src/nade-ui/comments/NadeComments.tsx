@@ -34,8 +34,6 @@ export const NadeComments: FC<Props> = memo(({ nadeId }) => {
         }
 
         .nade-comments {
-          border-radius: 5px;
-          overflow: hidden;
         }
 
         .nade-submit {
