@@ -44,7 +44,6 @@ export const AdminNav: FC = () => {
 
         .admin-nav button {
           background: ${colors.DP01};
-          border-bottom: 1px solid ${colors.BORDER};
           border-radius: 0;
           border: none;
           color: ${colors.TEXT};
@@ -53,6 +52,7 @@ export const AdminNav: FC = () => {
           outline: none;
           padding: 15px;
           text-align: left;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .admin-nav button:hover {

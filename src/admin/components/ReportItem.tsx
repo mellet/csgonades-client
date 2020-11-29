@@ -31,8 +31,9 @@ export const ReportItem: FC<Props> = ({ report }) => {
           background: ${colors.DP03};
           border-radius: ${Dimensions.BORDER_RADIUS};
           color: ${colors.TEXT};
-          margin-bottom: 30px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           overflow: hidden;
+          border: 1px solid ${colors.BORDER};
         }
 
         .report-header {
@@ -40,6 +41,7 @@ export const ReportItem: FC<Props> = ({ report }) => {
           display: flex;
           justify-content: space-between;
           padding: 10px 20px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .report-body,

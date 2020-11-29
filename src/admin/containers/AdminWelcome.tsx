@@ -21,6 +21,7 @@ export function AdminWelcome(): JSX.Element {
           border-radius: ${Dimensions.BORDER_RADIUS};
           color: ${colors.TEXT};
           padding: ${Dimensions.GUTTER_SIZE}px;
+          border: 1px solid ${colors.BORDER};
         }
 
         h1 {
