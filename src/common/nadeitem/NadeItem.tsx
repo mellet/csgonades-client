@@ -22,7 +22,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
     <>
       <div onClick={preventBubble}>
         <Link href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
-          <a>
+          <a className="nadebox-link">
             <div className={"nadebox"} style={{ display: "inline-block" }}>
               <NadeItemTitle
                 endPosition={nade.endPosition}
@@ -63,12 +63,16 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
         </Link>
       </div>
       <style jsx>{`
+        .nadebox-link {
+          display: inline-block;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         .nadebox {
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};
           border: 1px solid ${colors.BORDER};
           cursor: pointer;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           max-width: 400px;
           min-width: 265px;
           overflow: hidden;
