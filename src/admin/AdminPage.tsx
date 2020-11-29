@@ -9,6 +9,7 @@ import { AdminUsers } from "./containers/AdminUsers";
 import { AdminDeclined } from "./containers/AdminDeclined";
 import { AdminContacts } from "./containers/AdminContacts";
 import { AdminWelcome } from "./containers/AdminWelcome";
+import { AdminAudit } from "./containers/AdminAudit";
 
 export const AdminPage: FC = () => {
   const allowedToView = useIsAdminOrModerator();
@@ -30,6 +31,8 @@ export const AdminPage: FC = () => {
         return <AdminDeclined />;
       case "contact":
         return <AdminContacts />;
+      case "audit":
+        return <AdminAudit />;
       default:
         return <AdminWelcome />;
     }

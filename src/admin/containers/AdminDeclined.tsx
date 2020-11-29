@@ -4,6 +4,7 @@ import { CsgnList } from "../../common/list/CsgnList";
 import { NadeItem } from "../../common/nadeitem/NadeItem";
 import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
 import { NadeApi } from "../../nade-data/NadeApi";
+import { AdminPageTitle } from "../components/AdminPageTitle";
 
 export const AdminDeclined: FC = () => {
   const getToken = useGetOrUpdateToken();
@@ -36,7 +37,12 @@ export const AdminDeclined: FC = () => {
   return (
     <>
       <div>
-        <h1>Declined</h1>
+        <AdminPageTitle
+          title="Declined Nades"
+          description="Nades that have been declined. If the person who uploaded the nade
+        does not fix the issues the nade can be deleted."
+        />
+
         <CsgnList<NadeLight>
           data={declinedNades}
           keyExtractor={keyExtractor}

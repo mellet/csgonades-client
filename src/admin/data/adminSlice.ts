@@ -3,15 +3,18 @@ import { Report } from "../../models/Report";
 import { User } from "../../models/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ContactDTO } from "./ContactDTOs";
+import { AuditDto } from "./audit/AuditEvent";
 
 export type AdminRoutes =
   | "pending-nades"
   | "declined-nades"
   | "user"
   | "reports"
-  | "contact";
+  | "contact"
+  | "audit";
 
 export type AdminState = {
+  auditEvents: AuditDto[];
   contactMessages: ContactDTO[];
   pendingNades: NadeLight[];
   reports: Report[];
@@ -20,6 +23,7 @@ export type AdminState = {
 };
 
 export const initialState: AdminState = {
+  auditEvents: [],
   contactMessages: [],
   pendingNades: [],
   reports: [],
@@ -31,6 +35,9 @@ const admin = createSlice({
   initialState,
   name: "adminSlice",
   reducers: {
+    addAudits(state, action: PayloadAction<AuditDto[]>) {
+      state.auditEvents = action.payload;
+    },
     addContactMessages(state, action: PayloadAction<ContactDTO[]>) {
       state.contactMessages = action.payload;
     },
@@ -50,10 +57,11 @@ const admin = createSlice({
 });
 
 export const {
+  addAudits,
+  addContactMessages,
   addPendingNades,
   addReports,
   addUsers,
-  addContactMessages,
   changeRoute,
 } = admin.actions;
 

@@ -24,8 +24,11 @@ export const AdminNav: FC = () => {
         <button onClick={() => changeAdminRoute("declined-nades")}>
           Declined nades
         </button>
-        <button onClick={() => changeAdminRoute("user")}>Users</button>
+        {isAdmin && (
+          <button onClick={() => changeAdminRoute("user")}>Users</button>
+        )}
         <button onClick={() => changeAdminRoute("reports")}>Reports</button>
+        <button onClick={() => changeAdminRoute("audit")}>Audit</button>
         {isAdmin && (
           <button onClick={() => changeAdminRoute("contact")}>Contacts</button>
         )}

@@ -11,9 +11,11 @@ import {
   changeRoute,
   addReports,
   addUsers,
+  addAudits,
 } from "./adminSlice";
 import { ContactApi } from "./ContactApi";
 import { sortByDate } from "../../utils/Common";
+import { AuditApi } from "./audit/AuiditApi";
 
 const useAdminStoreContext = () => {
   const context = useContext(AdminStoreContext);
@@ -146,5 +148,32 @@ export const useAdminContact = () => {
 
   return {
     contactMessages: state.contactMessages,
+  };
+};
+
+export const useAdminAudits = () => {
+  const getToken = useGetOrUpdateToken();
+  const { state, dispatch } = useAdminStoreContext();
+
+  useEffect(() => {
+    (async () => {
+      const token = await getToken();
+      if (!token) {
+        return;
+      }
+      const res = await AuditApi.fetchAuditEvents(token);
+      if (res.isOk()) {
+        const audits = [...res.value];
+        audits.sort((a, b) => sortByDate(a.createdAt, b.createdAt));
+
+        dispatch(addAudits(audits));
+      } else {
+        console.error("Failed to fetch reports");
+      }
+    })();
+  }, [dispatch, getToken]);
+
+  return {
+    auditEvents: state.auditEvents,
   };
 };
