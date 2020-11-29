@@ -40,6 +40,7 @@ export const ThumbImage: FC<Props> = ({ lineupThumbUrl, thumbUrl }) => {
         .thumb-image {
           height: 100%;
           position: relative;
+          filter: brightness(1.2) saturate(120%) contrast(105%);
         }
 
         .result-image {

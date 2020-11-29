@@ -52,6 +52,7 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
           cursor: pointer;
           overflow: hidden;
           pointer-events: none;
+          filter: brightness(1.2) saturate(120%) contrast(105%);
         }
 
         .gfycat-wrap {
