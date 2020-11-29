@@ -119,7 +119,6 @@ export const NadePage: FC<Props> = memo(({ nade }) => {
             "info info info"
             "comments comments comments";
           width: 100%;
-          padding-bottom: 20vh;
         }
 
         #title {

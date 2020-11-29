@@ -65,7 +65,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
       <style jsx>{`
         .nadebox-link {
           display: inline-block;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          width: 100%;
         }
 
         .nadebox {
@@ -78,6 +78,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
           overflow: hidden;
           transition: box-shadow ${AnimationTimings.fast}s;
           width: 100%;
+          margin-bottom: -6px;
         }
 
         .nadebox:hover {

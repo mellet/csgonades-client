@@ -73,6 +73,7 @@ const List: FC<Props<any>> = memo(
           .list {
             display: grid;
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+            grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
           }
 
