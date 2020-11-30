@@ -35,8 +35,6 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           <TopContributorsLazy csMap={map} nades={nades} />
         </div>
 
-        <div className="spacer"></div>
-
         <div className="ctas">
           <div className="cta">
             <DiscordJoinAction />
@@ -51,7 +49,6 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
           min-height: 100%;
           display: flex;
           flex-direction: column;
-          background: ${colors.DP02};
           width: 300px;
         }
 
@@ -83,10 +80,10 @@ export const MapPageSidebar: FC<Props> = ({ map, nades }) => {
 
         .ctas {
           display: flex;
+          flex-direction: column;
         }
 
         .cta {
-          width: 50%;
         }
       `}</style>
     </>
