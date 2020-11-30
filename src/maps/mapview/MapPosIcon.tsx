@@ -1,6 +1,7 @@
 import { FC, useMemo } from "react";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { NadeType } from "../../nade-data/Nade/NadeType";
+import { isNewNade } from "../../utils/Common";
 
 type Props = {
   cluster: NadeLight[];
@@ -17,7 +18,8 @@ export const MapPosIcon: FC<Props> = ({
   numNades,
   onPress,
 }) => {
-  const position = useMemo(() => {
+  const { hasNew, position } = useMemo(() => {
+    const hasNew = cluster.find((n) => isNewNade(n.createdAt));
     const averageX =
       cluster.reduce((acc, cur) => acc + (cur.mapEndCoord?.x || 0), 0) /
       cluster.length;
@@ -28,8 +30,12 @@ export const MapPosIcon: FC<Props> = ({
 
     const sizeRatio = 1024 / mapWidth;
     return {
-      x: averageX / sizeRatio,
-      y: averageY / sizeRatio,
+      position: {
+        x: averageX / sizeRatio,
+        y: averageY / sizeRatio,
+      },
+
+      hasNew: !!hasNew,
     };
   }, [mapWidth, cluster]);
 
@@ -57,7 +63,8 @@ export const MapPosIcon: FC<Props> = ({
         <img src={`/icons/grenades/${nade.type}.png`} />
         {numNades > 1 && (
           <div className="num">
-            <span>{numNades}</span>
+            <span className="num-count">{numNades}</span>
+            {hasNew && <span className="new">NEW</span>}
           </div>
         )}
       </div>
@@ -82,18 +89,29 @@ export const MapPosIcon: FC<Props> = ({
           width: ${scaledIconSize}px;
           height: ${scaledIconSize}px;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
           transform: scale(1);
           transition: transform 0.15s;
         }
 
-        .num span {
+        .num .num-count {
           color: rgba(196, 245, 227, 1);
           font-size: ${scaledIconSize * 0.5}px;
           font-weight: 400;
           text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
           font-family: "Changa One", cursive;
+        }
+
+        .new {
+          position: absolute;
+          bottom: 5px;
+          display: inline-block;
+          font-size: 9px;
+          color: rgba(224, 245, 66, 0.9);
+          text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
+          font-weight: 800;
         }
 
         .point img {

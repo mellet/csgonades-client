@@ -3,6 +3,7 @@ import { NadeType } from "../nade-data/Nade/NadeType";
 import removeMd from "remove-markdown";
 import { nadeTypeString } from "../nade-data/Nade/NadeType";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { dateMinutesAgo } from "./DateUtils";
 
 export const capitalize = (s: string): string => {
   if (typeof s !== "string") return "";
@@ -239,4 +240,10 @@ export function debounce(func: any, wait: number, immediate?: boolean) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
+}
+
+export function isNewNade(createdAt: Date | string) {
+  const hoursAgoAdded = dateMinutesAgo(createdAt) / 60;
+
+  return hoursAgoAdded < 36;
 }
