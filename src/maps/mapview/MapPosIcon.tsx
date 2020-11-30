@@ -106,9 +106,9 @@ export const MapPosIcon: FC<Props> = ({
 
         .new {
           position: absolute;
-          bottom: 5px;
+          bottom: 4%;
           display: inline-block;
-          font-size: 9px;
+          font-size: ${scaledIconSize * 0.15}px;
           color: rgba(224, 245, 66, 0.9);
           text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
           font-weight: 800;
