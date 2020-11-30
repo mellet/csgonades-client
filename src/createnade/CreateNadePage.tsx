@@ -139,7 +139,6 @@ export const CreateNadePage: FC = ({}) => {
 
         <div id="lineup-image">
           <ImageSelector
-            optional
             label="Line Up Image"
             imageIsSet={!!state.lineUpImageBase64}
             onClick={() =>
