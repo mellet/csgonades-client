@@ -48,15 +48,17 @@ export const MapPosIcon: FC<Props> = ({
     }
   }
 
-  const scaledIconSize = mapWidth / 17;
+  const scaleFactor = mapWidth / 1024;
+  const iconScale = scaleFactor * 1.2;
+  const iconBaseSize = 50;
 
   return (
     <>
       <div
         className="point"
         style={{
-          top: position.y - scaledIconSize / 2,
-          left: position.x - scaledIconSize / 2,
+          top: position.y - iconBaseSize / 2,
+          left: position.x - iconBaseSize / 2,
         }}
         onClick={onClick}
       >
@@ -71,9 +73,9 @@ export const MapPosIcon: FC<Props> = ({
       <style jsx>{`
         .point {
           position: absolute;
-          width: ${scaledIconSize}px;
-          height: ${scaledIconSize}px;
-          transform: scale(1);
+          width: ${iconBaseSize}px;
+          height: ${iconBaseSize}px;
+          transform: scale(${iconScale});
           cursor: pointer;
           pointer-events: all;
           z-index: ${zIndexByType(nade.type)};
@@ -86,8 +88,8 @@ export const MapPosIcon: FC<Props> = ({
           top: 0;
           left: 0;
           display: block;
-          width: ${scaledIconSize}px;
-          height: ${scaledIconSize}px;
+          width: ${iconBaseSize}px;
+          height: ${iconBaseSize}px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -98,7 +100,7 @@ export const MapPosIcon: FC<Props> = ({
 
         .num .num-count {
           color: rgba(196, 245, 227, 1);
-          font-size: ${scaledIconSize * 0.5}px;
+          font-size: 24px;
           font-weight: 400;
           text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
           font-family: "Changa One", cursive;
@@ -106,9 +108,9 @@ export const MapPosIcon: FC<Props> = ({
 
         .new {
           position: absolute;
-          bottom: 4%;
+          bottom: 2px;
           display: inline-block;
-          font-size: ${scaledIconSize * 0.15}px;
+          font-size: 7px;
           color: rgba(224, 245, 66, 0.9);
           text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
           font-weight: 800;
@@ -121,16 +123,12 @@ export const MapPosIcon: FC<Props> = ({
         }
 
         .point:hover {
-          transform: scale(1.1);
+          transform: scale(${iconScale * 1.1});
           z-index: 500;
         }
 
         .point:hover > img {
           opacity: 1;
-        }
-
-        .point:hover > .num {
-          transform: scale(1.1);
         }
       `}</style>
     </>
