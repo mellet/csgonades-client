@@ -12,7 +12,7 @@ export const PaypalAction: FC = () => {
         >
           <div className="action">
             <div className="discord-msg">
-              Donate on <b>PayPal</b>
+              Support me on <b>PayPal</b>
             </div>
             <div className="discord-logo">
               <FaPaypal />
