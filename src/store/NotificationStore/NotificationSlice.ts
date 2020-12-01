@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Notification } from "../../models/Notification";
 
 type NotificationState = {
-  readonly lastFetch?: Date;
+  readonly lastFetch?: string; // Datetime string
   readonly loading: boolean;
   readonly notifications: Notification[];
 };
@@ -17,7 +17,7 @@ const notificationSlice = createSlice({
   initialState,
   reducers: {
     addUnreadNotificationsAction(state, action: PayloadAction<Notification[]>) {
-      state.lastFetch = new Date();
+      state.lastFetch = new Date().toString();
       state.notifications = action.payload;
     },
     markNotificationAsSeenAction(state, action: PayloadAction<string>) {
