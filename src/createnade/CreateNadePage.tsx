@@ -81,191 +81,199 @@ export const CreateNadePage: FC = ({}) => {
     <>
       <SEO title={"Submit nade"} canonical={`/createnade`} />
 
-      <h1 id="title">SUBMIT NADE</h1>
-      <div id="create-nade-page">
-        <div id="info-label">
-          <BigLabel value="Information" />
-        </div>
+      <GuideLinesModal />
 
-        <div id="map-selector">
-          <MapSelector
-            onChange={(map) => dispatch({ type: "CreateNade/SetMap", map })}
-          />
-        </div>
+      <div id="page-wrap">
+        <h1 id="title">SUBMIT NADE</h1>
+        <div id="create-nade-page">
+          <div id="info-label">
+            <BigLabel value="Information" />
+          </div>
 
-        <div id="gfy-input">
-          <GfyInput
-            onChange={(data) =>
-              dispatch({ type: "CreateNade/SetGfyData", data })
-            }
-          />
-        </div>
+          <div id="map-selector">
+            <MapSelector
+              onChange={(map) => dispatch({ type: "CreateNade/SetMap", map })}
+            />
+          </div>
 
-        <div id="end-pos">
-          <EndPosInput
-            onChange={(endPosition) =>
-              dispatch({ type: "CreateNade/SetEndPosition", endPosition })
-            }
-          />
-        </div>
-
-        <div id="start-pos">
-          <ThrownFromInput
-            onChange={(startPosition) =>
-              dispatch({ type: "CreateNade/SetStartPosition", startPosition })
-            }
-          />
-        </div>
-
-        <div id="description">
-          <DescriptionInput
-            onChange={(description) =>
-              dispatch({ type: "CreateNade/SetDescription", description })
-            }
-          />
-        </div>
-
-        <div id="media-label">
-          <BigLabel value="Images" />
-        </div>
-
-        <div id="result-image">
-          <ImageSelector
-            label="Result image"
-            imageIsSet={!!state.imageBase64}
-            onClick={() => dispatch({ type: "CreateNade/ShowImageSelector" })}
-          />
-        </div>
-
-        <div id="lineup-image">
-          <ImageSelector
-            label="Line Up Image"
-            imageIsSet={!!state.lineUpImageBase64}
-            onClick={() =>
-              dispatch({ type: "CreateNade/ToggleLineupImageAdder" })
-            }
-          />
-        </div>
-
-        <div id="map-position-selector">
-          <MapPositionEditor
-            map={state.map}
-            endPos={state.mapEndCoord}
-            onSave={(coords) =>
-              dispatch({ type: "CreateNade/SetEndPosCoords", coords })
-            }
-          />
-        </div>
-
-        <div id="meta-label">
-          <BigLabel value="Meta Data" />
-        </div>
-
-        <div id="type-selector">
-          <TypeSelector
-            onChange={(nadeType) =>
-              dispatch({ type: "CreateNade/SetNadeType", nadeType })
-            }
-          />
-        </div>
-
-        <div id="movement-selector">
-          <MovementSelector
-            onChange={(movement) =>
-              dispatch({ type: "CreateNade/SetMovement", movement })
-            }
-          />
-        </div>
-
-        <div id="technique-selector">
-          <TechniqueSelector
-            onChange={(technique) =>
-              dispatch({
-                type: "CreateNade/SetTechnique",
-                technique,
-              })
-            }
-          />
-        </div>
-
-        {state.technique === "jumpthrow" && (
-          <div id="tickrate-selector">
-            <TickrateSelector
-              onChange={(tick) =>
-                dispatch({ type: "CreateNade/SetTickrate", tick })
+          <div id="gfy-input">
+            <GfyInput
+              onChange={(data) =>
+                dispatch({ type: "CreateNade/SetGfyData", data })
               }
             />
           </div>
-        )}
 
-        <div id="preview-label">
-          <BigLabel value="Preview" />
-        </div>
+          <div id="end-pos">
+            <EndPosInput
+              onChange={(endPosition) =>
+                dispatch({ type: "CreateNade/SetEndPosition", endPosition })
+              }
+            />
+          </div>
 
-        <div id="preview">
-          <PreviewNade nade={state} />
-        </div>
+          <div id="start-pos">
+            <ThrownFromInput
+              onChange={(startPosition) =>
+                dispatch({ type: "CreateNade/SetStartPosition", startPosition })
+              }
+            />
+          </div>
 
-        <div id="submit">
-          <SumbitBtn
-            onSubmit={onSubmit}
-            disabled={disableSubmit || state.loading}
-          />
-        </div>
+          <div id="description">
+            <DescriptionInput
+              onChange={(description) =>
+                dispatch({ type: "CreateNade/SetDescription", description })
+              }
+            />
+          </div>
 
-        {state.showImageAdder && (
-          <div id="image-adder">
-            <div className="img-add-wrapper">
-              <ImageUploader
-                message={<></>}
-                onDismiss={() =>
-                  dispatch({ type: "CreateNade/ShowImageSelector" })
-                }
-                onImageCropped={(image) =>
-                  dispatch({ type: "CreateNade/SetImage", image })
+          <div id="media-label">
+            <BigLabel value="Images" />
+          </div>
+
+          <div id="result-image">
+            <ImageSelector
+              label="Result image"
+              imageIsSet={!!state.imageBase64}
+              onClick={() => dispatch({ type: "CreateNade/ShowImageSelector" })}
+            />
+          </div>
+
+          <div id="lineup-image">
+            <ImageSelector
+              label="Line Up Image"
+              imageIsSet={!!state.lineUpImageBase64}
+              onClick={() =>
+                dispatch({ type: "CreateNade/ToggleLineupImageAdder" })
+              }
+            />
+          </div>
+
+          <div id="map-position-selector">
+            <MapPositionEditor
+              map={state.map}
+              endPos={state.mapEndCoord}
+              onSave={(coords) =>
+                dispatch({ type: "CreateNade/SetEndPosCoords", coords })
+              }
+            />
+          </div>
+
+          <div id="meta-label">
+            <BigLabel value="Meta Data" />
+          </div>
+
+          <div id="type-selector">
+            <TypeSelector
+              onChange={(nadeType) =>
+                dispatch({ type: "CreateNade/SetNadeType", nadeType })
+              }
+            />
+          </div>
+
+          <div id="movement-selector">
+            <MovementSelector
+              onChange={(movement) =>
+                dispatch({ type: "CreateNade/SetMovement", movement })
+              }
+            />
+          </div>
+
+          <div id="technique-selector">
+            <TechniqueSelector
+              onChange={(technique) =>
+                dispatch({
+                  type: "CreateNade/SetTechnique",
+                  technique,
+                })
+              }
+            />
+          </div>
+
+          {state.technique === "jumpthrow" && (
+            <div id="tickrate-selector">
+              <TickrateSelector
+                onChange={(tick) =>
+                  dispatch({ type: "CreateNade/SetTickrate", tick })
                 }
               />
             </div>
-          </div>
-        )}
+          )}
 
-        {state.showLineUpAdder && (
-          <div id="lineup-adder">
-            <ImageUploader
-              message={
-                <div className="lineup-msg">
-                  <h3>Guideline</h3>
-                  <ul>
-                    <li>Image must be 16:9 aspect ratio</li>
-                    <li>Aim at the position</li>
-                    <li>Remove your hud (cl_drawhud 0; r_drawviewmodel 0;)</li>
-                    <li>Take screenshot</li>
-                  </ul>
-                  <p>
-                    Don&apos;t resize the image. Keep it as it is. A crosshair
-                    will be added in the middle of the image automatically.
-                  </p>
-                  <p>
-                    If you must, you can draw anything on the image in your own
-                    software, just don&apos;t resize the image.
-                  </p>
-                </div>
-              }
-              aspectRatio="16:9"
-              onDismiss={() =>
-                dispatch({ type: "CreateNade/ToggleLineupImageAdder" })
-              }
-              onImageCropped={(img) =>
-                dispatch({ type: "CreateNade/SetLineUpImage", img })
-              }
+          <div id="preview-label">
+            <BigLabel value="Preview" />
+          </div>
+
+          <div id="preview">
+            <PreviewNade nade={state} />
+          </div>
+
+          <div id="submit">
+            <SumbitBtn
+              onSubmit={onSubmit}
+              disabled={disableSubmit || state.loading}
             />
           </div>
-        )}
+
+          {state.showImageAdder && (
+            <div id="image-adder">
+              <div className="img-add-wrapper">
+                <ImageUploader
+                  message={<></>}
+                  onDismiss={() =>
+                    dispatch({ type: "CreateNade/ShowImageSelector" })
+                  }
+                  onImageCropped={(image) =>
+                    dispatch({ type: "CreateNade/SetImage", image })
+                  }
+                />
+              </div>
+            </div>
+          )}
+
+          {state.showLineUpAdder && (
+            <div id="lineup-adder">
+              <ImageUploader
+                message={
+                  <div className="lineup-msg">
+                    <h3>Guideline</h3>
+                    <ul>
+                      <li>Image must be 16:9 aspect ratio</li>
+                      <li>Aim at the position</li>
+                      <li>
+                        Remove your hud (cl_drawhud 0; r_drawviewmodel 0;)
+                      </li>
+                      <li>Take screenshot</li>
+                    </ul>
+                    <p>
+                      Don&apos;t resize the image. Keep it as it is. A crosshair
+                      will be added in the middle of the image automatically.
+                    </p>
+                    <p>
+                      If you must, you can draw anything on the image in your
+                      own software, just don&apos;t resize the image.
+                    </p>
+                  </div>
+                }
+                aspectRatio="16:9"
+                onDismiss={() =>
+                  dispatch({ type: "CreateNade/ToggleLineupImageAdder" })
+                }
+                onImageCropped={(img) =>
+                  dispatch({ type: "CreateNade/SetLineUpImage", img })
+                }
+              />
+            </div>
+          )}
+        </div>
       </div>
 
-      <GuideLinesModal />
-
       <style jsx>{`
+        #page-wrap {
+          margin: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         .lineup-msg {
           background: rgba(255, 255, 255, 0.8);
           color: #111;
