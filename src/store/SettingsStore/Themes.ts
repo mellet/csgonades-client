@@ -105,7 +105,7 @@ export const themes: Themes = {
     primaryBtnBg: "#eaeaea",
     primaryBtnHover: "#d4d4d4",
     filterBg: "#545b69",
-    filterBgHover: "#3f444e",
+    filterBgHover: "rgba(28, 143, 192, 1)",
     filterColor: "#ffffff",
     filterFavColor: "#ffbb00",
     filterResetBg: "#6e0000",

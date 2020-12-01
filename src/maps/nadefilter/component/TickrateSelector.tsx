@@ -66,16 +66,16 @@ export const TickrateSelector: FC = () => {
           align-items: center;
           justify-content: space-around;
           cursor: pointer;
-          font-size: 15px;
+          font-size: 14px;
           font-weight: 300;
           background: ${colors.filterBg};
           color: ${colors.filterColor};
-          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 0;
         }
 
-        .filter-btn:last-child {
-          border-bottom: none;
+        .filter-btn:first-child {
+          border-top: 0px solid rgba(0, 0, 0, 0.1);
         }
 
         .filter-btn:hover {

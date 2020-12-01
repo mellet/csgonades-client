@@ -56,7 +56,7 @@ export const MapViewSelector: FC = () => {
           font-size: ${Dimensions.BUTTON_HEIGHT / 2}px;
           cursor: pointer;
           overflow: hidden;
-          border-right: 1px solid rgba(0, 0, 0, 0.5);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.5);
           transition: background 0.1s;
         }
 
