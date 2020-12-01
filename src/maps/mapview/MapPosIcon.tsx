@@ -85,6 +85,7 @@ export const MapPosIcon: FC<Props> = ({
           animation-duration: 0.2s;
           animation-fill-mode: forwards;
           animation-timing-function: ease-out;
+          z-index: 499;
         }
 
         .num {
@@ -129,8 +130,11 @@ export const MapPosIcon: FC<Props> = ({
 
         .point:hover > img {
           transform: scale(1.05);
-          z-index: 500;
           opacity: 1;
+        }
+
+        .point:hover {
+          z-index: 500;
         }
 
         @keyframes zoomIn {
