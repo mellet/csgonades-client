@@ -10,7 +10,6 @@ export function custerNades(nades: NadeLight[]) {
     }
     // For the first nade, just push it
     if (clusters.length === 0) {
-      console.log("Adding first nade to its own cluster");
       clusters.push([nade]);
     } else {
       let addedToCluster = false;

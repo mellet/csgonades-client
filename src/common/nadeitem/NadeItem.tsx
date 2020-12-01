@@ -1,4 +1,4 @@
-import { FC, memo, MouseEventHandler } from "react";
+import { FC, memo } from "react";
 import { AnimationTimings, Dimensions } from "../../constants/Constants";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
@@ -14,13 +14,9 @@ interface Props {
 export const NadeItem: FC<Props> = memo(({ nade }) => {
   const { colors } = useTheme();
 
-  const preventBubble: MouseEventHandler<HTMLDivElement> = (e) => {
-    e.stopPropagation();
-  };
-
   return (
     <>
-      <div onClick={preventBubble}>
+      <div>
         <Link href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
           <a className="nadebox-link">
             <div className={"nadebox"} style={{ display: "inline-block" }}>

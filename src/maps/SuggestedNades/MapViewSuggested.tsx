@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, MouseEventHandler } from "react";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { NadeItem } from "../../common/nadeitem/NadeItem";
 import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../../common/list/CsgnList";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useAnalytics } from "../../utils/Analytics";
 
 type Props = {
   nades: NadeLight[] | null;
@@ -13,13 +14,46 @@ type Props = {
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
+  const { event } = useAnalytics();
+
+  const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation();
+    event({
+      category: "MapOverview",
+      action: "Nade Clicked",
+    });
+  };
 
   function renderItem(item: NadeLight) {
-    return <NadeItem nade={item} />;
+    return (
+      <div onClick={logNadeClick}>
+        <NadeItem nade={item} />
+      </div>
+    );
   }
 
   function keyExtractor(item: NadeLight) {
     return item.id;
+  }
+
+  const onDismissCloseClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation();
+
+    event({
+      category: "MapOverview",
+      action: "Dismiss Button Click",
+    });
+
+    onDismiss();
+  };
+
+  function onBackgroundCloseClick() {
+    event({
+      category: "MapOverview",
+      action: "Dismiss Background Click",
+    });
+
+    onDismiss();
   }
 
   if (!nades) {
@@ -28,12 +62,12 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
   return (
     <>
-      <div className="suggested-nades" onClick={onDismiss}>
+      <div className="suggested-nades" onClick={onBackgroundCloseClick}>
         <div className="bg" />
         <div className="nades">
           <div className="title">
             <div className="label">Found multiple nades</div>
-            <div className="close-btn" onClick={onDismiss}>
+            <div className="close-btn" onClick={onDismissCloseClick}>
               <FaTimes />
             </div>
           </div>

@@ -26,7 +26,6 @@ const destroyAds = async () => {
     const ez = ezstandalone || {};
 
     ez.destroy();
-    console.log("> cleared ads");
   } catch (e) {
     // no-op
   }
@@ -51,18 +50,16 @@ const loadAds = async () => {
       await sleep(500);
       ez.define(adIds);
       ez.refresh();
-      console.log("> ez refresh", adIds);
     } else {
       ez.cmd.push(() => {
         const adIds = findAdUnits();
         ez.define(adIds);
         ez.enable();
         ez.display();
-        console.log("> ez display", adIds);
       });
     }
   } catch (error) {
-    console.warn("> ez err", error);
+    // No-op
   }
 };
 
