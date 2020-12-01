@@ -75,12 +75,16 @@ export const MapPosIcon: FC<Props> = ({
           position: absolute;
           width: ${iconBaseSize}px;
           height: ${iconBaseSize}px;
-          transform: scale(${iconScale});
+          transform: scale(0);
           cursor: pointer;
           pointer-events: all;
           z-index: ${zIndexByType(nade.type)};
           transition: transform 0.15s, opacity 0.15s;
           font-size: 18px;
+          animation-name: zoomIn;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+          animation-timing-function: ease-out;
         }
 
         .num {
@@ -120,15 +124,22 @@ export const MapPosIcon: FC<Props> = ({
           width: 100%;
           display: block;
           opacity: 0.85;
-        }
-
-        .point:hover {
-          transform: scale(${iconScale * 1.1});
-          z-index: 500;
+          transition: transform 0.15s;
         }
 
         .point:hover > img {
+          transform: scale(1.05);
+          z-index: 500;
           opacity: 1;
+        }
+
+        @keyframes zoomIn {
+          from {
+            transform: scale(0);
+          }
+          to {
+            transform: scale(${iconScale});
+          }
         }
       `}</style>
     </>
