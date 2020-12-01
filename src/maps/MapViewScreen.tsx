@@ -7,6 +7,7 @@ import { MapPosIcon } from "./mapview/MapPosIcon";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
 import { useWindowSize } from "../common/MinSizeRender";
+import { AddNadeButton } from "./components/AddNadeButton";
 
 type Props = {
   allNades: NadeLight[];
@@ -56,6 +57,9 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
+        <div id="ad-nade-wrapper">
+          <AddNadeButton />
+        </div>
         <div id="mapview-absolute">
           <div id="mapview-screen">
             {true && (
@@ -91,6 +95,13 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
           border-radius: 5px;
           overflow: hidden;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px - (16px * 2));
+        }
+
+        #ad-nade-wrapper {
+          position: absolute;
+          top: ${Dimensions.GUTTER_SIZE}px;
+          right: ${Dimensions.GUTTER_SIZE}px;
+          z-index: 1;
         }
 
         #mapview-absolute {
