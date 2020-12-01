@@ -8,6 +8,7 @@ import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
 import { useWindowSize } from "../common/MinSizeRender";
 import { AddNadeButton } from "./components/AddNadeButton";
+import { NoNadesMessage } from "./components/NoNadesMessage";
 
 type Props = {
   allNades: NadeLight[];
@@ -20,9 +21,19 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [showIcons, setShowIcons] = useState(false);
   const [mapSize, setMapSize] = useState(0);
   const mapViewRef = useRef<HTMLDivElement>(null);
   const clusters = useNadeClusters(filteredNades);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (mapLoaded) {
+        setShowIcons(true);
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [mapLoaded]);
 
   function recalcMapSize(offsetHeight: number, offsetWidth: number) {
     if (offsetHeight < offsetWidth) {
@@ -53,6 +64,7 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   }
 
   const canvasSize = mapSize;
+  const hasNades = clusters.length;
 
   return (
     <>
@@ -68,7 +80,7 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
                   src={`/mapsoverlays/${map}.jpg`}
                   onLoad={onMapViewImageLoaded}
                 />
-                {mapLoaded &&
+                {showIcons &&
                   clusters.map((cluster) => {
                     const nade = cluster[0];
                     return (
@@ -82,6 +94,12 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
                       />
                     );
                   })}
+
+                {!hasNades && (
+                  <div className="no-nades-wrap">
+                    <NoNadesMessage />
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -89,6 +107,17 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
       </div>
 
       <style jsx>{`
+        .no-nades-wrap {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
         #mapview-wrap {
           position: relative;
           background: #151515;
