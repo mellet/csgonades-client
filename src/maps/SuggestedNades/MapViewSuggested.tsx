@@ -19,7 +19,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
     event({
-      category: "MapOverview",
+      category: "Suggested Nade",
       action: "Nade Clicked",
     });
   };
@@ -40,7 +40,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
     e.stopPropagation();
 
     event({
-      category: "MapOverview",
+      category: "Suggested Nade",
       action: "Dismiss",
     });
 
