@@ -1,8 +1,8 @@
-import { FC, memo, useEffect } from "react";
+import { FC, memo } from "react";
 import { ToastList } from "../common/toast/ToastList";
 import { usePreloadUser } from "../store/AuthStore/AuthHooks";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { useAnalytics, usePageView } from "../utils/Analytics";
+import { usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
@@ -12,7 +12,6 @@ import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../maps/components/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
-import { useNumNadesVisited } from "../features/tracker/useTracker";
 import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
 import { SiteNav } from "./Navigation/SiteNav";
 
