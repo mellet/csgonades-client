@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaTimes } from "react-icons/fa";
-import { LayerPosition } from "../constants/Constants";
+import { Dimensions, LayerPosition } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
 type Props = {
@@ -38,10 +38,13 @@ export const CSGNModal: FC<Props> = ({
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: ${LayerPosition.MODAL};
-            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            z-index: ${LayerPosition.MODAL};
           }
 
           .modal {
@@ -72,20 +75,25 @@ export const CSGNModal: FC<Props> = ({
       </div>
       <style jsx>{`
         .modal-bg {
+          opacity: 0;
           position: fixed;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
           z-index: ${LayerPosition.MODAL};
-          background: rgba(0, 0, 0, 0.8);
+          background: rgba(0, 0, 0, 0.75);
           display: flex;
           justify-content: center;
+          backdrop-filter: blur(3px);
+          animation-name: fadeIn;
+          animation-duration: 0.3s;
+          animation-fill-mode: forwards;
         }
 
         .modal {
           align-self: center;
-          border-radius: 6px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
           max-width: 90vw;
           max-height: 90vh;
           background: ${colors.DP01};
@@ -140,6 +148,15 @@ export const CSGNModal: FC<Props> = ({
         .modal-content {
           overflow-y: auto;
           flex: 1;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
       `}</style>
     </>

@@ -3,10 +3,12 @@ import { CSGNModal } from "../../common/CSGNModal";
 import { useAnalytics } from "../../utils/Analytics";
 import { SignInnButton } from "../../layout/Misc/SignInnButton";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
-import { Twemoji } from "../../common/Twemoj/Twemoji";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaComment, FaPlus, FaStar } from "react-icons/fa";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { Dimensions } from "../../constants/Constants";
 
 export const SignInWarning: FC = memo(() => {
+  const { colors } = useTheme();
   const { signInWarning, clearSignInWarning } = useSignInWarning();
   const { event } = useAnalytics();
 
@@ -42,60 +44,69 @@ export const SignInWarning: FC = memo(() => {
         onDismiss={onDismiss}
       >
         <div className="sign-in-warning">
-          <div className="section">
-            I see you&apos;re not signed in <Twemoji emoji="😥" />
-            <br />
-            By signing in you can:
-          </div>
-          {signInWarning === "filterpro" && (
-            <div className="section">
-              <span className="check">
-                <FaCheckCircle />
-              </span>{" "}
-              Filter proffesional nades
-            </div>
-          )}
-          <div className="section">
-            <Twemoji emoji="🤩" /> Favorite nades
-          </div>
-          <div className="section">
-            <Twemoji emoji="🧐" /> Comment on nades
-          </div>
-          <div className="section">
-            <Twemoji emoji="🤤" /> Filter nades by your favorite ones
-          </div>
-          {signInWarning !== "filterpro" && (
-            <div className="section">
-              <span className="check">
-                <FaCheckCircle />
-              </span>{" "}
-              Filter proffesional nades
-            </div>
-          )}
+          <div className="section">Sign in and you can...</div>
 
-          <div className="msg">
-            So what are you waiting for? <Twemoji emoji="👊" />
+          <div className="section">
+            <span className="fa-icon plus">
+              <FaPlus />
+            </span>
+            Add new nades
           </div>
-
+          <div className="section">
+            <span className="fa-icon star">
+              <FaStar />
+            </span>
+            Favorite nades
+          </div>
+          <div className="section">
+            <span className="fa-icon comment">
+              <FaComment />
+            </span>
+            Comment on nades
+          </div>
+          <div className="section">
+            <span className="fa-icon check">
+              <FaCheckCircle />
+            </span>
+            Filter proffesional nades
+          </div>
           <div className="btn" onClick={onSignIn}>
             <SignInnButton />
           </div>
         </div>
       </CSGNModal>
       <style jsx>{`
-        .check {
-          color: #00b8d9;
-          position: relative;
-          top: 2px;
+        .sign-in-warning {
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          min-width: 250px;
         }
 
-        .sign-in-warning {
-          padding: 16px;
+        .fa-icon {
+          position: relative;
+          top: 2px;
+          min-width: 24px;
+          display: inline-block;
+        }
+
+        .check {
+          color: #00b8d9;
+        }
+
+        .plus {
+          color: ${colors.SUCCESS};
+        }
+
+        .star {
+          color: ${colors.FAV_YELLOW};
+        }
+
+        .comment {
+          color: ${colors.GREY};
         }
 
         .msg {
           text-align: center;
-          padding: 16px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .btn {
@@ -104,10 +115,7 @@ export const SignInWarning: FC = memo(() => {
         }
 
         .section {
-          margin-bottom: 10px;
-        }
-
-        .btn {
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

@@ -3,7 +3,7 @@ import { PersistConfig, persistReducer } from "redux-persist";
 import { SiteStats } from "../../api/StatsApi";
 import storage from "redux-persist/lib/storage";
 
-export type SignInWarningType = "favorite" | "filterpro" | "vote";
+export type SignInWarningType = "favorite" | "filterpro" | "addnade";
 
 type GlobalState = {
   readonly acceptedCookieConcent: boolean;
