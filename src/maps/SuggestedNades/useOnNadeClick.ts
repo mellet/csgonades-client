@@ -1,7 +1,6 @@
 import Router from "next/router";
 import { useState } from "react";
 import { NadeLight } from "../../nade-data/Nade/Nade";
-import { useAnalytics } from "../../utils/Analytics";
 
 export const useOnNadeClusterClick = () => {
   const [suggestedNades, setSuggestedNades] = useState<NadeLight[] | null>(
