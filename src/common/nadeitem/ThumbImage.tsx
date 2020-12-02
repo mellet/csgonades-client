@@ -34,7 +34,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
           setVisisble(true);
         }
       }
-    }, 100);
+    }, 300);
     return () => clearTimeout(timer);
   }, [resultImgRdy, lineupImgRdy, hasLineUpImage]);
 
