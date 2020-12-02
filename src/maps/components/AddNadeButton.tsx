@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
@@ -6,7 +6,7 @@ import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import Router from "next/router";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
 
-export const AddNadeButton: FC = () => {
+export const AddNadeButton: FC = memo(() => {
   const { setSignInWarning } = useSignInWarning();
   const isSignedIn = useIsSignedIn();
   const { colors } = useTheme();
@@ -56,4 +56,4 @@ export const AddNadeButton: FC = () => {
       `}</style>
     </>
   );
-};
+});

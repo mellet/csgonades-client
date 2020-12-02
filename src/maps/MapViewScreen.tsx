@@ -3,12 +3,12 @@ import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { Dimensions } from "../constants/Constants";
 import { useNadeClusters } from "../store/MapStore/hooks/useNadesForMapView";
 import { NadeLight } from "../nade-data/Nade/Nade";
-import { MapPosIcon } from "./mapview/MapPosIcon";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { useFilterServerSideNades } from "../store/MapStore/hooks/useFilteredNades";
 import { useWindowSize } from "../common/MinSizeRender";
 import { AddNadeButton } from "./components/AddNadeButton";
 import { NoNadesMessage } from "./components/NoNadesMessage";
+import { MapIcons } from "./mapview/MapIcons";
 
 type Props = {
   allNades: NadeLight[];
@@ -21,19 +21,9 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [showIcons, setShowIcons] = useState(false);
   const [mapSize, setMapSize] = useState(0);
   const mapViewRef = useRef<HTMLDivElement>(null);
   const clusters = useNadeClusters(filteredNades);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (mapLoaded) {
-        setShowIcons(true);
-      }
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [mapLoaded]);
 
   function recalcMapSize(offsetHeight: number, offsetWidth: number) {
     if (offsetHeight < offsetWidth) {
@@ -74,34 +64,24 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
         </div>
         <div id="mapview-absolute">
           <div id="mapview-screen">
-            {true && (
-              <div id="mapview">
-                <img
-                  src={`/mapsoverlays/${map}.jpg`}
-                  onLoad={onMapViewImageLoaded}
-                />
-                {showIcons &&
-                  clusters.map((cluster) => {
-                    const nade = cluster[0];
-                    return (
-                      <MapPosIcon
-                        key={nade.id}
-                        nade={nade}
-                        cluster={cluster}
-                        mapWidth={canvasSize}
-                        numNades={cluster.length}
-                        onPress={() => onClusterClick(cluster)}
-                      />
-                    );
-                  })}
+            <div id="mapview">
+              <img
+                src={`/mapsoverlays/${map}.jpg`}
+                onLoad={onMapViewImageLoaded}
+              />
+              <MapIcons
+                clusters={clusters}
+                visible={mapLoaded}
+                canvasSize={canvasSize}
+                onClusterClick={onClusterClick}
+              />
 
-                {!hasNades && (
-                  <div className="no-nades-wrap">
-                    <NoNadesMessage />
-                  </div>
-                )}
-              </div>
-            )}
+              {!hasNades && (
+                <div className="no-nades-wrap">
+                  <NoNadesMessage />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

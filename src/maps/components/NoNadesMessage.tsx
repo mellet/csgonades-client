@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
-export const NoNadesMessage: FC = () => {
+export const NoNadesMessage: FC = memo(() => {
   const { colors } = useTheme();
 
   return (
@@ -40,4 +40,4 @@ export const NoNadesMessage: FC = () => {
       `}</style>
     </>
   );
-};
+});
