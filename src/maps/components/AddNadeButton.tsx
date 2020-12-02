@@ -1,16 +1,22 @@
-import Link from "next/link";
 import { FC } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import Router from "next/router";
+import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
 
 export const AddNadeButton: FC = () => {
+  const { setSignInWarning } = useSignInWarning();
   const isSignedIn = useIsSignedIn();
   const { colors } = useTheme();
 
-  if (!isSignedIn) {
-    return null;
+  function onClick() {
+    if (isSignedIn) {
+      Router.push("/createnade");
+    } else {
+      setSignInWarning("addnade");
+    }
   }
 
   return (
@@ -22,13 +28,9 @@ export const AddNadeButton: FC = () => {
         size="tiny"
         hoverable
         trigger={
-          <div>
-            <Link href="/createnade">
-              <button className="add-btn">
-                <FaPlus />
-              </button>
-            </Link>
-          </div>
+          <button className="add-btn" onClick={onClick}>
+            <FaPlus />
+          </button>
         }
       />
 
