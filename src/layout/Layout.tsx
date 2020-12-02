@@ -23,7 +23,6 @@ type Props = {
 export const Layout: FC<Props> = memo(({ children }) => {
   const { colors } = useTheme();
   const { isNavOpen } = useNavigation();
-  useGlobalAnalyticsEvents();
   useSetupSession();
   usePageView();
   usePreloadUser();
@@ -158,6 +157,7 @@ export const Layout: FC<Props> = memo(({ children }) => {
   );
 });
 
+/**
 const useGlobalAnalyticsEvents = () => {
   const { event } = useAnalytics();
   const numNadesVisited = useNumNadesVisited();
@@ -180,4 +180,4 @@ const useGlobalAnalyticsEvents = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numNadesVisited]);
-};
+}; */

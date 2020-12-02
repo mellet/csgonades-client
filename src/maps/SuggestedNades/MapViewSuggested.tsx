@@ -41,20 +41,11 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
     event({
       category: "MapOverview",
-      action: "Dismiss Button Click",
+      action: "Dismiss",
     });
 
     onDismiss();
   };
-
-  function onBackgroundCloseClick() {
-    event({
-      category: "MapOverview",
-      action: "Dismiss Background Click",
-    });
-
-    onDismiss();
-  }
 
   if (!nades) {
     return null;
@@ -62,7 +53,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
   return (
     <>
-      <div className="suggested-nades" onClick={onBackgroundCloseClick}>
+      <div className="suggested-nades" onClick={onDismissCloseClick}>
         <div className="bg" />
         <div className="nades">
           <div className="title">

@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from "react";
+import { FC, memo } from "react";
 import { CSGNModal } from "../../common/CSGNModal";
 import { useAnalytics } from "../../utils/Analytics";
 import { SignInnButton } from "../../layout/Misc/SignInnButton";
@@ -11,15 +11,6 @@ export const SignInWarning: FC = memo(() => {
   const { colors } = useTheme();
   const { signInWarning, clearSignInWarning } = useSignInWarning();
   const { event } = useAnalytics();
-
-  useEffect(() => {
-    if (signInWarning) {
-      event({
-        category: `Sign In Warning ${signInWarning}`,
-        action: "Displayed",
-      });
-    }
-  }, [signInWarning, event]);
 
   function onSignIn() {
     event({
