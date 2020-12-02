@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FC, memo } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import { CrossHair } from "../../nade-ui/CrossHair";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
@@ -10,14 +10,50 @@ type Props = {
 
 export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
   const hasLineUpImage = !!lineupThumbUrl;
+  const [resultImgRdy, setResultImgRdy] = useState(false);
+  const [lineupImgRdy, setLineupImgRdy] = useState(false);
+  const [visible, setVisisble] = useState(false);
+
+  // If loading images is super slow or event is not fiering
+  // show image optimisticly
+  useEffect(() => {
+    const slowTimer = setTimeout(() => {
+      setVisisble(true);
+    }, 1500);
+    return () => clearTimeout(slowTimer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (hasLineUpImage) {
+        if (resultImgRdy && lineupImgRdy) {
+          setVisisble(true);
+        }
+      } else {
+        if (resultImgRdy) {
+          setVisisble(true);
+        }
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [resultImgRdy, lineupImgRdy, hasLineUpImage]);
+
   const { colors } = useTheme();
+
+  function onResultImgRdy() {
+    setResultImgRdy(true);
+  }
+  function onLineupImgRdy() {
+    setLineupImgRdy(true);
+  }
 
   return (
     <>
-      <div className={"thumb-image"}>
+      <div className={visible ? "thumb-image visible" : "thumb-image"}>
         <div className="result-image">
           {thumbUrl && (
             <Image
+              onLoad={onResultImgRdy}
               src={thumbUrl}
               layout="fill"
               objectFit="cover"
@@ -31,6 +67,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
             <div className="lineup-image">
               <div className="lineup-img-wrap">
                 <Image
+                  onLoad={onLineupImgRdy}
                   src={lineupThumbUrl}
                   layout="fill"
                   objectFit="cover"
@@ -46,11 +83,15 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
       </div>
       <style jsx>{`
         .thumb-image {
-          opacity: 1;
+          opacity: 0;
           height: 100%;
           position: relative;
           filter: brightness(1.1) saturate(120%) contrast(105%);
-          transition: opacity 0.5s;
+          transition: opacity 0.2s;
+        }
+
+        .visible {
+          opacity: 1;
         }
 
         .result-image {
