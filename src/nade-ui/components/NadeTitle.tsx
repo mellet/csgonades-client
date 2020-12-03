@@ -5,6 +5,7 @@ import { TitleFavBtn } from "./TitleFavBtn";
 import { TitleReportBtn } from "./TileReportBtn";
 import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
 import Link from "next/link";
+import { useAnalytics } from "../../utils/Analytics";
 
 type Props = {
   map?: CsgoMap;
@@ -14,6 +15,15 @@ type Props = {
 };
 
 export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
+  const { event } = useAnalytics();
+
+  function logBackEvent() {
+    event({
+      category: "Nade Page",
+      action: "Back click",
+    });
+  }
+
   const { colors } = useTheme();
 
   return (
@@ -22,7 +32,7 @@ export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
         <div id="left-controls">
           {!!map && (
             <Link href={`/maps/${map}`}>
-              <button id="back">
+              <button id="back" onClick={logBackEvent}>
                 <FaChevronLeft />
               </button>
             </Link>
