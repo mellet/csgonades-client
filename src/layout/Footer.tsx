@@ -12,10 +12,10 @@ export const Footer: FC = memo(() => {
       <div className="footer-wrap">
         <div className="footer">
           <div className="footer-links">
-            <Link href="/privacypolicy" as="/privacypolicy" prefetch={false}>
+            <Link href="/privacypolicy" prefetch={false}>
               <a>Privacy Policy</a>
             </Link>
-            <Link href="/contact" as="/contact" prefetch={false}>
+            <Link href="/contact" prefetch={false}>
               <a>Contact</a>
             </Link>
           </div>

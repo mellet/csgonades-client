@@ -71,7 +71,7 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
     <>
       <div className="nade-comment-item">
         <div className="nade-comment-header">
-          <Link href="/users/[user]" as={`/users/${nadeComment.steamId}`}>
+          <Link href={`/users/${nadeComment.steamId}`}>
             <a className="nade-comment-user">
               <img src={nadeComment.avatar} />
               {nadeComment.nickname}

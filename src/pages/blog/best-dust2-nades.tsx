@@ -23,7 +23,7 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
 
         <div className="dust2-nades">
           <span>There are many nades to discover on dust2!</span>
-          <Link href="/maps/[map]" as="/maps/dust2">
+          <Link href="/maps/dust2">
             <a>
               <img src="/blogimg/dust2nades.jpg" />
             </a>
@@ -32,10 +32,8 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
 
         <p>
           This list is my personal favorites, but you can also browse{" "}
-          <Link href="/maps/[map]" as="/maps/dust2">
-            all Dust2 nades
-          </Link>{" "}
-          to find your own preferrences.
+          <Link href="/maps/dust2">all Dust2 nades</Link> to find your own
+          preferrences.
         </p>
 
         <h2>1. Xbox Smoke</h2>
@@ -69,10 +67,8 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
 
         <p>
           Here are my favourites, but go over to{" "}
-          <Link href="/maps/[map]" as="/maps/dust2">
-            Dust2 nades
-          </Link>{" "}
-          if you prefer to throw it from T Spawn:
+          <Link href="/maps/dust2">Dust2 nades</Link> if you prefer to throw it
+          from T Spawn:
         </p>
         <div className="nade-list">
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-long-doors" />
@@ -123,7 +119,7 @@ const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
         <p>
           If you want to learn even more nades for Dust2,{" "}
-          <Link href="/maps/[map]" as="/maps/dust2">
+          <Link href="/maps/dust2">
             head over to see all the nades for Dust2
           </Link>
           . Or, if you know a good one, sign in and add it for everyone else to
@@ -239,19 +235,19 @@ const BlogSideBar: FC = () => {
   return (
     <>
       <div className="blog-sidebar spacer">
-        <Link href="/maps/[map]" as="/maps/dust2">
+        <Link href="/maps/dust2">
           <button className="cta">
             <span>More Dust2 Smokes</span>{" "}
             <img src="/icons/grenades/smoke.png" />
           </button>
         </Link>
-        <Link href="/maps/[map]" as="/maps/dust2">
+        <Link href="/maps/dust2">
           <button className="cta">
             <span>More Dust2 Flashes</span>{" "}
             <img src="/icons/grenades/flash.png" />
           </button>
         </Link>
-        <Link href="/maps/[map]" as="/maps/dust2">
+        <Link href="/maps/dust2">
           <button className="cta">
             <span>More Dust2 Molotovs</span>{" "}
             <img src="/icons/grenades/molotov.png" />

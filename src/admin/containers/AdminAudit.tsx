@@ -19,9 +19,7 @@ export const AdminAudit: FC = () => {
         {auditEvents.map((audit) => (
           <div key={audit.id} className="admin-audit">
             <div className="audit-header">
-              <Link href={`/nades/[nade]`} as={`/nades/${audit.onNadeId}`}>
-                Nade Changed
-              </Link>
+              <Link href={`/nades/${audit.onNadeId}`}>Nade Changed</Link>
 
               <span className="date">{prettyDateTime(audit.createdAt)}</span>
             </div>

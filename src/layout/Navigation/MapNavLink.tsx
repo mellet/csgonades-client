@@ -15,7 +15,7 @@ export const MapPageLink: FC<Props> = ({ map, children }) => {
 
   return (
     <>
-      <Link href="/maps/[map]" as={`/maps/${map}`}>
+      <Link href={`/maps/${map}`}>
         <a>{children}</a>
       </Link>
       <style jsx>{``}</style>

@@ -21,10 +21,7 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
   return (
     <>
       <div className="edit">
-        <Link
-          href="/nades/[...slug]"
-          as={`/nades/${nade.slug || nade.id}/edit`}
-        >
+        <Link href={`/nades/${nade.slug || nade.id}/edit`}>
           <button className="edit-btn">
             <FaEdit /> <span>Edit Nade</span>
           </button>

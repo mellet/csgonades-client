@@ -21,7 +21,7 @@ export const ReportItem: FC<Props> = ({ report }) => {
         </div>
         <div className="report-body">{report.message}</div>
         <div className="actions">
-          <Link href={`/nades/[nade]`} as={`/nades/${report.nadeId}`}>
+          <Link href={`/nades/${report.nadeId}`}>
             <button>Nade</button>
           </Link>
         </div>

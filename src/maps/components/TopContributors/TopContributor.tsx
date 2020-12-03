@@ -182,7 +182,7 @@ const TopContributor: FC<Props> = ({ user }) => {
   return (
     <>
       <div className="contributor-wrap">
-        <Link href={"/users/[user]"} as={`/users/${user.steamId}`}>
+        <Link href={`/users/${user.steamId}`}>
           <a className="contributor">
             <img src={user.avatar} />
             <span className="nickname">{user.nickname}</span>

@@ -146,10 +146,7 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
           </PageLink>
         </td>
         <td>
-          <Link
-            href="/nades/[...slug]"
-            as={`/nades/${nade.slug || nade.id}/edit`}
-          >
+          <Link href={`/nades/${nade.slug || nade.id}/edit`}>
             <button className="edit-btn">
               <FaEdit /> Edit
             </button>

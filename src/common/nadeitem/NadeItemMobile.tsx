@@ -59,7 +59,7 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
                 )}
               </div>
               <div className="context-action">
-                <Link href={"/nades/[nade]"} as={`/nades/${urlIdOrSlug}`}>
+                <Link href={`/nades/${urlIdOrSlug}`}>
                   <a className="nade-page-link">
                     Details{" "}
                     <FaChevronRight style={{ position: "relative", top: 2 }} />
