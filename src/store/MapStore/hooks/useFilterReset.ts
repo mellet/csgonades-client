@@ -7,17 +7,24 @@ import {
   filterByTypeSelector,
   filterByProSelector,
 } from "../selectors";
+import { useAnalytics } from "../../../utils/Analytics";
 
 export const useFilterReset = () => {
+  const { event } = useAnalytics();
+
   const byTickrate = useSelector(filterByTickrateSelector);
   const byFavorites = useSelector(filterByFavoritesSelector);
   const byType = useSelector(filterByTypeSelector);
   const byPro = useSelector(filterByProSelector);
   const dispatch = useDispatch();
 
-  const resetFilter = useCallback(() => dispatch(resetFilterAction()), [
-    dispatch,
-  ]);
+  const resetFilter = useCallback(() => {
+    dispatch(resetFilterAction());
+    event({
+      category: "Filter",
+      action: "Reset",
+    });
+  }, [dispatch, event]);
 
   const canReset = useMemo(() => {
     if (byFavorites) {
