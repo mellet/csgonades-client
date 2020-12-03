@@ -26,7 +26,9 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   // Old site urls are no longer available
   if (nadeIdOrSlug.length <= 3 && idIsOnlyNumbers) {
-    return { notFound: true };
+    return {
+      notFound: true,
+    };
   }
 
   const requestedSlug = checkIsSlug(nadeIdOrSlug);
@@ -35,15 +37,19 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   if (result.isErr()) {
     // Might need to display a better error
-    return { notFound: true };
+    return {
+      notFound: true,
+    };
   }
 
   // Redirect to slug url if using non slug url
   if (!requestedSlug && result.value.slug) {
-    res.writeHead(301, {
-      Location: `/nades/${result.value.slug}`,
-    });
-    res.end();
+    return {
+      redirect: {
+        destination: `/nades/${result.value.slug}`,
+        statusCode: 301,
+      },
+    };
   }
 
   return {
