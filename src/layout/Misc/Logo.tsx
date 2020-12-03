@@ -2,6 +2,7 @@ import { FC, memo, useMemo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { PageLink } from "../../common/PageLink";
 import Image from "next/image";
+import { Dimensions } from "../../constants/Constants";
 
 export const Logo: FC = memo(() => {
   const { theme } = useTheme();
@@ -28,7 +29,7 @@ export const Logo: FC = memo(() => {
       <style jsx>{`
         #logo {
           display: block;
-          height: 40px;
+          height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
           position: relative;
           width: 70px;
           margin-left: -2px;

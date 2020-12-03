@@ -23,21 +23,22 @@ export const SignInnButton: FC = () => {
 
         .steam-login {
           display: flex;
-          border-radius: 10px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
           align-items: center;
           color: white;
           background: #2295c9;
-          padding: 6px 12px;
+          padding: 0px 6px;
           transition: background 0.25s;
+          height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
         }
 
         .steam-logo {
           transition: transform 0.25s;
-          margin-right: 10px;
-          font-size: 20px;
+          margin-right: 6px;
+          font-size: 24px;
           position: relative;
-          top: 3px;
-          transform: scale(1.3);
+          top: 2px;
+          transform: scale(1);
         }
 
         .steam-text {
@@ -56,7 +57,7 @@ export const SignInnButton: FC = () => {
         }
 
         .steam-login:hover > .steam-logo {
-          transform: scale(1.5);
+          transform: scale(1.1);
         }
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {

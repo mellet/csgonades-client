@@ -1,6 +1,7 @@
 import { FC, memo, useMemo } from "react";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { FaMoon } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { Dimensions } from "../../constants/Constants";
 
 export const ThemeToggler: FC = memo(() => {
   const { toggleTheme, theme } = useTheme();
@@ -19,7 +20,12 @@ export const ThemeToggler: FC = memo(() => {
     <>
       <div className="darkmode-toggle">
         <button className={classNameBuild} onClick={toggleTheme}>
-          <FaMoon size={12} />
+          {theme === "dark" && (
+            <FaSun size={18} style={{ position: "relative", top: 2 }} />
+          )}
+          {theme === "light" && (
+            <FaMoon size={16} style={{ position: "relative", top: 2 }} />
+          )}
         </button>
       </div>
       <style jsx>{`
@@ -33,10 +39,11 @@ export const ThemeToggler: FC = memo(() => {
           border: none;
           padding: 0;
           margin: 0;
-          border-radius: 6px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
           outline: none;
-          padding: 7px 7px 5px 7px;
           background: #f2f2f2;
+          height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
+          width: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
         }
 
         .toggle-btn:hover {
