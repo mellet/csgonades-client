@@ -16,10 +16,7 @@ const NadePageComponent: NextPage<Props> = ({ nade }) => {
   return <NadePage key={nade.id} nade={nade} />;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  res,
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const nadeIdOrSlug = query.nade as string;
 
   const idIsOnlyNumbers = /^\d+$/.test(nadeIdOrSlug);
