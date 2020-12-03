@@ -26,12 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   // Old site urls are no longer available
   if (nadeIdOrSlug.length <= 3 && idIsOnlyNumbers) {
-    res.statusCode = 410;
-    return {
-      props: {
-        nade: null,
-      },
-    };
+    return { notFound: true };
   }
 
   const requestedSlug = checkIsSlug(nadeIdOrSlug);
@@ -39,12 +34,8 @@ export const getServerSideProps: GetServerSideProps = async ({
   const result = await NadeApi.byId(nadeIdOrSlug);
 
   if (result.isErr()) {
-    res.statusCode = 404;
-    return {
-      props: {
-        nade: null,
-      },
-    };
+    // Might need to display a better error
+    return { notFound: true };
   }
 
   // Redirect to slug url if using non slug url

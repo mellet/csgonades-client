@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps<any, { map: CsgoMap }> = async ({
   params,
 }) => {
   if (!params) {
-    return { props: { map: null, ssrNades: null } };
+    return { notFound: true };
   }
 
   const mapName = params.map;
@@ -49,7 +49,7 @@ export const getStaticProps: GetStaticProps<any, { map: CsgoMap }> = async ({
       map: mapName,
       ssrNades: ssrNades,
     },
-    revalidate: 60 * 10,
+    revalidate: 60 * 5,
   };
 };
 
