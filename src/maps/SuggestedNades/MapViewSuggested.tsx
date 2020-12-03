@@ -86,6 +86,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           animation-name: fadeId;
           animation-duration: 0.3s;
           animation-fill-mode: forwards;
+          -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
         }
 
         .nades {
@@ -108,7 +110,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           right: 0;
           bottom: 0;
           background: ${colors.DP00};
-          opacity: 0.95;
+          opacity: 0.9;
         }
 
         .title {
