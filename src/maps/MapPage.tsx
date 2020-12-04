@@ -14,6 +14,7 @@ import { useSetMapView } from "../store/MapStore/hooks/useSetMapView";
 import { FixedBottomClosabeleAd } from "../common/adunits/FixedBottomClosableAd";
 import MapViewScreen from "./MapViewScreen";
 import { isMobileOnly } from "react-device-detect";
+import { Dimensions } from "../constants/Constants";
 
 const isServer = typeof window === "undefined";
 
@@ -100,7 +101,7 @@ export const MapPage: FC<Props> = memo(({ map, allNades }) => {
 
         #nade-nades {
           flex: 1;
-          padding: 16px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
           grid-area: nades;
           width: 100%;
         }

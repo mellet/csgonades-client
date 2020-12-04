@@ -7,10 +7,14 @@ import { FilterLabel } from "./FilterLabel";
 
 export const MapViewSelector: FC = () => {
   const { colors } = useTheme();
-  const { mapView, setMapView } = useSetMapView();
+  const { mapView, setMapView } = useSetMapView({ trackEvent: true });
 
   function onSwitchToOverview() {
     setMapView("overview");
+  }
+
+  function onSwtichToList() {
+    setMapView("list");
   }
 
   return (
@@ -28,7 +32,7 @@ export const MapViewSelector: FC = () => {
           </button>
           <button
             className={mapView === "list" ? "selector selected" : "selector"}
-            onClick={() => setMapView("list")}
+            onClick={onSwtichToList}
           >
             <FaListUl size={Dimensions.BUTTON_HEIGHT / 1.8} />
           </button>

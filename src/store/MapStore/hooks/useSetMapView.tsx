@@ -4,7 +4,12 @@ import { useAnalytics } from "../../../utils/Analytics";
 import { mapViewSelector } from "../selectors";
 import { MapView, setMapViewAction } from "../slice";
 
-export const useSetMapView = () => {
+type UseMapViewConfig = {
+  trackEvent?: boolean;
+};
+
+export const useSetMapView = (config?: UseMapViewConfig) => {
+  const { trackEvent } = config || {};
   const { event } = useAnalytics();
   const mapView = useSelector(mapViewSelector);
   const dispatch = useDispatch();
@@ -12,12 +17,14 @@ export const useSetMapView = () => {
   const setMapView = useCallback(
     (view: MapView) => {
       dispatch(setMapViewAction(view));
-      event({
-        category: "Filter",
-        action: `Set mapview ${view}`,
-      });
+      if (trackEvent) {
+        event({
+          category: "Filter",
+          action: `Set mapview ${view}`,
+        });
+      }
     },
-    [dispatch, event]
+    [dispatch, event, trackEvent]
   );
   return {
     mapView,
