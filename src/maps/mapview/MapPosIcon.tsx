@@ -106,7 +106,7 @@ export const MapPosIcon: FC<Props> = memo(
 
           .num .num-count {
             color: rgba(196, 245, 227, 1);
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 400;
             text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
             font-family: "Changa One", cursive;
@@ -114,12 +114,13 @@ export const MapPosIcon: FC<Props> = memo(
 
           .new {
             position: absolute;
-            bottom: 2px;
+            bottom: -1px;
             display: inline-block;
-            font-size: 7px;
+            font-size: 10px;
             color: rgba(224, 245, 66, 0.9);
             text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
             font-weight: 800;
+            text-align: center;
           }
 
           .point img {
