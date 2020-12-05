@@ -9,11 +9,11 @@ import {
 import { RiMouseLine } from "react-icons/ri";
 import { tickrateString, Tickrate } from "../../../nade-data/Nade/NadeTickrate";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
-import { dateMinutesAgo } from "../../../utils/DateUtils";
 import { Popup } from "semantic-ui-react";
 import { StatItem } from "./StatItem";
 import { Technique } from "../../../nade-data/Nade/Technique";
 import { Movement } from "../../../nade-data/Nade/NadeMovement";
+import { isNewNade } from "../../../utils/Common";
 
 type NadeStatsProps = {
   commentCount: number;
@@ -47,7 +47,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
     movement === "crouchwalking" ||
     movement === "walking";
   const isJumpThrow = technique === "jumpthrow";
-  const nadeIsNew = isNew(createdAt);
+  const nadeIsNew = isNewNade(createdAt);
 
   return (
     <>
@@ -234,12 +234,6 @@ export const NadeStats: FC<NadeStatsProps> = ({
     </>
   );
 };
-
-function isNew(createdAt: Date | string) {
-  const hoursAgoAdded = dateMinutesAgo(createdAt) / 60;
-
-  return hoursAgoAdded < 36;
-}
 
 function tickrateTooltip(tickrate?: Tickrate) {
   switch (tickrate) {
