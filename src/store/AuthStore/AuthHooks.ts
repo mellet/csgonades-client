@@ -11,6 +11,7 @@ import Axios from "axios";
 import { useDisplayToast } from "../ToastStore/hooks/useDisplayToast";
 import { setTokenAction, setUserAction, signOutAction } from "./AuthSlice";
 import { addAllFavoritesAction } from "../FavoriteStore/FavoriteSlice";
+import { useAnalytics } from "../../utils/Analytics";
 
 export const useSignedInUser = () => {
   const user = useSelector(userSelector);
@@ -163,6 +164,7 @@ async function trySignInFunc() {
 }
 
 export const useOnSignIn = () => {
+  const { event } = useAnalytics();
   const displayToast = useDisplayToast();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -175,6 +177,10 @@ export const useOnSignIn = () => {
           message: "Could not sign you in. Report this issue on our Discord.",
           severity: "error",
         });
+        event({
+          category: "Auth",
+          action: "Sign In Failed",
+        });
         router.push("/", "/");
         return;
       }
@@ -185,12 +191,20 @@ export const useOnSignIn = () => {
       const isFirstSignIn = checkIsFirstSignIn(userDetails);
 
       if (isFirstSignIn || userDetails.steamId === "76561198199195838") {
+        event({
+          category: "Auth",
+          action: "Sign In Success New",
+        });
         router.push("/finishprofile", "/finishprofile");
       } else {
+        event({
+          category: "Auth",
+          action: "Sign In Success Returning",
+        });
         router.push("/", "/");
       }
     })();
-  }, [dispatch, router, displayToast]);
+  }, [dispatch, router, displayToast, event]);
 };
 
 function checkIsFirstSignIn(user: User): boolean {

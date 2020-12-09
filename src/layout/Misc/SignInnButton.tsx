@@ -1,12 +1,27 @@
 import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
 import { Config, Dimensions } from "../../constants/Constants";
+import { useAnalytics } from "../../utils/Analytics";
 
 export const SignInnButton: FC = () => {
+  const { event } = useAnalytics();
+
+  function onSignInClick() {
+    event({
+      category: "Auth",
+      action: "Sign In Start",
+    });
+  }
+
   return (
     <>
       <div className="steam-login-wrapper">
-        <a className="steam-login" href={Config.SIGN_IN_URL} rel="nofollow">
+        <a
+          className="steam-login"
+          href={Config.SIGN_IN_URL}
+          rel="nofollow"
+          onClick={onSignInClick}
+        >
           <div className="steam-logo">
             <FaSteam />
           </div>
