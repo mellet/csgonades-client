@@ -5,10 +5,12 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { useFinishProfile } from "../store/UsersStore/hooks/useFinishProfile";
 import { Dimensions } from "../constants/Constants";
 import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
+import { useAnalytics } from "../utils/Analytics";
 
 type Props = { user: User };
 
 export const FinishProfile: FC<Props> = ({ user }) => {
+  const { event } = useAnalytics();
   const [loading, setLoading] = useState(false);
   const finishProfile = useFinishProfile();
   const [nickname, setNickname] = useState(user.nickname);
@@ -23,6 +25,10 @@ export const FinishProfile: FC<Props> = ({ user }) => {
       setError(
         "It looks like you put your e-mail as your nickname. This is not very smart as it will be visible to anyone."
       );
+      event({
+        category: "Auth",
+        action: "Wrong E-mail Entered",
+      });
       return;
     }
 
@@ -31,6 +37,10 @@ export const FinishProfile: FC<Props> = ({ user }) => {
       nickname,
       email,
       bio,
+    });
+    event({
+      category: "Auth",
+      action: "Finished Profile Creation",
     });
     displayToast({
       severity: "success",
