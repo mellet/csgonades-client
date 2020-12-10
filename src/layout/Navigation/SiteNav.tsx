@@ -1,5 +1,4 @@
 import { FC, memo } from "react";
-import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { PageLink } from "../../common/PageLink";
 
@@ -9,11 +8,17 @@ export const SiteNav: FC = memo(({}) => {
   return (
     <>
       <div className="site-nav">
-        <PageLink href="/blog" as="/blog">
+        <PageLink href="/blog" as="/blog" prefetch={false}>
           <span className="nav-item">Blog</span>
         </PageLink>
-        <PageLink href="/about" as="/about">
+        <PageLink href="/about" as="/about" prefetch={false}>
           <span className="nav-item">About</span>
+        </PageLink>
+        <PageLink href="/about" as="/contact" prefetch={false}>
+          <span className="nav-item">Contact</span>
+        </PageLink>
+        <PageLink href="/about" as="/privacypolicy" prefetch={false}>
+          <span className="nav-item">Privacy Policy</span>
         </PageLink>
       </div>
       <style jsx>{`
@@ -24,22 +29,16 @@ export const SiteNav: FC = memo(({}) => {
 
         .nav-item {
           display: block;
-          padding: 10px 16px;
+          padding: 8px 16px;
           color: ${colors.TEXT};
-          font-size: 16px;
+          font-size: 15px;
           cursor: pointer;
-          background: ${colors.DP01};
+          background: ${colors.DP02};
           border-top: 1px solid ${colors.BORDER};
         }
 
         .nav-item:hover {
-          background: ${colors.DP02};
-        }
-
-        @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
-          .site-nav {
-            display: none;
-          }
+          background: ${colors.DP01};
         }
       `}</style>
     </>

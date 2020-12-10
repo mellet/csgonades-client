@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FC, memo } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 
@@ -11,15 +10,6 @@ export const Footer: FC = memo(() => {
     <>
       <div className="footer-wrap">
         <div className="footer">
-          <div className="footer-links">
-            <Link href="/privacypolicy" prefetch={false}>
-              <a>Privacy Policy</a>
-            </Link>
-            <Link href="/contact" prefetch={false}>
-              <a>Contact</a>
-            </Link>
-          </div>
-
           <div className="footer-bottom">
             <div className="powered-by">
               Powered by{" "}
@@ -35,7 +25,7 @@ export const Footer: FC = memo(() => {
 
       <style jsx>{`
         .footer-wrap {
-          background: ${colors.PRIMARY};
+          background: ${colors.primaryBtnBg};
         }
 
         a {
