@@ -22,7 +22,7 @@ import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
 import { useRouter } from "next/router";
 import { SEO } from "../layout/SEO";
 import { TickrateSelector } from "./components/TickrateSelector";
-import { GuideLinesModal } from "./guidelines/GuideLinesModal";
+import { GuideLines } from "./guidelines/GuideLines";
 
 export const CreateNadePage: FC = ({}) => {
   const router = useRouter();
@@ -81,7 +81,7 @@ export const CreateNadePage: FC = ({}) => {
     <>
       <SEO title={"Submit nade"} canonical={`/createnade`} />
 
-      <GuideLinesModal />
+      <GuideLines />
 
       <div id="page-wrap">
         <h1 id="title">SUBMIT NADE</h1>
