@@ -84,7 +84,7 @@ export const CreateNadePage: FC = ({}) => {
       <GuideLines />
 
       <div id="page-wrap">
-        <h1 id="title">SUBMIT NADE</h1>
+        <h2 id="title">Submit Nade</h2>
         <div id="create-nade-page">
           <div id="info-label">
             <BigLabel value="Information" />
@@ -272,6 +272,7 @@ export const CreateNadePage: FC = ({}) => {
       <style jsx>{`
         #page-wrap {
           margin: ${Dimensions.GUTTER_SIZE}px;
+          margin-top: ${Dimensions.GUTTER_SIZE * 2}px;
         }
 
         .lineup-msg {
@@ -295,15 +296,11 @@ export const CreateNadePage: FC = ({}) => {
         }
 
         #title {
-          background: ${colors.DP01};
           color: ${colors.TEXT};
           font-size: 24px;
-          padding: 15px 30px;
+          padding: 0;
           margin: 0;
-          display: block;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #create-nade-page {
@@ -326,9 +323,9 @@ export const CreateNadePage: FC = ({}) => {
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           padding: 30px 30px;
           background: ${colors.DP02};
-          border-bottom-left-radius: 5px;
-          border-bottom-right-radius: 5px;
+          border-radius: 5px;
           margin-bottom: 150px;
+          border: 1px solid ${colors.BORDER};
         }
 
         #lineup-image {
