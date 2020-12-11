@@ -32,7 +32,6 @@ export const Logo: FC = memo(() => {
           height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
           position: relative;
           width: 70px;
-          margin-left: -2px;
         }
       `}</style>
     </>

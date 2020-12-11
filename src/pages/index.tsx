@@ -3,6 +3,9 @@ import React from "react";
 import { FrontPage } from "../frontpage/FrontPage";
 import { SEO } from "../layout/SEO";
 import { StatsApi, SiteStats } from "../api/StatsApi";
+import { Layout2 } from "../layout2/Layout2";
+import { Header } from "../layout/Header";
+import { Navigation } from "../navigation/Navigation";
 
 type Props = {
   stats: SiteStats | null;
@@ -11,7 +14,11 @@ type Props = {
 const Index: NextPage<Props> = ({ stats }) => (
   <>
     <SEO canonical="/" />
-    <FrontPage stats={stats} />
+    <Layout2
+      header={<Header />}
+      nav={<Navigation />}
+      main={<FrontPage stats={stats} />}
+    />
   </>
 );
 

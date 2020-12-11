@@ -14,7 +14,7 @@ import { TechniqueSelector } from "./components/TechniqueSelector";
 import { useCreateNadeState, validateState } from "./CreateNadeReducer";
 import { PreviewNade } from "./PreviewNades";
 import { ImageUploader } from "../newnade/ImageUploader";
-import { MapPositionEditor } from "../nade-ui/components/MapPositionEditor";
+import { MapPositionEditor } from "../nade-main/components/MapPositionEditor";
 import { SumbitBtn } from "./components/SubmitBtn";
 import { NadeApi } from "../nade-data/NadeApi";
 import { useGetOrUpdateToken } from "../store/AuthStore/hooks/useGetToken";

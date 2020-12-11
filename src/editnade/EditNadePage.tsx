@@ -11,7 +11,7 @@ import { EndPosInput } from "../createnade/components/EndPosInput";
 import { ThrownFromInput } from "../createnade/components/ThrownFromInput";
 import { DescriptionInput } from "../createnade/components/DescriptionInput";
 import { ImageSelector } from "../createnade/components/ImageSelector";
-import { MapPositionEditor } from "../nade-ui/components/MapPositionEditor";
+import { MapPositionEditor } from "../nade-main/components/MapPositionEditor";
 import { TypeSelector } from "../createnade/components/TypeSelector";
 import { MovementSelector } from "../createnade/components/MovementSelector";
 import { TechniqueSelector } from "../createnade/components/TechniqueSelector";

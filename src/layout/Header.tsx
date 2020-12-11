@@ -1,5 +1,4 @@
 import React, { FC, memo, Suspense } from "react";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Hamburger } from "./Misc/Hamburger";
 import { Logo } from "./Misc/Logo";
 import { Dimensions } from "../constants/Constants";
@@ -10,8 +9,6 @@ const UserNav = React.lazy(() => import("./Navigation/UserNav"));
 const isServer = typeof window === "undefined";
 
 export const Header: FC = memo(() => {
-  const { colors } = useTheme();
-
   return (
     <>
       <div id="header">
@@ -33,14 +30,7 @@ export const Header: FC = memo(() => {
 
       <style jsx>{`
         #header {
-          background: ${colors.DP03};
           height: ${Dimensions.HEADER_HEIGHT}px;
-          border-bottom: 1px solid ${colors.BORDER};
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-
-        #header.scrolled {
         }
 
         .header-wrap {

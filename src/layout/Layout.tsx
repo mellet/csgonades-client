@@ -10,7 +10,7 @@ import { ServiceDown } from "./ServiceDown";
 import { CookieConsent } from "../common/CookieConsent";
 import { MapNav } from "./Navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
-import { SignInWarning } from "../maps/components/SignInWarning";
+import { SignInWarning } from "../core/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
 import { SiteNav } from "./Navigation/SiteNav";

@@ -1,8 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { Nade } from "../../nade-data/Nade/Nade";
-import { NadeNotFound } from "../../nade-ui/NadeNotFound";
-import { NadePage } from "../../nade-ui";
+import { NadeNotFound } from "../../nade-main/NadeNotFound";
+import { Layout2 } from "../../layout2/Layout2";
+import { NadeMain } from "../../nade-main/NadeMain";
+import { NadeHeader } from "../../nade-header/NadeHeader";
 
 type Props = {
   nade: Nade;
@@ -13,7 +15,12 @@ const NadePageComponent: NextPage<Props> = ({ nade }) => {
     return <NadeNotFound />;
   }
 
-  return <NadePage key={nade.id} nade={nade} />;
+  return (
+    <Layout2
+      header={<NadeHeader key={nade.id} nade={nade} />}
+      main={<NadeMain key={nade.id} nade={nade} />}
+    />
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
