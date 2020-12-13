@@ -17,7 +17,6 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
         </div>
         <style jsx>{`
           .no-desc {
-            min-height: 200px;
             margin: 12px 16px;
             padding: 10px;
             background: ${colors.WARNING};
@@ -41,7 +40,6 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
       </div>
       <style jsx>{`
         .desc-wrap {
-          min-height: 150px;
           padding: 12px 16px;
           color: ${colors.TEXT};
         }
@@ -49,6 +47,17 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
       <style global jsx>{`
         .desc-wrap p {
           font-size: 16px;
+        }
+
+        .desc-wrap pre {
+          background: ${colors.DP01};
+          border-radius: 5px;
+          padding: 5px;
+        }
+
+        .desc-wrap code {
+          white-space: normal;
+          font-size: 14px;
         }
       `}</style>
     </>

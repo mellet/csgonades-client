@@ -44,6 +44,7 @@ export const NadeMeta: FC<Props> = memo(
           .nade-meta {
             display: flex;
             color: white;
+            overflow-x: auto;
           }
 
           .nade-meta-item {

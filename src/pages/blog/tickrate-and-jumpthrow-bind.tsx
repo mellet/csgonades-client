@@ -3,6 +3,8 @@ import { TickrateAndJumpthrowPost } from "../../blog/blogposts/TickrateAndJumpth
 import { HeaderDefault } from "../../defaultheader/Header";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
+import { blogTickrateAndJumpthrow } from "../../blog/ArticleData/blogPosts";
+import { BlogDefaultSidebar } from "../../blog/BlogDefaultSidebar";
 
 const TickRateAndJumpthrowBindBlogPost: FC = () => {
   return (
@@ -10,6 +12,7 @@ const TickRateAndJumpthrowBindBlogPost: FC = () => {
       nav={<Navigation />}
       header={<HeaderDefault />}
       main={<TickrateAndJumpthrowPost />}
+      sidebar={<BlogDefaultSidebar data={blogTickrateAndJumpthrow} />}
     />
   );
 };

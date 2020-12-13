@@ -2,8 +2,7 @@ import { FC, Suspense } from "react";
 import { Dimensions } from "../constants/Constants";
 import UserNav from "../defaultheader/components/UserNav";
 import { Nade } from "../nade-data/Nade/Nade";
-import { NadeTitle } from "./NadeTitle";
-import { generateNadeItemTitle } from "../utils/Common";
+import { NadeTitleBar } from "./NadeTitleBar";
 
 const isServer = typeof window === "undefined";
 
@@ -12,20 +11,11 @@ type Props = {
 };
 
 export const NadeHeader: FC<Props> = ({ nade }) => {
-  const [layoutTitle, subTitle] = generateNadeItemTitle(
-    nade.title,
-    nade.startPosition,
-    nade.endPosition,
-    nade.type,
-    nade.oneWay,
-    nade.map
-  );
-
   return (
     <>
       <div id="nade-header">
         <div id="nade-title">
-          <NadeTitle title={layoutTitle} subTitle={subTitle} map={nade.map} />
+          <NadeTitleBar nade={nade} />
         </div>
 
         {!isServer && (

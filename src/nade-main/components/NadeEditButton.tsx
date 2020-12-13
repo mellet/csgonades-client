@@ -28,20 +28,25 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
         </Link>
       </div>
       <style jsx>{`
-        .edit-btn {
+        .edit {
           width: 100%;
           background: ${colors.filterBg};
+        }
+
+        .edit-btn {
+          background: transparent;
           border: none;
           color: white;
-          padding: ${Dimensions.GUTTER_SIZE}px;
+          padding: 8px ${Dimensions.GUTTER_SIZE}px;
           outline: none;
-          font-size: 16px;
+          font-size: 14px;
           cursor: pointer;
           white-space: nowrap;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 16px;
+          border-radius: 0;
+          width: 100%;
         }
 
         .edit-btn:hover {
@@ -51,7 +56,7 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
         .edit-btn span {
           margin-left: 4px;
           position: relative;
-          top: 2px;
+          top: 1px;
         }
       `}</style>
     </>

@@ -25,7 +25,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           <span>There are many nades to discover on dust2!</span>
           <Link href="/maps/dust2">
             <a>
-              <img src="/blogimg/dust2nades.jpg" />
+              <img className="overview-img" src="/blogimg/dust2nades.jpg" />
             </a>
           </Link>
         </div>
@@ -150,7 +150,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           align-items: center;
           border-radius: 5px;
           color: white;
-          padding: 16px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .dust2-nades span {
@@ -159,7 +159,9 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         }
 
         .dust2-nades img {
+          width: 100%;
           max-width: 400px;
+
           opacity: 0.8;
         }
 
