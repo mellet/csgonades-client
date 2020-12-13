@@ -4,16 +4,16 @@ import { usePreloadUser } from "../store/AuthStore/AuthHooks";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { Footer } from "../navigation/NavFooter";
+import { HeaderDefault } from "../defaultheader/Header";
 import { ServiceDown } from "./ServiceDown";
 import { CookieConsent } from "../common/CookieConsent";
-import { MapNav } from "./Navigation/MapNav";
+import { MapNav } from "../navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
-import { SignInWarning } from "../maps/components/SignInWarning";
+import { SignInWarning } from "../core/SignInWarning";
 import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
 import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
-import { SiteNav } from "./Navigation/SiteNav";
+import { SecondaryNav } from "../navigation/SecondaryNav";
 
 type Props = {
   sideBar?: JSX.Element;
@@ -33,13 +33,13 @@ export const Layout: FC<Props> = memo(({ children }) => {
         <CookieConsent />
 
         <header>
-          <Header />
+          <HeaderDefault />
         </header>
 
         <nav className={isNavOpen ? "open" : "closed"}>
           <div id="nav-main">
             <MapNav />
-            <SiteNav />
+            <SecondaryNav />
           </div>
           <div id="nav-footer">
             <Footer />

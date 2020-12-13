@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC, memo, useEffect, useState } from "react";
-import { CrossHair } from "../../nade-ui/CrossHair";
+import { CrossHair } from "../../nade-main/components/VideoContainer/CrossHair";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 
 type Props = {

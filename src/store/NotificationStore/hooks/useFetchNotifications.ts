@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NotificationApi } from "../../../api/NotificationApi";
+import { NotificationApi } from "../../../core/api/NotificationApi";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
 import { useRouter } from "next/router";
 import { lastNotificationFetchSelector } from "../NotificationSelectors";
@@ -23,6 +23,7 @@ export const useFetchNotifications = () => {
     }
 
     const result = await NotificationApi.getNotifications(authToken);
+    console.log("Fetched notifications");
 
     if (result.isErr()) {
       console.error(result.error);
@@ -48,7 +49,7 @@ export const useFetchNotifications = () => {
 
     const mintutesAgoLastFetch = dateMinutesAgo(lastNotificationFetch);
 
-    if (mintutesAgoLastFetch < 10) {
+    if (mintutesAgoLastFetch < 5) {
       return;
     }
 

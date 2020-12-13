@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { UserApi } from "../../../api/UserApi";
+import { UserApi } from "../../../core/api/UserApi";
 import { UserUpdateDTO } from "../../../models/User";
 import { setUserAction } from "../../AuthStore/AuthSlice";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";

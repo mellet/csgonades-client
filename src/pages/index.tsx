@@ -1,8 +1,11 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
 import { FrontPage } from "../frontpage/FrontPage";
-import { SEO } from "../layout/SEO";
-import { StatsApi, SiteStats } from "../api/StatsApi";
+import { SEO } from "../common/SEO";
+import { StatsApi, SiteStats } from "../core/api/StatsApi";
+import { LayoutBuilder } from "../layout/LayoutBuilder";
+import { HeaderDefault } from "../defaultheader/Header";
+import { Navigation } from "../navigation/Navigation";
 
 type Props = {
   stats: SiteStats | null;
@@ -11,7 +14,11 @@ type Props = {
 const Index: NextPage<Props> = ({ stats }) => (
   <>
     <SEO canonical="/" />
-    <FrontPage stats={stats} />
+    <LayoutBuilder
+      header={<HeaderDefault />}
+      nav={<Navigation />}
+      main={<FrontPage stats={stats} />}
+    />
   </>
 );
 

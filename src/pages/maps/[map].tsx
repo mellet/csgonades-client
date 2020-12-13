@@ -2,7 +2,11 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { CsgoMap, getAllCsGoMaps } from "../../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../../nade-data/Nade/Nade";
-import { MapPage } from "../../maps/MapPage";
+import { MapMain } from "../../map-main/MapMain";
+import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { Navigation } from "../../navigation/Navigation";
+import { HeaderDefault } from "../../defaultheader/Header";
+import { MapSidebar } from "../../map-sidebar/MapSidebar";
 
 interface Props {
   map: CsgoMap;
@@ -14,7 +18,14 @@ const Map: NextPage<Props> = ({ map, ssrNades }) => {
     return null;
   }
 
-  return <MapPage key={map} map={map} allNades={ssrNades} />;
+  return (
+    <LayoutBuilder
+      header={<HeaderDefault />}
+      nav={<Navigation />}
+      main={<MapMain key={map} map={map} allNades={ssrNades} />}
+      sidebar={<MapSidebar map={map} nades={ssrNades} />}
+    />
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {

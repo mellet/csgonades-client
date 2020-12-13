@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { FrontPageJumbo } from "./FrontPageJumbo";
-import { SiteStats } from "../api/StatsApi";
+import { SiteStats } from "../core/api/StatsApi";
 import { BlogList } from "../blog/BlogList";
 import { Dimensions } from "../constants/Constants";
 import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";

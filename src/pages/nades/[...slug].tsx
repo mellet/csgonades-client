@@ -1,8 +1,11 @@
 import { GetServerSideProps, NextPage } from "next";
 import { Nade } from "../../nade-data/Nade/Nade";
-import { NadeNotFound } from "../../nade-ui/NadeNotFound";
+import { NadeNotFound } from "../../nade-main/NadeNotFound";
 import { NadeApi } from "../../nade-data/NadeApi";
-import { EditNadePage } from "../../editnade/EditNadePage";
+import { EditNadeMain } from "../../nade-edit-main/EditNadeMain";
+import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { Navigation } from "../../navigation/Navigation";
+import { HeaderDefault } from "../../defaultheader/Header";
 
 type Props = {
   nade: Nade | null;
@@ -13,7 +16,13 @@ const NadeEdit: NextPage<Props> = ({ nade }) => {
     return <NadeNotFound />;
   }
 
-  return <EditNadePage nade={nade} />;
+  return (
+    <LayoutBuilder
+      nav={<Navigation />}
+      header={<HeaderDefault />}
+      main={<EditNadeMain nade={nade} />}
+    />
+  );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({

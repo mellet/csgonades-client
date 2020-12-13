@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthApi } from "../../api/TokenApi";
-import { UserApi } from "../../api/UserApi";
+import { AuthApi } from "../../core/api/TokenApi";
+import { UserApi } from "../../core/api/UserApi";
 import { User } from "../../models/User";
 import { dateMinutesAgo } from "../../utils/DateUtils";
 import { userSelector } from "./AuthSelectors";
-import { getUserFavorites } from "../../api/FavoriteApi";
+import { getUserFavorites } from "../../core/api/FavoriteApi";
 import Axios from "axios";
 import { useDisplayToast } from "../ToastStore/hooks/useDisplayToast";
 import { setTokenAction, setUserAction, signOutAction } from "./AuthSlice";
