@@ -13,12 +13,12 @@ export const Hamburger: FC = memo(({}) => {
         {isNavOpen ? (
           <FaTimes
             size={30}
-            style={{ position: "relative", left: -8, top: 0 }}
+            style={{ position: "relative", left: -4, top: -1 }}
           />
         ) : (
           <FaBars
             size={24}
-            style={{ position: "relative", left: -5, top: 2 }}
+            style={{ position: "relative", left: -1, top: 2 }}
           />
         )}
       </div>
@@ -38,7 +38,7 @@ export const Hamburger: FC = memo(({}) => {
           opacity: 1;
         }
 
-        @media only screen and (max-width: 1195px) {
+        @media only screen and (max-width: 1200px) {
           .hamburger {
             display: block;
           }

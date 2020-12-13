@@ -32,6 +32,7 @@ export const NadeComments: FC<Props> = memo(({ nadeId }) => {
         .nade-comment-container {
           width: 100%;
           padding: ${Dimensions.GUTTER_SIZE}px;
+          padding-top: 0;
         }
 
         .nade-comments {

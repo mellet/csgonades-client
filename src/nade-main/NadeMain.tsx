@@ -11,6 +11,8 @@ import { useIncrementNumNadesVisisted } from "../features/tracker/useTracker";
 import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";
 import NadeStatus from "./components/NadeStatus";
+import { NadeAction } from "./components/NadeActions/NadeActions";
+import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 
 type Props = {
   nade: Nade;
@@ -75,6 +77,10 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
         <div id="nade-sidebar">
           <NadeInfoContainer nade={nade} />
+          <NadeAction nadeId={nade.id} />
+          <div className="advert">
+            <EzoicPlaceholder id="196" />
+          </div>
           <NadeComments nadeId={nade.id} />
         </div>
       </div>
@@ -83,9 +89,8 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
       <style jsx>{`
         #nade-page-grid {
-          grid-area: main;
           display: grid;
-          grid-template-columns: 1fr 1fr minmax(375px, 20%);
+          grid-template-columns: 1fr 1fr minmax(470px, 20%);
           grid-template-areas:
             "video video comments"
             "video video comments"
@@ -117,10 +122,24 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           align-items: center;
         }
 
-        .fake-ad {
-          width: 730px;
-          height: 90px;
-          background: #ccc;
+        @media only screen and (max-width: 1100px) {
+          #nade-page-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              "video"
+              "comments";
+            width: 100%;
+          }
+
+          #nade-page-main {
+            height: auto;
+          }
+
+          #nade-sidebar {
+            border-left: none;
+            height: auto;
+          }
         }
       `}</style>
     </>

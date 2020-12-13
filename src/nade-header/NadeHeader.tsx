@@ -25,12 +25,7 @@ export const NadeHeader: FC<Props> = ({ nade }) => {
     <>
       <div id="nade-header">
         <div id="nade-title">
-          <NadeTitle
-            title={layoutTitle}
-            subTitle={subTitle}
-            nadeId={nade.id}
-            map={nade.map}
-          />
+          <NadeTitle title={layoutTitle} subTitle={subTitle} map={nade.map} />
         </div>
 
         {!isServer && (

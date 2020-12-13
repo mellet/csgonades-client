@@ -81,6 +81,8 @@ export const Layout2: FC<Props> = memo(({ header, main, sidebar, nav }) => {
           border-bottom: 1px solid ${colors.BORDER};
           padding-left: ${Dimensions.GUTTER_SIZE}px;
           padding-right: ${Dimensions.GUTTER_SIZE}px;
+          max-width: 100vw;
+          overflow: hidden;
         }
 
         nav {
@@ -96,6 +98,7 @@ export const Layout2: FC<Props> = memo(({ header, main, sidebar, nav }) => {
           grid-area: main;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
+          max-width: 100vw;
         }
 
         #sidebar {
@@ -106,6 +109,76 @@ export const Layout2: FC<Props> = memo(({ header, main, sidebar, nav }) => {
 
         #sidebar:hover {
           overflow-y: auto;
+        }
+
+        @media only screen and (max-width: 1200px) {
+          .default-page {
+            grid-template-areas:
+              "header header header"
+              "main main main"
+              "main main main"
+              "main main main";
+          }
+
+          .with-sidebar-and-nav {
+            grid-template-areas:
+              "header header header"
+              "main main sidebar"
+              "main main sidebar"
+              "main main sidebar";
+          }
+
+          nav {
+            position: fixed;
+            top: ${Dimensions.HEADER_HEIGHT}px;
+            left: 0;
+            width: 190px;
+            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+            z-index: 1;
+            transition: transform 0.1s;
+          }
+
+          .open {
+            transform: translateX(0);
+          }
+
+          .closed {
+            transform: translateX(-100%);
+          }
+        }
+
+        @media only screen and (max-width: 950px) {
+          #page {
+            display: grid;
+            min-height: 100vh;
+            width: 100%;
+            background: ${colors.DP00};
+            grid-template-columns: 1fr;
+          }
+
+          .with-sidebar-and-nav {
+            grid-template-areas:
+              "header"
+              "main"
+              "sidebar";
+          }
+
+          header {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+
+          main {
+            grid-area: main;
+            height: auto;
+          }
+
+          #sidebar {
+            background: ${colors.DP02};
+            height: auto;
+            width: 100%;
+          }
         }
       `}</style>
     </>

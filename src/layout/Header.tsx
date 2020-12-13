@@ -44,22 +44,10 @@ export const Header: FC = memo(() => {
           display: flex;
           justify-content: space-around;
           height: 60px;
-          margin-top: -10px;
-          margin-bottom: -10px;
         }
 
         #theme-toggler {
           margin-right: 16px;
-        }
-
-        @media only screen and (max-width: 1195px) {
-          #header {
-            position: fixed;
-            left: 0;
-            top: 0;
-            right: 0;
-            z-index: 1000;
-          }
         }
       `}</style>
     </>

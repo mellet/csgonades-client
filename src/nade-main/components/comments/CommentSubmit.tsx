@@ -3,7 +3,7 @@ import { useGetOrUpdateToken } from "../../../store/AuthStore/hooks/useGetToken"
 import { NadeCommentApi, NadeComment } from "../../../api/NadeCommentApi";
 import { useIsSignedIn } from "../../../store/AuthStore/AuthHooks";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
-import { Config } from "../../../constants/Constants";
+import { Config, Dimensions } from "../../../constants/Constants";
 
 type Props = {
   nadeId: string;
@@ -57,19 +57,25 @@ export const CommentSubmit: FC<Props> = memo(
         {!isSignedIn && (
           <div className="comment-sign-in">
             <p>Do you want to comment on this nade?</p>
-            <p>
+            <div>
               <a href={Config.SIGN_IN_URL}>Sign in with steam</a>
-            </p>
+            </div>
           </div>
         )}
 
         <style jsx>{`
           .comment-sign-in {
-            padding: 15px;
-            background: ${colors.DP02};
-            border-radius: 5px;
+            padding: ${Dimensions.GUTTER_SIZE}px;
+            background: ${colors.DP03};
+            border-radius: ${Dimensions.BORDER_RADIUS};
             text-align: center;
             color: ${colors.TEXT};
+            border: 1px solid ${colors.BORDER};
+          }
+
+          .comment-sign-in p {
+            margin-bottom: 10px;
+            font-size: 16px;
           }
 
           .nade-submit {
@@ -83,7 +89,7 @@ export const CommentSubmit: FC<Props> = memo(
             outline: none;
             min-height: 120px;
             resize: none;
-            padding: 15px;
+            padding: ${Dimensions.GUTTER_SIZE}px;
             border-radius: 5px;
             color: ${colors.TEXT};
             border: 1px dashed ${colors.BORDER};

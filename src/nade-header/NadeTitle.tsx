@@ -4,17 +4,15 @@ import { FaChevronLeft } from "react-icons/fa";
 import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import Link from "next/link";
 import { useAnalytics } from "../utils/Analytics";
-import { TitleReportBtn } from "./TileReportBtn";
-import { TitleFavBtn } from "./TitleFavBtn";
+import { Dimensions } from "../constants/Constants";
 
 type Props = {
   map?: CsgoMap;
-  nadeId: string;
   subTitle?: string;
   title: string;
 };
 
-export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
+export const NadeTitle: FC<Props> = memo(({ title, subTitle, map }) => {
   const { event } = useAnalytics();
 
   function logBackEvent() {
@@ -39,11 +37,6 @@ export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
           )}
         </div>
 
-        <div id="actions">
-          <TitleReportBtn nadeId={nadeId} />
-          <TitleFavBtn nadeId={nadeId} />
-        </div>
-
         <h1 className="nade-title">
           <span className="main-title">
             {title} {subTitle}
@@ -57,8 +50,8 @@ export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
           display: grid;
           grid-template-columns: min-content min-content 1fr min-content;
           grid-template-areas:
-            "controls title . actions"
-            "controls title . actions";
+            "controls title"
+            "controls title";
           width: 100%;
           height: 100%;
         }
@@ -68,18 +61,11 @@ export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
           align-self: center;
         }
 
-        #actions {
-          grid-area: actions;
-          align-self: center;
-          display: flex;
-        }
-
         #back {
           color: ${colors.TEXT};
-          font-size: 30px;
+          font-size: 28px;
           display: block;
           position: relative;
-          top: -2px;
           background: transparent;
           border: none;
           outline: none;
@@ -87,14 +73,17 @@ export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
           margin: 0;
           padding: 0;
           display: block;
-          width: 30px;
-          height: 24px;
-          margin-right: 12px;
+          padding-right: ${Dimensions.GUTTER_SIZE}px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          left: -5px;
         }
 
         .nade-title {
           grid-area: title;
           align-self: center;
+          margin-left: -16px;
         }
 
         h1 {
@@ -106,41 +95,15 @@ export const NadeTitle: FC<Props> = memo(({ title, subTitle, nadeId, map }) => {
           white-space: nowrap;
         }
 
-        @media only screen and (max-width: 700px) {
-          .title {
-            grid-template-columns: 50px 1fr 50px;
-            grid-template-areas:
-              "controls title actions"
-              "controls title actions";
-            padding-left: 10px;
-            padding-right: 10px;
+        @media only screen and (max-width: 800px) {
+          h1 {
+            font-size: 20px;
           }
         }
 
         @media only screen and (max-width: 600px) {
-          .main-title {
-            font-size: 20px;
-          }
-
-          .sub-title {
-            font-size: 12px;
-            opacity: 0.75;
-            margin-top: -8px;
-          }
-        }
-
-        @media only screen and (max-width: 500px) {
-          .title {
-            grid-template-columns: 30px 1fr 30px;
-            grid-template-areas:
-              "controls title actions"
-              "controls title actions";
-            padding-left: 10px;
-            padding-right: 10px;
-          }
-
-          #actions {
-            display: none;
+          h1 {
+            font-size: 16px;
           }
         }
       `}</style>

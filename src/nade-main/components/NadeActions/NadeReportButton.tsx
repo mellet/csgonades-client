@@ -1,16 +1,15 @@
 import { FC, useState } from "react";
-import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
-import { ReportAddDto } from "../models/Report";
-import { ReportApi } from "../api/ReportApi";
+import { useDisplayToast } from "../../../store/ToastStore/hooks/useDisplayToast";
+import { ReportAddDto } from "../../../models/Report";
+import { ReportApi } from "../../../api/ReportApi";
 import { FaFlag } from "react-icons/fa";
-import { Modal, Form, TextArea, Button, Popup } from "semantic-ui-react";
-import { Dimensions } from "../constants/Constants";
+import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 
 type Props = {
   nadeId: string;
 };
 
-export const TitleReportBtn: FC<Props> = ({ nadeId }) => {
+export const NadeReportButton: FC<Props> = ({ nadeId }) => {
   const [showReportForm, setShowReportForm] = useState(false);
   const [reportMsg, setReportMsg] = useState("");
   const displayToast = useDisplayToast();
@@ -36,18 +35,9 @@ export const TitleReportBtn: FC<Props> = ({ nadeId }) => {
 
   return (
     <>
-      <Popup
-        inverted
-        size="mini"
-        position="bottom center"
-        openOnTriggerClick={false}
-        content={"Report"}
-        trigger={
-          <button onClick={onToggle} className="report-button-wrapper">
-            <FaFlag />
-          </button>
-        }
-      />
+      <button onClick={onToggle} className="report-button-wrapper">
+        <FaFlag /> <span>Report</span>
+      </button>
 
       <Modal open={showReportForm} onClose={onToggle}>
         <div className="report-nade">
@@ -79,14 +69,20 @@ export const TitleReportBtn: FC<Props> = ({ nadeId }) => {
 
       <style jsx>{`
         .report-button-wrapper {
+          flex: 1;
           background: #ab1309;
           color: white;
           border: none;
           border-radius: 5px;
-          padding: 8px 10px 5px 10px;
+          padding: 10px 16px;
           cursor: pointer;
-          font-size: 16px;
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+        }
+
+        .report-button-wrapper span {
+          margin-left: 6px;
         }
 
         .report-nade {
