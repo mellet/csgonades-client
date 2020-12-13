@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../constants/Constants";
-import { Notification } from "../models/Notification";
-import { AppResult, extractApiError } from "../utils/ErrorUtil";
+import { Config } from "../../constants/Constants";
+import { Notification } from "../../models/Notification";
+import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 export class NotificationApi {
   static async getNotifications(token: string): AppResult<Notification[]> {

@@ -1,5 +1,5 @@
 import { FC, useState, useEffect, useCallback, memo, useMemo } from "react";
-import { NadeCommentApi, NadeComment } from "../../../api/NadeCommentApi";
+import { NadeCommentApi, NadeComment } from "../../../core/api/NadeCommentApi";
 import { NadeCommentItem } from "./NadeCommentItem";
 import { CommentSubmit } from "./CommentSubmit";
 import { Dimensions } from "../../../constants/Constants";

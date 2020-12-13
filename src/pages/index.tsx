@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import React from "react";
 import { FrontPage } from "../frontpage/FrontPage";
 import { SEO } from "../layout/SEO";
-import { StatsApi, SiteStats } from "../api/StatsApi";
+import { StatsApi, SiteStats } from "../core/api/StatsApi";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
 import { HeaderDefault } from "../defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";

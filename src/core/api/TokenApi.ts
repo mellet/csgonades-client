@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../constants/Constants";
-import { AppResult, extractApiError } from "../utils/ErrorUtil";
+import { Config } from "../../constants/Constants";
+import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 type TokenRes = {
   accessToken: string;

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
-import { AdminPage } from "../admin/AdminPage";
-import { AdminStoreProvider } from "../admin/data/context";
+import { AdminMain } from "../admin-main/AdminMain";
+import { AdminStoreProvider } from "../admin-main/data/context";
 import { HeaderDefault } from "../defaultheader/Header";
 import { SEO } from "../layout/SEO";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
@@ -15,7 +15,7 @@ const Admin: NextPage = () => {
         <LayoutBuilder
           header={<HeaderDefault />}
           nav={<Navigation />}
-          main={<AdminPage />}
+          main={<AdminMain />}
         />
       </AdminStoreProvider>
     </>

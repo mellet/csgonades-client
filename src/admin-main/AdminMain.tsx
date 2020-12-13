@@ -11,7 +11,7 @@ import { AdminContacts } from "./containers/AdminContacts";
 import { AdminWelcome } from "./containers/AdminWelcome";
 import { AdminAudit } from "./containers/AdminAudit";
 
-export const AdminPage: FC = () => {
+export const AdminMain: FC = () => {
   const allowedToView = useIsAdminOrModerator();
   const { route } = useAdminRoute();
 

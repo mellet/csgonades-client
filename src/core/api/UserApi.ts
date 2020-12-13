@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../constants/Constants";
-import { User, UserUpdateDTO } from "../models/User";
-import { AppResult, extractApiError } from "../utils/ErrorUtil";
+import { Config } from "../../constants/Constants";
+import { User, UserUpdateDTO } from "../../models/User";
+import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 export class UserApi {
   static fetchSelf = async (token: string): AppResult<User> => {

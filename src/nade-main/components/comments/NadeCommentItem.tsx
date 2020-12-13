@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { NadeComment, NadeCommentApi } from "../../../api/NadeCommentApi";
+import { NadeComment, NadeCommentApi } from "../../../core/api/NadeCommentApi";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { prettyDateTime } from "../../../utils/DateUtils";
 import { useSignedInUser } from "../../../store/AuthStore/AuthHooks";

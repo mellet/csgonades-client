@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../constants/Constants";
-import { Report, ReportAddDto } from "../models/Report";
-import { AppResult, extractApiError } from "../utils/ErrorUtil";
+import { Config } from "../../constants/Constants";
+import { Report, ReportAddDto } from "../../models/Report";
+import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 export class ReportApi {
   static async getAll(token: string): AppResult<Report[]> {

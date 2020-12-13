@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NotificationApi } from "../../../api/NotificationApi";
+import { NotificationApi } from "../../../core/api/NotificationApi";
 import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
 import { useRouter } from "next/router";
 import { lastNotificationFetchSelector } from "../NotificationSelectors";

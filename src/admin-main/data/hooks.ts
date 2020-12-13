@@ -1,10 +1,10 @@
 import { useCallback, useContext, useState, useEffect } from "react";
 import { AdminStoreContext } from "./context";
-import { UserApi } from "../../api/UserApi";
+import { UserApi } from "../../core/api/UserApi";
 import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { NadeLight } from "../../nade-data/Nade/Nade";
-import { ReportApi } from "../../api/ReportApi";
+import { ReportApi } from "../../core/api/ReportApi";
 import {
   AdminRoutes,
   addContactMessages,

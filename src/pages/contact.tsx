@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import { useState } from "react";
 import { Button, Message } from "semantic-ui-react";
-import { ContactApi } from "../admin/data/ContactApi";
+import { ContactApi } from "../admin-main/data/ContactApi";
 import { CsgnInput } from "../common/inputs/CsgnInput";
 import { CsgnTextArea } from "../common/inputs/CsgnTextArea";
-import { AddConctactDTO } from "../admin/data/ContactDTOs";
+import { AddConctactDTO } from "../admin-main/data/ContactDTOs";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { SEO } from "../layout/SEO";
 import { Dimensions } from "../constants/Constants";

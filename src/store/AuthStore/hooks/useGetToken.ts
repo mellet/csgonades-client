@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthApi } from "../../../api/TokenApi";
+import { AuthApi } from "../../../core/api/TokenApi";
 import { tokenExpiredOrAboutTo } from "../../../utils/TokenUtil";
 import { tokenSelector } from "../AuthSelectors";
 import { setTokenAction } from "../AuthSlice";

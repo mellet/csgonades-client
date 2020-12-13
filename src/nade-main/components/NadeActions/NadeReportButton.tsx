@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useDisplayToast } from "../../../store/ToastStore/hooks/useDisplayToast";
 import { ReportAddDto } from "../../../models/Report";
-import { ReportApi } from "../../../api/ReportApi";
+import { ReportApi } from "../../../core/api/ReportApi";
 import { FaFlag } from "react-icons/fa";
 import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 
