@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { Nade } from "../../nade-data/Nade/Nade";
 import { NadeNotFound } from "../../nade-main/NadeNotFound";
-import { Layout2 } from "../../layout2/Layout2";
+import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { NadeMain } from "../../nade-main/NadeMain";
 import { NadeHeader } from "../../nade-header/NadeHeader";
 
@@ -16,7 +16,7 @@ const NadePageComponent: NextPage<Props> = ({ nade }) => {
   }
 
   return (
-    <Layout2
+    <LayoutBuilder
       header={<NadeHeader key={nade.id} nade={nade} />}
       main={<NadeMain key={nade.id} nade={nade} />}
     />

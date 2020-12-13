@@ -1,14 +1,14 @@
 import React, { FC, memo, Suspense } from "react";
-import { Hamburger } from "./Misc/Hamburger";
-import { Logo } from "./Misc/Logo";
+import { Hamburger } from "./components/Hamburger";
+import { Logo } from "./components/Logo";
 import { Dimensions } from "../constants/Constants";
-import { ThemeToggler } from "./Misc/ThemeToggler";
+import { ThemeToggler } from "./components/ThemeToggler";
 
-const UserNav = React.lazy(() => import("./Navigation/UserNav"));
+const UserNav = React.lazy(() => import("../layout/Navigation/UserNav"));
 
 const isServer = typeof window === "undefined";
 
-export const Header: FC = memo(() => {
+export const HeaderDefault: FC = memo(() => {
   return (
     <>
       <div id="header">

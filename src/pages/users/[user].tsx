@@ -3,6 +3,9 @@ import { UserApi } from "../../api/UserApi";
 import { User } from "../../models/User";
 import { UserPage } from "../../users/UsersPage";
 import { SEO } from "../../layout/SEO";
+import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { HeaderDefault } from "../../defaultheader/Header";
+import { Navigation } from "../../navigation/Navigation";
 
 type Props = {
   user: User | null;
@@ -16,7 +19,11 @@ const UserPageComponent: NextPage<Props> = ({ user }) => {
   return (
     <>
       <SEO title={user.nickname} canonical={`/user/${user.steamId}`} />
-      <UserPage user={user} key={user.steamId} />
+      <LayoutBuilder
+        header={<HeaderDefault />}
+        nav={<Navigation />}
+        main={<UserPage user={user} key={user.steamId} />}
+      />
     </>
   );
 };

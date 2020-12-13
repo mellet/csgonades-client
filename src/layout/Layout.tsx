@@ -5,7 +5,7 @@ import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { HeaderDefault } from "../defaultheader/Header";
 import { ServiceDown } from "./ServiceDown";
 import { CookieConsent } from "../common/CookieConsent";
 import { MapNav } from "./Navigation/MapNav";
@@ -33,7 +33,7 @@ export const Layout: FC<Props> = memo(({ children }) => {
         <CookieConsent />
 
         <header>
-          <Header />
+          <HeaderDefault />
         </header>
 
         <nav className={isNavOpen ? "open" : "closed"}>

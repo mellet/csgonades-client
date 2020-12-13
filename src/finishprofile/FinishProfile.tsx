@@ -44,8 +44,7 @@ export const FinishProfile: FC<Props> = ({ user }) => {
     });
     displayToast({
       severity: "success",
-      message:
-        "Your profile is ready! Btw, come join the rest of us on Discord 😎 You can find the link to join on the bottom of the website.",
+      message: "Your profile is ready!",
       title: "All set!",
       durationSeconds: 30,
     });
@@ -54,68 +53,82 @@ export const FinishProfile: FC<Props> = ({ user }) => {
 
   return (
     <>
-      <div className="finish-profile">
-        <div className="welcome">
-          <h1>Hi {user.nickname}, let&apos;s finish your profile!</h1>
-          <h2>Then go favorite some nades or add your own 👊</h2>
+      <div className="wrap">
+        <div className="finish-profile-wrap">
+          <div className="finish-profile">
+            <div className="welcome">
+              <h1>Hi {user.nickname}, let&apos;s finish your profile!</h1>
+              <h2>Then go favorite some nades or add your own 👊</h2>
+            </div>
+          </div>
+          {!!error && (
+            <div className="error">
+              <h3>Error</h3>
+              <p>{error}</p>
+            </div>
+          )}
+          <div className="profile-form">
+            <span className="label">
+              Nickname <span className="require">*</span>
+            </span>
+            <input
+              value={nickname}
+              placeholder="Nickname"
+              onChange={(e) => setNickname(e.target.value)}
+            />
+            <span className="label">E-mail</span>
+            <input
+              value={email}
+              placeholder="E-mail"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <span className="label">Bio</span>
+            <textarea
+              value={bio}
+              placeholder="Write something funny... Or keep it blank if your mysterious."
+              onChange={(e) => setBio(e.target.value)}
+              rows={5}
+            />
+            <button disabled={loading} className="save-btn" onClick={onSubmit}>
+              SAVE
+            </button>
+          </div>
         </div>
-      </div>
-      {!!error && (
-        <div className="error">
-          <h3>Error</h3>
-          <p>{error}</p>
-        </div>
-      )}
-      <div className="profile-form">
-        <span className="label">
-          Nickname <span className="require">*</span>
-        </span>
-        <input
-          value={nickname}
-          placeholder="Nickname"
-          onChange={(e) => setNickname(e.target.value)}
-        />
-        <span className="label">E-mail</span>
-        <input
-          value={email}
-          placeholder="E-mail"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <span className="label">Bio</span>
-        <textarea
-          value={bio}
-          placeholder="Write something funny... Or keep it blank if your mysterious."
-          onChange={(e) => setBio(e.target.value)}
-          rows={10}
-        />
-        <button disabled={loading} className="save-btn" onClick={onSubmit}>
-          SAVE
-        </button>
       </div>
       <style jsx>{`
-        .finish-profile {
-          background: linear-gradient(
-            252.84deg,
-            ${colors.jumboGradientEnd} 33.44%,
-            ${colors.jumboGradientStart} 66.89%
-          );
+        .wrap {
+          background: ${colors.DP00};
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+        }
+
+        .finish-profile-wrap {
+          background: ${colors.DP02};
           margin: ${Dimensions.GUTTER_SIZE}px;
-          border-radius: 5px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
+        }
+
+        .finish-profile {
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .welcome {
           color: ${colors.TEXT};
-          padding: 20px 30px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .welcome h1 {
-          font-size: 32px;
+          font-size: 24px;
           margin: 0;
           padding: 0;
         }
 
         .welcome h2 {
-          font-size: 28px;
+          font-size: 18px;
           margin: 0;
           padding: 0;
         }
@@ -132,14 +145,12 @@ export const FinishProfile: FC<Props> = ({ user }) => {
         .profile-form {
           display: flex;
           flex-direction: column;
-          padding: 20px 30px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.DP01};
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .label {
           margin-bottom: 5px;
-          margin-top: 30px;
           font-size: 18px;
           color: ${colors.TEXT};
         }
@@ -150,7 +161,7 @@ export const FinishProfile: FC<Props> = ({ user }) => {
 
         input,
         textarea {
-          margin-bottom: 20px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           border: 1px solid ${colors.BORDER};
           padding: 15px;
           font-size: 16px;

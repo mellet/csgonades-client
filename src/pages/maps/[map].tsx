@@ -3,9 +3,9 @@ import { NadeApi } from "../../nade-data/NadeApi";
 import { CsgoMap, getAllCsGoMaps } from "../../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { MapMain } from "../../map-main/MapMain";
-import { Layout2 } from "../../layout2/Layout2";
+import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
-import { Header } from "../../layout/Header";
+import { HeaderDefault } from "../../defaultheader/Header";
 import { MapSidebar } from "../../map-sidebar/MapSidebar";
 
 interface Props {
@@ -19,8 +19,8 @@ const Map: NextPage<Props> = ({ map, ssrNades }) => {
   }
 
   return (
-    <Layout2
-      header={<Header />}
+    <LayoutBuilder
+      header={<HeaderDefault />}
       nav={<Navigation />}
       main={<MapMain key={map} map={map} allNades={ssrNades} />}
       sidebar={<MapSidebar map={map} nades={ssrNades} />}
