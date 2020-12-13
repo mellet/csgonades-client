@@ -35,7 +35,9 @@ const NadeStatus: FC<Props> = memo(({ status }) => {
       case "declined":
         return (
           <>
-            <div className="declined">Declined, see comment under nade</div>
+            <div className="declined">
+              Declined! Read comment and do the changes to get it approved.
+            </div>
             <style jsx>{`
               .declined {
                 font-size: 14px;
