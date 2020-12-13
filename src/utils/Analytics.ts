@@ -12,17 +12,14 @@ export const usePageView = (): void => {
   const { asPath } = useRouter();
   const { pageView } = useAnalytics();
 
-  function onPathChange(path: string) {
-    closeNav();
-    pageView({ path });
-  }
-
   useEffect(() => {
+    closeNav();
     const delay = setTimeout(() => {
-      onPathChange(asPath);
+      pageView({ path: asPath });
     }, 1000);
+
     return () => clearTimeout(delay);
-  }, [asPath]);
+  }, [asPath, closeNav, pageView]);
 };
 
 export const useAnalytics = () => {

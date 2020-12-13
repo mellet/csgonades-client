@@ -135,7 +135,7 @@ export const LayoutBuilder: FC<Props> = memo(
               left: 0;
               width: 190px;
               height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-              z-index: 1;
+              z-index: 900;
               transition: transform 0.1s;
             }
 
