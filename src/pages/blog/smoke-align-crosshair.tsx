@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { NadeAlignCrosshairPost } from "../../blogposts/NadeAlignCrosshairPost";
+import { NadeAlignCrosshairPost } from "../../blog/blogposts/NadeAlignCrosshairPost";
 import { HeaderDefault } from "../../defaultheader/Header";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";

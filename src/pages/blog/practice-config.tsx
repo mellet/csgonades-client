@@ -1,7 +1,7 @@
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../defaultheader/Header";
-import { PractiseConfigBlogPost } from "../../blogposts/PracticeConfig";
+import { PractiseConfigBlogPost } from "../../blog/blogposts/PracticeConfig";
 
 const PractiseConfigBlogPostPage = () => {
   return (

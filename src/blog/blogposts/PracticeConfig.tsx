@@ -1,8 +1,8 @@
-import { blogPractiseConfig } from "../blog/ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../blog/BlogCodeSnippet";
-import { BlogCopyPaste } from "../blog/BlogCopyPaste";
-import { BlogPostArticle } from "../blog/BlogPostArticle";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { blogPractiseConfig } from "../ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../BlogCodeSnippet";
+import { BlogCopyPaste } from "../BlogCopyPaste";
+import { BlogPostArticle } from "../BlogPostArticle";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const PractiseConfigBlogPost = () => {
   return (

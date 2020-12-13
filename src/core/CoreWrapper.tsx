@@ -7,12 +7,14 @@ import { ServiceDown } from "../layout/ServiceDown";
 import { SignInWarning } from "./SignInWarning";
 import { usePreloadUser } from "../store/AuthStore/AuthHooks";
 import { usePageView } from "../utils/Analytics";
+import { useFetchNotifications } from "../store/NotificationStore/hooks/useFetchNotifications";
 
 export const CoreWrapper: FC = ({ children }) => {
   useSetupSession();
   usePageView();
   usePreloadUser();
   useEzoidAdLoader();
+  useFetchNotifications();
 
   return (
     <>

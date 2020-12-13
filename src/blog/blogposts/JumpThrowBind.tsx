@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { blogJumpthrowBind } from "../blog/ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../blog/BlogCodeSnippet";
-import { BlogPostArticle } from "../blog/BlogPostArticle";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
-import { PageLink } from "../common/PageLink";
+import { blogJumpthrowBind } from "../ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../BlogCodeSnippet";
+import { BlogPostArticle } from "../BlogPostArticle";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
+import { PageLink } from "../../common/PageLink";
 
 export const JumpThrowBindBlogMain: FC = () => {
   return (

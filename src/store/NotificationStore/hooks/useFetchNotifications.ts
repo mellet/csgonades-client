@@ -23,6 +23,7 @@ export const useFetchNotifications = () => {
     }
 
     const result = await NotificationApi.getNotifications(authToken);
+    console.log("Fetched notifications");
 
     if (result.isErr()) {
       console.error(result.error);
@@ -48,7 +49,7 @@ export const useFetchNotifications = () => {
 
     const mintutesAgoLastFetch = dateMinutesAgo(lastNotificationFetch);
 
-    if (mintutesAgoLastFetch < 10) {
+    if (mintutesAgoLastFetch < 5) {
       return;
     }
 

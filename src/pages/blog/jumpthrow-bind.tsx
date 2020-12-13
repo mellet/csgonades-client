@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
-import { JumpThrowBindBlogMain } from "../../blogposts/JumpThrowBind";
+import { JumpThrowBindBlogMain } from "../../blog/blogposts/JumpThrowBind";
 import { HeaderDefault } from "../../defaultheader/Header";
 import { Navigation } from "../../navigation/Navigation";
 

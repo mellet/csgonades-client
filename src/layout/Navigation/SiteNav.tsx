@@ -8,16 +8,16 @@ export const SiteNav: FC = memo(({}) => {
   return (
     <>
       <div className="site-nav">
-        <PageLink href="/blog" as="/blog" prefetch={false}>
+        <PageLink href="/blog" as="/blog" prefetch="false">
           <span className="nav-item">Blog</span>
         </PageLink>
-        <PageLink href="/about" as="/about" prefetch={false}>
+        <PageLink href="/about" as="/about" prefetch="false">
           <span className="nav-item">About</span>
         </PageLink>
-        <PageLink href="/about" as="/contact" prefetch={false}>
+        <PageLink href="/about" as="/contact" prefetch="false">
           <span className="nav-item">Contact</span>
         </PageLink>
-        <PageLink href="/about" as="/privacypolicy" prefetch={false}>
+        <PageLink href="/about" as="/privacypolicy" prefetch="false">
           <span className="nav-item">Privacy Policy</span>
         </PageLink>
       </div>

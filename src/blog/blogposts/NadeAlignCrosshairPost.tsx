@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { blogNadeAlignCrosshair } from "../blog/ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../blog/BlogCodeSnippet";
-import { BlogNadeItem } from "../blog/BlogNadeItem";
-import { BlogPostArticle } from "../blog/BlogPostArticle";
-import { CsConsole } from "../blog/CsConsole";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { blogNadeAlignCrosshair } from "../ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../BlogCodeSnippet";
+import { BlogNadeItem } from "../BlogNadeItem";
+import { BlogPostArticle } from "../BlogPostArticle";
+import { CsConsole } from "../CsConsole";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
 
 export const NadeAlignCrosshairPost: FC = () => {
   return (

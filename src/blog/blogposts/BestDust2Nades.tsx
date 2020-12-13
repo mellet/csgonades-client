@@ -1,11 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
-import { BlogPostArticle } from "../blog/BlogPostArticle";
-import { bestDust2Nades } from "../blog/ArticleData/blogPosts";
-import { BlogNadeItem } from "../blog/BlogNadeItem";
-import { Dimensions } from "../constants/Constants";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
-import { PageLink } from "../common/PageLink";
+import { BlogPostArticle } from "../BlogPostArticle";
+import { bestDust2Nades } from "../ArticleData/blogPosts";
+import { BlogNadeItem } from "../BlogNadeItem";
+import { Dimensions } from "../../constants/Constants";
+import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
+import { PageLink } from "../../common/PageLink";
 
 export const BestDust2NadesBlogPost = (): JSX.Element => {
   return (

@@ -1,7 +1,7 @@
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../defaultheader/Header";
-import { BestDust2NadesBlogPost } from "../../blogposts/BestDust2Nades";
+import { BestDust2NadesBlogPost } from "../../blog/blogposts/BestDust2Nades";
 
 const BestDust2NadesBlogPostPage = (): JSX.Element => {
   return (
