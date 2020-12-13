@@ -71,9 +71,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
             tickrate={nade.tickrate}
             type={nade.type}
           />
-          <div className="advert">
-            <div className="fake-ad"></div>
-          </div>
         </div>
 
         <div id="nade-sidebar">

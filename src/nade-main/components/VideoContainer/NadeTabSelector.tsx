@@ -13,14 +13,15 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
   return (
     <>
       <div className="tab-selector">
+        <div className="selected-bg"></div>
         <button
-          className={selectedTab === "video" ? "tab-btn selected" : "tab-btn"}
+          className={selectedTab === "video" ? "selected-btn" : "tab-btn"}
           onClick={() => onChangeTab("video")}
         >
           Video
         </button>
         <button
-          className={selectedTab === "lineup" ? "tab-btn selected" : "tab-btn"}
+          className={selectedTab === "lineup" ? "selected-btn" : "tab-btn"}
           onClick={() => onChangeTab("lineup")}
         >
           Line Up
@@ -29,42 +30,57 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
       <style jsx>{`
         .tab-selector {
           position: absolute;
-          top: 16px;
-          right: 16px;
+          top: 10px;
+          right: 10px;
           z-index: 1;
           display: flex;
-          border-radius: 12px;
+          border-radius: 5px;
           background: ${colors.DP00};
           transition: all 0.2s;
           padding: 2px;
           overflow: hidden;
+          width: 164px;
+          height: 40px;
+        }
+
+        .selected-bg {
+          position: absolute;
+          top: 2px;
+          bottom: 2px;
+          left: 2px;
+          width: calc(160px / 2);
+          background: pink;
+          transform: translateX(${selectedTab === "video" ? 0 : "100%"});
+          transition: transform 0.15s;
+          z-index: 2;
+          background: ${colors.primaryBtnBg};
+          border-radius: 5px;
+        }
+
+        .selected-btn,
+        .tab-btn {
+          z-index: 3;
+          background: transparent;
+          cursor: pointer;
+          outline: none;
+          width: calc(160px / 2);
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 500;
+          border-radius: 5px;
+          border: none;
         }
 
         .tab-btn {
-          background: ${colors.DP00};
-          border: 1px solid transparent;
-          cursor: pointer;
-          outline: none;
-          padding: 10px 16px;
           color: ${colors.TEXT};
-          text-transform: uppercase;
-          font-size: 14px;
-          font-weight: 500;
-          border-radius: 12px;
+        }
+
+        .selected-btn {
+          color: white;
         }
 
         .tab-btn:hover {
-          background: ${colors.DP01};
-        }
-
-        .selected {
-          border: 1px solid ${colors.BORDER};
-          background: ${colors.DP03};
-          border-radius: 12px;
-        }
-
-        .selected:hover {
-          background: ${colors.DP03};
+          text-decoration: underline;
         }
 
         @media only screen and (max-width: ${Dimensions.TABLET_THRESHHOLD}) {
