@@ -10,25 +10,13 @@ export const useEzoidAdLoader = (): void => {
 
     loadAds();
 
-    router.events.on("routeChangeStart", destroyAds);
     router.events.on("routeChangeComplete", loadAds);
 
     return () => {
       router.events.off("routeChangeComplete", loadAds);
-      router.events.off("routeChangeStart", destroyAds);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-};
-
-const destroyAds = async () => {
-  try {
-    const ez = ezstandalone || {};
-
-    ez.destroy();
-  } catch (e) {
-    // no-op
-  }
 };
 
 const loadAds = async () => {
