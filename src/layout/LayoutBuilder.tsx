@@ -83,7 +83,6 @@ export const LayoutBuilder: FC<Props> = memo(
             padding-left: ${Dimensions.GUTTER_SIZE}px;
             padding-right: ${Dimensions.GUTTER_SIZE}px;
             max-width: 100vw;
-            overflow: hidden;
           }
 
           nav {
@@ -99,6 +98,7 @@ export const LayoutBuilder: FC<Props> = memo(
             grid-area: main;
             height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
             overflow-y: auto;
+            overflow-x: hidden;
             max-width: 100vw;
           }
 
@@ -167,7 +167,7 @@ export const LayoutBuilder: FC<Props> = memo(
             header {
               position: sticky;
               top: 0;
-              z-index: 1;
+              z-index: 900;
             }
 
             main {

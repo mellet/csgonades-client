@@ -41,40 +41,34 @@ export const UserDropdown: FC<Props> = ({ user }) => {
               alt={`avatar for ${user.nickname}`}
             />
           )}
-          <div>
-            <Dropdown text={user.nickname} direction="left">
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  icon="plus"
-                  text="Add Nade"
-                  onClick={onAddNade}
-                />
+          <Dropdown text={user.nickname} direction="left">
+            <Dropdown.Menu>
+              <Dropdown.Item icon="plus" text="Add Nade" onClick={onAddNade} />
+              <Dropdown.Item
+                icon="dashboard"
+                text="Dashboard"
+                onClick={onDashboardClick}
+              />
+              <Dropdown.Item
+                icon="user"
+                text="Profile"
+                onClick={onProfileClick}
+              />
+              {user.role !== "user" && (
                 <Dropdown.Item
                   icon="dashboard"
-                  text="Dashboard"
-                  onClick={onDashboardClick}
+                  text="Moderator"
+                  onClick={onModeratorClick}
                 />
-                <Dropdown.Item
-                  icon="user"
-                  text="Profile"
-                  onClick={onProfileClick}
-                />
-                {user.role !== "user" && (
-                  <Dropdown.Item
-                    icon="dashboard"
-                    text="Moderator"
-                    onClick={onModeratorClick}
-                  />
-                )}
-                <Dropdown.Divider />
-                <Dropdown.Item
-                  icon="sign-out"
-                  text="Sign out"
-                  onClick={signOut}
-                />
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
+              )}
+              <Dropdown.Divider />
+              <Dropdown.Item
+                icon="sign-out"
+                text="Sign out"
+                onClick={signOut}
+              />
+            </Dropdown.Menu>
+          </Dropdown>
         </span>
       </div>
       <style jsx>{`
