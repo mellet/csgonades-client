@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Footer } from "../layout/Footer";
-import { MapNav } from "../layout/Navigation/MapNav";
-import { SiteNav } from "../layout/Navigation/SiteNav";
+import { Footer } from "./NavFooter";
+import { MapNav } from "./MapNav";
+import { SecondaryNav } from "./SecondaryNav";
 
 export const Navigation: FC = ({}) => {
   return (
@@ -9,7 +9,7 @@ export const Navigation: FC = ({}) => {
       <div id="navigation">
         <div id="nav-main">
           <MapNav />
-          <SiteNav />
+          <SecondaryNav />
         </div>
         <div id="nav-footer">
           <Footer />

@@ -1,8 +1,17 @@
 import { NextPage } from "next";
-import { CreateNadePage } from "../createnade/CreateNadePage";
+import { HeaderDefault } from "../defaultheader/Header";
+import { LayoutBuilder } from "../layout/LayoutBuilder";
+import { CreateNadeMain } from "../nade-create-main/CreateNadeMain";
+import { Navigation } from "../navigation/Navigation";
 
 const CreateNade: NextPage = () => {
-  return <CreateNadePage />;
+  return (
+    <LayoutBuilder
+      header={<HeaderDefault />}
+      nav={<Navigation />}
+      main={<CreateNadeMain />}
+    />
+  );
 };
 
 export default CreateNade;

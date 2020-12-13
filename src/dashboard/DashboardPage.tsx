@@ -3,7 +3,7 @@ import { DBNadeList } from "./DBNadeList";
 import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { SEO } from "../layout/SEO";
+import { SEO } from "../common/SEO";
 
 export const DashboardPage: FC = () => {
   const { colors } = useTheme();

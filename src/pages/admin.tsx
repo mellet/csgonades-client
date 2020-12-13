@@ -3,7 +3,7 @@ import React from "react";
 import { AdminMain } from "../admin-main/AdminMain";
 import { AdminStoreProvider } from "../admin-main/data/context";
 import { HeaderDefault } from "../defaultheader/Header";
-import { SEO } from "../layout/SEO";
+import { SEO } from "../common/SEO";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
 import { Navigation } from "../navigation/Navigation";
 

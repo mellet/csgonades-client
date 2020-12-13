@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { BlogList } from "../../blog/BlogList";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { SEO } from "../../layout/SEO";
+import { SEO } from "../../common/SEO";
 import { Dimensions } from "../../constants/Constants";
 import {
   bestDust2Nades,

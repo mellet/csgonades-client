@@ -3,7 +3,7 @@ import { CsgoMap } from "../nade-data/Nade/CsGoMap";
 import { NadeLight } from "../nade-data/Nade/Nade";
 import { MapPageNades } from "./components/MapPageNades";
 import { useMapChangeHandler } from "../store/MapStore/hooks/useMapChangeHandler";
-import { SEO } from "../layout/SEO";
+import { SEO } from "../common/SEO";
 import { capitalize } from "../utils/Common";
 import FilterBar from "./components/nadefilter/FilterBar";
 import { MapViewSuggested } from "./components/SuggestedNades/MapViewSuggested";

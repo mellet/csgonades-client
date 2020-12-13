@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Checkbox } from "semantic-ui-react";
-import { MiniLabel } from "../../createnade/components/MiniLabel";
+import { MiniLabel } from "../../nade-create-main/components/MiniLabel";
 
 type Props = {
   initialValue?: boolean;

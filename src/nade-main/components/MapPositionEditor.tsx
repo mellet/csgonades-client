@@ -3,7 +3,7 @@ import { MapCoordinates } from "../../nade-data/Nade/Nade";
 import { MapPositionModal } from "./MapPositionModal";
 import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { MiniLabel } from "../../createnade/components/MiniLabel";
+import { MiniLabel } from "../../nade-create-main/components/MiniLabel";
 
 type Props = {
   endPos?: MapCoordinates;

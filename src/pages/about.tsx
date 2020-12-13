@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { SEO } from "../layout/SEO";
+import { SEO } from "../common/SEO";
 import { Dimensions } from "../constants/Constants";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
 import { HeaderDefault } from "../defaultheader/Header";

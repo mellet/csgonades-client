@@ -3,29 +3,29 @@ import { Nade } from "../nade-data/Nade/Nade";
 import { useCanEditNade } from "../store/NadeStore/hooks/useCanEditNade";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { BigLabel } from "../createnade/components/BigLabel";
-import { MapSelector } from "../createnade/components/MapSelector";
+import { BigLabel } from "../nade-create-main/components/BigLabel";
+import { MapSelector } from "../nade-create-main/components/MapSelector";
 import { useEditNadeState } from "./state/reducer";
-import { GfyInput } from "../createnade/components/GfyInput";
-import { EndPosInput } from "../createnade/components/EndPosInput";
-import { ThrownFromInput } from "../createnade/components/ThrownFromInput";
-import { DescriptionInput } from "../createnade/components/DescriptionInput";
-import { ImageSelector } from "../createnade/components/ImageSelector";
+import { GfyInput } from "../nade-create-main/components/GfyInput";
+import { EndPosInput } from "../nade-create-main/components/EndPosInput";
+import { ThrownFromInput } from "../nade-create-main/components/ThrownFromInput";
+import { DescriptionInput } from "../nade-create-main/components/DescriptionInput";
+import { ImageSelector } from "../nade-create-main/components/ImageSelector";
 import { MapPositionEditor } from "../nade-main/components/MapPositionEditor";
-import { TypeSelector } from "../createnade/components/TypeSelector";
-import { MovementSelector } from "../createnade/components/MovementSelector";
-import { TechniqueSelector } from "../createnade/components/TechniqueSelector";
-import { PreviewNade } from "../createnade/PreviewNades";
-import { SumbitBtn } from "../createnade/components/SubmitBtn";
-import { ImageUploader } from "../newnade/ImageUploader";
-import { OneWaySelector } from "../createnade/components/OneWaySelector";
-import { SEO } from "../layout/SEO";
+import { TypeSelector } from "../nade-create-main/components/TypeSelector";
+import { MovementSelector } from "../nade-create-main/components/MovementSelector";
+import { TechniqueSelector } from "../nade-create-main/components/TechniqueSelector";
+import { PreviewNade } from "../nade-create-main/PreviewNades";
+import { SumbitBtn } from "../nade-create-main/components/SubmitBtn";
+import { ImageUploader } from "../nade-create-main/ImageUploader";
+import { OneWaySelector } from "../nade-create-main/components/OneWaySelector";
+import { SEO } from "../common/SEO";
 import { StatusSelector } from "./comp/StatusSelector";
 import {
   useIsAdminOrModerator,
   useIsAdmin,
 } from "../store/AuthStore/AuthHooks";
-import { TickrateSelector } from "../createnade/components/TickrateSelector";
+import { TickrateSelector } from "../nade-create-main/components/TickrateSelector";
 import { SlugInput } from "./comp/SlugInput";
 import { IsProSelector } from "./comp/IsProSelector";
 
@@ -33,7 +33,7 @@ type Props = {
   nade: Nade;
 };
 
-export const EditNadePage: FC<Props> = ({ nade }) => {
+export const EditNadeMain: FC<Props> = ({ nade }) => {
   const isAdmin = useIsAdmin();
   const isAdminOrModerator = useIsAdminOrModerator();
   const { state, dispatch, onUpdate, disableSubmit } = useEditNadeState(nade);

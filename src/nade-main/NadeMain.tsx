@@ -1,5 +1,5 @@
 import { FC, memo, useEffect } from "react";
-import { SEO } from "../layout/SEO";
+import { SEO } from "../common/SEO";
 import { NadeInfoContainer } from "./components/NadeInfoContainer";
 import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContainer";
 import { NadeComments } from "./components/comments/NadeComments";

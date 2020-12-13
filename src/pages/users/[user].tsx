@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { UserApi } from "../../core/api/UserApi";
 import { User } from "../../models/User";
 import { UserPage } from "../../users/UsersPage";
-import { SEO } from "../../layout/SEO";
+import { SEO } from "../../common/SEO";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { HeaderDefault } from "../../defaultheader/Header";
 import { Navigation } from "../../navigation/Navigation";

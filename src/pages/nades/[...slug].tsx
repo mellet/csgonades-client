@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { Nade } from "../../nade-data/Nade/Nade";
 import { NadeNotFound } from "../../nade-main/NadeNotFound";
 import { NadeApi } from "../../nade-data/NadeApi";
-import { EditNadePage } from "../../editnade/EditNadePage";
+import { EditNadeMain } from "../../nade-edit-main/EditNadeMain";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../defaultheader/Header";
@@ -20,7 +20,7 @@ const NadeEdit: NextPage<Props> = ({ nade }) => {
     <LayoutBuilder
       nav={<Navigation />}
       header={<HeaderDefault />}
-      main={<EditNadePage nade={nade} />}
+      main={<EditNadeMain nade={nade} />}
     />
   );
 };

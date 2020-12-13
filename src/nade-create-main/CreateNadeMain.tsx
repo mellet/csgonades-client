@@ -13,18 +13,18 @@ import { MovementSelector } from "./components/MovementSelector";
 import { TechniqueSelector } from "./components/TechniqueSelector";
 import { useCreateNadeState, validateState } from "./CreateNadeReducer";
 import { PreviewNade } from "./PreviewNades";
-import { ImageUploader } from "../newnade/ImageUploader";
+import { ImageUploader } from "./ImageUploader";
 import { MapPositionEditor } from "../nade-main/components/MapPositionEditor";
 import { SumbitBtn } from "./components/SubmitBtn";
 import { NadeApi } from "../nade-data/NadeApi";
 import { useGetOrUpdateToken } from "../store/AuthStore/hooks/useGetToken";
 import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
 import { useRouter } from "next/router";
-import { SEO } from "../layout/SEO";
+import { SEO } from "../common/SEO";
 import { TickrateSelector } from "./components/TickrateSelector";
 import { GuideLines } from "./guidelines/GuideLines";
 
-export const CreateNadePage: FC = ({}) => {
+export const CreateNadeMain: FC = ({}) => {
   const router = useRouter();
   const showToast = useDisplayToast();
   const getToken = useGetOrUpdateToken();

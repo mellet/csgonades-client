@@ -4,7 +4,7 @@ import { Logo } from "./components/Logo";
 import { Dimensions } from "../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 
-const UserNav = React.lazy(() => import("../layout/Navigation/UserNav"));
+const UserNav = React.lazy(() => import("./components/UserNav"));
 
 const isServer = typeof window === "undefined";
 

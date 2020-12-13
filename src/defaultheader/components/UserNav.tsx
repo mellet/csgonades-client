@@ -2,8 +2,8 @@ import { FC, memo } from "react";
 import { useSelector } from "react-redux";
 import { NotificationIndicator } from "../../common/notifications/NotificationIndicator";
 import { userSelector } from "../../store/AuthStore/AuthSelectors";
-import { SignInnButton } from "../Misc/SignInnButton";
-import { UserDropdown } from "../Misc/UserDropdown";
+import { SignInnButton } from "./SignInnButton";
+import { UserDropdown } from "./UserDropdown";
 import { Dimensions } from "../../constants/Constants";
 
 const UserNav: FC = memo(() => {
