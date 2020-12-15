@@ -9,7 +9,7 @@ import { AdminUsers } from "./containers/AdminUsers";
 import { AdminDeclined } from "./containers/AdminDeclined";
 import { AdminContacts } from "./containers/AdminContacts";
 import { AdminWelcome } from "./containers/AdminWelcome";
-import { AdminAudit } from "./containers/AdminAudit";
+import { AdminAudit } from "./Audit/AdminAudit";
 
 export const AdminMain: FC = () => {
   const allowedToView = useIsAdminOrModerator();
