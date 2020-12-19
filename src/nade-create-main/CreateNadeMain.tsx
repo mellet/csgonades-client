@@ -29,7 +29,12 @@ export const CreateNadeMain: FC = ({}) => {
   const showToast = useDisplayToast();
   const getToken = useGetOrUpdateToken();
   const { colors } = useTheme();
-  const { state, dispatch, disableSubmit } = useCreateNadeState();
+  const {
+    state,
+    dispatch,
+    disableSubmit,
+    missingFields,
+  } = useCreateNadeState();
 
   async function onSubmit() {
     dispatch({ type: "CreateNade/SetLoading" });
@@ -214,6 +219,16 @@ export const CreateNadeMain: FC = ({}) => {
               onSubmit={onSubmit}
               disabled={disableSubmit || state.loading}
             />
+            {missingFields.length > 0 && (
+              <div className="missing">
+                <h4>Missing fields:</h4>
+                <ul>
+                  {missingFields.map((field) => (
+                    <li key={field}>{field}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {state.showImageAdder && (
@@ -270,6 +285,37 @@ export const CreateNadeMain: FC = ({}) => {
       </div>
 
       <style jsx>{`
+        .missing {
+          border: 1px solid red;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          background: ${colors.WARNING};
+          padding: 6px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          color: white;
+        }
+
+        .missing h4 {
+          font-size: 16px;
+          font-weight: 500;
+        }
+
+        .missing ul {
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+        }
+
+        .missing ul li {
+          background: white;
+          color: black;
+          padding: 3px;
+          border-radius: 3px;
+          margin-right: 5px;
+          margin-bottom: 5px;
+        }
+
         #page-wrap {
           margin: ${Dimensions.GUTTER_SIZE}px;
           margin-top: ${Dimensions.GUTTER_SIZE * 2}px;

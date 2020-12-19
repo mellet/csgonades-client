@@ -207,11 +207,12 @@ export const useCreateNadeState = () => {
 
   const disableSubmit = useMemo(() => {
     if (
-      !state.map ||
       !state.description ||
       !state.endPosition ||
       !state.gfycat ||
       !state.imageBase64 ||
+      !state.lineUpImageBase64 ||
+      !state.map ||
       !state.mapEndCoord ||
       !state.movement ||
       !state.startPosition ||
@@ -223,37 +224,61 @@ export const useCreateNadeState = () => {
     return false;
   }, [state]);
 
+  const missingFields = useMemo(() => {
+    const missing: string[] = [
+      ...insertIfNot(state.description, "Description"),
+      ...insertIfNot(state.endPosition, "Nade end location"),
+      ...insertIfNot(state.gfycat, "Gfycat Url"),
+      ...insertIfNot(state.imageBase64, "Result Image"),
+      ...insertIfNot(state.lineUpImageBase64, "Lineup Image"),
+      ...insertIfNot(state.map, "Map"),
+      ...insertIfNot(state.mapEndCoord, "Overview Position"),
+      ...insertIfNot(state.movement, "Movement"),
+      ...insertIfNot(state.startPosition, "Thrown From"),
+      ...insertIfNot(state.technique, "Technique"),
+      ...insertIfNot(state.type, "Type"),
+    ];
+
+    return missing;
+  }, [state]);
+
   return {
     state,
     dispatch,
     disableSubmit,
+    missingFields,
   };
 };
+
+function insertIfNot(condition, ...elements) {
+  return condition ? [] : elements;
+}
 
 export const validateState = (
   state: CreateNadeState
 ): NadeCreateBody | false => {
   const {
-    map,
     description,
     endPosition,
     gfycat,
     imageBase64,
+    lineUpImageBase64,
+    map,
     mapEndCoord,
     movement,
+    oneWay,
     startPosition,
     technique,
-    type,
     tickrate,
-    lineUpImageBase64,
-    oneWay,
+    type,
   } = state;
   if (
-    !map ||
     !description ||
     !endPosition ||
     !gfycat ||
     !imageBase64 ||
+    !lineUpImageBase64 ||
+    !map ||
     !mapEndCoord ||
     !movement ||
     !startPosition ||
