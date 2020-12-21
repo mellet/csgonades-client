@@ -126,8 +126,9 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           overflow-y: auto;
         }
 
-        .advert {
-          flex: 1;
+        .advert,
+        .advert-top {
+          width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -136,10 +137,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         #nade-title-mobile {
           padding: ${Dimensions.GUTTER_SIZE}px;
           display: none;
-        }
-
-        .advert-top {
-          width: 100%;
         }
 
         @media only screen and (max-width: 800px) {
