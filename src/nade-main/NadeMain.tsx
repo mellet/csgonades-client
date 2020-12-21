@@ -134,6 +134,11 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           align-items: center;
         }
 
+        .advert-top {
+          max-height: 90px;
+          overflow: hidden;
+        }
+
         #nade-title-mobile {
           padding: ${Dimensions.GUTTER_SIZE}px;
           display: none;
