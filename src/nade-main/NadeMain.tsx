@@ -12,9 +12,9 @@ import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";
 import NadeStatus from "./components/NadeStatus";
 import { NadeAction } from "./components/NadeActions/NadeActions";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
 import { NadeTitle } from "../nade-header/NadeTitle";
 import { NadeEditButton } from "./components/NadeEditButton";
+import { EzoicPlainPlaceholder } from "../common/adunits/EzoicPlainPlaceholder";
 
 type Props = {
   nade: Nade;
@@ -81,13 +81,18 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         </div>
 
         <div id="nade-sidebar">
+          <div className="advert-top">
+            <EzoicPlainPlaceholder id="197" />
+          </div>
+
           <NadeEditButton nade={nade} />
           <NadeInfoContainer nade={nade} />
           <NadeAction nadeId={nade.id} />
-          <div className="advert">
-            <EzoicPlaceholder id="196" />
-          </div>
           <NadeComments nadeId={nade.id} />
+
+          <div className="advert">
+            <EzoicPlainPlaceholder id="196" />
+          </div>
         </div>
       </div>
 
@@ -131,6 +136,10 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         #nade-title-mobile {
           padding: ${Dimensions.GUTTER_SIZE}px;
           display: none;
+        }
+
+        .advert-top {
+          width: 100%;
         }
 
         @media only screen and (max-width: 800px) {
