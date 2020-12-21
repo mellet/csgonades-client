@@ -128,7 +128,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
         .advert,
         .advert-top {
-          width: 100%;
+          max-width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
