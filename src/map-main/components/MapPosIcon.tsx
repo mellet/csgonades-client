@@ -64,12 +64,10 @@ export const MapPosIcon: FC<Props> = memo(
           onClick={onClick}
         >
           <img src={`/icons/grenades/${nade.type}.png`} />
-          {numNades > 1 && (
-            <div className="num">
-              <span className="num-count">{numNades}</span>
-              {hasNew && <span className="new">NEW</span>}
-            </div>
-          )}
+          <div className="num">
+            {numNades > 1 && <span className="num-count">{numNades}</span>}
+            {hasNew && <span className="new">NEW</span>}
+          </div>
         </div>
         <style jsx>{`
           .point {
