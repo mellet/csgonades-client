@@ -14,10 +14,10 @@ export const SecondaryNav: FC = memo(({}) => {
         <PageLink href="/about" as="/about" prefetch="false">
           <span className="nav-item">About</span>
         </PageLink>
-        <PageLink href="/about" as="/contact" prefetch="false">
+        <PageLink href="/contact" as="/contact" prefetch="false">
           <span className="nav-item">Contact</span>
         </PageLink>
-        <PageLink href="/about" as="/privacypolicy" prefetch="false">
+        <PageLink href="/privacypolicy" as="/privacypolicy" prefetch="false">
           <span className="nav-item">Privacy Policy</span>
         </PageLink>
       </div>
