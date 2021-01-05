@@ -14,6 +14,10 @@ export const JumpThrowBindBlogMain: FC = () => {
           you can copy the bind.
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="198" />
+        </div>
+
         <h2>Is jumpthrow bind legal?</h2>
         <p>
           <a href="https://www.pcgamesn.com/counter-strike-global-offensive/jumpthrow-bind">
@@ -38,6 +42,11 @@ export const JumpThrowBindBlogMain: FC = () => {
         </p>
 
         <h2>Setting up jumpthrow bind</h2>
+
+        <div className="a-tag">
+          <EzoicPlaceholder id="189" />
+        </div>
+
         <h3>Simple keybind</h3>
         <p>
           If you don&apos;t want to mess around with your config files, use this
@@ -47,10 +56,6 @@ export const JumpThrowBindBlogMain: FC = () => {
         <p>
           <em>Change out X with your prefered key.</em>
         </p>
-
-        <div className="a-tag">
-          <EzoicPlaceholder id="189" />
-        </div>
 
         <h3>Alias bind, autoexec</h3>
         <p>

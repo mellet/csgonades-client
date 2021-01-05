@@ -30,6 +30,10 @@ export const PractiseConfigBlogPost = () => {
           }
         />
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="198" />
+        </div>
+
         <h2>The config</h2>
         <BlogCodeSnippet
           code={

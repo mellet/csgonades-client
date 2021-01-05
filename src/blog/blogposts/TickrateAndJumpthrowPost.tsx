@@ -16,6 +16,10 @@ export const TickrateAndJumpthrowPost: FC = () => {
           below.
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="198" />
+        </div>
+
         <h2>What is tickrate?</h2>
         <p>
           Tick rate is a networking term for game servers. It tells us how often

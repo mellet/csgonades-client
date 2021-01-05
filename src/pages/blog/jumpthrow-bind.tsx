@@ -11,7 +11,7 @@ const NadeAlignCrosshairBlogPost: FC = () => {
     <LayoutBuilder
       nav={<Navigation />}
       header={<HeaderDefault />}
-      main={<JumpThrowBindBlogMain></JumpThrowBindBlogMain>}
+      main={<JumpThrowBindBlogMain />}
       sidebar={<BlogDefaultSidebar data={blogJumpthrowBind} />}
     />
   );

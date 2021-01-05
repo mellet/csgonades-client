@@ -21,6 +21,10 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           need to excel on Dust2.
         </p>
 
+        <div className="a-tag">
+          <EzoicPlaceholder id="198" />
+        </div>
+
         <div className="dust2-nades">
           <span>There are many nades to discover on dust2!</span>
           <Link href="/maps/dust2">
