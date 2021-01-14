@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { useSignedInUser } from "../../store/AuthStore/AuthHooks";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { useAdminRoute } from "../data/hooks";
 

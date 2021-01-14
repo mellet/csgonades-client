@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react";
-import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
+import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import { useIsFavoriteInProgress } from "../../store/FavoriteStore/hooks/useIsFavoriteInProgress";
 import { useIsFavorited } from "../../store/FavoriteStore/hooks/useIsFavorited";
 import { useAddFavorite } from "../../store/FavoriteStore/hooks/useAddFavorite";

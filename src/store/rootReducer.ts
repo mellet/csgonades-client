@@ -3,7 +3,7 @@ import { ToastReducer } from "./ToastStore/ToastReducer";
 import { MapStoreReducer } from "./MapStore/slice";
 import TrackerReducer from "../features/tracker/TrackerSlice";
 import { SettingsReducer } from "./SettingsStore/SettingsSlice";
-import { AuthReducer } from "./AuthStore/AuthSlice";
+import { AuthReducer } from "../core/authentication/AuthSlice";
 import { GlobalReducer } from "./GlobalStore/GlobalStore";
 import { FavoriteReducer } from "./FavoriteStore/FavoriteSlice";
 import { NotificationReducer } from "./NotificationStore/NotificationSlice";

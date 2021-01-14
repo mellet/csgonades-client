@@ -17,7 +17,7 @@ import { ImageUploader } from "./ImageUploader";
 import { MapPositionEditor } from "../nade-main/components/MapPositionEditor";
 import { SumbitBtn } from "./components/SubmitBtn";
 import { NadeApi } from "../nade-data/NadeApi";
-import { useGetOrUpdateToken } from "../store/AuthStore/hooks/useGetToken";
+import { useGetOrUpdateToken } from "../core/authentication/useGetToken";
 import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
 import { useRouter } from "next/router";
 import { SEO } from "../common/SEO";

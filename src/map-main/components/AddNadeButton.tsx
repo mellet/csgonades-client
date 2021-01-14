@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
-import { useIsSignedIn } from "../../store/AuthStore/AuthHooks";
+import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import Router from "next/router";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";

@@ -5,7 +5,7 @@ import { ToastList } from "../common/toast/ToastList";
 import { useSetupSession } from "../layout/DataFetchers/useSetupSession";
 import { ServiceDown } from "../layout/ServiceDown";
 import { SignInWarning } from "./SignInWarning";
-import { usePreloadUser } from "../store/AuthStore/AuthHooks";
+import { usePreloadUser } from "./authentication/usePreloadUser";
 import { usePageView } from "../utils/Analytics";
 import { useFetchNotifications } from "../store/NotificationStore/hooks/useFetchNotifications";
 

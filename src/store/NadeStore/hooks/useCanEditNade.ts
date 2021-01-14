@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { userSelector } from "../../AuthStore/AuthSelectors";
+import { userSelector } from "../../../core/authentication/AuthSelectors";
 
 export const useCanEditNade = (ownerSteamId: string): boolean => {
   const user = useSelector(userSelector);

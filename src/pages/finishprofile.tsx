@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { FinishProfile } from "../finishprofile/FinishProfile";
-import { useSignedInUser } from "../store/AuthStore/AuthHooks";
+import { useSignedInUser } from "../core/authentication/useSignedInUser";
 import { SEO } from "../common/SEO";
 
 const FinishProfilePage: NextPage = () => {

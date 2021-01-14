@@ -1,7 +1,7 @@
 import { FC, useState, memo } from "react";
-import { useGetOrUpdateToken } from "../../../store/AuthStore/hooks/useGetToken";
+import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { NadeCommentApi, NadeComment } from "../../../core/api/NadeCommentApi";
-import { useIsSignedIn } from "../../../store/AuthStore/AuthHooks";
+import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { Config, Dimensions } from "../../../constants/Constants";
 

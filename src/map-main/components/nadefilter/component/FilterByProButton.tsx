@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { useIsSignedIn } from "../../../../store/AuthStore/AuthHooks";
+import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../../../constants/Constants";
 import { useFilterByPro } from "../../../../store/MapStore/hooks/useFilterByPro";

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
 import { User } from "../models/User";
-import { useIsAllowedUserEdit } from "../store/AuthStore/AuthHooks";
+import { useIsAllowedUserEdit } from "../core/authentication/useIsAllowedUserEdit";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { capitalize } from "../utils/Common";
 import { prettyDate, prettyDateTime } from "../utils/DateUtils";

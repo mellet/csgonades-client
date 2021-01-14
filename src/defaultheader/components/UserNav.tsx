@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { useSelector } from "react-redux";
 import { NotificationIndicator } from "../../common/notifications/NotificationIndicator";
-import { userSelector } from "../../store/AuthStore/AuthSelectors";
+import { userSelector } from "../../core/authentication/AuthSelectors";
 import { SignInnButton } from "./SignInnButton";
 import { UserDropdown } from "./UserDropdown";
 import { Dimensions } from "../../constants/Constants";

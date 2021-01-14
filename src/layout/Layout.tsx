@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { ToastList } from "../common/toast/ToastList";
-import { usePreloadUser } from "../store/AuthStore/AuthHooks";
+import { usePreloadUser } from "../core/authentication/usePreloadUser";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";

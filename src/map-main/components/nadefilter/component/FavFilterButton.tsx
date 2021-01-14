@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaStar } from "react-icons/fa";
-import { useIsSignedIn } from "../../../../store/AuthStore/AuthHooks";
+import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../store/SettingsStore/SettingsHooks";
 import { useFilterByFavorites } from "../../../../store/MapStore/hooks/useFilterByFavorites";
 import { Dimensions } from "../../../../constants/Constants";

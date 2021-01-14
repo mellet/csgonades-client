@@ -1,11 +1,11 @@
 import { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NotificationApi } from "../../../core/api/NotificationApi";
-import { useGetOrUpdateToken } from "../../AuthStore/hooks/useGetToken";
+import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { useRouter } from "next/router";
 import { lastNotificationFetchSelector } from "../NotificationSelectors";
 import { dateMinutesAgo } from "../../../utils/DateUtils";
-import { useIsSignedIn } from "../../AuthStore/AuthHooks";
+import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
 import { addUnreadNotificationsAction } from "../NotificationSlice";
 
 export const useFetchNotifications = () => {

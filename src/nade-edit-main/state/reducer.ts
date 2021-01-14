@@ -11,7 +11,7 @@ import { GfycatData } from "../../nade-data/Nade/GfycatData";
 import { NadeType } from "../../nade-data/Nade/NadeType";
 import { Movement } from "../../nade-data/Nade/NadeMovement";
 import { Technique } from "../../nade-data/Nade/Technique";
-import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
+import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { useRouter } from "next/router";

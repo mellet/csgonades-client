@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { User } from "../../models/User";
-import { useSignOut } from "../../store/AuthStore/AuthHooks";
+import { useSignOut } from "../../core/authentication/useSignOut";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Dropdown } from "semantic-ui-react";
 import { useRouter } from "next/router";

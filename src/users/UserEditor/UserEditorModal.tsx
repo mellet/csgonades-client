@@ -7,8 +7,8 @@ import { CsgnInput } from "../../common/inputs/CsgnInput";
 import { CsgnSaveButton } from "../../common/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../common/inputs/CsgnTextArea";
 import { User } from "../../models/User";
-import { useIsAllowedUserEdit } from "../../store/AuthStore/AuthHooks";
-import { userSelector } from "../../store/AuthStore/AuthSelectors";
+import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
+import { userSelector } from "../../core/authentication/AuthSelectors";
 import { useUpdateUser } from "../../store/UsersStore/hooks/useUpdateUser";
 
 type Props = {

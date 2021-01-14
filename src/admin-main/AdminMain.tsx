@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
-import { useIsAdminOrModerator } from "../store/AuthStore/AuthHooks";
+import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 import { useAdminRoute } from "./data/hooks";
 import { AdminNav } from "./components/AdminNav";
 import { AdminPendingNades } from "./containers/AdminPendingNades";

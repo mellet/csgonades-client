@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { CsgnList } from "../../common/list/CsgnList";
 import { NadeItem } from "../../common/nadeitem/NadeItem";
-import { useGetOrUpdateToken } from "../../store/AuthStore/hooks/useGetToken";
+import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { AdminPageTitle } from "../components/AdminPageTitle";
 

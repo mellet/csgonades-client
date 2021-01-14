@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { DBNadeList } from "./DBNadeList";
-import { useIsSignedIn } from "../store/AuthStore/AuthHooks";
+import { useIsSignedIn } from "../core/authentication/useIsSignedIn";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { SEO } from "../common/SEO";

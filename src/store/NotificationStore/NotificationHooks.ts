@@ -5,7 +5,7 @@ import {
   FavoriteNotification,
   FavoriteNotificationAgregate,
 } from "../../models/Notification";
-import { useGetOrUpdateToken } from "../AuthStore/hooks/useGetToken";
+import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { NotificationApi } from "../../core/api/NotificationApi";
 import { markNotificationAsSeenAction } from "./NotificationSlice";
 

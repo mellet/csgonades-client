@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthApi } from "../../../core/api/TokenApi";
-import { tokenExpiredOrAboutTo } from "../../../utils/TokenUtil";
-import { tokenSelector } from "../AuthSelectors";
-import { setTokenAction } from "../AuthSlice";
+import { AuthApi } from "./AuthApi";
+import { tokenExpiredOrAboutTo } from "../../utils/TokenUtil";
+import { tokenSelector } from "./AuthSelectors";
+import { setTokenAction } from "./AuthSlice";
 
 export const useGetOrUpdateToken = (): (() => Promise<string | null>) => {
   const dispatch = useDispatch();

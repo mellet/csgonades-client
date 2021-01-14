@@ -21,10 +21,8 @@ import { ImageUploader } from "../nade-create-main/ImageUploader";
 import { OneWaySelector } from "../nade-create-main/components/OneWaySelector";
 import { SEO } from "../common/SEO";
 import { StatusSelector } from "./comp/StatusSelector";
-import {
-  useIsAdminOrModerator,
-  useIsAdmin,
-} from "../store/AuthStore/AuthHooks";
+import { useIsAdmin } from "../core/authentication/useIsAdmin";
+import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 import { TickrateSelector } from "../nade-create-main/components/TickrateSelector";
 import { SlugInput } from "./comp/SlugInput";
 import { IsProSelector } from "./comp/IsProSelector";

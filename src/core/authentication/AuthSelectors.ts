@@ -1,4 +1,4 @@
-import { AppState } from "../rootReducer";
+import { AppState } from "../../store/rootReducer";
 
 export const userSelector = (state: AppState) => state.authStore.user;
 

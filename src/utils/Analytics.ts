@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import ReactGA from "react-ga";
-import { useIsAdmin } from "../store/AuthStore/AuthHooks";
+import { useIsAdmin } from "../core/authentication/useIsAdmin";
 import { useRouter } from "next/router";
 import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
 
