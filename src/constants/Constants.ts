@@ -1,6 +1,10 @@
 import packageJson from "../../package.json";
 
-export const IS_PROD = process.env.NODE_ENV === "production";
+// Set to true in developement if you want requests to go to prod server
+const DEV_PROD_OVERRIDE = false;
+
+export const IS_PROD =
+  DEV_PROD_OVERRIDE || process.env.NODE_ENV === "production";
 
 export const Config = {
   ADS_ENABLED: true,
