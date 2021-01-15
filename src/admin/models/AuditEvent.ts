@@ -1,4 +1,4 @@
-import { Role } from "../../../users/models/User";
+import { Role } from "../../users/models/User";
 
 type UserAudit = {
   nickname: string;

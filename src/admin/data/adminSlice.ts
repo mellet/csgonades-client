@@ -3,7 +3,7 @@ import { Report } from "../../reports/models/Report";
 import { User } from "../../users/models/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ContactDTO } from "../../contact/models/ContactDTOs";
-import { AuditDto } from "./audit/AuditEvent";
+import { AuditDto } from "../models/AuditEvent";
 
 export type AdminRoutes =
   | "pending-nades"

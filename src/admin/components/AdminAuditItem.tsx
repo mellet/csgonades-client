@@ -4,7 +4,7 @@ import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { capitalize } from "../../utils/Common";
 import { prettyDateTime } from "../../utils/DateUtils";
-import { AuditDto } from "../data/audit/AuditEvent";
+import { AuditDto } from "../models/AuditEvent";
 
 type Props = {
   auditLogEvent: AuditDto;

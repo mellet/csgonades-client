@@ -15,7 +15,7 @@ import {
 } from "./adminSlice";
 import { ContactApi } from "../../contact/data/ContactApi";
 import { sortByDate } from "../../utils/Common";
-import { AuditApi } from "./audit/AuiditApi";
+import { AuditApi } from "./AuiditApi";
 
 const useAdminStoreContext = () => {
   const context = useContext(AdminStoreContext);

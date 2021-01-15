@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { AuditDto } from "./AuditEvent";
-import { AppResult, extractApiError } from "../../../utils/ErrorUtil";
-import { Config } from "../../../constants/Constants";
+import { AuditDto } from "../models/AuditEvent";
+import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import { Config } from "../../constants/Constants";
 
 export class AuditApi {
   static async fetchAuditEvents(token: string): AppResult<AuditDto[]> {

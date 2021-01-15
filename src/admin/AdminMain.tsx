@@ -2,14 +2,14 @@ import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
 import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 import { useAdminRoute } from "./data/hooks";
-import { AdminNavigation } from "./navigation/AdminNavigation";
-import { AdminPendingNadesPage } from "./views/AdminPendingNadesPage";
-import { AdminReports } from "./views/AdminReports";
-import { AdminUsers } from "./views/AdminUsers";
-import { AdminDeclinedNades } from "./views/AdminDeclinedNades";
-import { AdminContactPage } from "./views/AdminContactPage";
-import { AdminWelcome } from "./views/AdminWelcome";
-import { AdminAuditView } from "./views/AdminAuditView";
+import { AdminNavigation } from "./components/AdminNavigation";
+import { AdminPendingNadesPage } from "./components/views/AdminPendingNadesPage";
+import { AdminReports } from "./components/views/AdminReports";
+import { AdminUsers } from "./components/views/AdminUsers";
+import { AdminDeclinedNades } from "./components/views/AdminDeclinedNades";
+import { AdminContactPage } from "./components/views/AdminContactPage";
+import { AdminWelcome } from "./components/views/AdminWelcome";
+import { AdminAuditView } from "./components/views/AdminAuditView";
 
 export const AdminMain: FC = () => {
   const allowedToView = useIsAdminOrModerator();

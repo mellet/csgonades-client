@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { AdminPageTitle } from "../components/AdminPageTitle";
-import { useAdminAudits } from "../data/hooks";
-import { AdminAuditItem } from "../components/AdminAuditItem";
+import { AdminPageTitle } from "../AdminPageTitle";
+import { useAdminAudits } from "../../data/hooks";
+import { AdminAuditItem } from "../AdminAuditItem";
 
 export const AdminAuditView: FC = () => {
   const { auditEvents } = useAdminAudits();

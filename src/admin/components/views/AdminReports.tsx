@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { useAdminReports } from "../data/hooks";
-import { AdminReportItem } from "../components/AdminReportItem";
-import { AdminPageTitle } from "../components/AdminPageTitle";
+import { useAdminReports } from "../../data/hooks";
+import { AdminReportItem } from "../AdminReportItem";
+import { AdminPageTitle } from "../AdminPageTitle";
 
 export const AdminReports: FC = () => {
   const { reports } = useAdminReports();
