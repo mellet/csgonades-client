@@ -1,19 +1,19 @@
 import { FC, memo } from "react";
-import { ToastList } from "../shared-components/toast/ToastList";
-import { usePreloadUser } from "../core/authentication/usePreloadUser";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { usePageView } from "../utils/Analytics";
-import { useSetupSession } from "./DataFetchers/useSetupSession";
-import { Footer } from "../navigation/NavFooter";
+import { ToastList } from "../../shared-components/toast/ToastList";
+import { usePreloadUser } from "../authentication/usePreloadUser";
+import { useTheme } from "../settings/SettingsHooks";
+import { usePageView } from "../../utils/Analytics";
+import { useSetupSession } from "./useSetupSession";
+import { Footer } from "../../navigation/NavFooter";
 import { HeaderDefault } from "./defaultheader/Header";
 import { ServiceDown } from "./ServiceDown";
-import { CookieConsent } from "../shared-components/CookieConsent";
-import { MapNav } from "../navigation/MapNav";
-import { Dimensions } from "../constants/Constants";
-import { SignInWarning } from "../core/SignInWarning";
-import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader";
-import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
-import { SecondaryNav } from "../navigation/SecondaryNav";
+import { CookieConsent } from "../../shared-components/CookieConsent";
+import { MapNav } from "../../navigation/MapNav";
+import { Dimensions } from "../../constants/Constants";
+import { SignInWarning } from "../SignInWarning";
+import { useEzoidAdLoader } from "../../shared-components/adunits/useEzoicAdLoader";
+import { useNavigation } from "../global/hooks/useNavigation";
+import { SecondaryNav } from "../../navigation/SecondaryNav";
 
 type Props = {
   sideBar?: JSX.Element;

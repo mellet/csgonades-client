@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { useOnSignIn } from "../core/authentication/useOnSignIn";
 import { SEO } from "../shared-components/SEO";
 import { useEffect, useState } from "react";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 
 const Auth: NextPage = () => {
   const { colors } = useTheme();

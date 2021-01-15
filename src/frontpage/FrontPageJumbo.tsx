@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { SiteStats } from "../core/api/StatsApi";
 import { Twemoji } from "../shared-components/Twemoj/Twemoji";
 

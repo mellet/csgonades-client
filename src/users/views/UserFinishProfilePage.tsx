@@ -1,10 +1,10 @@
 import Router from "next/router";
 import { FC, useState } from "react";
 import { User } from "../models/User";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { useFinishProfile } from "../data/useFinishProfile";
 import { Dimensions } from "../../constants/Constants";
-import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { useAnalytics } from "../../utils/Analytics";
 
 type Props = { user: User };

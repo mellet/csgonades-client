@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaStar } from "react-icons/fa";
-import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
+import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import { useIsFavorited } from "../data/hooks/useIsFavorited";

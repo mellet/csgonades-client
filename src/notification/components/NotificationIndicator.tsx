@@ -1,7 +1,7 @@
 import { FC, memo, useMemo, useState } from "react";
 import { FaBell } from "react-icons/fa";
 import { useNotifications } from "../data/NotificationHooks";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { NotificationList } from "./NotificationList";
 
 export const NotificationIndicator: FC = memo(() => {

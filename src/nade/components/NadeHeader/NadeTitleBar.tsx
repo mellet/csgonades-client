@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
 import { useAnalytics } from "../../../utils/Analytics";

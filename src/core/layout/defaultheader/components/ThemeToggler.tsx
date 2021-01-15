@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from "react";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../settings/SettingsHooks";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { Dimensions } from "../../../constants/Constants";
+import { Dimensions } from "../../../../constants/Constants";
 
 export const ThemeToggler: FC = memo(() => {
   const { toggleTheme, theme } = useTheme();

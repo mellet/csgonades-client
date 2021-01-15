@@ -1,7 +1,7 @@
 import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import breaks from "remark-breaks";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   value?: string;

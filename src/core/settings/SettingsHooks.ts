@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "..";
+import { AppDispatch } from "../store";
 import { useAnalytics } from "../../utils/Analytics";
-import { AppState } from "../rootReducer";
+import { AppState } from "../store/rootReducer";
 import { setThemeAction } from "./SettingsSlice";
 import { themes } from "./Themes";
 

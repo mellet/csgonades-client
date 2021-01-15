@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Nade } from "../models/Nade";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { NadeDescriptionDisplay } from "./NadeDescriptionDisplay";
 import { NadeDetails } from "./NadeDetails";
 

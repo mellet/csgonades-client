@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
 import { setTokenAction, setUserAction } from "./AuthSlice";
 import { useAnalytics } from "../../utils/Analytics";
 import { User } from "../../users/models/User";

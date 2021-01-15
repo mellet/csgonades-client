@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { useAdminRoute } from "../data/hooks";
 
 export const AdminNavigation: FC = () => {

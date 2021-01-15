@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { ThumbnailFavoriteButton } from "../../../favorites/components/ThumbnailFavoriteButton";
 import dynamic from "next/dynamic";
 import { ThumbImage } from "./ThumbImage";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
 const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
 

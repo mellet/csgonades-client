@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type Props = {
   value: string;

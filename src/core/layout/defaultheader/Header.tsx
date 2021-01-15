@@ -1,7 +1,7 @@
 import React, { FC, memo, Suspense } from "react";
 import { Hamburger } from "./components/Hamburger";
 import { Logo } from "./components/Logo";
-import { Dimensions } from "../../constants/Constants";
+import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 
 const UserNav = React.lazy(() => import("./components/UserNav"));

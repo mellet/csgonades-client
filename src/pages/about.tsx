@@ -1,9 +1,9 @@
 import { NextPage } from "next";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { SEO } from "../shared-components/SEO";
 import { Dimensions } from "../constants/Constants";
-import { LayoutBuilder } from "../layout/LayoutBuilder";
-import { HeaderDefault } from "../layout/defaultheader/Header";
+import { LayoutBuilder } from "../core/layout/LayoutBuilder";
+import { HeaderDefault } from "../core/layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
 
 const AboutPageContainer: NextPage = () => {

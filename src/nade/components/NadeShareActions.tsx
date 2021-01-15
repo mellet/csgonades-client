@@ -7,7 +7,7 @@ import {
 } from "react-share";
 import { useAnalytics } from "../../utils/Analytics";
 import { FaVk, FaTwitter, FaRedditAlien, FaFacebookF } from "react-icons/fa";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   visisble: boolean;

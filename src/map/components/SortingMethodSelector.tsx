@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
 import { FaRocket, FaLongArrowAltUp, FaSith } from "react-icons/fa";
 import { useFilterByMethod } from "../data/hooks/useFilterByMethod";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
 
 export const SortingMethodSelector: FC = () => {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { useAdminUsers } from "../data/hooks";
 import { prettyDateTime } from "../../utils/DateUtils";
 

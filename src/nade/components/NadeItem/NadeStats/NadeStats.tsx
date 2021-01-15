@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { RiMouseLine } from "react-icons/ri";
 import { tickrateString, Tickrate } from "../../../models/NadeTickrate";
-import { useTheme } from "../../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { Popup } from "semantic-ui-react";
 import { StatItem } from "./StatItem";
 import { Technique } from "../../../models/Technique";

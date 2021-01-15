@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FC, memo } from "react";
 import { FaBell } from "react-icons/fa";
 import { Notification } from "../models/Notification";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { pluralize } from "../../utils/Common";
 import { prettyDateTime } from "../../utils/DateUtils";
 import { PageLink } from "../../shared-components/PageLink";

@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { NadeLight } from "../../nade/models/Nade";
 import { User } from "../models/User";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { UserDetails } from "./UserDetails";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItemMobile } from "../../nade/components/NadeItem/NadeItemMobile";

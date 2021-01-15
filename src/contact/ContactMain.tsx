@@ -4,7 +4,7 @@ import { ContactApi } from "./data/ContactApi";
 import { CsgnInput } from "../shared-components/inputs/CsgnInput";
 import { CsgnTextArea } from "../shared-components/inputs/CsgnTextArea";
 import { AddConctactDTO } from "./models/ContactDTOs";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 
 export const ContactMain: FC = () => {

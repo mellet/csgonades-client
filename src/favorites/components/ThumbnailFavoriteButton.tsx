@@ -6,8 +6,8 @@ import { useAddFavorite } from "../data/hooks/useAddFavorite";
 import { useUnfavorite } from "../data/hooks/useUnFavorite";
 import { Popup } from "semantic-ui-react";
 import { FaStar } from "react-icons/fa";
-import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
-import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 
 type Props = {
   disableAction?: boolean;

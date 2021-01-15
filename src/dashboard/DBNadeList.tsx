@@ -6,7 +6,7 @@ import { useSignedInUser } from "../core/authentication/useSignedInUser";
 import { sortByDate, generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../shared-components/PageLink";
 import { prettyDate } from "../utils/DateUtils";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import Link from "next/link";
 import {
   FaCheck,

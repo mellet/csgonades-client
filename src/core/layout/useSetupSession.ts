@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AuthApi } from "../../core/authentication/AuthApi";
+import { AuthApi } from "../authentication/AuthApi";
 
 export const useSetupSession = (): void => {
   const [hasCalled, setHasCalled] = useState(false);

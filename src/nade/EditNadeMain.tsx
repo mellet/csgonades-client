@@ -2,7 +2,7 @@ import { FC, useMemo } from "react";
 import { Nade } from "./models/Nade";
 import { useCanEditNade } from "./data/useCanEditNade";
 import { Dimensions } from "../constants/Constants";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { BigLabel } from "./components/NadeLabels/BigLabel";
 import { MapSelector } from "./components/NadeInputs/MapSelector";
 import { useEditNadeState } from "./data/EditNadeReducer";

@@ -1,6 +1,6 @@
 import { ChangeEvent, useRef, useState, FC } from "react";
 import ReactCrop from "react-image-crop";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { Dimensions } from "../../../constants/Constants";
 import { useWindowSize } from "../../../shared-components/MinSizeRender";
 import "react-image-crop/dist/ReactCrop.css";

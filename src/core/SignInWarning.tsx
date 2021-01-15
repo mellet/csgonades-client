@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import { CSGNModal } from "../shared-components/CSGNModal";
 import { useAnalytics } from "../utils/Analytics";
-import { SignInnButton } from "../layout/defaultheader/components/SignInnButton";
-import { useSignInWarning } from "../store/GlobalStore/hooks/useSignInWarning";
+import { SignInnButton } from "./layout/defaultheader/components/SignInnButton";
+import { useSignInWarning } from "./global/hooks/useSignInWarning";
 import { FaCheckCircle, FaComment, FaPlus, FaStar } from "react-icons/fa";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "./settings/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 
 export const SignInWarning: FC = memo(() => {

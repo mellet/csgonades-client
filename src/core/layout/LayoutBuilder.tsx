@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from "react";
-import { Dimensions } from "../constants/Constants";
-import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { Dimensions } from "../../constants/Constants";
+import { useNavigation } from "../global/hooks/useNavigation";
+import { useTheme } from "../settings/SettingsHooks";
 
 type Props = {
   header: JSX.Element;

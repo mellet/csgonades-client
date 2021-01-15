@@ -1,8 +1,8 @@
 import { FC, memo, useMemo } from "react";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
-import { PageLink } from "../../../shared-components/PageLink";
+import { useTheme } from "../../../settings/SettingsHooks";
+import { PageLink } from "../../../../shared-components/PageLink";
 import Image from "next/image";
-import { Dimensions } from "../../../constants/Constants";
+import { Dimensions } from "../../../../constants/Constants";
 
 export const Logo: FC = memo(() => {
   const { theme } = useTheme();

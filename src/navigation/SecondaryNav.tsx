@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { PageLink } from "../shared-components/PageLink";
 
 export const SecondaryNav: FC = memo(({}) => {

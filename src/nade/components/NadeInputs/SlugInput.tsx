@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CsgnInput } from "../../../shared-components/inputs/CsgnInput";
 import { NadeApi } from "../../data/NadeApi";
-import { useDisplayToast } from "../../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
 
 type Props = {
   defaultValue?: string;

@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { BlogDefaultSidebar } from "../../blog/components/BlogDefaultSidebar";
 import { NadeAlignCrosshairPost } from "../../blog/blogposts/NadeAlignCrosshairPost";
-import { HeaderDefault } from "../../layout/defaultheader/Header";
-import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { HeaderDefault } from "../../core/layout/defaultheader/Header";
+import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { blogNadeAlignCrosshair } from "../../blog/ArticleData/blogPosts";
 

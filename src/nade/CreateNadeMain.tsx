@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { TypeSelector } from "./components/NadeInputs/TypeSelector";
 import { Dimensions } from "../constants/Constants";
 import { BigLabel } from "./components/NadeLabels/BigLabel";
@@ -18,7 +18,7 @@ import { MapPositionEditor } from "./components/MapPositionEditor";
 import { SumbitBtn } from "./components/NadeInputs/SubmitBtn";
 import { NadeApi } from "./data/NadeApi";
 import { useGetOrUpdateToken } from "../core/authentication/useGetToken";
-import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../core/toasts/hooks/useDisplayToast";
 import { useRouter } from "next/router";
 import { SEO } from "../shared-components/SEO";
 import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";

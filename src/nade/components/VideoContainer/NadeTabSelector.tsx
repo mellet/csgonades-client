@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type Props = {
   onChangeTab: (newTab: "video" | "lineup") => void;

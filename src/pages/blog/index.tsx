@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BlogList } from "../../blog/components/BlogList";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { SEO } from "../../shared-components/SEO";
 import { Dimensions } from "../../constants/Constants";
 import {
@@ -10,9 +10,9 @@ import {
   blogPractiseConfig,
   blogTickrateAndJumpthrow,
 } from "../../blog/ArticleData/blogPosts";
-import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
-import { HeaderDefault } from "../../layout/defaultheader/Header";
+import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 
 const BlogPage: FC = () => {
   const { colors } = useTheme();

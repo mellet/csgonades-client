@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { NadeComment, NadeCommentApi } from "../../data/NadeCommentApi";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { prettyDateTime } from "../../../utils/DateUtils";
 import { useSignedInUser } from "../../../core/authentication/useSignedInUser";
 import { CSGNModal } from "../../../shared-components/CSGNModal";

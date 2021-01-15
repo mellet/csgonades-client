@@ -3,7 +3,7 @@ import { CsgnInput } from "../../../shared-components/inputs/CsgnInput";
 import { cleanGfycatUrl } from "../../../utils/Common";
 import { NadeApi } from "../../data/NadeApi";
 import { GfycatData } from "../../models/GfycatData";
-import { useDisplayToast } from "../../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
 
 type Props = {
   defaultValue?: string;

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
-import { useTheme } from "../../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { Dimensions } from "../../../../constants/Constants";
 import { useFilterByPro } from "../../../data/hooks/useFilterByPro";
-import { useSignInWarning } from "../../../../store/GlobalStore/hooks/useSignInWarning";
+import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 import { FilterLabel } from "./FilterLabel";
 
 export const FilterByProButton: FC = () => {

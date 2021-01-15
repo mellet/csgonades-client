@@ -2,7 +2,7 @@ import { FC, useState, memo } from "react";
 import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { Config, Dimensions } from "../../../constants/Constants";
 
 type Props = {

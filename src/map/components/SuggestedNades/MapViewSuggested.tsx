@@ -4,7 +4,7 @@ import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useAnalytics } from "../../../utils/Analytics";
 
 type Props = {

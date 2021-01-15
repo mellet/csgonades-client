@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
 import { Nade } from "../models/Nade";
 import { useCanEditNade } from "../data/useCanEditNade";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   nade: Nade;

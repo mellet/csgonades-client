@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { Nade } from "../../models/Nade";
 import { generateNadeItemTitle } from "../../../utils/Common";
 

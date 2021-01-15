@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CsgnTextArea } from "../../../shared-components/inputs/CsgnTextArea";
 import { FaCheckCircle } from "react-icons/fa";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type Props = {
   defaultValue?: string;

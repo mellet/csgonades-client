@@ -4,7 +4,7 @@ import { CsgoMap } from "../../models/CsGoMap";
 import { NadeLight } from "../../../nade/models/Nade";
 import { SidebarAdSticky } from "../../../shared-components/adunits/SidebarAdSticky";
 import { TopContributorsLazy } from "./TopContributorsLazy";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { capitalize } from "../../../utils/Common";
 import { PaypalAction } from "./PaypalAction";
 

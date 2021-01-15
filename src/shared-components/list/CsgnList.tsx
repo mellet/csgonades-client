@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
 import { ListAds } from "./ListAds";
 import { isMobile } from "react-device-detect";

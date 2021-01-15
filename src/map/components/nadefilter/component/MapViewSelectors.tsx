@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useSetMapView } from "../../../data/hooks/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { Dimensions } from "../../../../constants/Constants";
-import { useTheme } from "../../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { FilterLabel } from "./FilterLabel";
 
 export const MapViewSelector: FC = () => {

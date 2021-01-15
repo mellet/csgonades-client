@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { MapCoordinates } from "../models/Nade";
 import { MapPositionModal } from "./MapPositionModal";
 import { CsgoMap } from "../../map/models/CsGoMap";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { MiniLabel } from "./NadeLabels/MiniLabel";
 
 type Props = {

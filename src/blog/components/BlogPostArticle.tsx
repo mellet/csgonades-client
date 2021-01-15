@@ -1,5 +1,5 @@
 import { FC, memo, FunctionComponent } from "react";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { BlogPost } from "../models/BlogPost";
 import { Dimensions } from "../../constants/Constants";
 import { prettyDate } from "../../utils/DateUtils";

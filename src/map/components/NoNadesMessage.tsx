@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useFilterReset } from "../data/hooks/useFilterReset";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 export const NoNadesMessage: FC = memo(() => {
   const { resetFilter } = useFilterReset();

@@ -3,9 +3,9 @@ import { NadeApi } from "../../nade/data/NadeApi";
 import { CsgoMap, getAllCsGoMaps } from "../../map/models/CsGoMap";
 import { NadeLight } from "../../nade/models/Nade";
 import { MapMain } from "../../map/MapMain";
-import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
-import { HeaderDefault } from "../../layout/defaultheader/Header";
+import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { MapSidebar } from "../../map/components/Sidebar/MapSidebar";
 
 interface Props {

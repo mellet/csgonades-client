@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react";
 import { Status } from "../../models/Status";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { iconFromType, generateNadeItemTitle } from "../../../utils/Common";
 import { NadeType } from "../../models/NadeType";
 

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
-import { Config, Dimensions } from "../../../constants/Constants";
-import { useAnalytics } from "../../../utils/Analytics";
+import { Config, Dimensions } from "../../../../constants/Constants";
+import { useAnalytics } from "../../../../utils/Analytics";
 
 export const SignInnButton: FC = () => {
   const { event } = useAnalytics();

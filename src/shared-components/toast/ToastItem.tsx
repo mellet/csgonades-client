@@ -1,8 +1,8 @@
 import { FC, useEffect, useState, memo } from "react";
 import { FaTimes } from "react-icons/fa";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { AppToast, ToastSeverity } from "../../store/ToastStore/ToastActions";
-import { useDismissToast } from "../../store/ToastStore/ToastHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
+import { AppToast, ToastSeverity } from "../../core/toasts/ToastActions";
+import { useDismissToast } from "../../core/toasts/ToastHooks";
 
 type Props = {
   notification: AppToast;

@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useNotifications } from "../data/NotificationHooks";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { NotificationItem } from "./NotificationItem";
 
 type Props = {

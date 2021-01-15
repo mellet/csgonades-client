@@ -1,4 +1,4 @@
-import { AppState } from "../rootReducer";
+import { AppState } from "../store/rootReducer";
 import { SignInWarningType } from "./GlobalStore";
 
 export const isNavOpenSelector = (state: AppState): boolean =>

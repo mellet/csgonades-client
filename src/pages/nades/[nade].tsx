@@ -2,7 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { Nade } from "../../nade/models/Nade";
 import { NadeNotFound } from "../../nade/components/NadeNotFound";
-import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { NadeMain } from "../../nade/NadeMain";
 import { NadeHeader } from "../../nade/components/NadeHeader/NadeHeader";
 

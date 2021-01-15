@@ -1,6 +1,6 @@
 import { FC, Suspense } from "react";
 import { Dimensions } from "../../../constants/Constants";
-import UserNav from "../../../layout/defaultheader/components/UserNav";
+import UserNav from "../../../core/layout/defaultheader/components/UserNav";
 import { Nade } from "../../models/Nade";
 import { NadeTitleBar } from "./NadeTitleBar";
 

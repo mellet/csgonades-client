@@ -4,7 +4,7 @@ import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { isMobileOnly } from "react-device-detect";
 import { useFilterServerSideNades } from "../data/hooks/useFilteredNades";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { useSetMapView } from "../data/hooks/useSetMapView";
 import dynamic from "next/dynamic";
 

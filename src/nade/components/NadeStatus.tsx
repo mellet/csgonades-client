@@ -2,8 +2,8 @@ import { FC, memo } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { StatusInfo } from "../models/Nade";
 import { Status } from "../models/Status";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { ThemeColors } from "../../store/SettingsStore/Themes";
+import { useTheme } from "../../core/settings/SettingsHooks";
+import { ThemeColors } from "../../core/settings/Themes";
 
 type Props = {
   status: Status;

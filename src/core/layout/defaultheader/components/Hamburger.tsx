@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useNavigation } from "../../../store/GlobalStore/hooks/useNavigation";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useNavigation } from "../../../global/hooks/useNavigation";
+import { useTheme } from "../../../settings/SettingsHooks";
 
 export const Hamburger: FC = memo(({}) => {
   const { colors } = useTheme();

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { DashboardPage } from "../dashboard/DashboardPage";
-import { HeaderDefault } from "../layout/defaultheader/Header";
-import { LayoutBuilder } from "../layout/LayoutBuilder";
+import { HeaderDefault } from "../core/layout/defaultheader/Header";
+import { LayoutBuilder } from "../core/layout/LayoutBuilder";
 import { Navigation } from "../navigation/Navigation";
 
 const Dashboard: NextPage = () => {

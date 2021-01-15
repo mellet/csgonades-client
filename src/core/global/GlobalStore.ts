@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PersistConfig, persistReducer } from "redux-persist";
-import { SiteStats } from "../../core/api/StatsApi";
+import { SiteStats } from "../api/StatsApi";
 import storage from "redux-persist/lib/storage";
 
 export type SignInWarningType = "favorite" | "filterpro" | "addnade";

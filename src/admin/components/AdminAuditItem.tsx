@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { capitalize } from "../../utils/Common";
 import { prettyDateTime } from "../../utils/DateUtils";
 import { AuditDto } from "../models/AuditEvent";

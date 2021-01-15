@@ -3,9 +3,9 @@ import { Nade } from "../../nade/models/Nade";
 import { NadeNotFound } from "../../nade/components/NadeNotFound";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { EditNadeMain } from "../../nade/EditNadeMain";
-import { LayoutBuilder } from "../../layout/LayoutBuilder";
+import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
-import { HeaderDefault } from "../../layout/defaultheader/Header";
+import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 
 type Props = {
   nade: Nade | null;

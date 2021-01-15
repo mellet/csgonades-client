@@ -1,9 +1,9 @@
 import { FC, memo, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Dimensions, LayerPosition } from "../../constants/Constants";
-import { toastSelector } from "../../store/ToastStore/ToastSelectors";
+import { toastSelector } from "../../core/toasts/ToastSelectors";
 import { ToastItem } from "./ToastItem";
-import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 
 const DEBUG = false;
 

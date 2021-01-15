@@ -12,7 +12,7 @@ import { NadeType } from "../models/NadeType";
 import { Movement } from "../models/NadeMovement";
 import { Technique } from "../models/Technique";
 import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
-import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { NadeApi } from "./NadeApi";
 import { useRouter } from "next/router";
 import { assertNever } from "../../utils/Common";

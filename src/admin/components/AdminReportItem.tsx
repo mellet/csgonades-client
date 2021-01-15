@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { Report } from "../../reports/models/Report";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { prettyDateTime } from "../../utils/DateUtils";
 
 type Props = {

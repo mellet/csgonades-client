@@ -5,7 +5,7 @@ import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContain
 import { NadeComments } from "./components/comments/NadeComments";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify, generateSeoTitle } from "../utils/Common";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../core/settings/SettingsHooks";
 import { Nade } from "./models/Nade";
 import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";

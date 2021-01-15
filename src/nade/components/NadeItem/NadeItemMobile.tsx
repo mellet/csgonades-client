@@ -3,7 +3,7 @@ import { FaChevronRight, FaPlay, FaStop } from "react-icons/fa";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Dimensions } from "../../../constants/Constants";
 import { NadeLight } from "../../models/Nade";
-import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";

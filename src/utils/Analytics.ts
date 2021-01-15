@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import ReactGA from "react-ga";
 import { useIsAdmin } from "../core/authentication/useIsAdmin";
 import { useRouter } from "next/router";
-import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
+import { useNavigation } from "../core/global/hooks/useNavigation";
 
 const IS_BROWSER = typeof window !== "undefined";
 const IS_PROD = process.env.NODE_ENV === "production";

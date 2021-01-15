@@ -1,6 +1,6 @@
 import { FC, useState, useEffect, memo } from "react";
 import Axios from "axios";
-import { CSGNModal } from "../shared-components/CSGNModal";
+import { CSGNModal } from "../../shared-components/CSGNModal";
 
 export const ServiceDown: FC = memo(({}) => {
   const [serviceUp, setServiceUp] = useState(true);

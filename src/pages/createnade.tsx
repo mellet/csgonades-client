@@ -1,6 +1,6 @@
 import { NextPage } from "next";
-import { HeaderDefault } from "../layout/defaultheader/Header";
-import { LayoutBuilder } from "../layout/LayoutBuilder";
+import { HeaderDefault } from "../core/layout/defaultheader/Header";
+import { LayoutBuilder } from "../core/layout/LayoutBuilder";
 import { CreateNadeMain } from "../nade/CreateNadeMain";
 import { Navigation } from "../navigation/Navigation";
 

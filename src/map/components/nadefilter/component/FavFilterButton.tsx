@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { FaStar } from "react-icons/fa";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
-import { useTheme } from "../../../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useFilterByFavorites } from "../../../data/hooks/useFilterByFavorites";
 import { Dimensions } from "../../../../constants/Constants";
-import { useSignInWarning } from "../../../../store/GlobalStore/hooks/useSignInWarning";
+import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 
 type Props = {
   vertical?: boolean;

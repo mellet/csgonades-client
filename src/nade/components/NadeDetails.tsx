@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { Nade } from "../models/Nade";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { prettyDate } from "../../utils/DateUtils";
 import { PageLink } from "../../shared-components/PageLink";
 import { pluralize } from "../../utils/Common";

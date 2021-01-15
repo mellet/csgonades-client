@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { useDisplayToast } from "../../../store/ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
 import { ReportAddDto } from "../../../reports/models/Report";
 import { ReportApi } from "../../../reports/data/ReportApi";
 import { FaFlag } from "react-icons/fa";

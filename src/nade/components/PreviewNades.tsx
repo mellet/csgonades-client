@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { NadeCreateBody } from "../models/Nade";
-import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { NadeItemTitle } from "./NadeItem/NadeItemTitle";
 import { GfycatThumbnail } from "./NadeItem/GfycatThumbnail";
 import { NadeStats } from "./NadeItem/NadeStats/NadeStats";
