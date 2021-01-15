@@ -4,7 +4,7 @@ import { ok } from "neverthrow";
 import { Report, ReportAddDto } from "../../models/Report";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
-const { config } = getConfig();
+const config = getConfig()?.publicRuntimeConfig;
 
 export class ReportApi {
   static async getAll(token: string): AppResult<Report[]> {

@@ -4,9 +4,10 @@ import { FaSteam } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
 import { useAnalytics } from "../../utils/Analytics";
 
+const config = getConfig()?.publicRuntimeConfig;
+
 export const SignInnButton: FC = () => {
   const { event } = useAnalytics();
-  const { publicRuntimeConfig } = getConfig();
 
   function onSignInClick() {
     event({
@@ -20,7 +21,7 @@ export const SignInnButton: FC = () => {
       <div className="steam-login-wrapper">
         <a
           className="steam-login"
-          href={publicRuntimeConfig.signInUrl}
+          href={config.apiUrl + "/auth/steam"}
           rel="nofollow"
           onClick={onSignInClick}
         >

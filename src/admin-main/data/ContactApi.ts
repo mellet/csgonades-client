@@ -4,7 +4,7 @@ import { AddConctactDTO, ContactDTO } from "./ContactDTOs";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";
 
-const { config } = getConfig()?.publicRuntimeConfig;
+const config = getConfig()?.publicRuntimeConfig;
 
 export class ContactApi {
   static async sendMessage(message: AddConctactDTO): AppResult<boolean> {

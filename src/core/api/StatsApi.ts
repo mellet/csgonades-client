@@ -10,7 +10,7 @@ export type SiteStats = {
   numUsers: number;
 };
 
-const { config } = getConfig();
+const config = getConfig()?.publicRuntimeConfig;
 
 export class StatsApi {
   static async getStats(): AppResult<SiteStats> {

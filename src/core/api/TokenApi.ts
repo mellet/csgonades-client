@@ -3,7 +3,7 @@ import { ok } from "neverthrow";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";
 
-const { config } = getConfig()?.publicRuntimeConfig;
+const config = getConfig()?.publicRuntimeConfig;
 
 type TokenRes = {
   accessToken: string;

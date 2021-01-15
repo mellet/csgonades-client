@@ -12,7 +12,7 @@ import {
 } from "./Nade/Nade";
 import { AppResult, extractApiError } from "../utils/ErrorUtil";
 
-const { config } = getConfig()?.publicRuntimeConfig;
+const config = getConfig()?.publicRuntimeConfig;
 
 export class NadeApi {
   static async slugIsFree(slug: string): Promise<boolean> {

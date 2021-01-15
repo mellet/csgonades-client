@@ -2,7 +2,7 @@ import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import getConfig from "next/config";
 
-const { config } = getConfig()?.publicRuntimeConfig;
+const config = getConfig()?.publicRuntimeConfig;
 
 const CsGoMaps = {
   dust2: "Dust2",

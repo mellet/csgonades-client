@@ -6,6 +6,8 @@ import { useIsSignedIn } from "../../../store/AuthStore/AuthHooks";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../../../constants/Constants";
 
+const config = getConfig()?.publicRuntimeConfig;
+
 type Props = {
   nadeId: string;
   onCommentSubmitted: (newComment: NadeComment) => void;
@@ -16,7 +18,6 @@ export const CommentSubmit: FC<Props> = memo(
     const { colors } = useTheme();
     const isSignedIn = useIsSignedIn();
     const getToken = useGetOrUpdateToken();
-    const { config } = getConfig();
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
