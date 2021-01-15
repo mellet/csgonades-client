@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { AdminContactMessage } from "../ui/AdminContactMessage";
+import { AdminContactMessage } from "../components/AdminContactMessage";
 import { useAdminContact } from "../data/hooks";
 
 export const AdminContactPage: FC = () => {

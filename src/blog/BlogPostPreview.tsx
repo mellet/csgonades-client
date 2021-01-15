@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { prettyDate } from "../utils/DateUtils";
 import { BlogPost } from "./BlogPost";
-import { PageLink } from "../common/PageLink";
+import { PageLink } from "../shared-components/PageLink";
 import Image from "next/image";
 
 type Props = {

@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { PageLink } from "../common/PageLink";
+import { PageLink } from "../shared-components/PageLink";
 
 export const SecondaryNav: FC = memo(({}) => {
   const { colors } = useTheme();

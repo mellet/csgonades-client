@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { SEO } from "../common/SEO";
+import { SEO } from "../shared-components/SEO";
 import { Dimensions } from "../constants/Constants";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
-import { HeaderDefault } from "../defaultheader/Header";
+import { HeaderDefault } from "../layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
 
 const PrivacyPolicyPageContainer: NextPage = () => {

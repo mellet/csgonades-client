@@ -1,8 +1,8 @@
-import { NadeLight } from "../../nade-data/Nade/Nade";
-import { Report } from "../../models/Report";
+import { NadeLight } from "../../nade/models/Nade";
+import { Report } from "../../reports/models/Report";
 import { User } from "../../users/models/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ContactDTO } from "../../contact/ContactDTOs";
+import { ContactDTO } from "../../contact/models/ContactDTOs";
 import { AuditDto } from "./audit/AuditEvent";
 
 export type AdminRoutes =

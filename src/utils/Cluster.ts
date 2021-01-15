@@ -1,4 +1,4 @@
-import { MapCoordinates, NadeLight } from "../nade-data/Nade/Nade";
+import { MapCoordinates, NadeLight } from "../nade/models/Nade";
 
 export function custerNades(nades: NadeLight[]) {
   const maxDistance = 30;
@@ -17,7 +17,11 @@ export function custerNades(nades: NadeLight[]) {
       // See if we find a cluster where the nade fits
       for (const cluster of clusters) {
         const firstNade = cluster[0];
-        const dist = distanceBetween(nade.mapEndCoord!, firstNade.mapEndCoord!);
+        if (!firstNade.mapEndCoord) {
+          continue;
+        }
+
+        const dist = distanceBetween(nade.mapEndCoord, firstNade.mapEndCoord);
         if (dist < maxDistance) {
           cluster.push(nade);
           addedToCluster = true;

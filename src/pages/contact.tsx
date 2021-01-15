@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import { SEO } from "../common/SEO";
+import { SEO } from "../shared-components/SEO";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
-import { HeaderDefault } from "../defaultheader/Header";
+import { HeaderDefault } from "../layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
 import { ContactMain } from "../contact/ContactMain";
 

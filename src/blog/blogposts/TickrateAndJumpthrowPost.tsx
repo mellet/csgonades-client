@@ -2,7 +2,7 @@ import { FC } from "react";
 import { blogTickrateAndJumpthrow } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../BlogCodeSnippet";
 import { BlogPostArticle } from "../BlogPostArticle";
-import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
+import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 
 export const TickrateAndJumpthrowPost: FC = () => {
   return (

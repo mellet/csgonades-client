@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { EzoicPlaceholder } from "../common/adunits/EzoicPlaceholder";
+import { EzoicPlaceholder } from "../shared-components/adunits/EzoicPlaceholder";
 
 const AdTesting: NextPage = () => {
   return (

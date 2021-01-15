@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { useOnSignIn } from "../core/authentication/useOnSignIn";
-import { SEO } from "../common/SEO";
+import { SEO } from "../shared-components/SEO";
 import { useEffect, useState } from "react";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 

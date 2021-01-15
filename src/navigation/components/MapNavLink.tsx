@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
+import { CsgoMap } from "../../map/models/CsGoMap";
 import Link from "next/link";
 
 type Props = {

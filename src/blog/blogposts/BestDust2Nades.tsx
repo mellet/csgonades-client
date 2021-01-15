@@ -4,8 +4,8 @@ import { BlogPostArticle } from "../BlogPostArticle";
 import { bestDust2Nades } from "../ArticleData/blogPosts";
 import { BlogNadeItem } from "../BlogNadeItem";
 import { Dimensions } from "../../constants/Constants";
-import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
-import { PageLink } from "../../common/PageLink";
+import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
+import { PageLink } from "../../shared-components/PageLink";
 
 export const BestDust2NadesBlogPost = (): JSX.Element => {
   return (

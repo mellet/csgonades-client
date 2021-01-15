@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { TickrateAndJumpthrowPost } from "../../blog/blogposts/TickrateAndJumpthrowPost";
-import { HeaderDefault } from "../../defaultheader/Header";
+import { HeaderDefault } from "../../layout/defaultheader/Header";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { blogTickrateAndJumpthrow } from "../../blog/ArticleData/blogPosts";

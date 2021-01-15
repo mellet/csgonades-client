@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
-import { CSGNModal } from "../common/CSGNModal";
+import { CSGNModal } from "../shared-components/CSGNModal";
 import { useAnalytics } from "../utils/Analytics";
-import { SignInnButton } from "../defaultheader/components/SignInnButton";
+import { SignInnButton } from "../layout/defaultheader/components/SignInnButton";
 import { useSignInWarning } from "../store/GlobalStore/hooks/useSignInWarning";
 import { FaCheckCircle, FaComment, FaPlus, FaStar } from "react-icons/fa";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";

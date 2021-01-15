@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Image from "next/image";
-import { CsgoMap } from "../../nade-data/Nade/CsGoMap";
+import { CsgoMap } from "../../map/models/CsGoMap";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { capitalize } from "../../utils/Common";
 

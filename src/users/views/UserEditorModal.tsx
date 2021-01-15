@@ -1,11 +1,11 @@
 import { FC, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { ButtonWithIcon } from "../../common/ButtonWithIcon";
-import { CSGNModal } from "../../common/CSGNModal";
-import { CsgnInput } from "../../common/inputs/CsgnInput";
-import { CsgnSaveButton } from "../../common/inputs/CsgnSaveButton";
-import { CsgnTextArea } from "../../common/inputs/CsgnTextArea";
+import { ButtonWithIcon } from "../../shared-components/ButtonWithIcon";
+import { CSGNModal } from "../../shared-components/CSGNModal";
+import { CsgnInput } from "../../shared-components/inputs/CsgnInput";
+import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";
+import { CsgnTextArea } from "../../shared-components/inputs/CsgnTextArea";
 import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
 import { userSelector } from "../../core/authentication/AuthSelectors";

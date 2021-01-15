@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { DashboardPage } from "../dashboard/DashboardPage";
-import { HeaderDefault } from "../defaultheader/Header";
+import { HeaderDefault } from "../layout/defaultheader/Header";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
 import { Navigation } from "../navigation/Navigation";
 

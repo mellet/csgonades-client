@@ -1,9 +1,9 @@
 import { FC, memo, useState, useEffect } from "react";
-import { Nade } from "../nade-data/Nade/Nade";
-import { NadeApi } from "../nade-data/NadeApi";
+import { Nade } from "../nade/models/Nade";
+import { NadeApi } from "../nade/data/NadeApi";
 import { isMobile } from "react-device-detect";
-import { NadeItemMobile } from "../common/nadeitem/NadeItemMobile";
-import { NadeItem } from "../common/nadeitem/NadeItem";
+import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
+import { NadeItem } from "../nade/components/NadeItem/NadeItem";
 
 interface Props {
   nadeSlug: string;

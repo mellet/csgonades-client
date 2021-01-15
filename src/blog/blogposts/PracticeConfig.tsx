@@ -2,7 +2,7 @@ import { blogPractiseConfig } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../BlogCodeSnippet";
 import { BlogCopyPaste } from "../BlogCopyPaste";
 import { BlogPostArticle } from "../BlogPostArticle";
-import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
+import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 
 export const PractiseConfigBlogPost = () => {
   return (

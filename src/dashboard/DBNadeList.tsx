@@ -1,10 +1,10 @@
 import { FC, useState, useEffect, useMemo } from "react";
-import { NadeLight } from "../nade-data/Nade/Nade";
-import { Status } from "../nade-data/Nade/Status";
-import { NadeApi } from "../nade-data/NadeApi";
+import { NadeLight } from "../nade/models/Nade";
+import { Status } from "../nade/models/Status";
+import { NadeApi } from "../nade/data/NadeApi";
 import { useSignedInUser } from "../core/authentication/useSignedInUser";
 import { sortByDate, generateTitle, kFormatter } from "../utils/Common";
-import { PageLink } from "../common/PageLink";
+import { PageLink } from "../shared-components/PageLink";
 import { prettyDate } from "../utils/DateUtils";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import Link from "next/link";

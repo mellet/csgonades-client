@@ -1,17 +1,17 @@
 import { FC, memo } from "react";
-import { ToastList } from "../common/toast/ToastList";
+import { ToastList } from "../shared-components/toast/ToastList";
 import { usePreloadUser } from "../core/authentication/usePreloadUser";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { usePageView } from "../utils/Analytics";
 import { useSetupSession } from "./DataFetchers/useSetupSession";
 import { Footer } from "../navigation/NavFooter";
-import { HeaderDefault } from "../defaultheader/Header";
+import { HeaderDefault } from "./defaultheader/Header";
 import { ServiceDown } from "./ServiceDown";
-import { CookieConsent } from "../common/CookieConsent";
+import { CookieConsent } from "../shared-components/CookieConsent";
 import { MapNav } from "../navigation/MapNav";
 import { Dimensions } from "../constants/Constants";
 import { SignInWarning } from "../core/SignInWarning";
-import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
+import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader";
 import { useNavigation } from "../store/GlobalStore/hooks/useNavigation";
 import { SecondaryNav } from "../navigation/SecondaryNav";
 

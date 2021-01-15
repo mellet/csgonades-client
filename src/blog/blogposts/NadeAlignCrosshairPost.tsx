@@ -4,7 +4,7 @@ import { BlogCodeSnippet } from "../BlogCodeSnippet";
 import { BlogNadeItem } from "../BlogNadeItem";
 import { BlogPostArticle } from "../BlogPostArticle";
 import { CsConsole } from "../CsConsole";
-import { EzoicPlaceholder } from "../../common/adunits/EzoicPlaceholder";
+import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 
 export const NadeAlignCrosshairPost: FC = () => {
   return (

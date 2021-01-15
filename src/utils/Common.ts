@@ -1,8 +1,8 @@
 import Router from "next/router";
-import { NadeType } from "../nade-data/Nade/NadeType";
+import { NadeType } from "../nade/models/NadeType";
 import removeMd from "remove-markdown";
-import { nadeTypeString } from "../nade-data/Nade/NadeType";
-import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { nadeTypeString } from "../nade/models/NadeType";
+import { CsgoMap } from "../map/models/CsGoMap";
 import { dateMinutesAgo } from "./DateUtils";
 
 export const capitalize = (s: string): string => {

@@ -1,11 +1,11 @@
 import { GetServerSideProps, NextPage } from "next";
-import { Nade } from "../../nade-data/Nade/Nade";
-import { NadeNotFound } from "../../nade-main/NadeNotFound";
-import { NadeApi } from "../../nade-data/NadeApi";
-import { EditNadeMain } from "../../nade-edit-main/EditNadeMain";
+import { Nade } from "../../nade/models/Nade";
+import { NadeNotFound } from "../../nade/components/NadeNotFound";
+import { NadeApi } from "../../nade/data/NadeApi";
+import { EditNadeMain } from "../../nade/EditNadeMain";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
-import { HeaderDefault } from "../../defaultheader/Header";
+import { HeaderDefault } from "../../layout/defaultheader/Header";
 
 type Props = {
   nade: Nade | null;

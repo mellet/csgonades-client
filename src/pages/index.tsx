@@ -1,10 +1,10 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
 import { FrontPage } from "../frontpage/FrontPage";
-import { SEO } from "../common/SEO";
+import { SEO } from "../shared-components/SEO";
 import { StatsApi, SiteStats } from "../core/api/StatsApi";
 import { LayoutBuilder } from "../layout/LayoutBuilder";
-import { HeaderDefault } from "../defaultheader/Header";
+import { HeaderDefault } from "../layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
 
 type Props = {

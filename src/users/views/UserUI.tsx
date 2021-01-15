@@ -1,13 +1,13 @@
 import { FC, useEffect, useState } from "react";
-import { NadeApi } from "../../nade-data/NadeApi";
-import { NadeLight } from "../../nade-data/Nade/Nade";
+import { NadeApi } from "../../nade/data/NadeApi";
+import { NadeLight } from "../../nade/models/Nade";
 import { User } from "../models/User";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { UserDetails } from "./UserDetails";
-import { CsgnList } from "../../common/list/CsgnList";
-import { NadeItemMobile } from "../../common/nadeitem/NadeItemMobile";
+import { CsgnList } from "../../shared-components/list/CsgnList";
+import { NadeItemMobile } from "../../nade/components/NadeItem/NadeItemMobile";
 import { isMobileOnly } from "react-device-detect";
-import { NadeItem } from "../../common/nadeitem/NadeItem";
+import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { Dimensions } from "../../constants/Constants";
 
 type Props = {

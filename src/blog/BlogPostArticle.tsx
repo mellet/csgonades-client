@@ -4,7 +4,7 @@ import { BlogPost } from "./BlogPost";
 import { Dimensions } from "../constants/Constants";
 import { prettyDate } from "../utils/DateUtils";
 import { BlogAuthor } from "./BlogAuthor";
-import { SEO } from "../common/SEO";
+import { SEO } from "../shared-components/SEO";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify } from "../utils/Common";
 import Image from "next/image";

@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { useEzoidAdLoader } from "../common/adunits/useEzoicAdLoader";
-import { CookieConsent } from "../common/CookieConsent";
-import { ToastList } from "../common/toast/ToastList";
+import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader";
+import { CookieConsent } from "../shared-components/CookieConsent";
+import { ToastList } from "../shared-components/toast/ToastList";
 import { useSetupSession } from "../layout/DataFetchers/useSetupSession";
 import { ServiceDown } from "../layout/ServiceDown";
 import { SignInWarning } from "./SignInWarning";
 import { usePreloadUser } from "./authentication/usePreloadUser";
 import { usePageView } from "../utils/Analytics";
-import { useFetchNotifications } from "../store/NotificationStore/hooks/useFetchNotifications";
+import { useFetchNotifications } from "../notification/data/hooks/useFetchNotifications";
 
 export const CoreWrapper: FC = ({ children }) => {
   useSetupSession();

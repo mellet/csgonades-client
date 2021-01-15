@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { BlogList } from "../../blog/BlogList";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { SEO } from "../../common/SEO";
+import { SEO } from "../../shared-components/SEO";
 import { Dimensions } from "../../constants/Constants";
 import {
   bestDust2Nades,
@@ -12,7 +12,7 @@ import {
 } from "../../blog/ArticleData/blogPosts";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
-import { HeaderDefault } from "../../defaultheader/Header";
+import { HeaderDefault } from "../../layout/defaultheader/Header";
 
 const BlogPage: FC = () => {
   const { colors } = useTheme();

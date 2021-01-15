@@ -2,9 +2,9 @@ import { useCallback, useContext, useState, useEffect } from "react";
 import { AdminStoreContext } from "./context";
 import { UserApi } from "../../users/data/UserApi";
 import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
-import { NadeApi } from "../../nade-data/NadeApi";
-import { NadeLight } from "../../nade-data/Nade/Nade";
-import { ReportApi } from "../../core/api/ReportApi";
+import { NadeApi } from "../../nade/data/NadeApi";
+import { NadeLight } from "../../nade/models/Nade";
+import { ReportApi } from "../../reports/data/ReportApi";
 import {
   AdminRoutes,
   addContactMessages,
@@ -13,7 +13,7 @@ import {
   addUsers,
   addAudits,
 } from "./adminSlice";
-import { ContactApi } from "../../contact/ContactApi";
+import { ContactApi } from "../../contact/data/ContactApi";
 import { sortByDate } from "../../utils/Common";
 import { AuditApi } from "./audit/AuiditApi";
 

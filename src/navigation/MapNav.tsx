@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useRouter } from "next/router";
 import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
-import { CsgoMap } from "../nade-data/Nade/CsGoMap";
+import { CsgoMap } from "../map/models/CsGoMap";
 
 export const MapNav: FC = () => {
   const { query } = useRouter();
