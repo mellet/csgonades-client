@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from "react";
+import { FC, memo } from "react";
 import { SEO } from "../shared-components/SEO";
 import { NadeInfoContainer } from "./components/NadeInfoContainer";
 import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContainer";
