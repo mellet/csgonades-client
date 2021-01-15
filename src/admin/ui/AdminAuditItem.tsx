@@ -10,7 +10,7 @@ type Props = {
   auditLogEvent: AuditDto;
 };
 
-export const AuditItem: FC<Props> = ({ auditLogEvent }) => {
+export const AdminAuditItem: FC<Props> = ({ auditLogEvent }) => {
   const { colors } = useTheme();
 
   const { byUser, createdAt, description, onNadeId } = auditLogEvent;

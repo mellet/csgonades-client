@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { NadeLight } from "../../../nade-data/Nade/Nade";
-import { favoritedNadeIdsSelector } from "../../../store/FavoriteStore/FavoriteSelectors";
+import { favoritedNadeIdsSelector } from "../../../favorites/data/FavoriteSelectors";
 import { custerNades } from "../../../utils/Cluster";
 import {
   filterByTickrateSelector,

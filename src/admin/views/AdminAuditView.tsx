@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { AdminPageTitle } from "../components/AdminPageTitle";
+import { AdminPageTitle } from "../ui/AdminPageTitle";
 import { useAdminAudits } from "../data/hooks";
-import { AuditItem } from "./AuditItem";
+import { AdminAuditItem } from "../ui/AdminAuditItem";
 
-export const AdminAudit: FC = () => {
+export const AdminAuditView: FC = () => {
   const { auditEvents } = useAdminAudits();
 
   return (
@@ -12,7 +12,7 @@ export const AdminAudit: FC = () => {
         <AdminPageTitle title="Audits" description="Shows who changed what." />
 
         {auditEvents.map((audit) => (
-          <AuditItem key={audit.id} auditLogEvent={audit} />
+          <AdminAuditItem key={audit.id} auditLogEvent={audit} />
         ))}
       </div>
     </>

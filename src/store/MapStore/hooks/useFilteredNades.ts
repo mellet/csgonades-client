@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NadeLight } from "../../../nade-data/Nade/Nade";
 import { Tickrate } from "../../../nade-data/Nade/NadeTickrate";
 import { NadeType } from "../../../nade-data/Nade/NadeType";
-import { favoritedNadeIdsSelector } from "../../../store/FavoriteStore/FavoriteSelectors";
+import { favoritedNadeIdsSelector } from "../../../favorites/data/FavoriteSelectors";
 import {
   addFavoriteToNades,
   filterByFavorite,

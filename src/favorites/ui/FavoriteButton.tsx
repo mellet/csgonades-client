@@ -1,18 +1,18 @@
 import { FC } from "react";
 import { FaStar } from "react-icons/fa";
-import { useSignInWarning } from "../../../store/GlobalStore/hooks/useSignInWarning";
-import { useIsFavoriteInProgress } from "../../../store/FavoriteStore/hooks/useIsFavoriteInProgress";
-import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
-import { useIsFavorited } from "../../../store/FavoriteStore/hooks/useIsFavorited";
-import { useAddFavorite } from "../../../store/FavoriteStore/hooks/useAddFavorite";
-import { useUnfavorite } from "../../../store/FavoriteStore/hooks/useUnFavorite";
-import { Dimensions } from "../../../constants/Constants";
+import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
+import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
+import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
+import { useIsFavorited } from "../data/hooks/useIsFavorited";
+import { useAddFavorite } from "../data/hooks/useAddFavorite";
+import { useUnfavorite } from "../data/hooks/useUnFavorite";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   nadeId: string;
 };
 
-export const NadeFavoriteButton: FC<Props> = ({ nadeId }) => {
+export const FavoriteButton: FC<Props> = ({ nadeId }) => {
   const { setSignInWarning } = useSignInWarning();
   const isFavoriteInProgress = useIsFavoriteInProgress();
   const isSignedIn = useIsSignedIn();

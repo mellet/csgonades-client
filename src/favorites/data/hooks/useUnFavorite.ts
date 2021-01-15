@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { FavoriteApi } from "../../../core/api/FavoriteApi";
+import { FavoriteApi } from "../FavoriteApi";
 import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
-import { useDisplayToast } from "../../ToastStore/hooks/useDisplayToast";
+import { useDisplayToast } from "../../../store/ToastStore/hooks/useDisplayToast";
 import {
   addAllFavoritesAction,
   favoriteInProgressBeginAction,

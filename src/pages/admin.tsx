@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
-import { AdminMain } from "../admin-main/AdminMain";
-import { AdminStoreProvider } from "../admin-main/data/context";
+import { AdminMain } from "../admin/AdminMain";
+import { AdminStoreProvider } from "../admin/data/context";
 import { HeaderDefault } from "../defaultheader/Header";
 import { SEO } from "../common/SEO";
 import { LayoutBuilder } from "../layout/LayoutBuilder";

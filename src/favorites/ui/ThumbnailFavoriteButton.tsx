@@ -1,9 +1,9 @@
 import { FC, useState, useEffect } from "react";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
-import { useIsFavoriteInProgress } from "../../store/FavoriteStore/hooks/useIsFavoriteInProgress";
-import { useIsFavorited } from "../../store/FavoriteStore/hooks/useIsFavorited";
-import { useAddFavorite } from "../../store/FavoriteStore/hooks/useAddFavorite";
-import { useUnfavorite } from "../../store/FavoriteStore/hooks/useUnFavorite";
+import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
+import { useIsFavorited } from "../data/hooks/useIsFavorited";
+import { useAddFavorite } from "../data/hooks/useAddFavorite";
+import { useUnfavorite } from "../data/hooks/useUnFavorite";
 import { Popup } from "semantic-ui-react";
 import { FaStar } from "react-icons/fa";
 import { useSignInWarning } from "../../store/GlobalStore/hooks/useSignInWarning";
@@ -15,7 +15,10 @@ type Props = {
   slug?: string;
 };
 
-export const NadeItemFavBtn: FC<Props> = ({ nadeId, disableAction }) => {
+export const ThumbnailFavoriteButton: FC<Props> = ({
+  nadeId,
+  disableAction,
+}) => {
   const displayToast = useDisplayToast();
   const [nadeIsFavorite, setNadeIsFavorite] = useState(false);
   const { setSignInWarning } = useSignInWarning();

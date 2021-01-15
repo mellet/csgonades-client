@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { Button, Message } from "semantic-ui-react";
-import { ContactApi } from "../admin-main/data/ContactApi";
+import { ContactApi } from "./ContactApi";
 import { CsgnInput } from "../common/inputs/CsgnInput";
 import { CsgnTextArea } from "../common/inputs/CsgnTextArea";
-import { AddConctactDTO } from "../admin-main/data/ContactDTOs";
+import { AddConctactDTO } from "./ContactDTOs";
 import { useTheme } from "../store/SettingsStore/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 

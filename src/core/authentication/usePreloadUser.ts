@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUserFavorites } from "../api/FavoriteApi";
+import { getUserFavorites } from "../../favorites/data/FavoriteApi";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 import { setTokenAction, setUserAction, signOutAction } from "./AuthSlice";
-import { addAllFavoritesAction } from "../../store/FavoriteStore/FavoriteSlice";
+import { addAllFavoritesAction } from "../../favorites/data/FavoriteSlice";
 import axios from "axios";
 import { trySignInFunc } from "./useOnSignIn";
 

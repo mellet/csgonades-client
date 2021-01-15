@@ -13,7 +13,7 @@ import {
   addUsers,
   addAudits,
 } from "./adminSlice";
-import { ContactApi } from "./ContactApi";
+import { ContactApi } from "../../contact/ContactApi";
 import { sortByDate } from "../../utils/Common";
 import { AuditApi } from "./audit/AuiditApi";
 

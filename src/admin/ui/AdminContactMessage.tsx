@@ -2,14 +2,14 @@ import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { prettyDateTime } from "../../utils/DateUtils";
-import { ContactDTO } from "../data/ContactDTOs";
+import { ContactDTO } from "../../contact/ContactDTOs";
 import ReactMarkdown from "react-markdown";
 
 type Props = {
   contactMessage: ContactDTO;
 };
 
-export const ContactMessage: FC<Props> = ({ contactMessage }) => {
+export const AdminContactMessage: FC<Props> = ({ contactMessage }) => {
   const { colors } = useTheme();
 
   return (

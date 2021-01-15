@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
 import { NadeReportButton } from "./NadeReportButton";
-import { NadeFavoriteButton } from "./NadeFavoriteButton";
+import { FavoriteButton } from "../../../favorites/ui/FavoriteButton";
 
 type Props = {
   nadeId: string;
@@ -11,7 +11,7 @@ export const NadeAction: FC<Props> = ({ nadeId }) => {
   return (
     <>
       <div className="nade-actions">
-        <NadeFavoriteButton nadeId={nadeId} />
+        <FavoriteButton nadeId={nadeId} />
         <NadeReportButton nadeId={nadeId} />
       </div>
       <style jsx>{`

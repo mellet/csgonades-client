@@ -6,7 +6,7 @@ import { prettyDateTime } from "../../utils/DateUtils";
 
 const USER_LIMIT = 15;
 
-export const UserList: FC = () => {
+export const AdminUserList: FC = () => {
   const { colors } = useTheme();
   const [page] = useState(1);
   const [sortByActivity, setSortByActivity] = useState(false);

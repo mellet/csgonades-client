@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { AppState } from "../rootReducer";
+import { AppState } from "../../store/rootReducer";
 
 export const allFavoritesSelector = (state: AppState) =>
   state.favoriteStore.favorites;

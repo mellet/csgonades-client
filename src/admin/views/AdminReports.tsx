@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useAdminReports } from "../data/hooks";
-import { ReportItem } from "../components/ReportItem";
-import { AdminPageTitle } from "../components/AdminPageTitle";
+import { AdminReportItem } from "../ui/AdminReportItem";
+import { AdminPageTitle } from "../ui/AdminPageTitle";
 
 export const AdminReports: FC = () => {
   const { reports } = useAdminReports();
@@ -11,7 +11,7 @@ export const AdminReports: FC = () => {
       <AdminPageTitle title="Reports" description="Shows reports on nades." />
 
       {reports.map((r) => (
-        <ReportItem key={r.id} report={r} />
+        <AdminReportItem key={r.id} report={r} />
       ))}
     </div>
   );

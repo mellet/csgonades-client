@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { NadeItemFavBtn } from "./NadeItemFavBtn";
+import { ThumbnailFavoriteButton } from "../../favorites/ui/ThumbnailFavoriteButton";
 import dynamic from "next/dynamic";
 import { ThumbImage } from "./ThumbImage";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
@@ -78,7 +78,7 @@ export const GfycatThumbnail: FC<Props> = ({
               displayFavBtn ? "back-controls visible" : "back-controls"
             }
           >
-            <NadeItemFavBtn
+            <ThumbnailFavoriteButton
               disableAction={disableAction}
               nadeId={nadeId}
               slug={nadeSlug}

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
+import { Config } from "../constants/Constants";
 import { AddConctactDTO, ContactDTO } from "./ContactDTOs";
-import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import { AppResult, extractApiError } from "../utils/ErrorUtil";
 
 export class ContactApi {
   static async sendMessage(message: AddConctactDTO): AppResult<boolean> {

@@ -4,9 +4,9 @@ import { CsgnList } from "../../common/list/CsgnList";
 import { NadeItem } from "../../common/nadeitem/NadeItem";
 import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { NadeApi } from "../../nade-data/NadeApi";
-import { AdminPageTitle } from "../components/AdminPageTitle";
+import { AdminPageTitle } from "../ui/AdminPageTitle";
 
-export const AdminDeclined: FC = () => {
+export const AdminDeclinedNades: FC = () => {
   const getToken = useGetOrUpdateToken();
   const [declinedNades, setDeclinedNades] = useState<NadeLight[]>([]);
 

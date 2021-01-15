@@ -3,9 +3,9 @@ import { useAdminPendingNades } from "../data/hooks";
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { NadeItem } from "../../common/nadeitem/NadeItem";
 import { CsgnList } from "../../common/list/CsgnList";
-import { AdminPageTitle } from "../components/AdminPageTitle";
+import { AdminPageTitle } from "../ui/AdminPageTitle";
 
-export const AdminPendingNades: FC = () => {
+export const AdminPendingNadesPage: FC = () => {
   const { pendingNades } = useAdminPendingNades();
 
   function renderItem(item: NadeLight) {

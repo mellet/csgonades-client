@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
-import { AdminPageTitle } from "../components/AdminPageTitle";
-import { UserList } from "../components/UserList";
+import { AdminPageTitle } from "../ui/AdminPageTitle";
+import { AdminUserList } from "../ui/AdminUserList";
 
 export const AdminUsers: FC = () => {
   const { colors } = useTheme();
@@ -11,7 +11,7 @@ export const AdminUsers: FC = () => {
       <AdminPageTitle title="Users" description="" />
 
       <div className="users">
-        <UserList />
+        <AdminUserList />
       </div>
       <style jsx>{`
         .users {

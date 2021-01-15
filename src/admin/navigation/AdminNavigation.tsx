@@ -4,7 +4,7 @@ import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { useAdminRoute } from "../data/hooks";
 
-export const AdminNav: FC = () => {
+export const AdminNavigation: FC = () => {
   const { colors } = useTheme();
   const user = useSignedInUser();
   const { changeAdminRoute } = useAdminRoute();

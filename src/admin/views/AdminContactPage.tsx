@@ -1,15 +1,15 @@
 import { FC } from "react";
-import { ContactMessage } from "../components/ContactMessage";
+import { AdminContactMessage } from "../ui/AdminContactMessage";
 import { useAdminContact } from "../data/hooks";
 
-export const AdminContacts: FC = () => {
+export const AdminContactPage: FC = () => {
   const { contactMessages } = useAdminContact();
 
   return (
     <>
       <div>
         {contactMessages.map((cM) => (
-          <ContactMessage key={cM.id} contactMessage={cM} />
+          <AdminContactMessage key={cM.id} contactMessage={cM} />
         ))}
       </div>
     </>

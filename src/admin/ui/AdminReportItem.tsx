@@ -9,7 +9,7 @@ type Props = {
   report: Report;
 };
 
-export const ReportItem: FC<Props> = ({ report }) => {
+export const AdminReportItem: FC<Props> = ({ report }) => {
   const { colors } = useTheme();
 
   return (

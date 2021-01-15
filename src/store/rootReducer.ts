@@ -5,7 +5,7 @@ import TrackerReducer from "../features/tracker/TrackerSlice";
 import { SettingsReducer } from "./SettingsStore/SettingsSlice";
 import { AuthReducer } from "../core/authentication/AuthSlice";
 import { GlobalReducer } from "./GlobalStore/GlobalStore";
-import { FavoriteReducer } from "./FavoriteStore/FavoriteSlice";
+import { FavoriteReducer } from "../favorites/data/FavoriteSlice";
 import { NotificationReducer } from "./NotificationStore/NotificationSlice";
 
 const rootReducer = combineReducers({

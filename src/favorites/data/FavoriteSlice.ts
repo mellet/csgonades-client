@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Favorite } from "../../models/Favorite";
+import { Favorite } from "../models/Favorite";
 
 export interface FavoritesState {
   favoriteInProgress: boolean;

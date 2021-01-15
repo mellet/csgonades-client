@@ -2,14 +2,14 @@ import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
 import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 import { useAdminRoute } from "./data/hooks";
-import { AdminNav } from "./components/AdminNav";
-import { AdminPendingNades } from "./containers/AdminPendingNades";
-import { AdminReports } from "./containers/AdminReports";
-import { AdminUsers } from "./containers/AdminUsers";
-import { AdminDeclined } from "./containers/AdminDeclined";
-import { AdminContacts } from "./containers/AdminContacts";
-import { AdminWelcome } from "./containers/AdminWelcome";
-import { AdminAudit } from "./Audit/AdminAudit";
+import { AdminNavigation } from "./navigation/AdminNavigation";
+import { AdminPendingNadesPage } from "./views/AdminPendingNadesPage";
+import { AdminReports } from "./views/AdminReports";
+import { AdminUsers } from "./views/AdminUsers";
+import { AdminDeclinedNades } from "./views/AdminDeclinedNades";
+import { AdminContactPage } from "./views/AdminContactPage";
+import { AdminWelcome } from "./views/AdminWelcome";
+import { AdminAuditView } from "./views/AdminAuditView";
 
 export const AdminMain: FC = () => {
   const allowedToView = useIsAdminOrModerator();
@@ -22,17 +22,17 @@ export const AdminMain: FC = () => {
   function pageContent() {
     switch (route) {
       case "pending-nades":
-        return <AdminPendingNades />;
+        return <AdminPendingNadesPage />;
       case "user":
         return <AdminUsers />;
       case "reports":
         return <AdminReports />;
       case "declined-nades":
-        return <AdminDeclined />;
+        return <AdminDeclinedNades />;
       case "contact":
-        return <AdminContacts />;
+        return <AdminContactPage />;
       case "audit":
-        return <AdminAudit />;
+        return <AdminAuditView />;
       default:
         return <AdminWelcome />;
     }
@@ -42,7 +42,7 @@ export const AdminMain: FC = () => {
     <>
       <div className="admin-container">
         <aside className="admin-nav">
-          <AdminNav />
+          <AdminNavigation />
         </aside>
         <div className="admin-content">{pageContent()}</div>
       </div>
