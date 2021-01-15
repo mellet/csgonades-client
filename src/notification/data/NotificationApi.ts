@@ -5,7 +5,7 @@ import { Notification } from "../models/Notification";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";
 
-const { config } = getConfig();
+const config = getConfig()?.publicRuntimeConfig;
 
 export class NotificationApi {
   static async getNotifications(token: string): AppResult<Notification[]> {

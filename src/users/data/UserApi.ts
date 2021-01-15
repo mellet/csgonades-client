@@ -5,7 +5,7 @@ import { User, UserUpdateDTO } from "../models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";
 
-const { config } = getConfig()?.publicRuntimeConfig;
+const config = getConfig()?.publicRuntimeConfig;
 
 export class UserApi {
   static fetchSelf = async (token: string): AppResult<User> => {

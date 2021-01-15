@@ -5,7 +5,7 @@ import { Config } from "../../constants/Constants";
 import { Favorite } from "../models/Favorite";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
-const { config } = getConfig();
+const config = getConfig()?.publicRuntimeConfig;
 
 export const getUserFavorites = async (
   token: string

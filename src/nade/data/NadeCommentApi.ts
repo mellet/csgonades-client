@@ -3,7 +3,7 @@ import axios from "axios";
 import { ok } from "neverthrow";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
-const { config } = getConfig()?.publicRuntimeConfig;
+const config = getConfig()?.publicRuntimeConfig;
 
 export type NadeComment = {
   avatar: string;
