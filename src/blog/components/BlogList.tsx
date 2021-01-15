@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { BlogPostPreview } from "./BlogPostPreview";
-import { BlogPost } from "./BlogPost";
-import { Dimensions } from "../constants/Constants";
+import { BlogPost } from "../models/BlogPost";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   posts: BlogPost[];

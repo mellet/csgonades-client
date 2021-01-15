@@ -4,7 +4,7 @@ import { HeaderDefault } from "../../layout/defaultheader/Header";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { blogTickrateAndJumpthrow } from "../../blog/ArticleData/blogPosts";
-import { BlogDefaultSidebar } from "../../blog/BlogDefaultSidebar";
+import { BlogDefaultSidebar } from "../../blog/components/BlogDefaultSidebar";
 
 const TickRateAndJumpthrowBindBlogPost: FC = () => {
   return (

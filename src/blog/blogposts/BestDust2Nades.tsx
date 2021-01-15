@@ -1,8 +1,8 @@
 import { FC } from "react";
 import Link from "next/link";
-import { BlogPostArticle } from "../BlogPostArticle";
+import { BlogPostArticle } from "../components/BlogPostArticle";
 import { bestDust2Nades } from "../ArticleData/blogPosts";
-import { BlogNadeItem } from "../BlogNadeItem";
+import { BlogNadeItem } from "../components/BlogNadeItem";
 import { Dimensions } from "../../constants/Constants";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { PageLink } from "../../shared-components/PageLink";

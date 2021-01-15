@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Dimensions } from "../constants/Constants";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   code: string;

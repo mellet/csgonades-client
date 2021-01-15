@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { BlogList } from "../../blog/BlogList";
+import { BlogList } from "../../blog/components/BlogList";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { SEO } from "../../shared-components/SEO";
 import { Dimensions } from "../../constants/Constants";

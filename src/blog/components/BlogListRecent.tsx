@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { BlogPost } from "./BlogPost";
+import { BlogPost } from "../models/BlogPost";
 import { BlogPostPreviewHorizontal } from "./BlogPostPreviewHorizontal";
 
 type Props = {

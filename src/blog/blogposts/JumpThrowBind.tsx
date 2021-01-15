@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { blogJumpthrowBind } from "../ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../BlogCodeSnippet";
-import { BlogPostArticle } from "../BlogPostArticle";
+import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
+import { BlogPostArticle } from "../components/BlogPostArticle";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { PageLink } from "../../shared-components/PageLink";
 

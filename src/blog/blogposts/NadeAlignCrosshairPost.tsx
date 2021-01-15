@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { blogNadeAlignCrosshair } from "../ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../BlogCodeSnippet";
-import { BlogNadeItem } from "../BlogNadeItem";
-import { BlogPostArticle } from "../BlogPostArticle";
-import { CsConsole } from "../CsConsole";
+import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
+import { BlogNadeItem } from "../components/BlogNadeItem";
+import { BlogPostArticle } from "../components/BlogPostArticle";
+import { CsConsole } from "../components/CsConsole";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 
 export const NadeAlignCrosshairPost: FC = () => {

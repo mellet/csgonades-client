@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { SidebarSkyskraperAd } from "../shared-components/adunits/SidebarSkyskraper";
-import { NadeShareActions } from "../nade/components/NadeShareActions";
-import { BlogPost } from "./BlogPost";
+import { SidebarSkyskraperAd } from "../../shared-components/adunits/SidebarSkyskraper";
+import { NadeShareActions } from "../../nade/components/NadeShareActions";
+import { BlogPost } from "../models/BlogPost";
 
 type Props = {
   data: BlogPost;

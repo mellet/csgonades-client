@@ -1,12 +1,12 @@
 import { FC, memo, FunctionComponent } from "react";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { BlogPost } from "./BlogPost";
-import { Dimensions } from "../constants/Constants";
-import { prettyDate } from "../utils/DateUtils";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { BlogPost } from "../models/BlogPost";
+import { Dimensions } from "../../constants/Constants";
+import { prettyDate } from "../../utils/DateUtils";
 import { BlogAuthor } from "./BlogAuthor";
-import { SEO } from "../shared-components/SEO";
+import { SEO } from "../../shared-components/SEO";
 import { ArticleJsonLd } from "next-seo";
-import { descriptionSimplify } from "../utils/Common";
+import { descriptionSimplify } from "../../utils/Common";
 import Image from "next/image";
 
 type Props = {

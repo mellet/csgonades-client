@@ -1,4 +1,4 @@
-import { BlogPost } from "../BlogPost";
+import { BlogPost } from "../models/BlogPost";
 
 export const bestDust2Nades: BlogPost = {
   title: "Best Grenade Spots for Dust2 - Must Know!",
