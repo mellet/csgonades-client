@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
-import { UserApi } from "../../core/api/UserApi";
-import { User } from "../../models/User";
+import { UserApi } from "../../users/data/UserApi";
+import { User } from "../../users/models/User";
 import { UserPage } from "../../users/UsersPage";
 import { SEO } from "../../common/SEO";
 import { LayoutBuilder } from "../../layout/LayoutBuilder";

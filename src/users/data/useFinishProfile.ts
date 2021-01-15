@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { UserApi } from "../../../core/api/UserApi";
-import { UserUpdateDTO } from "../../../models/User";
-import { setUserAction } from "../../../core/authentication/AuthSlice";
-import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
+import { UserApi } from "./UserApi";
+import { UserUpdateDTO } from "../models/User";
+import { setUserAction } from "../../core/authentication/AuthSlice";
+import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 
 export const useFinishProfile = () => {
   const getToken = useGetOrUpdateToken();

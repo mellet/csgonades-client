@@ -1,6 +1,6 @@
-import { User } from "../models/User";
-import { UserNotFound } from "./UserNotFound";
-import { UserUI } from "./UserUI";
+import { User } from "./models/User";
+import { UserNotFound } from "./views/UserNotFound";
+import { UserUI } from "./views/UserUI";
 
 type Props = {
   user: User | null;

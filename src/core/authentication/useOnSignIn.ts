@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
 import { setTokenAction, setUserAction } from "./AuthSlice";
 import { useAnalytics } from "../../utils/Analytics";
-import { User } from "../../models/User";
+import { User } from "../../users/models/User";
 import { dateMinutesAgo } from "../../utils/DateUtils";
 import { AuthApi } from "./AuthApi";
-import { UserApi } from "../api/UserApi";
+import { UserApi } from "../../users/data/UserApi";
 
 export const useOnSignIn = () => {
   const { event } = useAnalytics();

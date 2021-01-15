@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PersistConfig, persistReducer } from "redux-persist";
-import { User } from "../../models/User";
+import { User } from "../../users/models/User";
 import storage from "redux-persist/lib/storage";
 
 export type AuthState = {

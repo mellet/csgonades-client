@@ -1,6 +1,6 @@
 import { useCallback, useContext, useState, useEffect } from "react";
 import { AdminStoreContext } from "./context";
-import { UserApi } from "../../core/api/UserApi";
+import { UserApi } from "../../users/data/UserApi";
 import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { NadeApi } from "../../nade-data/NadeApi";
 import { NadeLight } from "../../nade-data/Nade/Nade";

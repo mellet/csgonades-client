@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Dimensions } from "../constants/Constants";
+import { Dimensions } from "../../constants/Constants";
 import { User } from "../models/User";
-import { useIsAllowedUserEdit } from "../core/authentication/useIsAllowedUserEdit";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { capitalize } from "../utils/Common";
-import { prettyDate, prettyDateTime } from "../utils/DateUtils";
-import { UserEditorModal } from "./UserEditor/UserEditorModal";
+import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { capitalize } from "../../utils/Common";
+import { prettyDate, prettyDateTime } from "../../utils/DateUtils";
+import { UserEditorModal } from "./UserEditorModal";
 
 type Props = {
   user: User;

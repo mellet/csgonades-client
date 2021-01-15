@@ -1,15 +1,15 @@
 import Router from "next/router";
 import { FC, useState } from "react";
 import { User } from "../models/User";
-import { useTheme } from "../store/SettingsStore/SettingsHooks";
-import { useFinishProfile } from "../store/UsersStore/hooks/useFinishProfile";
-import { Dimensions } from "../constants/Constants";
-import { useDisplayToast } from "../store/ToastStore/hooks/useDisplayToast";
-import { useAnalytics } from "../utils/Analytics";
+import { useTheme } from "../../store/SettingsStore/SettingsHooks";
+import { useFinishProfile } from "../data/useFinishProfile";
+import { Dimensions } from "../../constants/Constants";
+import { useDisplayToast } from "../../store/ToastStore/hooks/useDisplayToast";
+import { useAnalytics } from "../../utils/Analytics";
 
 type Props = { user: User };
 
-export const FinishProfile: FC<Props> = ({ user }) => {
+export const UserFinishProfilePage: FC<Props> = ({ user }) => {
   const { event } = useAnalytics();
   const [loading, setLoading] = useState(false);
   const finishProfile = useFinishProfile();

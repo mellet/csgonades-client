@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { User } from "../../models/User";
+import { User } from "../../users/models/User";
 import { userSelector } from "./AuthSelectors";
 
 export const useIsAllowedUserEdit = (user: User): boolean => {

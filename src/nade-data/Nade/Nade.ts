@@ -1,4 +1,4 @@
-import { UserLight } from "../../models/User";
+import { UserLight } from "../../users/models/User";
 import { CsgoMap } from "./CsGoMap";
 import { GfycatData } from "./GfycatData";
 import { NadeImages } from "./NadeImages";

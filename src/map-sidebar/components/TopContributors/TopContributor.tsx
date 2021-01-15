@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { UserLight } from "../../../models/User";
+import { UserLight } from "../../../users/models/User";
 import { useTheme } from "../../../store/SettingsStore/SettingsHooks";
 import { Twemoji } from "../../../common/Twemoj/Twemoji";
 import { pluralize } from "../../../utils/Common";

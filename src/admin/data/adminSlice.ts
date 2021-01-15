@@ -1,6 +1,6 @@
 import { NadeLight } from "../../nade-data/Nade/Nade";
 import { Report } from "../../models/Report";
-import { User } from "../../models/User";
+import { User } from "../../users/models/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ContactDTO } from "../../contact/ContactDTOs";
 import { AuditDto } from "./audit/AuditEvent";

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { FinishProfile } from "../finishprofile/FinishProfile";
+import { UserFinishProfilePage } from "../users/views/UserFinishProfilePage";
 import { useSignedInUser } from "../core/authentication/useSignedInUser";
 import { SEO } from "../common/SEO";
 
@@ -9,7 +9,7 @@ const FinishProfilePage: NextPage = () => {
   return (
     <>
       <SEO canonical="/finishprofile" title="Finish profile" />
-      {user && <FinishProfile user={user} />}
+      {user && <UserFinishProfilePage user={user} />}
     </>
   );
 };

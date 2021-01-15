@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { User } from "../../models/User";
+import { User } from "../../users/models/User";
 import { useSignOut } from "../../core/authentication/useSignOut";
 import { useTheme } from "../../store/SettingsStore/SettingsHooks";
 import { Dropdown } from "semantic-ui-react";
