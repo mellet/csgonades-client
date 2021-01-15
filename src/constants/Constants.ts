@@ -1,14 +1,4 @@
-import packageJson from "../../package.json";
 
-export const IS_PROD = process.env.NODE_ENV === "production";
-
-export const Config = {
-  ADS_ENABLED: true,
-  API_URL: IS_PROD ? "https://api.csgonades.com" : "http://localhost:5000",
-  SIGN_IN_URL: IS_PROD
-    ? "https://api.csgonades.com/auth/steam"
-    : "http://localhost:5000/auth/steam",
-};
 
 export const Dimensions = {
   BORDER_RADIUS: "5px",
@@ -39,4 +29,3 @@ export const LayerPosition = {
   UNDER_UI: 900,
 };
 
-export const APP_VERSION = packageJson.version;

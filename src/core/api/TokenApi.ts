@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import getConfig from "next/config";
+
+const { config } = getConfig()?.publicRuntimeConfig;
 
 type TokenRes = {
   accessToken: string;
@@ -10,12 +12,12 @@ type TokenRes = {
 export class AuthApi {
   static async refreshToken(cookie?: string): AppResult<string> {
     try {
-      let config: AxiosRequestConfig = {
+      let requestConfig: AxiosRequestConfig = {
         withCredentials: true,
       };
 
       if (cookie) {
-        config = {
+        requestConfig = {
           ...config,
           headers: {
             cookie: cookie,
@@ -24,8 +26,8 @@ export class AuthApi {
       }
 
       const res = await axios.get<TokenRes>(
-        `${Config.API_URL}/auth/refresh`,
-        config
+        `${config.apiUrl}/auth/refresh`,
+        requestConfig
       );
 
       return ok(res.data.accessToken);
@@ -36,7 +38,7 @@ export class AuthApi {
 
   static async setSessionCookie(): Promise<void> {
     await axios.post(
-      `${Config.API_URL}/initSession`,
+      `${config.apiUrl}/initSession`,
       {},
       { withCredentials: true }
     );
@@ -45,7 +47,7 @@ export class AuthApi {
   static async signOut(): Promise<void> {
     try {
       await axios.post(
-        `${Config.API_URL}/auth/signout`,
+        `${config.apiUrl}/auth/signout`,
         {},
         {
           withCredentials: true,

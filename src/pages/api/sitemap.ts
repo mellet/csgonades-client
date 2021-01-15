@@ -1,5 +1,8 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
+import getConfig from "next/config";
+
+const { config } = getConfig()?.publicRuntimeConfig;
 
 const CsGoMaps = {
   dust2: "Dust2",
@@ -23,7 +26,7 @@ function mapsList() {
 }
 
 const SITE_ROOT = "https://www.csgonades.com";
-const API_SOURCE = "https://api.csgonades.com";
+const API_SOURCE = config.apiUrl;
 
 const createSitemap = async () => {
   let xml = "";

@@ -4,7 +4,7 @@
   "author": "Mellet Solbakk",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start -p $PORT",
     "analyze": "cross-env ANALYZE=true next build",

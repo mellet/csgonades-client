@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import getConfig from "next/config";
 
 export type SiteStats = {
   ezoicEnabled: boolean;
@@ -10,10 +10,12 @@ export type SiteStats = {
   numUsers: number;
 };
 
+const { config } = getConfig();
+
 export class StatsApi {
   static async getStats(): AppResult<SiteStats> {
     try {
-      const result = await axios.get<SiteStats>(`${Config.API_URL}/stats`);
+      const result = await axios.get<SiteStats>(`${config.apiUrl}/${config.statsPath}`);
 
       return ok(result.data);
     } catch (error) {

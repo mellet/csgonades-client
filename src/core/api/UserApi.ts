@@ -1,13 +1,15 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { User, UserUpdateDTO } from "../../models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import getConfig from "next/config";
+
+const { config } = getConfig()?.publicRuntimeConfig;
 
 export class UserApi {
   static fetchSelf = async (token: string): AppResult<User> => {
     try {
-      const res = await axios.get(`${Config.API_URL}/users/self`, {
+      const res = await axios.get(`${config.apiUrl}/users/self`, {
         headers: { Authorization: token },
       });
       const user = res.data as User;
@@ -22,13 +24,13 @@ export class UserApi {
     token?: string
   ): AppResult<User> => {
     try {
-      let config = {};
+      let requestConfig = {};
 
       if (token) {
-        config = { headers: { Authorization: token } };
+        requestConfig = { headers: { Authorization: token } };
       }
 
-      const res = await axios.get(`${Config.API_URL}/users/${steamId}`, config);
+      const res = await axios.get(`${config.apiUrl}/users/${steamId}`, requestConfig);
       const user = res.data as User;
       return ok(user);
     } catch (error) {
@@ -44,7 +46,7 @@ export class UserApi {
   ): AppResult<User[]> => {
     try {
       const res = await axios.get(
-        `${Config.API_URL}/users?page=${page}&limit=${limit}&sortActive=${sortByActivity}`,
+        `${config.apiUrl}/users?page=${page}&limit=${limit}&sortActive=${sortByActivity}`,
         {
           headers: { Authorization: token },
         }
@@ -63,7 +65,7 @@ export class UserApi {
   ): AppResult<User> => {
     try {
       const res = await axios.patch(
-        `${Config.API_URL}/users/${steamId}`,
+        `${config.apiUrl}/users/${steamId}`,
         updatedUser,
         {
           headers: { Authorization: token },
