@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC, memo } from "react";
 import { FaBell } from "react-icons/fa";
 import { Notification } from "../../models/Notification";
@@ -79,14 +80,18 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
       </PageLink>
       <style jsx>{`
         .notification {
-          border-bottom: 1px solid ${colors.BORDER};
+          border-top: 1px solid ${colors.BORDER};
           color: ${colors.TEXT};
           display: block;
           display: grid;
-          grid-template-areas: "img msg msg" "img date .";
-          grid-template-columns: min-content 1fr 1fr;
+          grid-template-areas:
+            "msg msg img"
+            "date . img";
+          grid-template-columns: 1fr 1fr minmax(40px, 35%);
           grid-template-rows: auto auto;
-          padding: 15px;
+          grid-column-gap: 8px;
+          grid-row-gap: 8px;
+          padding: 10px;
           white-space: nowrap;
           width: 100%;
         }
@@ -97,19 +102,12 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
 
         .noti-msg {
           grid-area: msg;
-          padding-bottom: 10px;
           white-space: normal;
         }
 
         .noti-date {
           grid-area: date;
           text-align: left;
-        }
-
-        .notification img {
-          border-radius: 5px;
-          margin-right: 10px;
-          max-width: 100px;
         }
 
         .noti-msg {
@@ -146,12 +144,17 @@ function notificationImage(
 
   return (
     <>
-      <img src={url} />
+      <div className="img-wrap">
+        <Image src={url} layout="fill" objectFit="cover" quality={100} />
+      </div>
+
       <style jsx>{`
-        img {
-          width: 50px;
-          border-radius: 5px;
-          margin-right: 10px;
+        .img-wrap {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 4px;
+          overflow: hidden;
         }
       `}</style>
     </>

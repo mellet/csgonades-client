@@ -48,7 +48,7 @@ export const NotificationList: FC<Props> = ({ visble }) => {
           overflow-y: auto;
           position: absolute;
           right: 0;
-          top: calc(100% + 13px);
+          top: calc(100% + 11px);
           width: 300px;
           z-index: 1000;
         }
