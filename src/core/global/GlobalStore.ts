@@ -53,7 +53,7 @@ const globalStore = createSlice({
 
 const persistConfig: PersistConfig<GlobalState> = {
   key: "globalStore",
-  storage,
+  storage: storage,
   whitelist: ["acceptedCookieConcent"],
 };
 

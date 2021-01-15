@@ -3,12 +3,15 @@ import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
 import { Notification } from "../models/Notification";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import getConfig from "next/config";
+
+const { config } = getConfig();
 
 export class NotificationApi {
   static async getNotifications(token: string): AppResult<Notification[]> {
     try {
       const res = await axios.get<Notification[]>(
-        `${Config.API_URL}/notifications`,
+        `${config.apiUrl}/notifications`,
         {
           headers: { Authorization: token },
         }
@@ -22,7 +25,7 @@ export class NotificationApi {
   static async markAsViewed(id: string, token: string): Promise<void> {
     try {
       await axios.patch(
-        `${Config.API_URL}/notifications/${id}/viewed`,
+        `${config.apiUrl}/notifications/${id}/viewed`,
         {},
         {
           headers: { Authorization: token },

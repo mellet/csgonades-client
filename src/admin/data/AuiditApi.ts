@@ -3,11 +3,14 @@ import { ok } from "neverthrow";
 import { AuditDto } from "../models/AuditEvent";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Config } from "../../constants/Constants";
+import getConfig from "next/config";
+
+const { config } = getConfig()?.publicRuntimeConfig;
 
 export class AuditApi {
   static async fetchAuditEvents(token: string): AppResult<AuditDto[]> {
     try {
-      const response = await axios.get<AuditDto[]>(`${Config.API_URL}/audits`, {
+      const response = await axios.get<AuditDto[]>(`${config.apiUrl}/audits`, {
         headers: { Authorization: token },
       });
 

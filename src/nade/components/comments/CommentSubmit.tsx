@@ -1,3 +1,4 @@
+import getConfig from "next/config";
 import { FC, useState, memo } from "react";
 import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
@@ -15,6 +16,7 @@ export const CommentSubmit: FC<Props> = memo(
     const { colors } = useTheme();
     const isSignedIn = useIsSignedIn();
     const getToken = useGetOrUpdateToken();
+    const { config } = getConfig();
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -58,7 +60,7 @@ export const CommentSubmit: FC<Props> = memo(
           <div className="comment-sign-in">
             <p>Do you want to comment on this nade?</p>
             <div>
-              <a href={Config.SIGN_IN_URL}>Sign in with steam</a>
+              <a href={config.apiUrl + "/auth/steam"}>Sign in with steam</a>
             </div>
           </div>
         )}

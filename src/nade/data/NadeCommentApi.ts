@@ -1,7 +1,9 @@
+import getConfig from "next/config";
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+
+const { config } = getConfig()?.publicRuntimeConfig;
 
 export type NadeComment = {
   avatar: string;
@@ -27,7 +29,7 @@ export class NadeCommentApi {
   static async getCommentsForNade(nadeId: string): AppResult<NadeComment[]> {
     try {
       const res = await axios.get<NadeComment[]>(
-        `${Config.API_URL}/nades/${nadeId}/comments`
+        `${config.apiUrl}/nades/${nadeId}/comments`
       );
 
       return ok(res.data);
@@ -42,7 +44,7 @@ export class NadeCommentApi {
   ): AppResult<NadeComment> {
     try {
       const res = await axios.post<NadeComment>(
-        `${Config.API_URL}/nades/${comment.nadeId}/comments`,
+        `${config.apiUrl}/nades/${comment.nadeId}/comments`,
         comment,
         {
           headers: { Authorization: token },
@@ -62,7 +64,7 @@ export class NadeCommentApi {
   ): AppResult<NadeComment> {
     try {
       const res = await axios.patch<NadeComment>(
-        `${Config.API_URL}/nades/${nadeId}/comments/${commentUpdate.id}`,
+        `${config.apiUrl}/nades/${nadeId}/comments/${commentUpdate.id}`,
         commentUpdate,
         {
           headers: { Authorization: token },
@@ -81,7 +83,7 @@ export class NadeCommentApi {
   ): AppResult<boolean> {
     try {
       await axios.delete(
-        `${Config.API_URL}/nades/${nadeId}/comments/${commentId}`,
+        `${config.apiUrl}/nades/${nadeId}/comments/${commentId}`,
         {
           headers: { Authorization: token },
         }
