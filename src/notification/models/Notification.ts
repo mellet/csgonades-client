@@ -10,6 +10,7 @@ type AcceptedNadeNotification = {
 };
 
 type ReportNotification = {
+  id: string;
   subjectSteamId: string; // Reciever of notification
   viewed: boolean;
   createdAt: Date;
