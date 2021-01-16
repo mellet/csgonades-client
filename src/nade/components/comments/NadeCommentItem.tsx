@@ -260,9 +260,9 @@ const useAllowEditComment = (nadeComment: NadeComment) => {
     return false;
   }
 
-  /*if (user.role === "administrator" || user.role === "moderator") {
-    return true
-  }*/
+  if (user.role === "administrator" || user.role === "moderator") {
+    return true;
+  }
 
   if (user.steamId === nadeComment.steamId) {
     return true;
