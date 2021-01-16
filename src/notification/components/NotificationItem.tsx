@@ -14,7 +14,7 @@ type Props = {
 export const NotificationItem: FC<Props> = memo(({ notification }) => {
   const { colors } = useTheme();
 
-  if (notification.type === "contact-msg") {
+  if (notification.type === "contact-msg" || notification.type === "report") {
     return (
       <>
         <div className={"notification"}>
@@ -167,6 +167,8 @@ function notificationMessage(notification: Notification): string {
       return "Your nade was accepted!";
     case "contact-msg":
       return "New contact message.";
+    case "report":
+      return "Nade reported";
     case "declined-nade":
       return "Your nade was declined.</div>";
     case "favorite-agregate":

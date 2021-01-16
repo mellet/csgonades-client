@@ -9,6 +9,13 @@ type AcceptedNadeNotification = {
   viewed: boolean;
 };
 
+type ReportNotification = {
+  subjectSteamId: string; // Reciever of notification
+  viewed: boolean;
+  createdAt: Date;
+  type: "report";
+};
+
 type DeclinedNadeNotification = {
   createdAt: Date;
   id: string;
@@ -83,4 +90,5 @@ export type Notification =
   | FavoriteNotificationAgregate
   | NewContactNotification
   | NewNadeNotification
-  | NewCommentNotification;
+  | NewCommentNotification
+  | ReportNotification;
