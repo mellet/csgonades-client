@@ -1,7 +1,6 @@
 import getConfig from "next/config";
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { Favorite } from "../models/Favorite";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 

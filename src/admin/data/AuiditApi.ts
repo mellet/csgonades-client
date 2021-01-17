@@ -2,7 +2,6 @@ import axios from "axios";
 import { ok } from "neverthrow";
 import { AuditDto } from "../models/AuditEvent";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
-import { Config } from "../../constants/Constants";
 import getConfig from "next/config";
 
 const config = getConfig()?.publicRuntimeConfig;

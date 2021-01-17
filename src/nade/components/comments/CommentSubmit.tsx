@@ -4,7 +4,7 @@ import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { Config, Dimensions } from "../../../constants/Constants";
+import { Dimensions } from "../../../constants/Constants";
 
 const config = getConfig()?.publicRuntimeConfig;
 

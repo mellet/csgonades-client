@@ -1,6 +1,5 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { AddConctactDTO, ContactDTO } from "../models/ContactDTOs";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";

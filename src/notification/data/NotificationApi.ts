@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Notification } from "../../models/Notification";
+import { Notification } from "../models/Notification";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";
 

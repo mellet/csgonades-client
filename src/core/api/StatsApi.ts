@@ -15,7 +15,7 @@ const config = getConfig()?.publicRuntimeConfig;
 export class StatsApi {
   static async getStats(): AppResult<SiteStats> {
     try {
-      const result = await axios.get<SiteStats>(`${config.apiUrl}/${config.statsPath}`);
+      const result = await axios.get<SiteStats>(`${config.apiUrl}/stats}`);
 
       return ok(result.data);
     } catch (error) {

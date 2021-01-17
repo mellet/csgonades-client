@@ -1,7 +1,6 @@
 import getConfig from "next/config";
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import { GfycatData } from "../models/GfycatData";
 import {

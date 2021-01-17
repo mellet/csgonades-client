@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { User, UserUpdateDTO } from "../../models/User";
+import { User, UserUpdateDTO } from "../models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import getConfig from "next/config";
 
