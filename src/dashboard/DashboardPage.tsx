@@ -81,6 +81,7 @@ export const DashboardPage: FC = () => {
         #nade-list {
           grid-area: dbnades;
           padding: 0px 30px 20px 30px;
+          color: ${colors.TEXT}
         }
       `}</style>
     </>
