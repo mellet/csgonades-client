@@ -1,18 +1,5 @@
 import packageJson from "../../package.json";
 
-// Set to true in developement if you want requests to go to prod server
-const DEV_PROD_OVERRIDE = false;
-
-export const IS_PROD =
-  DEV_PROD_OVERRIDE || process.env.NODE_ENV === "production";
-
-export const Config = {
-  ADS_ENABLED: true,
-  API_URL: IS_PROD ? "https://api.csgonades.com" : "http://localhost:5000",
-  SIGN_IN_URL: IS_PROD
-    ? "https://api.csgonades.com/auth/steam"
-    : "http://localhost:5000/auth/steam",
-};
 
 export const Dimensions = {
   BORDER_RADIUS: "5px",

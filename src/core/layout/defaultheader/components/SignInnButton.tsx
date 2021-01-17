@@ -1,7 +1,7 @@
 import getConfig from "next/config";
 import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
-import { Config, Dimensions } from "../../../../constants/Constants";
+import { Dimensions } from "../../../../constants/Constants";
 import { useAnalytics } from "../../../../utils/Analytics";
 
 const config = getConfig()?.publicRuntimeConfig;
