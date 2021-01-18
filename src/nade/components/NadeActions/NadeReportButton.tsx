@@ -23,14 +23,14 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
       nadeId,
       message: reportMsg,
     };
-    ReportApi.add(report);
+    ReportApi.add(report).then();
     setReportMsg("");
     setShowReportForm(false);
     displayToast({
       severity: "success",
       title: "Report sent",
       message: "Thanks for reporting this nade. We will look into it.",
-    });
+    }).then();
   }
 
   return (
@@ -60,7 +60,7 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
                 onChange={(e) => setReportMsg(e.currentTarget.value)}
               />
             </Form.Field>
-            <Button positive type="submit">
+            <Button positive type="submit" disabled={!reportMsg}>
               Send
             </Button>
           </Form>
