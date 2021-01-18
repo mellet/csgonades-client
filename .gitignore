@@ -1,7 +1,3 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/linux,windows,macos,visualstudiocode,intellij+all,node,react
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,windows,macos,visualstudiocode,intellij+all,node,react
-
 ### Intellij+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -296,4 +292,20 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,visualstudiocode,intellij+all,node,react
+### yarn ###
+# https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# if you are NOT using Zero-installs, then:
+# comment the following lines
+!.yarn/cache
+
+# and uncomment the following lines
+# .pnp.*
+
+yarn-error.log
