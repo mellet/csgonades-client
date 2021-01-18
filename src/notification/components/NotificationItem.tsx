@@ -94,6 +94,7 @@ export const NotificationItem: FC<Props> = memo(({ notification }) => {
           padding: 10px;
           white-space: nowrap;
           width: 100%;
+          font-size: 16px;
         }
 
         .noti-img {
@@ -161,32 +162,42 @@ function notificationImage(
   );
 }
 
-function notificationMessage(notification: Notification): string {
+function notificationMessage(notification: Notification): JSX.Element {
   switch (notification.type) {
     case "accepted-nade":
-      return "Your nade was accepted!";
+      return <span>Your nade was accepted!</span>;
     case "contact-msg":
-      return "New contact message.";
+      return <span>New contact message.</span>;
     case "report":
-      return "Nade reported";
+      return <span>Nade reported</span>;
     case "declined-nade":
-      return "Your nade was declined.</div>";
+      return <span>Your nade was declined.</span>;
     case "favorite-agregate":
       const favCount = notification.count;
       if (favCount === 1) {
-        return `Your nade was favorited by ${notification.byNickname}.`;
+        return (
+          <span>
+            Your nade was favorited by <b>{notification.byNickname}</b>.
+          </span>
+        );
       } else {
-        return `Your nade was favorited by ${
-          notification.byNickname
-        } and ${pluralize(favCount - 1, "other")}.`;
+        return (
+          <span>
+            Your nade was favorited by <b>{notification.byNickname}</b> and $
+            {pluralize(favCount - 1, "other")}.
+          </span>
+        );
       }
     case "new-nade":
-      return "New nade!";
+      return <span>New nade!</span>;
     case "new-comment":
-      return `${notification.byNickname} commented on your nade.`;
-    case "favorite":
-      return "";
+      return (
+        <span>
+          <b>{notification.byNickname}</b> commented on your nade.
+        </span>
+      );
+
     default:
-      return "";
+      return <></>;
   }
 }

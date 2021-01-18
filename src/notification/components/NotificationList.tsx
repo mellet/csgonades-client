@@ -49,7 +49,7 @@ export const NotificationList: FC<Props> = ({ visble }) => {
           position: absolute;
           right: 0;
           top: calc(100% + 11px);
-          width: 300px;
+          width: 350px;
           z-index: 1000;
         }
 
