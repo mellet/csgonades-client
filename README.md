@@ -7,7 +7,7 @@
 - [Node.JS](https://nodejs.org/)
 - [yarn](https://yarnpkg.com/)
 
-### Sarting dev server
+### Starting dev server
 
 ```
 yarn
