@@ -1,6 +1,6 @@
 import packageJson from "../../package.json";
 
-// Set to true in developement if you want requests to go to prod server
+// Set to true in development if you want requests to go to prod server
 const DEV_PROD_OVERRIDE = false;
 
 export const IS_PROD =

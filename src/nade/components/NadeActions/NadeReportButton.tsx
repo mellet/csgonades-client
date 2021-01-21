@@ -60,7 +60,7 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
                 onChange={(e) => setReportMsg(e.currentTarget.value)}
               />
             </Form.Field>
-            <Button positive type="submit">
+            <Button positive type="submit" disabled={!reportMsg}>
               Send
             </Button>
           </Form>
