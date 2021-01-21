@@ -7,7 +7,7 @@
 - [Node.JS](https://nodejs.org/)
 - [yarn](https://yarnpkg.com/)
 
-### Sarting dev server
+### Starting dev server
 
 ```
 yarn
@@ -25,7 +25,7 @@ yarn dev
 
 All pages on the site has it's entrypoint in `/src/pages`
 
-### API Server in developement
+### API Server in development
 
-When developing you can either run agains your local server or against prod for simplicity.
-See `/src/constants/Constants.ts` to toggle between what API server to connect to.
+When running in development mode, values in `.env.development` are chosen. 
+To override these default values, create a `.env.local` and set values as you please.
