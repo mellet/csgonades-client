@@ -29,10 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   query,
   res,
 }) => {
-  // not sure about this, without it, i'm getting TS2488.
-  // "solution" taken from:
-  // https://github.com/Microsoft/TypeScript/issues/12707
-  const [nadeId, operation] = query.slug!;
+  const [nadeId, operation] = query.slug;
 
   if (!nadeId || !operation) {
     res.statusCode = 404;
