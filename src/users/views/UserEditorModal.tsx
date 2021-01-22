@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { ButtonWithIcon } from "../../shared-components/ButtonWithIcon";
 import { CSGNModal } from "../../shared-components/CSGNModal";
-import { CsgnInput } from "../../shared-components/inputs/CsgnInput";
+import { CsgnInput } from "../../shared-components/inputs/TextInput/CsgnInput";
 import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../shared-components/inputs/CsgnTextArea";
 import { User } from "../models/User";
