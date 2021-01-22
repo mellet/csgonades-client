@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CsgnInput } from "../../../shared-components/inputs/CsgnInput";
+import { CsgnInput } from "../../../shared-components/inputs/TextInput/CsgnInput";
 import { NadeApi } from "../../data/NadeApi";
 import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
 

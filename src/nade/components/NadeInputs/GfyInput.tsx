@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CsgnInput } from "../../../shared-components/inputs/CsgnInput";
+import { CsgnInput } from "../../../shared-components/inputs/TextInput/CsgnInput";
 import { cleanGfycatUrl } from "../../../utils/Common";
 import { NadeApi } from "../../data/NadeApi";
 import { GfycatData } from "../../models/GfycatData";
