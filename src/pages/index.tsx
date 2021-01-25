@@ -6,36 +6,46 @@ import { StatsApi, SiteStats } from "../core/api/StatsApi";
 import { LayoutBuilder } from "../core/layout/LayoutBuilder";
 import { HeaderDefault } from "../core/layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
+import { NadeApi } from "../nade/data/NadeApi";
+import { NadeLight } from "../nade/models/Nade";
 
 type Props = {
   stats: SiteStats | null;
+  recentNades: NadeLight[] | null;
 };
 
-const Index: NextPage<Props> = ({ stats }) => (
+const Index: NextPage<Props> = ({ stats, recentNades }) => (
   <>
     <SEO canonical="/" />
     <LayoutBuilder
       header={<HeaderDefault />}
       nav={<Navigation />}
-      main={<FrontPage stats={stats} />}
+      main={<FrontPage stats={stats} recentNades={recentNades} />}
     />
   </>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   let stats: SiteStats | null = null;
+  let recentNades: NadeLight[] | null = null;
 
   const statsResult = await StatsApi.getStats();
+  const recentNadesResult = await NadeApi.getRecent();
 
   if (statsResult.isOk()) {
     stats = statsResult.value;
   }
 
+  if (recentNadesResult.isOk()) {
+    recentNades = recentNadesResult.value;
+  }
+
   return {
     props: {
       stats,
+      recentNades,
     },
-    revalidate: 60 * 10,
+    revalidate: 60 * 5,
   };
 };
 
