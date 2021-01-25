@@ -3,7 +3,7 @@ import { CSGNModal } from "../shared-components/CSGNModal";
 import { useAnalytics } from "../utils/Analytics";
 import { SignInnButton } from "./layout/defaultheader/components/SignInnButton";
 import { useSignInWarning } from "./global/hooks/useSignInWarning";
-import { FaCheckCircle, FaComment, FaPlus, FaStar } from "react-icons/fa";
+import { FaComment, FaPlus, FaStar } from "react-icons/fa";
 import { useTheme } from "./settings/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 
@@ -55,12 +55,7 @@ export const SignInWarning: FC = memo(() => {
             </span>
             Comment on nades
           </div>
-          <div className="section">
-            <span className="fa-icon check">
-              <FaCheckCircle />
-            </span>
-            Filter proffesional nades
-          </div>
+
           <div className="btn" onClick={onSignIn}>
             <SignInnButton />
           </div>

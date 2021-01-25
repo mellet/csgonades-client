@@ -1,26 +1,18 @@
 import { FC } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { Dimensions } from "../../../../constants/Constants";
 import { useFilterByPro } from "../../../data/hooks/useFilterByPro";
-import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 import { FilterLabel } from "./FilterLabel";
 
 export const FilterByProButton: FC = () => {
   const { colors } = useTheme();
-  const isSignedIn = useIsSignedIn();
   const { byPro, toggleFilterByPro } = useFilterByPro();
-  const { setSignInWarning } = useSignInWarning();
 
   const active = byPro ? "active" : "";
 
   function onFilterByPro() {
-    if (isSignedIn) {
-      toggleFilterByPro();
-    } else {
-      setSignInWarning("filterpro");
-    }
+    toggleFilterByPro();
   }
 
   return (
