@@ -10,6 +10,9 @@ import {
   blogNadeAlignCrosshair,
   blogPractiseConfig,
 } from "../blog/ArticleData/blogPosts";
+import { NadeLight } from "../nade/models/Nade";
+import { CsgnList } from "../shared-components/list/CsgnList";
+import { NadeItem } from "../nade/components/NadeItem/NadeItem";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -20,26 +23,52 @@ const recentPosts = [
 
 type Props = {
   stats: SiteStats | null;
+  recentNades: NadeLight[] | null;
 };
 
-export const FrontPage: FC<Props> = memo(({ stats }) => {
+export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
+  function renderItem(item: NadeLight) {
+    return <NadeItem nade={item} />;
+  }
+
+  function keyExtractor(item: NadeLight) {
+    return item.id;
+  }
+
   return (
     <>
       <div id="front-page">
         <FrontPageJumbo stats={stats} />
+
+        {recentNades && (
+          <div className="recent-nades">
+            <h3>Recently added nades</h3>
+            <CsgnList<NadeLight>
+              data={recentNades}
+              renderItem={renderItem}
+              keyExtractor={keyExtractor}
+              enableAds={false}
+            />
+          </div>
+        )}
 
         <div className="ph">
           <EzoicPlaceholder id="174" />
         </div>
 
         <div className="recent-wrap">
+          <h3>Most recent blog posts</h3>
           <BlogList posts={recentPosts} />
         </div>
       </div>
 
       <style jsx>{`
         .ph {
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .recent-nades {
+          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #front-page {
@@ -48,7 +77,7 @@ export const FrontPage: FC<Props> = memo(({ stats }) => {
         }
 
         .recent-wrap {
-          margin-bottom: 75px;
+          padding-bottom: 75px;
         }
 
         .recent-nade-wrap {
