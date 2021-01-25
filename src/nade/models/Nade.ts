@@ -15,11 +15,10 @@ export type MapCoordinates = {
   y: number;
 };
 
-export type Nade = {
+export interface Nade {
   commentCount: number;
   createdAt: Date | string;
   description?: string;
-  downVoteCount?: number;
   endPosition?: string;
   favoriteCount: number;
   gfycat: GfycatData;
@@ -30,7 +29,6 @@ export type Nade = {
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
   movement?: Movement;
-  nextUpdateInHours: number;
   oneWay?: boolean;
   score: number;
   slug?: string;
@@ -40,15 +38,13 @@ export type Nade = {
   steamId: string;
   technique?: Technique;
   tickrate?: Tickrate;
-  title: string;
   type?: NadeType;
   updatedAt: string;
-  upVoteCount?: number;
   user: UserLight;
   viewCount: number;
-};
+}
 
-export type NadeLight = {
+export interface NadeLight {
   commentCount: number;
   createdAt: Date | string;
   downVoteCount?: number;
@@ -62,7 +58,6 @@ export type NadeLight = {
   isPro?: boolean;
   mapEndCoord?: MapCoordinates;
   movement?: Movement;
-  nextUpdateInHours: number;
   oneWay?: boolean;
   score: number;
   slug?: string;
@@ -70,12 +65,11 @@ export type NadeLight = {
   status: Status;
   technique?: Technique;
   tickrate?: Tickrate;
-  title?: string;
   type?: NadeType;
   upVoteCount?: number;
   user: UserLight;
   viewCount: number;
-};
+}
 
 export type NadeCreateBody = {
   description: string;

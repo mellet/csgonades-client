@@ -127,7 +127,6 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
           <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
             <span>
               {generateTitle(
-                nade.title,
                 nade.startPosition,
                 nade.endPosition,
                 nade.type,

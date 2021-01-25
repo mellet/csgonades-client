@@ -141,7 +141,6 @@ export function sortByDate(a: Date | string, b: Date | string): number {
 }
 
 export function generateTitle(
-  title?: string,
   starPosition?: string,
   endPosition?: string,
   nadeType?: NadeType,
@@ -156,15 +155,12 @@ export function generateTitle(
     }
 
     return `${endPosition} ${nadeTypeString(nadeType)} from ${starPosition}`;
-  } else if (title) {
-    return title;
   } else {
     return "No Title";
   }
 }
 
 export function generateSeoTitle(
-  title?: string,
   starPosition?: string,
   endPosition?: string,
   nadeType?: NadeType,
@@ -184,15 +180,12 @@ export function generateSeoTitle(
     return `${capitalize(map)} ${endPosition} ${nadeTypeString(
       nadeType
     )} from ${starPosition} `;
-  } else if (title) {
-    return title;
   } else {
     return "No Title";
   }
 }
 
 export function generateNadeItemTitle(
-  title?: string,
   starPosition?: string,
   endPosition?: string,
   nadeType?: NadeType,
@@ -214,8 +207,6 @@ export function generateNadeItemTitle(
       )}`,
       `from ${starPosition}`,
     ];
-  } else if (title) {
-    return [title, ""];
   } else {
     return ["No Title", "..."];
   }

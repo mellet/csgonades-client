@@ -6,14 +6,13 @@ import { GfycatData } from "../models/GfycatData";
 import {
   Nade,
   NadeLight,
-  NadeStatusDTO,
   NadeUpdateBody,
   NadeCreateBody,
 } from "../models/Nade";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 export class NadeApi {
-  static async slugIsFree(slug: string): Promise<boolean> {
+  static async isSlugAvailable(slug: string): Promise<boolean> {
     try {
       const res = await axios.get<boolean>(
         `${Config.API_URL}/nades/${slug}/checkslug`
@@ -26,7 +25,7 @@ export class NadeApi {
     }
   }
 
-  static async getAll(): AppResult<NadeLight[]> {
+  static async getRecent(): AppResult<NadeLight[]> {
     try {
       const res = await axios.get(`${Config.API_URL}/nades`);
       const nades = res.data as NadeLight[];
@@ -105,18 +104,6 @@ export class NadeApi {
     }
   }
 
-  static async byNadeIdList(nadeIds: string[]): AppResult<NadeLight[]> {
-    try {
-      const res = await axios.post(`${Config.API_URL}/nades/list`, {
-        nadeIds,
-      });
-      const nades = res.data as NadeLight[];
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
-  }
-
   static async save(nadeBody: NadeCreateBody, token: string): AppResult<Nade> {
     try {
       const res = await axios.post(`${Config.API_URL}/nades`, nadeBody, {
@@ -158,87 +145,6 @@ export class NadeApi {
       });
 
       return ok(true);
-    } catch (error) {
-      return extractApiError(error);
-    }
-  }
-
-  static async registerView(id: string): Promise<void> {
-    try {
-      await axios.post(
-        `${Config.API_URL}/nades/${id}/countView`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-    } catch (error) {}
-  }
-
-  static async updateNadeStatus(
-    nadeId: string,
-    updates: NadeStatusDTO,
-    token: string
-  ): AppResult<Nade> {
-    try {
-      const res = await axios.patch(
-        `${Config.API_URL}/nades/${nadeId}/status`,
-        updates,
-        {
-          headers: { Authorization: token },
-        }
-      );
-      const updatedNade = res.data as Nade;
-
-      return ok(updatedNade);
-    } catch (error) {
-      return extractApiError(error);
-    }
-  }
-
-  static async updateUser(
-    nadeId: string,
-    steamId: string,
-    token: string
-  ): AppResult<Nade> {
-    try {
-      const res = await axios.patch(
-        `${Config.API_URL}/nades/${nadeId}/setuser/${steamId}`,
-        undefined,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-
-      const updatedNade = res.data as Nade;
-
-      return ok(updatedNade);
-    } catch (error) {
-      return extractApiError(error);
-    }
-  }
-
-  static async forceYear(
-    nadeId: string,
-    year: string,
-    token: string
-  ): AppResult<Nade> {
-    try {
-      const result = await axios.patch(
-        `${Config.API_URL}/nades/${nadeId}/year/${year}`,
-        {},
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-
-      const updatedNade = result.data as Nade;
-
-      return ok(updatedNade);
     } catch (error) {
       return extractApiError(error);
     }

@@ -75,7 +75,6 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
           oneWay={nade.oneWay}
           startPosition={nade.startPosition}
           status={nade.status}
-          title={nade.title}
           type={nade.type}
         />
 

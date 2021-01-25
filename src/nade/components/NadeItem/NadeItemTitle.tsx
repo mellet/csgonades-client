@@ -9,7 +9,6 @@ type Props = {
   oneWay?: boolean;
   startPosition?: string;
   status: Status;
-  title?: string;
   type?: NadeType;
 };
 
@@ -18,13 +17,11 @@ export const NadeItemTitle: FC<Props> = ({
   oneWay,
   startPosition,
   status,
-  title,
   type,
 }) => {
   const { colors } = useTheme();
   const iconUrl = iconFromType(type);
   const [generatedTitle, subTitle] = generateNadeItemTitle(
-    title,
     startPosition,
     endPosition,
     type,

@@ -23,7 +23,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
   const { colors } = useTheme();
 
   const seoTitle = generateSeoTitle(
-    nade.title,
     nade.startPosition,
     nade.endPosition,
     nade.type,

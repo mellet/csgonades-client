@@ -25,7 +25,6 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
                 oneWay={nade.oneWay}
                 startPosition={nade.startPosition}
                 status={nade.status}
-                title={nade.title}
                 type={nade.type}
               />
               <div className="video">

@@ -9,7 +9,6 @@ type Props = {
 
 export const NadeTitle: FC<Props> = memo(({ nade }) => {
   const [title, subTitle] = generateNadeItemTitle(
-    nade.title,
     nade.startPosition,
     nade.endPosition,
     nade.type,

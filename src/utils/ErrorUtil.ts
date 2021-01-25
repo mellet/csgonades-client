@@ -8,7 +8,6 @@ export type AppError = {
 
 export type AppResult<T> = Promise<Result<T, AppError>>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const extractApiError = (badError: any): Result<any, AppError> => {
   const error: AxiosError = badError;
   if (error.response) {

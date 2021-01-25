@@ -27,7 +27,6 @@ export const NadePageSidebar: FC<Props> = ({ nade }) => {
 
         <NadeShareActions
           title={generateTitle(
-            nade.title,
             nade.startPosition,
             nade.endPosition,
             nade.type,

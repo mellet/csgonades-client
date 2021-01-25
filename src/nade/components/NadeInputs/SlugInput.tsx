@@ -12,7 +12,7 @@ export const SlugInput: FC<Props> = ({ onChange, defaultValue }) => {
   const displayToast = useDisplayToast();
 
   async function onSlugChanged(slug: string) {
-    const slugIsFree = await NadeApi.slugIsFree(slug);
+    const slugIsFree = await NadeApi.isSlugAvailable(slug);
 
     if (!slugIsFree) {
       displayToast({
