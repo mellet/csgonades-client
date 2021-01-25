@@ -2,14 +2,12 @@ import { FC, memo } from "react";
 import { FaPlus } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
-import { useTheme } from "../../core/settings/SettingsHooks";
 import Router from "next/router";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 
 export const AddNadeButton: FC = memo(() => {
   const { setSignInWarning } = useSignInWarning();
   const isSignedIn = useIsSignedIn();
-  const { colors } = useTheme();
 
   function onClick() {
     if (isSignedIn) {
@@ -22,7 +20,7 @@ export const AddNadeButton: FC = memo(() => {
   return (
     <>
       <Popup
-        content="New Nade"
+        content="Add Nade"
         position="left center"
         inverted
         size="tiny"
@@ -41,17 +39,19 @@ export const AddNadeButton: FC = memo(() => {
           outline: none;
           width: 36px;
           height: 36px;
-          background: rgba(255, 255, 255, 0.9);
-          color: #222;
+          background: rgba(140, 192, 28, 0.8);
+          color: white;
           display: flex;
           align-items: center;
           justify-content: center;
+          transition: transform 0.2s, background 0.2s;
         }
 
         .add-btn:hover {
-          background: ${colors.SUCCESS};
+          background: rgba(140, 192, 28, 1);
           cursor: pointer;
           color: white;
+          transform: scale(1.05);
         }
       `}</style>
     </>
