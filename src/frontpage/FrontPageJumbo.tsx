@@ -1,7 +1,6 @@
 import { FC, memo } from "react";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { SiteStats } from "../core/api/StatsApi";
-import { Twemoji } from "../shared-components/Twemoj/Twemoji";
 
 type Props = {
   stats: SiteStats | null;
@@ -15,24 +14,10 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
       <div id="jumbo">
         <div id="message">
           <h1>
-            Hi! Welcome to CSGO Nades.
+            Welcome to CSGO Nades.
             <br /> A community to learn and share
             <br /> nades for Counter-Strike Global Offensive.
           </h1>
-          <p>
-            I was once a Global Elite, but with age, my reaction time has slowly
-            withered away <Twemoji emoji="🥺" /> It&apos;s your turn to find
-            some nades and become Global <Twemoji emoji="🤩" />
-            <br /> With great power comes great responsibility.
-            <br />-{" "}
-            <a
-              rel="noopener noreferrer"
-              href="https://steamcommunity.com/profiles/76561198026064832/"
-              target="_blank"
-            >
-              sNipn
-            </a>
-          </p>
         </div>
         <div id="jumbo-ill">
           <img src="/images/ilustration.svg" />
