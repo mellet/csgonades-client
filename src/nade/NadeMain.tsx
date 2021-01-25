@@ -73,13 +73,12 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         </div>
 
         <div id="nade-sidebar">
-          <div className="advert-top">
-            <EzoicPlainPlaceholder id="197" />
-          </div>
-
           <NadeEditButton nade={nade} />
           <NadeInfoContainer nade={nade} />
           <NadeAction nadeId={nade.id} />
+          <div className="advert-top">
+            <EzoicPlainPlaceholder id="197" />
+          </div>
           <NadeComments nadeId={nade.id} />
 
           <div className="advert">
@@ -129,6 +128,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         .advert-top {
           max-height: 90px;
           overflow: hidden;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-title-mobile {
