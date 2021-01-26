@@ -18,13 +18,18 @@ export const useFilterReset = () => {
   const byPro = useSelector(filterByProSelector);
   const dispatch = useDispatch();
 
-  const resetFilter = useCallback(() => {
-    dispatch(resetFilterAction());
-    event({
-      category: "Filter",
-      action: "Reset",
-    });
-  }, [dispatch, event]);
+  const resetFilter = useCallback(
+    (disableAnalytics?: boolean) => {
+      dispatch(resetFilterAction());
+      if (!disableAnalytics) {
+        event({
+          category: "Filter",
+          action: "Reset",
+        });
+      }
+    },
+    [dispatch, event]
+  );
 
   const canReset = useMemo(() => {
     if (byFavorites) {
