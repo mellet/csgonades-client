@@ -7,6 +7,10 @@ export const NoNadesMessage: FC = memo(() => {
   const { resetFilter } = useFilterReset();
   const { colors } = useTheme();
 
+  function onReset() {
+    resetFilter();
+  }
+
   return (
     <>
       <div className="no-nades-msg">
@@ -16,7 +20,7 @@ export const NoNadesMessage: FC = memo(() => {
           <br />
           Click the button + in the corner.
         </p>
-        <button className="reset" onClick={resetFilter}>
+        <button className="reset" onClick={onReset}>
           Reset Filter
         </button>
       </div>
