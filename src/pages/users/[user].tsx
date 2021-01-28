@@ -28,17 +28,16 @@ const UserPageComponent: NextPage<Props> = ({ user }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
   const steamId = context.query.user as string;
 
   const result = await UserApi.fetchUser(steamId);
 
   if (result.isErr()) {
-    context.res.statusCode = 404;
     return {
-      props: {
-        user: null,
-      },
+      notFound: true,
     };
   }
 

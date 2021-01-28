@@ -9,12 +9,12 @@ import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { MapSidebar } from "../../map/components/Sidebar/MapSidebar";
 
 interface Props {
-  map: CsgoMap;
-  ssrNades: NadeLight[];
+  mapName: CsgoMap;
+  nades: NadeLight[];
 }
 
-const Map: NextPage<Props> = ({ map, ssrNades }) => {
-  if (!ssrNades) {
+const Map: NextPage<Props> = ({ mapName, nades }) => {
+  if (!nades) {
     return null;
   }
 
@@ -22,8 +22,8 @@ const Map: NextPage<Props> = ({ map, ssrNades }) => {
     <LayoutBuilder
       header={<HeaderDefault />}
       nav={<Navigation />}
-      main={<MapMain key={map} map={map} allNades={ssrNades} />}
-      sidebar={<MapSidebar map={map} nades={ssrNades} />}
+      main={<MapMain key={mapName} map={mapName} allNades={nades} />}
+      sidebar={<MapSidebar map={mapName} nades={nades} />}
     />
   );
 };
@@ -43,22 +43,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<any, { map: CsgoMap }> = async ({
+export const getStaticProps: GetStaticProps<Props, { map: CsgoMap }> = async ({
   params,
 }) => {
-  if (!params) {
+  if (!params || !params.map) {
     return { notFound: true };
   }
 
   const mapName = params.map;
   const mapNadesResult = await NadeApi.getByMap(mapName);
 
-  const ssrNades = mapNadesResult.isOk() ? mapNadesResult.value : [];
+  const nades = mapNadesResult.isOk() ? mapNadesResult.value : [];
 
   return {
     props: {
-      map: mapName,
-      ssrNades: ssrNades,
+      mapName,
+      nades,
     },
     revalidate: 60 * 5,
   };

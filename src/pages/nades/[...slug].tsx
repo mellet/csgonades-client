@@ -25,40 +25,28 @@ const NadeEdit: NextPage<Props> = ({ nade }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  res,
-}) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const [nadeId, operation] = query.slug;
 
   if (!nadeId || !operation) {
-    res.statusCode = 404;
     return {
-      props: {
-        nade: null,
-      },
+      notFound: true,
     };
   }
 
   const validOperation = ["edit"];
 
   if (!validOperation.includes(operation)) {
-    res.statusCode = 404;
     return {
-      props: {
-        nade: null,
-      },
+      notFound: true,
     };
   }
 
   const nadeResult = await NadeApi.byId(nadeId);
 
   if (nadeResult.isErr()) {
-    res.statusCode = 404;
     return {
-      props: {
-        nade: null,
-      },
+      notFound: true,
     };
   }
 
