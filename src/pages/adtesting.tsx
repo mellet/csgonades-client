@@ -5,6 +5,8 @@ const AdTesting: NextPage = () => {
   return (
     <>
       <div className="ads">
+        <h1>Video</h1>
+        <span id="ezoic-pub-video-placeholder-1"></span>
         <h1>Adtesting</h1>
         <p>Ids: 170,172,173</p>
         <div className="med-rec">
