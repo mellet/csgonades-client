@@ -6,7 +6,7 @@ const AD_SENSE_TEST = true;
 export const useEzoidAdLoader = (): void => {
   const router = useRouter();
   useEffect(() => {
-    if (AD_SENSE_TEST && router.pathname === "/") {
+    if (AD_SENSE_TEST) {
       return;
     }
 
