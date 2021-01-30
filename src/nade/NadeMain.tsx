@@ -79,7 +79,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           <div className="advert-top">
             <EzoicPlainPlaceholder id="197" />
           </div>
-          <NadeComments nadeId={nade.id} />
+          <NadeComments nade={nade} />
 
           <div className="advert">
             <EzoicPlainPlaceholder id="196" />

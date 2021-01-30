@@ -3,19 +3,20 @@ import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { NadeCommentItem } from "./NadeCommentItem";
 import { CommentSubmit } from "./CommentSubmit";
 import { Dimensions } from "../../../constants/Constants";
+import { Nade } from "../../models/Nade";
 
 type Props = {
-  nadeId: string;
+  nade: Nade;
 };
 
-export const NadeComments: FC<Props> = memo(({ nadeId }) => {
-  const { comments, addComment, fetchComments } = useNadeComments(nadeId);
+export const NadeComments: FC<Props> = memo(({ nade }) => {
+  const { comments, addComment, fetchComments } = useNadeComments(nade);
 
   return (
     <>
       <div className="nade-comment-container">
         <div className="nade-submit">
-          <CommentSubmit nadeId={nadeId} onCommentSubmitted={addComment} />
+          <CommentSubmit nadeId={nade.id} onCommentSubmitted={addComment} />
         </div>
 
         <div className="nade-comments">
@@ -46,17 +47,21 @@ export const NadeComments: FC<Props> = memo(({ nadeId }) => {
   );
 });
 
-const useNadeComments = (nadeId: string) => {
+const useNadeComments = (nade: Nade) => {
   const [rawComments, setRawComment] = useState<NadeComment[]>([]);
 
   const fetchComments = useCallback(() => {
     (async () => {
-      const res = await NadeCommentApi.getCommentsForNade(nadeId);
+      if (nade.commentCount === 0) {
+        return;
+      }
+
+      const res = await NadeCommentApi.getCommentsForNade(nade.id);
       if (res.isOk()) {
         setRawComment(res.value);
       }
     })();
-  }, [nadeId]);
+  }, [nade.id, nade.commentCount]);
 
   useEffect(() => {
     fetchComments();
