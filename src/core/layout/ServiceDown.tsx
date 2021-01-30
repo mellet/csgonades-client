@@ -1,21 +1,19 @@
-import { FC, useState, useEffect, memo } from "react";
-import Axios from "axios";
+import { FC, memo } from "react";
 import { CSGNModal } from "../../shared-components/CSGNModal";
+import { useApiStatus } from "../global/hooks/useApiStatus";
 
 export const ServiceDown: FC = memo(({}) => {
-  const [serviceUp, setServiceUp] = useState(true);
+  const { apiStatus } = useApiStatus();
 
-  useEffect(() => {
-    Axios.get("https://api.csgonades.com/status")
-      .then(() => setServiceUp(true))
-      .catch(() => setServiceUp(false));
-  }, []);
+  function reload() {
+    location.reload();
+  }
 
   return (
     <CSGNModal
-      visible={!serviceUp}
+      visible={apiStatus === "offline"}
       empty={true}
-      onDismiss={() => setServiceUp(true)}
+      onDismiss={reload}
     >
       <div className="service-down">
         <h3>Service Down</h3>
@@ -24,7 +22,7 @@ export const ServiceDown: FC = memo(({}) => {
           <br /> Refresh the page or come back later.
           <br />
           <br />
-          <button className="refresh-btn" onClick={() => location.reload()}>
+          <button className="refresh-btn" onClick={reload}>
             Refresh page
           </button>
         </p>

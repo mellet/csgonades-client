@@ -3,11 +3,14 @@ import { FaBell } from "react-icons/fa";
 import { useNotifications } from "../data/NotificationHooks";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { NotificationList } from "./NotificationList";
+import { useFetchNotifications } from "../data/hooks/useFetchNotifications";
 
 export const NotificationIndicator: FC = memo(() => {
   const [notificationTabVisible, setNotificationTabVisible] = useState(false);
   const { colors } = useTheme();
   const { notificationCount } = useNotifications();
+
+  useFetchNotifications();
 
   function toggleNotificationTab() {
     setNotificationTabVisible(!notificationTabVisible);

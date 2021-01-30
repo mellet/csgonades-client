@@ -10,3 +10,6 @@ export const acceptedCookieConsentSelector = (state: AppState): boolean =>
 export const signInWarningSelector = (
   state: AppState
 ): SignInWarningType | undefined => state.globalStore.signInWarning;
+
+export const apiStatusSelector = (state: AppState) =>
+  state.globalStore.apiOnline;

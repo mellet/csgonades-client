@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PersistConfig, persistReducer } from "redux-persist";
-import { SiteStats } from "../api/StatsApi";
 import storage from "redux-persist/lib/storage";
 
 export type SignInWarningType = "favorite" | "filterpro" | "addnade";
@@ -9,18 +8,13 @@ type GlobalState = {
   readonly acceptedCookieConcent: boolean;
   readonly isNavOpen: boolean;
   readonly signInWarning?: SignInWarningType;
-  readonly stats: SiteStats;
+  readonly apiOnline: "init" | "online" | "offline";
 };
 
 const initialState: GlobalState = {
-  stats: {
-    ezoicEnabled: false,
-    numNades: 0,
-    numPending: 0,
-    numUsers: 0,
-  },
   isNavOpen: false,
   acceptedCookieConcent: false,
+  apiOnline: "init",
 };
 
 const globalStore = createSlice({
@@ -29,9 +23,6 @@ const globalStore = createSlice({
   reducers: {
     toggleNavigationAction(state) {
       state.isNavOpen = !state.isNavOpen;
-    },
-    addSiteStatsAction(state, action: PayloadAction<SiteStats>) {
-      state.stats = action.payload;
     },
     acceptCookieConcentAction(state) {
       state.acceptedCookieConcent = true;
@@ -48,6 +39,12 @@ const globalStore = createSlice({
     clearSignInWarningAction(state) {
       state.signInWarning = undefined;
     },
+    setApiOnlineAction(state) {
+      state.apiOnline = "online";
+    },
+    setApiOfflineAction(state) {
+      state.apiOnline = "offline";
+    },
   },
 });
 
@@ -61,9 +58,10 @@ export const GlobalReducer = persistReducer(persistConfig, globalStore.reducer);
 
 export const {
   acceptCookieConcentAction,
-  addSiteStatsAction,
   clearSignInWarningAction,
   closeNavigationAction,
   displaySignInWarningAction,
   toggleNavigationAction,
+  setApiOfflineAction,
+  setApiOnlineAction,
 } = globalStore.actions;

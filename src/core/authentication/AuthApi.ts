@@ -7,6 +7,10 @@ type TokenRes = {
   accessToken: string;
 };
 
+type SessionResponse = {
+  authenticated: boolean;
+};
+
 export class AuthApi {
   static async refreshToken(cookie?: string): AppResult<string> {
     try {
@@ -34,12 +38,14 @@ export class AuthApi {
     }
   }
 
-  static async setSessionCookie(): Promise<void> {
-    await axios.post(
+  static async setSessionCookie(): Promise<SessionResponse> {
+    const response = await axios.post<SessionResponse>(
       `${Config.API_URL}/initSession`,
       {},
       { withCredentials: true }
     );
+
+    return response.data;
   }
 
   static async signOut(): Promise<void> {
