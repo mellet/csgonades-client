@@ -1,12 +1,11 @@
-import React, { FC, memo, Suspense } from "react";
+import React, { FC, memo } from "react";
 import { Hamburger } from "./components/Hamburger";
 import { Logo } from "./components/Logo";
 import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
+import dynamic from "next/dynamic";
 
-const UserNav = React.lazy(() => import("./components/UserNav"));
-
-const isServer = typeof window === "undefined";
+const UserNav = dynamic(() => import("./components/UserNav"), { ssr: false });
 
 export const HeaderDefault: FC = memo(() => {
   return (
@@ -20,11 +19,7 @@ export const HeaderDefault: FC = memo(() => {
           <div id="theme-toggler">
             <ThemeToggler />
           </div>
-          {!isServer && (
-            <Suspense fallback={<div />}>
-              <UserNav />
-            </Suspense>
-          )}
+          <UserNav />
         </div>
       </div>
 
