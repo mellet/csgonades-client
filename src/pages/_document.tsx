@@ -81,12 +81,7 @@ class MyDocument extends Document {
               href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap"
               rel="stylesheet"
             />
-            {false && <script src="//www.ezojs.com/ezoic/sa.min.js" />}
-            <script
-              data-ad-client="ca-pub-2255854420599519"
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-            ></script>
+            <script src="//www.ezojs.com/ezoic/sa.min.js" />
           </Head>
           <body id="app">
             <Main />
