@@ -7,7 +7,6 @@ import { CoreWrapper } from "../core/CoreWrapper";
 import { createGlobalStyle } from "styled-components";
 import { AppThemeProvider } from "../core/settings/AppThemeProvider";
 import { Normalize } from "styled-normalize";
-import { useRouter } from "next/router";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -75,21 +74,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const { asPath } = useRouter();
-
-  const isFrontPage = asPath === "/";
-
   return (
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {isFrontPage && (
-          <script
-            data-ad-client="ca-pub-2255854420599519"
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          ></script>
-        )}
       </Head>
       <Normalize />
       <GlobalStyle />
