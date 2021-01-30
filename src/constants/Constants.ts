@@ -12,6 +12,7 @@ export const Config = {
   SIGN_IN_URL: IS_PROD
     ? "https://api.csgonades.com/auth/steam"
     : "http://localhost:5000/auth/steam",
+  revalidationTime: 60 * 15, // Refetch time for map and frontpage
 };
 
 export const Dimensions = {

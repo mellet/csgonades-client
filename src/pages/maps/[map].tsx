@@ -7,6 +7,7 @@ import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { MapSidebar } from "../../map/components/Sidebar/MapSidebar";
+import { Config } from "../../constants/Constants";
 
 interface Props {
   mapName: CsgoMap;
@@ -60,7 +61,7 @@ export const getStaticProps: GetStaticProps<Props, { map: CsgoMap }> = async ({
       mapName,
       nades,
     },
-    revalidate: 60 * 5,
+    revalidate: Config.revalidationTime,
   };
 };
 
