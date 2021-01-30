@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
+const AD_SENSE_TEST = true;
+
 export const useEzoidAdLoader = (): void => {
   const router = useRouter();
   useEffect(() => {
-    if (router.asPath.includes("adtesting")) {
+    if (AD_SENSE_TEST && router.pathname === "/") {
+      return;
+    }
+
+    if (router.asPath.includes("adtesting") || router.pathname === "/") {
       return;
     }
 
