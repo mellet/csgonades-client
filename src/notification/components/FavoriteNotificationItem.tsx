@@ -11,7 +11,7 @@ type Props = {
 
 export const FavoriteNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href={`/nades/${notification.nadeSlug || notification.id}`}>
+    <Link href={`/nades/${notification.nadeSlug || notification.nadeId}`}>
       <a>
         <NotificationItemLayout
           icon={<FaStar />}

@@ -10,7 +10,7 @@ type Props = {
 
 export const NewNadeNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href={`/nades/${notification.nadeSlug || notification.id}`}>
+    <Link href={`/nades/${notification.nadeSlug || notification.nadeId}`}>
       <a>
         <NotificationItemLayout
           icon={<FaPlusCircle />}
