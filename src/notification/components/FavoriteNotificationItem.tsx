@@ -11,8 +11,8 @@ type Props = {
 
 export const FavoriteNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href={`/nades/${notification.nadeSlug}`}>
-      <a id="contact-notification">
+    <Link href={`/nades/${notification.nadeSlug || notification.id}`}>
+      <a>
         <NotificationItemLayout
           icon={<FaStar />}
           createdAt={notification.createdAt}

@@ -11,7 +11,7 @@ type Props = {
 export const ReportNotificationItem: FC<Props> = ({ notification }) => {
   return (
     <Link href="/admin/reports">
-      <a id="contact-notification">
+      <a>
         <NotificationItemLayout
           icon={<FaExclamationTriangle />}
           createdAt={notification.createdAt}

@@ -10,8 +10,8 @@ type Props = {
 
 export const CommentNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href={`/nades/${notification.nadeSlug}`}>
-      <a id="contact-notification">
+    <Link href={`/nades/${notification.nadeSlug || notification.id}`}>
+      <a>
         <NotificationItemLayout
           icon={<FaCommentDots />}
           createdAt={notification.createdAt}

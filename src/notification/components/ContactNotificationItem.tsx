@@ -11,7 +11,7 @@ type Props = {
 export const ContactNotificationItem: FC<Props> = ({ notification }) => {
   return (
     <Link href="/admin/contact">
-      <a id="contact-notification">
+      <a>
         <NotificationItemLayout
           icon={<FaComment />}
           createdAt={notification.createdAt}
