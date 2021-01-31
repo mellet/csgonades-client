@@ -14,13 +14,18 @@ export const NotificationList: FC<NotificationListProps> = ({
 }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (notifications.length) {
-        console.log("Marking as viewed");
+      const numUnViewed = notifications.reduce((accum, noti) => {
+        if (noti.viewed) {
+          return accum + 1;
+        }
+        return accum;
+      }, 0);
+      if (numUnViewed > 0) {
         markAsViewed();
       }
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
-  }, [markAsViewed, notifications.length]);
+  }, [markAsViewed, notifications]);
 
   if (notifications.length === 0) {
     return <EmptyNotifications>No notifications.</EmptyNotifications>;
