@@ -19,10 +19,10 @@ export class NotificationApi {
     }
   }
 
-  static async markAsViewed(id: string, token: string): Promise<void> {
+  static async markAllAsViewed(token: string): Promise<void> {
     try {
       await axios.patch(
-        `${Config.API_URL}/notifications/${id}/viewed`,
+        `${Config.API_URL}/notifications/viewed`,
         {},
         {
           headers: { Authorization: token },

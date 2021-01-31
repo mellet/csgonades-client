@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { useAdminPendingNades } from "../../data/hooks";
-import { NadeLight } from "../../../nade/models/Nade";
-import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
-import { CsgnList } from "../../../shared-components/list/CsgnList";
-import { AdminPageTitle } from "../AdminPageTitle";
+import { useAdminPendingNades } from "../data/hooks";
+import { NadeLight } from "../../nade/models/Nade";
+import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
+import { CsgnList } from "../../shared-components/list/CsgnList";
+import { AdminPageTitle } from "../components/AdminPageTitle";
 
-export const AdminPendingNadesPage: FC = () => {
+export const AdminPendingContainer: FC = () => {
   const { pendingNades } = useAdminPendingNades();
 
   function renderItem(item: NadeLight) {

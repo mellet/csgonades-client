@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
-import { AdminPageTitle } from "../AdminPageTitle";
-import { AdminUserList } from "../AdminUserList";
+import { Dimensions } from "../../constants/Constants";
+import { useTheme } from "../../core/settings/SettingsHooks";
+import { AdminPageTitle } from "../components/AdminPageTitle";
+import { AdminUserList } from "../components/AdminUserList";
 
-export const AdminUsers: FC = () => {
+export const AdminUserContainer: FC = () => {
   const { colors } = useTheme();
   return (
     <>
