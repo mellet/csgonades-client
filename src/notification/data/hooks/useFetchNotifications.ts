@@ -30,7 +30,12 @@ export const useFetchNotifications = () => {
   }, [dispatch, getToken]);
 
   useEffect(() => {
-    if (!lastNotificationFetch || !isSignedIn) {
+    if (!isSignedIn) {
+      return;
+    }
+
+    if (!lastNotificationFetch) {
+      fetchNotifications();
       return;
     }
 
