@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useMemo } from "react";
 import { FrontPageJumbo } from "./FrontPageJumbo";
 import { SiteStats } from "../core/api/StatsApi";
 import { BlogList } from "../blog/components/BlogList";
@@ -13,6 +13,9 @@ import {
 import { NadeLight } from "../nade/models/Nade";
 import { CsgnList } from "../shared-components/list/CsgnList";
 import { NadeItem } from "../nade/components/NadeItem/NadeItem";
+import { useSelector } from "react-redux";
+import { favoritedNadeIdsSelector } from "../favorites/data/FavoriteSelectors";
+import { addFavoriteToNades } from "../map/data/hooks/helpers";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -23,10 +26,12 @@ const recentPosts = [
 
 type Props = {
   stats: SiteStats | null;
-  recentNades: NadeLight[] | null;
+  recentNades: NadeLight[];
 };
 
 export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
+  const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
+
   function renderItem(item: NadeLight) {
     return <NadeItem nade={item} />;
   }
@@ -44,7 +49,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
           <div className="recent-nades">
             <h3>Recently added nades</h3>
             <CsgnList<NadeLight>
-              data={recentNades}
+              data={recentNadesWithFavorites}
               renderItem={renderItem}
               keyExtractor={keyExtractor}
               enableAds={false}
@@ -115,3 +120,14 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
     </>
   );
 });
+
+const useRecentNadesWithFavorites = (nades: NadeLight[]): NadeLight[] => {
+  const favoritedNades = useSelector(favoritedNadeIdsSelector);
+
+  return useMemo(() => {
+    let thenades = [...nades];
+    thenades = addFavoriteToNades(thenades, favoritedNades);
+
+    return thenades;
+  }, [nades, favoritedNades]);
+};

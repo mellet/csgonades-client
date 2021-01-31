@@ -12,7 +12,7 @@ import { Config } from "../constants/Constants";
 
 type Props = {
   stats: SiteStats | null;
-  recentNades: NadeLight[] | null;
+  recentNades: NadeLight[];
 };
 
 const Index: NextPage<Props> = ({ stats, recentNades }) => (
@@ -28,7 +28,7 @@ const Index: NextPage<Props> = ({ stats, recentNades }) => (
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   let stats: SiteStats | null = null;
-  let recentNades: NadeLight[] | null = null;
+  let recentNades: NadeLight[] = [];
 
   const statsResult = await StatsApi.getStats();
   const recentNadesResult = await NadeApi.getRecent();
