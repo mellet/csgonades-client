@@ -1,4 +1,4 @@
-type AcceptedNadeNotification = {
+export type AcceptedNadeNotification = {
   createdAt: Date;
   id: string;
   nadeId: string;
@@ -9,7 +9,7 @@ type AcceptedNadeNotification = {
   viewed: boolean;
 };
 
-type ReportNotification = {
+export type ReportNotification = {
   id: string;
   subjectSteamId: string; // Reciever of notification
   viewed: boolean;
@@ -17,7 +17,7 @@ type ReportNotification = {
   type: "report";
 };
 
-type DeclinedNadeNotification = {
+export type DeclinedNadeNotification = {
   createdAt: Date;
   id: string;
   nadeId: string;
@@ -41,7 +41,7 @@ export type FavoriteNotification = {
   viewed: boolean;
 };
 
-type NewContactNotification = {
+export type NewContactNotification = {
   createdAt: Date;
   id: string;
   subjectSteamId: string;
@@ -49,7 +49,7 @@ type NewContactNotification = {
   viewed: boolean;
 };
 
-type NewNadeNotification = {
+export type NewNadeNotification = {
   createdAt: Date;
   id: string;
   nadeId: string;
@@ -59,7 +59,7 @@ type NewNadeNotification = {
   viewed: boolean;
 };
 
-type NewCommentNotification = {
+export type NewCommentNotification = {
   byNickname: string;
   bySteamId: string;
   createdAt: Date;
