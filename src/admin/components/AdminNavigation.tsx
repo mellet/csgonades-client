@@ -1,36 +1,39 @@
+import Link from "next/link";
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { useSignedInUser } from "../../core/authentication/useSignedInUser";
+import { useIsAdmin } from "../../core/authentication/useIsAdmin";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { useAdminRoute } from "../data/hooks";
 
 export const AdminNavigation: FC = () => {
   const { colors } = useTheme();
-  const user = useSignedInUser();
-  const { changeAdminRoute } = useAdminRoute();
-
-  if (!user) {
-    return null;
-  }
-
-  const isAdmin = user.role === "administrator";
+  const isAdmin = useIsAdmin();
 
   return (
     <>
       <div className="admin-nav">
-        <button onClick={() => changeAdminRoute("pending-nades")}>
-          Pending nades
-        </button>
-        <button onClick={() => changeAdminRoute("declined-nades")}>
-          Declined nades
-        </button>
+        <Link href="/admin/pending">
+          <button>Pending nades</button>
+        </Link>
+        <Link href="/admin/declined">
+          <button>Declined nades</button>
+        </Link>
         {isAdmin && (
-          <button onClick={() => changeAdminRoute("user")}>Users</button>
+          <Link href="/admin/users">
+            <button>Users</button>
+          </Link>
         )}
-        <button onClick={() => changeAdminRoute("reports")}>Reports</button>
-        <button onClick={() => changeAdminRoute("audit")}>Audit</button>
+        <Link href="/admin/reports">
+          <button>Reports</button>
+        </Link>
+
+        <Link href="/admin/audit">
+          <button>Audit</button>
+        </Link>
+
         {isAdmin && (
-          <button onClick={() => changeAdminRoute("contact")}>Contacts</button>
+          <Link href="/admin/contact">
+            <button>Contacts</button>
+          </Link>
         )}
       </div>
       <style jsx>{`

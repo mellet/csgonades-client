@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { AdminContactMessage } from "../AdminContactMessage";
-import { useAdminContact } from "../../data/hooks";
+import { AdminContactMessage } from "../components/AdminContactMessage";
+import { useAdminContact } from "../data/hooks";
 
-export const AdminContactPage: FC = () => {
+export const AdminContactContainer: FC = () => {
   const { contactMessages } = useAdminContact();
 
   return (

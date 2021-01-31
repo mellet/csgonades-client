@@ -6,9 +6,7 @@ import { NadeApi } from "../../nade/data/NadeApi";
 import { NadeLight } from "../../nade/models/Nade";
 import { ReportApi } from "../../reports/data/ReportApi";
 import {
-  AdminRoutes,
   addContactMessages,
-  changeRoute,
   addReports,
   addUsers,
   addAudits,
@@ -25,19 +23,6 @@ const useAdminStoreContext = () => {
   }
 
   return context;
-};
-
-export const useAdminRoute = () => {
-  const { dispatch, state } = useAdminStoreContext();
-
-  const changeAdminRoute = useCallback(
-    (route: AdminRoutes) => dispatch(changeRoute(route)),
-    [dispatch]
-  );
-  return {
-    changeAdminRoute,
-    route: state.route,
-  };
 };
 
 export const useAdminPendingNades = () => {

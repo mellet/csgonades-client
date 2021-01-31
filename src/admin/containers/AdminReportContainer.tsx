@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { useAdminReports } from "../../data/hooks";
-import { AdminReportItem } from "../AdminReportItem";
-import { AdminPageTitle } from "../AdminPageTitle";
+import { useAdminReports } from "../data/hooks";
+import { AdminReportItem } from "../components/AdminReportItem";
+import { AdminPageTitle } from "../components/AdminPageTitle";
 
-export const AdminReports: FC = () => {
+export const AdminReportContainer: FC = () => {
   const { reports } = useAdminReports();
 
   return (
