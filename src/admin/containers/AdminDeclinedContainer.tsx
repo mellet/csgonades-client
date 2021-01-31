@@ -1,12 +1,12 @@
 import { FC, useState, useEffect } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
-import { CsgnList } from "../../../shared-components/list/CsgnList";
-import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
-import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
-import { NadeApi } from "../../../nade/data/NadeApi";
-import { AdminPageTitle } from "../AdminPageTitle";
+import { NadeLight } from "../../nade/models/Nade";
+import { CsgnList } from "../../shared-components/list/CsgnList";
+import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
+import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
+import { NadeApi } from "../../nade/data/NadeApi";
+import { AdminPageTitle } from "../components/AdminPageTitle";
 
-export const AdminDeclinedNades: FC = () => {
+export const AdminDeclinedContainer: FC = () => {
   const getToken = useGetOrUpdateToken();
   const [declinedNades, setDeclinedNades] = useState<NadeLight[]>([]);
 

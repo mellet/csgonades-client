@@ -20,11 +20,9 @@ const notificationSlice = createSlice({
       state.lastFetch = new Date().toString();
       state.notifications = action.payload;
     },
-    markNotificationAsSeenAction(state, action: PayloadAction<string>) {
+    markNotificationsAsViewedAction(state) {
       for (const notification of state.notifications) {
-        if (notification.id === action.payload) {
-          notification.viewed = true;
-        }
+        notification.viewed = true;
       }
     },
   },
@@ -34,5 +32,5 @@ export const NotificationReducer = notificationSlice.reducer;
 
 export const {
   addUnreadNotificationsAction,
-  markNotificationAsSeenAction,
+  markNotificationsAsViewedAction,
 } = notificationSlice.actions;

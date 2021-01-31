@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { useSelector } from "react-redux";
-import { NotificationIndicator } from "../../../../notification/components/NotificationIndicator";
+import { NotificationIndicator } from "../../../../notification/container/NotificationIndicator";
 import { userSelector } from "../../../authentication/AuthSelectors";
 import { SignInnButton } from "./SignInnButton";
 import { UserDropdown } from "./UserDropdown";

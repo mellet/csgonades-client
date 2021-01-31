@@ -1,7 +1,7 @@
-import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { Dimensions } from "../../constants/Constants";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
-export function AdminWelcome(): JSX.Element {
+export function AdminWelcomeContainer(): JSX.Element {
   const { colors } = useTheme();
 
   return (
