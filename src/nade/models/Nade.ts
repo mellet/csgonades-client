@@ -15,6 +15,12 @@ export type MapCoordinates = {
   y: number;
 };
 
+type NadeImageData = {
+  id: string;
+  collection: string;
+  url: string;
+};
+
 export interface Nade {
   commentCount: number;
   createdAt: Date | string;
@@ -24,6 +30,8 @@ export interface Nade {
   gfycat: GfycatData;
   id: string;
   images: NadeImages;
+  imageLineup?: NadeImageData;
+  imageLineupThumb?: NadeImageData;
   isFavorited?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
@@ -53,6 +61,8 @@ export interface NadeLight {
   gfycat: GfycatData;
   id: string;
   imageLineupThumbUrl?: string;
+  imageLineupThumb?: NadeImageData;
+  imageLineup?: NadeImageData;
   images: NadeImages;
   isFavorited?: boolean;
   isPro?: boolean;

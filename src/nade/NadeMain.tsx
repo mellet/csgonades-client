@@ -61,7 +61,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
             <NadeTitle nade={nade} />
           </div>
           <NadeVideoContainer
-            lineUpUrl={nade.images.lineupUrl}
+            lineUpUrl={nade.imageLineup?.url || nade.images.lineupUrl}
             gfyId={nade.gfycat.gfyId}
           />
           <NadeMeta

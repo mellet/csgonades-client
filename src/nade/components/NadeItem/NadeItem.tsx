@@ -32,7 +32,11 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
                   avgColor={nade.gfycat.avgColor}
                   downVoteCount={nade.downVoteCount}
                   gfyId={nade.gfycat.gfyId}
-                  lineUpThumnUrl={nade.imageLineupThumbUrl}
+                  lineUpThumnUrl={
+                    nade.imageLineupThumb
+                      ? nade.imageLineupThumb.url
+                      : nade.imageLineupThumbUrl
+                  }
                   nadeId={nade.id}
                   nadeSlug={nade.slug}
                   smallVideoUrl={nade.gfycat.smallVideoUrl}
