@@ -316,7 +316,8 @@ export const useEditNadeState = (nade: Nade) => {
 
     displayToast({
       severity: "success",
-      message: "Nade updated!",
+      message:
+        "Nade updated! It can take up to 30 minutes for the change to be seen other places on the site.",
     });
 
     dispatch({ type: "CreateNade/SetNotLoading" });
