@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaTimes } from "react-icons/fa";
-import { Dimensions, LayerPosition } from "../constants/Constants";
+import { LayerPosition } from "../constants/Constants";
 import { useTheme } from "../core/settings/SettingsHooks";
 
 type Props = {
