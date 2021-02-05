@@ -10,16 +10,25 @@ type Props = {
 export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
   const { colors } = useTheme();
 
+  const isVideoSelected = selectedTab === "video";
+  const isLineUpSelected = selectedTab === "lineup";
+
   return (
     <>
       <div className="tab-selector">
         <div className="selected-bg">
           <div className="selected-bg-fill" />
         </div>
-        <button className={"tab-btn"} onClick={() => onChangeTab("video")}>
+        <button
+          className={isVideoSelected ? "tab-btn selected" : "tab-btn"}
+          onClick={() => onChangeTab("video")}
+        >
           Video
         </button>
-        <button className={"tab-btn"} onClick={() => onChangeTab("lineup")}>
+        <button
+          className={isLineUpSelected ? "tab-btn selected" : "tab-btn"}
+          onClick={() => onChangeTab("lineup")}
+        >
           Line Up
         </button>
       </div>
@@ -34,7 +43,7 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           background: ${colors.DP03};
           transition: all 0.2s;
           overflow: hidden;
-          width: 130px;
+          width: 140px;
           height: 40px;
           padding: 2px;
         }
@@ -81,6 +90,14 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
 
         .tab-btn:hover {
           text-decoration: underline;
+        }
+
+        .selected {
+          color: white;
+        }
+
+        .selected:hover {
+          text-decoration: none;
         }
 
         @media only screen and (max-width: ${Dimensions.TABLET_THRESHHOLD}) {
