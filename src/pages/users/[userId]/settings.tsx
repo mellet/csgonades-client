@@ -14,12 +14,10 @@ type QueryProps = {
   userId: string;
 };
 
-export const getServerSideProps: GetServerSideProps<any, QueryProps> = async (
-  context
-) => {
-  const { params } = context;
-  console.log(params);
-
+export const getServerSideProps: GetServerSideProps<
+  any,
+  QueryProps
+> = async () => {
   return {
     props: {},
   };
