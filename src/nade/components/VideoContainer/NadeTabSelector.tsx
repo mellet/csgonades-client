@@ -67,7 +67,7 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
         }
 
         .selected-bg-fill {
-          background: #0d0c22;
+          background: #111;
           width: 100%;
           height: 100%;
           z-index: 3;

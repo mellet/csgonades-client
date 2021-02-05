@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
@@ -19,9 +19,19 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
   const isFavoriteInProgress = useIsFavoriteInProgress();
   const isSignedIn = useIsSignedIn();
   const favorite = useIsFavorited(nadeId);
+  const [optimisticIsFavorites, setOptimisticIsFavorited] = useState(
+    !!favorite
+  );
   const addFavorite = useAddFavorite();
   const unFavorite = useUnfavorite();
-  const isFavorited = favorite;
+
+  useEffect(() => {
+    if (favorite) {
+      setOptimisticIsFavorited(true);
+    } else {
+      setOptimisticIsFavorited(false);
+    }
+  }, [favorite]);
 
   function onFavoriteClick() {
     if (!isSignedIn) {
@@ -35,16 +45,18 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
     if (favorite) {
       unFavorite(favorite.id);
       setInternalFavoriteCount(internalFavCount - 1);
+      setOptimisticIsFavorited(false);
     } else {
       addFavorite(nadeId);
       setInternalFavoriteCount(internalFavCount + 1);
+      setOptimisticIsFavorited(true);
     }
   }
 
   return (
     <IconButton
       icon={<FaStar />}
-      active={!!isFavorited}
+      active={optimisticIsFavorites}
       onClick={onFavoriteClick}
       activeColor="orange"
       labelCount={internalFavCount}

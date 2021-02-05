@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import { ThumbnailFavoriteButton } from "../../../favorites/components/ThumbnailFavoriteButton";
 import dynamic from "next/dynamic";
 import { ThumbImage } from "./ThumbImage";
 import { useTheme } from "../../../core/settings/SettingsHooks";
@@ -20,18 +19,14 @@ type Props = {
 };
 
 export const GfycatThumbnail: FC<Props> = ({
-  disableAction,
   gfyId,
   lineUpThumnUrl,
-  nadeId,
-  nadeSlug,
   smallVideoUrl,
   thumbnailUrl,
 }) => {
   const { colors } = useTheme();
   const [isReadyForHover, setIsReadyForHover] = useState(false);
   const [hovering, setHovering] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,15 +43,9 @@ export const GfycatThumbnail: FC<Props> = ({
 
   function onMouseLeave() {
     setHovering(false);
-    setVideoLoaded(false);
-  }
-
-  function onVideoLoaded() {
-    setVideoLoaded(true);
   }
 
   const displayBack = hovering && !!smallVideoUrl;
-  const displayFavBtn = videoLoaded && hovering && !!smallVideoUrl;
 
   return (
     <>
@@ -70,20 +59,7 @@ export const GfycatThumbnail: FC<Props> = ({
         </div>
 
         <div className={displayBack ? "back visible" : "back"}>
-          {displayBack && (
-            <MiniGfycatIframe gfyId={gfyId} onVideoReady={onVideoLoaded} />
-          )}
-          <div
-            className={
-              displayFavBtn ? "back-controls visible" : "back-controls"
-            }
-          >
-            <ThumbnailFavoriteButton
-              disableAction={disableAction}
-              nadeId={nadeId}
-              slug={nadeSlug}
-            />
-          </div>
+          {displayBack && <MiniGfycatIframe gfyId={gfyId} />}
         </div>
       </div>
       <style jsx global>{`

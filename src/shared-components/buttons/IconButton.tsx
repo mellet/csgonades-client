@@ -21,8 +21,8 @@ export const IconButton: FC<IconButtonProps> = ({
       <Button onClick={onClick} active={active} activeColor={activeColor}>
         {icon}
       </Button>
-      {labelCount && labelCount > 0 && (
-        <ButtonLabel bgColor={activeColor} labelCount={labelCount}>
+      {(labelCount ? labelCount > 0 : false) && (
+        <ButtonLabel bgColor={activeColor} labelCount={labelCount!}>
           {labelCount}
         </ButtonLabel>
       )}
