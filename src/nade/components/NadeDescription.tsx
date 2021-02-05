@@ -27,6 +27,7 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
         .nade-info {
           border: 1px solid ${colors.BORDER};
           margin: ${Dimensions.GUTTER_SIZE}px;
+          margin-left: 0;
           background: ${colors.DP03};
           border-radius: 8px;
           overflow: hidden;

@@ -109,6 +109,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           background: ${colors.DP02};
           display: flex;
           flex-direction: column;
+          padding-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-sidebar {
@@ -148,12 +149,12 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
           #nade-page-main {
             height: auto;
-            margin-right: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #nade-sidebar {
             border-left: none;
             height: auto;
+            margin-left: ${Dimensions.GUTTER_SIZE}px;
           }
         }
       `}</style>

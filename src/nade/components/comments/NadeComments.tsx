@@ -32,6 +32,7 @@ export const NadeComments: FC<Props> = memo(({ nade }) => {
       <style jsx>{`
         .nade-comment-container {
           margin: ${Dimensions.GUTTER_SIZE}px;
+          margin-left: 0;
         }
 
         .nade-submit {
