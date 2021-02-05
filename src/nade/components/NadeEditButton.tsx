@@ -6,6 +6,7 @@ import { Nade } from "../models/Nade";
 import { useCanEditNade } from "../data/useCanEditNade";
 import { IconButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
+import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 
 type Props = {
   nade: Nade;
@@ -22,13 +23,15 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
   return (
     <>
       <div className="edit">
-        <Link href={`/nades/${nade.slug || nade.id}/edit`}>
-          <IconButton
-            icon={<FaPencilAlt />}
-            active={false}
-            activeColor={colors.SUCCESS}
-          />
-        </Link>
+        <Tooltip message="Edit" direction="bottom">
+          <Link href={`/nades/${nade.slug || nade.id}/edit`}>
+            <IconButton
+              icon={<FaPencilAlt />}
+              active={false}
+              activeColor={colors.SUCCESS}
+            />
+          </Link>
+        </Tooltip>
       </div>
       <style jsx>{`
         .edit {
