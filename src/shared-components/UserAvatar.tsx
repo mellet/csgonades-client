@@ -29,7 +29,7 @@ export const UserAvatar: FC<Props> = ({ user }) => {
           height: 36px;
           border-radius: 50%;
           margin-right: 8px;
-          border: 1px solid ${colors.DP01};
+          border: 1px solid ${colors.BORDER};
         }
 
         .user-nickname {
