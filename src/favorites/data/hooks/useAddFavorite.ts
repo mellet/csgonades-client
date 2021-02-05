@@ -45,6 +45,11 @@ export const useAddFavorite = () => {
 
       dispatch(addFavoriteAction(favorite));
       dispatch(favoriteInProgressEndAction());
+
+      displayToast({
+        severity: "success",
+        message: "Added to favorites!",
+      });
     },
     [dispatch, getToken, displayToast]
   );

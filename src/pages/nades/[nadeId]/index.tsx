@@ -1,10 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
-import { NadeApi } from "../../nade/data/NadeApi";
-import { Nade } from "../../nade/models/Nade";
-import { NadeNotFound } from "../../nade/components/NadeNotFound";
-import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
-import { NadeMain } from "../../nade/NadeMain";
-import { NadeHeader } from "../../nade/components/NadeHeader/NadeHeader";
+import { LayoutBuilder } from "../../../core/layout/LayoutBuilder";
+import { NadeHeader } from "../../../nade/components/NadeHeader/NadeHeader";
+import { NadeNotFound } from "../../../nade/components/NadeNotFound";
+import { NadeApi } from "../../../nade/data/NadeApi";
+import { Nade } from "../../../nade/models/Nade";
+import { NadeMain } from "../../../nade/NadeMain";
 
 type Props = {
   nade: Nade;
@@ -23,8 +23,21 @@ const NadePageComponent: NextPage<Props> = ({ nade }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const nadeIdOrSlug = query.nade as string;
+type QueryProps = {
+  nadeId: string;
+};
+
+export const getServerSideProps: GetServerSideProps<
+  Props,
+  QueryProps
+> = async ({ params }) => {
+  const nadeIdOrSlug = params?.nadeId;
+
+  if (!nadeIdOrSlug) {
+    return {
+      notFound: true,
+    };
+  }
 
   const idIsOnlyNumbers = /^\d+$/.test(nadeIdOrSlug);
 

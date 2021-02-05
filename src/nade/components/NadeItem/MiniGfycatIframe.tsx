@@ -4,10 +4,9 @@ import { isSafari } from "react-device-detect";
 
 type Props = {
   gfyId: string;
-  onVideoReady: () => void;
 };
 
-const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
+const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
   const [loaded, setLoaded] = useState(false);
   const { colors } = useTheme();
 
@@ -15,7 +14,6 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId, onVideoReady }) => {
 
   function onVideoLoaded() {
     setLoaded(true);
-    onVideoReady();
   }
 
   // Force load if it takes to long

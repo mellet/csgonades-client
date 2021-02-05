@@ -13,17 +13,8 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
     return (
       <>
         <div className="no-desc">
-          <em>No description. Mouse over me and click edit.</em>
+          <em>No description.</em>
         </div>
-        <style jsx>{`
-          .no-desc {
-            margin: 12px 16px;
-            padding: 10px;
-            background: ${colors.WARNING};
-            color: white;
-            border-radius: 5px;
-          }
-        `}</style>
       </>
     );
   }
@@ -40,7 +31,6 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
       </div>
       <style jsx>{`
         .desc-wrap {
-          padding: 12px 16px;
           color: ${colors.TEXT};
         }
       `}</style>

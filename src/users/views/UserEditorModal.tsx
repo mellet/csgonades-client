@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { ButtonWithIcon } from "../../shared-components/ButtonWithIcon";
+import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";
 import { CSGNModal } from "../../shared-components/CSGNModal";
 import { CsgnInput } from "../../shared-components/inputs/TextInput/CsgnInput";
 import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";

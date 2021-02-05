@@ -1,6 +1,5 @@
 import { FC, memo } from "react";
 import { SEO } from "../shared-components/SEO";
-import { NadeInfoContainer } from "./components/NadeInfoContainer";
 import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContainer";
 import { NadeComments } from "./components/comments/NadeComments";
 import { ArticleJsonLd } from "next-seo";
@@ -10,10 +9,10 @@ import { Nade } from "./models/Nade";
 import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";
 import NadeStatus from "./components/NadeStatus";
-import { NadeAction } from "./components/NadeActions/NadeActions";
 import { NadeTitle } from "./components/NadeHeader/NadeTitle";
-import { NadeEditButton } from "./components/NadeEditButton";
 import { EzoicPlainPlaceholder } from "../shared-components/adunits/EzoicPlainPlaceholder";
+import { NadeOverVideo } from "./components/NadeOverVideo";
+import { NadeDescription } from "./components/NadeDescription";
 
 type Props = {
   nade: Nade;
@@ -57,28 +56,26 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
       <div id="nade-page-grid">
         <div id="nade-page-main">
+          <div id="nade-over-video">
+            <NadeOverVideo nade={nade} />
+          </div>
           <div id="nade-title-mobile">
             <NadeTitle nade={nade} />
           </div>
-          <NadeVideoContainer
-            lineUpUrl={nade.imageLineup?.url || nade.images.lineupUrl}
-            gfyId={nade.gfycat.gfyId}
-          />
           <NadeMeta
             movement={nade.movement}
             technique={nade.technique}
             tickrate={nade.tickrate}
             type={nade.type}
           />
+          <NadeVideoContainer
+            lineUpUrl={nade.imageLineup?.url || nade.images.lineupUrl}
+            gfyId={nade.gfycat.gfyId}
+          />
         </div>
 
         <div id="nade-sidebar">
-          <NadeEditButton nade={nade} />
-          <NadeInfoContainer nade={nade} />
-          <NadeAction nadeId={nade.id} />
-          <div className="advert-top">
-            <EzoicPlainPlaceholder id="197" />
-          </div>
+          <NadeDescription nade={nade} />
           <NadeComments nade={nade} />
 
           <div className="advert">
@@ -98,6 +95,11 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
             "video video comments"
             "video video comments";
           width: 100%;
+          background: ${colors.DP03};
+        }
+
+        #nade-over-video {
+          grid-area: top;
         }
 
         #nade-page-main {
@@ -107,28 +109,21 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           background: ${colors.DP02};
           display: flex;
           flex-direction: column;
+          padding-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-sidebar {
           grid-area: comments;
           background: ${colors.DP02};
-          border-left: 1px solid ${colors.BORDER};
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
         }
 
-        .advert,
-        .advert-top {
+        .advert {
           max-width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
-        }
-
-        .advert-top {
-          max-height: 90px;
-          overflow: hidden;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-title-mobile {
@@ -159,6 +154,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           #nade-sidebar {
             border-left: none;
             height: auto;
+            margin-left: ${Dimensions.GUTTER_SIZE}px;
           }
         }
       `}</style>
