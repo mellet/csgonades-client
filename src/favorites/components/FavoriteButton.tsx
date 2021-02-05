@@ -7,6 +7,7 @@ import { useIsFavorited } from "../data/hooks/useIsFavorited";
 import { useAddFavorite } from "../data/hooks/useAddFavorite";
 import { useUnfavorite } from "../data/hooks/useUnFavorite";
 import { IconButton } from "../../shared-components/buttons/IconButton";
+import { useTheme } from "styled-components";
 
 type Props = {
   nadeId: string;
@@ -14,6 +15,7 @@ type Props = {
 };
 
 export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
+  const { colors } = useTheme();
   const [internalFavCount, setInternalFavoriteCount] = useState(favoriteCount);
   const { setSignInWarning } = useSignInWarning();
   const isFavoriteInProgress = useIsFavoriteInProgress();
@@ -58,7 +60,7 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
       icon={<FaStar />}
       active={optimisticIsFavorites}
       onClick={onFavoriteClick}
-      activeColor="orange"
+      activeColor={colors.FAV_YELLOW}
       labelCount={internalFavCount}
     />
   );

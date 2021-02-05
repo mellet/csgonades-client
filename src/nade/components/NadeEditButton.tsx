@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { FC } from "react";
-import { FaEdit, FaPencilAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
 import { Nade } from "../models/Nade";
 import { useCanEditNade } from "../data/useCanEditNade";
 import { IconButton } from "../../shared-components/buttons/IconButton";
+import { useTheme } from "styled-components";
 
 type Props = {
   nade: Nade;
@@ -12,6 +13,7 @@ type Props = {
 
 export const NadeEditButton: FC<Props> = ({ nade }) => {
   const canEdit = useCanEditNade(nade.steamId);
+  const { colors } = useTheme();
 
   if (!canEdit) {
     return null;
@@ -24,7 +26,7 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
           <IconButton
             icon={<FaPencilAlt />}
             active={false}
-            activeColor={"blue"}
+            activeColor={colors.SUCCESS}
           />
         </Link>
       </div>

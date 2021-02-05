@@ -6,12 +6,14 @@ import { FaFlag } from "react-icons/fa";
 import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 import { IconButton } from "../../../shared-components/buttons/IconButton";
 import { Dimensions } from "../../../constants/Constants";
+import { useTheme } from "styled-components";
 
 type Props = {
   nadeId: string;
 };
 
 export const NadeReportButton: FC<Props> = ({ nadeId }) => {
+  const { colors } = useTheme();
   const [showReportForm, setShowReportForm] = useState(false);
   const [reportMsg, setReportMsg] = useState("");
   const displayToast = useDisplayToast();
@@ -42,7 +44,7 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
           icon={<FaFlag />}
           onClick={onToggle}
           active={false}
-          activeColor={"red"}
+          activeColor={colors.ERROR}
         />
       </div>
 

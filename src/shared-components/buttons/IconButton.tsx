@@ -47,7 +47,7 @@ const Button = styled.button<ButtonProps>`
   background: transparent;
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ theme }) => theme.colors.BORDER};
+  border-color: ${({ theme }) => theme.colors.buttonBorder};
   outline: none;
   border-radius: 8px;
   font-size: 18px;
@@ -56,7 +56,8 @@ const Button = styled.button<ButtonProps>`
   justify-content: space-around;
   padding: 0;
   margin: 0;
-  color: ${(props) => (props.active ? props.activeColor : "#0d0c22")};
+  color: ${(props) =>
+    props.active ? props.activeColor : props.theme.colors.buttonDefaultIcon};
   transition: color 0.1s, border-color 0.1s, background 0.1s;
 
   &:hover {

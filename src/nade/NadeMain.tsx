@@ -12,7 +12,7 @@ import NadeStatus from "./components/NadeStatus";
 import { NadeTitle } from "./components/NadeHeader/NadeTitle";
 import { EzoicPlainPlaceholder } from "../shared-components/adunits/EzoicPlainPlaceholder";
 import { NadeOverVideo } from "./components/NadeOverVideo";
-import { NadeInfo } from "./components/NadeInfo";
+import { NadeDescription } from "./components/NadeDescription";
 
 type Props = {
   nade: Nade;
@@ -75,7 +75,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         </div>
 
         <div id="nade-sidebar">
-          <NadeInfo nade={nade} />
+          <NadeDescription nade={nade} />
           <NadeComments nade={nade} />
 
           <div className="advert">

@@ -9,7 +9,7 @@ type Props = {
   nade: Nade;
 };
 
-export const NadeInfo: FC<Props> = ({ nade }) => {
+export const NadeDescription: FC<Props> = ({ nade }) => {
   const { colors } = useTheme();
 
   return (
@@ -30,6 +30,7 @@ export const NadeInfo: FC<Props> = ({ nade }) => {
           background: ${colors.DP03};
           border-radius: 8px;
           overflow: hidden;
+          color: ${colors.TEXT};
         }
 
         h3 {

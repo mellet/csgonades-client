@@ -35,6 +35,9 @@ export type ThemeColors = {
   TEXT: string;
   UI_BG: string;
   WARNING: string;
+  buttonBorder: string;
+  buttonDefaultIcon: string;
+  reportRed: string;
 };
 
 type Themes = {
@@ -79,6 +82,9 @@ const DARK_THEME: ThemeColors = {
   jumboGradientStart: "#1e1e1e",
   jumboGradientEnd: "#232323",
   SHADOW: "none",
+  buttonBorder: "rgba(255,255,255, 0.1)",
+  buttonDefaultIcon: "#fff",
+  reportRed: "red",
 };
 
 export const LIGHT_THEME: ThemeColors = {
@@ -118,6 +124,9 @@ export const LIGHT_THEME: ThemeColors = {
   jumboGradientStart: "#f9f9f9",
   jumboGradientEnd: "#eeeeee",
   SHADOW: "none",
+  buttonBorder: "rgba(0, 0, 0, 0.1)",
+  buttonDefaultIcon: "#111",
+  reportRed: "red",
 };
 
 export const themes: Themes = {
