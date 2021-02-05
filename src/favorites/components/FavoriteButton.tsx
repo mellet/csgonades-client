@@ -8,6 +8,7 @@ import { useAddFavorite } from "../data/hooks/useAddFavorite";
 import { useUnfavorite } from "../data/hooks/useUnFavorite";
 import { IconButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
+import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 
 type Props = {
   nadeId: string;
@@ -56,12 +57,14 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
   }
 
   return (
-    <IconButton
-      icon={<FaStar />}
-      active={optimisticIsFavorites}
-      onClick={onFavoriteClick}
-      activeColor={colors.FAV_YELLOW}
-      labelCount={internalFavCount}
-    />
+    <Tooltip message="Favorite" direction="bottom">
+      <IconButton
+        icon={<FaStar />}
+        active={optimisticIsFavorites}
+        onClick={onFavoriteClick}
+        activeColor={colors.FAV_YELLOW}
+        labelCount={internalFavCount}
+      />
+    </Tooltip>
   );
 };

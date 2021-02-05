@@ -7,6 +7,7 @@ import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 import { IconButton } from "../../../shared-components/buttons/IconButton";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "styled-components";
+import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
 
 type Props = {
   nadeId: string;
@@ -40,12 +41,14 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
   return (
     <>
       <div className="report">
-        <IconButton
-          icon={<FaFlag />}
-          onClick={onToggle}
-          active={false}
-          activeColor={colors.ERROR}
-        />
+        <Tooltip message="Report" direction="bottom">
+          <IconButton
+            icon={<FaFlag />}
+            onClick={onToggle}
+            active={false}
+            activeColor={colors.ERROR}
+          />
+        </Tooltip>
       </div>
 
       <Modal open={showReportForm} onClose={onToggle}>
