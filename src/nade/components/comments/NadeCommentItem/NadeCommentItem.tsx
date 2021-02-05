@@ -8,7 +8,6 @@ import { CsgnTextArea } from "../../../../shared-components/inputs/CsgnTextArea"
 import { CsgnSaveButton } from "../../../../shared-components/inputs/CsgnSaveButton";
 import { useGetOrUpdateToken } from "../../../../core/authentication/useGetToken";
 import Link from "next/link";
-import { Dimensions } from "../../../../constants/Constants";
 import { RenderMarkdown } from "../../RenderMarkdown";
 import {
   NadeCommentActions,
@@ -134,20 +133,6 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
         </div>
       </CSGNModal>
       <style jsx>{`
-        .admin-label {
-          font-size: 9px;
-          border-radius: 5px;
-          background: #3c9e72;
-          color: white;
-          height: 18px;
-          display: flex;
-          align-items: center;
-          margin-left: 10px;
-          padding-left: 3px;
-          padding-right: 3px;
-          font-weight: 500;
-        }
-
         .comment-editor {
           min-width: 400px;
         }
@@ -179,53 +164,9 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
           color: #bbb;
         }
 
-        .nade-comment-item {
-          background: ${colors.DP02};
-          color: ${colors.TEXT};
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          border-radius: ${Dimensions.BORDER_RADIUS};
-          overflow: hidden;
-          border: 1px solid ${colors.BORDER};
-        }
-
-        .nade-comment-header {
-          background: ${colors.DP01};
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-          padding: 10px 16px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-bottom: 1px solid ${colors.BORDER};
-        }
-
-        .nade-comment-user {
-          display: flex;
-          align-items: center;
-          color: ${colors.TEXT};
-        }
-
-        .nade-comment-user img {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-
-        .nade-comment-date {
-          color: #bbb;
-          font-size: 16px;
-        }
-
-        .nade-comment-msg {
-          padding: 10px 16px;
-        }
-
         .actions {
           display: flex;
           justify-content: flex-end;
-          margin-right: 5px;
-          margin-bottom: 5px;
         }
 
         .actions button {

@@ -123,7 +123,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           display: flex;
           justify-content: center;
           align-items: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-title-mobile {
@@ -149,6 +148,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
           #nade-page-main {
             height: auto;
+            margin-right: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #nade-sidebar {
