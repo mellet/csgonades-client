@@ -13,17 +13,13 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
   return (
     <>
       <div className="tab-selector">
-        <div className="selected-bg"></div>
-        <button
-          className={selectedTab === "video" ? "selected-btn" : "tab-btn"}
-          onClick={() => onChangeTab("video")}
-        >
+        <div className="selected-bg">
+          <div className="selected-bg-fill" />
+        </div>
+        <button className={"tab-btn"} onClick={() => onChangeTab("video")}>
           Video
         </button>
-        <button
-          className={selectedTab === "lineup" ? "selected-btn" : "tab-btn"}
-          onClick={() => onChangeTab("lineup")}
-        >
+        <button className={"tab-btn"} onClick={() => onChangeTab("lineup")}>
           Line Up
         </button>
       </div>
@@ -34,45 +30,49 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           right: 10px;
           z-index: 1;
           display: flex;
-          border-radius: 5px;
-          background: ${colors.DP00};
+          border-radius: 8px;
+          background: ${colors.DP03};
           transition: all 0.2s;
-          padding: 2px;
           overflow: hidden;
-          width: 164px;
+          width: 130px;
           height: 40px;
+          padding: 2px;
         }
 
         .selected-bg {
           position: absolute;
-          top: 2px;
-          bottom: 2px;
-          left: 2px;
-          width: calc(160px / 2);
-          background: pink;
+          padding: 1px;
+          top: 0px;
+          bottom: 0px;
+          left: 0px;
+          width: 50%;
           transform: translateX(${selectedTab === "video" ? 0 : "100%"});
           transition: transform 0.15s;
           z-index: 2;
-          background: ${colors.primaryBtnBg};
-          border-radius: 5px;
-        }
-
-        .selected-btn,
-        .tab-btn {
-          z-index: 3;
-          background: transparent;
-          cursor: pointer;
-          outline: none;
-          width: calc(160px / 2);
-          text-transform: uppercase;
-          font-size: 12px;
-          font-weight: 500;
-          border-radius: 5px;
-          border: none;
+          border-radius: 8px;
         }
 
         .tab-btn {
           color: ${colors.TEXT};
+          z-index: 3;
+          background: transparent;
+          cursor: pointer;
+          outline: none;
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 500;
+          border-radius: 8px;
+          border: none;
+          flex: 1;
+        }
+
+        .selected-bg-fill {
+          background: #0d0c22;
+          width: 100%;
+          height: 100%;
+          z-index: 3;
+          border-radius: 8px;
+          color: white;
         }
 
         .selected-btn {

@@ -1,15 +1,23 @@
 import { FC, useState } from "react";
-import { NadeComment, NadeCommentApi } from "../../data/NadeCommentApi";
-import { useTheme } from "../../../core/settings/SettingsHooks";
-import { prettyDateTime } from "../../../utils/DateUtils";
-import { useSignedInUser } from "../../../core/authentication/useSignedInUser";
-import { CSGNModal } from "../../../shared-components/CSGNModal";
-import { CsgnTextArea } from "../../../shared-components/inputs/CsgnTextArea";
-import { CsgnSaveButton } from "../../../shared-components/inputs/CsgnSaveButton";
-import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
+import { NadeComment, NadeCommentApi } from "../../../data/NadeCommentApi";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { timeSince } from "../../../../utils/DateUtils";
+import { useSignedInUser } from "../../../../core/authentication/useSignedInUser";
+import { CSGNModal } from "../../../../shared-components/CSGNModal";
+import { CsgnTextArea } from "../../../../shared-components/inputs/CsgnTextArea";
+import { CsgnSaveButton } from "../../../../shared-components/inputs/CsgnSaveButton";
+import { useGetOrUpdateToken } from "../../../../core/authentication/useGetToken";
 import Link from "next/link";
-import { Dimensions } from "../../../constants/Constants";
-import { RenderMarkdown } from "../RenderMarkdown";
+import { Dimensions } from "../../../../constants/Constants";
+import { RenderMarkdown } from "../../RenderMarkdown";
+import {
+  NadeCommentActions,
+  NadeCommentAvatar,
+  NadeCommentBody,
+  NadeCommentLayout,
+  NadeCommentNickname,
+  NadeCommentTime,
+} from "./NadeCommentLayout";
 
 type Props = {
   nadeComment: NadeComment;
@@ -69,33 +77,31 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
 
   return (
     <>
-      <div className="nade-comment-item">
-        <div className="nade-comment-header">
+      <NadeCommentLayout>
+        <NadeCommentAvatar src={nadeComment.avatar} />
+        <NadeCommentNickname>
           <Link href={`/users/${nadeComment.steamId}`}>
-            <a className="nade-comment-user">
-              <img src={nadeComment.avatar} />
-              {nadeComment.nickname}
-              {nadeComment.steamId === "76561198026064832" && (
-                <span className="admin-label">ADMIN</span>
-              )}
-            </a>
+            <a>{nadeComment.nickname}</a>
           </Link>
-          <div className="nade-comment-date">
-            {prettyDateTime(nadeComment.createdAt)}
-          </div>
-        </div>
-        <div className="nade-comment-msg">
+        </NadeCommentNickname>
+        <NadeCommentBody>
           <RenderMarkdown value={nadeComment.message} />
-        </div>
-        {allowEditAndDelete && (
-          <div className="actions">
-            <button onClick={() => setEditorVisisble(true)}>Edit</button>
-            <button onClick={() => setDeleteConfirmVisible(true)}>
-              Delete
-            </button>
-          </div>
-        )}
-      </div>
+        </NadeCommentBody>
+        <NadeCommentTime>
+          {timeSince(nadeComment.createdAt)} ago
+        </NadeCommentTime>
+        <NadeCommentActions>
+          {allowEditAndDelete && (
+            <div className="actions">
+              <button onClick={() => setEditorVisisble(true)}>Edit</button>
+              <button onClick={() => setDeleteConfirmVisible(true)}>
+                Delete
+              </button>
+            </div>
+          )}
+        </NadeCommentActions>
+      </NadeCommentLayout>
+
       <CSGNModal
         title="Edit comment"
         visible={editorVisisble}

@@ -65,6 +65,7 @@ export const SignInWarning: FC = memo(() => {
         .sign-in-warning {
           padding: ${Dimensions.GUTTER_SIZE}px;
           min-width: 250px;
+          position: relative;
         }
 
         .fa-icon {

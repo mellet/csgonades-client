@@ -59,15 +59,12 @@ export const CSGNModal: FC<Props> = ({
     <>
       <div className="modal-bg" onClick={onDismiss}>
         <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <button onClick={onDismiss} className="close-modal">
+            <FaTimes />
+          </button>
           {!!title && (
             <div className="modal-title">
-              <div className="spacer" />
               <h3>{title}</h3>
-              <div className="spacer">
-                <button className="close-btn" onClick={onDismiss}>
-                  <FaTimes />
-                </button>
-              </div>
             </div>
           )}
           <div className="modal-content">{children}</div>
@@ -93,14 +90,32 @@ export const CSGNModal: FC<Props> = ({
 
         .modal {
           align-self: center;
-          border-radius: ${Dimensions.BORDER_RADIUS};
+          border-radius: 8px;
           max-width: 90vw;
           max-height: 90vh;
           background: ${colors.DP01};
           color: ${colors.TEXT};
           display: flex;
           flex-direction: column;
-          overflow: hidden;
+          position: relative;
+        }
+
+        .close-modal {
+          position: absolute;
+          top: calc(-28px / 2.5);
+          right: calc(-28px / 2.5);
+          background: ${colors.DP03};
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          padding: 0;
+          margin: 0;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .modal-title {
@@ -112,6 +127,8 @@ export const CSGNModal: FC<Props> = ({
           white-space: nowrap;
           padding-top: 10px;
           padding-bottom: 10px;
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
         }
 
         .spacer {

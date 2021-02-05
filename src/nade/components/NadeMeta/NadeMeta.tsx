@@ -4,6 +4,7 @@ import { nadeTypeString, NadeType } from "../../models/NadeType";
 import { techniqueString, Technique } from "../../models/Technique";
 import { capitalize } from "../../../utils/Common";
 import { Movement } from "../../models/NadeMovement";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   movement?: Movement;
@@ -42,34 +43,45 @@ export const NadeMeta: FC<Props> = memo(
         </div>
         <style jsx>{`
           .nade-meta {
+            margin-left: ${Dimensions.GUTTER_SIZE}px;
             display: flex;
             color: white;
-            overflow-x: auto;
           }
 
           .nade-meta-item {
+            padding: 10px;
             text-align: center;
             flex: 1;
             white-space: nowrap;
-            padding: 10px 16px;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
             background: #729b79;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+          }
+
+          .nade-meta-item:first-child {
+            border-top-left-radius: 8px;
           }
 
           .nade-meta-item:last-child {
             border-right: none;
+            border-top-right-radius: 8px;
           }
 
           h4 {
             margin: 0;
             padding: 0;
             font-size: 12px;
+            line-height: 12px;
             font-weight: 500;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
           }
 
           span {
-            font-size: 16px;
+            font-size: 14px;
+            line-height: 14px;
+            margin: 0;
+            padding: 0;
           }
         `}</style>
       </>

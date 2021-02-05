@@ -15,13 +15,6 @@ export const NadeDetails: FC<Props> = ({ nade }) => {
   return (
     <>
       <div className="nade-details">
-        <div className="nade-user">
-          <img src={nade.user.avatar} />{" "}
-          <PageLink href={`/users/[user]`} as={`/users/${nade.user.steamId}`}>
-            <span className="user-nickname">{nade.user.nickname}</span>
-          </PageLink>
-        </div>
-
         <div className="nade-stats">
           <span>
             {pluralize(nade.favoriteCount, "favorite")} |{" "}

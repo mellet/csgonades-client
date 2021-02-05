@@ -2,6 +2,7 @@ import { FC, memo, useState } from "react";
 import { GfycatIframe } from "./GfycatIframe";
 import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   gfyId: string;
@@ -41,7 +42,8 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
         .video-wrap {
           position: relative;
           overflow: hidden;
-          padding-bottom: calc(56.25% + 44px);
+          padding-bottom: calc(56.25% + 34px);
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .media-container {

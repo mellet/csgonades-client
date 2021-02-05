@@ -1,17 +1,16 @@
 import Link from "next/link";
 import { FC } from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaPencilAlt } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
 import { Nade } from "../models/Nade";
 import { useCanEditNade } from "../data/useCanEditNade";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { IconButton } from "../../shared-components/buttons/IconButton";
 
 type Props = {
   nade: Nade;
 };
 
 export const NadeEditButton: FC<Props> = ({ nade }) => {
-  const { colors } = useTheme();
   const canEdit = useCanEditNade(nade.steamId);
 
   if (!canEdit) {
@@ -22,41 +21,16 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
     <>
       <div className="edit">
         <Link href={`/nades/${nade.slug || nade.id}/edit`}>
-          <button className="edit-btn">
-            <FaEdit /> <span>Edit Nade</span>
-          </button>
+          <IconButton
+            icon={<FaPencilAlt />}
+            active={false}
+            activeColor={"blue"}
+          />
         </Link>
       </div>
       <style jsx>{`
         .edit {
-          width: 100%;
-          background: ${colors.filterBg};
-        }
-
-        .edit-btn {
-          background: transparent;
-          border: none;
-          color: white;
-          padding: 8px ${Dimensions.GUTTER_SIZE}px;
-          outline: none;
-          font-size: 14px;
-          cursor: pointer;
-          white-space: nowrap;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 0;
-          width: 100%;
-        }
-
-        .edit-btn:hover {
-          background: ${colors.filterBgHover};
-        }
-
-        .edit-btn span {
-          margin-left: 4px;
-          position: relative;
-          top: 1px;
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

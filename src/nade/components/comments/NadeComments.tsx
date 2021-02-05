@@ -1,6 +1,6 @@
 import { FC, useState, useEffect, useCallback, memo, useMemo } from "react";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
-import { NadeCommentItem } from "./NadeCommentItem";
+import { NadeCommentItem } from "./NadeCommentItem/NadeCommentItem";
 import { CommentSubmit } from "./CommentSubmit";
 import { Dimensions } from "../../../constants/Constants";
 import { Nade } from "../../models/Nade";
@@ -31,12 +31,7 @@ export const NadeComments: FC<Props> = memo(({ nade }) => {
       </div>
       <style jsx>{`
         .nade-comment-container {
-          width: 100%;
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          padding-top: 0;
-        }
-
-        .nade-comments {
+          margin: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .nade-submit {

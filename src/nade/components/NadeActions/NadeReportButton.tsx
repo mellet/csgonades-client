@@ -4,6 +4,8 @@ import { ReportAddDto } from "../../../reports/models/Report";
 import { ReportApi } from "../../../reports/data/ReportApi";
 import { FaFlag } from "react-icons/fa";
 import { Modal, Form, TextArea, Button } from "semantic-ui-react";
+import { IconButton } from "../../../shared-components/buttons/IconButton";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   nadeId: string;
@@ -35,9 +37,14 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
 
   return (
     <>
-      <button onClick={onToggle} className="report-button-wrapper">
-        <FaFlag /> <span>Report</span>
-      </button>
+      <div className="report">
+        <IconButton
+          icon={<FaFlag />}
+          onClick={onToggle}
+          active={false}
+          activeColor={"red"}
+        />
+      </div>
 
       <Modal open={showReportForm} onClose={onToggle}>
         <div className="report-nade">
@@ -68,6 +75,10 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
       </Modal>
 
       <style jsx>{`
+        .report {
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         .report-button-wrapper {
           flex: 1;
           background: #ab1309;
@@ -87,7 +98,7 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
 
         .report-nade {
           min-width: 40vw;
-          padding: 15px 30px;
+          padding: 16px;
         }
       `}</style>
     </>
