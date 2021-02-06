@@ -143,7 +143,7 @@ export const NadeCommentActionButtons: FC<Props> = ({
         .actions button {
           border: none;
           padding: 6px 10px;
-          background: transparent;
+          background: ${colors.DP03};
           cursor: pointer;
           color: ${colors.TEXT};
           outline: none;
@@ -154,12 +154,10 @@ export const NadeCommentActionButtons: FC<Props> = ({
 
         .actions button:first-child {
           border-right: none;
-          border-top-left-radius: 5px;
           border-bottom-left-radius: 5px;
         }
 
         .actions button:last-child {
-          border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
         }
 

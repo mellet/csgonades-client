@@ -6,6 +6,7 @@ import Link from "next/link";
 import { RenderMarkdown } from "../../RenderMarkdown";
 import {
   NadeCommentActions,
+  NadeCommentArrow,
   NadeCommentAvatar,
   NadeCommentBody,
   NadeCommentLayout,
@@ -30,6 +31,7 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
           <Link href={`/users/${nadeComment.steamId}`}>
             <a>{nadeComment.nickname}</a>
           </Link>
+          <NadeCommentArrow />
         </NadeCommentNickname>
         <NadeCommentBody>
           <RenderMarkdown value={nadeComment.message} />

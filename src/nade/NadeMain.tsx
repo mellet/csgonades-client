@@ -95,7 +95,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
             "video video comments"
             "video video comments";
           width: 100%;
-          background: ${colors.DP03};
         }
 
         #nade-over-video {
@@ -106,7 +105,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           grid-area: video;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
-          background: ${colors.DP02};
           display: flex;
           flex-direction: column;
           padding-right: ${Dimensions.GUTTER_SIZE}px;
@@ -114,7 +112,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
         #nade-sidebar {
           grid-area: comments;
-          background: ${colors.DP02};
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
           overflow-y: auto;
         }
