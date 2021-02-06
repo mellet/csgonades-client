@@ -4,7 +4,6 @@ import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContain
 import { NadeComments } from "./components/comments/NadeComments";
 import { ArticleJsonLd } from "next-seo";
 import { descriptionSimplify, generateSeoTitle } from "../utils/Common";
-import { useTheme } from "../core/settings/SettingsHooks";
 import { Nade } from "./models/Nade";
 import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";
@@ -19,8 +18,6 @@ type Props = {
 };
 
 export const NadeMain: FC<Props> = memo(({ nade }) => {
-  const { colors } = useTheme();
-
   const seoTitle = generateSeoTitle(
     nade.startPosition,
     nade.endPosition,
