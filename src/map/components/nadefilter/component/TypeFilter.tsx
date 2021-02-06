@@ -1,47 +1,44 @@
 import { FC } from "react";
-import { ButtonGroup } from "./ButtonGroup";
-import { NadeTypeButton } from "./NadeTypeButton";
 import { useFilterByType } from "../../../data/hooks/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
+import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
+import { IconButton } from "../../../../shared-components/buttons/IconButton";
+import { TypeIcon } from "./TypeIcon";
 
 export const TypeFilter: FC = () => {
   const { byType, filterByType } = useFilterByType();
 
   return (
     <>
-      <div id="type-filter">
+      <>
         <FilterLabel value="TYPE" />
-        <ButtonGroup>
-          <div className="filter-btns">
-            <NadeTypeButton
-              type="smoke"
-              currentType={byType}
-              onFilterByType={filterByType}
-            />
-            <NadeTypeButton
-              type="flash"
-              currentType={byType}
-              onFilterByType={filterByType}
-            />
-            <NadeTypeButton
-              type="molotov"
-              currentType={byType}
-              onFilterByType={filterByType}
-            />
-            <NadeTypeButton
-              type="hegrenade"
-              currentType={byType}
-              onFilterByType={filterByType}
-            />
-          </div>
-        </ButtonGroup>
-      </div>
-      <style jsx>{`
-        .filter-btns {
-          display: flex;
-          flex-direction: column;
-        }
-      `}</style>
+        <IconButtonGroup>
+          <IconButton
+            inGroup
+            icon={<TypeIcon type="smoke" />}
+            active={byType === "smoke"}
+            onClick={() => filterByType("smoke")}
+          />
+          <IconButton
+            inGroup
+            icon={<TypeIcon type="flash" />}
+            active={byType === "flash"}
+            onClick={() => filterByType("flash")}
+          />
+          <IconButton
+            inGroup
+            icon={<TypeIcon type="molotov" />}
+            active={byType === "molotov"}
+            onClick={() => filterByType("molotov")}
+          />
+          <IconButton
+            inGroup
+            icon={<TypeIcon type="hegrenade" />}
+            active={byType === "hegrenade"}
+            onClick={() => filterByType("hegrenade")}
+          />
+        </IconButtonGroup>
+      </>
     </>
   );
 };

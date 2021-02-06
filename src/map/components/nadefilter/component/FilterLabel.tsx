@@ -15,6 +15,8 @@ export const FilterLabel: FC<Props> = ({ value }) => {
         .label {
           color: ${colors.TEXT};
           font-size: 11px;
+          line-height: 11px;
+          margin-bottom: 4px;
           font-weight: 500;
           text-align: center;
           width: 100%;
