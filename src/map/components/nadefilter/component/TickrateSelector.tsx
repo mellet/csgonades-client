@@ -1,12 +1,10 @@
 import { FC } from "react";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useFilterByTickrate } from "../../../data/hooks/useFilterByTickrate";
-import { ButtonGroup } from "./ButtonGroup";
-import { Dimensions } from "../../../../constants/Constants";
 import { FilterLabel } from "./FilterLabel";
+import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
+import { IconButton } from "../../../../shared-components/buttons/IconButton";
 
 export const TickrateSelector: FC = () => {
-  const { colors } = useTheme();
   const { byTickrate, filterByTickrate } = useFilterByTickrate();
 
   function filterBy64tick() {
@@ -17,75 +15,25 @@ export const TickrateSelector: FC = () => {
     filterByTickrate("tick128");
   }
 
-  const tick64active = byTickrate === "tick64" ? "active" : "";
-
-  const tick128active = byTickrate === "tick128" ? "active" : "";
-
   return (
     <>
       <div className="tick-filter-wrap">
         <FilterLabel value="TICK" />
-        <div className="filter-tick">
-          <ButtonGroup>
-            <div className="filter-btns">
-              <button
-                className={`filter-btn tickrate-btn ${tick64active}`}
-                onClick={filterBy64tick}
-              >
-                64
-              </button>
-
-              <button
-                className={`filter-btn tickrate-btn ${tick128active}`}
-                onClick={filterByTickrate128}
-              >
-                128
-              </button>
-            </div>
-          </ButtonGroup>
-        </div>
+        <IconButtonGroup>
+          <IconButton
+            inGroup
+            icon={<span style={{ fontSize: 14 }}>64</span>}
+            active={byTickrate === "tick64"}
+            onClick={filterBy64tick}
+          />
+          <IconButton
+            inGroup
+            icon={<span style={{ fontSize: 14 }}>128</span>}
+            active={byTickrate === "tick128"}
+            onClick={filterByTickrate128}
+          />
+        </IconButtonGroup>
       </div>
-      <style jsx>{`
-        .filter-btns {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .filter-tick {
-          display: flex;
-        }
-
-        .filter-btn {
-          display: block;
-          border: none;
-          outline: none;
-          appearance: none;
-          width: ${Dimensions.BUTTON_HEIGHT}px;
-          height: ${Dimensions.BUTTON_HEIGHT}px;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          cursor: pointer;
-          font-size: 14px;
-          font-weight: 300;
-          background: ${colors.filterBg};
-          color: ${colors.filterColor};
-          border-top: 1px solid rgba(0, 0, 0, 0.1);
-          border-radius: 0;
-        }
-
-        .filter-btn:first-child {
-          border-top: 0px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .filter-btn:hover {
-          background: ${colors.filterBgHover};
-        }
-
-        .active {
-          background: ${colors.filterBgHover};
-        }
-      `}</style>
     </>
   );
 };

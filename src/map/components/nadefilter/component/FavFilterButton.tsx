@@ -3,8 +3,9 @@ import { FaStar } from "react-icons/fa";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useFilterByFavorites } from "../../../data/hooks/useFilterByFavorites";
-import { Dimensions } from "../../../../constants/Constants";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
+import { IconButton } from "../../../../shared-components/buttons/IconButton";
+import { FilterLabel } from "./FilterLabel";
 
 type Props = {
   vertical?: boolean;
@@ -15,7 +16,6 @@ export const FavFilterButton: FC<Props> = ({}) => {
   const isSignedIn = useIsSignedIn();
   const { byFavorites, filterByFavorites } = useFilterByFavorites();
   const { setSignInWarning } = useSignInWarning();
-  const active = byFavorites ? "active" : "";
 
   function onFilterByFavorite() {
     if (isSignedIn) {
@@ -27,50 +27,13 @@ export const FavFilterButton: FC<Props> = ({}) => {
 
   return (
     <>
-      <div className="fav-filter-wrap">
-        <button
-          className={`filter-btn favorite ${active}`}
-          onClick={onFilterByFavorite}
-        >
-          <div className="icon-wrap">
-            <FaStar size={Dimensions.BUTTON_HEIGHT - 12} />
-          </div>
-        </button>
-      </div>
-
-      <style jsx>{`
-        .filter-btn {
-          border: none;
-          outline: none;
-          background: ${colors.filterBg};
-          width: ${Dimensions.BUTTON_HEIGHT}px;
-          height: ${Dimensions.BUTTON_HEIGHT}px;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          color: #767676;
-          cursor: pointer;
-          overflow: hidden;
-          border-radius: 5px;
-        }
-
-        .favorite {
-          color: rgb(250, 200, 0);
-        }
-
-        .filter-btn:hover {
-          background: ${colors.filterBgHover};
-        }
-
-        .active {
-          background: ${colors.filterBgHover};
-        }
-
-        .icon-wrap {
-          position: relative;
-          top: 2px;
-        }
-      `}</style>
+      <FilterLabel value="FAV" />
+      <IconButton
+        onClick={onFilterByFavorite}
+        activeColor={colors.FAV_YELLOW}
+        icon={<FaStar />}
+        active={byFavorites}
+      />
     </>
   );
 };

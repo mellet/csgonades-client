@@ -4,21 +4,28 @@ import styled from "styled-components";
 export type IconButtonProps = {
   icon: JSX.Element;
   activeColor?: string;
-  active: boolean;
+  active?: boolean;
   labelCount?: number;
   onClick?: () => void;
+  inGroup?: boolean;
 };
 
 export const IconButton: FC<IconButtonProps> = ({
   icon,
   activeColor,
-  active,
+  active = false,
   labelCount,
   onClick,
+  inGroup,
 }) => {
   return (
-    <ButtonWrapper>
-      <Button onClick={onClick} active={active} activeColor={activeColor}>
+    <IconButtonWrapper inGroup={inGroup}>
+      <Button
+        inGroup={inGroup}
+        onClick={onClick}
+        active={active}
+        activeColor={activeColor}
+      >
         {icon}
       </Button>
       {(labelCount ? labelCount > 0 : false) && (
@@ -26,39 +33,47 @@ export const IconButton: FC<IconButtonProps> = ({
           {labelCount}
         </ButtonLabel>
       )}
-    </ButtonWrapper>
+    </IconButtonWrapper>
   );
 };
 
-const ButtonWrapper = styled.div`
+type WrapProps = {
+  inGroup?: boolean;
+};
+
+export const IconButtonWrapper = styled.div<WrapProps>`
   width: 40px;
   height: 40px;
   position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.colors.buttonBorder};
+  border-radius: ${({ inGroup }) => (inGroup ? "none" : "8px")};
 `;
 
 type ButtonProps = {
   activeColor?: string;
   active: boolean;
+  inGroup?: boolean;
 };
 
-const Button = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
   height: 100%;
   width: 100%;
-  background: transparent;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${({ theme }) => theme.colors.buttonBorder};
+  background: ${(props) =>
+    props.active ? props.theme.colors.DP03 : "transparent"};
+  border: none;
   outline: none;
-  border-radius: 8px;
   font-size: 18px;
   display: flex;
+  border-radius: ${({ inGroup }) => (inGroup ? "none" : "8px")};
   align-items: center;
   justify-content: space-around;
   padding: 0;
   margin: 0;
   color: ${(props) =>
     props.active ? props.activeColor : props.theme.colors.buttonDefaultIcon};
-  transition: color 0.1s, border-color 0.1s, background 0.1s;
+  transition: color 0.1s, background 0.1s;
 
   &:hover {
     cursor: pointer;
