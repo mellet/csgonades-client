@@ -7,11 +7,12 @@ import { descriptionSimplify, generateSeoTitle } from "../utils/Common";
 import { Nade } from "./models/Nade";
 import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";
-import NadeStatus from "./components/NadeStatus";
+import NadeStatus from "./components/NadeStatus/NadeStatus";
 import { NadeTitle } from "./components/NadeHeader/NadeTitle";
 import { EzoicPlainPlaceholder } from "../shared-components/adunits/EzoicPlainPlaceholder";
 import { NadeOverVideo } from "./components/NadeOverVideo";
 import { NadeDescription } from "./components/NadeDescription";
+import { NadeSidebar } from "./components/NadeSidebar";
 
 type Props = {
   nade: Nade;
@@ -72,16 +73,15 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         </div>
 
         <div id="nade-sidebar">
-          <NadeDescription nade={nade} />
-          <NadeComments nade={nade} />
-
-          <div className="advert">
-            <EzoicPlainPlaceholder id="196" />
-          </div>
+          <NadeSidebar>
+            <NadeStatus status={nade.status} />
+            <NadeDescription nade={nade} />
+            <EzoicPlainPlaceholder center id="197" />
+            <NadeComments nade={nade} />
+            <EzoicPlainPlaceholder center id="196" />
+          </NadeSidebar>
         </div>
       </div>
-
-      <NadeStatus status={nade.status} statusInfo={nade.statusInfo} />
 
       <style jsx>{`
         #nade-page-grid {

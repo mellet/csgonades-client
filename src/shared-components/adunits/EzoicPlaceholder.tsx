@@ -8,9 +8,9 @@ type Props = {
 };
 
 export const EzoicPlaceholder: FC<Props> = memo(({ id, disableAdLabel }) => {
+  const ezoicId = `ezoic-pub-ad-placeholder-${id}`;
   const { colors } = useTheme();
 
-  const ezoicId = `ezoic-pub-ad-placeholder-${id}`;
   return (
     <>
       <div className="ad-center">

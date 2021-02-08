@@ -2,7 +2,6 @@ import { FC, useState, useEffect, useCallback, memo, useMemo } from "react";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { NadeCommentItem } from "./NadeCommentItem/NadeCommentItem";
 import { CommentSubmit } from "./CommentSubmit";
-import { Dimensions } from "../../../constants/Constants";
 import { Nade } from "../../models/Nade";
 
 type Props = {
@@ -14,31 +13,15 @@ export const NadeComments: FC<Props> = memo(({ nade }) => {
 
   return (
     <>
-      <div className="nade-comment-container">
-        <div className="nade-submit">
-          <CommentSubmit nadeId={nade.id} onCommentSubmitted={addComment} />
-        </div>
+      <CommentSubmit nadeId={nade.id} onCommentSubmitted={addComment} />
 
-        <div className="nade-comments">
-          {comments.map((nc) => (
-            <NadeCommentItem
-              key={nc.id}
-              nadeComment={nc}
-              refetchComment={fetchComments}
-            />
-          ))}
-        </div>
-      </div>
-      <style jsx>{`
-        .nade-comment-container {
-          margin: ${Dimensions.GUTTER_SIZE}px;
-          margin-left: 0;
-        }
-
-        .nade-submit {
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-      `}</style>
+      {comments.map((nc) => (
+        <NadeCommentItem
+          key={nc.id}
+          nadeComment={nc}
+          refetchComment={fetchComments}
+        />
+      ))}
     </>
   );
 });

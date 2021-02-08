@@ -1,13 +1,12 @@
 import { FC, memo } from "react";
-import { Dimensions } from "../../constants/Constants";
-import { StatusInfo } from "../models/Nade";
-import { Status } from "../models/Status";
-import { useTheme } from "../../core/settings/SettingsHooks";
-import { ThemeColors } from "../../core/settings/Themes";
+import { Status } from "../../models/Status";
+import { useTheme } from "../../../core/settings/SettingsHooks";
+import { ThemeColors } from "../../../core/settings/Themes";
+import { FaExclamationCircle, FaSpinner } from "react-icons/fa";
+import { CSGNIcon } from "./CSGNIcon";
 
 type Props = {
   status: Status;
-  statusInfo?: StatusInfo;
 };
 
 const NadeStatus: FC<Props> = memo(({ status }) => {
@@ -22,12 +21,21 @@ const NadeStatus: FC<Props> = memo(({ status }) => {
       case "pending":
         return (
           <>
-            <div className="pending">Waiting for approval</div>
+            <div className="pending">
+              <CSGNIcon icon={<FaSpinner />} spin={true} />
+              <span>Waiting for approval</span>
+            </div>
             <style jsx>{`
               .pending {
                 font-size: 14px;
                 font-weight: 500;
                 text-transform: uppercase;
+                display: flex;
+                align-items: center;
+              }
+
+              .pending span {
+                margin-left: 8px;
               }
             `}</style>
           </>
@@ -36,13 +44,22 @@ const NadeStatus: FC<Props> = memo(({ status }) => {
         return (
           <>
             <div className="declined">
-              Declined! Read comment and do the changes to get it approved.
+              <CSGNIcon icon={<FaExclamationCircle />} />
+              <span>
+                DECLINED!
+                <br />
+                Read comment and edit the nade to get it approved.
+              </span>
             </div>
             <style jsx>{`
               .declined {
                 font-size: 14px;
                 font-weight: 500;
-                text-transform: uppercase;
+                display: flex;
+              }
+
+              .declined span {
+                margin-left: 8px;
               }
             `}</style>
           </>
@@ -74,20 +91,11 @@ const NadeStatus: FC<Props> = memo(({ status }) => {
       <div className="status-container">{statusText()}</div>
       <style jsx>{`
         .status-container {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
           background: ${statusColors.background};
           border: 1px solid ${statusColors.border};
-          padding: 10px 20px;
+          padding: 16px;
           color: ${statusColors.text};
-          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
-          border-top-right-radius: ${Dimensions.BORDER_RADIUS};
-          z-index: 999;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          border-radius: 8px;
         }
       `}</style>
     </>

@@ -2,8 +2,6 @@ import { FC } from "react";
 import { Nade } from "../models/Nade";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { NadeDescriptionDisplay } from "./NadeDescriptionDisplay";
-import { Dimensions } from "../../constants/Constants";
-import { EzoicPlainPlaceholder } from "../../shared-components/adunits/EzoicPlainPlaceholder";
 
 type Props = {
   nade: Nade;
@@ -19,15 +17,10 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
         <div className="nade-desc-meta">
           <NadeDescriptionDisplay value={nade.description} />
         </div>
-        <div className="advert-desc">
-          <EzoicPlainPlaceholder id="197" />
-        </div>
       </div>
       <style jsx>{`
         .nade-info {
           border: 1px solid ${colors.BORDER};
-          margin: ${Dimensions.GUTTER_SIZE}px;
-          margin-left: 0;
           background: ${colors.DP03};
           border-radius: 8px;
           overflow: hidden;
