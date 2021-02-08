@@ -9,7 +9,6 @@ import { NadeMeta } from "./components/NadeMeta/NadeMeta";
 import { Dimensions } from "../constants/Constants";
 import NadeStatus from "./components/NadeStatus/NadeStatus";
 import { NadeTitle } from "./components/NadeHeader/NadeTitle";
-import { EzoicPlainPlaceholder } from "../shared-components/adunits/EzoicPlainPlaceholder";
 import { NadeOverVideo } from "./components/NadeOverVideo";
 import { NadeDescription } from "./components/NadeDescription";
 import { NadeSidebar } from "./components/NadeSidebar";
