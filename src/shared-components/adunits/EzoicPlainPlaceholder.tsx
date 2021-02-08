@@ -38,5 +38,6 @@ const CenteredAdLayout = styled.div<Props>`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: ${(props) => props.staticHeight || "auto"};
 `;
