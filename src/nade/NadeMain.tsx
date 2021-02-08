@@ -76,9 +76,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
           <NadeSidebar>
             <NadeStatus status={nade.status} />
             <NadeDescription nade={nade} />
-            <EzoicPlainPlaceholder center id="197" />
             <NadeComments nade={nade} />
-            <EzoicPlainPlaceholder center id="196" />
           </NadeSidebar>
         </div>
       </div>
