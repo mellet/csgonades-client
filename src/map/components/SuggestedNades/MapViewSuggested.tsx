@@ -88,6 +88,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           animation-fill-mode: forwards;
           -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
+          border-radius: 8px;
         }
 
         .nades {
@@ -100,7 +101,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         }
 
         .nade-list-wrap {
-          padding: ${Dimensions.GUTTER_SIZE}px;
+          margin: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .bg {
@@ -109,8 +110,11 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           left: 0;
           right: 0;
           bottom: 0;
-          background: ${colors.DP00};
+          background: ${colors.DP03};
+          border: 1px solid red;
           opacity: 0.9;
+          border-radius: 8px;
+          border: 1px solid ${colors.BORDER};
         }
 
         .title {

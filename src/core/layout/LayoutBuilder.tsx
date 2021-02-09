@@ -45,34 +45,36 @@ export const LayoutBuilder: FC<Props> = memo(
         <style jsx>{`
           #page {
             display: grid;
-            min-height: 100vh;
             width: 100%;
             background: ${colors.DP00};
-            grid-template-columns: 190px 1fr 300px;
+            grid-template-columns: min-content min-content 1fr 300px min-content;
+            grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+            grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
+            min-height: 100vh;
           }
 
           .default-page {
             grid-template-areas:
-              "header header header"
-              "nav main main"
-              "nav main main"
-              "nav main main";
+              "header header header header header"
+              ". nav main main ."
+              ". nav main main ."
+              ". nav main main .";
           }
 
           .with-sidebar-and-nav {
             grid-template-areas:
-              "header header header"
-              "nav main sidebar"
-              "nav main sidebar"
-              "nav main sidebar";
+              "header header header header header"
+              ". nav main sidebar ."
+              ". nav main sidebar ."
+              ". nav main sidebar .";
           }
 
           .with-main-only {
             grid-template-areas:
-              "header header header"
-              "main main main"
-              "main main main"
-              "main main main";
+              "header header header header header"
+              ". main main main ."
+              ". main main main ."
+              ". main main main .";
           }
 
           header {
@@ -83,50 +85,39 @@ export const LayoutBuilder: FC<Props> = memo(
             padding-left: ${Dimensions.GUTTER_SIZE}px;
             padding-right: ${Dimensions.GUTTER_SIZE}px;
             max-width: 100vw;
+            position: sticky;
+            top: 0px;
+            z-index: 500;
           }
 
           nav {
             grid-area: nav;
-            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-            background: ${colors.DP02};
-            overflow-y: hidden;
-            border-right: 1px solid ${colors.BORDER};
-            width: 100%;
           }
 
           main {
             grid-area: main;
-            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-            overflow-y: auto;
-            overflow-x: hidden;
             max-width: 100vw;
           }
 
-          #sidebar {
-            background: ${colors.DP02};
-            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-            overflow-y: hidden;
-          }
-
-          #sidebar:hover {
-            overflow-y: auto;
+          aside#sidebar {
+            grid-area: sidebar;
           }
 
           @media only screen and (max-width: 1200px) {
             .default-page {
               grid-template-areas:
-                "header header header"
-                "main main main"
-                "main main main"
-                "main main main";
+                "header header header header header"
+                ". main main main ."
+                ". main main main ."
+                ". main main main .";
             }
 
             .with-sidebar-and-nav {
               grid-template-areas:
-                "header header header"
-                "main main sidebar"
-                "main main sidebar"
-                "main main sidebar";
+                "header header header header header"
+                ". main main sidebar ."
+                ". main main sidebar ."
+                ". main main sidebar .";
             }
 
             nav {
@@ -159,9 +150,9 @@ export const LayoutBuilder: FC<Props> = memo(
 
             .with-sidebar-and-nav {
               grid-template-areas:
-                "header"
-                "main"
-                "sidebar";
+                "header header header"
+                ". main ."
+                ". sidebar .";
             }
 
             header {

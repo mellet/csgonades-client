@@ -24,13 +24,13 @@ export const HeaderDefault: FC = memo(() => {
       </div>
 
       <style jsx>{`
-        #header {
-          height: ${Dimensions.HEADER_HEIGHT}px;
-        }
-
         .header-wrap {
           display: flex;
           align-items: center;
+          height: ${Dimensions.HEADER_HEIGHT}px;
+        }
+
+        #header {
           height: ${Dimensions.HEADER_HEIGHT}px;
         }
 

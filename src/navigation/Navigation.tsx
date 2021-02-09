@@ -2,37 +2,25 @@ import { FC } from "react";
 import { Footer } from "./NavFooter";
 import { MapNav } from "./MapNav";
 import { SecondaryNav } from "./SecondaryNav";
+import { Dimensions } from "../constants/Constants";
+import { Spacer } from "../shared-components/Spacer";
 
 export const Navigation: FC = ({}) => {
   return (
     <>
       <div id="navigation">
-        <div id="nav-main">
+        <Spacer vertical>
           <MapNav />
-          <SecondaryNav />
-        </div>
-        <div id="nav-footer">
-          <Footer />
-        </div>
+          <div>
+            <SecondaryNav />
+            <Footer />
+          </div>
+        </Spacer>
       </div>
       <style jsx>{`
         #navigation {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        #nav-main {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          overflow-y: hidden;
-        }
-
-        #nav-main:hover {
-          overflow-y: auto;
+          position: sticky;
+          top: calc(${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px);
         }
       `}</style>
     </>

@@ -3,88 +3,78 @@ import { useRouter } from "next/router";
 import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
 import { CsgoMap } from "../map/models/CsGoMap";
+import { useTheme } from "styled-components";
 
 export const MapNav: FC = () => {
   const { query } = useRouter();
+  const { colors } = useTheme();
   const selectedMap = query.map as CsgoMap;
 
   return (
     <>
-      <div id="secondary-nav">
-        <div id="map-nav-wrap">
-          <div id="map-nav">
-            <ul>
-              <li>
-                <MapPageLink map="mirage">
-                  <NavItem
-                    csMap={"mirage"}
-                    selected={selectedMap === "mirage"}
-                  />
-                </MapPageLink>
-              </li>
+      <div id="map-nav-wrap">
+        <ul>
+          <li>
+            <MapPageLink map="mirage">
+              <NavItem csMap={"mirage"} selected={selectedMap === "mirage"} />
+            </MapPageLink>
+          </li>
 
-              <li>
-                <MapPageLink map="inferno">
-                  <NavItem
-                    csMap={"inferno"}
-                    selected={selectedMap === "inferno"}
-                  />
-                </MapPageLink>
-              </li>
-              <li>
-                <MapPageLink map="dust2">
-                  <NavItem csMap={"dust2"} selected={selectedMap === "dust2"} />
-                </MapPageLink>
-              </li>
-              <li>
-                <MapPageLink map="overpass">
-                  <NavItem
-                    csMap={"overpass"}
-                    selected={selectedMap === "overpass"}
-                  />
-                </MapPageLink>
-              </li>
-              <li>
-                <MapPageLink map="cache">
-                  <NavItem csMap={"cache"} selected={selectedMap === "cache"} />
-                </MapPageLink>
-              </li>
-              <li>
-                <MapPageLink map="train">
-                  <NavItem csMap={"train"} selected={selectedMap === "train"} />
-                </MapPageLink>
-              </li>
+          <li>
+            <MapPageLink map="inferno">
+              <NavItem csMap={"inferno"} selected={selectedMap === "inferno"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="dust2">
+              <NavItem csMap={"dust2"} selected={selectedMap === "dust2"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="overpass">
+              <NavItem
+                csMap={"overpass"}
+                selected={selectedMap === "overpass"}
+              />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="cache">
+              <NavItem csMap={"cache"} selected={selectedMap === "cache"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="train">
+              <NavItem csMap={"train"} selected={selectedMap === "train"} />
+            </MapPageLink>
+          </li>
 
-              <li>
-                <MapPageLink map="nuke">
-                  <NavItem csMap={"nuke"} selected={selectedMap === "nuke"} />
-                </MapPageLink>
-              </li>
-              <li>
-                <MapPageLink map="vertigo">
-                  <NavItem
-                    csMap={"vertigo"}
-                    selected={selectedMap === "vertigo"}
-                  />
-                </MapPageLink>
-              </li>
-              <li>
-                <MapPageLink map="anubis">
-                  <NavItem
-                    csMap={"anubis"}
-                    selected={selectedMap === "anubis"}
-                  />
-                </MapPageLink>
-              </li>
-            </ul>
-          </div>
-        </div>
+          <li>
+            <MapPageLink map="nuke">
+              <NavItem csMap={"nuke"} selected={selectedMap === "nuke"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="vertigo">
+              <NavItem csMap={"vertigo"} selected={selectedMap === "vertigo"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="anubis">
+              <NavItem csMap={"anubis"} selected={selectedMap === "anubis"} />
+            </MapPageLink>
+          </li>
+        </ul>
       </div>
       <style jsx>{`
         #map-nav-wrap {
           display: flex;
           flex-direction: column;
           width: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid ${colors.BORDER};
+          background: ${colors.DP03};
         }
 
         ul {

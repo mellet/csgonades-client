@@ -14,8 +14,6 @@ export const NadeSidebar: FC = ({ children }) => {
 const NadeSideBarLayout = styled.div`
   display: flex;
   flex-direction: column;
-  margin: ${Dimensions.GUTTER_SIZE}px;
-  margin-left: 0;
 
   & > * {
     margin-bottom: ${Dimensions.GUTTER_SIZE}px;
