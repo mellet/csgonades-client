@@ -25,6 +25,9 @@ export const NavigationLayout: FC<Props> = ({
 };
 
 const NavigationLayoutWrap = styled.div`
+  position: sticky;
+  top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+
   & .secondary {
     margin-top: ${Dimensions.GUTTER_SIZE}px;
   }

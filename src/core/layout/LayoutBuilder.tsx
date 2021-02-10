@@ -48,6 +48,7 @@ export const LayoutBuilder: FC<Props> = memo(
             width: 100%;
             background: ${colors.DP00};
             grid-template-columns: min-content min-content 1fr 300px min-content;
+            grid-template-rows: ${Dimensions.HEADER_HEIGHT}px 1fr 1fr 1fr;
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
             min-height: 100vh;

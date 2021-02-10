@@ -38,7 +38,7 @@ export const HeaderDefault: FC = memo(() => {
           flex: 1;
           display: flex;
           justify-content: space-around;
-          height: 60px;
+          height: ${Dimensions.HEADER_HEIGHT}px;
         }
 
         #theme-toggler {

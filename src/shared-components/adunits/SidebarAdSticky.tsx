@@ -43,6 +43,8 @@ export const SidebarAdSticky: FC = ({}) => {
         .block-msg-wrap {
           display: flex;
           justify-content: center;
+          border-radius: 8px;
+          overflow: hidden;
         }
 
         .block-msg-header {
