@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { SEO } from "../shared-components/SEO";
-import { Dimensions } from "../constants/Constants";
 import { LayoutBuilder } from "../core/layout/LayoutBuilder";
 import { HeaderDefault } from "../core/layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
@@ -59,11 +58,10 @@ const AboutPageContainer: NextPage = () => {
 
       <style jsx>{`
         .about {
-          margin: ${Dimensions.GUTTER_SIZE}px;
-          padding: 20px 30px;
+          padding: 16px;
           color: ${colors.TEXT};
-          background: ${colors.DP02};
-          border-radius: 5px;
+          background: ${colors.DP03};
+          border-radius: 8px;
         }
       `}</style>
     </>

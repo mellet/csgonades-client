@@ -7,6 +7,8 @@ import { TopContributorsLazy } from "./TopContributorsLazy";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { capitalize } from "../../../utils/Common";
 import { PaypalAction } from "./PaypalAction";
+import { Spacer } from "../../../shared-components/Spacer";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   map: CsgoMap;
@@ -18,23 +20,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
 
   return (
     <>
-      <div className="mappage-sidebar">
-        <div className="jumbo">
-          <h1>
-            Find the best smokes, flashbangs, molotovs and grenades for{" "}
-            {capitalize(map)}.
-          </h1>
-          <h2>Don&apos;t be like BOT Bob, get some nades.</h2>
-        </div>
-
-        <div className="ph">
-          <SidebarAdSticky />
-        </div>
-
-        <div className="contributors">
-          <TopContributorsLazy csMap={map} nades={nades} />
-        </div>
-
+      <Spacer vertical>
         <div className="ctas">
           <div className="cta">
             <DiscordJoinAction />
@@ -43,18 +29,30 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
             <PaypalAction />
           </div>
         </div>
+
+        <div className="jumbo">
+          <h1>
+            Find the best smokes, flashbangs, molotovs and grenades for{" "}
+            {capitalize(map)}.
+          </h1>
+          <h2>Don&apos;t be like BOT Bob, get some nades.</h2>
+        </div>
+
+        <TopContributorsLazy csMap={map} nades={nades} />
+      </Spacer>
+      <div className="ad">
+        <SidebarAdSticky />
       </div>
       <style jsx>{`
         .mappage-sidebar {
-          min-height: 100%;
-          display: flex;
-          flex-direction: column;
-          width: 300px;
+          height: 100%;
         }
 
         .jumbo {
           padding: 16px;
           color: ${colors.TEXT};
+          background: ${colors.DP03};
+          border-radius: 8px;
         }
 
         .jumbo h1 {
@@ -69,21 +67,17 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
           margin: 0;
           padding: 0;
         }
-
-        .spacer {
-          flex: 1;
-        }
-
-        .ph {
-          border-top: 1px solid ${colors.BORDER};
-        }
-
         .ctas {
           display: flex;
           flex-direction: column;
+          border-radius: 8px;
+          overflow: hidden;
         }
 
-        .cta {
+        .ad {
+          position: sticky;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

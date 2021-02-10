@@ -1,10 +1,9 @@
 import { FC, memo, useMemo } from "react";
 import { useTheme } from "../../../settings/SettingsHooks";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { Dimensions } from "../../../../constants/Constants";
 
 export const ThemeToggler: FC = memo(() => {
-  const { toggleTheme, theme } = useTheme();
+  const { toggleTheme, theme, colors } = useTheme();
 
   const classNameBuild = useMemo(() => {
     const base = ["toggle-btn"];
@@ -39,11 +38,12 @@ export const ThemeToggler: FC = memo(() => {
           border: none;
           padding: 0;
           margin: 0;
-          border-radius: ${Dimensions.BORDER_RADIUS};
+          border-radius: 8px;
           outline: none;
-          background: #f2f2f2;
-          height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
-          width: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
+          background: transparent;
+          width: 40px;
+          height: 40px;
+          border: 1px solid ${colors.buttonBorder};
         }
 
         .toggle-btn:hover {
@@ -53,7 +53,6 @@ export const ThemeToggler: FC = memo(() => {
         }
 
         .toggle-btn.selected {
-          background: #222;
           color: white;
         }
 

@@ -24,13 +24,13 @@ export const HeaderDefault: FC = memo(() => {
       </div>
 
       <style jsx>{`
-        #header {
-          height: ${Dimensions.HEADER_HEIGHT}px;
-        }
-
         .header-wrap {
           display: flex;
           align-items: center;
+          height: ${Dimensions.HEADER_HEIGHT}px;
+        }
+
+        #header {
           height: ${Dimensions.HEADER_HEIGHT}px;
         }
 
@@ -38,7 +38,7 @@ export const HeaderDefault: FC = memo(() => {
           flex: 1;
           display: flex;
           justify-content: space-around;
-          height: 60px;
+          height: ${Dimensions.HEADER_HEIGHT}px;
         }
 
         #theme-toggler {

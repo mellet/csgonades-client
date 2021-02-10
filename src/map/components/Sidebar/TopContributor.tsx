@@ -1,8 +1,6 @@
 import { FC, useMemo } from "react";
 import { UserLight } from "../../../users/models/User";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { Twemoji } from "../../../shared-components/Twemoj/Twemoji";
-import { pluralize } from "../../../utils/Common";
 import Link from "next/link";
 import { mapString } from "../../models/CsGoMap";
 import { ContListProps } from "./topContributorsProps";
@@ -56,64 +54,27 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
       return bScore - aScore;
     });
 
-    const gold = sortedContributors.shift();
-    const silver = sortedContributors.shift();
-    const bronce = sortedContributors.shift();
-    const fourth = sortedContributors.shift();
-    const fifth = sortedContributors.shift();
+    const top10 = sortedContributors.slice(0, 10);
 
-    return {
-      gold,
-      silver,
-      bronce,
-      fourth,
-      fifth,
-    };
+    return top10;
   }, [nades]);
 
   return (
     <>
       <div className="cont-list">
-        <div className="label">Top {mapString(csMap)} Contributors</div>
-        {contributors.gold && (
-          <>
-            <div className="gold">
-              <span>
-                <Twemoji emoji="🐔" />
-              </span>
-              <TopContributor user={contributors.gold} />
-            </div>
-          </>
-        )}
-
-        {contributors.silver && (
-          <>
-            <div className="silver">
-              <span>
-                <Twemoji emoji="🐥" />
-              </span>
-              <TopContributor user={contributors.silver} />
-            </div>
-          </>
-        )}
-
-        {contributors.bronce && (
-          <>
-            <div className="bronze">
-              <span>
-                <Twemoji emoji="🥚" />
-              </span>
-              <TopContributor user={contributors.bronce} />
-            </div>
-          </>
-        )}
+        <div className="label">{mapString(csMap)} Contributors</div>
+        <div className="contributors">
+          {contributors.map((c) => (
+            <TopContributor key={c.steamId} user={c} />
+          ))}
+        </div>
       </div>
       <style jsx>{`
         .cont-list {
           background: ${colors.DP02};
           overflow: hidden;
-          padding-bottom: 15px;
-          border-bottom: 1px solid ${colors.BORDER};
+          border: 1px solid ${colors.BORDER};
+          border-radius: 8px;
         }
 
         .label {
@@ -121,9 +82,17 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
           border-bottom: 1px solid ${colors.BORDER};
           color: ${colors.TEXT};
           padding: 10px 16px;
-          margin-bottom: 10px;
           text-align: center;
           font-size: 18px;
+        }
+
+        .contributors {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          padding-top: 6px;
+          padding-bottom: 6px;
         }
 
         .gold,
@@ -185,44 +154,25 @@ const TopContributor: FC<Props> = ({ user }) => {
         <Link href={`/users/${user.steamId}`}>
           <a className="contributor">
             <img src={user.avatar} />
-            <span className="nickname">{user.nickname}</span>
           </a>
         </Link>
-        <div className="nade-count">
-          {pluralize(user.nadeCount, "nade")} (
-          {pluralize(user.totalScore, "favorite")})
-        </div>
       </div>
 
       <style jsx>{`
         .contributor-wrap {
           display: flex;
-          width: 100%;
-          justify-content: space-between;
-        }
-
-        .nade-count {
-          font-size: 10px;
-          color: ${colors.GREY};
         }
 
         .contributor {
           display: flex;
-          align-items: center;
-          background: ${colors.DP01};
-          color: ${colors.TEXT};
-          overflow: hidden;
-          border-radius: 10px;
-        }
-
-        .contributor:hover {
-          background: ${colors.DP00};
+          margin: 10px;
         }
 
         .contributor img {
-          height: 20px;
-          width: 20px;
+          height: 30px;
+          width: 30px;
           border-radius: 50%;
+          border: 1px solid ${colors.BORDER};
         }
 
         .nickname {

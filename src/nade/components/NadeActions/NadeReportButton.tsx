@@ -5,7 +5,6 @@ import { ReportApi } from "../../../reports/data/ReportApi";
 import { FaFlag } from "react-icons/fa";
 import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 import { IconButton } from "../../../shared-components/buttons/IconButton";
-import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
 
@@ -80,10 +79,6 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
       </Modal>
 
       <style jsx>{`
-        .report {
-          margin-left: ${Dimensions.GUTTER_SIZE}px;
-        }
-
         .report-button-wrapper {
           flex: 1;
           background: #ab1309;

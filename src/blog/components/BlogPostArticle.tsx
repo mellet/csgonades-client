@@ -76,7 +76,6 @@ export const BlogPostArticle: FC<Props> = memo(({ children, data }) => {
           grid-template-areas: "title-img" "article";
           grid-template-columns: 1fr;
           grid-template-rows: min-content min-content min-content min-content;
-          margin: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #title-image {
@@ -121,7 +120,7 @@ export const BlogPostArticle: FC<Props> = memo(({ children, data }) => {
         }
 
         #article-content {
-          background: ${colors.DP01};
+          background: ${colors.DP02};
           border-radius: 5px;
           grid-area: article;
           max-width: 100%;
