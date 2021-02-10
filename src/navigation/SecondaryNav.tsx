@@ -25,11 +25,6 @@ export const SecondaryNav: FC = memo(({}) => {
         .site-nav {
           display: flex;
           flex-direction: column;
-          overflow: hidden;
-          border: 1px solid ${colors.BORDER};
-          border-top: none;
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
         }
 
         .nav-item {

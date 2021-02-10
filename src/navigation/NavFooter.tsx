@@ -26,11 +26,6 @@ export const Footer: FC = memo(() => {
       <style jsx>{`
         .footer-wrap {
           background: ${colors.primaryBtnBg};
-          border-bottom-left-radius: 8px;
-          border-bottom-right-radius: 8px;
-          overflow: hidden;
-          border: 1px solid ${colors.BORDER};
-          border-top: none;
         }
 
         a {

@@ -3,11 +3,9 @@ import { useRouter } from "next/router";
 import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
 import { CsgoMap } from "../map/models/CsGoMap";
-import { useTheme } from "styled-components";
 
 export const MapNav: FC = () => {
   const { query } = useRouter();
-  const { colors } = useTheme();
   const selectedMap = query.map as CsgoMap;
 
   return (
@@ -71,10 +69,6 @@ export const MapNav: FC = () => {
           display: flex;
           flex-direction: column;
           width: 100%;
-          border-radius: 8px;
-          overflow: hidden;
-          border: 1px solid ${colors.BORDER};
-          background: ${colors.DP03};
         }
 
         ul {
