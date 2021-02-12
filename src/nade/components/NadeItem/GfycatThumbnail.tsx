@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { ThumbImage } from "./ThumbImage";
 import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useGaEvent } from "../../../utils/Analytics";
 
 const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
 
@@ -20,10 +21,13 @@ type Props = {
 
 export const GfycatThumbnail: FC<Props> = ({
   gfyId,
+  nadeId,
   lineUpThumnUrl,
   smallVideoUrl,
   thumbnailUrl,
+  nadeSlug,
 }) => {
+  const event = useGaEvent();
   const { colors } = useTheme();
   const [isReadyForHover, setIsReadyForHover] = useState(false);
   const [hovering, setHovering] = useState(false);
@@ -34,6 +38,20 @@ export const GfycatThumbnail: FC<Props> = ({
     }, 500);
     return () => clearTimeout(timer);
   }, []);
+
+  // GA Event if video plays more than 2 second
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (hovering) {
+        event({
+          category: "Nade Item",
+          action: "Play Small Video",
+          label: nadeSlug || nadeId,
+        });
+      }
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [event, hovering, nadeId, nadeSlug]);
 
   function onMouseEnter() {
     if (isReadyForHover) {
