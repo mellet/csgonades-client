@@ -5,7 +5,6 @@ import { SidebarAdSticky } from "../../shared-components/adunits/SidebarAdSticky
 import { TopContributorsLazy } from "../components/Sidebar/TopContributorsLazy";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { capitalize } from "../../utils/Common";
-import { PaypalAction } from "../components/Sidebar/PaypalAction";
 import { CsgoMap } from "../models/CsGoMap";
 import { Spacer } from "../../shared-components/Spacer";
 import { Dimensions } from "../../constants/Constants";
@@ -24,9 +23,6 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
         <div className="ctas">
           <div className="cta">
             <DiscordJoinAction />
-          </div>
-          <div className="cta">
-            <PaypalAction />
           </div>
         </div>
 
