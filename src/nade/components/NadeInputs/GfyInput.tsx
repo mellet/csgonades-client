@@ -47,6 +47,10 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
 async function verifyGfycat(gfyUrl) {
   const cleanId = cleanGfycatUrl(gfyUrl);
 
+  if (!cleanId) {
+    return false;
+  }
+
   const gfyResult = await NadeApi.validateGfycat(cleanId);
 
   if (gfyResult.isErr()) {

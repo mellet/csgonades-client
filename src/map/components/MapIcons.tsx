@@ -19,6 +19,9 @@ export const MapIcons: FC<Props> = memo(
       <>
         {clusters.map((cluster) => {
           const nade = cluster[0];
+          if (!nade) {
+            return null;
+          }
           return (
             <MapPosIcon
               key={nade.id}

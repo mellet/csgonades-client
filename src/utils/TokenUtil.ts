@@ -7,8 +7,13 @@ type DecodedToken = {
   exp: number;
 };
 
-function parseJwt(token: string): DecodedToken {
+function parseJwt(token: string): DecodedToken | null {
   const base64Url = token.split(".")[1];
+
+  if (!base64Url) {
+    return null;
+  }
+
   const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
   const jsonPayload = decodeURIComponent(
     atob(base64)
@@ -34,7 +39,15 @@ export function tokenExpiredOrAboutTo(token: string): boolean {
 }
 
 export function timeToExpire(token: string) {
-  const { exp } = parseJwt(token);
+  const parsedToken = parseJwt(token);
+
+  if (!parsedToken) {
+    console.error("Failed to parse JWT token");
+    return Math.max;
+  }
+
+  const { exp } = parsedToken;
+
   const now = Date.now();
   const timeLeft = Math.round(exp - now / 1000);
 

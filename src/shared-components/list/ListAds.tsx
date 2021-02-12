@@ -49,7 +49,7 @@ export const ListAds: FC<Props> = ({ numNades }) => {
       {ads.map((_, i) => {
         const adId = adIds[i] || null;
         if (adId) {
-          return <ListAdUnit key={`ad-${i}`} adId={adIds[i]} position={i} />;
+          return <ListAdUnit key={`ad-${i}`} adId={adId} position={i} />;
         } else {
           return null;
         }

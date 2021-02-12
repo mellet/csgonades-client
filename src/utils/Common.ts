@@ -48,7 +48,7 @@ export function kFormatter(num: number): number {
   }
 }
 
-export function cleanGfycatUrl(gfycatIdOrUrl: string): string {
+export function cleanGfycatUrl(gfycatIdOrUrl: string) {
   const index = gfycatIdOrUrl.lastIndexOf("/");
   let gfyId: string | string[] = gfycatIdOrUrl.substr(index + 1);
   gfyId = gfyId.split("-");
