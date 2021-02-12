@@ -4,7 +4,6 @@ import { nadeTypeString, NadeType } from "../../models/NadeType";
 import { techniqueString, Technique } from "../../models/Technique";
 import { capitalize } from "../../../utils/Common";
 import { Movement } from "../../models/NadeMovement";
-import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   movement?: Movement;
@@ -43,7 +42,6 @@ export const NadeMeta: FC<Props> = memo(
         </div>
         <style jsx>{`
           .nade-meta {
-            margin-left: ${Dimensions.GUTTER_SIZE}px;
             display: flex;
             color: white;
           }

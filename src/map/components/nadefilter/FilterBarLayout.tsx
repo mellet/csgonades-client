@@ -58,5 +58,4 @@ const FilterBarLayoutWrapper = styled.div`
     "pro"
     "view"
     "reset";
-  margin: 16px 0px 16px 16px;
 `;

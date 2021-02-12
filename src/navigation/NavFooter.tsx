@@ -62,7 +62,7 @@ export const Footer: FC = memo(() => {
         }
 
         .copyright {
-          font-size: 14px;
+          font-size: 12px;
           white-space: nowrap;
           color: #fff;
           text-align: center;

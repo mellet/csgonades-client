@@ -83,7 +83,9 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
       <style jsx>{`
         #nade-page-grid {
           display: grid;
-          grid-template-columns: 1fr 1fr minmax(470px, 20%);
+          grid-template-columns: 1fr 1fr minmax(450px, 20%);
+          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+          grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-template-areas:
             "video video comments"
             "video video comments"
@@ -97,17 +99,12 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
         #nade-page-main {
           grid-area: video;
-          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-          overflow-y: auto;
           display: flex;
           flex-direction: column;
-          padding-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-sidebar {
           grid-area: comments;
-          height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-          overflow-y: auto;
         }
 
         .advert {
@@ -136,16 +133,6 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
               "video"
               "comments";
             width: 100%;
-          }
-
-          #nade-page-main {
-            height: auto;
-          }
-
-          #nade-sidebar {
-            border-left: none;
-            height: auto;
-            margin-left: ${Dimensions.GUTTER_SIZE}px;
           }
         }
       `}</style>

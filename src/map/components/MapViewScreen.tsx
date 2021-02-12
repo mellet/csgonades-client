@@ -101,7 +101,7 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
         #mapview-wrap {
           position: relative;
           background: #151515;
-          border-radius: 5px;
+          border-radius: 8px;
           overflow: hidden;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px - (16px * 2));
         }

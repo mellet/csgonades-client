@@ -78,7 +78,6 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
 
         #front-page {
           grid-area: main;
-          margin: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .recent-wrap {
@@ -96,24 +95,8 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
         }
 
         @media only screen and (max-width: 1210px) {
-          #front-page {
-            margin-right: 30px;
-          }
-
           aside {
             width: 100%;
-          }
-        }
-
-        @media only screen and (max-width: 910px) {
-          #front-page {
-            margin: 0px;
-          }
-        }
-
-        @media only screen and (max-width: 340px) {
-          #front-page {
-            margin: 0px;
           }
         }
       `}</style>

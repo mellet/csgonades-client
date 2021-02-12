@@ -79,6 +79,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
           display: grid;
           grid-template-columns: min-content 1fr;
           grid-template-areas: "filter nades";
+          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #filter {
@@ -87,12 +88,11 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
 
         .sticky {
           position: sticky;
-          top: 16px;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
         }
 
         #nade-nades {
           flex: 1;
-          padding: ${Dimensions.GUTTER_SIZE}px;
           grid-area: nades;
           width: 100%;
         }

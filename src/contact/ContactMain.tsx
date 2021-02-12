@@ -5,7 +5,6 @@ import { CsgnInput } from "../shared-components/inputs/TextInput/CsgnInput";
 import { CsgnTextArea } from "../shared-components/inputs/CsgnTextArea";
 import { AddConctactDTO } from "./models/ContactDTOs";
 import { useTheme } from "../core/settings/SettingsHooks";
-import { Dimensions } from "../constants/Constants";
 
 export const ContactMain: FC = () => {
   const { colors } = useTheme();
@@ -66,11 +65,10 @@ export const ContactMain: FC = () => {
       </div>
       <style jsx>{`
         .contact {
-          margin: ${Dimensions.GUTTER_SIZE}px;
-          padding: 20px 30px;
+          padding: 16px;
           color: ${colors.TEXT};
-          background: ${colors.DP01};
-          border-radius: 5px;
+          background: ${colors.DP03};
+          border-radius: 8px;
         }
       `}</style>
     </>

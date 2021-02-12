@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import Link from "next/link";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { SEO } from "../shared-components/SEO";
-import { Dimensions } from "../constants/Constants";
 import { LayoutBuilder } from "../core/layout/LayoutBuilder";
 import { HeaderDefault } from "../core/layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
@@ -118,11 +117,10 @@ const PrivacyPolicyPageContainer: NextPage = () => {
             </div>
             <style jsx>{`
               .privacy-policy {
-                margin: ${Dimensions.GUTTER_SIZE}px;
                 color: ${colors.TEXT};
-                background: ${colors.DP01};
-                padding: 20px 30px;
-                border-radius: 5px;
+                background: ${colors.DP03};
+                padding: 16px;
+                border-radius: 8px;
               }
             `}</style>
           </>
