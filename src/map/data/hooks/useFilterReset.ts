@@ -7,11 +7,10 @@ import {
   filterByTypeSelector,
   filterByProSelector,
 } from "../selectors";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 
 export const useFilterReset = () => {
-  const { event } = useAnalytics();
-
+  const event = useGaEvent();
   const byTickrate = useSelector(filterByTickrateSelector);
   const byFavorites = useSelector(filterByFavoritesSelector);
   const byType = useSelector(filterByTypeSelector);

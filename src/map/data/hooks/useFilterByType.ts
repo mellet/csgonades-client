@@ -3,10 +3,10 @@ import { NadeType } from "../../../nade/models/NadeType";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByTypeSelector } from "../selectors";
 import { filterByTypeAction } from "../slice";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 
 export const useFilterByType = () => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
 
   const byType = useSelector(filterByTypeSelector);
   const dispatch = useDispatch();

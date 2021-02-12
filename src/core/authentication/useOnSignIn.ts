@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
 import { setTokenAction, setUserAction } from "./AuthSlice";
-import { useAnalytics } from "../../utils/Analytics";
+import { useGaEvent } from "../../utils/Analytics";
 import { User } from "../../users/models/User";
 import { dateMinutesAgo } from "../../utils/DateUtils";
 import { AuthApi } from "./AuthApi";
 import { UserApi } from "../../users/data/UserApi";
 
 export const useOnSignIn = () => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
   const displayToast = useDisplayToast();
   const router = useRouter();
   const dispatch = useDispatch();

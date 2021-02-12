@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterByTickrateSelector } from "../selectors";
 import { Tickrate } from "../../../nade/models/NadeTickrate";
 import { filterByTickrateAction } from "../slice";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 
 export const useFilterByTickrate = () => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
 
   const byTickrate = useSelector(filterByTickrateSelector);
   const dispatch = useDispatch();
