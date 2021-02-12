@@ -10,10 +10,10 @@ export const BuyCoffee: FC = memo(() => {
         data-id="csgonades"
         data-description="Support me on Buy me a coffee!"
         data-message=""
-        data-color="#FFDD00"
+        data-color="#1c8fc0"
         data-position="Right"
         data-x_margin="16"
-        data-y_margin="16"
+        data-y_margin="10"
       ></script>
     </>
   );

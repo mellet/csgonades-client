@@ -2,8 +2,8 @@ import { FC, useMemo } from "react";
 import { UserLight } from "../../../users/models/User";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import Link from "next/link";
-import { mapString } from "../../models/CsGoMap";
 import { ContListProps } from "./topContributorsProps";
+import { Dimensions } from "../../../constants/Constants";
 
 interface UserContribution extends UserLight {
   bestScore: number;
@@ -12,7 +12,7 @@ interface UserContribution extends UserLight {
   totalScore: number;
 }
 
-export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
+export const TopContributorList: FC<ContListProps> = ({ nades }) => {
   const { colors } = useTheme();
   const contributors = useMemo(() => {
     const contCount: { [key: string]: UserContribution } = {};
@@ -54,15 +54,15 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
       return bScore - aScore;
     });
 
-    const top10 = sortedContributors.slice(0, 10);
+    const top = sortedContributors.slice(0, 12);
 
-    return top10;
+    return top;
   }, [nades]);
 
   return (
     <>
       <div className="cont-list">
-        <div className="label">{mapString(csMap)} Contributors</div>
+        <div className="label">Nade Contributors</div>
         <div className="contributors">
           {contributors.map((c) => (
             <TopContributor key={c.steamId} user={c} />
@@ -71,37 +71,25 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
       </div>
       <style jsx>{`
         .cont-list {
-          background: ${colors.DP02};
-          overflow: hidden;
-          border: 1px solid ${colors.BORDER};
-          border-radius: 8px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .label {
-          background: ${colors.DP01};
           border-bottom: 1px solid ${colors.BORDER};
           color: ${colors.TEXT};
-          padding: 10px 16px;
+          padding: 8px 16px;
+          margin-bottom: 8px;
           text-align: center;
-          font-size: 18px;
+          font-size: 16px;
         }
 
         .contributors {
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          justify-content: center;
-          padding-top: 6px;
-          padding-bottom: 6px;
-        }
-
-        .gold,
-        .silver,
-        .bronze,
-        .split {
-          display: flex;
-          align-items: center;
-          padding: 8px 16px;
+          justify-content: space-between;
+          margin-left: -8px;
+          margin-right: -8px;
         }
 
         .cont-list span {
@@ -110,32 +98,6 @@ export const TopContributorList: FC<ContListProps> = ({ nades, csMap }) => {
           display: block;
           position: relative;
           top: 1px;
-        }
-
-        #gold {
-          grid-area: gold;
-        }
-        #silver {
-          grid-area: silver;
-        }
-        #bronze {
-          grid-area: bronze;
-        }
-
-        #gold-ped {
-          grid-area: gold-ped;
-        }
-
-        #silver-ped {
-          grid-area: silver-ped;
-        }
-
-        #bronze-ped {
-          grid-area: bronze-ped;
-        }
-
-        #mid {
-          grid-area: mid;
         }
       `}</style>
     </>
@@ -165,7 +127,7 @@ const TopContributor: FC<Props> = ({ user }) => {
 
         .contributor {
           display: flex;
-          margin: 10px;
+          margin: 8px;
         }
 
         .contributor img {

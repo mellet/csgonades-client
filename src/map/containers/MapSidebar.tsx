@@ -32,9 +32,9 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
             {capitalize(map)}.
           </h1>
           <h2>Don&apos;t be like BOT Bob, get some nades.</h2>
-        </div>
 
-        <TopContributorsLazy csMap={map} nades={nades} />
+          <TopContributorsLazy nades={nades} />
+        </div>
       </Spacer>
       <div className="ad">
         <SidebarAdSticky />
