@@ -5,7 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 
 type Props = {
   nades: NadeLight[] | null;
@@ -14,7 +14,7 @@ type Props = {
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
-  const { event } = useAnalytics();
+  const event = useGaEvent();
 
   const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();

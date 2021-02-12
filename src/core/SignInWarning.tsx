@@ -1,16 +1,17 @@
 import { FC, memo } from "react";
 import { CSGNModal } from "../shared-components/CSGNModal";
-import { useAnalytics } from "../utils/Analytics";
+import { useGaEvent } from "../utils/Analytics";
 import { SignInnButton } from "./layout/defaultheader/components/SignInnButton";
 import { useSignInWarning } from "./global/hooks/useSignInWarning";
 import { FaComment, FaPlus, FaStar } from "react-icons/fa";
 import { useTheme } from "./settings/SettingsHooks";
 import { Dimensions } from "../constants/Constants";
 
+// Lazy loaded
 export const SignInWarning: FC = memo(() => {
   const { colors } = useTheme();
   const { signInWarning, clearSignInWarning } = useSignInWarning();
-  const { event } = useAnalytics();
+  const event = useGaEvent();
 
   function onSignIn() {
     event({

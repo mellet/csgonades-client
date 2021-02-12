@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
 import { Config, Dimensions } from "../../../../constants/Constants";
-import { useAnalytics } from "../../../../utils/Analytics";
+import { useGaEvent } from "../../../../utils/Analytics";
 
 export const SignInnButton: FC = () => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
 
   function onSignInClick() {
     event({

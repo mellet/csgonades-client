@@ -2,10 +2,10 @@ import { filterByProSelector } from "../selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
 import { toggleProNadesAction } from "../slice";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 
 export const useFilterByPro = () => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
 
   const byPro = useSelector(filterByProSelector);
   const dispatch = useDispatch();

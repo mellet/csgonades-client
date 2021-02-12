@@ -5,12 +5,12 @@ import { useTheme } from "../../core/settings/SettingsHooks";
 import { useFinishProfile } from "../data/useFinishProfile";
 import { Dimensions } from "../../constants/Constants";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
-import { useAnalytics } from "../../utils/Analytics";
+import { useGaEvent } from "../../utils/Analytics";
 
 type Props = { user: User };
 
 export const UserFinishProfilePage: FC<Props> = ({ user }) => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
   const [loading, setLoading] = useState(false);
   const finishProfile = useFinishProfile();
   const [nickname, setNickname] = useState(user.nickname);

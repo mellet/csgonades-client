@@ -1,12 +1,11 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 import { filterByFavoritesSelector } from "../selectors";
 import { toggleFavoritesAction } from "../slice";
 
 export const useFilterByFavorites = () => {
-  const { event } = useAnalytics();
-
+  const event = useGaEvent();
   const byFavorites = useSelector(filterByFavoritesSelector);
   const dispatch = useDispatch();
 

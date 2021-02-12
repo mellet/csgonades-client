@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../store";
-import { useAnalytics } from "../../utils/Analytics";
+import { useGaEvent } from "../../utils/Analytics";
 import { AppState } from "../store/rootReducer";
 import { setThemeAction } from "./SettingsSlice";
 import { themes } from "./Themes";
@@ -9,7 +9,7 @@ import { themes } from "./Themes";
 const themeSelector = (state: AppState) => state.settingsStore.theme;
 
 export const useTheme = () => {
-  const { event } = useAnalytics();
+  const event = useGaEvent();
   const dispatch = useDispatch<AppDispatch>();
   const theme = useSelector(themeSelector);
 

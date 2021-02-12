@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAnalytics } from "../../../utils/Analytics";
+import { useGaEvent } from "../../../utils/Analytics";
 import { mapViewSelector } from "../selectors";
 import { MapView, setMapViewAction } from "../slice";
 
@@ -10,7 +10,7 @@ type UseMapViewConfig = {
 
 export const useSetMapView = (config?: UseMapViewConfig) => {
   const { trackEvent } = config || {};
-  const { event } = useAnalytics();
+  const event = useGaEvent();
   const mapView = useSelector(mapViewSelector);
   const dispatch = useDispatch();
 
