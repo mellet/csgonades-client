@@ -7,8 +7,6 @@ export const pageview = (url: URL) => {
     return;
   }
 
-  console.log("GA-Pageview", url);
-
   window.gtag("config", GA_TRACKING_ID, {
     page_path: url,
   });
@@ -26,8 +24,6 @@ export const event = (eventData: GTagEvent) => {
   if (!IS_PROD) {
     return;
   }
-
-  console.log("GA-Event", eventData);
 
   const { action, category, label, non_interaction, value } = eventData;
 
