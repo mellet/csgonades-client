@@ -17,7 +17,7 @@ export function custerNades(nades: NadeLight[]) {
       // See if we find a cluster where the nade fits
       for (const cluster of clusters) {
         const firstNade = cluster[0];
-        if (!firstNade.mapEndCoord) {
+        if (!firstNade || !firstNade.mapEndCoord) {
           continue;
         }
 

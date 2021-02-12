@@ -14,8 +14,6 @@ export const ContactMain: FC = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<null | string>(null);
 
-  console.log("Contact page");
-
   async function onSubmit() {
     if (!email.length) {
       return setError("Missing e-mail.");

@@ -15,6 +15,10 @@ export const useOnNadeClusterClick = () => {
     if (cluster.length === 1) {
       const nade = cluster[0];
 
+      if (!nade) {
+        return;
+      }
+
       return Router.push("/nades/[nade]", `/nades/${nade.slug || nade.id}`);
     }
 

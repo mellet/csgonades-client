@@ -1,14 +1,13 @@
 import { FC } from "react";
-import { DiscordJoinAction } from "./DiscordJoinAction";
-import { CsgoMap } from "../../models/CsGoMap";
-import { NadeLight } from "../../../nade/models/Nade";
-import { SidebarAdSticky } from "../../../shared-components/adunits/SidebarAdSticky";
-import { TopContributorsLazy } from "./TopContributorsLazy";
-import { useTheme } from "../../../core/settings/SettingsHooks";
-import { capitalize } from "../../../utils/Common";
-import { PaypalAction } from "./PaypalAction";
-import { Spacer } from "../../../shared-components/Spacer";
-import { Dimensions } from "../../../constants/Constants";
+import { DiscordJoinAction } from "../components/Sidebar/DiscordJoinAction";
+import { NadeLight } from "../../nade/models/Nade";
+import { SidebarAdSticky } from "../../shared-components/adunits/SidebarAdSticky";
+import { TopContributorsLazy } from "../components/Sidebar/TopContributorsLazy";
+import { useTheme } from "../../core/settings/SettingsHooks";
+import { capitalize } from "../../utils/Common";
+import { CsgoMap } from "../models/CsGoMap";
+import { Spacer } from "../../shared-components/Spacer";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   map: CsgoMap;
@@ -24,9 +23,6 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
         <div className="ctas">
           <div className="cta">
             <DiscordJoinAction />
-          </div>
-          <div className="cta">
-            <PaypalAction />
           </div>
         </div>
 

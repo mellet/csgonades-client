@@ -5,6 +5,7 @@ import { FC } from "react";
 import { withRedux } from "../utils/WithRedux";
 import { CoreWrapper } from "../core/CoreWrapper";
 import { AppThemeProvider } from "../core/settings/AppThemeProvider";
+import { BuyCoffee } from "../core/BuyCoffee";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -17,6 +18,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </CoreWrapper>
       </AppThemeProvider>
+      <BuyCoffee />
     </>
   );
 };

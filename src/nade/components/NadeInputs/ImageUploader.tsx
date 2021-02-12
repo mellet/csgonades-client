@@ -44,7 +44,11 @@ export const ImageUploader: FC<Props> = ({
       }
 
       reader.addEventListener("load", onReaderImageLoaded);
-      reader.readAsDataURL(e.target.files[0]);
+      const file = e.target.files[0];
+      if (!file) {
+        return;
+      }
+      reader.readAsDataURL(file);
     }
   }
 

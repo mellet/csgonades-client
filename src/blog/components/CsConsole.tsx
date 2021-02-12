@@ -179,6 +179,9 @@ const useVisibility = (ref: RefObject<HTMLElement>, callback: any) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) {
+          return;
+        }
         if (entry.intersectionRatio === 1) {
           callback();
           if (ref.current) {
