@@ -34,3 +34,10 @@ export const event = (eventData: GTagEvent) => {
     non_interaction: non_interaction,
   });
 };
+
+export const exception = (description: string, fatal = false) => {
+  window.gtag("event", "exception", {
+    description: description,
+    fatal: fatal,
+  });
+};
