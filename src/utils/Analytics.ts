@@ -10,19 +10,14 @@ export const useNewPageView = (): void => {
   const { closeNav } = useNavigation();
   const isAdmin = useIsAdmin();
   const router = useRouter();
+
   useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      closeNav();
-      if (isAdmin || !IS_PROD) {
-        return;
-      }
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events, isAdmin, closeNav]);
+    closeNav();
+    if (isAdmin || !IS_PROD) {
+      return;
+    }
+    gtag.pageview(router.asPath);
+  }, [router.asPath, isAdmin, closeNav]);
 };
 
 export const useGaEvent = () => {

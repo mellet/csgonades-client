@@ -2,7 +2,7 @@ const IS_PROD = process.env.NODE_ENV === "production";
 
 export const GA_TRACKING_ID = "G-QRDVMPQ5C5";
 
-export const pageview = (url: URL) => {
+export const pageview = (url: string) => {
   if (!IS_PROD) {
     return;
   }
