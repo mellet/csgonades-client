@@ -1,5 +1,4 @@
 import { UserLight } from "../../users/models/User";
-import { CsgoMap } from "../../map/models/CsGoMap";
 import { GfycatData } from "./GfycatData";
 import { NadeImages } from "./NadeImages";
 import { Movement } from "./NadeMovement";
@@ -7,6 +6,7 @@ import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
 import { Technique } from "./Technique";
 import { Status } from "./Status";
+import { CsgoMap } from "../../map/models/CsGoMap";
 
 export type StatusInfo = string;
 

@@ -1,17 +1,17 @@
 import React, { FC, memo, useEffect } from "react";
-import { CsgoMap } from "./models/CsGoMap";
-import { NadeLight } from "../nade/models/Nade";
-import { MapPageNades } from "./components/MapPageNades";
-import { useMapChangeHandler } from "./data/hooks/useMapChangeHandler";
-import { SEO } from "../shared-components/SEO";
-import { capitalize } from "../utils/Common";
-import FilterBar from "./components/nadefilter/FilterBar";
-import { MapViewSuggested } from "./components/SuggestedNades/MapViewSuggested";
-import { useOnNadeClusterClick } from "./components/SuggestedNades/useOnNadeClick";
-import { useSetMapView } from "./data/hooks/useSetMapView";
-import MapViewScreen from "./components/MapViewScreen";
 import { isMobileOnly } from "react-device-detect";
-import { Dimensions } from "../constants/Constants";
+import { Dimensions } from "../../constants/Constants";
+import { NadeLight } from "../../nade/models/Nade";
+import { SEO } from "../../shared-components/SEO";
+import { capitalize } from "../../utils/Common";
+import { MapPageNades } from "../components/MapPageNades";
+import MapViewScreen from "../components/MapViewScreen";
+import FilterBar from "../components/nadefilter/FilterBar";
+import { MapViewSuggested } from "../components/SuggestedNades/MapViewSuggested";
+import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
+import { useMapChangeHandler } from "../data/hooks/useMapChangeHandler";
+import { useSetMapView } from "../data/hooks/useSetMapView";
+import { CsgoMap } from "../models/CsGoMap";
 
 const isServer = typeof window === "undefined";
 

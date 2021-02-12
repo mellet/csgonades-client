@@ -2,12 +2,12 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { CsgoMap, getAllCsGoMaps } from "../../map/models/CsGoMap";
 import { NadeLight } from "../../nade/models/Nade";
-import { MapMain } from "../../map/MapMain";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
-import { MapSidebar } from "../../map/components/Sidebar/MapSidebar";
 import { Config } from "../../constants/Constants";
+import { MapMain } from "../../map/containers/MapMain";
+import { MapSidebar } from "../../map/containers/MapSidebar";
 
 interface Props {
   mapName: CsgoMap;

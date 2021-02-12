@@ -14,7 +14,7 @@ export const Config = {
     : "http://localhost:5000/auth/steam",
   revalidationTime: 60 * 30, // Refetch time for map and frontpage
   maintenance: false,
-};
+} as const;
 
 export const Dimensions = {
   BORDER_RADIUS: "5px",
@@ -31,18 +31,18 @@ export const Dimensions = {
   PAGE_WIDTH: 1300 + 4 * 30,
   SIDEBAR_WIDTH: "180px",
   TABLET_THRESHHOLD: "1024px",
-};
+} as const;
 
 export const AnimationTimings = {
   fast: "0.15s",
   medium: "0.3s",
   slow: "0.5s",
-};
+} as const;
 
 export const LayerPosition = {
   MODAL: 999,
   UI: 950,
   UNDER_UI: 900,
-};
+} as const;
 
 export const APP_VERSION = packageJson.version;
