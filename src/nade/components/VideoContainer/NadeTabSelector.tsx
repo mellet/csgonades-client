@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useGaEvent } from "../../../utils/Analytics";
 
 type Props = {
   onChangeTab: (newTab: "video" | "lineup") => void;
@@ -8,10 +9,21 @@ type Props = {
 };
 
 export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
+  const event = useGaEvent();
   const { colors } = useTheme();
 
   const isVideoSelected = selectedTab === "video";
   const isLineUpSelected = selectedTab === "lineup";
+
+  function onChangeToVideo() {
+    onChangeTab("video");
+    event({ category: "Nade Page", action: "Select Video Tab" });
+  }
+
+  function onChangeToLineup() {
+    onChangeTab("lineup");
+    event({ category: "Nade Page", action: "Select Line Up Tab" });
+  }
 
   return (
     <>
@@ -21,13 +33,13 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
         </div>
         <button
           className={isVideoSelected ? "tab-btn selected" : "tab-btn"}
-          onClick={() => onChangeTab("video")}
+          onClick={onChangeToVideo}
         >
           Video
         </button>
         <button
           className={isLineUpSelected ? "tab-btn selected" : "tab-btn"}
-          onClick={() => onChangeTab("lineup")}
+          onClick={onChangeToLineup}
         >
           Line Up
         </button>
