@@ -26,8 +26,8 @@ export const useOnNadeClusterClick = () => {
 
     setSuggestedNades(cluster);
     event({
-      category: "nade-page",
-      action: "display-nade-cluster",
+      category: "nade_page",
+      action: "click_nade_cluster",
     });
   }
 

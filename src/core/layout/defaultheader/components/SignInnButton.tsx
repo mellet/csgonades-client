@@ -9,7 +9,7 @@ export const SignInnButton: FC = () => {
   function onSignInClick() {
     ga.event({
       category: "auth",
-      action: "Clicked Sign In Button",
+      action: "click_signin_button",
     });
   }
 

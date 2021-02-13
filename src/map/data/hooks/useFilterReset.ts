@@ -22,8 +22,8 @@ export const useFilterReset = () => {
       dispatch(resetFilterAction());
       if (!disableAnalytics) {
         ga.event({
-          category: "map-page",
-          action: "Reset Filter",
+          category: "map_page",
+          action: "click_reset_filter",
         });
       }
     },

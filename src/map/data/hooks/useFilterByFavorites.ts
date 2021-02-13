@@ -11,8 +11,8 @@ export const useFilterByFavorites = () => {
 
   const toggleFavFilter = () => {
     ga.event({
-      category: "map-page",
-      action: "Filter Favorite",
+      category: "map_page",
+      action: "clikck_filter_favorite",
     });
     dispatch(toggleFavoritesAction());
   };

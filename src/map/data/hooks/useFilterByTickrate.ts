@@ -15,8 +15,8 @@ export const useFilterByTickrate = () => {
     (tick: Tickrate) => {
       dispatch(filterByTickrateAction(tick));
       ga.event({
-        category: "map-page",
-        action: `Filter tick ${tick}`,
+        category: "map_page",
+        action: `click_filter_${tick}`,
       });
     },
     [dispatch, ga]

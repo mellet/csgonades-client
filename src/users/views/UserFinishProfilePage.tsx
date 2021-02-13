@@ -25,7 +25,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
       setError(
         "It looks like you put your e-mail as your nickname. This is not very smart as it will be visible to anyone."
       );
-      ga.error("Profile Creation, Wrong E-mail Entered");
+      ga.error("profile_create_wrong_email");
       return;
     }
 
@@ -37,7 +37,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
     });
     ga.event({
       category: "auth",
-      action: "Finished Profile Creation",
+      action: "finished_profile_creation",
     });
     displayToast({
       severity: "success",

@@ -16,7 +16,7 @@ export const SignInWarning: FC = memo(() => {
   function onSignIn() {
     ga.event({
       category: "modal",
-      action: `Display Sign In Warning ${signInWarning}`,
+      action: `click_signin_not_auth_${signInWarning}_warning`,
     });
   }
 
@@ -24,7 +24,7 @@ export const SignInWarning: FC = memo(() => {
     clearSignInWarning();
     ga.event({
       category: "modal",
-      action: `Display Sign In Warning ${signInWarning}`,
+      action: `dismiss_not_auth_${signInWarning}_warning`,
     });
   }
 

@@ -17,12 +17,12 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
 
   function onChangeToVideo() {
     onChangeTab("video");
-    ga.event({ category: "nade-page", action: "Select Video Tab" });
+    ga.event({ category: "nade_page", action: "click_video_tab" });
   }
 
   function onChangeToLineup() {
     onChangeTab("lineup");
-    ga.event({ category: "nade-page", action: "Select Line Up Tab" });
+    ga.event({ category: "nade_page", action: "click_linup_tab" });
   }
 
   return (

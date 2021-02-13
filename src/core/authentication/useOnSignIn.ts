@@ -24,7 +24,7 @@ export const useOnSignIn = () => {
           severity: "error",
         });
         dispatch(signOutAction());
-        ga.error("Sign In Failed", false);
+        ga.error("singin_failed", false);
         router.push("/", "/");
         return;
       }
@@ -37,13 +37,15 @@ export const useOnSignIn = () => {
       if (isFirstSignIn || userDetails.steamId === "76561198199195838") {
         ga.event({
           category: "auth",
-          action: "Sign In Success New",
+          action: "signin_success",
+          label: "new",
         });
         router.push("/finishprofile", "/finishprofile");
       } else {
         ga.event({
           category: "auth",
-          action: "Sign In Success Returning",
+          action: "signin_success",
+          label: "returning",
         });
         router.push("/", "/");
       }

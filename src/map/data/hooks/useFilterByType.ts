@@ -15,8 +15,8 @@ export const useFilterByType = () => {
     (nadeType: NadeType) => {
       dispatch(filterByTypeAction(nadeType));
       ga.event({
-        category: "map-page",
-        action: `Filter Nade Type ${nadeType}`,
+        category: "map_page",
+        action: `click_filter_type_${nadeType}`,
       });
     },
     [dispatch, ga]

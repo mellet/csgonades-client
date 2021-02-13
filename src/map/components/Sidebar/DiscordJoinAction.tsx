@@ -6,7 +6,7 @@ export const DiscordJoinAction: FC = () => {
   const ga = useGa();
 
   function logJoinDiscor() {
-    ga.event({ category: "map-page", action: "Click Join Discord" });
+    ga.event({ category: "map_page", action: "click_join_discord" });
   }
 
   return (

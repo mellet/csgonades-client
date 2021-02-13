@@ -49,8 +49,8 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
 
     if (favorite) {
       ga.event({
-        category: "nade-page",
-        action: "Remove favorite",
+        category: "nade_page",
+        action: "click_remove_favorite",
         label: nadeId,
       });
       unFavorite(favorite.id);
@@ -58,8 +58,8 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
       setOptimisticIsFavorited(false);
     } else {
       ga.event({
-        category: "nade-page",
-        action: "Add favorite",
+        category: "nade_page",
+        action: "click_add_favorite",
         label: nadeId,
       });
       addFavorite(nadeId);

@@ -13,8 +13,8 @@ export const useFilterByPro = () => {
   const toggleFilterByPro = useCallback(() => {
     dispatch(toggleProNadesAction());
     ga.event({
-      category: "map-page",
-      action: `Filter Pro`,
+      category: "map_page",
+      action: `click_filter_pro`,
     });
   }, [dispatch, ga]);
 

@@ -23,8 +23,9 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
   function onToggle() {
     if (!showReportForm) {
       ga.event({
-        category: "nade-page",
-        action: "Clicked Report Nade",
+        category: "nade_page",
+        action: "click_report_nade",
+        label: nadeId,
       });
     }
 

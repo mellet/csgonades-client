@@ -16,10 +16,10 @@ export type GTagEvent = {
   action: string;
   category:
     | "modal"
-    | "nade-page"
-    | "map-page"
+    | "nade_page"
+    | "map_page"
     | "auth"
-    | "nade-item"
+    | "nade_item"
     | "settings"
     | "share";
   label?: string;

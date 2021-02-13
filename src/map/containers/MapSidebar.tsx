@@ -20,7 +20,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
   const ga = useGa();
 
   function logBma() {
-    ga.event({ category: "map-page", action: "click-buy-me-a-beer" });
+    ga.event({ category: "map_page", action: "click_buy_me_a_beer" });
   }
 
   return (

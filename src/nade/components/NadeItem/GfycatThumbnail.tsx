@@ -45,8 +45,8 @@ export const GfycatThumbnail: FC<Props> = ({
     const timer = setTimeout(() => {
       if (hovering) {
         ga.event({
-          category: "nade-item",
-          action: "Play Small Video",
+          category: "nade_item",
+          action: "play_small_video",
           label: nadeSlug || nadeId,
         });
         setHasHovered(true);

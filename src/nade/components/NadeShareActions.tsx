@@ -30,7 +30,7 @@ export const NadeShareActions: FC<Props> = ({
   function onSosialShare(socialNetwork: string) {
     ga.event({
       category: "share",
-      action: `Share on ${socialNetwork}`,
+      action: `click_share_${socialNetwork}`,
       label: url,
     });
   }

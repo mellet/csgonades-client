@@ -19,8 +19,8 @@ export const useSetMapView = (config?: UseMapViewConfig) => {
       dispatch(setMapViewAction(view));
       if (trackEvent) {
         ga.event({
-          category: "map-page",
-          action: `Filter View ${view}`,
+          category: "map_page",
+          action: `click_filter_view_${view}`,
         });
       }
     },

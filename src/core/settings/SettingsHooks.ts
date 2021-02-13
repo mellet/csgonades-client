@@ -22,13 +22,13 @@ export const useTheme = () => {
       dispatch(setThemeAction("dark"));
       ga.event({
         category: "settings",
-        action: "Set Dark Theme",
+        action: "set_dark_theme",
       });
     } else {
       dispatch(setThemeAction("light"));
       ga.event({
         category: "settings",
-        action: "Set Light Theme",
+        action: "set_light_theme",
       });
     }
   }

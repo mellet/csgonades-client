@@ -36,8 +36,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
     e.stopPropagation();
 
     ga.event({
-      category: "map-page",
-      action: "Dismiss Suggested Nades",
+      category: "map_page",
+      action: "close_suggested_nades",
     });
 
     onDismiss();
