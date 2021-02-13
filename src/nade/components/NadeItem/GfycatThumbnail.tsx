@@ -30,6 +30,7 @@ export const GfycatThumbnail: FC<Props> = ({
   const ga = useGa();
   const { colors } = useTheme();
   const [isReadyForHover, setIsReadyForHover] = useState(false);
+  const [hasHovered, setHasHovered] = useState(false);
   const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ export const GfycatThumbnail: FC<Props> = ({
           action: "Play Small Video",
           label: nadeSlug || nadeId,
         });
+        setHasHovered(true);
       }
     }, 2000);
     return () => clearTimeout(timer);
@@ -77,7 +79,9 @@ export const GfycatThumbnail: FC<Props> = ({
         </div>
 
         <div className={displayBack ? "back visible" : "back"}>
-          {displayBack && <MiniGfycatIframe gfyId={gfyId} />}
+          {displayBack && (
+            <MiniGfycatIframe gfyId={gfyId} hasAllreadyLoaded={hasHovered} />
+          )}
         </div>
       </div>
       <style jsx global>{`

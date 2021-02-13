@@ -2,6 +2,8 @@ import Image from "next/image";
 import { FC, memo, useEffect, useState } from "react";
 import { CrossHair } from "../VideoContainer/CrossHair";
 import { useTheme } from "../../../core/settings/SettingsHooks";
+import { FaVideo } from "react-icons/fa";
+import { CSGNIcon } from "../NadeStatus/CSGNIcon";
 
 type Props = {
   lineupThumbUrl?: string;
@@ -50,6 +52,9 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
   return (
     <>
       <div className={visible ? "thumb-image visible" : "thumb-image"}>
+        <div className="video-icon">
+          <CSGNIcon size={12} icon={<FaVideo />} />
+        </div>
         <div className="result-image">
           {thumbUrl && (
             <Image
@@ -82,6 +87,18 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
         )}
       </div>
       <style jsx>{`
+        .video-icon {
+          position: absolute;
+          top: 6px;
+          right: 6px;
+          z-index: 1;
+          color: #111;
+          background: rgba(255, 255, 255, 0.8);
+          padding: 2px 4px;
+          border-radius: 4px;
+          opacity: 0.8;
+        }
+
         .thumb-image {
           opacity: 0;
           height: 100%;

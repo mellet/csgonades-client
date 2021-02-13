@@ -4,10 +4,11 @@ import { isSafari } from "react-device-detect";
 
 type Props = {
   gfyId: string;
+  hasAllreadyLoaded?: boolean;
 };
 
-const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
-  const [loaded, setLoaded] = useState(false);
+const MiniGfycatIframe: FC<Props> = ({ gfyId, hasAllreadyLoaded = false }) => {
+  const [loaded, setLoaded] = useState(hasAllreadyLoaded);
   const { colors } = useTheme();
 
   const videoSpeed = isSafari ? 1 : 3;
@@ -20,7 +21,7 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 1000);
+    }, 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -43,7 +44,7 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
 
       <style jsx>{`
         .gfycat-super-wrap {
-          background: rgba(0, 0, 0, 0.65) url("/loading.gif");
+          background: rgba(0, 0, 0, 0.1) url("/loading.gif");
           background-position: 50% 40%;
           background-repeat: no-repeat;
           background-size: 20px;
@@ -59,7 +60,7 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId }) => {
           overflow: hidden;
           padding-bottom: calc(56.25% + 44px);
           position: relative;
-          transition: opacity 0.3s;
+          transition: opacity 0.5s;
         }
 
         .gfycat-iframe {
