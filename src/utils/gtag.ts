@@ -34,7 +34,9 @@ export const event = (eventData: GTagEvent) => {
 
   const { action, category, label, non_interaction, value } = eventData;
 
-  window.gtag("event", action, {
+  const actionName = makeActionsTheSame(action);
+
+  window.gtag("event", actionName, {
     event_category: category,
     event_label: label,
     value: value,
@@ -48,3 +50,9 @@ export const exception = (description: string, fatal = false) => {
     fatal: fatal,
   });
 };
+
+function makeActionsTheSame(action: string) {
+  const words = action.split(" ");
+  const newAction = words.map((word) => word.toLowerCase()).join("_");
+  return newAction;
+}
