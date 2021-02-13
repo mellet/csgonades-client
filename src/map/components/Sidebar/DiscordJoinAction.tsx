@@ -41,6 +41,7 @@ export const DiscordJoinAction: FC = () => {
           justify-content: space-between;
           align-items: center;
           background: #7289da;
+          min-height: 50px;
         }
 
         .action:hover {

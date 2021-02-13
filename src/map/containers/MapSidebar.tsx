@@ -8,6 +8,7 @@ import { capitalize } from "../../utils/Common";
 import { CsgoMap } from "../models/CsGoMap";
 import { Spacer } from "../../shared-components/Spacer";
 import { Dimensions } from "../../constants/Constants";
+import { useGa } from "../../utils/Analytics";
 
 type Props = {
   map: CsgoMap;
@@ -16,6 +17,11 @@ type Props = {
 
 export const MapSidebar: FC<Props> = ({ map, nades }) => {
   const { colors } = useTheme();
+  const ga = useGa();
+
+  function logBma() {
+    ga.event({ category: "map-page", action: "click-buy-me-a-beer" });
+  }
 
   return (
     <>
@@ -25,6 +31,21 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
             <DiscordJoinAction />
           </div>
         </div>
+
+        <a
+          onClick={logBma}
+          className="bma-link"
+          href="https://www.buymeacoffee.com/csgonades"
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          <button className="bma">
+            <span>
+              Buy me a <span className="cta">Beer</span>
+            </span>
+            <img src="/bmc-white.svg" />
+          </button>
+        </a>
 
         <div className="jumbo">
           <h1>
@@ -74,6 +95,40 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
           position: sticky;
           top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
           margin-top: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .bma-link {
+        }
+
+        .bma {
+          background: #f7ae05;
+          border-radius: 8px;
+          padding: 0px 16px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          height: 50px;
+          transition: background 0.15s;
+        }
+
+        .bma:hover {
+          background: #e3a005;
+        }
+
+        .bma span {
+          color: white;
+        }
+
+        .bma .cta {
+          font-weight: 400;
+        }
+
+        .bma img {
+          height: 65%;
         }
       `}</style>
     </>
