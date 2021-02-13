@@ -5,7 +5,7 @@ import {
   TwitterShareButton,
   VKShareButton,
 } from "react-share";
-import { useGaEvent } from "../../utils/Analytics";
+import { useGa } from "../../utils/Analytics";
 import { FaVk, FaTwitter, FaRedditAlien, FaFacebookF } from "react-icons/fa";
 import { useTheme } from "../../core/settings/SettingsHooks";
 
@@ -24,13 +24,13 @@ export const NadeShareActions: FC<Props> = ({
   image,
 }) => {
   const { colors } = useTheme();
-  const event = useGaEvent();
+  const ga = useGa();
   const shareUrl = `https://www.csgonades.com${url}`;
 
   function onSosialShare(socialNetwork: string) {
-    event({
-      category: "SocialShare",
-      action: socialNetwork,
+    ga.event({
+      category: "share",
+      action: `Share on ${socialNetwork}`,
       label: url,
     });
   }

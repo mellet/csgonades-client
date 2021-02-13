@@ -2,15 +2,15 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
-import { setTokenAction, setUserAction } from "./AuthSlice";
-import { useGaEvent } from "../../utils/Analytics";
+import { setTokenAction, setUserAction, signOutAction } from "./AuthSlice";
+import { useGa } from "../../utils/Analytics";
 import { User } from "../../users/models/User";
 import { dateMinutesAgo } from "../../utils/DateUtils";
 import { AuthApi } from "./AuthApi";
 import { UserApi } from "../../users/data/UserApi";
 
 export const useOnSignIn = () => {
-  const event = useGaEvent();
+  const ga = useGa();
   const displayToast = useDisplayToast();
   const router = useRouter();
   const dispatch = useDispatch();
@@ -23,10 +23,8 @@ export const useOnSignIn = () => {
           message: "Could not sign you in. Report this issue on our Discord.",
           severity: "error",
         });
-        event({
-          category: "Auth",
-          action: "Sign In Failed",
-        });
+        dispatch(signOutAction());
+        ga.error("Sign In Failed", false);
         router.push("/", "/");
         return;
       }
@@ -37,20 +35,20 @@ export const useOnSignIn = () => {
       const isFirstSignIn = checkIsFirstSignIn(userDetails);
 
       if (isFirstSignIn || userDetails.steamId === "76561198199195838") {
-        event({
-          category: "Auth",
+        ga.event({
+          category: "auth",
           action: "Sign In Success New",
         });
         router.push("/finishprofile", "/finishprofile");
       } else {
-        event({
-          category: "Auth",
+        ga.event({
+          category: "auth",
           action: "Sign In Success Returning",
         });
         router.push("/", "/");
       }
     })();
-  }, [dispatch, router, displayToast, event]);
+  }, [dispatch, router, displayToast, ga]);
 };
 
 function checkIsFirstSignIn(user: User): boolean {

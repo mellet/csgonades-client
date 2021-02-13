@@ -7,18 +7,27 @@ import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 import { IconButton } from "../../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
+import { useGa } from "../../../utils/Analytics";
 
 type Props = {
   nadeId: string;
 };
 
 export const NadeReportButton: FC<Props> = ({ nadeId }) => {
+  const ga = useGa();
   const { colors } = useTheme();
   const [showReportForm, setShowReportForm] = useState(false);
   const [reportMsg, setReportMsg] = useState("");
   const displayToast = useDisplayToast();
 
   function onToggle() {
+    if (!showReportForm) {
+      ga.event({
+        category: "nade-page",
+        action: "Clicked Report Nade",
+      });
+    }
+
     setShowReportForm(!showReportForm);
   }
 

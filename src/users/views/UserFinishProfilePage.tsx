@@ -5,12 +5,12 @@ import { useTheme } from "../../core/settings/SettingsHooks";
 import { useFinishProfile } from "../data/useFinishProfile";
 import { Dimensions } from "../../constants/Constants";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
-import { useGaEvent } from "../../utils/Analytics";
+import { useGa } from "../../utils/Analytics";
 
 type Props = { user: User };
 
 export const UserFinishProfilePage: FC<Props> = ({ user }) => {
-  const event = useGaEvent();
+  const ga = useGa();
   const [loading, setLoading] = useState(false);
   const finishProfile = useFinishProfile();
   const [nickname, setNickname] = useState(user.nickname);
@@ -25,10 +25,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
       setError(
         "It looks like you put your e-mail as your nickname. This is not very smart as it will be visible to anyone."
       );
-      event({
-        category: "Auth",
-        action: "Wrong E-mail Entered",
-      });
+      ga.error("Profile Creation, Wrong E-mail Entered");
       return;
     }
 
@@ -38,8 +35,8 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
       email,
       bio,
     });
-    event({
-      category: "Auth",
+    ga.event({
+      category: "auth",
       action: "Finished Profile Creation",
     });
     displayToast({

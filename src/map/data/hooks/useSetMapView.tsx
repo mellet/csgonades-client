@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGaEvent } from "../../../utils/Analytics";
+import { useGa } from "../../../utils/Analytics";
 import { mapViewSelector } from "../selectors";
 import { MapView, setMapViewAction } from "../slice";
 
@@ -10,7 +10,7 @@ type UseMapViewConfig = {
 
 export const useSetMapView = (config?: UseMapViewConfig) => {
   const { trackEvent } = config || {};
-  const event = useGaEvent();
+  const ga = useGa();
   const mapView = useSelector(mapViewSelector);
   const dispatch = useDispatch();
 
@@ -18,13 +18,13 @@ export const useSetMapView = (config?: UseMapViewConfig) => {
     (view: MapView) => {
       dispatch(setMapViewAction(view));
       if (trackEvent) {
-        event({
-          category: "Filter",
-          action: `Set mapview ${view}`,
+        ga.event({
+          category: "map-page",
+          action: `Filter View ${view}`,
         });
       }
     },
-    [dispatch, event, trackEvent]
+    [dispatch, ga, trackEvent]
   );
   return {
     mapView,

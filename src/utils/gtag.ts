@@ -14,7 +14,14 @@ export const pageview = (url: string) => {
 
 export type GTagEvent = {
   action: string;
-  category: string;
+  category:
+    | "modal"
+    | "nade-page"
+    | "map-page"
+    | "auth"
+    | "nade-item"
+    | "settings"
+    | "share";
   label?: string;
   value?: number;
   non_interaction?: boolean;

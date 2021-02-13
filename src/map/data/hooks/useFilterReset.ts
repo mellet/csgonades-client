@@ -7,10 +7,10 @@ import {
   filterByTypeSelector,
   filterByProSelector,
 } from "../selectors";
-import { useGaEvent } from "../../../utils/Analytics";
+import { useGa } from "../../../utils/Analytics";
 
 export const useFilterReset = () => {
-  const event = useGaEvent();
+  const ga = useGa();
   const byTickrate = useSelector(filterByTickrateSelector);
   const byFavorites = useSelector(filterByFavoritesSelector);
   const byType = useSelector(filterByTypeSelector);
@@ -21,13 +21,13 @@ export const useFilterReset = () => {
     (disableAnalytics?: boolean) => {
       dispatch(resetFilterAction());
       if (!disableAnalytics) {
-        event({
-          category: "Filter",
-          action: "Reset",
+        ga.event({
+          category: "map-page",
+          action: "Reset Filter",
         });
       }
     },
-    [dispatch, event]
+    [dispatch, ga]
   );
 
   const canReset = useMemo(() => {

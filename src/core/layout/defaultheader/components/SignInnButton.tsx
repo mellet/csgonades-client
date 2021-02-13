@@ -1,15 +1,15 @@
 import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
 import { Config, Dimensions } from "../../../../constants/Constants";
-import { useGaEvent } from "../../../../utils/Analytics";
+import { useGa } from "../../../../utils/Analytics";
 
 export const SignInnButton: FC = () => {
-  const event = useGaEvent();
+  const ga = useGa();
 
   function onSignInClick() {
-    event({
-      category: "Auth",
-      action: "Sign In Start",
+    ga.event({
+      category: "auth",
+      action: "Clicked Sign In Button",
     });
   }
 

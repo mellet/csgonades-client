@@ -1,23 +1,23 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useGaEvent } from "../../../utils/Analytics";
+import { useGa } from "../../../utils/Analytics";
 import { filterByFavoritesSelector } from "../selectors";
 import { toggleFavoritesAction } from "../slice";
 
 export const useFilterByFavorites = () => {
-  const event = useGaEvent();
+  const ga = useGa();
   const byFavorites = useSelector(filterByFavoritesSelector);
   const dispatch = useDispatch();
 
   const toggleFavFilter = () => {
-    event({
-      category: "Filter",
-      action: "Toggle Favorite",
+    ga.event({
+      category: "map-page",
+      action: "Filter Favorite",
     });
     dispatch(toggleFavoritesAction());
   };
 
-  const filterByFavorites = useCallback(toggleFavFilter, [dispatch, event]);
+  const filterByFavorites = useCallback(toggleFavFilter, [dispatch, ga]);
 
   return {
     filterByFavorites,

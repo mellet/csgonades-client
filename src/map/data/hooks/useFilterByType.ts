@@ -3,10 +3,10 @@ import { NadeType } from "../../../nade/models/NadeType";
 import { useDispatch, useSelector } from "react-redux";
 import { filterByTypeSelector } from "../selectors";
 import { filterByTypeAction } from "../slice";
-import { useGaEvent } from "../../../utils/Analytics";
+import { useGa } from "../../../utils/Analytics";
 
 export const useFilterByType = () => {
-  const event = useGaEvent();
+  const ga = useGa();
 
   const byType = useSelector(filterByTypeSelector);
   const dispatch = useDispatch();
@@ -14,12 +14,12 @@ export const useFilterByType = () => {
   const filterByType = useCallback(
     (nadeType: NadeType) => {
       dispatch(filterByTypeAction(nadeType));
-      event({
-        category: "Filter",
-        action: `By type ${nadeType}`,
+      ga.event({
+        category: "map-page",
+        action: `Filter Nade Type ${nadeType}`,
       });
     },
-    [dispatch, event]
+    [dispatch, ga]
   );
 
   return {

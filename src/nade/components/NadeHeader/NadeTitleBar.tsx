@@ -2,7 +2,6 @@ import { FC, memo } from "react";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
-import { useGaEvent } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { Nade } from "../../models/Nade";
 import { NadeTitle } from "./NadeTitle";
@@ -12,15 +11,6 @@ type Props = {
 };
 
 export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
-  const event = useGaEvent();
-
-  function logBackEvent() {
-    event({
-      category: "Nade Page",
-      action: "Back click",
-    });
-  }
-
   const { colors } = useTheme();
 
   return (
@@ -29,7 +19,7 @@ export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
         <div id="left-controls">
           {!!nade.map && (
             <Link href={`/maps/${nade.map}`}>
-              <button id="back" onClick={logBackEvent}>
+              <button id="back">
                 <FaChevronLeft />
               </button>
             </Link>

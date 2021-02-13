@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../store";
-import { useGaEvent } from "../../utils/Analytics";
+import { useGa } from "../../utils/Analytics";
 import { AppState } from "../store/rootReducer";
 import { setThemeAction } from "./SettingsSlice";
 import { themes } from "./Themes";
@@ -9,7 +9,7 @@ import { themes } from "./Themes";
 const themeSelector = (state: AppState) => state.settingsStore.theme;
 
 export const useTheme = () => {
-  const event = useGaEvent();
+  const ga = useGa();
   const dispatch = useDispatch<AppDispatch>();
   const theme = useSelector(themeSelector);
 
@@ -20,15 +20,15 @@ export const useTheme = () => {
   function toggleTheme() {
     if (theme === "light") {
       dispatch(setThemeAction("dark"));
-      event({
-        category: "Theme",
-        action: "Set Dark",
+      ga.event({
+        category: "settings",
+        action: "Set Dark Theme",
       });
     } else {
       dispatch(setThemeAction("light"));
-      event({
-        category: "Theme",
-        action: "Set Light",
+      ga.event({
+        category: "settings",
+        action: "Set Light Theme",
       });
     }
   }

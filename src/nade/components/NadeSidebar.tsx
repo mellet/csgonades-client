@@ -4,7 +4,6 @@ import { Dimensions } from "../../constants/Constants";
 
 export const NadeSidebar: FC = ({ children }) => {
   const test = (children as any).filter((n) => {
-    console.log("#", n);
     return n !== null;
   });
 

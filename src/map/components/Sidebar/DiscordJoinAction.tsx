@@ -1,11 +1,19 @@
 import { FC } from "react";
 import { FaDiscord } from "react-icons/fa";
+import { useGa } from "../../../utils/Analytics";
 
 export const DiscordJoinAction: FC = () => {
+  const ga = useGa();
+
+  function logJoinDiscor() {
+    ga.event({ category: "map-page", action: "Click Join Discord" });
+  }
+
   return (
     <>
       <div className="actions-wrapper">
         <a
+          onClick={logJoinDiscor}
           href="https://discord.gg/010h0KFCBNASyMUKv"
           target="_blank"
           rel="noopener noreferrer nofollow"

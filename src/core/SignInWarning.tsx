@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { CSGNModal } from "../shared-components/CSGNModal";
-import { useGaEvent } from "../utils/Analytics";
+import { useGa } from "../utils/Analytics";
 import { SignInnButton } from "./layout/defaultheader/components/SignInnButton";
 import { useSignInWarning } from "./global/hooks/useSignInWarning";
 import { FaComment, FaPlus, FaStar } from "react-icons/fa";
@@ -11,20 +11,20 @@ import { Dimensions } from "../constants/Constants";
 export const SignInWarning: FC = memo(() => {
   const { colors } = useTheme();
   const { signInWarning, clearSignInWarning } = useSignInWarning();
-  const event = useGaEvent();
+  const ga = useGa();
 
   function onSignIn() {
-    event({
-      category: `Sign In Warning ${signInWarning}`,
-      action: "Sign In Clicked",
+    ga.event({
+      category: "modal",
+      action: `Display Sign In Warning ${signInWarning}`,
     });
   }
 
   function onDismiss() {
     clearSignInWarning();
-    event({
-      category: `Sign In Warning ${signInWarning}`,
-      action: "Dismiss",
+    ga.event({
+      category: "modal",
+      action: `Display Sign In Warning ${signInWarning}`,
     });
   }
 

@@ -20,7 +20,7 @@ export const useNewPageView = (): void => {
   }, [router.asPath, isAdmin, closeNav]);
 };
 
-export const useGaEvent = () => {
+export const useGa = () => {
   const isAdmin = useIsAdmin();
 
   const event = useCallback(
@@ -33,5 +33,14 @@ export const useGaEvent = () => {
     [isAdmin]
   );
 
-  return event;
+  const error = useCallback(
+    (description: string, fatal?: boolean) => {
+      if (isAdmin || !IS_PROD) {
+        return;
+      }
+      gtag.exception(description, fatal);
+    },
+    [isAdmin]
+  );
+  return { error, event };
 };

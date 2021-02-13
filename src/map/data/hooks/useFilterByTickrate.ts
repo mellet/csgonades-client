@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterByTickrateSelector } from "../selectors";
 import { Tickrate } from "../../../nade/models/NadeTickrate";
 import { filterByTickrateAction } from "../slice";
-import { useGaEvent } from "../../../utils/Analytics";
+import { useGa } from "../../../utils/Analytics";
 
 export const useFilterByTickrate = () => {
-  const event = useGaEvent();
+  const ga = useGa();
 
   const byTickrate = useSelector(filterByTickrateSelector);
   const dispatch = useDispatch();
@@ -14,12 +14,12 @@ export const useFilterByTickrate = () => {
   const filterByTickrate = useCallback(
     (tick: Tickrate) => {
       dispatch(filterByTickrateAction(tick));
-      event({
-        category: "Filter",
-        action: `By tick ${tick}`,
+      ga.event({
+        category: "map-page",
+        action: `Filter tick ${tick}`,
       });
     },
-    [dispatch, event]
+    [dispatch, ga]
   );
 
   return {

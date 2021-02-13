@@ -5,7 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { useGaEvent } from "../../../utils/Analytics";
+import { useGa } from "../../../utils/Analytics";
 
 type Props = {
   nades: NadeLight[] | null;
@@ -14,14 +14,10 @@ type Props = {
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
-  const event = useGaEvent();
+  const ga = useGa();
 
   const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
-    event({
-      category: "Suggested Nade",
-      action: "Nade Clicked",
-    });
   };
 
   function renderItem(item: NadeLight) {
@@ -39,9 +35,9 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const onDismissCloseClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
 
-    event({
-      category: "Suggested Nade",
-      action: "Dismiss",
+    ga.event({
+      category: "map-page",
+      action: "Dismiss Suggested Nades",
     });
 
     onDismiss();
