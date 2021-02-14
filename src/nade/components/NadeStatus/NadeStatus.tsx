@@ -4,6 +4,7 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 import { ThemeColors } from "../../../core/settings/Themes";
 import { FaExclamationCircle, FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "./CSGNIcon";
+import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
   status: Status;
@@ -96,6 +97,7 @@ const NadeStatus: FC<Props> = memo(({ status }) => {
           padding: 16px;
           color: ${statusColors.text};
           border-radius: 8px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

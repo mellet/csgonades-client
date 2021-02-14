@@ -71,6 +71,7 @@ export const CommentSubmit: FC<Props> = memo(
             text-align: center;
             color: ${colors.TEXT};
             border: 1px solid ${colors.BORDER};
+            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 
           .comment-sign-in p {
@@ -79,9 +80,9 @@ export const CommentSubmit: FC<Props> = memo(
           }
 
           .nade-submit {
-            position: relative;
             display: flex;
             flex-direction: column;
+            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
 
           textarea {
@@ -90,9 +91,10 @@ export const CommentSubmit: FC<Props> = memo(
             min-height: 120px;
             resize: none;
             padding: ${Dimensions.GUTTER_SIZE}px;
-            border-radius: 5px;
+            border-radius: 8px;
             color: ${colors.TEXT};
             border: 1px dashed ${colors.BORDER};
+            border-bottom-right-radius: 0px;
           }
 
           textarea:focus {
@@ -105,18 +107,15 @@ export const CommentSubmit: FC<Props> = memo(
           }
 
           .nade-submit button {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
             align-self: flex-end;
             border: none;
             background: ${colors.filterBg};
             padding: 10px 15px;
-            border-radius: 5px;
-            margin-top: 10px;
             color: white;
             outline: none;
             cursor: pointer;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
           }
 
           .nade-submit button:hover {
