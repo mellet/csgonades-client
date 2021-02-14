@@ -1,18 +1,13 @@
 import { NextPage } from "next";
 import { useOnSignIn } from "../core/authentication/useOnSignIn";
 import { SEO } from "../shared-components/SEO";
-import { useEffect, useState } from "react";
 import { useTheme } from "../core/settings/SettingsHooks";
+import { CSGNIcon } from "../nade/components/NadeStatus/CSGNIcon";
+import { FaSpinner } from "react-icons/fa";
 
 const Auth: NextPage = () => {
   const { colors } = useTheme();
-  const [isSlow, setIsSlow] = useState(false);
-  useEffect(() => {
-    const delay = setTimeout(() => {
-      setIsSlow(true);
-    }, 5000);
-    return () => clearTimeout(delay);
-  }, []);
+
   useOnSignIn();
 
   return (
@@ -20,14 +15,11 @@ const Auth: NextPage = () => {
       <SEO title="Signing in" canonical="/auth" />
       <div className="loading">
         <div className="loading-msg">
-          <p className="sign-in-msg">Loading</p>
-          <p>Please wait...</p>
-          {isSlow && (
-            <p>
-              This seems to be taking a while... You can try refreshing the
-              page.
-            </p>
-          )}
+          <p className="sign-in-msg">Signing you in!</p>
+          <p>
+            Please wait...
+            <CSGNIcon icon={<FaSpinner />} spin />
+          </p>
         </div>
       </div>
       <style jsx>{`

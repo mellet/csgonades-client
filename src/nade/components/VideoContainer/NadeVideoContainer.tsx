@@ -2,21 +2,30 @@ import { FC, memo, useState } from "react";
 import { GfycatIframe } from "./GfycatIframe";
 import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
+import { NadeMeta } from "../NadeMeta/NadeMeta";
+import { Nade } from "../../models/Nade";
 
 type Props = {
-  gfyId: string;
-  lineUpUrl?: string;
+  nade: Nade;
 };
 
 type Tabs = "video" | "lineup";
 
-export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
+export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("video");
+
+  const lineUpUrl = nade.imageLineup?.url || nade.images.lineupUrl;
 
   const hasLineUp = !!lineUpUrl;
 
   return (
     <>
+      <NadeMeta
+        movement={nade.movement}
+        technique={nade.technique}
+        tickrate={nade.tickrate}
+        type={nade.type}
+      />
       <div className="video-wrap">
         {hasLineUp && (
           <NadeTabSelector
@@ -28,7 +37,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
         <div className="media-container">
           {currentTab === "video" && (
             <div className="video-tab">
-              <GfycatIframe gfyId={gfyId} />
+              <GfycatIframe gfyId={nade.gfycat.gfyId} />
             </div>
           )}
 
@@ -41,7 +50,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ gfyId, lineUpUrl }) => {
         .video-wrap {
           position: relative;
           overflow: hidden;
-          padding-bottom: calc(56.25% + 34px);
+          padding-bottom: calc(56.25% + 44px);
         }
 
         .media-container {

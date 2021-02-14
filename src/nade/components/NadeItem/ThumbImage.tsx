@@ -94,7 +94,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
           z-index: 1;
           color: #111;
           background: rgba(255, 255, 255, 0.8);
-          padding: 2px 4px;
+          padding: 0px 6px;
           border-radius: 4px;
           opacity: 0.8;
         }

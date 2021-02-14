@@ -3,7 +3,6 @@ import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { NadeCommentItem } from "./NadeCommentItem/NadeCommentItem";
 import { CommentSubmit } from "./CommentSubmit";
 import { Nade } from "../../models/Nade";
-import { EzoicPlainPlaceholder } from "../../../shared-components/adunits/EzoicPlainPlaceholder";
 
 type Props = {
   nade: Nade;
@@ -15,8 +14,6 @@ export const NadeComments: FC<Props> = memo(({ nade }) => {
   return (
     <>
       <CommentSubmit nadeId={nade.id} onCommentSubmitted={addComment} />
-
-      <EzoicPlainPlaceholder center id="196" />
 
       {comments.map((nc) => (
         <NadeCommentItem

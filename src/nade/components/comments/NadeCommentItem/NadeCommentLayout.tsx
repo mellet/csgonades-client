@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Dimensions } from "../../../../constants/Constants";
 
 export const NadeCommentLayout = styled.div`
   display: grid;
@@ -10,6 +11,7 @@ export const NadeCommentLayout = styled.div`
     "avatar action action";
   color: ${({ theme }) => theme.colors.TEXT};
   width: 100%;
+  margin-bottom: ${Dimensions.GUTTER_SIZE}px;
 `;
 
 export const NadeCommentAvatar = styled.img`

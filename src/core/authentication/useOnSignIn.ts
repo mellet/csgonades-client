@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
@@ -12,11 +12,10 @@ import { UserApi } from "../../users/data/UserApi";
 export const useOnSignIn = () => {
   const ga = useGa();
   const displayToast = useDisplayToast();
-  const router = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
+    const login = async () => {
       const { userDetails, userToken } = await trySignInFunc();
       if (!userDetails || !userToken) {
         displayToast({
@@ -25,7 +24,7 @@ export const useOnSignIn = () => {
         });
         dispatch(signOutAction());
         ga.error("singin_failed", false);
-        router.push("/", "/");
+        Router.push("/");
         return;
       }
 
@@ -40,17 +39,20 @@ export const useOnSignIn = () => {
           action: "signin_success",
           label: "new",
         });
-        router.push("/finishprofile", "/finishprofile");
+        Router.push("/finishprofile");
       } else {
         ga.event({
           category: "auth",
           action: "signin_success",
           label: "returning",
         });
-        router.push("/", "/");
+        Router.push("/");
       }
-    })();
-  }, [dispatch, router, displayToast, ga]);
+    };
+    login();
+    console.log("Once");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 function checkIsFirstSignIn(user: User): boolean {
