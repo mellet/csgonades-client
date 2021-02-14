@@ -5,6 +5,7 @@ import { BlogNadeItem } from "../components/BlogNadeItem";
 import { BlogPostArticle } from "../components/BlogPostArticle";
 import { CsConsole } from "../components/CsConsole";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
+import { NadeBlogList } from "../components/NadeBlogList";
 
 export const NadeAlignCrosshairPost: FC = () => {
   return (
@@ -125,9 +126,14 @@ export const NadeAlignCrosshairPost: FC = () => {
           On the nade below, you can see the large crosshair used to set up the
           smoke.
         </p>
-        <div className="nade-wrap">
+
+        <NadeBlogList>
+          <BlogNadeItem nadeSlug="inferno-smoke-library-from-top-mid" />
           <BlogNadeItem nadeSlug="dust2-smoke-a-cross-from-long-doors" />
-        </div>
+          <BlogNadeItem nadeSlug="cache-balcony-smoke" />
+          <BlogNadeItem nadeSlug="inferno-smoke-coffins-from-banana" />
+        </NadeBlogList>
+
         <p>
           That&apos;s it! Now you got an extra tool in toolbelt to find creative
           line ups.

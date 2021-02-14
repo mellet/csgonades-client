@@ -6,6 +6,7 @@ import { BlogNadeItem } from "../components/BlogNadeItem";
 import { Dimensions } from "../../constants/Constants";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { PageLink } from "../../shared-components/PageLink";
+import { NadeBlogList } from "../components/NadeBlogList";
 
 export const BestDust2NadesBlogPost = (): JSX.Element => {
   return (
@@ -51,10 +52,10 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
             Tip: Mouse over the thumbnail and it will play the video.
           </strong>
         </p>
-        <div className="nade-list">
+        <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-t-spawn-7Nn" />
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-lower-tunnels-gXs" />
-        </div>
+        </NadeBlogList>
 
         <div className="a-tag">
           <EzoicPlaceholder id="189" />
@@ -74,11 +75,11 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           <Link href="/maps/dust2">Dust2 nades</Link> if you prefer to throw it
           from T Spawn:
         </p>
-        <div className="nade-list">
+
+        <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-long-doors" />
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-outside-long" />
-        </div>
-
+        </NadeBlogList>
         <h2>3. A Site, CT Spawn</h2>
         <p>
           Almost there, let&apos;s plant A site! Nothing can stop us now... Oh,
@@ -87,9 +88,9 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           You can just wing this one pretty easily, but you could get caught
           with a nade in your hand.
         </p>
-        <div className="nade-list">
+        <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-ct-spawn-from-long-doors" />
-        </div>
+        </NadeBlogList>
 
         <h2>4. The Mid to B Smoke</h2>
         <p>
@@ -97,10 +98,10 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           smoke and do a B split. Optionally throw the flash to make life a
           little easier. It flashes anyone standing behind the door perfectly.
         </p>
-        <div className="nade-list">
+        <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-ct-spawn-from-xbox" />
           <BlogNadeItem nadeSlug="flash-mid-doors-from-xbox" />
-        </div>
+        </NadeBlogList>
 
         <h2>5. B Door Smoke</h2>
         <p>
@@ -112,10 +113,10 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           </PageLink>{" "}
           and find your favourite ones.
         </p>
-        <div className="nade-list">
+        <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-b-doors-from-upper-tunnel" />
           <BlogNadeItem nadeSlug="dust2-smoke-b-doors-from-upper-tunnel-xmR" />
-        </div>
+        </NadeBlogList>
 
         <p>
           That&apos;s it, and you&apos;re now a pro! Just kidding, the utility

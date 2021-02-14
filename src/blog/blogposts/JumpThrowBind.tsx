@@ -4,6 +4,8 @@ import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogPostArticle } from "../components/BlogPostArticle";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { PageLink } from "../../shared-components/PageLink";
+import { BlogNadeItem } from "../components/BlogNadeItem";
+import { NadeBlogList } from "../components/NadeBlogList";
 
 export const JumpThrowBindBlogMain: FC = () => {
   return (
@@ -75,6 +77,22 @@ export const JumpThrowBindBlogMain: FC = () => {
           }
         />
 
+        <h2>Many nades require jumpthrow bind to be consistent</h2>
+
+        <p>
+          Some nades require you to use the jumpthrow bind, otherwise it wont be
+          very consistent. Below are a couple nades that become a lot easier to
+          throw.
+        </p>
+
+        <NadeBlogList>
+          <BlogNadeItem nadeSlug="smoke-mid-window-from-t-spawn" />
+          <BlogNadeItem nadeSlug="mirage-smoke-snipers-nest-from-t-spawn" />
+          <BlogNadeItem nadeSlug="smoke-monster-from-ct-spawn-overpass" />
+          <BlogNadeItem nadeSlug="smoke-monster-from-ct" />
+          <BlogNadeItem nadeSlug="dust2-smoke-b-window-from-upper-tunnel" />
+        </NadeBlogList>
+
         <h2>How to use jumpthrow bind</h2>
         <p>
           Take out your smoke, hold down either your left, right or both mouse
@@ -106,13 +124,6 @@ export const JumpThrowBindBlogMain: FC = () => {
           Now that you got your jumpthrow bind is set up, head over to your
           favorite map and find some nades that use the jumpthrow bind.
         </p>
-
-        <PageLink href="/maps/[map]" as="/maps/dust2">
-          <span className="cta-map">Dust2 Nades</span>
-        </PageLink>
-        <PageLink href="/maps/[map]" as="/maps/mirage">
-          <span className="cta-map">Mirage Nades</span>
-        </PageLink>
 
         <div className="video-container">
           <iframe
