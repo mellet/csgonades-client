@@ -22,11 +22,13 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
   return (
     <Tooltip message="Edit" direction="bottom">
       <Link href={`/nades/${nade.slug || nade.id}/edit`}>
-        <IconButton
-          icon={<FaPencilAlt />}
-          active={false}
-          activeColor={colors.SUCCESS}
-        />
+        <a>
+          <IconButton
+            icon={<FaPencilAlt />}
+            active={false}
+            activeColor={colors.SUCCESS}
+          />
+        </a>
       </Link>
     </Tooltip>
   );
