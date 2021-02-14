@@ -26,7 +26,7 @@ const IconFix = styled.span<{ spin?: boolean; size: number }>`
   padding: 0;
   height: ${(props) => props.size}px;
   width: ${(props) => props.size}px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
