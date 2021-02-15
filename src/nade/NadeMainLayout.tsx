@@ -25,8 +25,10 @@ export const NadeMainLayoutBuild: FC<Props> = ({
       <NadeMainLayout>
         <div className="status">{status}</div>
         <div className="mobile-title">{mobileTitle}</div>
-        <div className="sticky-advert">
-          <EzoicPlaceholder id="199" />
+        <div className="advert">
+          <div className="sticky">
+            <EzoicPlaceholder id="199" />
+          </div>
         </div>
         <div className="video">{video}</div>
         <div className="actions">{actions}</div>
@@ -52,8 +54,11 @@ const NadeMainLayout = styled.div`
   max-width: ${Dimensions.PAGE_WIDTH}px;
   margin: 0 auto;
 
-  .sticky-advert {
+  .advert {
     grid-area: ad;
+  }
+
+  .sticky {
     width: 160px;
     position: sticky;
     top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
