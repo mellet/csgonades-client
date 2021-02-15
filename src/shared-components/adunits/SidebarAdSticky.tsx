@@ -26,9 +26,8 @@ export const SidebarAdSticky: FC = ({}) => {
               <strong>Oh no!</strong> You have AdBlock enabled{" "}
               <Twemoji emoji="😢" />
             </div>
-            Consider disabling it on this site so I can buy some artisan tea{" "}
+            Consider disabling it on this site to keep the site running{" "}
             <Twemoji emoji="😍" />
-            <br />
           </div>
         </div>
       )}
