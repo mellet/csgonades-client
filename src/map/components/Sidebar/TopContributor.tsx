@@ -72,13 +72,13 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
       <style jsx>{`
         .cont-list {
           margin-top: ${Dimensions.GUTTER_SIZE}px;
+          border-top: 1px solid ${colors.BORDER};
         }
 
         .label {
-          border-bottom: 1px solid ${colors.BORDER};
           color: ${colors.TEXT};
-          padding: 8px 16px;
-          margin-bottom: 8px;
+          padding: 16px 16px;
+          padding-bottom: 8px;
           text-align: center;
           font-size: 16px;
         }
