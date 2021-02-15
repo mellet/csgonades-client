@@ -42,9 +42,10 @@ export const EzoicPlaceholder: FC<Props> = memo(({ id, disableAdLabel }) => {
           background: ${colors.DP02};
           color: ${colors.TEXT};
           font-size: 10px;
+          line-height: 10px;
+          padding: 3px;
           font-weight: 400;
           margin: 0px;
-          padding: 2px;
           text-align: center;
           width: 100%;
         }
