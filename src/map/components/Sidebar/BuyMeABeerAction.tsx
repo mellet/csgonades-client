@@ -19,7 +19,7 @@ export const BuyMeABeerAction: FC = ({}) => {
       >
         <button className="bma">
           <span>
-            Buy me a <span className="cta">Beer</span>
+            Buy me a <span className="cta">Coffee</span>
           </span>
           <div className="img-wrapper">
             <img src="/bmc-white.svg" />
