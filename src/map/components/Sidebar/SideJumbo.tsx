@@ -37,11 +37,10 @@ export const SideJumbo: FC<Props> = ({ nades, map }) => {
           margin: 0;
           padding: 0;
           margin-bottom: 10px;
-          font-weight: 400;
         }
 
         .jumbo h2 {
-          font-size: 16px;
+          font-size: 14px;
           margin: 0;
           padding: 0;
         }
