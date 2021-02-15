@@ -20,7 +20,7 @@ export const DiscordJoinAction: FC = () => {
         >
           <div className="action">
             <div className="discord-msg">
-              Join us on <b>Discord</b>
+              Join us on <span>Discord</span>
             </div>
             <div className="discord-logo">
               <FaDiscord />
@@ -29,11 +29,6 @@ export const DiscordJoinAction: FC = () => {
         </a>
       </div>
       <style jsx>{`
-        .actions-wrapper {
-          width: 100%;
-          overflow: hidden;
-        }
-
         .action {
           display: flex;
           padding: 10px 16px;
@@ -41,7 +36,7 @@ export const DiscordJoinAction: FC = () => {
           justify-content: space-between;
           align-items: center;
           background: #7289da;
-          min-height: 50px;
+          height: 50px;
         }
 
         .action:hover {
@@ -52,14 +47,18 @@ export const DiscordJoinAction: FC = () => {
           font-size: 16px;
         }
 
+        .discord-msg span {
+          font-weight: 500;
+        }
+
         .discord {
           position: relative;
         }
 
         .discord-logo {
           font-size: 30px;
-          opacity: 0.2;
           color: #fff;
+          width: 30px;
         }
       `}</style>
     </>
