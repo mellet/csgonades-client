@@ -3,8 +3,10 @@ import { FaCookieBite } from "react-icons/fa";
 import { Dimensions } from "../constants/Constants";
 import { useCookieConcent } from "../core/global/hooks/useCookieConcent";
 import { useTheme } from "../core/settings/SettingsHooks";
+import { useGa } from "../utils/Analytics";
 
 export const CookieConsent: FC = memo(() => {
+  const ga = useGa();
   const [render, setRender] = useState(false);
   const { colors } = useTheme();
   const { acceptCookieConcent, acceptedCookieConsent } = useCookieConcent();
@@ -26,6 +28,10 @@ export const CookieConsent: FC = memo(() => {
 
   function onCookieConsentAccept() {
     acceptCookieConcent();
+    ga.event({
+      category: "settings",
+      action: "accept_coockie_concent",
+    });
   }
 
   return (
