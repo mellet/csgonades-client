@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader";
 import { useSetupSession } from "./layout/useSetupSession";
-import { useNewPageView } from "../utils/Analytics";
 import dynamic from "next/dynamic";
 
 const CookieConsent = dynamic(
@@ -30,7 +29,6 @@ const SignInWarning = dynamic(
 
 export const CoreWrapper: FC = ({ children }) => {
   useSetupSession();
-  useNewPageView();
   useEzoidAdLoader();
 
   return (

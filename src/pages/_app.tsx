@@ -5,8 +5,11 @@ import { FC } from "react";
 import { withRedux } from "../utils/WithRedux";
 import { CoreWrapper } from "../core/CoreWrapper";
 import { AppThemeProvider } from "../core/settings/AppThemeProvider";
+import { useNewPageView } from "../utils/Analytics";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
+  useNewPageView();
+
   return (
     <>
       <Head>
