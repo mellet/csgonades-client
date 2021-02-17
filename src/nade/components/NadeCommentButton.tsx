@@ -15,7 +15,7 @@ export const NadeCommentButton: FC<Props> = ({ commentCount, slug }) => {
   function onCommentClick() {
     ga.event({
       category: "nade_page",
-      action: "click-comment-button",
+      action: "click_comment_button",
       label: slug,
     });
   }
