@@ -20,7 +20,7 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
   }
 
   return (
-    <Tooltip message="Edit" direction="bottom">
+    <Tooltip message="Edit" direction="right">
       <Link href={`/nades/${nade.slug || nade.id}/edit`}>
         <a>
           <IconButton

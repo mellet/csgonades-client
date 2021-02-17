@@ -7,8 +7,6 @@ type Props = {
   map: CsgoMap;
 };
 
-const HARD_LINK = false;
-
 export const MapPageLink: FC<Props> = ({ map, children }) => {
   const { resetFilter } = useFilterReset();
 
@@ -16,16 +14,9 @@ export const MapPageLink: FC<Props> = ({ map, children }) => {
     resetFilter(true);
   }
 
-  if (HARD_LINK) {
-    return <a href={`/maps/${map}`}>{children}</a>;
-  }
-
   return (
-    <>
-      <Link href={`/maps/${map}`}>
-        <a onClick={onMapLinkClick}>{children}</a>
-      </Link>
-      <style jsx>{``}</style>
-    </>
+    <Link href={`/maps/${map}`}>
+      <a onClick={onMapLinkClick}>{children}</a>
+    </Link>
   );
 };

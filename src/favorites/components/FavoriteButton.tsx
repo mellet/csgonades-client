@@ -69,7 +69,7 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
   }
 
   return (
-    <Tooltip message="Favorite" direction="bottom">
+    <Tooltip message="Favorite" direction="right">
       <IconButton
         icon={<FaStar />}
         active={optimisticIsFavorites}

@@ -43,7 +43,7 @@ export const CommentSubmit: FC<Props> = memo(
     return (
       <>
         {isSignedIn && (
-          <div className="nade-submit">
+          <div id="comments" className="nade-submit">
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -55,7 +55,7 @@ export const CommentSubmit: FC<Props> = memo(
           </div>
         )}
         {!isSignedIn && (
-          <div className="comment-sign-in">
+          <div id="comments" className="comment-sign-in">
             <p>Do you want to comment on this nade?</p>
             <div>
               <a href={Config.SIGN_IN_URL}>Sign in with steam</a>

@@ -50,7 +50,7 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
   return (
     <>
       <div className="report">
-        <Tooltip message="Report" direction="bottom">
+        <Tooltip message="Report" direction="right">
           <IconButton
             icon={<FaFlag />}
             onClick={onToggle}

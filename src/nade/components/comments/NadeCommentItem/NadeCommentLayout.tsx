@@ -3,12 +3,11 @@ import { Dimensions } from "../../../../constants/Constants";
 
 export const NadeCommentLayout = styled.div`
   display: grid;
-  grid-template-columns: min-content 1fr 1fr;
+  grid-template-columns: min-content 1fr min-content;
   grid-template-areas:
-    "avatar username username"
+    "avatar username action"
     "avatar body body"
-    "avatar time time"
-    "avatar action action";
+    "avatar time time";
   color: ${({ theme }) => theme.colors.TEXT};
   width: 100%;
   margin-bottom: ${Dimensions.GUTTER_SIZE}px;
@@ -28,8 +27,7 @@ export const NadeCommentNickname = styled.div`
   grid-area: username;
   color: ${({ theme }) => theme.colors.TEXT};
   font-weight: 400;
-  padding: 8px;
-  border-top-right-radius: 8px;
+  padding: 16px 16px 8px 16px;
   border-top-left-radius: 8px;
   background: ${({ theme }) => theme.colors.DP03};
 `;
@@ -37,7 +35,7 @@ export const NadeCommentNickname = styled.div`
 export const NadeCommentBody = styled.div`
   grid-area: body;
   background: ${({ theme }) => theme.colors.DP03};
-  padding: 8px;
+  padding: 0px 16px;
 `;
 
 export const NadeCommentTime = styled.div`
@@ -45,15 +43,17 @@ export const NadeCommentTime = styled.div`
   color: ${({ theme }) => theme.colors.GREY};
   font-size: 12px;
   background: ${({ theme }) => theme.colors.DP03};
-  padding: 8px;
-  padding-top: 0;
+  padding: 16px 16px 8px 16px;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 `;
 
 export const NadeCommentActions = styled.div`
   grid-area: action;
-  margin-right: 10px;
+  padding: 0px 0px 0px 0px;
+  background: ${({ theme }) => theme.colors.DP03};
+  border-top-right-radius: 8px;
+  overflow: hidden;
 `;
 
 export const NadeCommentArrow = styled.div`

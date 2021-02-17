@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { FavoriteButton } from "../../favorites/components/FavoriteButton";
 import { NadeReportButton } from "../components/NadeActions/NadeReportButton";
+import { NadeCommentButton } from "../components/NadeCommentButton";
 import { NadeEditButton } from "../components/NadeEditButton";
 import { Nade } from "../models/Nade";
 
@@ -18,6 +19,10 @@ export const NadeActions: FC<Props> = ({ nade }) => {
         </Link>
       </div>
       <FavoriteButton nadeId={nade.id} favoriteCount={nade.favoriteCount} />
+      <NadeCommentButton
+        slug={nade.slug || nade.id}
+        commentCount={nade.commentCount}
+      />
       <NadeReportButton nadeId={nade.id} />
       <NadeEditButton nade={nade} />
       <style jsx>{`
