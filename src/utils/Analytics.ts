@@ -9,22 +9,15 @@ const IS_PROD = process.env.NODE_ENV === "production";
 export const useNewPageView = (): void => {
   const { closeNav } = useNavigation();
   const isAdmin = useIsAdmin();
-  const router = useRouter();
+  const { asPath } = useRouter();
 
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      closeNav();
-      console.log("Page View")
-      if (isAdmin || !IS_PROD) {
-        return;
-      }
-      gtag.pageview(url)
+    closeNav();
+    if (isAdmin || !IS_PROD) {
+      return;
     }
-    router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events, isAdmin, closeNav])
+    gtag.pageview(asPath);
+  }, [asPath, isAdmin, closeNav]);
 };
 
 export const useGa = () => {

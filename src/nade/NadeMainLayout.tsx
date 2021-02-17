@@ -93,6 +93,7 @@ const NadeMainLayout = styled.div`
 
   .comments {
     grid-area: comments;
+    margin-bottom: 100px;
   }
 
   .mobile-title {
