@@ -10,25 +10,21 @@ import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
 import { userSelector } from "../../core/authentication/AuthSelectors";
 import { useUpdateUser } from "../data/useUpdateUser";
-import { useRouter } from "next/router";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   user: User;
 };
 
 export const UserEditorModal: FC<Props> = ({ user }) => {
-  const router = useRouter();
   const updateUser = useUpdateUser();
   const allowEdit = useIsAllowedUserEdit(user);
   const [isEditing, setIsEditing] = useState(false);
   const signedInUser = useSelector(userSelector);
-  const [nickname, setNickname] = useState(
-    signedInUser ? signedInUser.nickname : user.nickname
-  );
-  const [email, setEmail] = useState(
-    signedInUser ? signedInUser.email : user.nickname
-  );
-  const [bio, setBio] = useState(signedInUser ? signedInUser.bio : user.bio);
+  const [loading, setLoading] = useState(false);
+  const [nickname, setNickname] = useState(user.nickname);
+  const [email, setEmail] = useState(user.email);
+  const [bio, setBio] = useState(user.bio);
 
   if (!allowEdit) {
     return null;
@@ -40,13 +36,13 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
       return;
     }
 
+    setLoading(true);
+
     updateUser(signedInUser.steamId, {
       nickname,
       email,
       bio,
     });
-    setIsEditing(false);
-    router.reload();
   }
 
   return (
@@ -62,9 +58,11 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
             onChange={setNickname}
             initialValue={nickname}
           />
+          <br />
           <CsgnInput label="E-mail" onChange={setEmail} initialValue={email} />
+          <br />
           <CsgnTextArea label="Bio" value={bio} onChange={setBio} />
-          <CsgnSaveButton onClick={onSave} />
+          <CsgnSaveButton disabled={loading} onClick={onSave} />
         </div>
       </CSGNModal>
       <ButtonWithIcon
@@ -78,6 +76,7 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
           display: flex;
           flex-direction: column;
           min-width: 40vw;
+          padding: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

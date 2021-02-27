@@ -65,7 +65,7 @@ export const CsgnTextArea: FC<Props> = ({
           border-radius: 5px;
           border: 1px solid rgba(0, 0, 0, 0.15);
           color: ${colors.TEXT};
-          min-height: 250px;
+          min-height: 200px;
           outline: none;
           padding: 15px;
           resize: none;

@@ -4,8 +4,10 @@ import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
 import { setUserAction } from "../../core/authentication/AuthSlice";
 import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
+import { useRouter } from "next/router";
 
 export const useUpdateUser = () => {
+  const router = useRouter();
   const getToken = useGetOrUpdateToken();
   const dispatch = useDispatch();
 
@@ -21,12 +23,14 @@ export const useUpdateUser = () => {
       const result = await UserApi.updateUser(steamId, updatedFields, token);
 
       if (result.isErr()) {
+        router.reload();
         return;
       }
 
       dispatch(setUserAction(result.value));
+      router.reload();
     },
-    [dispatch, getToken]
+    [dispatch, getToken, router]
   );
 
   return updateUser;

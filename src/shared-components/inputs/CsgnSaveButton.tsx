@@ -2,15 +2,18 @@ import { FC } from "react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
+  disabled?: boolean;
   onClick: () => void;
 };
 
-export const CsgnSaveButton: FC<Props> = ({ onClick }) => {
+export const CsgnSaveButton: FC<Props> = ({ onClick, disabled }) => {
   const { colors } = useTheme();
 
   return (
     <>
-      <button onClick={onClick}>SAVE</button>
+      <button disabled={disabled} onClick={onClick}>
+        {disabled ? <>Loading...</> : <>Update</>}
+      </button>
       <style jsx>{`
         button {
           background: ${colors.PRIMARY};
