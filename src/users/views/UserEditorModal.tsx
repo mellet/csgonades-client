@@ -10,12 +10,14 @@ import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
 import { userSelector } from "../../core/authentication/AuthSelectors";
 import { useUpdateUser } from "../data/useUpdateUser";
+import { useRouter } from "next/router";
 
 type Props = {
   user: User;
 };
 
 export const UserEditorModal: FC<Props> = ({ user }) => {
+  const router = useRouter();
   const updateUser = useUpdateUser();
   const allowEdit = useIsAllowedUserEdit(user);
   const [isEditing, setIsEditing] = useState(false);
@@ -44,6 +46,7 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
       bio,
     });
     setIsEditing(false);
+    router.reload();
   }
 
   return (
@@ -54,8 +57,12 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
         onDismiss={() => setIsEditing(false)}
       >
         <div className="user-editor">
-          <CsgnInput label="Nickname" value={nickname} onChange={setNickname} />
-          <CsgnInput label="E-mail" value={email} onChange={setEmail} />
+          <CsgnInput
+            label="Nickname"
+            onChange={setNickname}
+            initialValue={nickname}
+          />
+          <CsgnInput label="E-mail" onChange={setEmail} initialValue={email} />
           <CsgnTextArea label="Bio" value={bio} onChange={setBio} />
           <CsgnSaveButton onClick={onSave} />
         </div>
