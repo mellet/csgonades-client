@@ -10,8 +10,42 @@ import {
   NadeCreateBody,
 } from "../models/Nade";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import { Favorite } from "../../favorites/models/Favorite";
 
 export class NadeApi {
+  static async favoriteNade(
+    nadeId: string,
+    token: string
+  ): AppResult<Favorite> {
+    try {
+      const res = await axios.post<Favorite>(
+        `${Config.API_URL}/nades/${nadeId}/favorite`,
+        undefined,
+        {
+          headers: { Authorization: token },
+        }
+      );
+      return ok(res.data);
+    } catch (error) {
+      return extractApiError(error);
+    }
+  }
+
+  static async unFavoriteNade(nadeId: string, token: string): Promise<boolean> {
+    try {
+      await axios.delete<Favorite>(
+        `${Config.API_URL}/nades/${nadeId}/favorite`,
+        {
+          headers: { Authorization: token },
+        }
+      );
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
   static async isSlugAvailable(slug: string): Promise<boolean> {
     try {
       const res = await axios.get<boolean>(

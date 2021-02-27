@@ -4,12 +4,11 @@ import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import { useIsFavorited } from "../data/hooks/useIsFavorited";
-import { useAddFavorite } from "../data/hooks/useAddFavorite";
-import { useUnfavorite } from "../data/hooks/useUnFavorite";
 import { IconButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
+import { useNadeFavoriteActions } from "../../nade/data/useNadeFavoriteActions";
 
 type Props = {
   nadeId: string;
@@ -27,8 +26,7 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
   const [optimisticIsFavorites, setOptimisticIsFavorited] = useState(
     !!favorite
   );
-  const addFavorite = useAddFavorite();
-  const unFavorite = useUnfavorite();
+  const { addFavorite, unFavorite } = useNadeFavoriteActions();
 
   useEffect(() => {
     if (favorite) {
@@ -53,7 +51,7 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
         action: "click_remove_favorite",
         label: nadeId,
       });
-      unFavorite(favorite.id);
+      unFavorite(nadeId);
       setInternalFavoriteCount(internalFavCount - 1);
       setOptimisticIsFavorited(false);
     } else {
