@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
+import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
+import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { FavoriteApi } from "../../favorites/data/FavoriteApi";
 import {
@@ -12,12 +14,18 @@ import {
 import { NadeApi } from "./NadeApi";
 
 export const useNadeFavoriteActions = () => {
+  const isSignedIn = useIsSignedIn();
+  const { setSignInWarning } = useSignInWarning();
   const dispatch = useDispatch();
   const displayToast = useDisplayToast();
   const getToken = useGetOrUpdateToken();
 
   const addFavorite = useCallback(
     async (nadeId: string) => {
+      if (!isSignedIn) {
+        return setSignInWarning("favorite");
+      }
+
       dispatch(favoriteInProgressEndAction());
       dispatch(favoriteInProgressBeginAction());
 
@@ -53,11 +61,14 @@ export const useNadeFavoriteActions = () => {
         message: "Added to favorites!",
       });
     },
-    [dispatch, displayToast, getToken]
+    [dispatch, displayToast, getToken, setSignInWarning, isSignedIn]
   );
 
   const unFavorite = useCallback(
     async (nadeId: string) => {
+      if (!isSignedIn) {
+        return setSignInWarning("favorite");
+      }
       dispatch(favoriteInProgressBeginAction());
 
       const token = await getToken();
@@ -98,7 +109,7 @@ export const useNadeFavoriteActions = () => {
       dispatch(addAllFavoritesAction(favorites));
       dispatch(favoriteInProgressEndAction());
     },
-    [dispatch, getToken, displayToast]
+    [dispatch, getToken, displayToast, setSignInWarning, isSignedIn]
   );
 
   return {

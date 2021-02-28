@@ -30,15 +30,18 @@ export const StatItem: FC<Props> = ({
       </div>
       <style jsx>{`
         .stat {
+          display: inline-flex;
+          align-items: center;
           color: ${color};
-          display: flex;
           font-size: 11px;
+          line-height: 11px;
           font-weight: 400;
+          height: 11px;
         }
 
         .icon {
           color: ${iconColor || color};
-          font-size: 12px;
+          font-size: 11px;
           margin-right: 3px;
           position: relative;
           top: 1px;

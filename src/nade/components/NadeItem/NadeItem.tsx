@@ -16,10 +16,10 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
 
   return (
     <>
-      <div>
-        <Link href={`/nades/${nade.slug || nade.id}`}>
-          <a className="nadebox-link">
-            <div className={"nadebox"} style={{ display: "inline-block" }}>
+      <div className="nadebox-wrap">
+        <div className={"nadebox"} style={{ display: "inline-block" }}>
+          <Link href={`/nades/${nade.slug || nade.id}`}>
+            <a>
               <NadeItemTitle
                 endPosition={nade.endPosition}
                 oneWay={nade.oneWay}
@@ -44,25 +44,26 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
                   upVoteCount={nade.upVoteCount}
                 />
               </div>
-              <NadeStats
-                commentCount={nade.commentCount}
-                createdAt={nade.createdAt}
-                downVoteCount={nade.downVoteCount}
-                favoriteCount={nade.favoriteCount}
-                isFavorited={nade.isFavorited}
-                isPro={nade.isPro}
-                movement={nade.movement}
-                technique={nade.technique}
-                tickrate={nade.tickrate}
-                upVoteCount={nade.upVoteCount}
-                viewCount={nade.viewCount}
-              />
-            </div>
-          </a>
-        </Link>
+            </a>
+          </Link>
+          <NadeStats
+            nadeId={nade.id}
+            commentCount={nade.commentCount}
+            createdAt={nade.createdAt}
+            downVoteCount={nade.downVoteCount}
+            favoriteCount={nade.favoriteCount}
+            isFavorited={nade.isFavorited}
+            isPro={nade.isPro}
+            movement={nade.movement}
+            technique={nade.technique}
+            tickrate={nade.tickrate}
+            upVoteCount={nade.upVoteCount}
+            viewCount={nade.viewCount}
+          />
+        </div>
       </div>
       <style jsx>{`
-        .nadebox-link {
+        .nadebox-wrap {
           display: inline-block;
           width: 100%;
         }
@@ -71,7 +72,6 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};
           border: 1px solid ${colors.BORDER};
-          cursor: pointer;
           max-width: 400px;
           min-width: 265px;
           overflow: hidden;

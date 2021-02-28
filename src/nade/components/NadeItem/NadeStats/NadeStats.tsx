@@ -1,11 +1,5 @@
 import { FC } from "react";
-import {
-  FaRunning,
-  FaCheckCircle,
-  FaEye,
-  FaStar,
-  FaCommentDots,
-} from "react-icons/fa";
+import { FaRunning, FaCheckCircle, FaEye, FaCommentDots } from "react-icons/fa";
 import { RiMouseLine } from "react-icons/ri";
 import { tickrateString, Tickrate } from "../../../models/NadeTickrate";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
@@ -14,8 +8,10 @@ import { StatItem } from "./StatItem";
 import { Technique } from "../../../models/Technique";
 import { Movement } from "../../../models/NadeMovement";
 import { isNewNade } from "../../../../utils/Common";
+import { StatFavorite } from "./StatFavorite";
 
 type NadeStatsProps = {
+  nadeId: string;
   commentCount: number;
   createdAt: Date | string;
   downVoteCount?: number;
@@ -30,6 +26,7 @@ type NadeStatsProps = {
 };
 
 export const NadeStats: FC<NadeStatsProps> = ({
+  nadeId,
   commentCount,
   createdAt,
   favoriteCount,
@@ -41,7 +38,6 @@ export const NadeStats: FC<NadeStatsProps> = ({
   viewCount,
 }) => {
   const { colors } = useTheme();
-  const favoriteIconColor = isFavorited ? colors.FAV_YELLOW : colors.GREY;
   const hasMovement =
     movement === "running" ||
     movement === "crouchwalking" ||
@@ -68,12 +64,12 @@ export const NadeStats: FC<NadeStatsProps> = ({
               />
             </div>
           )}
+
           <div className="stat-item">
-            <StatItem
-              color={colors.GREY}
-              count={favoriteCount}
-              icon={<FaStar />}
-              iconColor={favoriteIconColor}
+            <StatFavorite
+              nadeId={nadeId}
+              favoriteCount={favoriteCount}
+              isFavorited={isFavorited}
             />
           </div>
 
@@ -153,29 +149,26 @@ export const NadeStats: FC<NadeStatsProps> = ({
       <style jsx>{`
         .item-bottom {
           display: flex;
-          padding: 6px 16px;
+          padding: 0px 10px;
           align-items: center;
+          height: 35px;
         }
 
         .new-badge {
           align-items: center;
-          display: flex;
+          display: inline-flex;
           margin-right: 15px;
         }
 
         .new-badge span {
           background: #709c14;
-          border-radius: 5px;
+          border-radius: 4px;
           color: white;
           display: inline;
           font-size: 9px;
           font-weight: 500;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-
-        .center {
-          text-align: center;
+          padding: 4px 4px;
+          line-height: 8px;
         }
 
         .stats {
@@ -185,7 +178,10 @@ export const NadeStats: FC<NadeStatsProps> = ({
         }
 
         .stat-item {
-          margin-right: 12px;
+          align-self: center;
+          display: inline-flex;
+          align-items: center;
+          margin-right: 10px;
         }
 
         .stat-item:last-child {
@@ -193,7 +189,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
         }
 
         .specials {
-          display: flex;
+          display: inline-flex;
           align-items: center;
           white-space: nowrap;
         }

@@ -117,7 +117,7 @@ export const LIGHT_THEME: ThemeColors = {
   filterResetBg: "#6e0000",
   filterResetDisabledBg: "#ccabab",
   filterBorder: "#5c6069",
-  FAV_YELLOW: "#fac800",
+  FAV_YELLOW: "#ed9302",
   HIGHLIGHT_BG: "#e8f1ff",
   boxBg: "#fff",
   boxTitleBg: "#f9f9f9",
