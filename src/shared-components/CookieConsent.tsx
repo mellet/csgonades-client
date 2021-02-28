@@ -62,12 +62,14 @@ export const CookieConsent: FC = memo(() => {
           bottom: 0;
           display: flex;
           justify-content: space-around;
+          align-items: center;
           left: 0;
           position: fixed;
           right: 0;
           transform: translateY(100%);
           transition: all 0.3s ease-out;
           z-index: 999;
+          min-height: 33vh;
         }
 
         .visible {
@@ -90,7 +92,7 @@ export const CookieConsent: FC = memo(() => {
         }
 
         .consent-txt {
-          font-size: 12px;
+          font-size: 16px;
           margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
