@@ -89,7 +89,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
               content="Requires movement"
               inverted
               position="top center"
-              size="tiny"
+              size="mini"
               trigger={
                 <div className="special movement">
                   <div className="special-icon">
@@ -105,7 +105,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
               content={tickrateTooltip(tickrate)}
               inverted
               position="top center"
-              size="tiny"
+              size="mini"
               trigger={
                 <div className="special tick">
                   <div className="special-icon">
@@ -124,7 +124,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
               inverted
               openOnTriggerClick={false}
               position="top center"
-              size="tiny"
+              size="mini"
               content={
                 <div className="center">
                   <b>Verified Pro</b>
