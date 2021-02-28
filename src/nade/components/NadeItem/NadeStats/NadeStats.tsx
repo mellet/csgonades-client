@@ -65,13 +65,15 @@ export const NadeStats: FC<NadeStatsProps> = ({
             </div>
           )}
 
-          <div className="stat-item">
-            <StatFavorite
-              nadeId={nadeId}
-              favoriteCount={favoriteCount}
-              isFavorited={isFavorited}
-            />
-          </div>
+          {nadeId !== "preview" && (
+            <div className="stat-item">
+              <StatFavorite
+                nadeId={nadeId}
+                favoriteCount={favoriteCount}
+                isFavorited={isFavorited}
+              />
+            </div>
+          )}
 
           <div className="stat-item">
             <StatItem

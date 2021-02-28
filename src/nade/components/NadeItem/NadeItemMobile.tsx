@@ -99,6 +99,7 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
         </div>
 
         <NadeStats
+          nadeId={nade.id}
           commentCount={nade.commentCount}
           createdAt={nade.createdAt}
           favoriteCount={nade.favoriteCount}

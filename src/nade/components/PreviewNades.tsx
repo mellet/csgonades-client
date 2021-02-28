@@ -41,6 +41,7 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
           thumbnailUrl={imageBase64}
         />
         <NadeStats
+          nadeId={"preview"}
           commentCount={10}
           createdAt={new Date()}
           favoriteCount={100}
