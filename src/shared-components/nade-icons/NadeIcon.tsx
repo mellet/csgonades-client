@@ -6,7 +6,7 @@ import { MolotovIcon } from "./MolotovIcon";
 import { HEIcon } from "./HEIcon";
 
 type Props = {
-  nadeType: NadeType;
+  nadeType?: NadeType;
   size?: number;
 };
 
