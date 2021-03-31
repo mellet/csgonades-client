@@ -1,6 +1,7 @@
 import { FC, memo, useEffect, useMemo, useState } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
+import { NadeIcon } from "../../shared-components/nade-icons/NadeIcon";
 import { isNewNade } from "../../utils/Common";
 
 type Props = {
@@ -53,6 +54,10 @@ export const MapPosIcon: FC<Props> = memo(
     const iconScale = scaleFactor * 0.65;
     const iconBaseSize = 100;
 
+    if (!nade.type) {
+      return null;
+    }
+
     return (
       <>
         <div
@@ -63,7 +68,9 @@ export const MapPosIcon: FC<Props> = memo(
           }}
           onClick={onClick}
         >
-          <img src={`/icons/grenades/${nade.type}.png`} />
+          <div className="nade-icon">
+            <NadeIcon nadeType={nade.type} />
+          </div>
           <div className="num">
             {numNades > 1 && <span className="num-count">{numNades}</span>}
             {hasNew && <span className="new">NEW</span>}
@@ -121,14 +128,14 @@ export const MapPosIcon: FC<Props> = memo(
             text-align: center;
           }
 
-          .point img {
+          .point .nade-icon {
             width: 100%;
             display: block;
             opacity: 0.85;
             transition: transform 0.15s;
           }
 
-          .point:hover > img {
+          .point:hover > .nade-icon {
             transform: scale(1.05);
             opacity: 1;
           }
