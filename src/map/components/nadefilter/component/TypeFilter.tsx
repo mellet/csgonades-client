@@ -3,7 +3,7 @@ import { useFilterByType } from "../../../data/hooks/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
 import { IconButton } from "../../../../shared-components/buttons/IconButton";
-import { TypeIcon } from "./TypeIcon";
+import { NadeIcon } from "../../../../shared-components/nade-icons/NadeIcon";
 
 export const TypeFilter: FC = () => {
   const { byType, filterByType } = useFilterByType();
@@ -15,25 +15,25 @@ export const TypeFilter: FC = () => {
         <IconButtonGroup>
           <IconButton
             inGroup
-            icon={<TypeIcon type="smoke" />}
+            icon={<NadeIcon nadeType="smoke" size={26} />}
             active={byType === "smoke"}
             onClick={() => filterByType("smoke")}
           />
           <IconButton
             inGroup
-            icon={<TypeIcon type="flash" />}
+            icon={<NadeIcon nadeType="flash" size={26} />}
             active={byType === "flash"}
             onClick={() => filterByType("flash")}
           />
           <IconButton
             inGroup
-            icon={<TypeIcon type="molotov" />}
+            icon={<NadeIcon nadeType="molotov" size={26} />}
             active={byType === "molotov"}
             onClick={() => filterByType("molotov")}
           />
           <IconButton
             inGroup
-            icon={<TypeIcon type="hegrenade" />}
+            icon={<NadeIcon nadeType="hegrenade" size={26} />}
             active={byType === "hegrenade"}
             onClick={() => filterByType("hegrenade")}
           />
