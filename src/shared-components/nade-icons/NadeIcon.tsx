@@ -4,7 +4,6 @@ import { SmokeIcon } from "./SmokeIcon";
 import { FlashIcon } from "./FlashIcon";
 import { MolotovIcon } from "./MolotovIcon";
 import { HEIcon } from "./HEIcon";
-import { assertNever } from "../../utils/Common";
 
 type Props = {
   nadeType: NadeType;
@@ -22,7 +21,6 @@ export const NadeIcon: FC<Props> = ({ nadeType, size }) => {
     case "hegrenade":
       return <HEIcon size={size} />;
     default:
-      assertNever(nadeType);
       return null;
   }
 };

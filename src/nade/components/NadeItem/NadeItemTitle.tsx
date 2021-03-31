@@ -1,8 +1,9 @@
 import { FC, useMemo } from "react";
 import { Status } from "../../models/Status";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { iconFromType, generateNadeItemTitle } from "../../../utils/Common";
+import { generateNadeItemTitle } from "../../../utils/Common";
 import { NadeType } from "../../models/NadeType";
+import { NadeIcon } from "../../../shared-components/nade-icons/NadeIcon";
 
 type Props = {
   endPosition?: string;
@@ -20,7 +21,6 @@ export const NadeItemTitle: FC<Props> = ({
   type,
 }) => {
   const { colors } = useTheme();
-  const iconUrl = iconFromType(type);
   const [generatedTitle, subTitle] = generateNadeItemTitle(
     startPosition,
     endPosition,
@@ -46,14 +46,9 @@ export const NadeItemTitle: FC<Props> = ({
           <span className="main-title">{generatedTitle}</span>
           <span className="sub-title">{subTitle}</span>
         </h3>
-
-        {iconUrl && (
-          <img
-            alt={`nade icon ${type}`}
-            className="nade-type-icon"
-            src={iconUrl}
-          />
-        )}
+        <div className="nade-type-icon">
+          <NadeIcon nadeType={type} />
+        </div>
       </div>
       <style jsx>{`
         .title {
@@ -64,11 +59,15 @@ export const NadeItemTitle: FC<Props> = ({
         }
 
         .nade-type-icon {
+          display: flex;
+          align-items: center;
           bottom: 0;
-          opacity: 0.5;
+          opacity: 0.45;
           position: absolute;
+          height: 50px;
+          width: 50px;
           right: 0;
-          transform: scale(1) translateY(15px) translateX(10px);
+          transform: scale(1) translateY(25%) translateX(25%);
         }
 
         .title-text {
