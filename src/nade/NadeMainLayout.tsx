@@ -114,7 +114,7 @@ const NadeMainLayout = styled.div`
       "ad";
     width: 100%;
 
-    .sticky-advert {
+    .advert {
       display: none;
     }
 
