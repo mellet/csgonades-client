@@ -10,6 +10,9 @@ const base = {
   images: {
     domains: ["storage.googleapis.com"],
   },
+  future: {
+    webpack5: true,
+  },
 };
 
 module.exports = withBundleAnalyzer(base);
