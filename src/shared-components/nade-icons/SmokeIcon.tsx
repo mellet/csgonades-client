@@ -48,8 +48,8 @@ export const SmokeIcon: FC<SmokeIconProps> = ({ size }) => {
 
         <path
           d="M24.9696 73.8816C17.6107 66.4345 7.48676 47.0768 25.8624 29.2232C22.2943 35.5759 17.1204 53.4014 24.9696 73.8816Z"
-          fill="white"
-          fillOpacity="0.4"
+          fill="black"
+          fillOpacity="0.1"
         />
       </svg>
       <style jsx>{`
