@@ -7,6 +7,7 @@ import { NadeType } from "./NadeType";
 import { Technique } from "./Technique";
 import { Status } from "./Status";
 import { CsgoMap } from "../../map/models/CsGoMap";
+import { TeamSide } from "./TeamSide";
 
 export type StatusInfo = string;
 
@@ -44,6 +45,7 @@ export interface Nade {
   status: Status;
   statusInfo?: StatusInfo;
   steamId: string;
+  teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;
@@ -73,6 +75,7 @@ export interface NadeLight {
   slug?: string;
   startPosition?: string;
   status: Status;
+  teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;
@@ -93,6 +96,7 @@ export type NadeCreateBody = {
   movement: Movement;
   oneWay?: boolean;
   startPosition: string;
+  teamSide?: TeamSide;
   technique: Technique;
   tickrate?: Tickrate;
   type: NadeType;
@@ -112,6 +116,7 @@ export type NadeUpdateBody = {
   slug?: string;
   startPosition?: string;
   status?: Status;
+  teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;

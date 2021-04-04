@@ -17,6 +17,7 @@ import { NadeApi } from "./NadeApi";
 import { useRouter } from "next/router";
 import { assertNever } from "../../utils/Common";
 import { Tickrate } from "../models/NadeTickrate";
+import { TeamSide } from "../models/TeamSide";
 
 interface EditNadeState extends Partial<NadeCreateBody> {
   loading: boolean;
@@ -28,42 +29,42 @@ interface EditNadeState extends Partial<NadeCreateBody> {
 }
 
 type SetMap = {
-  type: "CreateNade/SetMap";
+  type: "EditNade/SetMap";
   map: CsgoMap;
 };
 
 type SetGfyData = {
-  type: "CreateNade/SetGfyData";
+  type: "EditNade/SetGfyData";
   data: GfycatData;
 };
 
 type SetEndPosition = {
-  type: "CreateNade/SetEndPosition";
+  type: "EditNade/SetEndPosition";
   endPosition: string;
 };
 
 type SetStartPosition = {
-  type: "CreateNade/SetStartPosition";
+  type: "EditNade/SetStartPosition";
   startPosition: string;
 };
 
 type SetDescription = {
-  type: "CreateNade/SetDescription";
+  type: "EditNade/SetDescription";
   description: string;
 };
 
 type SetNadeType = {
-  type: "CreateNade/SetNadeType";
+  type: "EditNade/SetNadeType";
   nadeType: NadeType;
 };
 
 type SetMovement = {
-  type: "CreateNade/SetMovement";
+  type: "EditNade/SetMovement";
   movement: Movement;
 };
 
 type SetImage = {
-  type: "CreateNade/SetImage";
+  type: "EditNade/SetImage";
   image: string;
 };
 
@@ -73,7 +74,7 @@ type SetLineUpImage = {
 };
 
 type ShowImageSelector = {
-  type: "CreateNade/ShowImageSelector";
+  type: "EditNade/ShowImageSelector";
 };
 
 type ToggleLineupImageAdder = {
@@ -81,26 +82,31 @@ type ToggleLineupImageAdder = {
 };
 
 type SetEndPosCoords = {
-  type: "CreateNade/SetEndPosCoords";
+  type: "EditNade/SetEndPosCoords";
   coords: MapCoordinates;
 };
 
 type SetTechnique = {
-  type: "CreateNade/SetTechnique";
+  type: "EditNade/SetTechnique";
   technique: Technique;
 };
 
 type SetLoading = {
-  type: "CreateNade/SetLoading";
+  type: "EditNade/SetLoading";
 };
 
 type SetNotLoading = {
-  type: "CreateNade/SetNotLoading";
+  type: "EditNade/SetNotLoading";
 };
 
 type SetOneWay = {
   type: "EditNade/SetOneWay";
   oneWay: boolean;
+};
+
+type SetTeamSide = {
+  type: "EditNade/SetTeamSide";
+  side: TeamSide;
 };
 
 type SetNadeStatus = {
@@ -143,6 +149,7 @@ type Actions =
   | SetOneWay
   | SetSlug
   | SetStartPosition
+  | SetTeamSide
   | SetTechnique
   | SetTickrate
   | ShowImageSelector
@@ -156,68 +163,68 @@ const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
         ...state,
         showLineupImgAdder: !state.showLineupImgAdder,
       };
-    case "CreateNade/SetMap":
+    case "EditNade/SetMap":
       return {
         ...state,
         map: action.map,
       };
-    case "CreateNade/SetGfyData":
+    case "EditNade/SetGfyData":
       return {
         ...state,
         gfycat: action.data,
       };
-    case "CreateNade/SetEndPosition":
+    case "EditNade/SetEndPosition":
       return {
         ...state,
         endPosition: action.endPosition,
       };
-    case "CreateNade/SetStartPosition":
+    case "EditNade/SetStartPosition":
       return {
         ...state,
         startPosition: action.startPosition,
       };
-    case "CreateNade/SetDescription":
+    case "EditNade/SetDescription":
       return {
         ...state,
         description: action.description,
       };
-    case "CreateNade/SetNadeType":
+    case "EditNade/SetNadeType":
       return {
         ...state,
         type: action.nadeType,
       };
-    case "CreateNade/SetMovement":
+    case "EditNade/SetMovement":
       return {
         ...state,
         movement: action.movement,
       };
-    case "CreateNade/SetImage":
+    case "EditNade/SetImage":
       return {
         ...state,
         imageBase64: action.image,
         showImageAdder: false,
       };
-    case "CreateNade/ShowImageSelector":
+    case "EditNade/ShowImageSelector":
       return {
         ...state,
         showImageAdder: !state.showImageAdder,
       };
-    case "CreateNade/SetEndPosCoords":
+    case "EditNade/SetEndPosCoords":
       return {
         ...state,
         mapEndCoord: action.coords,
       };
-    case "CreateNade/SetTechnique":
+    case "EditNade/SetTechnique":
       return {
         ...state,
         technique: action.technique,
       };
-    case "CreateNade/SetLoading":
+    case "EditNade/SetLoading":
       return {
         ...state,
         loading: true,
       };
-    case "CreateNade/SetNotLoading":
+    case "EditNade/SetNotLoading":
       return {
         ...state,
         loading: false,
@@ -258,6 +265,11 @@ const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
         ...state,
         isPro: false,
       };
+    case "EditNade/SetTeamSide":
+      return {
+        ...state,
+        teamSide: action.side,
+      };
     default:
       assertNever(action);
       return state;
@@ -276,7 +288,7 @@ export const useEditNadeState = (nade: Nade) => {
   });
 
   const onUpdate = useCallback(async () => {
-    dispatch({ type: "CreateNade/SetLoading" });
+    dispatch({ type: "EditNade/SetLoading" });
     const updateDto = createNadeUpdateBody(state);
 
     const changedFields = Object.keys(updateDto).length;
@@ -287,7 +299,7 @@ export const useEditNadeState = (nade: Nade) => {
         title: "Nothing Changed",
         message: "Nothing changed from original nade",
       });
-      return dispatch({ type: "CreateNade/SetNotLoading" });
+      return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
     const token = await getToken();
@@ -297,7 +309,7 @@ export const useEditNadeState = (nade: Nade) => {
         title: "Not Signed In",
         message: "You don't seem to be signed in.",
       });
-      return dispatch({ type: "CreateNade/SetNotLoading" });
+      return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
     const result = await NadeApi.update(
@@ -311,7 +323,7 @@ export const useEditNadeState = (nade: Nade) => {
         severity: "error",
         message: "Failed to update nade",
       });
-      return dispatch({ type: "CreateNade/SetNotLoading" });
+      return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
     displayToast({
@@ -320,7 +332,7 @@ export const useEditNadeState = (nade: Nade) => {
         "Nade updated! It can take up to 30 minutes for the change to be seen other places on the site.",
     });
 
-    dispatch({ type: "CreateNade/SetNotLoading" });
+    dispatch({ type: "EditNade/SetNotLoading" });
 
     router.push(
       "/nades/[nade]",
@@ -379,6 +391,7 @@ function createNadeUpdateBody(state: EditNadeState): NadeUpdateBody {
       state.lineUpImageBase64
     ),
     isPro: newBooleanValueIfDifferent(originalNade.isPro, state.isPro),
+    teamSide: state.teamSide,
   };
 
   // Remove undefine keys

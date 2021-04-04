@@ -7,6 +7,7 @@ import { Movement } from "../models/NadeMovement";
 import { Technique } from "../models/Technique";
 import { assertNever } from "../../utils/Common";
 import { Tickrate } from "../models/NadeTickrate";
+import { TeamSide } from "../models/TeamSide";
 
 interface CreateNadeState extends Partial<NadeCreateBody> {
   loading: boolean;
@@ -90,6 +91,11 @@ type SetLineUpImage = {
   img: string;
 };
 
+type SetTeamSide = {
+  type: "CreateNade/SetTeamSide";
+  side: TeamSide;
+};
+
 type Actions =
   | SetDescription
   | SetEndPosCoords
@@ -103,6 +109,7 @@ type Actions =
   | SetNadeType
   | SetNotLoading
   | SetStartPosition
+  | SetTeamSide
   | SetTechnique
   | SetTickrate
   | ToggleImageSelector
@@ -192,6 +199,11 @@ const reducer: Reducer<CreateNadeState, Actions> = (state, action) => {
         lineUpImageBase64: action.img,
         showLineUpAdder: false,
       };
+    case "CreateNade/SetTeamSide":
+      return {
+        ...state,
+        teamSide: action.side,
+      };
     default:
       assertNever(action);
       return state;
@@ -271,6 +283,7 @@ export const validateState = (
     technique,
     tickrate,
     type,
+    teamSide,
   } = state;
   if (
     !description ||
@@ -301,5 +314,6 @@ export const validateState = (
     tickrate,
     lineUpImageBase64,
     oneWay,
+    teamSide,
   };
 };
