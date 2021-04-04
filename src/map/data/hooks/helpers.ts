@@ -3,6 +3,7 @@ import { Tickrate } from "../../../nade/models/NadeTickrate";
 import { NadeType } from "../../../nade/models/NadeType";
 import { NadeSortingMethod } from "../slice";
 import { dateMinutesAgo } from "../../../utils/DateUtils";
+import { TeamSide } from "../../../nade/models/TeamSide";
 
 export function filterByPro(nades: NadeLight[], byPro?: boolean): NadeLight[] {
   if (byPro) {
@@ -37,6 +38,19 @@ function sortByTop(a: NadeLight, b: NadeLight) {
   const aScore = a.favoriteCount + a.commentCount + Math.log(a.viewCount);
   const bScore = b.favoriteCount + b.commentCount + Math.log(b.viewCount);
   return bScore - aScore;
+}
+
+export function filterByTeam(
+  nades: NadeLight[],
+  byTeam?: TeamSide
+): NadeLight[] {
+  if (!byTeam) {
+    return nades;
+  } else {
+    return nades.filter((n) => {
+      return n.teamSide === byTeam || n.teamSide === "both";
+    });
+  }
 }
 
 export function filterByType(

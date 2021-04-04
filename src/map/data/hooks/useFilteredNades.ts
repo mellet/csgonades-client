@@ -11,6 +11,7 @@ import {
   filterByType,
   filterBySortMethod,
   filterByPro,
+  filterByTeam,
 } from "./helpers";
 import {
   filterByTickrateSelector,
@@ -20,8 +21,10 @@ import {
   currentMapSelector,
   allNadesSelector,
   filterByProSelector,
+  filterByTeamSelector,
 } from "../selectors";
 import { NadeSortingMethod } from "../slice";
+import { TeamSide } from "../../../nade/models/TeamSide";
 
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]
@@ -30,6 +33,7 @@ export const useFilterServerSideNades = (
   const byTickrate = useSelector(filterByTickrateSelector);
   const byFavorites = useSelector(filterByFavoritesSelector);
   const byType = useSelector(filterByTypeSelector);
+  const byTeam = useSelector(filterByTeamSelector);
   const favoritedNades = useSelector(favoritedNadeIdsSelector);
   const bySortingMethod = useSelector(filterByMethodSelector);
   const storeNades = useSelector(allNadesSelector);
@@ -47,7 +51,8 @@ export const useFilterServerSideNades = (
       bySortingMethod,
       byType,
       byTickrate,
-      byPro
+      byPro,
+      byTeam
     );
   }, [
     byPro,
@@ -59,6 +64,7 @@ export const useFilterServerSideNades = (
     bySortingMethod,
     currentMap,
     storeNades,
+    byTeam,
   ]);
 };
 
@@ -69,7 +75,8 @@ export function filterNades(
   byMethod: NadeSortingMethod,
   byType?: NadeType,
   byTickrate?: Tickrate,
-  byPro?: boolean
+  byPro?: boolean,
+  byTeam?: TeamSide,
 ): NadeLight[] {
   let thenades = [...nades];
   thenades.sort(sortByScore);
@@ -80,6 +87,7 @@ export function filterNades(
   thenades = filterByFavorite(thenades, byFavorites);
   thenades = filterBySortMethod(thenades, byMethod);
   thenades = filterByPro(thenades, byPro);
+  thenades = filterByTeam(thenades, byTeam);
   return thenades;
 }
 
