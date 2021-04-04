@@ -1,12 +1,12 @@
 import { FC, useState, useEffect } from "react";
 import { FaChevronRight, FaPlay, FaStop } from "react-icons/fa";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Dimensions } from "../../../constants/Constants";
 import { NadeLight } from "../../models/Nade";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
+import { ThumbImage } from "./ThumbImage";
 
 interface Props {
   nade: NadeLight;
@@ -33,6 +33,11 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
   }
 
   const urlIdOrSlug = nade.slug || nade.id;
+
+  const lineupUrl = nade.imageLineupThumb
+    ? nade.imageLineupThumb.url
+    : nade.imageLineupThumbUrl;
+  const thumbnailUrl = nade.images.thumbnailUrl;
 
   if (!clientSide) {
     return null;
@@ -81,12 +86,7 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
         <div className="media-canvas">
           <div className="media-content">
             <div className="media-image">
-              <LazyLoadImage
-                alt={`nade thumbnail`}
-                effect="blur"
-                src={nade.images.thumbnailUrl} // use normal <img> attributes as props
-                width={"100%"}
-              />
+              <ThumbImage thumbUrl={thumbnailUrl} lineupThumbUrl={lineupUrl} />
             </div>
             {isPlaying && (
               <div className="media-video">
@@ -163,8 +163,8 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
           top: 0;
         }
 
-        .media-image img {
-          width: 100%;
+        .media-image {
+          height: 100%;
         }
 
         .media-video {
