@@ -6,6 +6,7 @@ import { MapViewSelector } from "./component/MapViewSelectors";
 import { ResetFilterButton } from "./component/ResetFilterButton";
 import { FilterByProButton } from "./component/FilterByProButton";
 import { FilterBarLayout } from "./FilterBarLayout";
+import { TeamSelector } from "./component/TeamSelector";
 
 const FilterBar: FC = memo(() => {
   return (
@@ -17,6 +18,7 @@ const FilterBar: FC = memo(() => {
         tickFiler={<TickrateSelector />}
         typeFilter={<TypeFilter />}
         viewFilter={<MapViewSelector />}
+        teamFilter={<TeamSelector />}
       />
     </>
   );

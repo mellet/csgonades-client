@@ -11,6 +11,9 @@ export const filterByTypeSelector = (state: AppState) =>
 export const filterByTickrateSelector = (state: AppState) =>
   state.mapStore.filterByTickrate;
 
+export const filterByTeamSelector = (state: AppState) =>
+  state.mapStore.filterByTeam;
+
 export const filterByFavoritesSelector = (state: AppState) =>
   state.mapStore.filterByFavorites;
 

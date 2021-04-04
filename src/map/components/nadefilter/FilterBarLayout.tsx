@@ -10,6 +10,7 @@ type Props = {
   proFilter: JSX.Element;
   viewFilter: JSX.Element;
   resetFilter: JSX.Element;
+  teamFilter: JSX.Element;
 };
 
 export const FilterBarLayout: FC<Props> = ({
@@ -19,6 +20,7 @@ export const FilterBarLayout: FC<Props> = ({
   tickFiler,
   typeFilter,
   viewFilter,
+  teamFilter,
 }) => {
   return (
     <>
@@ -31,6 +33,9 @@ export const FilterBarLayout: FC<Props> = ({
         </div>
         <div style={{ gridArea: "tick", marginBottom: Dimensions.GUTTER_SIZE }}>
           {tickFiler}
+        </div>
+        <div style={{ gridArea: "team", marginBottom: Dimensions.GUTTER_SIZE }}>
+          {teamFilter}
         </div>
         <div style={{ gridArea: "pro", marginBottom: Dimensions.GUTTER_SIZE }}>
           {proFilter}
@@ -55,6 +60,7 @@ const FilterBarLayoutWrapper = styled.div`
     "fav"
     "type"
     "tick"
+    "team"
     "pro"
     "view"
     "reset";
