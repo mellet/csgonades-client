@@ -16,6 +16,8 @@ import { NadeItem } from "../nade/components/NadeItem/NadeItem";
 import { useSelector } from "react-redux";
 import { favoritedNadeIdsSelector } from "../favorites/data/FavoriteSelectors";
 import { addFavoriteToNades } from "../map/data/hooks/helpers";
+import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
+import { isMobileOnly } from "react-device-detect";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -33,7 +35,11 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
   const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
 
   function renderItem(item: NadeLight) {
-    return <NadeItem nade={item} />;
+    if (isMobileOnly) {
+      return <NadeItemMobile nade={item} />;
+    } else {
+      return <NadeItem nade={item} />;
+    }
   }
 
   function keyExtractor(item: NadeLight) {
