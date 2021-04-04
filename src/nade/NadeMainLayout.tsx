@@ -41,7 +41,6 @@ export const NadeMainLayoutBuild: FC<Props> = ({
 
 const NadeMainLayout = styled.div`
   display: grid;
-  display: grid;
   grid-template-columns: 160px 1fr 160px;
   grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
   grid-template-areas:
@@ -50,7 +49,8 @@ const NadeMainLayout = styled.div`
     "ad video actions"
     "ad video actions"
     "ad desc actions "
-    "ad comments actions";
+    "ad comments actions"
+    "ad title title";
   max-width: ${Dimensions.PAGE_WIDTH}px;
   margin: 0 auto;
 
@@ -102,8 +102,9 @@ const NadeMainLayout = styled.div`
   }
 
   @media only screen and (max-width: 1100px) {
-    display: grid;
-    grid-template-columns: 1fr;
+    width: 100%;
+    grid-template-columns: 1fr !important;
+    grid-column-gap: 0;
     grid-template-areas:
       "status"
       "title"
@@ -112,7 +113,6 @@ const NadeMainLayout = styled.div`
       "desc"
       "comments"
       "ad";
-    width: 100%;
 
     .advert {
       display: none;
