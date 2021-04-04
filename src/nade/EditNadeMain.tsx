@@ -26,6 +26,7 @@ import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModera
 import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";
 import { SlugInput } from "./components/NadeInputs/SlugInput";
 import { IsProSelector } from "./components/NadeInputs/IsProSelector";
+import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
 
 type Props = {
   nade: Nade;
@@ -69,14 +70,14 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           <div id="map-selector">
             <MapSelector
               defaultValue={nade.map}
-              onChange={(map) => dispatch({ type: "CreateNade/SetMap", map })}
+              onChange={(map) => dispatch({ type: "EditNade/SetMap", map })}
             />
           </div>
           <div id="gfy-input">
             <GfyInput
               defaultValue={nade.gfycat.gfyId}
               onChange={(data) =>
-                dispatch({ type: "CreateNade/SetGfyData", data })
+                dispatch({ type: "EditNade/SetGfyData", data })
               }
             />
           </div>
@@ -84,7 +85,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             <EndPosInput
               defaultValue={nade.endPosition}
               onChange={(endPosition) =>
-                dispatch({ type: "CreateNade/SetEndPosition", endPosition })
+                dispatch({ type: "EditNade/SetEndPosition", endPosition })
               }
             />
           </div>
@@ -92,7 +93,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             <ThrownFromInput
               defaultValue={nade.startPosition}
               onChange={(startPosition) =>
-                dispatch({ type: "CreateNade/SetStartPosition", startPosition })
+                dispatch({ type: "EditNade/SetStartPosition", startPosition })
               }
             />
           </div>
@@ -100,7 +101,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             <DescriptionInput
               defaultValue={nade.description}
               onChange={(description) =>
-                dispatch({ type: "CreateNade/SetDescription", description })
+                dispatch({ type: "EditNade/SetDescription", description })
               }
             />
           </div>
@@ -113,7 +114,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             <ImageSelector
               imageIsSet={true}
               label="Result Image"
-              onClick={() => dispatch({ type: "CreateNade/ShowImageSelector" })}
+              onClick={() => dispatch({ type: "EditNade/ShowImageSelector" })}
             />
           </div>
 
@@ -133,7 +134,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
               endPos={state.mapEndCoord || nade.mapEndCoord}
               map={nade.map}
               onSave={(coords) =>
-                dispatch({ type: "CreateNade/SetEndPosCoords", coords })
+                dispatch({ type: "EditNade/SetEndPosCoords", coords })
               }
             />
           </div>
@@ -142,11 +143,20 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             <BigLabel value="Meta Data" />
           </div>
 
+          <div id="teamside-selector">
+            <TeamSideSelector
+              defaultValue={nade.teamSide}
+              onChange={(side) =>
+                dispatch({ type: "EditNade/SetTeamSide", side })
+              }
+            />
+          </div>
+
           <div id="type-selector">
             <TypeSelector
               defaultValue={nade.type}
               onChange={(nadeType) =>
-                dispatch({ type: "CreateNade/SetNadeType", nadeType })
+                dispatch({ type: "EditNade/SetNadeType", nadeType })
               }
             />
           </div>
@@ -155,7 +165,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             <MovementSelector
               defaultValue={nade.movement}
               onChange={(movement) =>
-                dispatch({ type: "CreateNade/SetMovement", movement })
+                dispatch({ type: "EditNade/SetMovement", movement })
               }
             />
           </div>
@@ -165,7 +175,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
               defaultValue={nade.technique}
               onChange={(technique) =>
                 dispatch({
-                  type: "CreateNade/SetTechnique",
+                  type: "EditNade/SetTechnique",
                   technique,
                 })
               }
@@ -265,10 +275,10 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
               <ImageUploader
                 message={<></>}
                 onDismiss={() =>
-                  dispatch({ type: "CreateNade/ShowImageSelector" })
+                  dispatch({ type: "EditNade/ShowImageSelector" })
                 }
                 onImageCropped={(image) =>
-                  dispatch({ type: "CreateNade/SetImage", image })
+                  dispatch({ type: "EditNade/SetImage", image })
                 }
               />
             </div>
@@ -343,9 +353,10 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             "mapsel resultimg"
             "posselector lineup"
             "typesel metalabel"
-            "gfyip movesel"
-            "endpos techsel"
-            "startpos tick"
+            "gfyip teamside"
+            "endpos movesel"
+            "startpos techsel"
+            ". tick"
             ". oneway"
             "desc previewlabel"
             "desc preview"
@@ -439,6 +450,10 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
 
         #media-label {
           grid-area: medialabel;
+        }
+
+        #teamside-selector {
+          grid-area: teamside;
         }
 
         #type-selector {

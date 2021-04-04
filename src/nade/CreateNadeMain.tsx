@@ -23,6 +23,7 @@ import { useRouter } from "next/router";
 import { SEO } from "../shared-components/SEO";
 import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";
 import { GuideLines } from "./components/GuideLines";
+import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
 
 export const CreateNadeMain: FC = ({}) => {
   const router = useRouter();
@@ -196,6 +197,14 @@ export const CreateNadeMain: FC = ({}) => {
             />
           </div>
 
+          <div id="teamside-selector">
+            <TeamSideSelector
+              onChange={(side) =>
+                dispatch({ type: "CreateNade/SetTeamSide", side })
+              }
+            />
+          </div>
+
           {state.technique === "jumpthrow" && (
             <div id="tickrate-selector">
               <TickrateSelector
@@ -358,9 +367,10 @@ export const CreateNadeMain: FC = ({}) => {
             "mapsel resultimg"
             "posselector lineup"
             "typesel metalabel"
-            "gfyip movesel"
-            "endpos techsel"
-            "startpos tick"
+            "gfyip teamside"
+            "endpos movesel"
+            "startpos techsel"
+            ". tick"
             "desc previewlabel"
             "desc preview"
             "desc preview"
@@ -421,6 +431,10 @@ export const CreateNadeMain: FC = ({}) => {
 
         #map-selector {
           grid-area: mapsel;
+        }
+
+        #teamside-selector {
+          grid-area: teamside;
         }
 
         #gfy-input {
