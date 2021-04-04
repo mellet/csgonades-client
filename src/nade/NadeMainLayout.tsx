@@ -105,11 +105,13 @@ const NadeMainLayout = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
+      "status"
       "title"
       "video"
       "actions"
       "desc"
-      "comments";
+      "comments"
+      "ad";
     width: 100%;
 
     .sticky-advert {
