@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useMemo, useState } from "react";
+import { FC, memo, useMemo } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
 import { NadeIcon } from "../../shared-components/nade-icons/NadeIcon";
@@ -14,12 +14,6 @@ type Props = {
 
 export const MapPosIcon: FC<Props> = memo(
   ({ cluster, mapWidth, nade, numNades, onPress }) => {
-    const [visible, setVisible] = useState(false);
-
-    useEffect(() => {
-      setVisible(true);
-    }, []);
-
     const { hasNew, position } = useMemo(() => {
       const hasNew = cluster.find((n) => isNewNade(n.createdAt));
       const averageX =
@@ -51,8 +45,9 @@ export const MapPosIcon: FC<Props> = memo(
     }
 
     const scaleFactor = mapWidth / 1024;
-    const iconScale = scaleFactor * 0.65;
-    const iconBaseSize = 100;
+    const iconBaseSize = Math.round(60 * scaleFactor);
+    const countFontSize = Math.floor(iconBaseSize / 1.75);
+    const newFontSisze = Math.floor(iconBaseSize / 4.2);
 
     if (!nade.type) {
       return null;
@@ -61,8 +56,9 @@ export const MapPosIcon: FC<Props> = memo(
     return (
       <>
         <div
-          className={visible ? "point visible" : "point"}
+          className="point"
           style={{
+            position: "absolute",
             top: position.y - iconBaseSize / 2,
             left: position.x - iconBaseSize / 2,
           }}
@@ -78,20 +74,13 @@ export const MapPosIcon: FC<Props> = memo(
         </div>
         <style jsx>{`
           .point {
-            position: absolute;
             width: ${iconBaseSize}px;
             height: ${iconBaseSize}px;
-            transform: scale(0);
             cursor: pointer;
             pointer-events: all;
             z-index: ${zIndexByType(nade.type)};
-            font-size: 18px;
             z-index: 499;
-            transition: transform 0.15s;
-          }
-
-          .visible {
-            transform: scale(${iconScale});
+            overflow: hidden;
           }
 
           .num {
@@ -99,19 +88,20 @@ export const MapPosIcon: FC<Props> = memo(
             top: 0;
             left: 0;
             display: block;
-            width: ${iconBaseSize}px;
-            height: ${iconBaseSize}px;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transform: scale(1);
-            transition: transform 0.15s;
+            animation: show 0.2s 0.2s forwards;
           }
 
           .num .num-count {
             color: rgba(196, 245, 227, 1);
-            font-size: 54px;
+            font-size: ${countFontSize}px;
+            line-height: ${countFontSize}px;
             font-weight: 400;
             text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
             font-family: "Changa One", cursive;
@@ -119,29 +109,44 @@ export const MapPosIcon: FC<Props> = memo(
 
           .new {
             position: absolute;
-            bottom: 12px;
+            top: 10%;
             display: inline-block;
-            font-size: 18px;
+            font-size: ${newFontSisze}px;
+            line-height: ${newFontSisze}px;
             color: rgba(224, 245, 66, 0.9);
             text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
             font-weight: 800;
             text-align: center;
           }
 
-          .point .nade-icon {
-            width: 100%;
+          .nade-icon {
+            top: 0;
+            left: 0;
+            width: ${iconBaseSize}px;
             display: block;
             opacity: 0.85;
             transition: transform 0.15s;
+            height: ${iconBaseSize}px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
 
           .point:hover > .nade-icon {
-            transform: scale(1.05);
             opacity: 1;
           }
 
           .point:hover {
             z-index: 500;
+          }
+
+          @keyframes show {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
           }
         `}</style>
       </>
