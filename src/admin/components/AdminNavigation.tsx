@@ -18,6 +18,11 @@ export const AdminNavigation: FC = () => {
           <button>Declined nades</button>
         </Link>
         {isAdmin && (
+          <Link href="/admin/uncomplete">
+            <button>Uncomplete nades</button>
+          </Link>
+        )}
+        {isAdmin && (
           <Link href="/admin/users">
             <button>Users</button>
           </Link>

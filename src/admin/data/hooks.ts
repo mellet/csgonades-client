@@ -47,6 +47,28 @@ export const useAdminPendingNades = () => {
   };
 };
 
+export const useAdminWorkNades = () => {
+  const getToken = useGetOrUpdateToken();
+  const [nades, setNades] = useState<NadeLight[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const token = await getToken();
+      if (!token) {
+        return;
+      }
+      const res = await NadeApi.getUncomplete(token);
+      if (res.isOk()) {
+        setNades(res.value);
+      }
+    })();
+  }, [getToken]);
+
+  return {
+    nades,
+  };
+};
+
 export const useAdminReports = () => {
   const getToken = useGetOrUpdateToken();
   const { state, dispatch } = useAdminStoreContext();

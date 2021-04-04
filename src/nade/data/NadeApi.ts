@@ -31,6 +31,20 @@ export class NadeApi {
     }
   }
 
+  static async getUncomplete(token: string): AppResult<NadeLight[]> {
+    try {
+      const res = await axios.get<NadeLight[]>(
+        `${Config.API_URL}/admin/uncompleteNades`,
+        {
+          headers: { Authorization: token },
+        }
+      );
+      return ok(res.data);
+    } catch (error) {
+      return extractApiError(error);
+    }
+  }
+
   static async unFavoriteNade(nadeId: string, token: string): Promise<boolean> {
     try {
       await axios.delete<Favorite>(
