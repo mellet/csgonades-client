@@ -6,6 +6,7 @@ import {
   filterByFavoritesSelector,
   filterByTypeSelector,
   filterByProSelector,
+  filterByTeamSelector,
 } from "../selectors";
 import { useGa } from "../../../utils/Analytics";
 
@@ -15,6 +16,7 @@ export const useFilterReset = () => {
   const byFavorites = useSelector(filterByFavoritesSelector);
   const byType = useSelector(filterByTypeSelector);
   const byPro = useSelector(filterByProSelector);
+  const byTeam = useSelector(filterByTeamSelector);
   const dispatch = useDispatch();
 
   const resetFilter = useCallback(
@@ -43,8 +45,11 @@ export const useFilterReset = () => {
     if (byPro) {
       return true;
     }
+    if (byTeam) {
+      return true;
+    }
     return false;
-  }, [byTickrate, byFavorites, byType, byPro]);
+  }, [byTickrate, byFavorites, byType, byPro, byTeam]);
 
   return {
     resetFilter,

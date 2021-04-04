@@ -234,8 +234,8 @@ export function debounce(func: any, wait: number, immediate?: boolean) {
 }
 
 export function isNewNade(createdAt: Date | string) {
-  const newDurationDays = 7;
+  const newDurationDaysHours = 4 * 24;
   const hoursAgoAdded = dateMinutesAgo(createdAt) / 60;
 
-  return hoursAgoAdded < 24 * newDurationDays;
+  return hoursAgoAdded < newDurationDaysHours;
 }
