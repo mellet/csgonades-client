@@ -22,6 +22,16 @@ export const FlashIcon: FC<Props> = ({ size }) => {
       <style jsx>{`
         svg {
           width: ${size ? `${size}px` : "100%"};
+          animation: scaleUp 0.2s ease-in forwards;
+        }
+
+        @keyframes scaleUp {
+          from {
+            transform: scale(0);
+          }
+          to {
+            transform: scale(1);
+          }
         }
       `}</style>
     </>
