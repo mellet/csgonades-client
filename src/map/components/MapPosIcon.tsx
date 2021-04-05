@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
-import { NadeIcon } from "../../shared-components/nade-icons/NadeIcon";
+import { NadeIcon } from "../../shared-components/nade-icons";
 import { isNewNade } from "../../utils/Common";
 
 type Props = {
@@ -45,9 +45,7 @@ export const MapPosIcon: FC<Props> = memo(
     }
 
     const scaleFactor = mapWidth / 1024;
-    const iconBaseSize = Math.round(60 * scaleFactor);
-    const countFontSize = Math.floor(iconBaseSize / 1.75);
-    const newFontSisze = Math.floor(iconBaseSize / 4.2);
+    const iconBaseSize = Math.round(55 * scaleFactor);
 
     if (!nade.type) {
       return null;
@@ -65,11 +63,11 @@ export const MapPosIcon: FC<Props> = memo(
           onClick={onClick}
         >
           <div className="nade-icon">
-            <NadeIcon nadeType={nade.type} />
-          </div>
-          <div className="num">
-            {numNades > 1 && <span className="num-count">{numNades}</span>}
-            {hasNew && <span className="new">NEW</span>}
+            <NadeIcon
+              nadeType={nade.type}
+              count={numNades > 1 ? numNades : undefined}
+              isNew={hasNew}
+            />
           </div>
         </div>
         <style jsx>{`
@@ -83,46 +81,7 @@ export const MapPosIcon: FC<Props> = memo(
             overflow: hidden;
           }
 
-          .num {
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: block;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: show 0.2s 0.2s forwards;
-          }
-
-          .num .num-count {
-            color: rgba(196, 245, 227, 1);
-            font-size: ${countFontSize}px;
-            line-height: ${countFontSize}px;
-            font-weight: 400;
-            text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
-            font-family: "Changa One", cursive;
-          }
-
-          .new {
-            position: absolute;
-            top: 10%;
-            display: inline-block;
-            font-size: ${newFontSisze}px;
-            line-height: ${newFontSisze}px;
-            color: rgba(224, 245, 66, 0.9);
-            text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
-            font-weight: 800;
-            text-align: center;
-          }
-
           .nade-icon {
-            top: 0;
-            left: 0;
-            width: ${iconBaseSize}px;
             display: block;
             opacity: 0.85;
             transition: transform 0.15s;

@@ -3,7 +3,7 @@ import { Status } from "../../models/Status";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { generateNadeItemTitle } from "../../../utils/Common";
 import { NadeType } from "../../models/NadeType";
-import { NadeIcon } from "../../../shared-components/nade-icons/NadeIcon";
+import { NadeIcon } from "../../../shared-components/nade-icons";
 
 type Props = {
   endPosition?: string;

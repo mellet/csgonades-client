@@ -1,15 +1,18 @@
 import { FC } from "react";
+import {
+  ANIMATION_SPEED,
+  TEXT_ANIMATION_DELAY,
+} from "./shared/NadeIconAnimationConstants";
+import { NadeIconProps } from "./shared/NadeIconProps";
 
-type Props = {
-  size?: number;
-};
+export const MolotovIcon: FC<NadeIconProps> = ({ size, count, isNew }) => {
+  const svgSize = size || 100;
 
-export const MolotovIcon: FC<Props> = ({ size }) => {
   return (
     <>
       <svg
-        width="100"
-        height="100"
+        width={svgSize}
+        height={svgSize}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -25,12 +28,63 @@ export const MolotovIcon: FC<Props> = ({ size }) => {
           fill="black"
           fillOpacity="0.1"
         />
+
+        {count && (
+          <text className="count anim" x="50%" y="55%">
+            {count}
+          </text>
+        )}
+        {isNew && (
+          <text className="new-label anim" x="50%" y="90%">
+            NEW
+          </text>
+        )}
       </svg>
 
       <style jsx>{`
         svg {
           width: ${size ? `${size}px` : "100%"};
-          animation: scaleUp 0.2s ease-in forwards;
+          animation: scaleUp ${ANIMATION_SPEED}s ease-in forwards;
+        }
+
+        .anim {
+          animation-fill-mode: forwards;
+          animation-timing-function: ease-out;
+          transform-origin: center;
+        }
+
+        text {
+          font-family: "Changa One", cursiv;
+          alignment-baseline: middle;
+          text-anchor: middle;
+          opacity: 0;
+          animation-name: anim-fadeId;
+          animation-duration: ${ANIMATION_SPEED}s;
+          animation-delay: ${TEXT_ANIMATION_DELAY}s;
+        }
+
+        .count {
+          font-size: 60px;
+          line-height: 60px;
+          fill: white;
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .new-label {
+          font-size: 22px;
+          fill: #d4ff00;
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes anim-fadeId {
+          from {
+            opacity: 0;
+            transform: translateY(20%);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         @keyframes scaleUp {
