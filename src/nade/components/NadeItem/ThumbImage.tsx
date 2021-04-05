@@ -12,7 +12,7 @@ type Props = {
 
 export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
   const hasLineUpImage = !!lineupThumbUrl;
-  const [resultImgRdy, setResultImgRdy] = useState(false);
+  const [resultImgRdy, setResultImgRdy] = useState(!hasLineUpImage);
   const [lineupImgRdy, setLineupImgRdy] = useState(false);
   const [visible, setVisisble] = useState(false);
 
@@ -26,19 +26,13 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (hasLineUpImage) {
-        if (resultImgRdy && lineupImgRdy) {
-          setVisisble(true);
-        }
-      } else {
-        if (resultImgRdy) {
-          setVisisble(true);
-        }
+    const showImagesTimer = setTimeout(() => {
+      if (resultImgRdy && lineupImgRdy) {
+        setVisisble(true);
       }
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [resultImgRdy, lineupImgRdy, hasLineUpImage]);
+    }, 500);
+    return () => clearTimeout(showImagesTimer);
+  }, [resultImgRdy, lineupImgRdy]);
 
   const { colors } = useTheme();
 
@@ -104,7 +98,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
           height: 100%;
           position: relative;
           filter: brightness(1.1) saturate(120%) contrast(105%);
-          transition: opacity 0.2s;
+          transition: opacity 0.3s;
         }
 
         .visible {
