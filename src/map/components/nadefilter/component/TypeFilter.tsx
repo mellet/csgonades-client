@@ -3,7 +3,7 @@ import { useFilterByType } from "../../../data/hooks/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
 import { IconButton } from "../../../../shared-components/buttons/IconButton";
-import { NadeIcon } from "../../../../shared-components/nade-icons/NadeIcon";
+import { NadeIcon } from "../../../../shared-components/nade-icons";
 
 export const TypeFilter: FC = () => {
   const { byType, filterByType } = useFilterByType();
