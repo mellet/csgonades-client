@@ -53,7 +53,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         <div className="bg" />
         <div className="nades">
           <div className="title">
-            <div className="label">Found multiple nades</div>
             <div className="close-btn" onClick={onDismissCloseClick}>
               <FaTimes />
             </div>
@@ -117,12 +116,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-areas: "msg . close";
-          background: ${colors.DP01};
-          padding: 10px ${Dimensions.GUTTER_SIZE}px;
-          position: sticky;
-          top: 0;
-          z-index: 1;
-          border-bottom: 1px solid ${colors.BORDER};
+          padding: 8px 8px 0px 8px;
         }
 
         .label {
@@ -136,16 +130,23 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
         .close-btn {
           grid-area: close;
-          font-size: 32px;
+          font-size: 24px;
           justify-self: end;
-          color: #850b0b;
+          color: rgba(0, 0, 0, 0.6);
           cursor: pointer;
-          opacity: 0.8;
-          transition: opacity 0.15s;
+          transition: color, background 0.3s;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 50%;
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .close-btn:hover {
-          opacity: 1;
+          color: rgba(255, 255, 255, 1);
+          background: rgba(196, 12, 12, 0.75);
         }
 
         @keyframes fadeId {

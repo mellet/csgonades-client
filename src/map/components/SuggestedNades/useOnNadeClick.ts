@@ -1,4 +1,3 @@
-import Router from "next/router";
 import { useState } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
@@ -14,6 +13,7 @@ export const useOnNadeClusterClick = () => {
   }
 
   function onNadeClusterClick(cluster: NadeLight[]) {
+    /*
     if (cluster.length === 1) {
       const nade = cluster[0];
 
@@ -22,7 +22,7 @@ export const useOnNadeClusterClick = () => {
       }
 
       return Router.push("/nades/[nade]", `/nades/${nade.slug || nade.id}`);
-    }
+    }*/
 
     setSuggestedNades(cluster);
     event({
