@@ -6,6 +6,7 @@ import { useFilterByFavorites } from "../../../data/hooks/useFilterByFavorites";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 import { IconButton } from "../../../../shared-components/buttons/IconButton";
 import { FilterLabel } from "./FilterLabel";
+import { FavoriteHint } from "../../../../hints/components/FavoriteHint";
 
 type Props = {
   vertical?: boolean;
@@ -28,12 +29,14 @@ export const FavFilterButton: FC<Props> = ({}) => {
   return (
     <>
       <FilterLabel value="FAV" />
-      <IconButton
-        onClick={onFilterByFavorite}
-        activeColor={colors.FAV_YELLOW}
-        icon={<FaStar />}
-        active={byFavorites}
-      />
+      <FavoriteHint>
+        <IconButton
+          onClick={onFilterByFavorite}
+          activeColor={colors.FAV_YELLOW}
+          icon={<FaStar />}
+          active={byFavorites}
+        />
+      </FavoriteHint>
     </>
   );
 };
