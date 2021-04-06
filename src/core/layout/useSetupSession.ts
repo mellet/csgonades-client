@@ -5,10 +5,12 @@ import { addAllFavoritesAction } from "../../favorites/data/FavoriteSlice";
 import { AuthApi } from "../authentication/AuthApi";
 import { setTokenAction, setUserAction } from "../authentication/AuthSlice";
 import { trySignInFunc } from "../authentication/useOnSignIn";
+import { useSignOut } from "../authentication/useSignOut";
 import { useApiStatus } from "../global/hooks/useApiStatus";
 import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
 
 export const useSetupSession = (): void => {
+  const signOut = useSignOut();
   const { setApiOffline, setApiOnline } = useApiStatus();
   const displayToast = useDisplayToast();
   const dispatch = useDispatch();
@@ -19,13 +21,13 @@ export const useSetupSession = (): void => {
       setApiOnline();
 
       if (!authenticated) {
-        return;
+        return signOut();
       }
 
       const { userDetails, userToken } = await trySignInFunc();
 
       if (!userDetails || !userToken) {
-        return;
+        return signOut();
       }
 
       dispatch(setTokenAction(userToken));
@@ -47,7 +49,7 @@ export const useSetupSession = (): void => {
     }
 
     return;
-  }, [displayToast, dispatch, setApiOffline, setApiOnline]);
+  }, [displayToast, dispatch, setApiOffline, setApiOnline, signOut]);
 
   useEffect(() => {
     initSession();

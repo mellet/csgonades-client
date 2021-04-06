@@ -25,6 +25,10 @@ const notificationSlice = createSlice({
         notification.viewed = true;
       }
     },
+    resetNotificationStoreAction(state) {
+      state.loading = initialState.loading;
+      state.notifications = initialState.notifications;
+    },
   },
 });
 
@@ -33,4 +37,5 @@ export const NotificationReducer = notificationSlice.reducer;
 export const {
   addUnreadNotificationsAction,
   markNotificationsAsViewedAction,
+  resetNotificationStoreAction,
 } = notificationSlice.actions;
