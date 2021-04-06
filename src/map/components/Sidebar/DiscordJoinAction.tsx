@@ -59,6 +59,20 @@ export const DiscordJoinAction: FC = () => {
           font-size: 30px;
           color: #fff;
           width: 30px;
+          animation: hint 1s 4s;
+        }
+
+        @keyframes hint {
+          0% {
+            transform: translateX(0) scale(1);
+          }
+
+          50% {
+            transform: translateX(-20%) scale(1.25);
+          }
+          100% {
+            transform: translateX(0) scale(1);
+          }
         }
       `}</style>
     </>

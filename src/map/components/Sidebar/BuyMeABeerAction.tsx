@@ -60,10 +60,24 @@ export const BuyMeABeerAction: FC = ({}) => {
           display: flex;
           align-items: center;
           justify-content: center;
+          animation: hint 1s 5s;
         }
 
         .bma img {
           height: 30px;
+        }
+
+        @keyframes hint {
+          0% {
+            transform: translateX(0) scale(1);
+          }
+
+          50% {
+            transform: translateX(-20%) scale(1.25);
+          }
+          100% {
+            transform: translateX(0) scale(1);
+          }
         }
       `}</style>
     </>
