@@ -59,6 +59,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
           {mapView === "list" && <MapPageNades allNades={allNades} />}
 
           <MapViewSuggested
+            open={!!suggestedNades?.length}
             nades={suggestedNades}
             onDismiss={dismissSuggested}
           />
