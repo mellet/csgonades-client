@@ -45,6 +45,9 @@ export const NadeStats: FC<NadeStatsProps> = ({
   const isJumpThrow = technique === "jumpthrow";
   const nadeIsNew = isNewNade(createdAt);
 
+  // Show minimum of 1 if favorited by user
+  const favCount = isFavorited ? favoriteCount || 1 : favoriteCount;
+
   return (
     <>
       <div className="item-bottom">
@@ -69,7 +72,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
             <div className="stat-item">
               <StatFavorite
                 nadeId={nadeId}
-                favoriteCount={favoriteCount}
+                favoriteCount={favCount}
                 isFavorited={isFavorited}
               />
             </div>
