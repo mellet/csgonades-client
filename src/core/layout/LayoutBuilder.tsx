@@ -147,6 +147,8 @@ export const LayoutBuilder: FC<Props> = memo(
               width: 100%;
               background: ${colors.DP00};
               grid-template-columns: 1fr;
+              grid-template-rows: auto;
+              padding-bottom: ${Dimensions.GUTTER_SIZE}px;
             }
 
             .with-sidebar-and-nav {
@@ -171,6 +173,7 @@ export const LayoutBuilder: FC<Props> = memo(
               background: ${colors.DP02};
               height: auto;
               width: 100%;
+              border-radius: ${Dimensions.BORDER_RADIUS};
             }
           }
         `}</style>
