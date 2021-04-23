@@ -3,7 +3,6 @@ import { useTheme } from "../../core/settings/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
 import { ListAds } from "./ListAds";
 import { isMobile } from "react-device-detect";
-import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
 
 type Props<T> = {
   data: T[];
@@ -32,7 +31,6 @@ const List: FC<Props<any>> = memo(
     const isEmpty = numItems === 0;
 
     const enableInListAds = enableAds && isMobile;
-    const enableBigAd = enableAds && !isMobile;
 
     return (
       <>
@@ -52,12 +50,6 @@ const List: FC<Props<any>> = memo(
             </div>
           ))}
 
-          {enableBigAd && (
-            <div className="ph-1">
-              <EzoicPlaceholder id="195" />
-            </div>
-          )}
-
           {enableInListAds && <ListAds numNades={numItems} />}
         </div>
         <style jsx>{`
@@ -75,25 +67,6 @@ const List: FC<Props<any>> = memo(
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-          }
-
-          .ph-1 {
-            display: flex;
-            grid-column: 1 / 4;
-            grid-row: 7 / 8;
-            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          }
-
-          @media only screen and (max-width: 1020px) {
-            .ph-1 {
-              grid-column: 1 / 3;
-            }
-          }
-
-          @media only screen and (max-width: 600px) {
-            .ph-1 {
-              grid-column: 1 / 2;
-            }
           }
         `}</style>
       </>
