@@ -35,7 +35,7 @@ export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
         .title {
           position: relative;
           display: grid;
-          grid-template-columns: min-content min-content 1fr min-content;
+          grid-template-columns: min-content auto;
           grid-template-areas:
             "controls title"
             "controls title";

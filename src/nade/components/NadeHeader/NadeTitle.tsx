@@ -25,23 +25,16 @@ export const NadeTitle: FC<Props> = memo(({ nade }) => {
 
       <style jsx>{`
         h1 {
-          font-size: 26px;
+          font-size: 28px;
           margin: 0;
           padding: 0;
           font-weight: 300;
           color: ${colors.TEXT};
-          white-space: nowrap;
         }
 
         @media only screen and (max-width: 800px) {
           h1 {
-            font-size: 20px;
-          }
-        }
-
-        @media only screen and (max-width: 600px) {
-          h1 {
-            font-size: 18px;
+            font-size: 24px;
           }
         }
       `}</style>

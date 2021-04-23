@@ -103,7 +103,7 @@ const NadeMainLayout = styled.div`
 
   @media only screen and (max-width: 1100px) {
     width: 100%;
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
     grid-column-gap: 0;
     grid-template-areas:
       "status"
