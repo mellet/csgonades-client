@@ -19,7 +19,7 @@ export const NadeComments: FC<Props> = memo(({ nade }) => {
         <NadeCommentItem
           key={nc.id}
           nadeComment={nc}
-          refetchComment={fetchComments}
+          onRefetchComment={fetchComments}
         />
       ))}
     </>

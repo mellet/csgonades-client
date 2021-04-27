@@ -14,14 +14,20 @@ import {
   NadeCommentTime,
 } from "./NadeCommentLayout";
 import { NadeCommentActionButtons } from "./NadeCommentActions";
+import { RoleLabel } from "../../../../users/components/RoleLabel";
 
-type Props = {
+export type NadeCommentItemProps = {
   nadeComment: NadeComment;
-  refetchComment: () => void;
+  onRefetchComment: () => void;
 };
 
-export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
+export const NadeCommentItem: FC<NadeCommentItemProps> = ({
+  nadeComment,
+  onRefetchComment: refetchComment,
+}) => {
   const allowEditAndDelete = useAllowEditComment(nadeComment);
+
+  const showRoleLabel = nadeComment.role !== "user";
 
   return (
     <>
@@ -29,7 +35,17 @@ export const NadeCommentItem: FC<Props> = ({ nadeComment, refetchComment }) => {
         <NadeCommentAvatar src={nadeComment.avatar} />
         <NadeCommentNickname>
           <Link href={`/users/${nadeComment.steamId}`}>
-            <a>{nadeComment.nickname}</a>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <a>{nadeComment.nickname}</a>
+              {nadeComment.role && showRoleLabel && (
+                <RoleLabel role="administrator" />
+              )}
+            </div>
           </Link>
           <NadeCommentArrow />
         </NadeCommentNickname>

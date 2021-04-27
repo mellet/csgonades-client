@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
+import { Role } from "../../users/models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 export type NadeComment = {
@@ -11,6 +12,7 @@ export type NadeComment = {
   nadeId: string;
   nickname: string;
   steamId: string;
+  role?: Role;
 };
 
 export type NadeCommentCreateDTO = {
