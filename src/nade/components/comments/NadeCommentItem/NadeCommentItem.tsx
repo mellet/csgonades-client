@@ -43,7 +43,7 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
             >
               <a>{nadeComment.nickname}</a>
               {nadeComment.role && showRoleLabel && (
-                <RoleLabel role="administrator" />
+                <RoleLabel role={nadeComment.role} />
               )}
             </div>
           </Link>
