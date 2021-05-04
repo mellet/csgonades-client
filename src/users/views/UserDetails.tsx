@@ -49,11 +49,10 @@ export const UserDetails: FC<Props> = ({ user }) => {
       </div>
       <style jsx>{`
         .user-details {
-          position: relative;
           background: ${colors.DP01};
           margin-right: 18px;
           padding: 12px;
-          width: 400px;
+          width: 100%;
           border: 1px solid ${colors.BORDER};
           align-self: flex-start;
           border-radius: ${Dimensions.BORDER_RADIUS};

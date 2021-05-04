@@ -1,5 +1,4 @@
-import { FC, useEffect, useState } from "react";
-import { NadeApi } from "../../nade/data/NadeApi";
+import { FC, useState } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { User } from "../models/User";
 import { useTheme } from "../../core/settings/SettingsHooks";
@@ -9,24 +8,21 @@ import { NadeItemMobile } from "../../nade/components/NadeItem/NadeItemMobile";
 import { isMobileOnly } from "react-device-detect";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { Dimensions } from "../../constants/Constants";
+import { CsgoMap, mapString } from "../../map/models/CsGoMap";
+import { UserNadeMapNav } from "./UserNadeMapNav";
+import { useUserNadesByMap } from "../data/useUserNadesByMap";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 type Props = {
   user: User;
 };
 
 export const UserUI: FC<Props> = ({ user }) => {
-  const [nades, setNades] = useState<NadeLight[]>([]);
-
   const { colors } = useTheme();
+  const [csgoMap, setCsGoMap] = useState<CsgoMap>("mirage");
+  const { nades, isLoading } = useUserNadesByMap(user.steamId, csgoMap);
 
-  useEffect(() => {
-    NadeApi.byUser(user.steamId).then((res) => {
-      if (res.isOk()) {
-        setNades(res.value);
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const emptyMessage = `${user.nickname} has no nades on ${mapString(csgoMap)}`;
 
   function renderItem(item: NadeLight) {
     if (isMobileOnly) {
@@ -48,26 +44,36 @@ export const UserUI: FC<Props> = ({ user }) => {
         </div>
         <div className="user-nades">
           <h2>Nades by {user.nickname}</h2>
-          <CsgnList<NadeLight>
-            data={nades}
-            keyExtractor={keyExtractor}
-            renderItem={renderItem}
-          />
+          <UserNadeMapNav selectedMap={csgoMap} onMapSelect={setCsGoMap} />
+
+          {isLoading && <LoadingSpinner />}
+
+          {nades && (
+            <CsgnList<NadeLight>
+              data={nades}
+              keyExtractor={keyExtractor}
+              renderItem={renderItem}
+              emptyMessage={emptyMessage}
+            />
+          )}
         </div>
       </div>
       <style jsx>{`
         .user-container {
-          grid-area: main;
           position: relative;
-          margin: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           min-height: 60vh;
         }
 
         .user-details {
-          display: block;
+          display: inline-block;
           margin-bottom: 30px;
+          min-width: 300px;
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
+          position: sticky;
+          top: ${Dimensions.STICKY_TOP}px;
+          align-self: flex-start;
         }
 
         .user-nades {
@@ -77,6 +83,17 @@ export const UserUI: FC<Props> = ({ user }) => {
         .user-nades h2 {
           font-weight: 300;
           color: ${colors.TEXT};
+        }
+
+        @media only screen and (max-width: 950px) {
+          .user-container {
+            flex-direction: column;
+          }
+
+          .user-details {
+            position: relative;
+            top: 0;
+          }
         }
       `}</style>
     </>

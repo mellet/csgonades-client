@@ -142,9 +142,18 @@ export class NadeApi {
     }
   }
 
-  static async byUser(steamId: string): AppResult<NadeLight[]> {
+  static async byUser(
+    steamId: string,
+    csgoMap?: CsgoMap
+  ): AppResult<NadeLight[]> {
     try {
-      const res = await axios.get(`${Config.API_URL}/nades/user/${steamId}`);
+      let url = `${Config.API_URL}/nades/user/${steamId}`;
+
+      if (csgoMap) {
+        url = url + `?map=${csgoMap}`;
+      }
+
+      const res = await axios.get(url);
       const nades = res.data as NadeLight[];
       return ok(nades);
     } catch (error) {

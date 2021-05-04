@@ -17,8 +17,7 @@ const Auth: NextPage = () => {
         <div className="loading-msg">
           <p className="sign-in-msg">Signing you in!</p>
           <p>
-            Please wait...
-            <CSGNIcon icon={<FaSpinner />} spin />
+            <CSGNIcon icon={<FaSpinner />} size={34} spin />
           </p>
         </div>
       </div>

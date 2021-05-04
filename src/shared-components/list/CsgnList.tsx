@@ -9,6 +9,7 @@ type Props<T> = {
   enableAds?: boolean;
   keyExtractor: (item: T) => string;
   renderItem: (item: T) => JSX.Element;
+  emptyMessage?: string;
 };
 
 function ListBase<T>(props: Props<T>): JSX.Element {
@@ -25,7 +26,7 @@ function ListBase<T>(props: Props<T>): JSX.Element {
 }
 
 const List: FC<Props<any>> = memo(
-  ({ data, keyExtractor, renderItem, enableAds = false }) => {
+  ({ data, keyExtractor, renderItem, enableAds = false, emptyMessage }) => {
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
@@ -36,7 +37,9 @@ const List: FC<Props<any>> = memo(
       <>
         {isEmpty && (
           <div className="empty-list">
-            No nades here yet, sign in to add some!
+            {emptyMessage
+              ? emptyMessage
+              : "No nades here yet, sign in to add some!"}
           </div>
         )}
         <div className="list">
@@ -54,12 +57,13 @@ const List: FC<Props<any>> = memo(
         </div>
         <style jsx>{`
           .empty-list {
-            background: ${colors.DP02};
+            background: ${colors.FAV_YELLOW};
             border-radius: 5px;
             border: 1px solid ${colors.BORDER};
-            color: ${colors.TEXT};
-            font-size: 18px;
-            padding: 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+            padding: ${Dimensions.GUTTER_SIZE}px;
           }
 
           .list {
