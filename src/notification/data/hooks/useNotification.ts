@@ -15,10 +15,11 @@ async function fetcher(_key: string, token: string) {
 }
 
 export const useRawNotifications = () => {
+  const notificationFetchDelay = 5 * 60 * 1000;
   const token = useToken();
 
   const { data } = useSWR(token ? ["/notifications", token] : null, fetcher, {
-    dedupingInterval: 60 * 1000,
+    dedupingInterval: notificationFetchDelay,
   });
 
   const markAsViewed = useCallback(async () => {
@@ -31,8 +32,6 @@ export const useRawNotifications = () => {
     mutate(["/notifications", token], viewed);
 
     await NotificationApi.markAllAsViewed(token);
-
-    mutate(["/notifications", token]);
   }, [token, data]);
 
   return {
