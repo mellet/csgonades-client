@@ -14,52 +14,54 @@ export const MapNav: FC = () => {
         <ul>
           <li>
             <MapPageLink map="mirage">
-              <NavItem csMap={"mirage"} selected={selectedMap === "mirage"} />
+              <NavItem csMap="mirage" selected={selectedMap === "mirage"} />
             </MapPageLink>
           </li>
 
           <li>
             <MapPageLink map="inferno">
-              <NavItem csMap={"inferno"} selected={selectedMap === "inferno"} />
+              <NavItem csMap="inferno" selected={selectedMap === "inferno"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="dust2">
-              <NavItem csMap={"dust2"} selected={selectedMap === "dust2"} />
+              <NavItem csMap="dust2" selected={selectedMap === "dust2"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="overpass">
-              <NavItem
-                csMap={"overpass"}
-                selected={selectedMap === "overpass"}
-              />
+              <NavItem csMap="overpass" selected={selectedMap === "overpass"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="cache">
-              <NavItem csMap={"cache"} selected={selectedMap === "cache"} />
+              <NavItem csMap="cache" selected={selectedMap === "cache"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="train">
-              <NavItem csMap={"train"} selected={selectedMap === "train"} />
+              <NavItem csMap="train" selected={selectedMap === "train"} />
             </MapPageLink>
           </li>
 
           <li>
             <MapPageLink map="nuke">
-              <NavItem csMap={"nuke"} selected={selectedMap === "nuke"} />
+              <NavItem csMap="nuke" selected={selectedMap === "nuke"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="vertigo">
-              <NavItem csMap={"vertigo"} selected={selectedMap === "vertigo"} />
+              <NavItem csMap="vertigo" selected={selectedMap === "vertigo"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="ancient">
+              <NavItem csMap="ancient" selected={selectedMap === "anubis"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="anubis">
-              <NavItem csMap={"anubis"} selected={selectedMap === "anubis"} />
+              <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
             </MapPageLink>
           </li>
         </ul>

@@ -75,10 +75,15 @@ export const Button = styled.button<ButtonProps>`
     props.active ? props.activeColor : props.theme.colors.buttonDefaultIcon};
   transition: color 0.1s, background 0.1s;
 
-  &:hover {
+  &:hover,
+  &:active {
     cursor: pointer;
     color: ${(props) => (props.activeColor ? props.activeColor : "#0d0c22")};
     background: ${(props) => props.theme.colors.DP03};
+  }
+
+  &:focus-visible {
+    outline: 1px auto ${(props) => props.theme.colors.PRIMARY};
   }
 `;
 

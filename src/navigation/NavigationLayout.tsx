@@ -24,7 +24,7 @@ export const NavigationLayout: FC<Props> = ({
   );
 };
 
-const NavigationLayoutWrap = styled.div`
+const NavigationLayoutWrap = styled.nav`
   position: sticky;
   top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
 
