@@ -23,6 +23,7 @@ export const Dimensions = {
   HEADER_HEIGHT: 55,
   MEDIUM_DEVIDE: "1280px",
   MOBILE_THRESHHOLD: "850px",
+  STICKY_TOP: 55 + 16,
   NAV_HEIGHT: 50,
   PADDING_HUGE: "24px",
   PADDING_LARGE: "18px",
