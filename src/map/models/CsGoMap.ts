@@ -1,4 +1,5 @@
 const CsGoMaps = {
+  ancient: "Ancient",
   anubis: "Anubis",
   cache: "Cache",
   cobblestone: "Cobblestone",
