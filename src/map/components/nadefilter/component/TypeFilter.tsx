@@ -21,15 +21,15 @@ export const TypeFilter: FC = () => {
           />
           <IconButton
             inGroup
-            icon={<NadeIcon nadeType="flash" size={26} />}
-            active={byType === "flash"}
-            onClick={() => filterByType("flash")}
-          />
-          <IconButton
-            inGroup
             icon={<NadeIcon nadeType="molotov" size={26} />}
             active={byType === "molotov"}
             onClick={() => filterByType("molotov")}
+          />
+          <IconButton
+            inGroup
+            icon={<NadeIcon nadeType="flash" size={26} />}
+            active={byType === "flash"}
+            onClick={() => filterByType("flash")}
           />
           <IconButton
             inGroup

@@ -22,15 +22,15 @@ export const TickrateSelector: FC = () => {
         <IconButtonGroup>
           <IconButton
             inGroup
-            icon={<span style={{ fontSize: 14 }}>64</span>}
-            active={byTickrate === "tick64"}
-            onClick={filterBy64tick}
-          />
-          <IconButton
-            inGroup
             icon={<span style={{ fontSize: 14 }}>128</span>}
             active={byTickrate === "tick128"}
             onClick={filterByTickrate128}
+          />
+          <IconButton
+            inGroup
+            icon={<span style={{ fontSize: 14 }}>64</span>}
+            active={byTickrate === "tick64"}
+            onClick={filterBy64tick}
           />
         </IconButtonGroup>
       </div>

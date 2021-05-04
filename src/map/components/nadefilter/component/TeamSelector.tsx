@@ -22,15 +22,15 @@ export const TeamSelector: FC = () => {
         <IconButtonGroup>
           <IconButton
             inGroup
-            icon={<span style={{ fontSize: 14 }}>CT</span>}
-            active={byTeam === "counterTerrorist"}
-            onClick={filterByTickrate128}
-          />
-          <IconButton
-            inGroup
             icon={<span style={{ fontSize: 14 }}>T</span>}
             active={byTeam === "terrorist"}
             onClick={filterByTerrorist}
+          />
+          <IconButton
+            inGroup
+            icon={<span style={{ fontSize: 14 }}>CT</span>}
+            active={byTeam === "counterTerrorist"}
+            onClick={filterByTickrate128}
           />
         </IconButtonGroup>
       </div>
