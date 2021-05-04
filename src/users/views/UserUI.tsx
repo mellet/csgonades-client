@@ -69,7 +69,7 @@ export const UserUI: FC<Props> = ({ user }) => {
         .user-details {
           display: inline-block;
           margin-bottom: 30px;
-          min-width: 300px;
+          max-width: 300px;
           margin-right: ${Dimensions.GUTTER_SIZE}px;
           position: sticky;
           top: ${Dimensions.STICKY_TOP}px;

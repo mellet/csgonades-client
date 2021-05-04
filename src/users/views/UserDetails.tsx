@@ -89,6 +89,8 @@ export const UserDetails: FC<Props> = ({ user }) => {
         .bio {
           margin-bottom: 12px;
           color: ${colors.TEXT};
+          overflow-wrap: break-word;
+          word-wrap: break-word;
         }
 
         .user-role-badge {
