@@ -8,14 +8,17 @@ import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { Config } from "../../constants/Constants";
 import { MapMain } from "../../map/containers/MapMain";
 import { MapSidebar } from "../../map/containers/MapSidebar";
+import { useMapNades } from "../../nade/data/useMapNades";
 
 interface Props {
   mapName: CsgoMap;
-  nades: NadeLight[];
+  initialNades: NadeLight[];
 }
 
-const Map: NextPage<Props> = ({ mapName, nades }) => {
-  if (!nades) {
+const Map: NextPage<Props> = ({ mapName, initialNades }) => {
+  const { nades } = useMapNades(initialNades, mapName);
+
+  if (!nades || !initialNades) {
     return null;
   }
 
@@ -59,7 +62,7 @@ export const getStaticProps: GetStaticProps<Props, { map: CsgoMap }> = async ({
   return {
     props: {
       mapName,
-      nades,
+      initialNades: nades,
     },
     revalidate: Config.revalidationTime,
   };
