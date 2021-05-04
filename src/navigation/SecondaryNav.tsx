@@ -17,9 +17,6 @@ export const SecondaryNav: FC = memo(({}) => {
         <PageLink href="/contact" as="/contact" prefetch="false">
           <span className="nav-item">Contact</span>
         </PageLink>
-        <PageLink href="/privacypolicy" as="/privacypolicy" prefetch="false">
-          <span className="nav-item">Privacy Policy</span>
-        </PageLink>
       </div>
       <style jsx>{`
         .site-nav {

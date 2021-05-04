@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import { useTheme } from "../core/settings/SettingsHooks";
+import { PageLink } from "../shared-components/PageLink";
 
 export const Footer: FC = memo(() => {
   const { colors } = useTheme();
@@ -17,13 +18,36 @@ export const Footer: FC = memo(() => {
                 Steam
               </a>
             </div>
-
             <div className="copyright">© {year} CSGO Nades</div>
+            <div className="legal">
+              <PageLink
+                href="/privacypolicy"
+                as="/privacypolicy"
+                prefetch="false"
+              >
+                <span className="nav-item">Privacy Policy</span>
+              </PageLink>
+            </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
+        .legal {
+          text-align: center;
+          font-size: 12px;
+          line-height: 12px;
+          color: white;
+        }
+
+        .legal span {
+          color: white;
+        }
+
+        .legal span:hover {
+          text-decoration: underline;
+        }
+
         .footer-wrap {
           background: ${colors.primaryBtnBg};
         }
@@ -58,14 +82,18 @@ export const Footer: FC = memo(() => {
           white-space: nowrap;
           color: #fff;
           font-size: 14px;
+          line-height: 14px;
           text-align: center;
+          margin-bottom: 6px;
         }
 
         .copyright {
           font-size: 12px;
+          line-height: 12px;
           white-space: nowrap;
           color: #fff;
           text-align: center;
+          margin-bottom: 6px;
         }
       `}</style>
     </>

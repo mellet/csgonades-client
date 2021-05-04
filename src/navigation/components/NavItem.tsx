@@ -30,7 +30,6 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
       <style jsx>{`
         .map-link {
           display: flex;
-          font-size: 15px;
           font-weight: 400;
           transition: background 0.1s;
           height: 100%;
@@ -39,7 +38,7 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
           align-items: center;
           color: rgb(88, 102, 126);
           font-weight: 400;
-          padding: 10px 12px;
+          padding: 9px 12px;
           border-bottom: 1px solid ${colors.BORDER};
         }
 
@@ -55,12 +54,14 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
           margin-left: 10px;
           color: ${colors.TEXT};
           opacity: 0.8;
+          font-size: 15px;
+          line-height: 15px;
         }
 
         .nav-icon {
           position: relative;
-          width: 25px;
-          height: 25px;
+          width: 24px;
+          height: 24px;
           opacity: 0.8;
           border-radius: 50%;
           overflow: hidden;
