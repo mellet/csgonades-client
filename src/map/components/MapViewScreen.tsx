@@ -64,7 +64,8 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
         {map === "ancient" && (
           <div id="new-map-warning">
             <div className="new-map-content">
-              <b>Ancient</b> is now in Active Duty. Sign in to contribute.
+              <b>Ancient is now in Active Duty.</b> Sign in and be one of the
+              first to add nades to Ancient.
             </div>
           </div>
         )}
