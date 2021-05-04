@@ -33,16 +33,6 @@ export const MapNav: FC = () => {
               <NavItem csMap="overpass" selected={selectedMap === "overpass"} />
             </MapPageLink>
           </li>
-          <li>
-            <MapPageLink map="cache">
-              <NavItem csMap="cache" selected={selectedMap === "cache"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="train">
-              <NavItem csMap="train" selected={selectedMap === "train"} />
-            </MapPageLink>
-          </li>
 
           <li>
             <MapPageLink map="nuke">
@@ -60,10 +50,22 @@ export const MapNav: FC = () => {
             </MapPageLink>
           </li>
           <li>
-            <MapPageLink map="anubis">
-              <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
+            <MapPageLink map="cache">
+              <NavItem csMap="cache" selected={selectedMap === "cache"} />
             </MapPageLink>
           </li>
+          <li>
+            <MapPageLink map="train">
+              <NavItem csMap="train" selected={selectedMap === "train"} />
+            </MapPageLink>
+          </li>
+          {false && (
+            <li>
+              <MapPageLink map="anubis">
+                <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
+              </MapPageLink>
+            </li>
+          )}
         </ul>
       </div>
       <style jsx>{`
