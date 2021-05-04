@@ -15,10 +15,11 @@ async function fetcher(map: CsgoMap) {
 }
 
 export const useMapNades = (initialNades: NadeLight[], map: CsgoMap) => {
+  const refreshDelay = 2 * 60 * 1000;
+
   const { data, error } = useSWR(map, fetcher, {
     initialData: initialNades,
-    revalidateOnMount: false,
-    focusThrottleInterval: 60 * 1000,
+    dedupingInterval: refreshDelay,
     errorRetryCount: 3,
   });
 
