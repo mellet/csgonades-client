@@ -1,13 +1,9 @@
-import { useCallback, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { notificationsSelector } from "./NotificationSelectors";
+import { useMemo } from "react";
 import {
   FavoriteNotification,
   FavoriteNotificationAgregate,
 } from "../models/Notification";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
-import { NotificationApi } from "./NotificationApi";
-import { markNotificationsAsViewedAction } from "./NotificationSlice";
+import { useRawNotifications } from "./hooks/useNotification";
 
 type NotificationAggregateMap = { [key: string]: FavoriteNotificationAgregate };
 
@@ -48,9 +44,7 @@ function combineFavoriteNotifications(notis: FavoriteNotification[]) {
 }
 
 export const useNotifications = () => {
-  const dispatch = useDispatch();
-  const getToken = useGetOrUpdateToken();
-  const rawNotifications = useSelector(notificationsSelector);
+  const { rawNotifications, markAsViewed } = useRawNotifications();
 
   const { notificationCount, notifications } = useMemo(() => {
     // Split favorite notifications from other notifications
@@ -75,21 +69,10 @@ export const useNotifications = () => {
     };
   }, [rawNotifications]);
 
-  const setAllNotificationsAsViewed = useCallback(async () => {
-    const authToken = await getToken();
-    if (!authToken) {
-      console.error("Missing token");
-      return;
-    }
-
-    dispatch(markNotificationsAsViewedAction());
-    NotificationApi.markAllAsViewed(authToken);
-  }, [dispatch, getToken]);
-
   return {
     notifications,
     notificationCount,
-    setAllNotificationsAsViewed,
+    setAllNotificationsAsViewed: markAsViewed,
   };
 };
 
