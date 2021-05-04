@@ -9,7 +9,6 @@ import { useWindowSize } from "../../shared-components/MinSizeRender";
 import { AddNadeButton } from "./AddNadeButton";
 import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
-import { useTheme } from "styled-components";
 
 type Props = {
   allNades: NadeLight[];
@@ -18,7 +17,6 @@ type Props = {
 };
 
 const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
-  const { colors } = useTheme();
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
@@ -61,15 +59,6 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
-        {map === "ancient" && (
-          <div id="new-map-warning">
-            <div className="new-map-content">
-              <b>Ancient is now in Active Duty.</b> Sign in and be one of the
-              first to add nades to Ancient.
-            </div>
-          </div>
-        )}
-
         <div id="ad-nade-wrapper">
           <AddNadeButton />
         </div>
@@ -98,29 +87,6 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
       </div>
 
       <style jsx>{`
-        #new-map-warning {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 1;
-          display: flex;
-          padding-bottom: 10px;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .new-map-content {
-          font-size: 14px;
-          line-height: 14px;
-          color: white;
-          background: ${colors.FAV_YELLOW};
-          color: white;
-          padding: 10px 20px;
-          border-radius: ${Dimensions.BORDER_RADIUS};
-          font-weight: 400;
-        }
-
         .no-nades-wrap {
           position: absolute;
           top: 0;
