@@ -56,7 +56,7 @@ export const MapNav: FC = () => {
           </li>
           <li>
             <MapPageLink map="ancient">
-              <NavItem csMap="ancient" selected={selectedMap === "anubis"} />
+              <NavItem csMap="ancient" selected={selectedMap === "ancient"} />
             </MapPageLink>
           </li>
           <li>
