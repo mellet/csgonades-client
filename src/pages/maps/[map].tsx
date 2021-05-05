@@ -8,7 +8,6 @@ import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { Config } from "../../constants/Constants";
 import { MapMain } from "../../map/containers/MapMain";
 import { MapSidebar } from "../../map/containers/MapSidebar";
-import { useMapNades } from "../../nade/data/useMapNades";
 
 interface Props {
   mapName: CsgoMap;
@@ -16,9 +15,9 @@ interface Props {
 }
 
 const Map: NextPage<Props> = ({ mapName, initialNades }) => {
-  const { nades } = useMapNades(initialNades, mapName);
+  // const { nades } = useMapNades(initialNades, mapName);
 
-  if (!nades || !initialNades) {
+  if (!initialNades) {
     return null;
   }
 
@@ -26,8 +25,8 @@ const Map: NextPage<Props> = ({ mapName, initialNades }) => {
     <LayoutBuilder
       header={<HeaderDefault />}
       nav={<Navigation />}
-      main={<MapMain key={mapName} map={mapName} allNades={nades} />}
-      sidebar={<MapSidebar map={mapName} nades={nades} />}
+      main={<MapMain key={mapName} map={mapName} allNades={initialNades} />}
+      sidebar={<MapSidebar map={mapName} nades={initialNades} />}
     />
   );
 };
