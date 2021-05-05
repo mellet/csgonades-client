@@ -1,10 +1,16 @@
-import { FC, Suspense } from "react";
+import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
-import UserNav from "../../../core/layout/defaultheader/components/UserNav";
 import { Nade } from "../../models/Nade";
 import { NadeTitleBar } from "./NadeTitleBar";
+import dynamic from "next/dynamic";
 
-const isServer = typeof window === "undefined";
+const UserNav = dynamic(
+  () =>
+    import("../../../core/layout/defaultheader/components/UserNav").then(
+      (m) => m.UserNav
+    ),
+  { ssr: false }
+);
 
 type Props = {
   nade: Nade;
@@ -17,12 +23,7 @@ export const NadeHeader: FC<Props> = ({ nade }) => {
         <div id="nade-title">
           <NadeTitleBar nade={nade} />
         </div>
-
-        {!isServer && (
-          <Suspense fallback={<div />}>
-            <UserNav />
-          </Suspense>
-        )}
+        <UserNav />
       </div>
       <style jsx>{`
         #nade-header {

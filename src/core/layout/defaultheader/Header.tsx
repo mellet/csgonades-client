@@ -5,7 +5,10 @@ import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 import dynamic from "next/dynamic";
 
-const UserNav = dynamic(() => import("./components/UserNav"), { ssr: false });
+const UserNav = dynamic(
+  () => import("./components/UserNav").then((m) => m.UserNav),
+  { ssr: false }
+);
 
 export const HeaderDefault: FC = memo(() => {
   return (

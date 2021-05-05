@@ -32,6 +32,8 @@ export const useRawNotifications = () => {
     mutate(["/notifications", token], viewed);
 
     await NotificationApi.markAllAsViewed(token);
+
+    mutate(["/notifications", token]);
   }, [token, data]);
 
   return {
