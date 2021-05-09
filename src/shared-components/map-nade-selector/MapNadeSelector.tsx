@@ -1,58 +1,58 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { CsgoMap } from "../../map/models/CsGoMap";
-import { UserNadeMapNavItem } from "./UserNadeMapNavItem";
+import { MapNadeSelectorItem } from "./MapNadeSelectorItem";
 
 type Props = {
   selectedMap: CsgoMap;
   onMapSelect: (csgoMap: CsgoMap) => void;
 };
 
-export const UserNadeMapNav: FC<Props> = ({ onMapSelect, selectedMap }) => {
+export const MapNadeSelector: FC<Props> = ({ onMapSelect, selectedMap }) => {
   return (
     <>
       <div className="user-nade-map-nav">
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="mirage"
           onClick={onMapSelect}
           active={selectedMap === "mirage"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="inferno"
           onClick={onMapSelect}
           active={selectedMap === "inferno"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="dust2"
           onClick={onMapSelect}
           active={selectedMap === "dust2"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="overpass"
           onClick={onMapSelect}
           active={selectedMap === "overpass"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="nuke"
           onClick={onMapSelect}
           active={selectedMap === "nuke"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="vertigo"
           onClick={onMapSelect}
           active={selectedMap === "vertigo"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="ancient"
           onClick={onMapSelect}
           active={selectedMap === "ancient"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="cache"
           onClick={onMapSelect}
           active={selectedMap === "cache"}
         />
-        <UserNadeMapNavItem
+        <MapNadeSelectorItem
           map="train"
           onClick={onMapSelect}
           active={selectedMap === "train"}

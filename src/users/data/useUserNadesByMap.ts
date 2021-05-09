@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import { NadeApi } from "../../nade/data/NadeApi";
+import { sortByDate } from "../../utils/Common";
 
 async function fetcher(userId: string, map: CsgoMap) {
   try {
@@ -19,8 +20,12 @@ async function fetcher(userId: string, map: CsgoMap) {
 export const useUserNadesByMap = (userId: string, map: CsgoMap) => {
   const { data, error, isValidating } = useSWR([userId, map], fetcher);
 
+  const nades = data
+    ? data.sort((a, b) => sortByDate(a.createdAt, b.createdAt))
+    : [];
+
   return {
-    nades: data,
+    nades,
     isLoading: !data && isValidating && !error,
   };
 };

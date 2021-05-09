@@ -1,9 +1,7 @@
-import { FC, useState, useEffect, useMemo } from "react";
+import { FC, useMemo } from "react";
 import { NadeLight } from "../nade/models/Nade";
 import { Status } from "../nade/models/Status";
-import { NadeApi } from "../nade/data/NadeApi";
-import { useSignedInUser } from "../core/authentication/useSignedInUser";
-import { sortByDate, generateTitle, kFormatter } from "../utils/Common";
+import { generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../shared-components/PageLink";
 import { prettyDate } from "../utils/DateUtils";
 import { useTheme } from "../core/settings/SettingsHooks";
@@ -20,38 +18,31 @@ import {
   FaTrash,
 } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
+import { useUserNadesByMap } from "../users/data/useUserNadesByMap";
+import { CsgoMap, mapString } from "../map/models/CsGoMap";
+import { LoadingSpinner } from "../users/views/LoadingSpinner";
+import { User } from "../users/models/User";
 
-export const DBNadeList: FC = () => {
+type Props = {
+  csgoMap: CsgoMap;
+  user: User;
+};
+
+export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
   const { colors } = useTheme();
-  const user = useSignedInUser();
-  const [userNades, setUserNades] = useState<NadeLight[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (user) {
-      NadeApi.byUser(user.steamId)
-        .then((res) => {
-          if (res.isOk()) {
-            const nades = res.value;
-            nades.sort((a, b) => sortByDate(a.createdAt, b.createdAt));
-            setUserNades(nades);
-            setLoading(false);
-          }
-        })
-        .catch(() => setLoading(false));
-    }
-  }, [user]);
+  const { nades, isLoading } = useUserNadesByMap(user.steamId, csgoMap);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
 
-  if (userNades.length === 0 && !loading) {
-    return (
-      <div>
-        You don&apos;t have any nades. If you know any good ones, add one.
-      </div>
-    );
+  if (!nades) {
+    return null;
+  }
+
+  if (nades?.length === 0 && !isLoading) {
+    return <div>You don&apos;t have any nades on {mapString(csgoMap)}.</div>;
   }
 
   return (
@@ -64,13 +55,13 @@ export const DBNadeList: FC = () => {
               <td>Type</td>
               <td>Title</td>
               <td>
+                <FaEye />
+              </td>
+              <td>
                 <FaStar />
               </td>
               <td>
                 <FaComment />
-              </td>
-              <td>
-                <FaEye />
               </td>
               <td>Created</td>
               <td></td>
@@ -78,7 +69,7 @@ export const DBNadeList: FC = () => {
             </tr>
           </thead>
           <tbody>
-            {userNades.map((n) => (
+            {nades.map((n) => (
               <NadeItem key={n.id} nade={n} />
             ))}
           </tbody>
@@ -135,9 +126,9 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
             </span>
           </PageLink>
         </td>
+        <td className="nade-comments">{kFormatter(nade.viewCount)}</td>
         <td className="nade-fav">{kFormatter(nade.favoriteCount)}</td>
         <td className="nade-comments">{kFormatter(nade.commentCount)}</td>
-        <td className="nade-comments">{kFormatter(nade.viewCount)}</td>
         <td>{prettyDate(nade.createdAt)}</td>
         <td className="nade-thumb">
           <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
