@@ -1,43 +1,39 @@
 import { useCallback } from "react";
 import useSWR, { mutate } from "swr";
-import {
-  useGetOrUpdateToken,
-  useToken,
-} from "../../../core/authentication/useGetToken";
+import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { NotificationApi } from "../NotificationApi";
 
-async function fetcher(_key: string, fetchToken: () => Promise<string | null>) {
-  console.log("# Getting token to fetch notifications", new Date());
-  const token = await fetchToken();
+const useNotificationFetcher = () => {
+  const fetchToken = useGetOrUpdateToken();
 
-  if (!token) {
-    return;
-  }
+  return async () => {
+    const token = await fetchToken();
 
-  console.log("#Fetching notification", new Date());
-  const result = await NotificationApi.getNotifications(token);
+    if (!token) {
+      return;
+    }
 
-  if (result.isOk()) {
-    return result.value;
-  } else {
-    throw Error(result.error.message);
-  }
-}
+    console.log("#Fetching notification", new Date());
+    const result = await NotificationApi.getNotifications(token);
+
+    if (result.isOk()) {
+      return result.value;
+    } else {
+      throw Error(result.error.message);
+    }
+  };
+};
 
 export const useRawNotifications = () => {
   const notificationFetchDelay = 5 * 60 * 1000;
-  const token = useToken();
   const fetchToken = useGetOrUpdateToken();
+  const notificaitonFetcher = useNotificationFetcher();
 
-  const { data } = useSWR(
-    token ? ["/notifications", fetchToken] : null,
-    fetcher,
-    {
-      dedupingInterval: notificationFetchDelay,
-      revalidateOnFocus: true,
-      focusThrottleInterval: notificationFetchDelay,
-    }
-  );
+  const { data } = useSWR("/notifications", notificaitonFetcher, {
+    dedupingInterval: notificationFetchDelay,
+    revalidateOnFocus: true,
+    focusThrottleInterval: notificationFetchDelay,
+  });
 
   const markAsViewed = useCallback(async () => {
     const freshToken = await fetchToken();
@@ -48,11 +44,8 @@ export const useRawNotifications = () => {
 
     const viewed = data.map((n) => ({ ...n, viewed: true }));
 
-    mutate(["/notifications", fetchToken], viewed);
-
+    mutate("/notifications", viewed);
     await NotificationApi.markAllAsViewed(freshToken);
-
-    mutate(["/notifications", fetchToken]);
   }, [data, fetchToken]);
 
   return {
