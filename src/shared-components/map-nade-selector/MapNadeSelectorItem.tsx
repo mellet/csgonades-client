@@ -35,13 +35,19 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
       <style jsx>{`
         .user-map-nav-item {
           border: none;
-          padding: 8px 8px;
+          padding: 0px 10px;
+          height: 40px;
           display: flex;
           background: ${active ? colors.DP03 : "tranparent"};
           border: 1px solid ${colors.buttonBorder};
           cursor: pointer;
           border-right: none;
           align-items: center;
+          transition: background 0.2s;
+        }
+
+        .user-map-nav-item:hover {
+          background: ${colors.DP03};
         }
 
         .user-map-nav-item:first-child {
