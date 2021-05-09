@@ -45,7 +45,7 @@ export const MapPosIcon: FC<Props> = memo(
     }
 
     const scaleFactor = mapWidth / 1024;
-    const iconBaseSize = Math.round(55 * scaleFactor);
+    const iconBaseSize = Math.round(48 * scaleFactor);
 
     if (!nade.type) {
       return null;
@@ -67,6 +67,7 @@ export const MapPosIcon: FC<Props> = memo(
               nadeType={nade.type}
               count={numNades > 1 ? numNades : undefined}
               isNew={hasNew}
+              animated={true}
             />
           </div>
         </div>

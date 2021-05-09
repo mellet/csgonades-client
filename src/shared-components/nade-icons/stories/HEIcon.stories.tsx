@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { NadeIconProps } from "../shared/NadeIconProps";
-import { HEIcon } from "../HEIcon";
+import { NadeIcon, NadeIconProps } from "..";
 
 const BoxContainer: FC = ({ children }) => {
   return (
@@ -21,32 +20,46 @@ const BoxContainer: FC = ({ children }) => {
 
 export default {
   title: "Icon/Grenade Icon",
-  component: HEIcon,
+  component: NadeIcon,
 } as Meta;
 
 const Template: Story = (args) => (
   <BoxContainer>
-    <HEIcon {...args} />
+    <NadeIcon {...args} />
   </BoxContainer>
 );
 
-export const Small = Template.bind({});
+export const SmallAnimated = Template.bind({});
 
-Small.args = {
+SmallAnimated.args = {
+  nadeType: "hegrenade",
   size: 24,
+  animated: true,
+} as NadeIconProps;
+
+export const SmallStatic = Template.bind({});
+
+SmallStatic.args = {
+  nadeType: "hegrenade",
+  size: 24,
+  animated: false,
 } as NadeIconProps;
 
 export const MediumWithCount = Template.bind({});
 
 MediumWithCount.args = {
+  nadeType: "hegrenade",
   size: 44,
-  count: 2,
+  count: 10,
+  animated: true,
 } as NadeIconProps;
 
 export const MediumWithCountAndLabel = Template.bind({});
 
 MediumWithCountAndLabel.args = {
+  nadeType: "hegrenade",
   size: 44,
   count: 10,
   isNew: true,
+  animated: true,
 } as NadeIconProps;

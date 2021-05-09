@@ -1,11 +1,16 @@
 import { FC } from "react";
 import {
   ANIMATION_SPEED,
-  TEXT_ANIMATION_DELAY,
+  COUNT_ANIMATION_DELAY,
+  NEW_LABEL_ANIMATION_DELAY,
 } from "./shared/NadeIconAnimationConstants";
-import { NadeIconProps } from "./shared/NadeIconProps";
+import { NadeSpecificIconProps } from "./shared/NadeIconProps";
 
-export const MolotovIcon: FC<NadeIconProps> = ({ size, count, isNew }) => {
+export const MolotovIcon: FC<NadeSpecificIconProps> = ({
+  size,
+  count,
+  isNew,
+}) => {
   const svgSize = size || 100;
 
   return (
@@ -60,7 +65,7 @@ export const MolotovIcon: FC<NadeIconProps> = ({ size, count, isNew }) => {
           opacity: 0;
           animation-name: anim-fadeId;
           animation-duration: ${ANIMATION_SPEED}s;
-          animation-delay: ${TEXT_ANIMATION_DELAY}s;
+          animation-delay: ${COUNT_ANIMATION_DELAY}s;
         }
 
         .count {
@@ -74,6 +79,7 @@ export const MolotovIcon: FC<NadeIconProps> = ({ size, count, isNew }) => {
           font-size: 22px;
           fill: #d4ff00;
           text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+          animation-delay: ${NEW_LABEL_ANIMATION_DELAY}s;
         }
 
         @keyframes anim-fadeId {

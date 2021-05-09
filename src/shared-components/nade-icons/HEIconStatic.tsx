@@ -1,17 +1,17 @@
 import { FC } from "react";
-import {
-  ANIMATION_SPEED,
-  COUNT_ANIMATION_DELAY,
-  NEW_LABEL_ANIMATION_DELAY,
-} from "./shared/NadeIconAnimationConstants";
 import { NadeSpecificIconProps } from "./shared/NadeIconProps";
 
-export const HEIcon: FC<NadeSpecificIconProps> = ({ size, count, isNew }) => {
+export const HEIconStatic: FC<NadeSpecificIconProps> = ({
+  size,
+  count,
+  isNew,
+}) => {
   return (
     <>
       <svg
         width={size || 100}
         height={size || 100}
+        style={{ transform: "scale(0.9)" }}
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -58,62 +58,6 @@ export const HEIcon: FC<NadeSpecificIconProps> = ({ size, count, isNew }) => {
           </clipPath>
         </defs>
       </svg>
-
-      <style jsx>{`
-        svg {
-          animation: scaleUp 0.2s ease-in forwards;
-        }
-
-        .anim {
-          animation-fill-mode: forwards;
-          animation-timing-function: ease-out;
-          transform-origin: center;
-        }
-
-        text {
-          font-family: "Changa One", cursiv;
-          alignment-baseline: middle;
-          text-anchor: middle;
-          opacity: 0;
-          animation-name: anim-fadeId;
-          animation-duration: ${ANIMATION_SPEED}s;
-          animation-delay: ${COUNT_ANIMATION_DELAY}s;
-        }
-
-        .count {
-          font-size: 60px;
-          line-height: 60px;
-          fill: white;
-          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .new-label {
-          font-size: 22px;
-          fill: #d4ff00;
-          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-          animation-delay: ${NEW_LABEL_ANIMATION_DELAY}s;
-        }
-
-        @keyframes anim-fadeId {
-          from {
-            opacity: 0;
-            transform: translateY(20%);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes scaleUp {
-          from {
-            transform: scale(0);
-          }
-          to {
-            transform: scale(0.9);
-          }
-        }
-      `}</style>
     </>
   );
 };

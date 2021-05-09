@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { FlashIcon } from "../FlashIcon";
-import { NadeIconProps } from "../shared/NadeIconProps";
+import { NadeIcon, NadeIconProps } from "..";
 
 const BoxContainer: FC = ({ children }) => {
   return (
@@ -22,32 +21,46 @@ const BoxContainer: FC = ({ children }) => {
 
 export default {
   title: "Icon/Flash Icon",
-  component: FlashIcon,
+  component: NadeIcon,
 } as Meta;
 
 const Template: Story = (args) => (
   <BoxContainer>
-    <FlashIcon {...args} />
+    <NadeIcon {...args} />
   </BoxContainer>
 );
 
 export const Small = Template.bind({});
 
 Small.args = {
+  nadeType: "flash",
   size: 24,
+  animated: true,
+} as NadeIconProps;
+
+export const SmallStatic = Template.bind({});
+
+SmallStatic.args = {
+  nadeType: "flash",
+  size: 24,
+  animated: false,
 } as NadeIconProps;
 
 export const MediumWithCount = Template.bind({});
 
 MediumWithCount.args = {
+  nadeType: "flash",
   size: 44,
   count: 2,
+  animated: true,
 } as NadeIconProps;
 
 export const MediumWithCountAndLabel = Template.bind({});
 
 MediumWithCountAndLabel.args = {
+  nadeType: "flash",
   size: 44,
   count: 10,
   isNew: true,
+  animated: true,
 } as NadeIconProps;

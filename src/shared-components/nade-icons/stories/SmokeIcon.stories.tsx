@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-
-import { SmokeIcon } from "../SmokeIcon";
-import { NadeIconProps } from "../shared/NadeIconProps";
+import { NadeIcon, NadeIconProps } from "..";
 
 const BoxContainer: FC = ({ children }) => {
   return (
@@ -22,32 +20,46 @@ const BoxContainer: FC = ({ children }) => {
 
 export default {
   title: "Icon/Smoke Icon",
-  component: SmokeIcon,
+  component: NadeIcon,
 } as Meta;
 
 const Template: Story = (args) => (
   <BoxContainer>
-    <SmokeIcon {...args} />
+    <NadeIcon {...args} />
   </BoxContainer>
 );
 
 export const Small = Template.bind({});
 
 Small.args = {
+  nadeType: "smoke",
   size: 24,
+  animated: true,
 } as NadeIconProps;
 
 export const MediumWithCount = Template.bind({});
 
 MediumWithCount.args = {
+  nadeType: "smoke",
   size: 44,
   count: 5,
+  animated: true,
 } as NadeIconProps;
 
 export const MediumWithCountAndLabel = Template.bind({});
 
 MediumWithCountAndLabel.args = {
+  nadeType: "smoke",
   size: 44,
   count: 10,
   isNew: true,
+  animated: true,
+} as NadeIconProps;
+
+export const MediumStatic = Template.bind({});
+
+MediumStatic.args = {
+  nadeType: "smoke",
+  size: 44,
+  animated: false,
 } as NadeIconProps;

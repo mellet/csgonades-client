@@ -22,6 +22,9 @@ import { useUserNadesByMap } from "../users/data/useUserNadesByMap";
 import { CsgoMap, mapString } from "../map/models/CsGoMap";
 import { LoadingSpinner } from "../users/views/LoadingSpinner";
 import { User } from "../users/models/User";
+import { NadeIcon } from "../shared-components/nade-icons";
+import Image from "next/image";
+import { Dimensions } from "../constants/Constants";
 
 type Props = {
   csgoMap: CsgoMap;
@@ -51,8 +54,10 @@ export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
         <table>
           <thead>
             <tr>
-              <td></td>
+              <td>Status</td>
               <td>Type</td>
+              <td></td>
+
               <td>Title</td>
               <td>
                 <FaEye />
@@ -64,7 +69,6 @@ export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
                 <FaComment />
               </td>
               <td>Created</td>
-              <td></td>
               <td></td>
             </tr>
           </thead>
@@ -112,7 +116,14 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
           <StatusText status={nade.status} />
         </td>
         <td className="nade-type">
-          {<img src={`/icons/grenades/${nade.type}.png`} />}
+          <NadeIcon nadeType={nade.type} size={30} />
+        </td>
+        <td className="nade-thumb">
+          <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
+            <div className="nade-thumb-image">
+              <Image src={nade.images.thumbnailUrl} layout="fill" />
+            </div>
+          </PageLink>
         </td>
         <td id="nade-title">
           <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
@@ -130,11 +141,6 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-fav">{kFormatter(nade.favoriteCount)}</td>
         <td className="nade-comments">{kFormatter(nade.commentCount)}</td>
         <td>{prettyDate(nade.createdAt)}</td>
-        <td className="nade-thumb">
-          <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
-            <img src={nade.images.thumbnailUrl} />
-          </PageLink>
-        </td>
         <td>
           <Link href={`/nades/${nade.slug || nade.id}/edit`}>
             <button className="edit-btn">
@@ -147,7 +153,7 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         td {
           border-right: 1px solid rgba(0, 0, 0, 0.05);
           border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-          padding: 10px 20px;
+          padding: 8px 16px;
         }
 
         td:last-child {
@@ -169,9 +175,12 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
           background: ${colors.filterBgHover};
         }
 
-        .nade-thumb img {
+        .nade-thumb-image {
+          position: relative;
+          height: 42px;
           width: 75px;
-          border-radius: 5px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
         }
 
         .nade-item {
@@ -181,17 +190,6 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
 
         .nade-title {
           width: 100%;
-        }
-
-        .nade-views,
-        .nade-fav,
-        .nade-type {
-        }
-
-        .nade-type img {
-          width: 25px;
-          height: 25px;
-          display: block;
         }
       `}</style>
     </>
