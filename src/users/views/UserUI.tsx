@@ -9,7 +9,7 @@ import { isMobileOnly } from "react-device-detect";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { Dimensions } from "../../constants/Constants";
 import { CsgoMap, mapString } from "../../map/models/CsGoMap";
-import { UserNadeMapNav } from "./UserNadeMapNav";
+import { MapNadeSelector } from "../../shared-components/map-nade-selector/MapNadeSelector";
 import { useUserNadesByMap } from "../data/useUserNadesByMap";
 import { LoadingSpinner } from "./LoadingSpinner";
 
@@ -44,7 +44,7 @@ export const UserUI: FC<Props> = ({ user }) => {
         </div>
         <div className="user-nades">
           <h2>Nades by {user.nickname}</h2>
-          <UserNadeMapNav selectedMap={csgoMap} onMapSelect={setCsGoMap} />
+          <MapNadeSelector selectedMap={csgoMap} onMapSelect={setCsGoMap} />
 
           {isLoading && <LoadingSpinner />}
 

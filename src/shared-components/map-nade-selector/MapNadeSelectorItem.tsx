@@ -10,7 +10,7 @@ type Props = {
   onClick: (map: CsgoMap) => void;
 };
 
-export const UserNadeMapNavItem: FC<Props> = ({ map, onClick, active }) => {
+export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
   const { colors } = useTheme();
 
   function onItemClick() {

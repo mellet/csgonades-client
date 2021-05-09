@@ -1,15 +1,18 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { DBNadeList } from "./DBNadeList";
-import { useIsSignedIn } from "../core/authentication/useIsSignedIn";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { SEO } from "../shared-components/SEO";
+import { MapNadeSelector } from "../shared-components/map-nade-selector/MapNadeSelector";
+import { CsgoMap } from "../map/models/CsGoMap";
+import { useSignedInUser } from "../core/authentication/useSignedInUser";
 
 export const DashboardPage: FC = () => {
   const { colors } = useTheme();
-  const isSignedIn = useIsSignedIn();
+  const signedInUser = useSignedInUser();
+  const [csgoMap, setCsGoMap] = useState<CsgoMap>("mirage");
 
-  if (!isSignedIn) {
+  if (!signedInUser) {
     return null;
   }
 
@@ -27,7 +30,9 @@ export const DashboardPage: FC = () => {
           <h1 id="title">DASHBOARD</h1>
           <div id="nade-list">
             <h2>Your nades</h2>
-            <DBNadeList />
+            <MapNadeSelector selectedMap={csgoMap} onMapSelect={setCsGoMap} />
+
+            <DBNadeList csgoMap={csgoMap} user={signedInUser} />
           </div>
         </div>
       </div>
@@ -81,7 +86,7 @@ export const DashboardPage: FC = () => {
         #nade-list {
           grid-area: dbnades;
           padding: 0px 30px 20px 30px;
-          color: ${colors.TEXT}
+          color: ${colors.TEXT};
         }
       `}</style>
     </>

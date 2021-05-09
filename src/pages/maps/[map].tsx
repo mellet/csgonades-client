@@ -15,8 +15,6 @@ interface Props {
 }
 
 const Map: NextPage<Props> = ({ mapName, initialNades }) => {
-  // const { nades } = useMapNades(initialNades, mapName);
-
   if (!initialNades) {
     return null;
   }
