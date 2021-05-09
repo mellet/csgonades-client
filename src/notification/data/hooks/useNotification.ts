@@ -40,18 +40,20 @@ export const useRawNotifications = () => {
   );
 
   const markAsViewed = useCallback(async () => {
-    if (!token || !data) {
+    const freshToken = await fetchToken();
+
+    if (!freshToken || !data) {
       return;
     }
 
     const viewed = data.map((n) => ({ ...n, viewed: true }));
 
-    mutate(["/notifications", token], viewed);
+    mutate(["/notifications", fetchToken], viewed);
 
-    await NotificationApi.markAllAsViewed(token);
+    await NotificationApi.markAllAsViewed(freshToken);
 
-    mutate(["/notifications", token]);
-  }, [token, data]);
+    mutate(["/notifications", fetchToken]);
+  }, [data, fetchToken]);
 
   return {
     rawNotifications: data || [],
