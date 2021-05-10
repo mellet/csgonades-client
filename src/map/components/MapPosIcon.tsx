@@ -45,7 +45,7 @@ export const MapPosIcon: FC<Props> = memo(
     }
 
     const scaleFactor = mapWidth / 1024;
-    const iconBaseSize = Math.round(48 * scaleFactor);
+    const iconBaseSize = Math.round(52 * scaleFactor);
 
     if (!nade.type) {
       return null;
