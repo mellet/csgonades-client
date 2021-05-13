@@ -284,6 +284,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           {state.showImageAdder && (
             <div id="image-adder">
               <ImageUploader
+                previewImageUrl={nade.images.thumbnailUrl}
                 message={<></>}
                 onDismiss={() =>
                   dispatch({ type: "EditNade/ShowImageSelector" })
@@ -298,6 +299,11 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           {state.showLineupImgAdder && (
             <div id="lineup-adder">
               <ImageUploader
+                previewImageUrl={
+                  nade.imageLineup?.url ||
+                  nade.imageLineupThumb?.url ||
+                  nade.images.lineupUrl
+                }
                 message={
                   <div className="lineup-msg">
                     <h3>Guideline</h3>

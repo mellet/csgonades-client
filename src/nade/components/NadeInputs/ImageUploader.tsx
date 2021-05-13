@@ -8,6 +8,7 @@ import "react-image-crop/dist/ReactCrop.css";
 type AspectRatio = "1:1" | "16:9";
 
 type Props = {
+  previewImageUrl?: string;
   aspectRatio?: AspectRatio;
   message: any;
   onDismiss: () => void;
@@ -19,6 +20,7 @@ export const ImageUploader: FC<Props> = ({
   message,
   onDismiss,
   onImageCropped,
+  previewImageUrl,
 }: Props) => {
   const windowSize = useWindowSize();
   const { colors } = useTheme();
@@ -139,23 +141,31 @@ export const ImageUploader: FC<Props> = ({
 
         <div className="file-selector-btn">
           <button className="btn cancel" onClick={onDismiss}>
-            CANCEL
+            Cancel
           </button>
           <button className="btn select-img" onClick={onSelectFileClick}>
-            SELECT IMAGE
+            {!previewImageUrl ? "Upload image" : "Replace Image"}
           </button>
 
-          {image && (
+          {!!image && (
             <>
               <button className="btn save" onClick={cropImage}>
-                SAVE
+                Save
               </button>
             </>
           )}
         </div>
-        {!image && (
+
+        {!image && !previewImageUrl && (
           <div className="placeholder">
             <div className="message">{message}</div>
+          </div>
+        )}
+
+        {!!previewImageUrl && !image && (
+          <div className="preview-image">
+            <div className="tip">Current Image</div>
+            <img src={previewImageUrl} />
           </div>
         )}
 
@@ -170,6 +180,28 @@ export const ImageUploader: FC<Props> = ({
         />
       </div>
       <style jsx>{`
+        .preview-image {
+          position: relative;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.5);
+          margin-top: 20px;
+          border-radius: 5px;
+          opacity: 1;
+          overflow: hidden;
+        }
+
+        .tip {
+          text-align: center;
+          font-size: 18px;
+          padding: 5px;
+          color: white;
+        }
+
+        .preview-image img {
+          width: 100%;
+          display: block;
+        }
+
         .placeholder {
           position: relative;
           width: 100%;
@@ -200,15 +232,25 @@ export const ImageUploader: FC<Props> = ({
           background: #94b83b;
         }
 
+        .cancel {
+          background: ${colors.ERROR};
+          color: white;
+          opacity: 0.8;
+        }
+
+        .cancel:hover {
+          opacity: 1;
+        }
+
         .save:hover {
           background: #7d9c32;
         }
 
         .image-uploader {
-          padding-top: 10px;
-          padding-bottom: 10px;
+          padding-top: ${Dimensions.GUTTER_SIZE}px;
+          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
           display: block;
-          width: ${windowSize[0] / 1.14}px;
+          width: ${windowSize[0] / 1.08}px;
           margin: 0 auto;
         }
 
