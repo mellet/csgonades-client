@@ -3,7 +3,7 @@ import { FC } from "react";
 import { FaPencilAlt } from "react-icons/fa";
 import { Nade } from "../models/Nade";
 import { useCanEditNade } from "../data/useCanEditNade";
-import { IconButton } from "../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 
@@ -23,7 +23,7 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
     <Tooltip message="Edit" direction="right">
       <Link href={`/nades/${nade.slug || nade.id}/edit`}>
         <a>
-          <IconButton
+          <SquareButton
             icon={<FaPencilAlt />}
             active={false}
             activeColor={colors.SUCCESS}

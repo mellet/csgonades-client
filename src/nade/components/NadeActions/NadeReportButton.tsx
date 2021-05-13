@@ -4,7 +4,7 @@ import { ReportAddDto } from "../../../reports/models/Report";
 import { ReportApi } from "../../../reports/data/ReportApi";
 import { FaFlag } from "react-icons/fa";
 import { Modal, Form, TextArea, Button } from "semantic-ui-react";
-import { IconButton } from "../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../../utils/Analytics";
@@ -51,7 +51,7 @@ export const NadeReportButton: FC<Props> = ({ nadeId }) => {
     <>
       <div className="report">
         <Tooltip message="Report" direction="right">
-          <IconButton
+          <SquareButton
             icon={<FaFlag />}
             onClick={onToggle}
             active={false}
