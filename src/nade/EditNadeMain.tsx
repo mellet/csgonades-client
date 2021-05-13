@@ -232,6 +232,12 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
                 technique: state.technique || nade.technique,
                 tickrate: state.tickrate || nade.tickrate,
                 type: state.type || nade.type,
+                lineUpImageBase64:
+                  state.lineUpImageBase64 ||
+                  nade.imageLineupThumb?.url ||
+                  nade.images.lineupUrl,
+                isPro: state.isPro || nade.isPro,
+                teamSide: state.teamSide || nade.teamSide,
               }}
             />
           </div>

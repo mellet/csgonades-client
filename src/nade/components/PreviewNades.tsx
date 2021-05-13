@@ -21,6 +21,7 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
     technique,
     tickrate,
     type,
+    lineUpImageBase64,
   } = nade;
 
   return (
@@ -39,6 +40,7 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
           nadeId=""
           smallVideoUrl={gfycat?.smallVideoUrl}
           thumbnailUrl={imageBase64}
+          lineUpThumnUrl={lineUpImageBase64}
         />
         <NadeStats
           nadeId={"preview"}
