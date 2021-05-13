@@ -10,6 +10,7 @@ import FilterBar from "../components/nadefilter/FilterBar";
 import { MapViewSuggested } from "../components/SuggestedNades/MapViewSuggested";
 import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
 import { useMapChangeHandler } from "../data/hooks/useMapChangeHandler";
+import { useNadeCount } from "../data/hooks/useNadeCount";
 import { useSetMapView } from "../data/hooks/useSetMapView";
 import { CsgoMap } from "../models/CsGoMap";
 
@@ -22,6 +23,8 @@ type Props = {
 
 export const MapMain: FC<Props> = memo(({ map, allNades }) => {
   const { mapView, setMapView } = useSetMapView();
+
+  const nadeCounts = useNadeCount(allNades);
 
   useMapChangeHandler(allNades);
 
@@ -52,7 +55,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
       <div id="nade-page">
         <div id="filter">
           <div className="sticky">
-            <FilterBar />
+            <FilterBar nadeCounts={nadeCounts} />
           </div>
         </div>
         <div id="nade-nades">
