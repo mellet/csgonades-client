@@ -30,9 +30,9 @@ export interface Nade {
   favoriteCount: number;
   gfycat: GfycatData;
   id: string;
-  images: NadeImages;
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
+  images: NadeImages;
   isFavorited?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
@@ -40,6 +40,7 @@ export interface Nade {
   movement?: Movement;
   oneWay?: boolean;
   score: number;
+  setPos?: string;
   slug?: string;
   startPosition?: string;
   status: Status;
@@ -95,6 +96,7 @@ export type NadeCreateBody = {
   mapEndCoord: MapCoordinates;
   movement: Movement;
   oneWay?: boolean;
+  setPos?: string;
   startPosition: string;
   teamSide?: TeamSide;
   technique: Technique;
@@ -113,6 +115,7 @@ export type NadeUpdateBody = {
   mapEndCoord?: MapCoordinates;
   movement?: Movement;
   oneWay?: boolean;
+  setPos?: string;
   slug?: string;
   startPosition?: string;
   status?: Status;

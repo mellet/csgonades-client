@@ -8,6 +8,7 @@ import { MapSelector } from "./components/NadeInputs/MapSelector";
 import { useEditNadeState } from "./data/EditNadeReducer";
 import { GfyInput } from "./components/NadeInputs/GfyInput";
 import { EndPosInput } from "./components/NadeInputs/EndPosInput";
+import { SetPosInput } from "./components/NadeInputs/SetPosInput";
 import { ThrownFromInput } from "./components/NadeInputs/ThrownFromInput";
 import { DescriptionInput } from "./components/NadeInputs/DescriptionInput";
 import { ImageSelector } from "./components/NadeInputs/ImageSelector";
@@ -97,6 +98,16 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
               }
             />
           </div>
+
+          <div id="set-pos">
+            <SetPosInput
+              defaultValue={nade.setPos}
+              onChange={(setPos) =>
+                dispatch({ type: "EditNade/SetSetPosition", setPos })
+              }
+            />
+          </div>
+
           <div id="description">
             <DescriptionInput
               defaultValue={nade.description}
@@ -356,7 +367,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             "gfyip teamside"
             "endpos movesel"
             "startpos techsel"
-            ". tick"
+            "setpos tick"
             ". oneway"
             "desc previewlabel"
             "desc preview"
@@ -373,6 +384,10 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           border-bottom-left-radius: 5px;
           border-bottom-right-radius: 5px;
           margin-bottom: 150px;
+        }
+
+        #set-pos {
+          grid-area: setpos;
         }
 
         #is-pro {
