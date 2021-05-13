@@ -96,6 +96,11 @@ type SetTeamSide = {
   side: TeamSide;
 };
 
+type SetOneWay = {
+  type: "CreateNade/SetOneWay";
+  oneWay: boolean;
+};
+
 type Actions =
   | SetDescription
   | SetEndPosCoords
@@ -113,10 +118,16 @@ type Actions =
   | SetTechnique
   | SetTickrate
   | ToggleImageSelector
-  | ToggleLineupImageAdder;
+  | ToggleLineupImageAdder
+  | SetOneWay;
 
 const reducer: Reducer<CreateNadeState, Actions> = (state, action) => {
   switch (action.type) {
+    case "CreateNade/SetOneWay":
+      return {
+        ...state,
+        oneWay: action.oneWay,
+      };
     case "CreateNade/SetMap":
       return {
         ...state,
@@ -284,6 +295,7 @@ export const validateState = (
     tickrate,
     type,
     teamSide,
+    setPos,
   } = state;
   if (
     !description ||
@@ -315,5 +327,6 @@ export const validateState = (
     lineUpImageBase64,
     oneWay,
     teamSide,
+    setPos,
   };
 };

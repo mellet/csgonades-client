@@ -56,7 +56,9 @@ export const GuideLines: FC = () => {
                   Use this command to only show your crosshair in the video:
                 </em>
               </p>
-              <code>cl_draw_only_deathnotices 1; net_graph 0;</code>
+              <code>
+                cl_draw_only_deathnotices 1; net_graph 0; r_drawviewmodel 1;
+              </code>
               <p>Upload to Gfycat after recording and copy the link.</p>
             </div>
 

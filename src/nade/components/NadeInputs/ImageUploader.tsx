@@ -239,6 +239,7 @@ export const ImageUploader: FC<Props> = ({
         }
 
         .cancel:hover {
+          background: ${colors.ERROR};
           opacity: 1;
         }
 

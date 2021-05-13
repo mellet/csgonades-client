@@ -24,6 +24,9 @@ import { SEO } from "../shared-components/SEO";
 import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";
 import { GuideLines } from "./components/GuideLines";
 import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
+import { OneWaySelector } from "./components/NadeInputs/OneWaySelector";
+import { ImageUploadMessage } from "../shared-components/ImageUploadMessage";
+import { ImageResultImageMessage } from "../shared-components/ImageResultImageMessage";
 
 export const CreateNadeMain: FC = ({}) => {
   const router = useRouter();
@@ -197,6 +200,14 @@ export const CreateNadeMain: FC = ({}) => {
             />
           </div>
 
+          <div id="oneway-selector">
+            <OneWaySelector
+              onClick={(oneWay) =>
+                dispatch({ type: "CreateNade/SetOneWay", oneWay })
+              }
+            />
+          </div>
+
           <div id="teamside-selector">
             <TeamSideSelector
               onChange={(side) =>
@@ -244,7 +255,7 @@ export const CreateNadeMain: FC = ({}) => {
             <div id="image-adder">
               <div className="img-add-wrapper">
                 <ImageUploader
-                  message={<></>}
+                  message={<ImageResultImageMessage />}
                   onDismiss={() =>
                     dispatch({ type: "CreateNade/ShowImageSelector" })
                   }
@@ -259,27 +270,7 @@ export const CreateNadeMain: FC = ({}) => {
           {state.showLineUpAdder && (
             <div id="lineup-adder">
               <ImageUploader
-                message={
-                  <div className="lineup-msg">
-                    <h3>Guideline</h3>
-                    <ul>
-                      <li>Image must be 16:9 aspect ratio</li>
-                      <li>Aim at the position</li>
-                      <li>
-                        Remove your hud (cl_drawhud 0; r_drawviewmodel 0;)
-                      </li>
-                      <li>Take screenshot</li>
-                    </ul>
-                    <p>
-                      Don&apos;t resize the image. Keep it as it is. A crosshair
-                      will be added in the middle of the image automatically.
-                    </p>
-                    <p>
-                      If you must, you can draw anything on the image in your
-                      own software, just don&apos;t resize the image.
-                    </p>
-                  </div>
-                }
+                message={<ImageUploadMessage />}
                 aspectRatio="16:9"
                 onDismiss={() =>
                   dispatch({ type: "CreateNade/ToggleLineupImageAdder" })
@@ -371,6 +362,7 @@ export const CreateNadeMain: FC = ({}) => {
             "endpos movesel"
             "startpos techsel"
             ". tick"
+            ". oneway"
             "desc previewlabel"
             "desc preview"
             "desc preview"
@@ -382,6 +374,10 @@ export const CreateNadeMain: FC = ({}) => {
           border-radius: 5px;
           margin-bottom: 150px;
           border: 1px solid ${colors.BORDER};
+        }
+
+        #oneway-selector {
+          grid-area: oneway;
         }
 
         #lineup-image {
