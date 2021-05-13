@@ -49,10 +49,10 @@ export const useFilterServerSideNades = (
       favoritedNades,
       byFavorites,
       bySortingMethod,
-      byType,
+      byTeam,
       byTickrate,
-      byPro,
-      byTeam
+      byType,
+      byPro
     );
   }, [
     byPro,
@@ -73,10 +73,10 @@ export function filterNades(
   favoritedNades: string[],
   byFavorites: boolean,
   byMethod: NadeSortingMethod,
+  byTeam: TeamSide,
+  byTickrate: Tickrate,
   byType?: NadeType,
-  byTickrate?: Tickrate,
-  byPro?: boolean,
-  byTeam?: TeamSide,
+  byPro?: boolean
 ): NadeLight[] {
   let thenades = [...nades];
   thenades.sort(sortByScore);

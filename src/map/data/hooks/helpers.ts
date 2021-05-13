@@ -42,9 +42,9 @@ function sortByTop(a: NadeLight, b: NadeLight) {
 
 export function filterByTeam(
   nades: NadeLight[],
-  byTeam?: TeamSide
+  byTeam: TeamSide
 ): NadeLight[] {
-  if (!byTeam) {
+  if (!byTeam || byTeam === "both") {
     return nades;
   } else {
     return nades.filter((n) => {
@@ -77,7 +77,7 @@ export function filterByFavorite(
 
 export function filterByTickrate(
   nades: NadeLight[],
-  byTickrate?: Tickrate
+  byTickrate: Tickrate
 ): NadeLight[] {
   if (byTickrate === "tick128") {
     return nades.filter((n) => n.tickrate !== "tick64");

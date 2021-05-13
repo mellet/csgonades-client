@@ -20,12 +20,12 @@ export const TeamSelector: FC = () => {
   }, [byTeam]);
 
   const onChange = useCallback(() => {
-    if (!byTeam) {
+    if (byTeam === "both") {
       filterByTeam("terrorist");
     } else if (byTeam === "terrorist") {
       filterByTeam("counterTerrorist");
     } else {
-      filterByTeam("counterTerrorist");
+      filterByTeam("both");
     }
   }, [byTeam, filterByTeam]);
 

@@ -45,9 +45,10 @@ export const useFilterReset = () => {
     if (byPro) {
       return true;
     }
-    if (byTeam) {
+    if (byTeam !== "both") {
       return true;
     }
+
     return false;
   }, [byTickrate, byFavorites, byType, byPro, byTeam]);
 

@@ -19,7 +19,7 @@ export type MapStoreState = {
   filterByPro?: boolean;
   filterByTickrate: Tickrate;
   filterByType?: NadeType;
-  filterByTeam?: TeamSide;
+  filterByTeam: TeamSide;
   nadeForMap: NadesForMap;
   sortingMethod: NadeSortingMethod;
   suggestedNades?: NadeLight[];
@@ -30,6 +30,7 @@ const initialState: MapStoreState = {
   filterByFavorites: false,
   filterByPro: false,
   filterByTickrate: "any",
+  filterByTeam: "both",
   filterByType: "smoke",
   nadeForMap: {},
   sortingMethod: "hot",
@@ -61,7 +62,7 @@ const mapStore = createSlice({
       state.filterByTickrate = "any";
       state.filterByType = "smoke";
       state.filterByPro = false;
-      state.filterByTeam = undefined;
+      state.filterByTeam = "both";
     },
     filterByTickrateAction(state, action: PayloadAction<Tickrate>) {
       if (state.filterByTickrate === action.payload) {
@@ -71,11 +72,7 @@ const mapStore = createSlice({
       }
     },
     filterByTeamAction(state, action: PayloadAction<TeamSide>) {
-      if (state.filterByTeam === action.payload) {
-        state.filterByTeam = undefined;
-      } else {
-        state.filterByTeam = action.payload;
-      }
+      state.filterByTeam = action.payload;
     },
     filterByTypeAction(state, action: PayloadAction<NadeType>) {
       state.filterByType = action.payload;
