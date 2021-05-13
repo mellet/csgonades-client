@@ -33,6 +33,7 @@ export interface Nade {
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
   images: NadeImages;
+  imageMain?: NadeImageData;
   isFavorited?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
@@ -63,9 +64,10 @@ export interface NadeLight {
   favoriteCount: number;
   gfycat: GfycatData;
   id: string;
-  imageLineupThumbUrl?: string;
-  imageLineupThumb?: NadeImageData;
   imageLineup?: NadeImageData;
+  imageLineupThumb?: NadeImageData;
+  imageLineupThumbUrl?: string;
+  imageMain?: NadeImageData;
   images: NadeImages;
   isFavorited?: boolean;
   isPro?: boolean;

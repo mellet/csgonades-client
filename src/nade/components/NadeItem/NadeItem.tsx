@@ -34,15 +34,11 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
                   avgColor={nade.gfycat.avgColor}
                   downVoteCount={nade.downVoteCount}
                   gfyId={nade.gfycat.gfyId}
-                  lineUpThumnUrl={
-                    nade.imageLineupThumb
-                      ? nade.imageLineupThumb.url
-                      : nade.imageLineupThumbUrl
-                  }
+                  lineUpThumnUrl={getNadeLineUpImageThumb(nade)}
                   nadeId={nade.id}
                   nadeSlug={nade.slug}
                   smallVideoUrl={nade.gfycat.smallVideoUrl}
-                  thumbnailUrl={nade.images.thumbnailUrl}
+                  thumbnailUrl={getNadeMainImage(nade)}
                   upVoteCount={nade.upVoteCount}
                 />
               </div>
@@ -99,3 +95,29 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
     </>
   );
 });
+
+export function getNadeMainImage(nade: NadeLight) {
+  if (nade.imageMain) {
+    return nade.imageMain.url;
+  } else {
+    return nade.images.thumbnailUrl;
+  }
+}
+
+export function getNadeLineUpImageThumb(nade: NadeLight) {
+  if (nade.imageLineupThumb) {
+    return nade.imageLineupThumb.url;
+  } else if (nade.imageLineupThumbUrl) {
+    return nade.imageLineupThumbUrl;
+  } else {
+    return nade.images.lineupUrl;
+  }
+}
+
+export function getNadeLineUpImage(nade: NadeLight) {
+  if (nade.imageLineup) {
+    return nade.imageLineup.url;
+  } else {
+    return nade.images.lineupUrl;
+  }
+}

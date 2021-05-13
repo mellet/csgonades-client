@@ -4,6 +4,7 @@ import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
 import { NadeMeta } from "../NadeMeta/NadeMeta";
 import { Nade } from "../../models/Nade";
+import { getNadeLineUpImage } from "../NadeItem/NadeItem";
 
 type Props = {
   nade: Nade;
@@ -14,7 +15,7 @@ type Tabs = "video" | "lineup";
 export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("video");
 
-  const lineUpUrl = nade.imageLineup?.url || nade.images.lineupUrl;
+  const lineUpUrl = getNadeLineUpImage(nade);
 
   const hasLineUp = !!lineUpUrl;
 
