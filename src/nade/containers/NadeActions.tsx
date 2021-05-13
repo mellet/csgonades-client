@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FC } from "react";
 import { FavoriteButton } from "../../favorites/components/FavoriteButton";
+import { NadeCopyPosition } from "../components/NadeActions/NadeCopyPosition";
 import { NadeReportButton } from "../components/NadeActions/NadeReportButton";
 import { NadeCommentButton } from "../components/NadeCommentButton";
 import { NadeEditButton } from "../components/NadeEditButton";
@@ -23,6 +24,9 @@ export const NadeActions: FC<Props> = ({ nade }) => {
         slug={nade.slug || nade.id}
         commentCount={nade.commentCount}
       />
+      {!!nade.setPos && (
+        <NadeCopyPosition setPos={nade.setPos} nadeId={nade.id} />
+      )}
       <NadeReportButton nadeId={nade.id} />
       <NadeEditButton nade={nade} />
       <style jsx>{`

@@ -132,6 +132,11 @@ type UnSetIsPro = {
   type: "EditNade/UnSetIsPro";
 };
 
+type SetSetPosition = {
+  type: "EditNade/SetSetPosition";
+  setPos: string;
+};
+
 type Actions =
   | SetDescription
   | SetEndPosCoords
@@ -147,6 +152,7 @@ type Actions =
   | SetNadeType
   | SetNotLoading
   | SetOneWay
+  | SetSetPosition
   | SetSlug
   | SetStartPosition
   | SetTeamSide
@@ -270,6 +276,11 @@ const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
         ...state,
         teamSide: action.side,
       };
+    case "EditNade/SetSetPosition":
+      return {
+        ...state,
+        setPos: action.setPos,
+      };
     default:
       assertNever(action);
       return state;
@@ -391,7 +402,8 @@ function createNadeUpdateBody(state: EditNadeState): NadeUpdateBody {
       state.lineUpImageBase64
     ),
     isPro: newBooleanValueIfDifferent(originalNade.isPro, state.isPro),
-    teamSide: state.teamSide,
+    teamSide: newValueIfDifferent(originalNade.teamSide, state.teamSide),
+    setPos: newValueIfDifferent(originalNade.setPos, state.setPos),
   };
 
   // Remove undefine keys
