@@ -10,7 +10,7 @@ export type IconButtonProps = {
   inGroup?: boolean;
 };
 
-export const IconButton: FC<IconButtonProps> = ({
+export const SquareButton: FC<IconButtonProps> = ({
   icon,
   activeColor,
   active = false,

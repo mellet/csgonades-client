@@ -4,7 +4,7 @@ import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useFilterByFavorites } from "../../../data/hooks/useFilterByFavorites";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
-import { IconButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 import { FilterLabel } from "./FilterLabel";
 import { FavoriteHint } from "../../../../hints/components/FavoriteHint";
 
@@ -30,7 +30,7 @@ export const FavFilterButton: FC<Props> = ({}) => {
     <>
       <FilterLabel value="FAV" />
       <FavoriteHint>
-        <IconButton
+        <SquareButton
           onClick={onFilterByFavorite}
           activeColor={colors.FAV_YELLOW}
           icon={<FaStar />}

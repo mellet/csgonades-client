@@ -3,7 +3,7 @@ import { FaBell } from "react-icons/fa";
 import { useNotifications } from "../data/NotificationHooks";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { NotificationList } from "./NotificationList";
-import { IconButton } from "../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton";
 
 export const NotificationIndicator: FC = memo(() => {
   const [notificationTabVisible, setNotificationTabVisible] = useState(false);
@@ -21,7 +21,7 @@ export const NotificationIndicator: FC = memo(() => {
   return (
     <>
       <div className="notification-wrapper">
-        <IconButton
+        <SquareButton
           icon={<FaBell />}
           labelCount={notificationCount}
           onClick={toggleNotificationTab}

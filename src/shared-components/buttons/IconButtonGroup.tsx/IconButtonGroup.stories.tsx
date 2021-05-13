@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { IconButtonGroup } from "./IconButtonGroup";
-import { IconButton } from "../IconButton";
+import { SquareButton } from "../IconButton";
 import { FaAdobe, FaCloud, FaStar } from "react-icons/fa";
 
 export default {
@@ -12,9 +12,9 @@ export default {
 
 const Template: Story = () => (
   <IconButtonGroup>
-    <IconButton icon={<FaStar />} active={false} />
-    <IconButton icon={<FaAdobe />} active={false} />
-    <IconButton icon={<FaCloud />} active={true} />
+    <SquareButton icon={<FaStar />} active={false} />
+    <SquareButton icon={<FaAdobe />} active={false} />
+    <SquareButton icon={<FaCloud />} active={true} />
   </IconButtonGroup>
 );
 

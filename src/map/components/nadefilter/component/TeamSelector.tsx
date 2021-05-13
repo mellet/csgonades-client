@@ -1,36 +1,47 @@
-import { FC } from "react";
+import { FC, useCallback, useMemo } from "react";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
-import { IconButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 import { useFilterByTeam } from "../../../data/hooks/useFilterByTeam";
+import { OptionCarusel } from "./OptionCarusel";
 
 export const TeamSelector: FC = () => {
   const { byTeam, filterByTeam } = useFilterByTeam();
 
-  function filterByTerrorist() {
-    filterByTeam("terrorist");
-  }
+  const selectedIndex = useMemo(() => {
+    switch (byTeam) {
+      case "terrorist":
+        return 1;
+      case "counterTerrorist":
+        return 2;
+      default:
+        return 0;
+    }
+  }, [byTeam]);
 
-  function filterByTickrate128() {
-    filterByTeam("counterTerrorist");
-  }
+  const onChange = useCallback(() => {
+    if (!byTeam) {
+      filterByTeam("terrorist");
+    } else if (byTeam === "terrorist") {
+      filterByTeam("counterTerrorist");
+    } else {
+      filterByTeam("counterTerrorist");
+    }
+  }, [byTeam, filterByTeam]);
 
   return (
     <>
       <div className="tick-filter-wrap">
         <FilterLabel value="TEAM" />
         <IconButtonGroup>
-          <IconButton
-            inGroup
-            icon={<span style={{ fontSize: 14 }}>T</span>}
-            active={byTeam === "terrorist"}
-            onClick={filterByTerrorist}
-          />
-          <IconButton
-            inGroup
-            icon={<span style={{ fontSize: 14 }}>CT</span>}
-            active={byTeam === "counterTerrorist"}
-            onClick={filterByTickrate128}
+          <SquareButton
+            onClick={onChange}
+            icon={
+              <OptionCarusel
+                values={["Any", "T", "CT"]}
+                selectedIndex={selectedIndex}
+              />
+            }
           />
         </IconButtonGroup>
       </div>

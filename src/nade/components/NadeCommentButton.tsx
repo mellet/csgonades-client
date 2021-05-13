@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaComment } from "react-icons/fa";
-import { IconButton } from "../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
 
@@ -24,7 +24,7 @@ export const NadeCommentButton: FC<Props> = ({ commentCount, slug }) => {
     <div className="nade-comments">
       <Tooltip message="Comments" direction="right">
         <a href="#comments" onClick={onCommentClick}>
-          <IconButton
+          <SquareButton
             icon={<FaComment />}
             active={false}
             labelCount={commentCount}

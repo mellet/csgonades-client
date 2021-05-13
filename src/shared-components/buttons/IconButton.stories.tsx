@@ -1,17 +1,17 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { IconButton, IconButtonProps } from "./IconButton";
+import { SquareButton, IconButtonProps } from "./IconButton";
 import { FaStar } from "react-icons/fa";
 
 export default {
   title: "Button/Icon Button",
-  component: IconButton,
+  component: SquareButton,
   args: {
     icon: <FaStar />,
   } as IconButtonProps,
 } as Meta;
 
-const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />;
+const Template: Story<IconButtonProps> = (args) => <SquareButton {...args} />;
 
 export const Default = Template.bind({});
 

@@ -3,7 +3,7 @@ import { FaCheckCircle } from "react-icons/fa";
 
 import { useFilterByPro } from "../../../data/hooks/useFilterByPro";
 import { FilterLabel } from "./FilterLabel";
-import { IconButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 
 export const FilterByProButton: FC = () => {
   const { byPro, toggleFilterByPro } = useFilterByPro();
@@ -15,7 +15,7 @@ export const FilterByProButton: FC = () => {
   return (
     <>
       <FilterLabel value="PRO" />
-      <IconButton
+      <SquareButton
         active={byPro}
         icon={<FaCheckCircle />}
         activeColor="#00b8d9"

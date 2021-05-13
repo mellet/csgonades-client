@@ -4,7 +4,7 @@ import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import { useIsFavorited } from "../data/hooks/useIsFavorited";
-import { IconButton } from "../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
@@ -68,7 +68,7 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
 
   return (
     <Tooltip message="Favorite" direction="right">
-      <IconButton
+      <SquareButton
         icon={<FaStar />}
         active={optimisticIsFavorites}
         onClick={onFavoriteClick}

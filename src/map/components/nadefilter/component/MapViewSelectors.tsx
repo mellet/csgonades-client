@@ -3,7 +3,7 @@ import { useSetMapView } from "../../../data/hooks/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
-import { IconButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 
 export const MapViewSelector: FC = () => {
   const { mapView, setMapView } = useSetMapView({ trackEvent: true });
@@ -20,13 +20,13 @@ export const MapViewSelector: FC = () => {
     <>
       <FilterLabel value="VIEW" />
       <IconButtonGroup>
-        <IconButton
+        <SquareButton
           inGroup
           icon={<FaMap />}
           active={mapView === "overview"}
           onClick={onSwitchToOverview}
         />
-        <IconButton
+        <SquareButton
           inGroup
           icon={<FaListUl />}
           active={mapView === "list"}
