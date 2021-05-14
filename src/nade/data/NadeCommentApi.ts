@@ -38,6 +38,14 @@ export class NadeCommentApi {
     }
   }
 
+  static async getRecent(): Promise<NadeComment[]> {
+    const res = await axios.get<NadeComment[]>(
+      `${Config.API_URL}/comments/recent`
+    );
+
+    return res.data;
+  }
+
   static async createNadeComment(
     comment: NadeCommentCreateDTO,
     token: string
