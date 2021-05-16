@@ -1,22 +1,15 @@
-import React, { memo, Suspense } from "react";
+import React, { memo } from "react";
 import dynamic from "next/dynamic";
 
-const TweMojiLazy = dynamic(() => import("./TwemojiLazy"));
-const isServer = typeof window === "undefined";
+const TweMojiLazy = dynamic(
+  () => import("./TwemojiLazy").then((mod) => mod.TwemojiLazy),
+  { ssr: false }
+);
+
 type Props = {
-  emoji: any;
+  emoji: string;
 };
 
 export const Twemoji = memo<Props>(({ emoji }) => {
-  if (isServer) {
-    return <span />;
-  }
-
-  return (
-    <>
-      <Suspense fallback={<span />}>
-        <TweMojiLazy emoji={emoji} />
-      </Suspense>
-    </>
-  );
+  return <TweMojiLazy emoji={emoji} />;
 });
