@@ -7,6 +7,7 @@ import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
 import { ThumbImage } from "./ThumbImage";
+import { getNadeLineUpImageThumb, getNadeMainImage } from "./NadeItem";
 
 interface Props {
   nade: NadeLight;
@@ -34,10 +35,8 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
 
   const urlIdOrSlug = nade.slug || nade.id;
 
-  const lineupUrl = nade.imageLineupThumb
-    ? nade.imageLineupThumb.url
-    : nade.imageLineupThumbUrl;
-  const thumbnailUrl = nade.images.thumbnailUrl;
+  const lineupUrl = getNadeLineUpImageThumb(nade);
+  const thumbnailUrl = getNadeMainImage(nade);
 
   if (!clientSide) {
     return null;

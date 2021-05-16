@@ -100,17 +100,15 @@ export function getNadeMainImage(nade: NadeLight) {
   if (nade.imageMain) {
     return nade.imageMain.url;
   } else {
-    return nade.images.thumbnailUrl;
+    return nade.images?.thumbnailUrl || "";
   }
 }
 
 export function getNadeLineUpImageThumb(nade: NadeLight) {
   if (nade.imageLineupThumb) {
     return nade.imageLineupThumb.url;
-  } else if (nade.imageLineupThumbUrl) {
-    return nade.imageLineupThumbUrl;
   } else {
-    return nade.images.lineupUrl;
+    return nade.images?.lineupUrl;
   }
 }
 
@@ -118,6 +116,6 @@ export function getNadeLineUpImage(nade: NadeLight) {
   if (nade.imageLineup) {
     return nade.imageLineup.url;
   } else {
-    return nade.images.lineupUrl;
+    return nade.images?.lineupUrl;
   }
 }

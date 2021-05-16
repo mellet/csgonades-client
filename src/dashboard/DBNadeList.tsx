@@ -25,6 +25,7 @@ import { User } from "../users/models/User";
 import { NadeIcon } from "../shared-components/nade-icons";
 import Image from "next/image";
 import { Dimensions } from "../constants/Constants";
+import { getNadeMainImage } from "../nade/components/NadeItem/NadeItem";
 
 type Props = {
   csgoMap: CsgoMap;
@@ -109,6 +110,8 @@ type NadeItemProps = {
 export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
   const { colors } = useTheme();
 
+  const nadeMainImage = getNadeMainImage(nade);
+
   return (
     <>
       <tr className="nade-item">
@@ -121,7 +124,7 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-thumb">
           <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
             <div className="nade-thumb-image">
-              <Image src={nade.images.thumbnailUrl} layout="fill" />
+              <Image src={nadeMainImage} layout="fill" />
             </div>
           </PageLink>
         </td>
