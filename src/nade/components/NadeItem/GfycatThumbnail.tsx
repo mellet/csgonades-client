@@ -4,7 +4,10 @@ import { ThumbImage } from "./ThumbImage";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 
-const MiniGfycatIframe = dynamic(() => import("./MiniGfycatIframe"));
+const MiniGfycatIframe = dynamic(
+  () => import("./MiniGfycatIframe").then((m) => m.MiniGfycatIframe),
+  { ssr: false }
+);
 
 type Props = {
   avgColor?: string;

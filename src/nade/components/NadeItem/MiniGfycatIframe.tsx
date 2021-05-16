@@ -7,7 +7,10 @@ type Props = {
   hasAllreadyLoaded?: boolean;
 };
 
-const MiniGfycatIframe: FC<Props> = ({ gfyId, hasAllreadyLoaded = false }) => {
+export const MiniGfycatIframe: FC<Props> = ({
+  gfyId,
+  hasAllreadyLoaded = false,
+}) => {
   const [loaded, setLoaded] = useState(hasAllreadyLoaded);
   const { colors } = useTheme();
 
@@ -74,5 +77,3 @@ const MiniGfycatIframe: FC<Props> = ({ gfyId, hasAllreadyLoaded = false }) => {
     </>
   );
 };
-
-export default MiniGfycatIframe;

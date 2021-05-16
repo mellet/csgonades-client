@@ -28,6 +28,10 @@ import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";
 import { SlugInput } from "./components/NadeInputs/SlugInput";
 import { IsProSelector } from "./components/NadeInputs/IsProSelector";
 import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
+import {
+  getNadeLineUpImage,
+  getNadeMainImage,
+} from "./components/NadeItem/NadeItem";
 
 type Props = {
   nade: Nade;
@@ -53,6 +57,9 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
   if (!canEdit) {
     return null;
   }
+
+  const mainImage = getNadeMainImage(nade);
+  const lineupImage = getNadeLineUpImage(nade);
 
   return (
     <>
@@ -131,7 +138,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
 
           <div id="lineup-image">
             <ImageSelector
-              imageIsSet={!!nade.images.lineupId || !!state.lineUpImageBase64}
+              imageIsSet={!!lineupImage || !!state.lineUpImageBase64}
               label="Line Up Image"
               onClick={() =>
                 dispatch({ type: "EditNade/ToggleLineupImageAdder" })
@@ -223,7 +230,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
                 description: state.description || nade.description,
                 endPosition: state.endPosition || nade.endPosition,
                 gfycat: state.gfycat || nade.gfycat,
-                imageBase64: state.imageBase64 || nade.images.thumbnailUrl,
+                imageBase64: state.imageBase64 || mainImage,
                 map: state.map || nade.map,
                 mapEndCoord: state.mapEndCoord || nade.mapEndCoord,
                 movement: state.movement || nade.movement,
@@ -232,10 +239,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
                 technique: state.technique || nade.technique,
                 tickrate: state.tickrate || nade.tickrate,
                 type: state.type || nade.type,
-                lineUpImageBase64:
-                  state.lineUpImageBase64 ||
-                  nade.imageLineupThumb?.url ||
-                  nade.images.lineupUrl,
+                lineUpImageBase64: state.lineUpImageBase64 || lineupImage,
                 isPro: state.isPro || nade.isPro,
                 teamSide: state.teamSide || nade.teamSide,
               }}
@@ -290,7 +294,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           {state.showImageAdder && (
             <div id="image-adder">
               <ImageUploader
-                previewImageUrl={nade.images.thumbnailUrl}
+                previewImageUrl={state.imageBase64 || mainImage}
                 message={<></>}
                 onDismiss={() =>
                   dispatch({ type: "EditNade/ShowImageSelector" })
@@ -305,11 +309,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           {state.showLineupImgAdder && (
             <div id="lineup-adder">
               <ImageUploader
-                previewImageUrl={
-                  nade.imageLineup?.url ||
-                  nade.imageLineupThumb?.url ||
-                  nade.images.lineupUrl
-                }
+                previewImageUrl={state.lineUpImageBase64 || lineupImage}
                 message={
                   <div className="lineup-msg">
                     <h3>Guideline</h3>

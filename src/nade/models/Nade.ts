@@ -32,8 +32,8 @@ export interface Nade {
   id: string;
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
-  images: NadeImages;
-  imageMain?: NadeImageData;
+  images?: NadeImages;
+  imageMain: NadeImageData;
   isFavorited?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
@@ -67,8 +67,8 @@ export interface NadeLight {
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
   imageLineupThumbUrl?: string;
-  imageMain?: NadeImageData;
-  images: NadeImages;
+  imageMain: NadeImageData;
+  images?: NadeImages;
   isFavorited?: boolean;
   isPro?: boolean;
   mapEndCoord?: MapCoordinates;
