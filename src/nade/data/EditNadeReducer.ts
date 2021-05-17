@@ -380,7 +380,7 @@ function createNadeUpdateBody(state: EditNadeState): NadeUpdateBody {
       state.endPosition
     ),
     gfycat: newValueIfDifferent(originalNade.gfycat, state.gfycat),
-    imageBase64: newValueIfDifferent(originalNade.images, state.imageBase64),
+    imageBase64: newValueIfDifferent(originalNade.imageMain, state.imageBase64),
     map: newValueIfDifferent(originalNade.map, state.map),
     mapEndCoord: newValueIfDifferent(
       originalNade.mapEndCoord,
@@ -398,7 +398,7 @@ function createNadeUpdateBody(state: EditNadeState): NadeUpdateBody {
     type: newValueIfDifferent(originalNade.type, state.type),
     oneWay: newBooleanValueIfDifferent(originalNade.oneWay, state.oneWay),
     lineUpImageBase64: newValueIfDifferent(
-      originalNade.images,
+      originalNade.imageLineup,
       state.lineUpImageBase64
     ),
     isPro: newBooleanValueIfDifferent(originalNade.isPro, state.isPro),

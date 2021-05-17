@@ -1,6 +1,5 @@
 import { UserLight } from "../../users/models/User";
 import { GfycatData } from "./GfycatData";
-import { NadeImages } from "./NadeImages";
 import { Movement } from "./NadeMovement";
 import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
@@ -32,7 +31,6 @@ export interface Nade {
   id: string;
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
-  images?: NadeImages;
   imageMain: NadeImageData;
   isFavorited?: boolean;
   isPro?: boolean;
@@ -68,7 +66,6 @@ export interface NadeLight {
   imageLineupThumb?: NadeImageData;
   imageLineupThumbUrl?: string;
   imageMain: NadeImageData;
-  images?: NadeImages;
   isFavorited?: boolean;
   isPro?: boolean;
   mapEndCoord?: MapCoordinates;

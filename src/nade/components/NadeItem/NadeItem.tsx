@@ -97,25 +97,13 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
 });
 
 export function getNadeMainImage(nade: NadeLight) {
-  if (nade.imageMain) {
-    return nade.imageMain.url;
-  } else {
-    return nade.images?.thumbnailUrl || "";
-  }
+  return nade.imageMain.url;
 }
 
 export function getNadeLineUpImageThumb(nade: NadeLight) {
-  if (nade.imageLineupThumb) {
-    return nade.imageLineupThumb.url;
-  } else {
-    return nade.images?.lineupUrl;
-  }
+  return nade.imageLineupThumb?.url;
 }
 
 export function getNadeLineUpImage(nade: NadeLight) {
-  if (nade.imageLineup) {
-    return nade.imageLineup.url;
-  } else {
-    return nade.images?.lineupUrl;
-  }
+  return nade.imageLineup?.url;
 }
