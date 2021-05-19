@@ -35,7 +35,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         authorName={addslashes(nade.user.nickname)}
         datePublished={createdAtString}
         dateModified={nade.updatedAt}
-        images={[nade.imageMain.url]}
+        images={[nade.imageMain?.url]}
         description={descriptionSimplify(nade?.description)}
         publisherName={"CSGO Nades"}
         publisherLogo={"https://www.csgonades.com/logo.png"}
@@ -46,7 +46,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         title={seoTitle}
         description={nade.description}
         canonical={`/nades/${nade.slug || nade.id}`}
-        thumbnail={nade.imageMain.url}
+        thumbnail={nade.imageMain?.url}
         video={nade.gfycat.smallVideoUrl}
       />
 

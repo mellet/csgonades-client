@@ -97,7 +97,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
 });
 
 export function getNadeMainImage(nade: NadeLight) {
-  return nade.imageMain.url;
+  return nade.imageMain?.url || "";
 }
 
 export function getNadeLineUpImageThumb(nade: NadeLight) {
