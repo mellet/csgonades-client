@@ -18,6 +18,7 @@ import { favoritedNadeIdsSelector } from "../favorites/data/FavoriteSelectors";
 import { addFavoriteToNades } from "../map/data/hooks/helpers";
 import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
 import { isMobileOnly } from "react-device-detect";
+import { useTheme } from "../core/settings/SettingsHooks";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -32,6 +33,7 @@ type Props = {
 };
 
 export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
+  const { colors } = useTheme();
   const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
 
   function renderItem(item: NadeLight) {
@@ -80,6 +82,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
 
         .recent-nades {
           padding-bottom: ${Dimensions.GUTTER_SIZE}px;
+          color: ${colors.TEXT};
         }
 
         #front-page {
@@ -88,6 +91,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
 
         .recent-wrap {
           padding-bottom: 75px;
+          color: ${colors.TEXT};
         }
 
         .recent-nade-wrap {
