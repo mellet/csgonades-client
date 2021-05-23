@@ -32,6 +32,7 @@ import {
   getNadeLineUpImage,
   getNadeMainImage,
 } from "./components/NadeItem/NadeItem";
+import { DeleteBtn } from "./components/NadeInputs/DeleteBtn";
 
 type Props = {
   nade: Nade;
@@ -248,6 +249,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
 
           <div id="submit">
             <SumbitBtn onSubmit={onUpdate} disabled={disableSubmit} />
+            {isAdmin && <DeleteBtn nadeId={nade.id} />}
           </div>
 
           {isAdminOrModerator && (

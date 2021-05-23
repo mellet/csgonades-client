@@ -17,14 +17,13 @@ export const AdminNavigation: FC = () => {
         <Link href="/admin/declined">
           <button>Declined nades</button>
         </Link>
+        <Link href="/admin/deleted">
+          <button>Deleted nades</button>
+        </Link>
         <Link href="/admin/comments">
           <button>Recent comments</button>
         </Link>
-        {isAdmin && (
-          <Link href="/admin/users">
-            <button>Users</button>
-          </Link>
-        )}
+
         <Link href="/admin/reports">
           <button>Reports</button>
         </Link>
@@ -32,7 +31,11 @@ export const AdminNavigation: FC = () => {
         <Link href="/admin/audit">
           <button>Audit</button>
         </Link>
-
+        {isAdmin && (
+          <Link href="/admin/users">
+            <button>Users</button>
+          </Link>
+        )}
         {isAdmin && (
           <Link href="/admin/contact">
             <button>Contacts</button>

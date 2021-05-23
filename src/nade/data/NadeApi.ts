@@ -116,6 +116,17 @@ export class NadeApi {
     }
   }
 
+  static async getDeleted(token: string): Promise<NadeLight[]> {
+    const res = await axios.get<NadeLight[]>(
+      `${Config.API_URL}/nades/deleted`,
+      {
+        headers: { Authorization: token },
+      }
+    );
+
+    return res.data;
+  }
+
   static async getByMap(mapName: CsgoMap): AppResult<NadeLight[]> {
     try {
       const res = await axios.get<NadeLight[]>(
