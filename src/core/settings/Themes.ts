@@ -1,5 +1,6 @@
 export type ThemeColors = {
   BORDER: string;
+  DARK_BORDER: string;
   boxBg: string;
   boxTitleBg: string;
   DP00: string;
@@ -56,6 +57,7 @@ const DARK_THEME: ThemeColors = {
   PRIMARY_10: "rgba(28, 143, 192, 0.1)",
   PRIMARY_BLACK: "#262626",
   BORDER: "rgba(0, 0, 0, 1)",
+  DARK_BORDER: "rgba(0, 0, 0, 1)",
   SUCCESS: "#8cc01c",
   ERROR: "#c01c1c",
   WARNING: "#c05b1c",
@@ -97,7 +99,8 @@ export const LIGHT_THEME: ThemeColors = {
   PRIMARY: "#364958",
   PRIMARY_10: "rgba(28, 143, 192, 0.1)",
   PRIMARY_BLACK: "#262626",
-  BORDER: "rgba(0, 0, 0, 0.07)",
+  BORDER: "rgba(0, 0, 0, 0.1)",
+  DARK_BORDER: "rgba(0, 0, 0, 0.15)",
   SUCCESS: "#8cc01c",
   ERROR: "#c01c1c",
   WARNING: "#c05b1c",

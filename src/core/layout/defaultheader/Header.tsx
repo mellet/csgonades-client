@@ -45,7 +45,7 @@ export const HeaderDefault: FC = memo(() => {
         }
 
         #theme-toggler {
-          margin-right: 16px;
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

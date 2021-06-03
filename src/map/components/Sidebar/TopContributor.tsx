@@ -4,12 +4,12 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 import Link from "next/link";
 import { ContListProps } from "./topContributorsProps";
 import { Dimensions } from "../../../constants/Constants";
+import { Popup } from "semantic-ui-react";
 
 interface UserContribution extends UserLight {
-  bestScore: number;
   nadeCount: number;
-  score: number;
   totalScore: number;
+  score: number;
 }
 
 export const TopContributorList: FC<ContListProps> = ({ nades }) => {
@@ -19,20 +19,23 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
     nades.forEach((nade) => {
       const steamId = nade.user.steamId;
       const currentUser = contCount[steamId];
+
+      if (nade.viewCount < 1000) {
+        return;
+      }
+
       if (currentUser) {
         contCount[steamId] = {
           ...currentUser,
           nadeCount: currentUser.nadeCount + 1,
-          bestScore: Math.max(currentUser.bestScore, nade.favoriteCount),
-          totalScore: currentUser.totalScore + nade.favoriteCount,
+          totalScore: currentUser.totalScore + nade.score,
         };
       } else {
         contCount[steamId] = {
           ...nade.user,
           nadeCount: 1,
-          bestScore: nade.favoriteCount,
           score: 0,
-          totalScore: nade.favoriteCount,
+          totalScore: nade.score,
         };
       }
     });
@@ -43,18 +46,14 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
     sortedContributors = sortedContributors.map((u) => {
       return {
         ...u,
-        score: u.bestScore + u.nadeCount,
+        score: Math.log(u.totalScore / u.nadeCount) + Math.log(u.nadeCount) / 3,
       };
     });
     sortedContributors.sort((a, b) => {
-      const aScore =
-        Math.log(a.totalScore || 2) + Math.log(a.nadeCount || 2) / 4;
-      const bScore =
-        Math.log(b.totalScore || 2) + Math.log(b.nadeCount || 2) / 4;
-      return bScore - aScore;
+      return b.score - a.score;
     });
 
-    const top = sortedContributors.slice(0, 12);
+    const top = sortedContributors.slice(0, 16);
 
     return top;
   }, [nades]);
@@ -88,8 +87,8 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
           flex-wrap: wrap;
           align-items: center;
           justify-content: space-between;
-          margin-left: -8px;
-          margin-right: -8px;
+          margin-left: -2px;
+          margin-right: -2px;
         }
 
         .cont-list span {
@@ -112,13 +111,21 @@ const TopContributor: FC<Props> = ({ user }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div className="contributor-wrap">
-        <Link href={`/users/${user.steamId}`}>
-          <a className="contributor">
-            <img src={user.avatar} />
-          </a>
-        </Link>
-      </div>
+      <Popup
+        position="top center"
+        content={user.nickname}
+        size="mini"
+        inverted
+        trigger={
+          <div className="contributor-wrap">
+            <Link href={`/users/${user.steamId}`}>
+              <a className="contributor">
+                <img src={user.avatar} />
+              </a>
+            </Link>
+          </div>
+        }
+      />
 
       <style jsx>{`
         .contributor-wrap {
@@ -127,14 +134,14 @@ const TopContributor: FC<Props> = ({ user }) => {
 
         .contributor {
           display: flex;
-          margin: 8px;
+          margin: 3px;
         }
 
         .contributor img {
-          height: 30px;
-          width: 30px;
+          height: 28px;
+          width: 28px;
           border-radius: 50%;
-          border: 1px solid ${colors.BORDER};
+          border: 1px solid ${colors.DARK_BORDER};
         }
 
         .nickname {

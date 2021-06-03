@@ -3,6 +3,7 @@ import { Dimensions } from "../../../constants/Constants";
 import { Nade } from "../../models/Nade";
 import { NadeTitleBar } from "./NadeTitleBar";
 import dynamic from "next/dynamic";
+import { ThemeToggler } from "../../../core/layout/defaultheader/components/ThemeToggler";
 
 const UserNav = dynamic(
   () =>
@@ -23,6 +24,9 @@ export const NadeHeader: FC<Props> = ({ nade }) => {
         <div id="nade-title">
           <NadeTitleBar nade={nade} />
         </div>
+        <div id="theme-toggler">
+          <ThemeToggler />
+        </div>
         <UserNav />
       </div>
       <style jsx>{`
@@ -34,6 +38,10 @@ export const NadeHeader: FC<Props> = ({ nade }) => {
 
         #nade-title {
           flex: 1;
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        #theme-toggler {
           margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
