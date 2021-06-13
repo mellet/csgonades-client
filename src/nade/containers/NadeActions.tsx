@@ -1,11 +1,19 @@
 import Link from "next/link";
 import { FC } from "react";
 import { FavoriteButton } from "../../favorites/components/FavoriteButton";
-import { NadeCopyPosition } from "../components/NadeActions/NadeCopyPosition";
 import { NadeReportButton } from "../components/NadeActions/NadeReportButton";
 import { NadeCommentButton } from "../components/NadeCommentButton";
 import { NadeEditButton } from "../components/NadeEditButton";
 import { Nade } from "../models/Nade";
+import dynamic from "next/dynamic";
+
+const NadeCopyPosition = dynamic(
+  () =>
+    import("../components/NadeActions/NadeCopyPosition").then(
+      (mod) => mod.NadeCopyPosition
+    ),
+  { ssr: false }
+);
 
 type Props = { nade: Nade };
 

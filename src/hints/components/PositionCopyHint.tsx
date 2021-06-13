@@ -1,38 +1,45 @@
 import { FC } from "react";
+import { isMobile } from "react-device-detect";
 import { Popup } from "semantic-ui-react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { useGa } from "../../utils/Analytics";
-import { useShouldFavoriteHint } from "../data/hooks/useShouldShowFavoriteHint";
+import { useShouldShowPositionCopyHint } from "../data/hooks/useShouldShowPositionCopyHint";
 
-export const FavoriteHint: FC = ({ children }) => {
+export const PositionCopyHint: FC = ({ children }) => {
   const { colors, theme } = useTheme();
-  const { shouldDisplayFavoriteButtonHint, setShownFavoriteHint } =
-    useShouldFavoriteHint();
+  const { setShownPositionCopyHint, shownPositionCopyHint } =
+    useShouldShowPositionCopyHint();
   const { event } = useGa();
 
-  if (!shouldDisplayFavoriteButtonHint) {
+  console.log({ shownPositionCopyHint });
+
+  if (isMobile || shownPositionCopyHint) {
     return <>{children}</>;
   }
 
   function dismissHint() {
     event({
       category: "map_page",
-      action: "click_dismiss_favorite_btn_hint",
+      action: "click_dismiss_copy_pos_btn_hint",
     });
-    setShownFavoriteHint();
+    setShownPositionCopyHint();
   }
 
   return (
     <>
       <Popup
-        position="right center"
+        position="bottom center"
         open
         inverted={theme === "dark"}
         content={
           <div className="hint-content">
-            <h3>Your Favorites</h3>
-            Click to only show your favorites. Keep on favoriting nades to make
-            them easier to find next time.
+            <h3>Teleport to throw location</h3>
+            Click to copy the teleport command and paste it into the in-game
+            console.
+            <br />
+            <br />
+            Make sure you are on the correct map in-game and that you have
+            sv_cheats 1 on.
             <br />
             <br />
             <div className="actions">

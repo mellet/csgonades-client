@@ -72,18 +72,17 @@ const NadeMainLayout = styled.div`
 
   .actions {
     grid-area: actions;
-  }
-
-  .actions {
-    grid-area: actions;
-  }
-
-  .status {
-    grid-area: status;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .actions > * {
     margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+  }
+
+  .status {
+    grid-area: status;
   }
 
   .description {
@@ -121,10 +120,11 @@ const NadeMainLayout = styled.div`
     .actions {
       margin-bottom: ${Dimensions.GUTTER_SIZE}px;
       display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     .actions > * {
-      margin-right: ${Dimensions.GUTTER_SIZE}px;
       margin-bottom: 0;
     }
   }

@@ -2,9 +2,9 @@ import { FC, useEffect, useState } from "react";
 import { FaCrosshairs } from "react-icons/fa";
 import { useTheme } from "styled-components";
 import { SquareButton } from "../../../shared-components/buttons/IconButton";
-import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
 import copy from "copy-to-clipboard";
 import { useGa } from "../../../utils/Analytics";
+import { PositionCopyHint } from "../../../hints/components/PositionCopyHint";
 
 type Props = {
   nadeId: string;
@@ -40,20 +40,22 @@ export const NadeCopyPosition: FC<Props> = ({ setPos, nadeId }) => {
 
   return (
     <>
-      <div className="nade-copy-position">
-        {showSuccess && <div className="success">Copied to clipboard!</div>}
-        <Tooltip message="Copy SET_POS" direction="right">
+      <PositionCopyHint>
+        <div className="nade-copy-position">
+          {showSuccess && <div className="success">Copied to clipboard!</div>}
           <SquareButton
             icon={<FaCrosshairs />}
             onClick={copyToClipBoard}
             active={false}
             activeColor={colors.PRIMARY}
           />
-        </Tooltip>
-      </div>
+        </div>
+      </PositionCopyHint>
+
       <style jsx>{`
         .nade-copy-position {
           position: relative;
+          display: inline-block;
         }
 
         .success {
@@ -65,7 +67,8 @@ export const NadeCopyPosition: FC<Props> = ({ setPos, nadeId }) => {
           color: white;
           position: absolute;
           bottom: 100%;
-          right: 70px;
+          width: 150px;
+          right: -55px;
           margin-bottom: 4px;
           opacity: 0;
           font-size: 14px;
