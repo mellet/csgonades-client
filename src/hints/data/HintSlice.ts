@@ -4,10 +4,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type HintState = {
   shownFavoriteHint: boolean;
+  shownPositionCopyHint: boolean;
 };
 
 const initialState: HintState = {
   shownFavoriteHint: false,
+  shownPositionCopyHint: false,
 };
 
 const hintStore = createSlice({
@@ -17,10 +19,14 @@ const hintStore = createSlice({
     setShownFavoriteHintAction(state) {
       state.shownFavoriteHint = true;
     },
+    setShownPositionCopyHintAction(state) {
+      state.shownPositionCopyHint = true;
+    },
   },
 });
 
-export const { setShownFavoriteHintAction } = hintStore.actions;
+export const { setShownFavoriteHintAction, setShownPositionCopyHintAction } =
+  hintStore.actions;
 
 const persistConfig: PersistConfig<HintState> = {
   key: "HintStore",
