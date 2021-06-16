@@ -60,6 +60,10 @@ export const ThemeToggler: FC = memo(() => {
           background: #f2f2f2;
           color: #111;
         }
+
+        .toggle-btn:focus-visible {
+          outline: 1px auto ${colors.focusOutline};
+        }
       `}</style>
     </>
   );

@@ -40,6 +40,8 @@ export const CommentSubmit: FC<Props> = memo(
       setLoading(false);
     }
 
+    const submitDisabled = message.length === 0 || loading;
+
     return (
       <>
         {isSignedIn && (
@@ -49,8 +51,12 @@ export const CommentSubmit: FC<Props> = memo(
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Write a comment. It's a person on the other side, don't be to mean! 😏"
             />
-            <button onClick={onSubmit} disabled={loading}>
-              Submit
+            <button
+              className="submit-btn"
+              onClick={onSubmit}
+              disabled={submitDisabled}
+            >
+              SUBMIT
             </button>
           </div>
         )}
@@ -91,14 +97,14 @@ export const CommentSubmit: FC<Props> = memo(
             min-height: 120px;
             resize: none;
             padding: ${Dimensions.GUTTER_SIZE}px;
-            border-radius: 8px;
+            border-radius: ${Dimensions.BORDER_RADIUS};
             color: ${colors.TEXT};
             border: 1px dashed ${colors.BORDER};
-            border-bottom-right-radius: 0px;
           }
 
           textarea:focus {
-            border: 1px solid ${colors.SUCCESS};
+            outline: none;
+            box-shadow: 0 0 0 1px ${colors.PRIMARY};
           }
 
           textarea::placeholder {
@@ -106,20 +112,32 @@ export const CommentSubmit: FC<Props> = memo(
             font-weight: 300;
           }
 
-          .nade-submit button {
+          .submit-btn {
             align-self: flex-end;
             border: none;
-            background: ${colors.filterBg};
-            padding: 10px 15px;
+            background: ${colors.SUCCESS};
+            padding: 8px 12px;
             color: white;
             outline: none;
             cursor: pointer;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
+            border-radius: ${Dimensions.BORDER_RADIUS};
+            margin-top: 6px;
+            font-size: 14px;
+            transition: background 0.15s;
           }
 
-          .nade-submit button:hover {
+          .submit-btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 1px ${colors.PRIMARY};
+          }
+
+          .submit-btn:hover {
             background: ${colors.filterBgHover};
+          }
+
+          .submit-btn:disabled {
+            background: ${colors.GREY};
+            cursor: not-allowed;
           }
         `}</style>
       </>

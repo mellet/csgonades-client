@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { useTheme } from "styled-components";
+import { Dimensions } from "../../../../constants/Constants";
 import { useGetOrUpdateToken } from "../../../../core/authentication/useGetToken";
 import { CSGNModal } from "../../../../shared-components/CSGNModal";
 import { CsgnSaveButton } from "../../../../shared-components/inputs/CsgnSaveButton";
@@ -125,7 +126,7 @@ export const NadeCommentActionButtons: FC<Props> = ({
           border: none;
           outline: none;
           cursor: pointer;
-          border-radius: 5px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
         }
 
         .cancel-btn {
@@ -137,7 +138,8 @@ export const NadeCommentActionButtons: FC<Props> = ({
 
         .actions {
           display: flex;
-          justify-content: flex-end;
+          flex-direction: row;
+          padding: 2px;
         }
 
         .actions button {
@@ -146,19 +148,24 @@ export const NadeCommentActionButtons: FC<Props> = ({
           background: ${colors.DP03};
           cursor: pointer;
           color: ${colors.TEXT};
-          outline: none;
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 300;
           border: 1px solid ${colors.buttonBorder};
         }
 
+        .actions button:focus-visible {
+          outline: 1px auto ${colors.PRIMARY};
+        }
+
         .actions button:first-child {
           border-right: none;
-          border-bottom-left-radius: 5px;
+          border-bottom-left-radius: ${Dimensions.BORDER_RADIUS};
+          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
         }
 
         .actions button:last-child {
-          border-bottom-right-radius: 5px;
+          border-top-right-radius: ${Dimensions.BORDER_RADIUS};
+          border-bottom-right-radius: ${Dimensions.BORDER_RADIUS};
         }
 
         .actions button:hover {

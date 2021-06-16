@@ -3,13 +3,16 @@ import Image from "next/image";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { capitalize } from "../../utils/Common";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   selected: boolean;
   csMap: CsgoMap;
+  isFirst?: boolean;
+  isLast?: boolean;
 };
 
-export const NavItem: FC<Props> = ({ selected, csMap }) => {
+export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
   const { colors } = useTheme();
 
   return (
@@ -39,7 +42,11 @@ export const NavItem: FC<Props> = ({ selected, csMap }) => {
           color: rgb(88, 102, 126);
           font-weight: 400;
           padding: 9px 12px;
-          border-bottom: 1px solid ${colors.BORDER};
+          border-top: ${!isFirst ? `1px solid ${colors.BORDER}` : 0};
+          border-top-left-radius: ${isFirst ? Dimensions.BORDER_RADIUS : 0};
+          border-top-right-radius: ${isFirst ? Dimensions.BORDER_RADIUS : 0};
+          border-bottom-left-radius: ${isLast ? Dimensions.BORDER_RADIUS : 0};
+          border-bottom-right-radius: ${isLast ? Dimensions.BORDER_RADIUS : 0};
         }
 
         .map-link:hover {

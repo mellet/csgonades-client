@@ -20,7 +20,7 @@ export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
           {!!nade.map && (
             <Link href={`/maps/${nade.map}`}>
               <button id="back">
-                <FaChevronLeft />
+                <FaChevronLeft style={{ position: "relative", left: "-2px" }} />
               </button>
             </Link>
           )}
@@ -49,28 +49,36 @@ export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
         }
 
         #back {
-          color: ${colors.TEXT};
+          color: ${colors.link};
           font-size: 28px;
-          display: block;
-          position: relative;
           background: transparent;
           border: none;
-          outline: none;
           cursor: pointer;
           margin: 0;
           padding: 0;
           display: block;
-          padding-right: ${Dimensions.GUTTER_SIZE}px;
-          height: 100%;
+          margin-right: ${Dimensions.GUTTER_SIZE / 2}px;
           display: flex;
           align-items: center;
-          left: -5px;
+          justify-content: space-around;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          transition: color 0.15s;
+        }
+
+        #back:hover {
+          color: ${colors.linkHover};
+        }
+
+        #back:focus-visible {
+          outline: none;
+          box-shadow: 0 0 0 1px ${colors.PRIMARY};
         }
 
         .main-title {
           grid-area: title;
           align-self: center;
-          margin-left: -16px;
         }
 
         @media only screen and (max-width: 800px) {

@@ -25,7 +25,6 @@ import { StatusSelector } from "./components/NadeInputs/StatusSelector";
 import { useIsAdmin } from "../core/authentication/useIsAdmin";
 import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";
-import { SlugInput } from "./components/NadeInputs/SlugInput";
 import { IsProSelector } from "./components/NadeInputs/IsProSelector";
 import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
 import {
@@ -279,17 +278,6 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
                   }}
                 />
               </div>
-
-              {isAdmin && (
-                <div id="slug">
-                  <SlugInput
-                    defaultValue={nade.slug}
-                    onChange={(slug) =>
-                      dispatch({ type: "EditNade/SetSlug", slug })
-                    }
-                  />
-                </div>
-              )}
             </>
           )}
 
