@@ -39,6 +39,9 @@ export type ThemeColors = {
   buttonBorder: string;
   buttonDefaultIcon: string;
   reportRed: string;
+  link: string;
+  linkHover: string;
+  focusOutline: string;
 };
 
 type Themes = {
@@ -87,6 +90,9 @@ const DARK_THEME: ThemeColors = {
   buttonBorder: "rgba(255,255,255, 0.1)",
   buttonDefaultIcon: "#fff",
   reportRed: "red",
+  link: "#148ec7",
+  linkHover: "#10a5eb",
+  focusOutline: "#fff",
 };
 
 export const LIGHT_THEME: ThemeColors = {
@@ -130,6 +136,9 @@ export const LIGHT_THEME: ThemeColors = {
   buttonBorder: "rgba(0, 0, 0, 0.1)",
   buttonDefaultIcon: "#111",
   reportRed: "red",
+  link: "#148ec7",
+  linkHover: "#10a5eb",
+  focusOutline: "#263942",
 };
 
 export const themes: Themes = {

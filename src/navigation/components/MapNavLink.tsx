@@ -27,7 +27,7 @@ export const MapPageLink: FC<Props> = ({ map, children }) => {
         }
 
         a:focus-visible {
-          outline: 1px auto ${colors.PRIMARY};
+          outline: 1px auto ${colors.focusOutline};
         }
       `}</style>
     </>

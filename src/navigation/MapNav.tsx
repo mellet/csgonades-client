@@ -14,7 +14,11 @@ export const MapNav: FC = () => {
         <ul>
           <li>
             <MapPageLink map="mirage">
-              <NavItem csMap="mirage" selected={selectedMap === "mirage"} />
+              <NavItem
+                isFirst
+                csMap="mirage"
+                selected={selectedMap === "mirage"}
+              />
             </MapPageLink>
           </li>
 
@@ -81,6 +85,14 @@ export const MapNav: FC = () => {
           padding: 0;
           display: flex;
           flex-direction: column;
+        }
+
+        ul li a {
+          display: block;
+        }
+
+        ul li:first-child a {
+          border-top-left-radius: 0px;
         }
       `}</style>
     </>

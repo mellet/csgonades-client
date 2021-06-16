@@ -35,8 +35,7 @@ const NavigationLayoutWrap = styled.nav`
   .main,
   .secondary {
     background: ${({ theme }) => theme.colors.DP03};
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: ${Dimensions.BORDER_RADIUS};
     border: 1px solid ${({ theme }) => theme.colors.BORDER};
   }
 
