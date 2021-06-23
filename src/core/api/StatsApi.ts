@@ -8,6 +8,10 @@ export type SiteStats = {
   numNades: number;
   numPending: number;
   numUsers: number;
+  numSmokes: number;
+  numFlashes: number;
+  numMolotovs: number;
+  numGrenades: number;
 };
 
 export class StatsApi {

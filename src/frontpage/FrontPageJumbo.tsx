@@ -1,6 +1,10 @@
 import { FC, memo } from "react";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { SiteStats } from "../core/api/StatsApi";
+import { kFormatter } from "../utils/Common";
+import { NadeIcon } from "../shared-components/nade-icons";
+import { FaUserFriends } from "react-icons/fa";
+import { Dimensions } from "../constants/Constants";
 
 type Props = {
   stats: SiteStats | null;
@@ -26,12 +30,34 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
         {stats && (
           <div className="stats">
             <div className="stat-item">
-              <span className="stat-count">{stats.numUsers}</span>
-              <span className="stat-label">Users</span>
+              <span className="stat-label">
+                <NadeIcon nadeType="smoke" />
+              </span>
+              <span className="stat-count">{stats.numSmokes}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-count">{stats.numNades}</span>
-              <span className="stat-label">Nades</span>
+              <span className="stat-label">
+                <NadeIcon nadeType="flash" />
+              </span>
+              <span className="stat-count">{stats.numFlashes}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">
+                <NadeIcon nadeType="molotov" />
+              </span>
+              <span className="stat-count">{stats.numMolotovs}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">
+                <NadeIcon nadeType="hegrenade" />
+              </span>
+              <span className="stat-count">{stats.numGrenades}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">
+                <FaUserFriends size={24} />
+              </span>
+              <span className="stat-count">{kFormatter(stats.numUsers)}</span>
             </div>
           </div>
         )}
@@ -103,23 +129,32 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
           display: flex;
           justify-content: center;
           background: ${colors.DP02};
-          color: ${colors.TEXT};
         }
 
         .stat-item {
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin: 20px;
+          margin: 20px 12px;
+          background: ${colors.DP01};
+          padding: 6px 10px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
         }
 
         .stat-count {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 400;
+          background: ${colors.DP01};
+          color: ${colors.TEXT};
         }
 
         .stat-label {
-          font-size: 16px;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          margin-bottom: 4px;
         }
 
         @media only screen and (max-width: 600px) {
@@ -140,6 +175,14 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
             background-size: cover;
             margin-bottom: 30px;
             border-radius: 5px;
+          }
+
+          .stat-item {
+            margin: 8px;
+          }
+
+          .stat-count {
+            font-size: 16px;
           }
         }
       `}</style>
