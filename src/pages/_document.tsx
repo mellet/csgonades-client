@@ -7,6 +7,7 @@ import Document, {
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { GA_TRACKING_ID } from "../utils/gtag";
+import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -82,9 +83,9 @@ class MyDocument extends Document {
               href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap"
               rel="stylesheet"
             />
-            <script
-              async
+            <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              strategy="afterInteractive"
             />
             <script
               dangerouslySetInnerHTML={{
@@ -98,7 +99,10 @@ class MyDocument extends Document {
           `,
               }}
             />
-            <script src="//www.ezojs.com/ezoic/sa.min.js" />
+            <Script
+              src="//www.ezojs.com/ezoic/sa.min.js"
+              strategy="afterInteractive"
+            />
           </Head>
           <body id="app">
             <Main />
