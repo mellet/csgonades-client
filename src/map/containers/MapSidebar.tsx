@@ -28,11 +28,6 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
         <SidebarAdSticky />
       </div>
       <style jsx>{`
-        .ctas {
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
         .ad {
           position: sticky;
           top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;

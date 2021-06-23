@@ -1,7 +1,10 @@
 import { FC } from "react";
+import { Dimensions } from "../../../constants/Constants";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 
 export const BuyMeABeerAction: FC = ({}) => {
+  const { colors } = useTheme();
   const ga = useGa();
 
   function logBma() {
@@ -12,19 +15,17 @@ export const BuyMeABeerAction: FC = ({}) => {
     <>
       <a
         onClick={logBma}
-        className="bma-link"
+        className="bma"
         href="https://www.buymeacoffee.com/csgonades"
         target="_blank"
         rel="noopener noreferrer nofollow"
       >
-        <button className="bma">
-          <span>
-            Buy me a <span className="cta">Coffee</span>
-          </span>
-          <div className="img-wrapper">
-            <img src="/bmc-white.svg" />
-          </div>
-        </button>
+        <span>
+          Buy me a <span className="cta">Coffee</span>
+        </span>
+        <div className="img-wrapper">
+          <img src="/bmc-white.svg" />
+        </div>
       </a>
       <style jsx>{`
         .bma {
@@ -41,10 +42,16 @@ export const BuyMeABeerAction: FC = ({}) => {
           position: relative;
           overflow: hidden;
           height: 50px;
+          border-bottom-left-radius: ${Dimensions.BORDER_RADIUS};
+          border-bottom-right-radius: ${Dimensions.BORDER_RADIUS};
         }
 
         .bma:hover {
           background: #e3a005;
+        }
+
+        .bma:focus-visible {
+          outline: 1px auto ${colors.focusOutline};
         }
 
         .bma span {

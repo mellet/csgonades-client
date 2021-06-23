@@ -1,4 +1,5 @@
 import { FC, memo, useMemo } from "react";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
 import { NadeIcon } from "../../shared-components/nade-icons";
@@ -14,6 +15,7 @@ type Props = {
 
 export const MapPosIcon: FC<Props> = memo(
   ({ cluster, mapWidth, nade, numNades, onPress }) => {
+    const { colors } = useTheme();
     const { hasNew, position } = useMemo(() => {
       const hasNew = cluster.find((n) => isNewNade(n.createdAt));
       const averageX =
@@ -53,7 +55,7 @@ export const MapPosIcon: FC<Props> = memo(
 
     return (
       <>
-        <div
+        <button
           className="point"
           style={{
             position: "absolute",
@@ -70,7 +72,7 @@ export const MapPosIcon: FC<Props> = memo(
               animated={true}
             />
           </div>
-        </div>
+        </button>
         <style jsx>{`
           .point {
             width: ${iconBaseSize}px;
@@ -80,6 +82,10 @@ export const MapPosIcon: FC<Props> = memo(
             z-index: ${zIndexByType(nade.type)};
             z-index: 499;
             overflow: hidden;
+            background: transparent;
+            padding: 0;
+            border: none;
+            outline: none;
           }
 
           .nade-icon {
@@ -98,6 +104,14 @@ export const MapPosIcon: FC<Props> = memo(
 
           .point:hover {
             z-index: 500;
+          }
+
+          .point:focus-visible {
+            outline: 1px auto ${colors.focusOutline};
+          }
+
+          .point:focus-visible .nade-icon {
+            opacity: 1;
           }
 
           @keyframes show {

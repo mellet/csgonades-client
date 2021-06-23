@@ -14,13 +14,17 @@ export const SquareButton: FC<IconButtonProps> = ({
   icon,
   activeColor,
   active = false,
-  labelCount,
+  labelCount = 0,
   onClick,
   inGroup,
+  ...rest
 }) => {
+  const showLabelCount = labelCount > 0;
+
   return (
     <IconButtonWrapper inGroup={inGroup}>
       <Button
+        {...rest}
         inGroup={inGroup}
         onClick={onClick}
         active={active}
@@ -28,8 +32,8 @@ export const SquareButton: FC<IconButtonProps> = ({
       >
         {icon}
       </Button>
-      {(labelCount ? labelCount > 0 : false) && (
-        <ButtonLabel bgColor={activeColor} labelCount={labelCount!}>
+      {showLabelCount && (
+        <ButtonLabel bgColor={activeColor} labelCount={labelCount}>
           {labelCount}
         </ButtonLabel>
       )}

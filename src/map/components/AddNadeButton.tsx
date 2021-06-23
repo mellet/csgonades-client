@@ -3,10 +3,12 @@ import { FaPlus } from "react-icons/fa";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import Router from "next/router";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 export const AddNadeButton: FC = memo(() => {
   const { setSignInWarning } = useSignInWarning();
   const isSignedIn = useIsSignedIn();
+  const { colors } = useTheme();
 
   function onClick() {
     if (isSignedIn) {
@@ -51,6 +53,10 @@ export const AddNadeButton: FC = memo(() => {
           background: rgba(140, 192, 28, 1);
           cursor: pointer;
           color: white;
+        }
+
+        .add-btn:focus-visible {
+          outline: 1px auto ${colors.focusOutline};
         }
       `}</style>
     </>

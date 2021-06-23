@@ -1,8 +1,11 @@
 import { FC } from "react";
 import { FaDiscord } from "react-icons/fa";
+import { Dimensions } from "../../../constants/Constants";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 
 export const DiscordJoinAction: FC = () => {
+  const { colors } = useTheme();
   const ga = useGa();
 
   function logJoinDiscor() {
@@ -11,23 +14,20 @@ export const DiscordJoinAction: FC = () => {
 
   return (
     <>
-      <div className="actions-wrapper">
-        <a
-          onClick={logJoinDiscor}
-          href="https://discord.gg/010h0KFCBNASyMUKv"
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <div className="action">
-            <div className="discord-msg">
-              Join us on <span>Discord</span>
-            </div>
-            <div className="discord-logo">
-              <FaDiscord />
-            </div>
-          </div>
-        </a>
-      </div>
+      <a
+        className="action"
+        onClick={logJoinDiscor}
+        href="https://discord.gg/010h0KFCBNASyMUKv"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        <div className="discord-msg">
+          Join us on <span>Discord</span>
+        </div>
+        <div className="discord-logo">
+          <FaDiscord />
+        </div>
+      </a>
       <style jsx>{`
         .action {
           display: flex;
@@ -37,6 +37,12 @@ export const DiscordJoinAction: FC = () => {
           align-items: center;
           background: #7289da;
           height: 50px;
+          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
+          border-top-right-radius: ${Dimensions.BORDER_RADIUS};
+        }
+
+        .action:focus-visible {
+          outline: 1px auto ${colors.focusOutline};
         }
 
         .action:hover {
