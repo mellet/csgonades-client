@@ -4,7 +4,6 @@ import { SiteStats } from "../core/api/StatsApi";
 import { kFormatter } from "../utils/Common";
 import { NadeIcon } from "../shared-components/nade-icons";
 import { FaUserFriends } from "react-icons/fa";
-import { Dimensions } from "../constants/Constants";
 
 type Props = {
   stats: SiteStats | null;
@@ -17,11 +16,11 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
     <>
       <div id="jumbo">
         <div id="message">
-          <h1>
-            Welcome to CSGO Nades.
-            <br /> A community to learn and share
+          <h1>Welcome to CSGO Nades.</h1>
+          <p className="welcome-msg">
+            A community to learn and share
             <br /> nades for Counter-Strike Global Offensive.
-          </h1>
+          </p>
         </div>
         <div id="jumbo-ill">
           <img src="/images/ilustration.svg" />
@@ -84,38 +83,30 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
 
         #message {
           grid-area: msg;
-          padding: 50px 30px;
+          padding: 80px 30px;
           color: ${colors.TEXT};
         }
 
-        #message p {
-          font-size: 1.3rem;
-        }
-
-        #message a {
-          color: ${colors.TEXT};
-        }
-
-        #message a:hover {
-          text-decoration: underline;
-        }
-
-        h1 {
+        #message h1 {
           color: ${colors.TEXT};
           margin: 0;
           padding: 0;
           font-weight: 300;
           font-size: 2.2rem;
-          margin-bottom: 20px;
+          margin-bottom: 12px;
+        }
+
+        #message .welcome-msg {
+          font-size: 1.6rem;
         }
 
         #jumbo-ill {
           grid-area: ill;
-          height: 200px;
-          width: 300px;
+          height: 220px;
+          width: 350px;
           overflow: hidden;
           align-self: flex-end;
-          padding-right: 30px;
+          padding-right: 70px;
           padding-top: 30px;
         }
 
@@ -127,25 +118,30 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
         .stats {
           grid-area: stats;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           background: ${colors.DP02};
         }
 
         .stat-item {
+          flex: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
-          margin: 20px 12px;
-          background: ${colors.DP01};
-          padding: 6px 10px;
-          border-radius: ${Dimensions.BORDER_RADIUS};
+          padding: 0px 0px;
+          border-right: 1px solid ${colors.BORDER};
+          margin-top: 14px;
+          margin-bottom: 14px;
+        }
+
+        .stat-item:last-child {
+          border-right: none;
         }
 
         .stat-count {
-          font-size: 18px;
+          font-size: 14px;
           font-weight: 400;
-          background: ${colors.DP01};
           color: ${colors.TEXT};
+          font-weight: 400;
         }
 
         .stat-label {
@@ -154,7 +150,7 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
           display: flex;
           align-items: center;
           justify-content: space-around;
-          margin-bottom: 4px;
+          margin-bottom: 2px;
         }
 
         @media only screen and (max-width: 600px) {
@@ -175,14 +171,6 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
             background-size: cover;
             margin-bottom: 30px;
             border-radius: 5px;
-          }
-
-          .stat-item {
-            margin: 8px;
-          }
-
-          .stat-count {
-            font-size: 16px;
           }
         }
       `}</style>
