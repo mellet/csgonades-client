@@ -11,6 +11,8 @@ export const CookieConsent: FC = memo(() => {
   const { colors } = useTheme();
   const { acceptCookieConcent, acceptedCookieConsent } = useCookieConcent();
 
+  const showCookieConsent = !acceptedCookieConsent && render;
+
   useEffect(() => {
     const renderTimer = setTimeout(() => {
       setRender(true);
@@ -20,11 +22,11 @@ export const CookieConsent: FC = memo(() => {
 
   const wrapperClassName = useMemo(() => {
     const classNames = ["cookie-consent-wrapper"];
-    if (!acceptedCookieConsent && render) {
+    if (showCookieConsent) {
       classNames.push("visible");
     }
     return classNames.join(" ");
-  }, [acceptedCookieConsent, render]);
+  }, [showCookieConsent]);
 
   function onCookieConsentAccept() {
     acceptCookieConcent();
@@ -36,7 +38,7 @@ export const CookieConsent: FC = memo(() => {
 
   return (
     <>
-      <div className={wrapperClassName}>
+      <div aria-hidden={!showCookieConsent} className={wrapperClassName}>
         <div className="cookie-consent">
           <div className="cookie-icon">
             <FaCookieBite />
@@ -51,14 +53,13 @@ export const CookieConsent: FC = memo(() => {
 
           <div className="close-button">
             <button className="accept-btn" onClick={onCookieConsentAccept}>
-              I Accept
+              I ACCEPT
             </button>
           </div>
         </div>
       </div>
       <style jsx>{`
         .cookie-consent-wrapper {
-          background: rgba(0, 0, 0, 0.9);
           bottom: 0;
           display: flex;
           justify-content: space-around;
@@ -69,7 +70,6 @@ export const CookieConsent: FC = memo(() => {
           transform: translateY(100%);
           transition: all 0.3s ease-out;
           z-index: 999;
-          min-height: 33vh;
         }
 
         .visible {
@@ -79,21 +79,25 @@ export const CookieConsent: FC = memo(() => {
         .cookie-consent {
           color: #fff;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           font-size: 16px;
-          padding ${Dimensions.GUTTER_SIZE / 2}px;
+          padding ${Dimensions.GUTTER_SIZE}px;
+          background: rgba(0, 0, 0, 0.9);
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          align-items: center;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .cookie-icon {
           align-items: center;
           display: flex;
           font-size: 1.5em;
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .consent-txt {
           font-size: 16px;
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .close-button {
@@ -103,36 +107,29 @@ export const CookieConsent: FC = memo(() => {
 
         .accept-btn {
           appearance: none;
-          background: ${colors.PRIMARY};
+          background: ${colors.SUCCESS};
           border-radius: 5px;
           border: none;
           border: none;
           color: #fff;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 400;
           outline: none;
-          padding: 10px 20px;
+          padding: 12px 18px;
           white-space: nowrap;
+          margin-top: 8px;
         }
 
         .accept-btn:hover {
-          background: #083345;
+          background: #9dd91c;
         }
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {
           .cookie-consent {
-            align-items: center;
-            flex-direction: column;
-          }
-
-          .consent-txt {
-            text-align: center;
-          }
-
-          .consent-txt, .cookie-icon {
-            margin: 0;
-            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+            margin-bottom: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
           }
         }
       `}</style>
