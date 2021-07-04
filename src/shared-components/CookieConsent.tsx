@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC, memo, useEffect, useMemo, useState } from "react";
 import { FaCookieBite } from "react-icons/fa";
 import { Dimensions } from "../constants/Constants";
@@ -36,17 +37,24 @@ export const CookieConsent: FC = memo(() => {
     });
   }
 
+  if (acceptedCookieConsent) {
+    return null;
+  }
+
   return (
     <>
-      <div aria-hidden={!showCookieConsent} className={wrapperClassName}>
+      <div className={wrapperClassName}>
         <div className="cookie-consent">
           <div className="cookie-icon">
             <FaCookieBite />
           </div>
 
           <div className="consent-txt">
-            In order to give you a better service CSGO Nades uses{" "}
-            <a href="/privacypolicy">cookies</a> for analytics and advertising.
+            In order to give you a better service, CSGO Nades uses{" "}
+            <Link href="/privacypolicy">
+              <a>cookies</a>
+            </Link>{" "}
+            for analytics and advertising.
             <br /> By continuing to browse the site you are agreeing to our use
             of cookies.
           </div>
@@ -77,27 +85,27 @@ export const CookieConsent: FC = memo(() => {
         }
 
         .cookie-consent {
-          color: #fff;
+          color: ${colors.TEXT};
           display: flex;
-          flex-direction: column;
           font-size: 16px;
           padding ${Dimensions.GUTTER_SIZE}px;
-          background: rgba(0, 0, 0, 0.9);
+          background: ${colors.DP01};
           border-radius: ${Dimensions.BORDER_RADIUS};
           align-items: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE * 2}px;
+          border: 3px solid ${colors.PRIMARY};
         }
 
         .cookie-icon {
           align-items: center;
           display: flex;
           font-size: 1.5em;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .consent-txt {
           font-size: 16px;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .close-button {
@@ -118,7 +126,6 @@ export const CookieConsent: FC = memo(() => {
           outline: none;
           padding: 12px 18px;
           white-space: nowrap;
-          margin-top: 8px;
         }
 
         .accept-btn:hover {
@@ -130,6 +137,13 @@ export const CookieConsent: FC = memo(() => {
             margin-bottom: 0;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
+            flex-direction: column;
+          }
+
+          .consent-txt,  .cookie-icon {
+            text-align: center;
+            margin-right: 0;
+            margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           }
         }
       `}</style>
