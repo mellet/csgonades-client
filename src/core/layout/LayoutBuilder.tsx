@@ -1,4 +1,5 @@
 import { FC, memo, useMemo } from "react";
+import { isMobile } from "react-device-detect";
 import { Dimensions } from "../../constants/Constants";
 import { useNavigation } from "../global/hooks/useNavigation";
 import { useTheme } from "../settings/SettingsHooks";
@@ -34,7 +35,12 @@ export const LayoutBuilder: FC<Props> = memo(
           <header>{header}</header>
 
           {displayNav && (
-            <nav className={isNavOpen ? "open" : "closed"}>{nav}</nav>
+            <nav
+              hidden={!isNavOpen && isMobile}
+              className={isNavOpen ? "open" : "closed"}
+            >
+              {nav}
+            </nav>
           )}
 
           <main>{main}</main>

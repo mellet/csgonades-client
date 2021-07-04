@@ -9,7 +9,7 @@ export const Hamburger: FC = memo(({}) => {
 
   return (
     <>
-      <div className="hamburger" onClick={toggleNav}>
+      <button className="hamburger" onClick={toggleNav}>
         {isNavOpen ? (
           <FaTimes
             size={30}
@@ -21,7 +21,7 @@ export const Hamburger: FC = memo(({}) => {
             style={{ position: "relative", left: -1, top: 2 }}
           />
         )}
-      </div>
+      </button>
       <style jsx>{`
         .hamburger {
           margin-right: 3px;
@@ -32,6 +32,9 @@ export const Hamburger: FC = memo(({}) => {
           height: 30px;
           opacity: 0.85;
           transition: opacity 0.15s;
+          padding: 0;
+          border: none;
+          background: transparent;
         }
 
         .hamburger:hover {
