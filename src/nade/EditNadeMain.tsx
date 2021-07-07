@@ -45,10 +45,10 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
   const canEdit = useCanEditNade(nade.steamId);
 
   const showTickrateSelector = useMemo(() => {
-    if (state.technique && state.technique === "jumpthrow") {
-      return true;
-    }
-    if (!state.technique && nade.technique === "jumpthrow") {
+    const isJumpThrow = state.technique?.includes("jumpthrow");
+    const isJumpthrowOriginal = nade.technique?.includes("jumpthrow");
+
+    if (isJumpThrow || isJumpthrowOriginal) {
       return true;
     }
     return false;

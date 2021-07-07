@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { TypeSelector } from "./components/NadeInputs/TypeSelector";
 import { Dimensions } from "../constants/Constants";
@@ -33,12 +33,17 @@ export const CreateNadeMain: FC = ({}) => {
   const showToast = useDisplayToast();
   const getToken = useGetOrUpdateToken();
   const { colors } = useTheme();
-  const {
-    state,
-    dispatch,
-    disableSubmit,
-    missingFields,
-  } = useCreateNadeState();
+  const { state, dispatch, disableSubmit, missingFields } =
+    useCreateNadeState();
+
+  const showTickrateSelector = useMemo(() => {
+    const isJumpThrow = state.technique?.includes("jumpthrow");
+
+    if (isJumpThrow) {
+      return true;
+    }
+    return false;
+  }, [state.technique]);
 
   async function onSubmit() {
     dispatch({ type: "CreateNade/SetLoading" });
@@ -216,7 +221,7 @@ export const CreateNadeMain: FC = ({}) => {
             />
           </div>
 
-          {state.technique === "jumpthrow" && (
+          {showTickrateSelector && (
             <div id="tickrate-selector">
               <TickrateSelector
                 onChange={(tick) =>

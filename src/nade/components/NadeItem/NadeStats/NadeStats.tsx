@@ -42,7 +42,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
     movement === "running" ||
     movement === "crouchwalking" ||
     movement === "walking";
-  const isJumpThrow = technique === "jumpthrow";
+  const isJumpThrow = technique?.includes("jumpthrow");
   const nadeIsNew = isNewNade(createdAt);
 
   // Show minimum of 1 if favorited by user
