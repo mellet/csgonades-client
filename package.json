@@ -33,6 +33,7 @@
     "react-markdown": "^5.0.3",
     "react-redux": "^7.2.3",
     "react-share": "^4.4.0",
+    "react-ssr-adsense": "^1.0.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",

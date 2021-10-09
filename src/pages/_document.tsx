@@ -84,6 +84,10 @@ class MyDocument extends Document {
             />
             <script
               async
+              src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            ></script>
+            <script
+              async
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
             />
             <script

@@ -3,6 +3,7 @@ import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogCopyPaste } from "../components/BlogCopyPaste";
 import { BlogPostArticle } from "../components/BlogPostArticle";
 import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
+import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 export const PractiseConfigBlogPost = () => {
   return (
@@ -121,6 +122,8 @@ export const PractiseConfigBlogPost = () => {
           can then test out if someone in that spot will get flashed.
         </p>
         <BlogCodeSnippet code="bind X sv_rethrow_last_grenade" />
+
+        <AdUnitAdSense />
       </BlogPostArticle>
       <style jsx>{`
         .a-tag {
