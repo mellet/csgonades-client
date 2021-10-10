@@ -123,7 +123,9 @@ export const PractiseConfigBlogPost = () => {
         </p>
         <BlogCodeSnippet code="bind X sv_rethrow_last_grenade" />
 
-        <AdUnitAdSense />
+        <AdUnitAdSense adFormat="horizontal-responsive" />
+
+        <AdUnitAdSense adFormat="in-article" />
       </BlogPostArticle>
       <style jsx>{`
         .a-tag {
