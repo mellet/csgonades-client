@@ -85,6 +85,7 @@ class MyDocument extends Document {
             <script
               async
               src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2255854420599519"
+              crossOrigin="anonymous"
             ></script>
             <script
               async
