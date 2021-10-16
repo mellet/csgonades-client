@@ -6,6 +6,7 @@ import Document, {
   DocumentContext,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { Config } from "../constants/Constants";
 import { GA_TRACKING_ID } from "../utils/gtag";
 
 class MyDocument extends Document {
@@ -98,7 +99,9 @@ class MyDocument extends Document {
           `,
               }}
             />
-            <script src="//www.ezojs.com/ezoic/sa.min.js" />
+            {Config.ADS_ENABLED && (
+              <script src="//www.ezojs.com/ezoic/sa.min.js" />
+            )}
           </Head>
           <body id="app">
             <Main />
