@@ -116,7 +116,7 @@ export const NadeAlignCrosshairPost: FC = () => {
         </p>
         <p>
           If you prefer not to have the dot, remove the{" "}
-          <code>cl_crosshairsize</code> commands from line 2 and 3. And if you
+          <code>cl_crosshairdot</code> commands from line 2 and 3. And if you
           don&apos;t want the gap to change, remove that as well. It&apos;s up
           to you!
         </p>
