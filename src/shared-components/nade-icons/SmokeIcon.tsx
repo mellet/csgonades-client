@@ -75,14 +75,14 @@ export const SmokeIcon: FC<NadeSpecificIconProps> = ({
           font-size: 60px;
           line-height: 60px;
           fill: white;
-          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
           animation-delay: ${COUNT_ANIMATION_DELAY}s;
         }
 
         .new-label {
           font-size: 22px;
           fill: #d4ff00;
-          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
           animation-delay: ${NEW_LABEL_ANIMATION_DELAY}s;
         }
 
