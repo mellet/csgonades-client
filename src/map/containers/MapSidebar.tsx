@@ -37,6 +37,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
           position: sticky;
           top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
           margin-top: ${Dimensions.GUTTER_SIZE}px;
+          max-height: 300px;
         }
       `}</style>
     </>
