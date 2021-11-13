@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FC, memo, useEffect, useMemo, useState } from "react";
 import { FaCookieBite } from "react-icons/fa";
-import { Dimensions } from "../constants/Constants";
+import { Config, Dimensions } from "../constants/Constants";
 import { useCookieConcent } from "../core/global/hooks/useCookieConcent";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { useGa } from "../utils/Analytics";
@@ -37,7 +37,7 @@ export const CookieConsent: FC = memo(() => {
     });
   }
 
-  if (acceptedCookieConsent) {
+  if (acceptedCookieConsent || !Config.enableEzoic) {
     return null;
   }
 
