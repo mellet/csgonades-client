@@ -15,7 +15,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.2",
     "@reduxjs/toolkit": "^1.5.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "clusters": "^0.0.4",
     "copy-to-clipboard": "^3.3.1",
     "cross-env": "^7.0.3",
