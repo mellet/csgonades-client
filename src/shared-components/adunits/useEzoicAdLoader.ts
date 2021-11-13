@@ -30,7 +30,7 @@ const loadAds = async () => {
     if (ez.hasDisplayedAds) {
       const adIds = findAdUnits();
       // @ts-ignore
-      ez.displayMore(adIds);
+      // ez.displayMore(adIds);
       await sleep(500);
       ez.define(adIds);
       ez.refresh();
