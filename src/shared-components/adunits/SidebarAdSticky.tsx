@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { EzoicPlaceholder } from "./EzoicPlaceholder";
 import { Twemoji } from "../Twemoj/Twemoji";
 import { isMobile } from "react-device-detect";
+import { Config } from "../../constants/Constants";
 
 export const SidebarAdSticky: FC = ({}) => {
   const disabled = isMobile;
@@ -14,6 +15,10 @@ export const SidebarAdSticky: FC = ({}) => {
   }, []);
 
   if (disabled) {
+    return null;
+  }
+
+  if (!Config.enableEzoic) {
     return null;
   }
 

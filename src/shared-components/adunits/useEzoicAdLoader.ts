@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { Config } from "../../constants/Constants";
 
 export const useEzoidAdLoader = (): void => {
   const router = useRouter();
@@ -16,6 +17,10 @@ export const useEzoidAdLoader = (): void => {
 };
 
 const loadAds = async () => {
+  if (!Config.enableEzoic) {
+    return;
+  }
+
   try {
     const ez = ezstandalone || {};
 

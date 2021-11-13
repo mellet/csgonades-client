@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { DiscordJoinAction } from "../components/Sidebar/DiscordJoinAction";
 import { NadeLight } from "../../nade/models/Nade";
-import { SidebarAdSticky } from "../../shared-components/adunits/SidebarAdSticky";
 import { CsgoMap } from "../models/CsGoMap";
 import { Spacer } from "../../shared-components/Spacer";
 import { Dimensions } from "../../constants/Constants";
 import { BuyMeABeerAction } from "../components/Sidebar/BuyMeABeerAction";
 import { SideJumbo } from "../components/Sidebar/SideJumbo";
+import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 type Props = {
   map: CsgoMap;
@@ -25,7 +25,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
         <SideJumbo nades={nades} map={map} />
       </Spacer>
       <div className="ad">
-        <SidebarAdSticky />
+        <AdUnitAdSense adFormat="square" />
       </div>
       <style jsx>{`
         .ctas {

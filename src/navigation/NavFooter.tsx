@@ -1,4 +1,5 @@
 import { FC, memo } from "react";
+import { APP_VERSION } from "../constants/Constants";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { PageLink } from "../shared-components/PageLink";
 
@@ -18,7 +19,9 @@ export const Footer: FC = memo(() => {
                 Steam
               </a>
             </div>
-            <div className="copyright">© {year} CSGO Nades</div>
+            <div className="copyright" title={`Version ${APP_VERSION}`}>
+              © {year} CSGO Nades
+            </div>
             <div className="legal">
               <PageLink
                 href="/privacypolicy"

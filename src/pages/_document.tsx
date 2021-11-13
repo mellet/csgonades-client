@@ -99,8 +99,14 @@ class MyDocument extends Document {
           `,
               }}
             />
-            {Config.ADS_ENABLED && (
+            {Config.enableEzoic && (
               <script src="//www.ezojs.com/ezoic/sa.min.js" />
+            )}
+            {Config.enableAdsense && (
+              <script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+              ></script>
             )}
           </Head>
           <body id="app">

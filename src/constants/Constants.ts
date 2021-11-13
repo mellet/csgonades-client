@@ -7,7 +7,8 @@ export const IS_PROD =
   DEV_PROD_OVERRIDE || process.env.NODE_ENV === "production";
 
 export const Config = {
-  ADS_ENABLED: IS_PROD,
+  enableEzoic: false,
+  enableAdsense: IS_PROD,
   API_URL: IS_PROD ? "https://api.csgonades.com" : "http://localhost:5000",
   SIGN_IN_URL: IS_PROD
     ? "https://api.csgonades.com/auth/steam"

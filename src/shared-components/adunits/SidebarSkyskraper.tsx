@@ -1,12 +1,16 @@
 import { FC } from "react";
 import { EzoicPlaceholder } from "./EzoicPlaceholder";
-import { Dimensions } from "../../constants/Constants";
+import { Config, Dimensions } from "../../constants/Constants";
 import { isMobile } from "react-device-detect";
 
 export const SidebarSkyskraperAd: FC = ({}) => {
   const disabled = isMobile;
 
   if (disabled) {
+    return null;
+  }
+
+  if (!Config.enableEzoic) {
     return null;
   }
 

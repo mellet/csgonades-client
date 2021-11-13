@@ -43,7 +43,7 @@ export const PractiseConfigBlogPost = () => {
         />
 
         <div className="a-tag">
-          <EzoicPlaceholder id="189" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>What does the config do?</h2>
@@ -89,7 +89,7 @@ export const PractiseConfigBlogPost = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="190" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h3>1. Fly command</h3>
@@ -123,7 +123,7 @@ export const PractiseConfigBlogPost = () => {
         </p>
         <BlogCodeSnippet code="bind X sv_rethrow_last_grenade" />
 
-        <AdUnitAdSense adFormat="horizontal-responsive" />
+        <AdUnitAdSense adFormat="horizontal" />
 
         <AdUnitAdSense adFormat="in-article" />
       </BlogPostArticle>

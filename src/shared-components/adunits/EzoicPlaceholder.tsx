@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { Dimensions } from "../../constants/Constants";
+import { Config, Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
@@ -10,6 +10,10 @@ type Props = {
 export const EzoicPlaceholder: FC<Props> = memo(({ id, disableAdLabel }) => {
   const ezoicId = `ezoic-pub-ad-placeholder-${id}`;
   const { colors } = useTheme();
+
+  if (!Config.enableEzoic) {
+    return null;
+  }
 
   return (
     <>
