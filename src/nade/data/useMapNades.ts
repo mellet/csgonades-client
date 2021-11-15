@@ -18,7 +18,7 @@ export const useMapNades = (initialNades: NadeLight[], map: CsgoMap) => {
   const refreshDelay = 5 * 60 * 1000;
 
   const { data, error } = useSWR(map, fetcher, {
-    initialData: initialNades,
+    fallbackData: initialNades,
     dedupingInterval: refreshDelay,
     errorRetryCount: 3,
   });

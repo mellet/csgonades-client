@@ -3,7 +3,7 @@ import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { prettyDateTime } from "../../utils/DateUtils";
 import { ContactDTO } from "../../contact/models/ContactDTOs";
-import ReactMarkdown from "react-markdown";
+import { RenderMarkdown } from "../../nade/components/RenderMarkdown";
 
 type Props = {
   contactMessage: ContactDTO;
@@ -24,7 +24,7 @@ export const AdminContactMessage: FC<Props> = ({ contactMessage }) => {
           </span>
         </div>
         <div className="contact-body">
-          <ReactMarkdown>{contactMessage.message}</ReactMarkdown>
+          <RenderMarkdown value={contactMessage.message} />
         </div>
       </div>
       <style jsx>{`
