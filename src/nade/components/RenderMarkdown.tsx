@@ -13,11 +13,12 @@ export const RenderMarkdown: FC<Props> = ({ value }) => {
       <div className="markdown">
         <ReactMarkdown
           linkTarget="_blank"
-          disallowedTypes={["heading"]}
-          escapeHtml={false}
-          source={value}
+          disallowedElements={["heading"]}
+          skipHtml={false}
           plugins={[breaks]}
-        />
+        >
+          {value}
+        </ReactMarkdown>
       </div>
       <style global jsx>{`
         .markdown p {

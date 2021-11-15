@@ -1,7 +1,6 @@
 import { FC } from "react";
-import ReactMarkdown from "react-markdown";
-import breaks from "remark-breaks";
 import { useTheme } from "../../core/settings/SettingsHooks";
+import { RenderMarkdown } from "./RenderMarkdown";
 
 type Props = {
   value?: string;
@@ -22,12 +21,7 @@ export const NadeDescriptionDisplay: FC<Props> = ({ value }) => {
   return (
     <>
       <div className="desc-wrap">
-        <ReactMarkdown
-          linkTarget="_blank"
-          disallowedTypes={["heading"]}
-          source={value}
-          plugins={[breaks]}
-        />
+        <RenderMarkdown value={value} />
       </div>
       <style jsx>{`
         .desc-wrap {

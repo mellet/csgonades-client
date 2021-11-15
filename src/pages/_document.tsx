@@ -107,7 +107,8 @@ class MyDocument extends Document {
             {Config.enableAdsense && (
               <Script
                 async
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2255854420599519"
+                crossOrigin="anonymous"
               />
             )}
           </Head>
