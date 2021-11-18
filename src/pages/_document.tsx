@@ -8,7 +8,6 @@ import Document, {
 import { ServerStyleSheet } from "styled-components";
 import { Config } from "../constants/Constants";
 import { GA_TRACKING_ID } from "../utils/gtag";
-import Script from "next/script";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -84,11 +83,10 @@ class MyDocument extends Document {
               href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap"
               rel="stylesheet"
             />
-            <Script
+            <script
               async
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
             />
-
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -105,7 +103,7 @@ class MyDocument extends Document {
               <script src="//www.ezojs.com/ezoic/sa.min.js" />
             )}
             {Config.enableAdsense && (
-              <Script
+              <script
                 async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2255854420599519"
                 crossOrigin="anonymous"
