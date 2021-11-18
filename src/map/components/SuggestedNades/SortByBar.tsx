@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { FaRocket, FaEye, FaStar, FaCommentDots } from "react-icons/fa";
+import { FaRocket, FaEye } from "react-icons/fa";
 import { MdFiberNew } from "react-icons/md";
+import { ImStarFull } from "react-icons/im";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { Dimensions } from "../../../constants/Constants";
 import { NadeLightSort } from "../../../nade/models/Nade";
 
 type Props = {
   sortBy: NadeLightSort;
-  setSortBy;
+  setSortBy: (sortBy: NadeLightSort) => void;
 };
 
 export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
@@ -15,23 +16,19 @@ export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
 
   const methods: { [key in NadeLightSort] } = {
     score: {
-      name: "BEST",
+      name: "Hot",
       icon: <FaRocket />,
     },
+    favoriteCount: {
+      name: "Top",
+      icon: <ImStarFull />,
+    },
     viewCount: {
-      name: "VIEWS",
+      name: "Views",
       icon: <FaEye />,
     },
-    favoriteCount: {
-      name: "FAVORITES",
-      icon: <FaStar />,
-    },
-    commentCount: {
-      name: "COMMENTS",
-      icon: <FaCommentDots />,
-    },
     createdAt: {
-      name: "NEW",
+      name: "New",
       icon: <MdFiberNew />,
     },
   };
@@ -47,7 +44,7 @@ export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
                 className={
                   "method-selector " + (method === sortBy ? "selected" : "")
                 }
-                onClick={() => setSortBy(method)}
+                onClick={() => setSortBy(method as NadeLightSort)}
               >
                 {values.icon}
                 <span>{values.name}</span>

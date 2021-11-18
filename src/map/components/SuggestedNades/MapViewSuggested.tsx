@@ -1,5 +1,5 @@
-import { FC, MouseEventHandler, useState, useMemo } from "react";
-import { NadeLight, NadeLightSort } from "../../../nade/models/Nade";
+import { FC, MouseEventHandler } from "react";
+import { NadeLight } from "../../../nade/models/Nade";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
@@ -9,6 +9,7 @@ import { useGa } from "../../../utils/Analytics";
 import { motion, MotionProps } from "framer-motion";
 import styled from "styled-components";
 import { SortByBar } from "./SortByBar";
+import useSortedNades from "./useSortedNades";
 
 type Props = {
   open: boolean;
@@ -27,7 +28,7 @@ const fadeInUp: MotionProps = {
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
   const { colors } = useTheme();
-  const [sortBy, setSortBy] = useState<NadeLightSort>("score");
+  const [sortedNades, sortBy, setSortBy] = useSortedNades(nades, "score");
   const ga = useGa();
 
   const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -57,27 +58,20 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
     onDismiss();
   };
 
-  const sortedNades = useMemo(() => {
-    if (nades) {
-      if (sortBy === "createdAt") {
-        return [...nades].sort(
-          (a, b) =>
-            new Date(b[sortBy]).valueOf() - new Date(a[sortBy]).valueOf()
-        );
-      }
-      return [...nades].sort((a, b) => b[sortBy] - a[sortBy]);
-    }
-    return null;
-  }, [nades, sortBy]);
-
   return (
     <>
       <div className="wrapper">
-        <MapViewWrapper {...fadeInUp} animate={open ? "visible" : "hidden"}>
+        <MapViewWrapper
+          {...fadeInUp}
+          animate={open ? "visible" : "hidden"}
+          onClick={onDismissCloseClick}
+        >
           <div className="bg" />
           <div className="nades">
             <div className="title">
-              <SortByBar sortBy={sortBy} setSortBy={setSortBy} />
+              <div onClick={(e) => e.stopPropagation()}>
+                <SortByBar sortBy={sortBy} setSortBy={setSortBy} />
+              </div>
               <div className="close-btn" onClick={onDismissCloseClick}>
                 <FaTimes />
               </div>
