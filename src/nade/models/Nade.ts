@@ -84,6 +84,11 @@ export interface NadeLight {
   viewCount: number;
 }
 
+export type NadeLightSort = keyof Pick<
+  NadeLight,
+  "score" | "viewCount" | "favoriteCount" | "createdAt"
+>;
+
 export type NadeCreateBody = {
   description: string;
   endPosition: string;

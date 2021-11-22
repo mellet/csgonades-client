@@ -8,6 +8,8 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 import { motion, MotionProps } from "framer-motion";
 import styled from "styled-components";
+import { SortByBar } from "./SortByBar";
+import useSortedNades from "./useSortedNades";
 
 type Props = {
   open: boolean;
@@ -26,6 +28,7 @@ const fadeInUp: MotionProps = {
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
   const { colors } = useTheme();
+  const [sortedNades, sortBy, setSortBy] = useSortedNades(nades, "score");
   const ga = useGa();
 
   const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -66,14 +69,17 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           <div className="bg" />
           <div className="nades">
             <div className="title">
+              <div onClick={(e) => e.stopPropagation()}>
+                <SortByBar sortBy={sortBy} setSortBy={setSortBy} />
+              </div>
               <div className="close-btn" onClick={onDismissCloseClick}>
                 <FaTimes />
               </div>
             </div>
-            {nades && (
+            {sortedNades && (
               <div className="nade-list-wrap">
                 <CsgnList<NadeLight>
-                  data={nades}
+                  data={sortedNades}
                   renderItem={renderItem}
                   keyExtractor={keyExtractor}
                 />
