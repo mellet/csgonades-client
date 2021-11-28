@@ -5,6 +5,7 @@ import { ImStarFull } from "react-icons/im";
 import { NadeLightSort } from "../../../nade/models/Nade";
 import { IconButtonGroup } from "../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
 import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
+import { useGa } from "../../../utils/Analytics";
 
 type Props = {
   sortBy: NadeLightSort;
@@ -12,42 +13,66 @@ type Props = {
 };
 
 export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
-  return (
-    <>
-      <div className="sorthing-method-selector">
-        <IconButtonGroup>
-          <ButtonWithIcon
-            value="Hot"
-            icon={<FaRocket />}
-            onClick={() => setSortBy("score")}
-            active={sortBy === "score"}
-          />
-          <ButtonWithIcon
-            value="Top"
-            icon={<ImStarFull />}
-            onClick={() => setSortBy("favoriteCount")}
-            active={sortBy === "favoriteCount"}
-          />
-          <ButtonWithIcon
-            value="View"
-            icon={<FaEye />}
-            onClick={() => setSortBy("viewCount")}
-            active={sortBy === "viewCount"}
-          />
-          <ButtonWithIcon
-            value="New"
-            icon={<MdFiberNew />}
-            onClick={() => setSortBy("createdAt")}
-            active={sortBy === "createdAt"}
-          />
-        </IconButtonGroup>
-      </div>
+  const { event } = useGa();
 
-      <style jsx>{`
-        .sorthing-method-selector {
-          display: inline-flex;
-        }
-      `}</style>
-    </>
+  function onSortByHot() {
+    setSortBy("score");
+    event({
+      category: "map_page",
+      action: `click_filter_sort_hot`,
+    });
+  }
+
+  function onSortByTop() {
+    setSortBy("favoriteCount");
+    event({
+      category: "map_page",
+      action: `click_filter_sort_top`,
+    });
+  }
+
+  function onSortByViews() {
+    setSortBy("viewCount");
+    event({
+      category: "map_page",
+      action: `click_filter_sort_views`,
+    });
+  }
+
+  function onSortByNew() {
+    setSortBy("createdAt");
+    event({
+      category: "map_page",
+      action: `click_filter_sort_new`,
+    });
+  }
+
+  return (
+    <IconButtonGroup>
+      <ButtonWithIcon
+        value="Hot"
+        icon={<FaRocket />}
+        onClick={onSortByHot}
+        active={sortBy === "score"}
+      />
+      <ButtonWithIcon
+        value="Top"
+        icon={<ImStarFull />}
+        onClick={onSortByTop}
+        active={sortBy === "favoriteCount"}
+      />
+      <ButtonWithIcon
+        value="View"
+        icon={<FaEye />}
+        onClick={onSortByViews}
+        active={sortBy === "viewCount"}
+      />
+      <ButtonWithIcon
+        value="New"
+        icon={<MdFiberNew />}
+        onClick={onSortByNew}
+        active={sortBy === "createdAt"}
+      />
+    </IconButtonGroup>
   );
 };
