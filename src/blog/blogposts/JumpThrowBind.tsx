@@ -2,10 +2,10 @@ import { FC } from "react";
 import { blogJumpthrowBind } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogPostArticle } from "../components/BlogPostArticle";
-import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { PageLink } from "../../shared-components/PageLink";
 import { BlogNadeItem } from "../components/BlogNadeItem";
 import { NadeBlogList } from "../components/NadeBlogList";
+import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 export const JumpThrowBindBlogMain: FC = () => {
   return (
@@ -17,7 +17,7 @@ export const JumpThrowBindBlogMain: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="198" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>Is jumpthrow bind legal?</h2>
@@ -46,7 +46,7 @@ export const JumpThrowBindBlogMain: FC = () => {
         <h2>Setting up jumpthrow bind</h2>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="189" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h3>Simple keybind</h3>
@@ -101,7 +101,7 @@ export const JumpThrowBindBlogMain: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="190" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <b>Normal range jumpthrow</b>

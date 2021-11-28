@@ -2,7 +2,7 @@ import { FC } from "react";
 import { blogTickrateAndJumpthrow } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogPostArticle } from "../components/BlogPostArticle";
-import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
+import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 export const TickrateAndJumpthrowPost: FC = () => {
   return (
@@ -17,7 +17,7 @@ export const TickrateAndJumpthrowPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="198" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>What is tickrate?</h2>
@@ -39,7 +39,7 @@ export const TickrateAndJumpthrowPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="189" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>What is the jump throw bind?</h2>
@@ -81,7 +81,7 @@ export const TickrateAndJumpthrowPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="190" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <div

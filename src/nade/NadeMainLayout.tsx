@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { Dimensions } from "../constants/Constants";
-import { EzoicPlaceholder } from "../shared-components/adunits/EzoicPlaceholder";
+import { AdUnitAdSense } from "../shared-components/adunits/Adsense";
 
 type Props = {
   mobileTitle: JSX.Element;
@@ -27,7 +27,7 @@ export const NadeMainLayoutBuild: FC<Props> = ({
         <div className="mobile-title">{mobileTitle}</div>
         <div className="advert">
           <div className="sticky">
-            <EzoicPlaceholder id="199" />
+            <AdUnitAdSense adFormat="vertical" />
           </div>
         </div>
         <div className="video">{video}</div>

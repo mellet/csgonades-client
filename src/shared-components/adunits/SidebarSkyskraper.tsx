@@ -1,7 +1,6 @@
 import { FC } from "react";
-import { EzoicPlaceholder } from "./EzoicPlaceholder";
-import { Config, Dimensions } from "../../constants/Constants";
 import { isMobile } from "react-device-detect";
+import { AdUnitAdSense } from "./Adsense";
 
 export const SidebarSkyskraperAd: FC = ({}) => {
   const disabled = isMobile;
@@ -10,30 +9,9 @@ export const SidebarSkyskraperAd: FC = ({}) => {
     return null;
   }
 
-  if (!Config.enableEzoic) {
-    return null;
-  }
-
   return (
     <>
-      <EzoicPlaceholder id="188" />
-
-      <style jsx>{`
-        .block-msg-wrap {
-          display: flex;
-          justify-content: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-        }
-
-        .block-msg {
-          background: #87a600;
-          border-radius: 5px;
-          color: white;
-          padding: 15px 30px;
-          text-align: center;
-        }
-      `}</style>
+      <AdUnitAdSense adFormat="vertical" />
     </>
   );
 };

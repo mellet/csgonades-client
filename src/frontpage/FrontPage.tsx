@@ -3,7 +3,6 @@ import { FrontPageJumbo } from "./FrontPageJumbo";
 import { SiteStats } from "../core/api/StatsApi";
 import { BlogList } from "../blog/components/BlogList";
 import { Dimensions } from "../constants/Constants";
-import { EzoicPlaceholder } from "../shared-components/adunits/EzoicPlaceholder";
 import {
   bestDust2Nades,
   blogJumpthrowBind,
@@ -19,6 +18,7 @@ import { addFavoriteToNades } from "../map/data/hooks/helpers";
 import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
 import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../core/settings/SettingsHooks";
+import { AdUnitAdSense } from "../shared-components/adunits/Adsense";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -66,7 +66,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
         )}
 
         <div className="ph">
-          <EzoicPlaceholder id="174" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <div className="recent-wrap">

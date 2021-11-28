@@ -4,9 +4,9 @@ import { BlogPostArticle } from "../components/BlogPostArticle";
 import { bestDust2Nades } from "../ArticleData/blogPosts";
 import { BlogNadeItem } from "../components/BlogNadeItem";
 import { Dimensions } from "../../constants/Constants";
-import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { PageLink } from "../../shared-components/PageLink";
 import { NadeBlogList } from "../components/NadeBlogList";
+import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 export const BestDust2NadesBlogPost = (): JSX.Element => {
   return (
@@ -23,7 +23,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="198" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <div className="dust2-nades">
@@ -58,7 +58,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         </NadeBlogList>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="189" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>2. Long Corner Smoke</h2>
@@ -132,7 +132,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="190" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <p>And as always, when playing Dust2, rush B!</p>

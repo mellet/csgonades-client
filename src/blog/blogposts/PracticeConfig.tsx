@@ -2,7 +2,6 @@ import { blogPractiseConfig } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogCopyPaste } from "../components/BlogCopyPaste";
 import { BlogPostArticle } from "../components/BlogPostArticle";
-import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 export const PractiseConfigBlogPost = () => {
@@ -32,7 +31,7 @@ export const PractiseConfigBlogPost = () => {
         />
 
         <div className="a-tag">
-          <EzoicPlaceholder id="198" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>The config</h2>

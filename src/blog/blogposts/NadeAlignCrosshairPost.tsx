@@ -4,8 +4,8 @@ import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogNadeItem } from "../components/BlogNadeItem";
 import { BlogPostArticle } from "../components/BlogPostArticle";
 import { CsConsole } from "../components/CsConsole";
-import { EzoicPlaceholder } from "../../shared-components/adunits/EzoicPlaceholder";
 import { NadeBlogList } from "../components/NadeBlogList";
+import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 export const NadeAlignCrosshairPost: FC = () => {
   return (
@@ -23,7 +23,7 @@ export const NadeAlignCrosshairPost: FC = () => {
         </p>
 
         <div className="a-tag">
-          <EzoicPlaceholder id="189" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h2>How to set it up</h2>
@@ -55,7 +55,7 @@ export const NadeAlignCrosshairPost: FC = () => {
         <BlogCodeSnippet code={'bind "X" "toggle cl_crosshairsize 2.5 5000"'} />
 
         <div className="a-tag">
-          <EzoicPlaceholder id="190" />
+          <AdUnitAdSense adFormat="horizontal" />
         </div>
 
         <h3>2. Advanced: Hide on release</h3>
