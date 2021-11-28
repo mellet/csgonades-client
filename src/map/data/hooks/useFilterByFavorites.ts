@@ -1,26 +1,29 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useLocalStorage } from "usehooks-ts";
 import { useGa } from "../../../utils/Analytics";
-import { filterByFavoritesSelector } from "../selectors";
-import { toggleFavoritesAction } from "../slice";
 
 export const useFilterByFavorites = () => {
   const ga = useGa();
-  const byFavorites = useSelector(filterByFavoritesSelector);
-  const dispatch = useDispatch();
+  const [byFavorites, setFilterByFavorites] = useLocalStorage(
+    "filterByPro",
+    false
+  );
 
-  const toggleFavFilter = () => {
+  const toggleFilterByFavorites = useCallback(() => {
+    setFilterByFavorites(!byFavorites);
     ga.event({
       category: "map_page",
       action: "click_filter_favorite",
     });
-    dispatch(toggleFavoritesAction());
-  };
+  }, [byFavorites, ga, setFilterByFavorites]);
 
-  const filterByFavorites = useCallback(toggleFavFilter, [dispatch, ga]);
+  const resetFilterByFavorites = useCallback(() => {
+    setFilterByFavorites(false);
+  }, [setFilterByFavorites]);
 
   return {
-    filterByFavorites,
+    toggleFilterByFavorites,
+    resetFilterByFavorites,
     byFavorites,
   };
 };

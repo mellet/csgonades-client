@@ -2,21 +2,17 @@ import { FC } from "react";
 import { FaRocket, FaEye } from "react-icons/fa";
 import { MdFiberNew } from "react-icons/md";
 import { ImStarFull } from "react-icons/im";
-import { NadeLightSort } from "../../../nade/models/Nade";
 import { IconButtonGroup } from "../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
 import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
 import { useGa } from "../../../utils/Analytics";
+import { useFilterBySortingMethod } from "../../data/hooks/useFilterBySortingMethods";
 
-type Props = {
-  sortBy: NadeLightSort;
-  setSortBy: (sortBy: NadeLightSort) => void;
-};
-
-export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
+export const SortByBar: FC = () => {
   const { event } = useGa();
+  const { bySortingMethod, setSortingMethod } = useFilterBySortingMethod();
 
   function onSortByHot() {
-    setSortBy("score");
+    setSortingMethod("score");
     event({
       category: "map_page",
       action: `click_filter_sort_hot`,
@@ -24,7 +20,7 @@ export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
   }
 
   function onSortByTop() {
-    setSortBy("favoriteCount");
+    setSortingMethod("favoriteCount");
     event({
       category: "map_page",
       action: `click_filter_sort_top`,
@@ -32,7 +28,7 @@ export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
   }
 
   function onSortByViews() {
-    setSortBy("viewCount");
+    setSortingMethod("viewCount");
     event({
       category: "map_page",
       action: `click_filter_sort_views`,
@@ -40,7 +36,7 @@ export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
   }
 
   function onSortByNew() {
-    setSortBy("createdAt");
+    setSortingMethod("createdAt");
     event({
       category: "map_page",
       action: `click_filter_sort_new`,
@@ -53,25 +49,25 @@ export const SortByBar: FC<Props> = ({ sortBy, setSortBy }) => {
         value="Hot"
         icon={<FaRocket />}
         onClick={onSortByHot}
-        active={sortBy === "score"}
+        active={bySortingMethod === "score"}
       />
       <ButtonWithIcon
         value="Top"
         icon={<ImStarFull />}
         onClick={onSortByTop}
-        active={sortBy === "favoriteCount"}
+        active={bySortingMethod === "favoriteCount"}
       />
       <ButtonWithIcon
         value="View"
         icon={<FaEye />}
         onClick={onSortByViews}
-        active={sortBy === "viewCount"}
+        active={bySortingMethod === "viewCount"}
       />
       <ButtonWithIcon
         value="New"
         icon={<MdFiberNew />}
         onClick={onSortByNew}
-        active={sortBy === "createdAt"}
+        active={bySortingMethod === "createdAt"}
       />
     </IconButtonGroup>
   );

@@ -1,12 +1,13 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useOnNadeClusterClick = () => {
   const { event } = useGa();
-  const [suggestedNades, setSuggestedNades] = useState<NadeLight[] | null>(
-    null
-  );
+  const [suggestedNades, setSuggestedNades] = useLocalStorage<
+    NadeLight[] | null
+  >("suggestedNades", null);
 
   function dismissSuggested() {
     setSuggestedNades(null);

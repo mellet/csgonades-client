@@ -28,7 +28,7 @@ const fadeInUp: MotionProps = {
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
   const { colors } = useTheme();
-  const [sortedNades, sortBy, setSortBy] = useSortedNades(nades, "score");
+  const sortedNades = useSortedNades(nades);
   const ga = useGa();
 
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -70,7 +70,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           <div className="nades">
             <div className="title">
               <div onClick={stopPropagation}>
-                <SortByBar sortBy={sortBy} setSortBy={setSortBy} />
+                <SortByBar />
               </div>
               <div className="close-btn" onClick={onDismissCloseClick}>
                 <FaTimes />

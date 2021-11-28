@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterByTeamSelector } from "../selectors";
-import { filterByTeamAction } from "../slice";
 import { TeamSide } from "../../../nade/models/TeamSide";
 import { useGa } from "../../../utils/Analytics";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByTeam = () => {
-  const byTeam = useSelector(filterByTeamSelector);
-  const dispatch = useDispatch();
+  const defaultTeam: TeamSide = "both";
+  const [byTeam, setByTeam] = useLocalStorage<TeamSide>(
+    "filterByTeam",
+    defaultTeam
+  );
   const [hasChanged, setHasChanged] = useState(false);
   const ga = useGa();
 
@@ -31,13 +32,18 @@ export const useFilterByTeam = () => {
   const filterByTeam = useCallback(
     (team: TeamSide) => {
       setHasChanged(true);
-      dispatch(filterByTeamAction(team));
+      setByTeam(team);
     },
-    [dispatch]
+    [setByTeam]
   );
+
+  const resetFilterByTeam = useCallback(() => {
+    setByTeam(defaultTeam);
+  }, [setByTeam]);
 
   return {
     byTeam,
     filterByTeam,
+    resetFilterByTeam,
   };
 };

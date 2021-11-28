@@ -1,8 +1,8 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useLocalStorage } from "usehooks-ts";
 import { useGa } from "../../../utils/Analytics";
-import { mapViewSelector } from "../selectors";
-import { MapView, setMapViewAction } from "../slice";
+
+type MapView = "overview" | "list";
 
 type UseMapViewConfig = {
   trackEvent?: boolean;
@@ -11,12 +11,11 @@ type UseMapViewConfig = {
 export const useSetMapView = (config?: UseMapViewConfig) => {
   const { trackEvent } = config || {};
   const ga = useGa();
-  const mapView = useSelector(mapViewSelector);
-  const dispatch = useDispatch();
+  const [mapView, setMapview] = useLocalStorage<MapView>("mapView", "overview");
 
   const setMapView = useCallback(
     (view: MapView) => {
-      dispatch(setMapViewAction(view));
+      setMapview(view);
       if (trackEvent) {
         ga.event({
           category: "map_page",
@@ -24,7 +23,7 @@ export const useSetMapView = (config?: UseMapViewConfig) => {
         });
       }
     },
-    [dispatch, ga, trackEvent]
+    [ga, trackEvent, setMapview]
   );
   return {
     mapView,

@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterByTickrateSelector } from "../selectors";
 import { Tickrate } from "../../../nade/models/NadeTickrate";
-import { filterByTickrateAction } from "../slice";
 import { useGa } from "../../../utils/Analytics";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByTickrate = () => {
+  const defaultTickrate: Tickrate = "any";
   const ga = useGa();
-  const dispatch = useDispatch();
 
-  const byTickrate = useSelector(filterByTickrateSelector);
+  const [byTickrate, setTicktrate] = useLocalStorage<Tickrate>(
+    "filterByTickrate",
+    defaultTickrate
+  );
+
   const [hasChanged, setHasChanged] = useState(false);
 
   useEffect(() => {
@@ -32,13 +34,18 @@ export const useFilterByTickrate = () => {
   const filterByTickrate = useCallback(
     (tick: Tickrate) => {
       setHasChanged(true);
-      dispatch(filterByTickrateAction(tick));
+      setTicktrate(tick);
     },
-    [dispatch]
+    [setTicktrate]
   );
+
+  const resetFilterByTickrate = useCallback(() => {
+    setTicktrate(defaultTickrate);
+  }, [setTicktrate]);
 
   return {
     byTickrate,
     filterByTickrate,
+    resetFilterByTickrate,
   };
 };

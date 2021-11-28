@@ -1,27 +1,28 @@
 import { useCallback, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { resetFilterAction } from "../slice";
-import {
-  filterByTickrateSelector,
-  filterByFavoritesSelector,
-  filterByTypeSelector,
-  filterByProSelector,
-  filterByTeamSelector,
-} from "../selectors";
 import { useGa } from "../../../utils/Analytics";
+import { useFilterByPro } from "./useFilterByPro";
+import { useFilterByTickrate } from "./useFilterByTickrate";
+import { useFilterByFavorites } from "./useFilterByFavorites";
+import { useFilterByType } from "./useFilterByType";
+import { useFilterByTeam } from "./useFilterByTeam";
 
 export const useFilterReset = () => {
   const ga = useGa();
-  const byTickrate = useSelector(filterByTickrateSelector);
-  const byFavorites = useSelector(filterByFavoritesSelector);
-  const byType = useSelector(filterByTypeSelector);
-  const byPro = useSelector(filterByProSelector);
-  const byTeam = useSelector(filterByTeamSelector);
-  const dispatch = useDispatch();
+
+  const { byPro, resetFilterByPro } = useFilterByPro();
+  const { byTickrate, resetFilterByTickrate } = useFilterByTickrate();
+  const { byFavorites, resetFilterByFavorites } = useFilterByFavorites();
+  const { byType, resetFilterByType } = useFilterByType();
+  const { byTeam, resetFilterByTeam } = useFilterByTeam();
 
   const resetFilter = useCallback(
     (disableAnalytics?: boolean) => {
-      dispatch(resetFilterAction());
+      resetFilterByPro();
+      resetFilterByTickrate();
+      resetFilterByFavorites();
+      resetFilterByType();
+      resetFilterByTeam();
+
       if (!disableAnalytics) {
         ga.event({
           category: "map_page",
@@ -29,7 +30,14 @@ export const useFilterReset = () => {
         });
       }
     },
-    [dispatch, ga]
+    [
+      ga,
+      resetFilterByPro,
+      resetFilterByTickrate,
+      resetFilterByFavorites,
+      resetFilterByType,
+      resetFilterByTeam,
+    ]
   );
 
   const canReset = useMemo(() => {

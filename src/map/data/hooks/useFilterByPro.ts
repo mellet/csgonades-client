@@ -1,25 +1,27 @@
-import { filterByProSelector } from "../selectors";
-import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
-import { toggleProNadesAction } from "../slice";
 import { useGa } from "../../../utils/Analytics";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByPro = () => {
   const ga = useGa();
 
-  const byPro = useSelector(filterByProSelector);
-  const dispatch = useDispatch();
+  const [filterByPro, setFilterByPro] = useLocalStorage("filterByPro", false);
 
   const toggleFilterByPro = useCallback(() => {
-    dispatch(toggleProNadesAction());
+    setFilterByPro(!filterByPro);
     ga.event({
       category: "map_page",
       action: `click_filter_pro`,
     });
-  }, [dispatch, ga]);
+  }, [ga, setFilterByPro, filterByPro]);
+
+  const resetFilterByPro = useCallback(() => {
+    setFilterByPro(false);
+  }, [setFilterByPro]);
 
   return {
-    byPro,
+    byPro: filterByPro,
     toggleFilterByPro,
+    resetFilterByPro,
   };
 };

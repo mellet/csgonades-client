@@ -15,12 +15,12 @@ type Props = {
 export const FavFilterButton: FC<Props> = ({}) => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
-  const { byFavorites, filterByFavorites } = useFilterByFavorites();
+  const { byFavorites, toggleFilterByFavorites } = useFilterByFavorites();
   const { setSignInWarning } = useSignInWarning();
 
   function onFilterByFavorite() {
     if (isSignedIn) {
-      filterByFavorites();
+      toggleFilterByFavorites();
     } else {
       setSignInWarning("favorite");
     }

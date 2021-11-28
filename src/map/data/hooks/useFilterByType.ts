@@ -1,29 +1,35 @@
 import { useCallback } from "react";
 import { NadeType } from "../../../nade/models/NadeType";
-import { useDispatch, useSelector } from "react-redux";
-import { filterByTypeSelector } from "../selectors";
-import { filterByTypeAction } from "../slice";
 import { useGa } from "../../../utils/Analytics";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByType = () => {
   const ga = useGa();
 
-  const byType = useSelector(filterByTypeSelector);
-  const dispatch = useDispatch();
+  const defaultType: NadeType = "smoke";
+  const [byType, setByType] = useLocalStorage<NadeType>(
+    "filterByType",
+    defaultType
+  );
 
   const filterByType = useCallback(
     (nadeType: NadeType) => {
-      dispatch(filterByTypeAction(nadeType));
+      setByType(nadeType);
       ga.event({
         category: "map_page",
         action: `click_filter_type_${nadeType}`,
       });
     },
-    [dispatch, ga]
+    [ga, setByType]
   );
+
+  const resetFilterByType = useCallback(() => {
+    setByType(defaultType);
+  }, [setByType]);
 
   return {
     byType,
     filterByType,
+    resetFilterByType,
   };
 };

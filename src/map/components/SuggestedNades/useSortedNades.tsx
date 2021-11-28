@@ -1,24 +1,25 @@
-import { useState, useMemo } from "react";
-import { NadeLight, NadeLightSort } from "../../../nade/models/Nade";
+import { useMemo } from "react";
+import { NadeLight } from "../../../nade/models/Nade";
+import { useFilterBySortingMethod } from "../../data/hooks/useFilterBySortingMethods";
 
-export default function useSortedNades(
-  unsortedNades: NadeLight[] | null,
-  defaultSort: NadeLightSort = "score"
-): [NadeLight[] | null, NadeLightSort, (sortBy: NadeLightSort) => void] {
-  const [sortBy, setSortBy] = useState<NadeLightSort>(defaultSort);
+export default function useSortedNades(unsortedNades: NadeLight[] | null) {
+  const { bySortingMethod } = useFilterBySortingMethod();
 
   const sortedNades = useMemo(() => {
     if (unsortedNades) {
-      if (sortBy === "createdAt") {
+      if (bySortingMethod === "createdAt") {
         return [...unsortedNades].sort(
           (a, b) =>
-            new Date(b[sortBy]).valueOf() - new Date(a[sortBy]).valueOf()
+            new Date(b[bySortingMethod]).valueOf() -
+            new Date(a[bySortingMethod]).valueOf()
         );
       }
-      return [...unsortedNades].sort((a, b) => b[sortBy] - a[sortBy]);
+      return [...unsortedNades].sort(
+        (a, b) => b[bySortingMethod] - a[bySortingMethod]
+      );
     }
     return null;
-  }, [unsortedNades, sortBy]);
+  }, [unsortedNades, bySortingMethod]);
 
-  return [sortedNades, sortBy, setSortBy];
+  return sortedNades;
 }
