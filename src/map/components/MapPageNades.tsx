@@ -7,6 +7,8 @@ import { useFilterServerSideNades } from "../data/hooks/useFilteredNades";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { useSetMapView } from "../data/hooks/useSetMapView";
 import dynamic from "next/dynamic";
+import { SortByBar } from "./SuggestedNades/SortByBar";
+import useSortedNades from "./SuggestedNades/useSortedNades";
 
 const NadeItemMobile = dynamic(() =>
   import("../../nade/components/NadeItem/NadeItemMobile").then(
@@ -22,6 +24,7 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
   const { mapView } = useSetMapView();
   const { colors } = useTheme();
   const nades = useFilterServerSideNades(allNades);
+  const sortedNades = useSortedNades(nades);
 
   function renderItem(item: NadeLight) {
     if (isMobileOnly) {
@@ -40,15 +43,24 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
 
   return (
     <>
+      <div className="sort-bar">
+        <SortByBar />
+      </div>
       <div className={mapNadesClassName}>
-        <CsgnList<NadeLight>
-          data={nades}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          enableAds={true}
-        />
+        {sortedNades && (
+          <CsgnList<NadeLight>
+            data={sortedNades}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            enableAds={true}
+          />
+        )}
       </div>
       <style jsx>{`
+        .sort-bar {
+          margin-bottom: 8px;
+        }
+
         .hidden {
           display: none;
         }
