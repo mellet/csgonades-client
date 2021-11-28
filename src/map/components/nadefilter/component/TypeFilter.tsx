@@ -22,7 +22,7 @@ export const TypeFilter: FC<Props> = ({ nadeCounts }) => {
     <>
       <>
         <FilterLabel value="TYPE" />
-        <IconButtonGroup>
+        <IconButtonGroup vertical>
           {showSmokeButton && (
             <SquareButton
               inGroup

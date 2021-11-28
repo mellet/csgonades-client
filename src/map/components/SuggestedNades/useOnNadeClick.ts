@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
 
@@ -13,17 +13,6 @@ export const useOnNadeClusterClick = () => {
   }
 
   function onNadeClusterClick(cluster: NadeLight[]) {
-    /*
-    if (cluster.length === 1) {
-      const nade = cluster[0];
-
-      if (!nade) {
-        return;
-      }
-
-      return Router.push("/nades/[nade]", `/nades/${nade.slug || nade.id}`);
-    }*/
-
     setSuggestedNades(cluster);
     event({
       category: "nade_page",
@@ -31,8 +20,13 @@ export const useOnNadeClusterClick = () => {
     });
   }
 
+  const hasSuggestedNades = useMemo(() => {
+    return Boolean(suggestedNades?.length);
+  }, [suggestedNades]);
+
   return {
     suggestedNades,
+    hasSuggestedNades,
     onNadeClusterClick,
     dismissSuggested,
   };

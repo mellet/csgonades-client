@@ -18,12 +18,12 @@ const FilterBar: FC<Props> = memo(({ nadeCounts }) => {
     <>
       <FilterBarLayout
         favoriteFilter={<FavFilterButton />}
-        proFilter={<FilterByProButton />}
-        resetFilter={<ResetFilterButton />}
-        tickFiler={<TickratePicker />}
         typeFilter={<TypeFilter nadeCounts={nadeCounts} />}
-        viewFilter={<MapViewSelector />}
+        tickFiler={<TickratePicker />}
         teamFilter={<TeamSelector />}
+        proFilter={<FilterByProButton />}
+        viewFilter={<MapViewSelector />}
+        resetFilter={<ResetFilterButton />}
       />
     </>
   );

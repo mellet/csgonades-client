@@ -1,83 +1,70 @@
 import { FC, memo, useMemo } from "react";
+import { useTheme } from "styled-components";
+import { IconTextButtonWrapper } from "./IconButton";
 
-type Props = {
-  backgroundColor: string;
+export type ButtonWithIconProps = {
+  backgroundColor?: string;
   icon: any;
-  loading?: boolean;
   onClick?: () => void;
-  small?: boolean;
+  active?: boolean;
   value: string;
+  inGroup?: boolean;
 };
 
-export const ButtonWithIcon: FC<Props> = memo(
-  ({ icon, onClick, value, backgroundColor, loading, small }) => {
-    const classNameBuild = useMemo(() => {
+export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
+  ({ icon, onClick, value, backgroundColor, active, inGroup }) => {
+    const { colors } = useTheme();
+
+    const classNames = useMemo(() => {
       const base = ["btn"];
-      if (small) {
-        base.push("small");
+      if (active) {
+        base.push("active");
       }
       return base.join(" ");
-    }, [small]);
+    }, [active]);
 
     return (
       <>
-        <button className={classNameBuild} onClick={onClick}>
-          {loading && <span className="loading">Loading...</span>}
-          {!loading && (
-            <>
-              <span className="btn-icon">
-                <span className="btn-icon-fa">{icon}</span>
-              </span>
-              <span className="btn-label">{value}</span>
-            </>
-          )}
-        </button>
+        <IconTextButtonWrapper inGroup={inGroup}>
+          <button className={classNames} onClick={onClick}>
+            <span className="btn-icon">
+              <span className="btn-icon-fa">{icon}</span>
+            </span>
+            <span className="btn-label">{value}</span>
+          </button>
+        </IconTextButtonWrapper>
         <style jsx>{`
           .btn {
             align-items: center;
             appearance: none;
-            background: ${backgroundColor};
-            border-radius: 5px;
+            background: ${backgroundColor ? backgroundColor : "transparent"};
+            color: ${colors.TEXT};
             border: none;
+            border-radius: 0;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             margin: 0;
-            outline: none;
-            overflow: hidden;
             padding: 0;
+            outline: none;
             transition: background 0.15s;
-            width: 100%;
+            height: 100%;
           }
 
           .btn:hover {
-            background: ${LightenDarkenColor(backgroundColor, -10)};
+            background: ${colors.DP03};
           }
 
           .btn:hover .btn-icon {
-            background: ${LightenDarkenColor(backgroundColor, -20)};
-          }
-
-          .loading {
-            align-items: center;
-            color: white;
-            display: flex;
-            height: 40px;
-            justify-content: space-around;
-            text-align: center;
-            width: 100%;
+            color: ${colors.primaryBtnBg};
           }
 
           .btn-icon {
             align-items: center;
-            background: ${LightenDarkenColor(backgroundColor, -10)};
-            border-right: 1px solid ${LightenDarkenColor(backgroundColor, -20)};
-            color: white;
             display: flex;
-            font-size: 16px;
-            height: 40px;
+            font-size: 18px;
             justify-content: space-around;
-            transition: background 0.15s;
-            width: 40px;
+            padding-left: 8px;
+            transition: all 0.2s;
           }
 
           .btn-icon-fa {
@@ -86,69 +73,24 @@ export const ButtonWithIcon: FC<Props> = memo(
           }
 
           .btn-label {
-            color: white;
             display: block;
             flex: 1;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 400;
             text-align: center;
-            width: 100%;
+            padding-left: 6px;
+            padding-right: 8px;
           }
 
-          .small .btn-label {
-            font-size: 14px;
-            padding-left: 15px;
-            padding-right: 15px;
+          .active {
+            background: ${colors.DP03};
           }
 
-          .small .btn-icon {
-            font-size: 14px;
-            height: 35px;
-            width: 35px;
-          }
-
-          .small .btn-icon-fa {
-            left: 1px;
-            position: relative;
-            top: 1px;
+          .active .btn-icon {
+            color: ${colors.primaryBtnBg};
           }
         `}</style>
       </>
     );
   }
 );
-
-function LightenDarkenColor(col: string, amt: number) {
-  let usePound = false;
-
-  if (col[0] == "#") {
-    col = col.slice(1);
-    usePound = true;
-  }
-
-  const num = parseInt(col, 16);
-
-  let r = (num >> 16) + amt;
-
-  if (r > 255) {
-    r = 255;
-  } else if (r < 0) r = 0;
-
-  let b = ((num >> 8) & 0x00ff) + amt;
-
-  if (b > 255) {
-    b = 255;
-  } else if (b < 0) {
-    b = 0;
-  }
-
-  let g = (num & 0x0000ff) + amt;
-
-  if (g > 255) {
-    g = 255;
-  } else if (g < 0) {
-    g = 0;
-  }
-
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
-}

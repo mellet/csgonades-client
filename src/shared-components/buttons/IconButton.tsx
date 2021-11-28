@@ -51,6 +51,15 @@ export const IconButtonWrapper = styled.div<WrapProps>`
   border-radius: ${({ inGroup }) => (inGroup ? "none" : "8px")};
 `;
 
+export const IconTextButtonWrapper = styled.div<WrapProps>`
+  height: 40px;
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme }) => theme.colors.buttonBorder};
+  border-radius: ${({ inGroup }) => (inGroup ? "none" : "8px")};
+`;
+
 type ButtonProps = {
   activeColor?: string;
   active: boolean;

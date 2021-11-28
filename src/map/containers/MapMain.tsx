@@ -38,6 +38,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
     onNadeClusterClick,
     suggestedNades,
     dismissSuggested,
+    hasSuggestedNades,
   } = useOnNadeClusterClick();
 
   const displayMapOverview: boolean = mapView === "overview" && !isServer;
@@ -62,7 +63,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
           {mapView === "list" && <MapPageNades allNades={allNades} />}
 
           <MapViewSuggested
-            open={!!suggestedNades?.length}
+            open={hasSuggestedNades}
             nades={suggestedNades}
             onDismiss={dismissSuggested}
           />

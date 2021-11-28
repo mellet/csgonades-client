@@ -31,13 +31,13 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
   const [sortedNades, sortBy, setSortBy] = useSortedNades(nades, "score");
   const ga = useGa();
 
-  const logNadeClick: MouseEventHandler<HTMLDivElement> = (e) => {
+  const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
 
   function renderItem(item: NadeLight) {
     return (
-      <div onClick={logNadeClick}>
+      <div onClick={stopPropagation}>
         <NadeItem nade={item} />
       </div>
     );
@@ -69,7 +69,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           <div className="bg" />
           <div className="nades">
             <div className="title">
-              <div onClick={(e) => e.stopPropagation()}>
+              <div onClick={stopPropagation}>
                 <SortByBar sortBy={sortBy} setSortBy={setSortBy} />
               </div>
               <div className="close-btn" onClick={onDismissCloseClick}>

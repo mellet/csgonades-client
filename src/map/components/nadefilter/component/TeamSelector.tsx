@@ -1,6 +1,5 @@
 import { FC, useCallback, useMemo } from "react";
 import { FilterLabel } from "./FilterLabel";
-import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 import { useFilterByTeam } from "../../../data/hooks/useFilterByTeam";
 import { OptionCarusel } from "./OptionCarusel";
@@ -33,17 +32,15 @@ export const TeamSelector: FC = () => {
     <>
       <div className="tick-filter-wrap">
         <FilterLabel value="TEAM" />
-        <IconButtonGroup>
-          <SquareButton
-            onClick={onChange}
-            icon={
-              <OptionCarusel
-                values={["Any", "T", "CT"]}
-                selectedIndex={selectedIndex}
-              />
-            }
-          />
-        </IconButtonGroup>
+        <SquareButton
+          onClick={onChange}
+          icon={
+            <OptionCarusel
+              values={["Any", "T", "CT"]}
+              selectedIndex={selectedIndex}
+            />
+          }
+        />
       </div>
     </>
   );

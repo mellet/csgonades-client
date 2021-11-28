@@ -19,7 +19,7 @@ export const MapViewSelector: FC = () => {
   return (
     <>
       <FilterLabel value="VIEW" />
-      <IconButtonGroup>
+      <IconButtonGroup vertical>
         <SquareButton
           inGroup
           icon={<FaMap />}

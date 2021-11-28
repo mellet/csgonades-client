@@ -1,18 +1,19 @@
 import packageJson from "../../package.json";
 
-// Set to true in development if you want requests to go to prod server
-const DEV_PROD_OVERRIDE = false;
+// Set to true if you want to use API on localhost
+const USE_DEV_API = false;
 
-export const IS_PROD =
-  DEV_PROD_OVERRIDE || process.env.NODE_ENV === "production";
+const IS_PROD = process.env.NODE_ENV === "production";
+
+const useLocalApi = USE_DEV_API && !IS_PROD;
 
 export const Config = {
   enableEzoic: false,
   enableAdsense: IS_PROD,
-  API_URL: IS_PROD ? "https://api.csgonades.com" : "http://localhost:5000",
-  SIGN_IN_URL: IS_PROD
-    ? "https://api.csgonades.com/auth/steam"
-    : "http://localhost:5000/auth/steam",
+  API_URL: useLocalApi ? "http://localhost:5000" : "https://api.csgonades.com",
+  SIGN_IN_URL: useLocalApi
+    ? "http://localhost:5000/auth/steam"
+    : "https://api.csgonades.com/auth/steam",
   revalidationTime: 60 * 30, // Refetch time for map and frontpage
   maintenance: false,
 } as const;
