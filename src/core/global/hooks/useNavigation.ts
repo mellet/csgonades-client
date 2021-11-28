@@ -1,19 +1,16 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { isNavOpenSelector } from "../GlobalSelectors";
-import { closeNavigationAction, toggleNavigationAction } from "../GlobalStore";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useNavigation = () => {
-  const dispatch = useDispatch();
-  const isNavOpen = useSelector(isNavOpenSelector);
+  const [isNavOpen, setIsNavOpen] = useLocalStorage("isNavOpen", false);
 
   const toggleNav = useCallback(() => {
-    dispatch(toggleNavigationAction());
-  }, [dispatch]);
+    setIsNavOpen((prev) => !prev);
+  }, [setIsNavOpen]);
 
   const closeNav = useCallback(() => {
-    dispatch(closeNavigationAction());
-  }, [dispatch]);
+    setIsNavOpen(false);
+  }, [setIsNavOpen]);
 
   return {
     isNavOpen,

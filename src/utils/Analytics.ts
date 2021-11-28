@@ -17,7 +17,8 @@ export const useNewPageView = (): void => {
       return;
     }
     gtag.pageview(asPath);
-  }, [asPath, isAdmin, closeNav]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [asPath, isAdmin]);
 };
 
 export const useGa = () => {

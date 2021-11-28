@@ -1,8 +1,8 @@
 import { FC, useEffect, useState, memo } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { AppToast, ToastSeverity } from "../../core/toasts/ToastActions";
-import { useDismissToast } from "../../core/toasts/ToastHooks";
+import { AppToast, ToastSeverity } from "../../core/toasts/ToastModels";
+import { useToast } from "./useToast";
 
 type Props = {
   notification: AppToast;
@@ -10,7 +10,7 @@ type Props = {
 
 export const ToastItem: FC<Props> = memo(({ notification }) => {
   const { colors } = useTheme();
-  const dismissToast = useDismissToast();
+  const { removeToast } = useToast();
   const [fadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const ToastItem: FC<Props> = memo(({ notification }) => {
             {notification.title}
             <span
               className="toast-close-btn"
-              onClick={() => dismissToast(notification.id)}
+              onClick={() => removeToast(notification.id)}
             >
               <FaTimes />
             </span>

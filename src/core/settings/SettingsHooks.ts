@@ -1,17 +1,11 @@
 import { useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../store";
 import { useGa } from "../../utils/Analytics";
-import { AppState } from "../store/rootReducer";
-import { setThemeAction } from "./SettingsSlice";
-import { themes } from "./Themes";
-
-const themeSelector = (state: AppState) => state.settingsStore.theme;
+import { ThemeKeys, themes } from "./Themes";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useTheme = () => {
   const ga = useGa();
-  const dispatch = useDispatch<AppDispatch>();
-  const theme = useSelector(themeSelector);
+  const [theme, setTheme] = useLocalStorage<ThemeKeys>("theme", "light");
 
   const colors = useMemo(() => {
     return themes[theme];
@@ -19,13 +13,13 @@ export const useTheme = () => {
 
   function toggleTheme() {
     if (theme === "light") {
-      dispatch(setThemeAction("dark"));
+      setTheme("dark");
       ga.event({
         category: "settings",
         action: "set_dark_theme",
       });
     } else {
-      dispatch(setThemeAction("light"));
+      setTheme("light");
       ga.event({
         category: "settings",
         action: "set_light_theme",

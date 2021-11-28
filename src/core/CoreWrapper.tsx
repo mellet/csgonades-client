@@ -3,14 +3,6 @@ import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader"
 import { useSetupSession } from "./layout/useSetupSession";
 import dynamic from "next/dynamic";
 
-const CookieConsent = dynamic(
-  () =>
-    import("../shared-components/CookieConsent").then(
-      (mod) => mod.CookieConsent
-    ),
-  { ssr: false }
-);
-
 const ServiceDown = dynamic(
   () => import("./layout/ServiceDown").then((mod) => mod.ServiceDown),
   { ssr: false }
@@ -34,7 +26,6 @@ export const CoreWrapper: FC = ({ children }) => {
   return (
     <>
       {children}
-      <CookieConsent />
       <ServiceDown />
       <ToastList />
       <SignInWarning />

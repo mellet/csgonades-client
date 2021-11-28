@@ -1,23 +1,20 @@
+import { nanoid } from "nanoid";
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import {
-  addNotificationAction,
-  AppToastCreate,
-  removeNotificationAction,
-} from "../ToastActions";
+import { useToast } from "../../../shared-components/toast/useToast";
+import { capitalize } from "../../../utils/Common";
+import { AppToast, AppToastCreate } from "../ToastModels";
 
 export const useDisplayToast = () => {
-  const dispatch = useDispatch();
+  const { addToast, removeToast } = useToast();
 
   const displayToast = useCallback(
     async (notification: AppToastCreate) => {
-      const addAction = addNotificationAction(notification);
-      const removeAction = removeNotificationAction(addAction.notification.id);
-      dispatch(addAction);
+      const toast = createToast(notification);
+      addToast(toast);
       await notificationDeleteDelay(notification.durationSeconds);
-      dispatch(removeAction);
+      removeToast(toast.id);
     },
-    [dispatch]
+    [addToast, removeToast]
   );
 
   return displayToast;
@@ -27,3 +24,14 @@ const notificationDeleteDelay = (seconds?: number) => {
   const time = seconds ? seconds * 1000 : 8 * 1000;
   return new Promise<void>((resolve) => setTimeout(() => resolve(), time));
 };
+
+function createToast(createToast: AppToastCreate): AppToast {
+  const id = nanoid();
+  const noti: AppToast = {
+    ...createToast,
+    id,
+    durationSeconds: createToast.durationSeconds || 8,
+    title: createToast.title || capitalize(createToast.severity),
+  };
+  return noti;
+}

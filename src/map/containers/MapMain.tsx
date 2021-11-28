@@ -28,6 +28,8 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
   useEffect(() => {
     if (isMobileOnly) {
       setMapView("list");
+    } else {
+      setMapView("overview");
     }
   }, [setMapView]);
 

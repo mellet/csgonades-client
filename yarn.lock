@@ -2342,11 +2342,6 @@
     redux-thunk "^2.3.0"
     reselect "^4.0.0"
 
-"@rehooks/local-storage@^2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@rehooks/local-storage/-/local-storage-2.4.3.tgz#51176b823dac0aa6cfa2220acdca613e370319c1"
-  integrity sha512-/Ohn+SnJm1eE3uXv3gsXLE4G6EYT3baqi4V/syyKfbyLoXmTn8h5ciY2ELug3xslzFNUMWyTGY3Ow47gl6k3kA==
-
 "@rushstack/eslint-patch@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"

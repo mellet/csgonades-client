@@ -1,19 +1,21 @@
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { apiStatusSelector } from "../GlobalSelectors";
-import { setApiOnlineAction, setApiOfflineAction } from "../GlobalStore";
+import { useLocalStorage } from "usehooks-ts";
+
+type ApiStatus = "init" | "online" | "offline";
 
 export const useApiStatus = () => {
-  const dispatch = useDispatch();
-  const apiStatus = useSelector(apiStatusSelector);
+  const [apiStatus, setApiStatus] = useLocalStorage<ApiStatus>(
+    "apiStatus",
+    "init"
+  );
 
   const setApiOnline = useCallback(() => {
-    dispatch(setApiOnlineAction());
-  }, [dispatch]);
+    setApiStatus("online");
+  }, [setApiStatus]);
 
   const setApiOffline = useCallback(() => {
-    dispatch(setApiOfflineAction());
-  }, [dispatch]);
+    setApiStatus("offline");
+  }, [setApiStatus]);
 
   return {
     apiStatus,

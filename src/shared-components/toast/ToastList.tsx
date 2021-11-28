@@ -1,15 +1,14 @@
 import { FC, memo, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { Dimensions, LayerPosition } from "../../constants/Constants";
-import { toastSelector } from "../../core/toasts/ToastSelectors";
 import { ToastItem } from "./ToastItem";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
+import { useToast } from "./useToast";
 
 const DEBUG = false;
 
 export const ToastList: FC = memo(() => {
+  const { toasts } = useToast();
   const displayToast = useDisplayToast();
-  const toasts = useSelector(toastSelector);
 
   useEffect(() => {
     if (DEBUG) {

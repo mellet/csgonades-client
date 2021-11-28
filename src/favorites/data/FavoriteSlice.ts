@@ -27,11 +27,6 @@ const favoriteSlice = createSlice({
     addFavoriteAction(state, action: PayloadAction<Favorite>) {
       state.favorites.push(action.payload);
     },
-    removeFavoriteAction(state, action: PayloadAction<string>) {
-      state.favorites = state.favorites.filter(
-        (favorite) => favorite.id !== action.payload
-      );
-    },
     resetFavoriteStoreAction(state) {
       state.favoriteInProgress = false;
       state.favorites = [];
@@ -46,6 +41,5 @@ export const {
   addFavoriteAction,
   favoriteInProgressBeginAction,
   favoriteInProgressEndAction,
-  removeFavoriteAction,
   resetFavoriteStoreAction,
 } = favoriteSlice.actions;

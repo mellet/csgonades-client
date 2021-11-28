@@ -1,26 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { signInWarningSelector } from "../GlobalSelectors";
 import { useCallback } from "react";
-import {
-  displaySignInWarningAction,
-  SignInWarningType,
-  clearSignInWarningAction,
-} from "../GlobalStore";
+import { useLocalStorage } from "usehooks-ts";
+
+type SignInWarningType = "favorite" | "filterpro" | "addnade";
 
 export const useSignInWarning = () => {
-  const dispatch = useDispatch();
-  const signInWarning = useSelector(signInWarningSelector);
-
-  const setSignInWarning = useCallback(
-    (warningType: SignInWarningType) => {
-      dispatch(displaySignInWarningAction(warningType));
-    },
-    [dispatch]
-  );
+  const [signInWarning, setSignInWarning] =
+    useLocalStorage<SignInWarningType | null>("signInWarning", null);
 
   const clearSignInWarning = useCallback(() => {
-    dispatch(clearSignInWarningAction());
-  }, [dispatch]);
+    setSignInWarning(null);
+  }, [setSignInWarning]);
 
   return {
     signInWarning,
