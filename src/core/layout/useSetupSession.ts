@@ -11,13 +11,15 @@ import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
 
 export const useSetupSession = (): void => {
   const signOut = useSignOut();
-  const { setApiOffline, setApiOnline } = useApiStatus();
+  const { setApiOffline, setApiOnline, apiStatus } = useApiStatus();
   const displayToast = useDisplayToast();
   const dispatch = useDispatch();
 
   const initSession = useCallback(async () => {
     try {
-      console.log("# Init session");
+      if (apiStatus === "offline") {
+        return;
+      }
       const { authenticated } = await AuthApi.setSessionCookie();
       setApiOnline();
 
@@ -51,9 +53,9 @@ export const useSetupSession = (): void => {
     }
 
     return;
-  }, [displayToast, dispatch, setApiOffline, setApiOnline, signOut]);
+  }, [displayToast, dispatch, setApiOffline, setApiOnline, signOut, apiStatus]);
 
   useEffect(() => {
     initSession();
-  }, [initSession]);
+  }, []);
 };
