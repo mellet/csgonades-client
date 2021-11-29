@@ -52,7 +52,7 @@ export const useSetupSession = (): void => {
         });
       }
     } catch (error) {
-      console.warn("Failed to setup session", error);
+      console.warn("# Failed to setup session", error);
       setApiOffline();
     }
 

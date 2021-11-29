@@ -31,7 +31,8 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
     } else {
       setMapView("overview");
     }
-  }, [setMapView]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {
     onNadeClusterClick,
