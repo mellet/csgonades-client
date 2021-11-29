@@ -25,6 +25,8 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
 
   const nadeCounts = useNadeCount(allNades);
 
+  console.log("# Num nades", allNades.length);
+
   useEffect(() => {
     if (isMobileOnly) {
       setMapView("list");

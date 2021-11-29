@@ -61,5 +61,6 @@ export const useSetupSession = (): void => {
 
   useEffect(() => {
     initSession();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
