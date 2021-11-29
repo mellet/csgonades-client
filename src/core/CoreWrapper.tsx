@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader";
 import { useSetupSession } from "./layout/useSetupSession";
 import dynamic from "next/dynamic";
@@ -19,16 +19,16 @@ const SignInWarning = dynamic(
   { ssr: false }
 );
 
-export const CoreWrapper: FC = ({ children }) => {
+export const CoreWrapper: FC = memo(({ children }) => {
   useSetupSession();
   useEzoidAdLoader();
 
   return (
     <>
       {children}
-      <ServiceDown />
+      {false && <ServiceDown />}
       <ToastList />
       <SignInWarning />
     </>
   );
-};
+});

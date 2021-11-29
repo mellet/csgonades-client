@@ -17,6 +17,7 @@ export const useSetupSession = (): void => {
 
   const initSession = useCallback(async () => {
     try {
+      console.log("# Init session");
       const { authenticated } = await AuthApi.setSessionCookie();
       setApiOnline();
 
@@ -45,6 +46,7 @@ export const useSetupSession = (): void => {
         });
       }
     } catch (error) {
+      console.warn("Failed to setup session", error);
       setApiOffline();
     }
 
