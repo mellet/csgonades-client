@@ -63,4 +63,15 @@ export const useSetupSession = (): void => {
     initSession();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Force reload after long idle to get latest version of website
+  // TODO: Do request to backend to check if we need to reload instead
+  useEffect(() => {
+    const minutes = 30;
+    const timer = setTimeout(() => {
+      console.log("# Force refreshing site");
+      location.reload();
+    }, 1000 * 60 * minutes);
+    return () => clearTimeout(timer);
+  }, []);
 };

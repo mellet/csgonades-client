@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from "react";
+import { FC, MouseEventHandler, useState } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { FaTimes } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { motion, MotionProps } from "framer-motion";
 import styled from "styled-components";
 import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
+import { AdUnitAdSense } from "../../../shared-components/adunits/Adsense";
 
 type Props = {
   open: boolean;
@@ -19,14 +20,15 @@ type Props = {
 
 const fadeInUp: MotionProps = {
   variants: {
-    hidden: { opacity: 0, translateY: "-100%" },
-    visible: { opacity: 1, translateY: 0 },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   },
   initial: "hidden",
-  transition: { duration: 0.3, ease: "easeOut" },
+  transition: { duration: 0.25, ease: "easeInOut" },
 };
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
+  const [initialOpenState] = useState(open);
   const { colors } = useTheme();
   const sortedNades = useSortedNades(nades);
   const ga = useGa();
@@ -65,6 +67,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           {...fadeInUp}
           animate={open ? "visible" : "hidden"}
           onClick={onDismissCloseClick}
+          initial={initialOpenState ? "visible" : "hidden"}
         >
           <div className="bg" />
           <div className="nades">
@@ -77,18 +80,35 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
               </div>
             </div>
             {sortedNades && (
-              <div className="nade-list-wrap">
-                <CsgnList<NadeLight>
-                  data={sortedNades}
-                  renderItem={renderItem}
-                  keyExtractor={keyExtractor}
-                />
-              </div>
+              <>
+                <div className="nade-list-wrap">
+                  <CsgnList<NadeLight>
+                    data={sortedNades}
+                    renderItem={renderItem}
+                    keyExtractor={keyExtractor}
+                  />
+                </div>
+                {open && (
+                  <div className="a">
+                    <AdUnitAdSense adFormat="fixed728x90" />
+                  </div>
+                )}
+              </>
             )}
           </div>
         </MapViewWrapper>
       </div>
       <style jsx>{`
+        .a {
+          max-width: 728px;
+          height: 90px;
+          margin: ${Dimensions.GUTTER_SIZE / 2}px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          align-self: center;
+        }
+
         .wrapper {
           position: absolute;
           top: 0;
@@ -99,7 +119,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           background: transparent;
           border-radius: 8px;
           overflow: hidden;
-          pointer-events: none;
+          pointer-events: ${open ? "auto" : "none"};
         }
 
         .nades {
@@ -109,11 +129,14 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           right: 0px;
           bottom: 0px;
           overflow-y: auto;
-          pointer-events: auto;
+          pointer-events: ${open ? "auto" : "none"};
+          display: flex;
+          flex-direction: column;
         }
 
         .nade-list-wrap {
           margin: ${Dimensions.GUTTER_SIZE / 2}px;
+          flex: 1;
         }
 
         .bg {
@@ -158,7 +181,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          pointer-events: auto;
+          pointer-events: ${open ? "auto" : "none"};
         }
 
         .close-btn:hover {
@@ -184,5 +207,5 @@ const MapViewWrapper = styled(motion.div)`
   height: 100%;
   overflow-y: auto;
   overflow: hidden;
-  pointer-events: auto;
+  pointer-events: none;
 `;
