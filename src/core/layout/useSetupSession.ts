@@ -18,23 +18,27 @@ export const useSetupSession = (): void => {
   const initSession = useCallback(async () => {
     try {
       if (apiStatus === "offline") {
+        console.log("# Api offline");
         return;
       }
       const { authenticated } = await AuthApi.setSessionCookie();
       setApiOnline();
 
       if (!authenticated) {
+        console.log("# Session setup, not signed in");
         return signOut();
       }
 
       const { userDetails, userToken } = await trySignInFunc();
 
       if (!userDetails || !userToken) {
+        console.log("# Token expired, signing out");
         return signOut();
       }
 
       dispatch(setTokenAction(userToken));
       dispatch(setUserAction(userDetails));
+      console.log("# Signed in user");
 
       const result = await getUserFavorites(userToken);
 
