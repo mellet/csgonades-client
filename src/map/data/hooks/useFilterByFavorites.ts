@@ -5,7 +5,7 @@ import { useGa } from "../../../utils/Analytics";
 export const useFilterByFavorites = () => {
   const ga = useGa();
   const [byFavorites, setFilterByFavorites] = useLocalStorage(
-    "filterByPro",
+    "filterByFavorite",
     false
   );
 
