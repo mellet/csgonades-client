@@ -1,7 +1,7 @@
 import packageJson from "../../package.json";
 
 // Set to true if you want to use API on localhost
-const USE_DEV_API = false;
+const USE_DEV_API = true;
 
 const IS_PROD = process.env.NODE_ENV === "production";
 

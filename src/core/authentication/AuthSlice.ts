@@ -33,9 +33,3 @@ const persistConfig: PersistConfig<AuthState> = {
 };
 
 export const AuthReducer = persistReducer(persistConfig, authStore.reducer);
-
-export const {
-  setTokenAction,
-  setUserAction,
-  signOutAction,
-} = authStore.actions;

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
+import { useAuthToken } from "../../core/authentication/useSession";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { FavoriteApi } from "../../favorites/data/FavoriteApi";
@@ -18,7 +18,7 @@ export const useNadeFavoriteActions = () => {
   const { setSignInWarning } = useSignInWarning();
   const dispatch = useDispatch();
   const displayToast = useDisplayToast();
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
 
   const addFavorite = useCallback(
     async (nadeId: string) => {
@@ -29,9 +29,7 @@ export const useNadeFavoriteActions = () => {
       dispatch(favoriteInProgressEndAction());
       dispatch(favoriteInProgressBeginAction());
 
-      const token = await getToken();
-
-      if (!token) {
+      if (!authToken) {
         displayToast({
           severity: "error",
           message:
@@ -40,7 +38,7 @@ export const useNadeFavoriteActions = () => {
         return dispatch(favoriteInProgressEndAction());
       }
 
-      const result = await NadeApi.favoriteNade(nadeId, token);
+      const result = await NadeApi.favoriteNade(nadeId, authToken);
 
       if (result.isErr()) {
         displayToast({
@@ -61,7 +59,7 @@ export const useNadeFavoriteActions = () => {
         message: "Added to favorites!",
       });
     },
-    [dispatch, displayToast, getToken, setSignInWarning, isSignedIn]
+    [dispatch, displayToast, authToken, setSignInWarning, isSignedIn]
   );
 
   const unFavorite = useCallback(
@@ -71,9 +69,7 @@ export const useNadeFavoriteActions = () => {
       }
       dispatch(favoriteInProgressBeginAction());
 
-      const token = await getToken();
-
-      if (!token) {
+      if (!authToken) {
         displayToast({
           severity: "error",
           message:
@@ -82,7 +78,7 @@ export const useNadeFavoriteActions = () => {
         return dispatch(favoriteInProgressEndAction());
       }
 
-      const didSucceed = await NadeApi.unFavoriteNade(nadeId, token);
+      const didSucceed = await NadeApi.unFavoriteNade(nadeId, authToken);
 
       if (!didSucceed) {
         displayToast({
@@ -93,7 +89,7 @@ export const useNadeFavoriteActions = () => {
         return dispatch(favoriteInProgressEndAction());
       }
 
-      const favoritesResult = await FavoriteApi.getUserFavorites(token);
+      const favoritesResult = await FavoriteApi.getUserFavorites(authToken);
 
       if (favoritesResult.isErr()) {
         displayToast({
@@ -109,7 +105,7 @@ export const useNadeFavoriteActions = () => {
       dispatch(addAllFavoritesAction(favorites));
       dispatch(favoriteInProgressEndAction());
     },
-    [dispatch, getToken, displayToast, setSignInWarning, isSignedIn]
+    [dispatch, authToken, displayToast, setSignInWarning, isSignedIn]
   );
 
   return {

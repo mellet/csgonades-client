@@ -17,7 +17,6 @@ import { ImageUploader } from "./components/NadeInputs/ImageUploader";
 import { MapPositionEditor } from "./components/MapPositionEditor";
 import { SumbitBtn } from "./components/NadeInputs/SubmitBtn";
 import { NadeApi } from "./data/NadeApi";
-import { useGetOrUpdateToken } from "../core/authentication/useGetToken";
 import { useDisplayToast } from "../core/toasts/hooks/useDisplayToast";
 import { useRouter } from "next/router";
 import { SEO } from "../shared-components/SEO";
@@ -27,11 +26,12 @@ import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
 import { OneWaySelector } from "./components/NadeInputs/OneWaySelector";
 import { ImageUploadMessage } from "../shared-components/ImageUploadMessage";
 import { ImageResultImageMessage } from "../shared-components/ImageResultImageMessage";
+import { useAuthToken } from "../core/authentication/useSession";
 
 export const CreateNadeMain: FC = ({}) => {
   const router = useRouter();
   const showToast = useDisplayToast();
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const { colors } = useTheme();
   const { state, dispatch, disableSubmit, missingFields } =
     useCreateNadeState();
@@ -54,9 +54,8 @@ export const CreateNadeMain: FC = ({}) => {
     }
 
     const body = validState;
-    const token = await getToken();
 
-    if (!token) {
+    if (!authToken) {
       dispatch({ type: "CreateNade/SetNotLoading" });
       return showToast({
         severity: "error",
@@ -65,7 +64,7 @@ export const CreateNadeMain: FC = ({}) => {
         durationSeconds: 15,
       });
     }
-    const res = await NadeApi.save(body, token);
+    const res = await NadeApi.save(body, authToken);
 
     if (res.isErr()) {
       console.error(res.error);

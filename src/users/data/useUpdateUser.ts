@@ -1,36 +1,36 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
 import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
-import { setUserAction } from "../../core/authentication/AuthSlice";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { useRouter } from "next/router";
+import { useAuthToken } from "../../core/authentication/useSession";
 
 export const useUpdateUser = () => {
   const router = useRouter();
-  const getToken = useGetOrUpdateToken();
-  const dispatch = useDispatch();
+  const authToken = useAuthToken();
 
   const updateUser = useCallback(
     async (steamId: string, updatedFields: UserUpdateDTO) => {
-      const token = await getToken();
-
-      if (!steamId || !token) {
+      if (!steamId || !authToken) {
         console.warn("Not viewing a user or missing token, cant update.");
         return;
       }
 
-      const result = await UserApi.updateUser(steamId, updatedFields, token);
+      const result = await UserApi.updateUser(
+        steamId,
+        updatedFields,
+        authToken
+      );
 
       if (result.isErr()) {
         router.reload();
         return;
       }
 
-      dispatch(setUserAction(result.value));
+      // dispatch(setUserAction(result.value));
+      // TODO: mutate useSignInUser
       router.reload();
     },
-    [dispatch, getToken, router]
+    [router, authToken]
   );
 
   return updateUser;

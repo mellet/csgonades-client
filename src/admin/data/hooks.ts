@@ -1,7 +1,6 @@
 import { useCallback, useContext, useState, useEffect } from "react";
 import { AdminStoreContext } from "./context";
 import { UserApi } from "../../users/data/UserApi";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { NadeLight } from "../../nade/models/Nade";
 import { ReportApi } from "../../reports/data/ReportApi";
@@ -14,6 +13,7 @@ import {
 import { ContactApi } from "../../contact/data/ContactApi";
 import { sortByDate } from "../../utils/Common";
 import { AuditApi } from "./AuiditApi";
+import { useAuthToken } from "../../core/authentication/useSession";
 
 const useAdminStoreContext = () => {
   const context = useContext(AdminStoreContext);
@@ -26,21 +26,20 @@ const useAdminStoreContext = () => {
 };
 
 export const useAdminPendingNades = () => {
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const [pendingNades, setPendingNades] = useState<NadeLight[]>([]);
 
   useEffect(() => {
     (async () => {
-      const token = await getToken();
-      if (!token) {
+      if (!authToken) {
         return;
       }
-      const res = await NadeApi.getPending(token);
+      const res = await NadeApi.getPending(authToken);
       if (res.isOk()) {
         setPendingNades(res.value);
       }
     })();
-  }, [getToken]);
+  }, [authToken]);
 
   return {
     pendingNades,
@@ -48,21 +47,20 @@ export const useAdminPendingNades = () => {
 };
 
 export const useAdminWorkNades = () => {
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const [nades, setNades] = useState<NadeLight[]>([]);
 
   useEffect(() => {
     (async () => {
-      const token = await getToken();
-      if (!token) {
+      if (!authToken) {
         return;
       }
-      const res = await NadeApi.getUncomplete(token);
+      const res = await NadeApi.getUncomplete(authToken);
       if (res.isOk()) {
         setNades(res.value);
       }
     })();
-  }, [getToken]);
+  }, [authToken]);
 
   return {
     nades,
@@ -70,16 +68,15 @@ export const useAdminWorkNades = () => {
 };
 
 export const useAdminReports = () => {
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const { state, dispatch } = useAdminStoreContext();
 
   useEffect(() => {
     (async () => {
-      const token = await getToken();
-      if (!token) {
+      if (!authToken) {
         return;
       }
-      const res = await ReportApi.getAll(token);
+      const res = await ReportApi.getAll(authToken);
       if (res.isOk()) {
         const reports = [...res.value];
         reports.sort((a, b) => sortByDate(a.createdAt, b.createdAt));
@@ -89,7 +86,7 @@ export const useAdminReports = () => {
         console.error("Failed to fetch reports");
       }
     })();
-  }, [getToken, dispatch]);
+  }, [authToken, dispatch]);
 
   return {
     reports: state.reports,
@@ -97,15 +94,13 @@ export const useAdminReports = () => {
 };
 
 export const useAdminUsers = () => {
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const { state, dispatch } = useAdminStoreContext();
 
   const fetchUsers = useCallback(
     (page: number, limit: number, sortByActivity: boolean) => {
       (async () => {
-        const token = await getToken();
-
-        if (!token) {
+        if (!authToken) {
           console.error("Missing token");
           return;
         }
@@ -114,7 +109,7 @@ export const useAdminUsers = () => {
           page,
           limit,
           sortByActivity,
-          token
+          authToken
         );
 
         if (result.isOk()) {
@@ -122,7 +117,7 @@ export const useAdminUsers = () => {
         }
       })();
     },
-    [dispatch, getToken]
+    [dispatch, authToken]
   );
 
   return {
@@ -132,16 +127,15 @@ export const useAdminUsers = () => {
 };
 
 export const useAdminContact = () => {
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const { state, dispatch } = useAdminStoreContext();
 
   useEffect(() => {
     (async () => {
-      const token = await getToken();
-      if (!token) {
+      if (!authToken) {
         return;
       }
-      const res = await ContactApi.fetchContactMessages(token);
+      const res = await ContactApi.fetchContactMessages(authToken);
       if (res.isOk()) {
         const contactMessages = [...res.value];
         contactMessages.sort((a, b) => sortByDate(a.createdAt, b.createdAt));
@@ -151,7 +145,7 @@ export const useAdminContact = () => {
         console.error("Failed to fetch reports");
       }
     })();
-  }, [dispatch, getToken]);
+  }, [dispatch, authToken]);
 
   return {
     contactMessages: state.contactMessages,
@@ -159,16 +153,15 @@ export const useAdminContact = () => {
 };
 
 export const useAdminAudits = () => {
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const { state, dispatch } = useAdminStoreContext();
 
   useEffect(() => {
     (async () => {
-      const token = await getToken();
-      if (!token) {
+      if (!authToken) {
         return;
       }
-      const res = await AuditApi.fetchAuditEvents(token);
+      const res = await AuditApi.fetchAuditEvents(authToken);
       if (res.isOk()) {
         const audits = [...res.value];
         audits.sort((a, b) => sortByDate(a.createdAt, b.createdAt));
@@ -178,7 +171,7 @@ export const useAdminAudits = () => {
         console.error("Failed to fetch reports");
       }
     })();
-  }, [dispatch, getToken]);
+  }, [dispatch, authToken]);
 
   return {
     auditEvents: state.auditEvents,

@@ -1,10 +1,6 @@
-import { useSelector } from "react-redux";
-import { userSelector } from "./AuthSelectors";
+import { useSignedInUser } from "./useSignedInUser";
 
 export const useIsSignedIn = (): boolean => {
-  const user = useSelector(userSelector);
-  if (!user) {
-    return false;
-  }
-  return true;
+  const { signedInUser } = useSignedInUser();
+  return Boolean(signedInUser);
 };

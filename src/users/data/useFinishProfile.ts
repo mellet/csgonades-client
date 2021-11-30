@@ -1,31 +1,28 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
 import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
-import { setUserAction } from "../../core/authentication/AuthSlice";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
+import { useAuthToken } from "../../core/authentication/useSession";
 
 export const useFinishProfile = () => {
-  const getToken = useGetOrUpdateToken();
-  const dispatch = useDispatch();
+  const authToken = useAuthToken();
+
   const finishProfile = useCallback(
     async (steamId: string, updatedField: UserUpdateDTO) => {
-      const token = await getToken();
-
-      if (!token) {
+      if (!authToken) {
         console.error("Missing token, cant update.");
         return;
       }
 
-      const result = await UserApi.updateUser(steamId, updatedField, token);
+      const result = await UserApi.updateUser(steamId, updatedField, authToken);
 
       if (result.isErr()) {
         return;
       }
 
-      dispatch(setUserAction(result.value));
+      // dispatch(setUserAction(result.value));
+      // TODO: Mutate useSignedInUser
     },
-    [dispatch, getToken]
+    [authToken]
   );
   return finishProfile;
 };

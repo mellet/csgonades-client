@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";
 import { CSGNModal } from "../../shared-components/CSGNModal";
 import { CsgnInput } from "../../shared-components/inputs/TextInput/CsgnInput";
@@ -8,9 +7,9 @@ import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../shared-components/inputs/CsgnTextArea";
 import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
-import { userSelector } from "../../core/authentication/AuthSelectors";
 import { useUpdateUser } from "../data/useUpdateUser";
 import { Dimensions } from "../../constants/Constants";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 type Props = {
   user: User;
@@ -20,7 +19,7 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
   const updateUser = useUpdateUser();
   const allowEdit = useIsAllowedUserEdit(user);
   const [isEditing, setIsEditing] = useState(false);
-  const signedInUser = useSelector(userSelector);
+  const { signedInUser } = useSignedInUser();
   const [loading, setLoading] = useState(false);
   const [nickname, setNickname] = useState(user.nickname);
   const [email, setEmail] = useState(user.email);

@@ -1,13 +1,12 @@
-import { useSelector } from "react-redux";
-import { userSelector } from "./AuthSelectors";
+import { useSignedInUser } from "./useSignedInUser";
 
 export const useIsAdmin = (): boolean => {
-  const user = useSelector(userSelector);
-  if (!user) {
+  const { signedInUser } = useSignedInUser();
+  if (!signedInUser) {
     return false;
   }
 
-  if (user.role === "administrator") {
+  if (signedInUser.role === "administrator") {
     return true;
   }
 

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { Dimensions } from "../../../constants/Constants";
-import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
+import { useAuthToken } from "../../../core/authentication/useSession";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { CSGNModal } from "../../../shared-components/CSGNModal";
 import { NadeApi } from "../../data/NadeApi";
@@ -11,19 +11,17 @@ type Props = {
 };
 
 export const DeleteBtn: FC<Props> = ({ nadeId }) => {
-  const getOrUpdateToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const [confirmModalVisisble, setConfirmModalVisisble] = useState(false);
   const { colors } = useTheme();
   const router = useRouter();
 
   async function onPermaDeletNade() {
-    const token = await getOrUpdateToken();
-
-    if (!token) {
+    if (!authToken) {
       return;
     }
 
-    await NadeApi.delete(nadeId, token);
+    await NadeApi.delete(nadeId, authToken);
 
     setTimeout(() => {
       router.push("/admin/deleted", "/admin/deleted");

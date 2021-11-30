@@ -1,6 +1,4 @@
 import { FC, memo } from "react";
-import { useEzoidAdLoader } from "../shared-components/adunits/useEzoicAdLoader";
-import { useSetupSession } from "./layout/useSetupSession";
 import dynamic from "next/dynamic";
 
 const ServiceDown = dynamic(
@@ -20,9 +18,6 @@ const SignInWarning = dynamic(
 );
 
 export const CoreWrapper: FC = memo(({ children }) => {
-  useSetupSession();
-  useEzoidAdLoader();
-
   return (
     <>
       {children}

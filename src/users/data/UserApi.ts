@@ -5,16 +5,12 @@ import { User, UserUpdateDTO } from "../models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 export class UserApi {
-  static fetchSelf = async (token: string): AppResult<User> => {
-    try {
-      const res = await axios.get(`${Config.API_URL}/users/self`, {
-        headers: { Authorization: token },
-      });
-      const user = res.data as User;
-      return ok(user);
-    } catch (error) {
-      return extractApiError(error);
-    }
+  static fetchSelf = async (token: string): Promise<User> => {
+    const res = await axios.get(`${Config.API_URL}/users/self`, {
+      headers: { Authorization: token },
+    });
+    const user = res.data as User;
+    return user;
   };
 
   static fetchUser = async (

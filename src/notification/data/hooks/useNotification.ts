@@ -1,18 +1,16 @@
 import { useCallback } from "react";
 import useSWR, { mutate } from "swr";
-import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
+import { useAuthToken } from "../../../core/authentication/useSession";
 import { NotificationApi } from "../NotificationApi";
 
-const useNotificationFetcher = () => {
-  const fetchToken = useGetOrUpdateToken();
+export const useRawNotifications = () => {
+  const notificationFetchDelay = 5 * 60 * 1000;
+  const authToken = useAuthToken();
 
-  return async () => {
-    const token = await fetchToken();
-
+  async function fetchNotifications(_: string, token: string) {
     if (!token) {
-      return;
+      return [];
     }
-
     console.log("#Fetching notification", new Date());
     const result = await NotificationApi.getNotifications(token);
 
@@ -21,35 +19,31 @@ const useNotificationFetcher = () => {
     } else {
       throw Error(result.error.message);
     }
-  };
-};
+  }
 
-export const useRawNotifications = () => {
-  const notificationFetchDelay = 5 * 60 * 1000;
-  const fetchToken = useGetOrUpdateToken();
-  const notificaitonFetcher = useNotificationFetcher();
-
-  const { data } = useSWR("/notifications", notificaitonFetcher, {
-    dedupingInterval: notificationFetchDelay,
-    revalidateOnFocus: true,
-    focusThrottleInterval: notificationFetchDelay,
-  });
+  const { data: rawNotification } = useSWR(
+    ["/notifications", authToken],
+    fetchNotifications,
+    {
+      dedupingInterval: notificationFetchDelay,
+      revalidateOnFocus: true,
+      focusThrottleInterval: notificationFetchDelay,
+    }
+  );
 
   const markAsViewed = useCallback(async () => {
-    const freshToken = await fetchToken();
-
-    if (!freshToken || !data) {
+    if (!authToken || !rawNotification) {
       return;
     }
 
-    const viewed = data.map((n) => ({ ...n, viewed: true }));
+    const viewed = rawNotification.map((n) => ({ ...n, viewed: true }));
 
     mutate("/notifications", viewed);
-    await NotificationApi.markAllAsViewed(freshToken);
-  }, [data, fetchToken]);
+    await NotificationApi.markAllAsViewed(authToken);
+  }, [rawNotification, authToken]);
 
   return {
-    rawNotifications: data || [],
+    rawNotifications: rawNotification || [],
     markAsViewed,
   };
 };

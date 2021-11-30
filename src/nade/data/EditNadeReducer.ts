@@ -11,13 +11,13 @@ import { GfycatData } from "../models/GfycatData";
 import { NadeType } from "../models/NadeType";
 import { Movement } from "../models/NadeMovement";
 import { Technique } from "../models/Technique";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { NadeApi } from "./NadeApi";
 import { useRouter } from "next/router";
 import { assertNever } from "../../utils/Common";
 import { Tickrate } from "../models/NadeTickrate";
 import { TeamSide } from "../models/TeamSide";
+import { useAuthToken } from "../../core/authentication/useSession";
 
 interface EditNadeState extends Partial<NadeCreateBody> {
   loading: boolean;
@@ -290,7 +290,7 @@ const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
 export const useEditNadeState = (nade: Nade) => {
   const router = useRouter();
   const displayToast = useDisplayToast();
-  const getToken = useGetOrUpdateToken();
+  const authToken = useAuthToken();
   const [state, dispatch] = useReducer(reducer, {
     originalNade: nade,
     showImageAdder: false,
@@ -313,8 +313,7 @@ export const useEditNadeState = (nade: Nade) => {
       return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
-    const token = await getToken();
-    if (!token) {
+    if (!authToken) {
       displayToast({
         severity: "error",
         title: "Not Signed In",
@@ -326,7 +325,7 @@ export const useEditNadeState = (nade: Nade) => {
     const result = await NadeApi.update(
       state.originalNade.id,
       updateDto,
-      token
+      authToken
     );
 
     if (result.isErr()) {
@@ -349,7 +348,7 @@ export const useEditNadeState = (nade: Nade) => {
       "/nades/[nade]",
       `/nades/${state.originalNade.slug || state.originalNade.id}`
     );
-  }, [state, getToken, displayToast, router]);
+  }, [state, authToken, displayToast, router]);
 
   const disableSubmit = useMemo(() => {
     const updateDto = createNadeUpdateBody(state);

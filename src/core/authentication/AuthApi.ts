@@ -1,7 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
-import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
 type TokenRes = {
   accessToken: string;
@@ -12,30 +10,26 @@ type SessionResponse = {
 };
 
 export class AuthApi {
-  static async refreshToken(cookie?: string): AppResult<string> {
-    try {
-      let config: AxiosRequestConfig = {
-        withCredentials: true,
+  static async refreshToken(cookie?: string): Promise<string> {
+    let config: AxiosRequestConfig = {
+      withCredentials: true,
+    };
+
+    if (cookie) {
+      config = {
+        ...config,
+        headers: {
+          cookie: cookie,
+        },
       };
-
-      if (cookie) {
-        config = {
-          ...config,
-          headers: {
-            cookie: cookie,
-          },
-        };
-      }
-
-      const res = await axios.get<TokenRes>(
-        `${Config.API_URL}/auth/refresh`,
-        config
-      );
-
-      return ok(res.data.accessToken);
-    } catch (error) {
-      return extractApiError(error);
     }
+
+    const res = await axios.get<TokenRes>(
+      `${Config.API_URL}/auth/refresh`,
+      config
+    );
+
+    return res.data.accessToken;
   }
 
   static async setSessionCookie(): Promise<SessionResponse> {
