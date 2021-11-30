@@ -6,13 +6,17 @@ import { GfycatThumbnail } from "./GfycatThumbnail";
 import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
-import { useIsNadeFavorited } from "../../../favorites/data/hooks/useFavorites";
+import {
+  useFavoritesV2,
+  useIsNadeFavorited,
+} from "../../../favorites/data/hooks/useFavoritesV2";
 
 interface Props {
   nade: NadeLight;
 }
 
 export const NadeItem: FC<Props> = memo(({ nade }) => {
+  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavoritesV2();
   const isFavorited = useIsNadeFavorited(nade.id);
   const { colors } = useTheme();
 
@@ -48,15 +52,15 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
             nadeId={nade.id}
             commentCount={nade.commentCount}
             createdAt={nade.createdAt}
-            downVoteCount={nade.downVoteCount}
             favoriteCount={nade.favoriteCount}
             isFavorited={isFavorited}
             isPro={nade.isPro}
             movement={nade.movement}
             technique={nade.technique}
             tickrate={nade.tickrate}
-            upVoteCount={nade.upVoteCount}
             viewCount={nade.viewCount}
+            addAsFavorite={addNadeAsFavorite}
+            removeAsFavorite={removeNadeAsFavorite}
           />
         </div>
       </div>

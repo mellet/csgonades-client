@@ -59,13 +59,17 @@ export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
     );
   }
 
-  return (
-    <AdSense
-      client="ca-pub-2255854420599519"
-      slot="1671636402"
-      style={{ display: "block" }}
-      layout="in-article"
-      format="fluid"
-    />
-  );
+  if (adFormat === "in-article") {
+    return (
+      <AdSense
+        client="ca-pub-2255854420599519"
+        slot="1671636402"
+        style={{ display: "block", textAlign: "center" }}
+        layout="in-article"
+        format="fluid"
+      />
+    );
+  }
+
+  return null;
 };

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { useTheme } from "styled-components";
 import { Dimensions } from "../../../../constants/Constants";
-import { useAuthToken } from "../../../../core/authentication/useSession";
+import { useSession } from "../../../../core/authentication/useSession";
 import { CSGNModal } from "../../../../shared-components/CSGNModal";
 import { CsgnSaveButton } from "../../../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../../../shared-components/inputs/CsgnTextArea";
@@ -17,40 +17,35 @@ export const NadeCommentActionButtons: FC<Props> = ({
   refetchComment,
 }) => {
   const { colors } = useTheme();
-  const authToken = useAuthToken();
+  const { isAuthenticated } = useSession();
   const [editorVisisble, setEditorVisisble] = useState(false);
   const [deleteConfirmVisisble, setDeleteConfirmVisible] = useState(false);
   const [message, setMessage] = useState(nadeComment.message);
 
   async function onUpdateComment() {
-    if (!authToken) {
+    if (!isAuthenticated) {
       setEditorVisisble(false);
       return;
     }
 
-    await NadeCommentApi.updateNadeComment(
-      nadeComment.nadeId,
-      {
-        id: nadeComment.id,
-        message,
-      },
-      authToken
-    );
+    await NadeCommentApi.updateNadeComment(nadeComment.nadeId, {
+      id: nadeComment.id,
+      message,
+    });
 
     setEditorVisisble(false);
     refetchComment();
   }
 
   async function onDeleteComment() {
-    if (!authToken) {
+    if (!isAuthenticated) {
       setDeleteConfirmVisible(false);
       return;
     }
 
     const res = await NadeCommentApi.deleteNadeComment(
       nadeComment.nadeId,
-      nadeComment.id,
-      authToken
+      nadeComment.id
     );
 
     if (res.isErr()) {

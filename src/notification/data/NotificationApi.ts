@@ -1,17 +1,14 @@
-import axios from "axios";
 import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
 import { Notification } from "../models/Notification";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import AxiosApi from "../../core/AxiosInstance";
 
 export class NotificationApi {
-  static async getNotifications(token: string): AppResult<Notification[]> {
+  static async getNotifications(): AppResult<Notification[]> {
     try {
-      const res = await axios.get<Notification[]>(
-        `${Config.API_URL}/notifications`,
-        {
-          headers: { Authorization: token },
-        }
+      const res = await AxiosApi.get<Notification[]>(
+        `${Config.API_URL}/notifications`
       );
       return ok(res.data);
     } catch (error) {
@@ -19,15 +16,9 @@ export class NotificationApi {
     }
   }
 
-  static async markAllAsViewed(token: string): Promise<void> {
+  static async markAllAsViewed(): Promise<void> {
     try {
-      await axios.patch(
-        `${Config.API_URL}/notifications/viewed`,
-        {},
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await AxiosApi.patch(`${Config.API_URL}/notifications/viewed`, {});
     } catch (error) {
       console.error(error);
     }

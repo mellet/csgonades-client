@@ -1,19 +1,16 @@
 import { FC } from "react";
 import { Dimensions } from "../constants/Constants";
 import { AdminNavigation } from "./components/AdminNavigation";
-import { AdminStoreProvider } from "./data/context";
 
 export const AdminLayout: FC = ({ children }) => {
   return (
     <>
-      <AdminStoreProvider>
-        <div id="admin-layout">
-          <div id="admin-nav">
-            <AdminNavigation />
-          </div>
-          <div id="admin-main">{children}</div>
+      <div id="admin-layout">
+        <div id="admin-nav">
+          <AdminNavigation />
         </div>
-      </AdminStoreProvider>
+        <div id="admin-main">{children}</div>
+      </div>
       <style jsx>{`
         #admin-layout {
           display: grid;

@@ -26,12 +26,12 @@ import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
 import { OneWaySelector } from "./components/NadeInputs/OneWaySelector";
 import { ImageUploadMessage } from "../shared-components/ImageUploadMessage";
 import { ImageResultImageMessage } from "../shared-components/ImageResultImageMessage";
-import { useAuthToken } from "../core/authentication/useSession";
+import { useSession } from "../core/authentication/useSession";
 
 export const CreateNadeMain: FC = ({}) => {
   const router = useRouter();
   const showToast = useDisplayToast();
-  const authToken = useAuthToken();
+  const { isAuthenticated } = useSession();
   const { colors } = useTheme();
   const { state, dispatch, disableSubmit, missingFields } =
     useCreateNadeState();
@@ -55,7 +55,7 @@ export const CreateNadeMain: FC = ({}) => {
 
     const body = validState;
 
-    if (!authToken) {
+    if (!isAuthenticated) {
       dispatch({ type: "CreateNade/SetNotLoading" });
       return showToast({
         severity: "error",
@@ -64,7 +64,7 @@ export const CreateNadeMain: FC = ({}) => {
         durationSeconds: 15,
       });
     }
-    const res = await NadeApi.save(body, authToken);
+    const res = await NadeApi.save(body);
 
     if (res.isErr()) {
       console.error(res.error);

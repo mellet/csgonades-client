@@ -1,17 +1,17 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useFavoritesV2 } from "../../favorites/data/hooks/useFavoritesV2";
 import { AuthApi } from "./AuthApi";
-import { resetFavoriteStoreAction } from "../../favorites/data/FavoriteSlice";
 import { useSignedInUser } from "./useSignedInUser";
 
 export const useSignOut = () => {
-  const { signOut } = useSignedInUser();
-  const dispatch = useDispatch();
+  const { clearSignedInUser } = useSignedInUser();
+  const { clearFavorites } = useFavoritesV2();
+
   const signOutFromApp = useCallback(() => {
     AuthApi.signOut().then(() => {
-      signOut();
-      dispatch(resetFavoriteStoreAction());
+      clearSignedInUser();
+      clearFavorites();
     });
-  }, [dispatch, signOut]);
+  }, [clearSignedInUser, clearFavorites]);
   return signOutFromApp;
 };

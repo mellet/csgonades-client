@@ -14,15 +14,15 @@ type NadeStatsProps = {
   nadeId: string;
   commentCount: number;
   createdAt: Date | string;
-  downVoteCount?: number;
   favoriteCount: number;
   isFavorited?: boolean;
   isPro?: boolean;
   movement?: Movement;
   technique?: Technique;
   tickrate?: Tickrate;
-  upVoteCount?: number;
   viewCount: number;
+  addAsFavorite: (nadeId: string) => void;
+  removeAsFavorite: (nadeId: string) => void;
 };
 
 export const NadeStats: FC<NadeStatsProps> = ({
@@ -36,6 +36,8 @@ export const NadeStats: FC<NadeStatsProps> = ({
   technique,
   tickrate,
   viewCount,
+  addAsFavorite,
+  removeAsFavorite,
 }) => {
   const { colors } = useTheme();
   const hasMovement =
@@ -74,6 +76,8 @@ export const NadeStats: FC<NadeStatsProps> = ({
                 nadeId={nadeId}
                 favoriteCount={favCount}
                 isFavorited={isFavorited}
+                addAsFavorite={addAsFavorite}
+                removeAsFavorite={removeAsFavorite}
               />
             </div>
           )}

@@ -3,7 +3,7 @@ import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { Config, Dimensions } from "../../../constants/Constants";
-import { useAuthToken } from "../../../core/authentication/useSession";
+import { useSession } from "../../../core/authentication/useSession";
 
 type Props = {
   nadeId: string;
@@ -12,7 +12,7 @@ type Props = {
 
 export const CommentSubmit: FC<Props> = memo(
   ({ nadeId, onCommentSubmitted }) => {
-    const authToken = useAuthToken();
+    const { isAuthenticated } = useSession();
     const { colors } = useTheme();
     const isSignedIn = useIsSignedIn();
 
@@ -22,14 +22,11 @@ export const CommentSubmit: FC<Props> = memo(
     async function onSubmit() {
       setLoading(true);
 
-      if (!authToken || !message.length) {
+      if (!isAuthenticated || !message.length) {
         return;
       }
 
-      const res = await NadeCommentApi.createNadeComment(
-        { nadeId, message },
-        authToken
-      );
+      const res = await NadeCommentApi.createNadeComment({ nadeId, message });
 
       if (res.isOk()) {
         onCommentSubmitted(res.value);

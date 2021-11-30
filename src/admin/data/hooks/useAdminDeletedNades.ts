@@ -1,21 +1,14 @@
 import useSWR from "swr";
-import { useAuthToken } from "../../../core/authentication/useSession";
 import { NadeApi } from "../../../nade/data/NadeApi";
 
-async function fetchDeletedNades(_key: string, token?: string) {
-  if (!token) {
-    return [];
-  }
-  const result = await NadeApi.getDeleted(token);
-
+async function fetchDeletedNades() {
+  const result = await NadeApi.getDeleted();
   return result;
 }
 
 export const useAdminDeletedNades = () => {
-  const authToken = useAuthToken();
-
   const { data, isValidating, error } = useSWR(
-    ["/nades/deleted", authToken],
+    "/nades/deleted",
     fetchDeletedNades,
     { errorRetryCount: 1 }
   );

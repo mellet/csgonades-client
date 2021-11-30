@@ -5,13 +5,9 @@ import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { AdminPageTitle } from "../components/AdminPageTitle";
 import useSWR from "swr";
-import { useAuthToken } from "../../core/authentication/useSession";
 
-async function fetchDeclinedNades(_key: string, token: string | null) {
-  if (!token) {
-    return [];
-  }
-  const res = await NadeApi.getDeclined(token);
+async function fetchDeclinedNades() {
+  const res = await NadeApi.getDeclined();
   if (res.isOk()) {
     return res.value;
   } else {
@@ -21,9 +17,8 @@ async function fetchDeclinedNades(_key: string, token: string | null) {
 }
 
 const useDeclinedNades = () => {
-  const authToken = useAuthToken();
   const { data: declinedNades } = useSWR(
-    ["nades/declined", authToken],
+    ["/nades/declined"],
     fetchDeclinedNades,
     { errorRetryCount: 1, focusThrottleInterval: 1000 * 60 }
   );

@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { NadeCommentApi } from "../../nade/data/NadeCommentApi";
+import { NadeCommentApi } from "../../../nade/data/NadeCommentApi";
 
 async function fetcher() {
   try {

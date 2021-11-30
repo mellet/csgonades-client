@@ -2,35 +2,32 @@ import { useCallback } from "react";
 import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
 import { useRouter } from "next/router";
-import { useAuthToken } from "../../core/authentication/useSession";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
+import { useSession } from "../../core/authentication/useSession";
 
 export const useUpdateUser = () => {
   const router = useRouter();
-  const authToken = useAuthToken();
+  const { isAuthenticated } = useSession();
+  const { refetch } = useSignedInUser();
 
   const updateUser = useCallback(
     async (steamId: string, updatedFields: UserUpdateDTO) => {
-      if (!steamId || !authToken) {
+      if (!steamId || !isAuthenticated) {
         console.warn("Not viewing a user or missing token, cant update.");
         return;
       }
 
-      const result = await UserApi.updateUser(
-        steamId,
-        updatedFields,
-        authToken
-      );
+      const result = await UserApi.updateUser(steamId, updatedFields);
 
       if (result.isErr()) {
         router.reload();
         return;
       }
 
-      // dispatch(setUserAction(result.value));
-      // TODO: mutate useSignInUser
+      refetch();
       router.reload();
     },
-    [router, authToken]
+    [router, refetch, isAuthenticated]
   );
 
   return updateUser;

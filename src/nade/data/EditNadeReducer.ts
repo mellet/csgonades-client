@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import { assertNever } from "../../utils/Common";
 import { Tickrate } from "../models/NadeTickrate";
 import { TeamSide } from "../models/TeamSide";
-import { useAuthToken } from "../../core/authentication/useSession";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 interface EditNadeState extends Partial<NadeCreateBody> {
   loading: boolean;
@@ -290,7 +290,7 @@ const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
 export const useEditNadeState = (nade: Nade) => {
   const router = useRouter();
   const displayToast = useDisplayToast();
-  const authToken = useAuthToken();
+  const { signedInUser } = useSignedInUser();
   const [state, dispatch] = useReducer(reducer, {
     originalNade: nade,
     showImageAdder: false,
@@ -313,7 +313,7 @@ export const useEditNadeState = (nade: Nade) => {
       return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
-    if (!authToken) {
+    if (!signedInUser) {
       displayToast({
         severity: "error",
         title: "Not Signed In",
@@ -322,11 +322,7 @@ export const useEditNadeState = (nade: Nade) => {
       return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
-    const result = await NadeApi.update(
-      state.originalNade.id,
-      updateDto,
-      authToken
-    );
+    const result = await NadeApi.update(state.originalNade.id, updateDto);
 
     if (result.isErr()) {
       displayToast({
@@ -348,7 +344,7 @@ export const useEditNadeState = (nade: Nade) => {
       "/nades/[nade]",
       `/nades/${state.originalNade.slug || state.originalNade.id}`
     );
-  }, [state, authToken, displayToast, router]);
+  }, [state, displayToast, router, signedInUser]);
 
   const disableSubmit = useMemo(() => {
     const updateDto = createNadeUpdateBody(state);

@@ -1,35 +1,34 @@
 import { useCallback } from "react";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import { UserApi } from "../../users/data/UserApi";
 import { User } from "../../users/models/User";
-import { useAuthToken, sharedFetchConfig } from "./useSession";
+import { sharedFetchConfig, useSession } from "./useSession";
 
 export const useSignedInUser = () => {
-  const authToken = useAuthToken();
-  const { mutate } = useSWRConfig();
+  const { isAuthenticated } = useSession();
 
-  async function fetchSignedInUser(_: string, token: string) {
-    const user = await UserApi.fetchSelf(token);
+  async function fetchSignedInUser() {
+    const user = await UserApi.fetchSelf();
     return user;
   }
 
-  const { data } = useSWR<User>(
-    authToken ? ["user", authToken] : null,
+  const { data, mutate } = useSWR<User>(
+    isAuthenticated ? "/user/self" : null,
     fetchSignedInUser,
     sharedFetchConfig
   );
 
-  const signOut = useCallback(() => {
-    // Clear user token
-    mutate(["user", authToken], null, false);
-    // Reset session for expired cookie
-    mutate("session");
-    // Clear token
-    mutate("token");
-  }, [authToken, mutate]);
+  const clearSignedInUser = useCallback(() => {
+    mutate(undefined, false);
+  }, [mutate]);
+
+  const refetch = useCallback(() => {
+    mutate();
+  }, [mutate]);
 
   return {
     signedInUser: data,
-    signOut,
+    clearSignedInUser,
+    refetch,
   };
 };

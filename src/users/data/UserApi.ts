@@ -1,30 +1,19 @@
-import axios from "axios";
 import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
 import { User, UserUpdateDTO } from "../models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import AxiosApi from "../../core/AxiosInstance";
 
 export class UserApi {
-  static fetchSelf = async (token: string): Promise<User> => {
-    const res = await axios.get(`${Config.API_URL}/users/self`, {
-      headers: { Authorization: token },
-    });
+  static fetchSelf = async (): Promise<User> => {
+    const res = await AxiosApi.get(`${Config.API_URL}/users/self`);
     const user = res.data as User;
     return user;
   };
 
-  static fetchUser = async (
-    steamId: string,
-    token?: string
-  ): AppResult<User> => {
+  static fetchUser = async (steamId: string): AppResult<User> => {
     try {
-      let config = {};
-
-      if (token) {
-        config = { headers: { Authorization: token } };
-      }
-
-      const res = await axios.get(`${Config.API_URL}/users/${steamId}`, config);
+      const res = await AxiosApi.get(`${Config.API_URL}/users/${steamId}`);
       const user = res.data as User;
       return ok(user);
     } catch (error) {
@@ -35,35 +24,22 @@ export class UserApi {
   static fetchUsers = async (
     page: number,
     limit: number,
-    sortByActivity: boolean,
-    token: string
-  ): AppResult<User[]> => {
-    try {
-      const res = await axios.get(
-        `${Config.API_URL}/users?page=${page}&limit=${limit}&sortActive=${sortByActivity}`,
-        {
-          headers: { Authorization: token },
-        }
-      );
-      const users = res.data as User[];
-      return ok(users);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    sortByActivity: boolean
+  ): Promise<User[]> => {
+    const res = await AxiosApi.get<User[]>(
+      `${Config.API_URL}/users?page=${page}&limit=${limit}&sortActive=${sortByActivity}`
+    );
+    return res.data;
   };
 
   static updateUser = async (
     steamId: string,
-    updatedUser: UserUpdateDTO,
-    token: string
+    updatedUser: UserUpdateDTO
   ): AppResult<User> => {
     try {
-      const res = await axios.patch(
+      const res = await AxiosApi.patch(
         `${Config.API_URL}/users/${steamId}`,
-        updatedUser,
-        {
-          headers: { Authorization: token },
-        }
+        updatedUser
       );
 
       const user = res.data as User;

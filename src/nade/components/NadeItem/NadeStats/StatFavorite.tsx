@@ -4,18 +4,21 @@ import { Popup } from "semantic-ui-react";
 import { useTheme } from "styled-components";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useGa } from "../../../../utils/Analytics";
-import { useNadeFavoriteActions } from "../../../data/useNadeFavoriteActions";
 
 type Props = {
   nadeId: string;
   isFavorited?: boolean;
   favoriteCount: number;
+  addAsFavorite: (nadeId: string) => void;
+  removeAsFavorite: (nadeId: string) => void;
 };
 
 export const StatFavorite: FC<Props> = ({
   favoriteCount,
   isFavorited,
   nadeId,
+  addAsFavorite,
+  removeAsFavorite,
 }) => {
   const ga = useGa();
 
@@ -24,32 +27,31 @@ export const StatFavorite: FC<Props> = ({
     isFavorited || false
   );
   const [internalFavCount, setInternalFavCount] = useState(favoriteCount);
-  const { addFavorite, unFavorite } = useNadeFavoriteActions();
   const { colors } = useTheme();
 
   function onFavoriteClick() {
+    if (!isSignedIn) {
+      console.error("# TODO: Show sign in warning");
+      return;
+    }
     if (internalFavorited) {
-      if (isSignedIn) {
-        setInternalFavorited(false);
-        setInternalFavCount(internalFavCount - 1);
-        ga.event({
-          category: "nade_item",
-          action: "click_remove_favorite",
-          label: nadeId,
-        });
-      }
-      unFavorite(nadeId);
+      removeAsFavorite(nadeId);
+      setInternalFavorited(false);
+      setInternalFavCount(internalFavCount - 1);
+      ga.event({
+        category: "nade_item",
+        action: "click_remove_favorite",
+        label: nadeId,
+      });
     } else {
-      if (isSignedIn) {
-        setInternalFavorited(true);
-        setInternalFavCount(internalFavCount + 1);
-        ga.event({
-          category: "nade_item",
-          action: "click_add_favorite",
-          label: nadeId,
-        });
-      }
-      addFavorite(nadeId);
+      addAsFavorite(nadeId);
+      setInternalFavorited(true);
+      setInternalFavCount(internalFavCount + 1);
+      ga.event({
+        category: "nade_item",
+        action: "click_add_favorite",
+        label: nadeId,
+      });
     }
   }
 

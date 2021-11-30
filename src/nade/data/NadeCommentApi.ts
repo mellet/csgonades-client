@@ -1,6 +1,6 @@
-import axios from "axios";
 import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
+import AxiosApi from "../../core/AxiosInstance";
 import { Role } from "../../users/models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 
@@ -28,7 +28,7 @@ export type NadeCommentUpdateDTO = {
 export class NadeCommentApi {
   static async getCommentsForNade(nadeId: string): AppResult<NadeComment[]> {
     try {
-      const res = await axios.get<NadeComment[]>(
+      const res = await AxiosApi.get<NadeComment[]>(
         `${Config.API_URL}/nades/${nadeId}/comments`
       );
 
@@ -39,7 +39,7 @@ export class NadeCommentApi {
   }
 
   static async getRecent(): Promise<NadeComment[]> {
-    const res = await axios.get<NadeComment[]>(
+    const res = await AxiosApi.get<NadeComment[]>(
       `${Config.API_URL}/comments/recent`
     );
 
@@ -47,16 +47,12 @@ export class NadeCommentApi {
   }
 
   static async createNadeComment(
-    comment: NadeCommentCreateDTO,
-    token: string
+    comment: NadeCommentCreateDTO
   ): AppResult<NadeComment> {
     try {
-      const res = await axios.post<NadeComment>(
+      const res = await AxiosApi.post<NadeComment>(
         `${Config.API_URL}/nades/${comment.nadeId}/comments`,
-        comment,
-        {
-          headers: { Authorization: token },
-        }
+        comment
       );
 
       return ok(res.data);
@@ -67,16 +63,12 @@ export class NadeCommentApi {
 
   static async updateNadeComment(
     nadeId: string,
-    commentUpdate: NadeCommentUpdateDTO,
-    token: string
+    commentUpdate: NadeCommentUpdateDTO
   ): AppResult<NadeComment> {
     try {
-      const res = await axios.patch<NadeComment>(
+      const res = await AxiosApi.patch<NadeComment>(
         `${Config.API_URL}/nades/${nadeId}/comments/${commentUpdate.id}`,
-        commentUpdate,
-        {
-          headers: { Authorization: token },
-        }
+        commentUpdate
       );
       return ok(res.data);
     } catch (error) {
@@ -86,15 +78,11 @@ export class NadeCommentApi {
 
   static async deleteNadeComment(
     nadeId: string,
-    commentId: string,
-    token: string
+    commentId: string
   ): AppResult<boolean> {
     try {
-      await axios.delete(
-        `${Config.API_URL}/nades/${nadeId}/comments/${commentId}`,
-        {
-          headers: { Authorization: token },
-        }
+      await AxiosApi.delete(
+        `${Config.API_URL}/nades/${nadeId}/comments/${commentId}`
       );
       return ok(true);
     } catch (error) {

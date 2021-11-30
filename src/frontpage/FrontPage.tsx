@@ -12,13 +12,12 @@ import {
 import { NadeLight } from "../nade/models/Nade";
 import { CsgnList } from "../shared-components/list/CsgnList";
 import { NadeItem } from "../nade/components/NadeItem/NadeItem";
-import { useSelector } from "react-redux";
-import { favoritedNadeIdsSelector } from "../favorites/data/FavoriteSelectors";
 import { addFavoriteToNades } from "../map/data/hooks/helpers";
 import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
 import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { AdUnitAdSense } from "../shared-components/adunits/Adsense";
+import { useFavoritesV2 } from "../favorites/data/hooks/useFavoritesV2";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -115,7 +114,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
 });
 
 const useRecentNadesWithFavorites = (nades: NadeLight[]): NadeLight[] => {
-  const favoritedNades = useSelector(favoritedNadeIdsSelector);
+  const { favoritedNades } = useFavoritesV2();
 
   return useMemo(() => {
     let thenades = [...nades];

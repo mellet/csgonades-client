@@ -1,19 +1,19 @@
 import { useCallback } from "react";
 import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
-import { useAuthToken } from "../../core/authentication/useSession";
+import { useSession } from "../../core/authentication/useSession";
 
 export const useFinishProfile = () => {
-  const authToken = useAuthToken();
+  const { isAuthenticated } = useSession();
 
   const finishProfile = useCallback(
     async (steamId: string, updatedField: UserUpdateDTO) => {
-      if (!authToken) {
+      if (!isAuthenticated) {
         console.error("Missing token, cant update.");
         return;
       }
 
-      const result = await UserApi.updateUser(steamId, updatedField, authToken);
+      const result = await UserApi.updateUser(steamId, updatedField);
 
       if (result.isErr()) {
         return;
@@ -22,7 +22,7 @@ export const useFinishProfile = () => {
       // dispatch(setUserAction(result.value));
       // TODO: Mutate useSignedInUser
     },
-    [authToken]
+    [isAuthenticated]
   );
   return finishProfile;
 };
