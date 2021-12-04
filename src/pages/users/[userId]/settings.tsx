@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 
-const UserSettings: NextPage = (props) => {
+const UserSettings: NextPage = () => {
   return (
     <>
       <div>Hello</div>
