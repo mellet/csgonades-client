@@ -1,31 +1,24 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
-import { setUserAction } from "../../core/authentication/AuthSlice";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 export const useFinishProfile = () => {
-  const getToken = useGetOrUpdateToken();
-  const dispatch = useDispatch();
+  const { signedInUser, updatedSignedInUser } = useSignedInUser();
+  const displayToast = useDisplayToast();
+
   const finishProfile = useCallback(
     async (steamId: string, updatedField: UserUpdateDTO) => {
-      const token = await getToken();
-
-      if (!token) {
-        console.error("Missing token, cant update.");
-        return;
+      if (!signedInUser) {
+        return displayToast({
+          severity: "error",
+          message: "Seems like you are not signed in",
+        });
       }
 
-      const result = await UserApi.updateUser(steamId, updatedField, token);
-
-      if (result.isErr()) {
-        return;
-      }
-
-      dispatch(setUserAction(result.value));
+      await updatedSignedInUser(steamId, updatedField);
     },
-    [dispatch, getToken]
+    [signedInUser, displayToast, updatedSignedInUser]
   );
   return finishProfile;
 };

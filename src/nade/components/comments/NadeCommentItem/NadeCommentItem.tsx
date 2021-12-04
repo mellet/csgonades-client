@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { NadeComment } from "../../../data/NadeCommentApi";
 import { timeSince } from "../../../../utils/DateUtils";
-import { useSignedInUser } from "../../../../core/authentication/useSignedInUser";
 import Link from "next/link";
 import { RenderMarkdown } from "../../RenderMarkdown";
 import {
@@ -15,6 +14,7 @@ import {
 } from "./NadeCommentLayout";
 import { NadeCommentActionButtons } from "./NadeCommentActions";
 import { RoleLabel } from "../../../../users/components/RoleLabel";
+import { useSignedInUser } from "../../../../core/authentication/useSignedInUser";
 
 export type NadeCommentItemProps = {
   nadeComment: NadeComment;
@@ -69,17 +69,20 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
 };
 
 const useAllowEditComment = (nadeComment: NadeComment) => {
-  const user = useSignedInUser();
+  const { signedInUser } = useSignedInUser();
 
-  if (!user) {
+  if (!signedInUser) {
     return false;
   }
 
-  if (user.role === "administrator" || user.role === "moderator") {
+  if (
+    signedInUser.role === "administrator" ||
+    signedInUser.role === "moderator"
+  ) {
     return true;
   }
 
-  if (user.steamId === nadeComment.steamId) {
+  if (signedInUser.steamId === nadeComment.steamId) {
     return true;
   }
 

@@ -1,21 +1,23 @@
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { userSelector } from "../../core/authentication/AuthSelectors";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 export const useCanEditNade = (ownerSteamId: string): boolean => {
-  const user = useSelector(userSelector);
+  const { signedInUser } = useSignedInUser();
 
   const canEdit = useMemo(() => {
-    if (!user) {
+    if (!signedInUser) {
       return false;
-    } else if (user.role === "administrator" || user.role === "moderator") {
+    } else if (
+      signedInUser.role === "administrator" ||
+      signedInUser.role === "moderator"
+    ) {
       return true;
-    } else if (user.steamId === ownerSteamId) {
+    } else if (signedInUser.steamId === ownerSteamId) {
       return true;
     } else {
       return false;
     }
-  }, [user, ownerSteamId]);
+  }, [signedInUser, ownerSteamId]);
 
   return canEdit;
 };

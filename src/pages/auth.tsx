@@ -1,14 +1,17 @@
 import { NextPage } from "next";
-import { useOnSignIn } from "../core/authentication/useOnSignIn";
 import { SEO } from "../shared-components/SEO";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { CSGNIcon } from "../nade/components/NadeStatus/CSGNIcon";
 import { FaSpinner } from "react-icons/fa";
+import Router from "next/router";
+import { useEffect } from "react";
 
 const Auth: NextPage = () => {
   const { colors } = useTheme();
 
-  useOnSignIn();
+  useEffect(() => {
+    Router.push("/");
+  }, []);
 
   return (
     <>

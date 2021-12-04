@@ -9,7 +9,7 @@ import { useSignedInUser } from "../core/authentication/useSignedInUser";
 
 export const DashboardPage: FC = () => {
   const { colors } = useTheme();
-  const signedInUser = useSignedInUser();
+  const { signedInUser } = useSignedInUser();
   const [csgoMap, setCsGoMap] = useState<CsgoMap>("mirage");
 
   if (!signedInUser) {

@@ -1,36 +1,38 @@
 import { useCallback } from "react";
-import { useDispatch } from "react-redux";
 import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
-import { setUserAction } from "../../core/authentication/AuthSlice";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { useRouter } from "next/router";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 
 export const useUpdateUser = () => {
   const router = useRouter();
-  const getToken = useGetOrUpdateToken();
-  const dispatch = useDispatch();
+  const { refetch } = useSignedInUser();
+  const displayToast = useDisplayToast();
+  const { signedInUser } = useSignedInUser();
 
   const updateUser = useCallback(
     async (steamId: string, updatedFields: UserUpdateDTO) => {
-      const token = await getToken();
-
-      if (!steamId || !token) {
-        console.warn("Not viewing a user or missing token, cant update.");
-        return;
+      if (!steamId || !signedInUser) {
+        return displayToast({
+          message:
+            "Unexpected error, please contact us on Discord if you continue to see this error.",
+          severity: "error",
+          title: "Failed to update user",
+        });
       }
 
-      const result = await UserApi.updateUser(steamId, updatedFields, token);
+      const result = await UserApi.updateUser(steamId, updatedFields);
 
       if (result.isErr()) {
         router.reload();
         return;
       }
 
-      dispatch(setUserAction(result.value));
+      refetch();
       router.reload();
     },
-    [dispatch, getToken, router]
+    [router, refetch, signedInUser, displayToast]
   );
 
   return updateUser;

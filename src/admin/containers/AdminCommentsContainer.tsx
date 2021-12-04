@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { AdminCommentItem } from "../components/AdminCommentItem";
 import { AdminPageTitle } from "../components/AdminPageTitle";
-import { useRecentComments } from "../data/useRecentComments";
+import { useRecentComments } from "../data/hooks/useRecentComments";
 
 export const AdminCommentContainer: FC = () => {
   const { comments } = useRecentComments();

@@ -1,9 +1,9 @@
 import { FC, useState, memo } from "react";
-import { useGetOrUpdateToken } from "../../../core/authentication/useGetToken";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { Config, Dimensions } from "../../../constants/Constants";
+import { useSession } from "../../../core/authentication/useSession";
 
 type Props = {
   nadeId: string;
@@ -12,25 +12,21 @@ type Props = {
 
 export const CommentSubmit: FC<Props> = memo(
   ({ nadeId, onCommentSubmitted }) => {
+    const { isAuthenticated } = useSession();
     const { colors } = useTheme();
     const isSignedIn = useIsSignedIn();
-    const getToken = useGetOrUpdateToken();
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
     async function onSubmit() {
       setLoading(true);
-      const token = await getToken();
 
-      if (!token || !message.length) {
+      if (!isAuthenticated || !message.length) {
         return;
       }
 
-      const res = await NadeCommentApi.createNadeComment(
-        { nadeId, message },
-        token
-      );
+      const res = await NadeCommentApi.createNadeComment({ nadeId, message });
 
       if (res.isOk()) {
         onCommentSubmitted(res.value);

@@ -8,6 +8,7 @@ import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
 import { ThumbImage } from "./ThumbImage";
 import { getNadeLineUpImageThumb, getNadeMainImage } from "./NadeItem";
+import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
 
 interface Props {
   nade: NadeLight;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
+  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavorites();
   const [clientSide, setClientSide] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -108,6 +110,8 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
           technique={nade.technique}
           tickrate={nade.tickrate}
           viewCount={nade.viewCount}
+          addAsFavorite={addNadeAsFavorite}
+          removeAsFavorite={removeNadeAsFavorite}
         />
       </div>
       <style jsx>{`

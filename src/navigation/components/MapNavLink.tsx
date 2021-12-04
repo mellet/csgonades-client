@@ -10,6 +10,7 @@ type Props = {
 
 export const MapPageLink: FC<Props> = ({ map, children }) => {
   const { resetFilter } = useFilterReset();
+
   const { colors } = useTheme();
 
   function onMapLinkClick() {

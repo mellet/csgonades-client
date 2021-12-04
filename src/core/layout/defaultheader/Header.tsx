@@ -6,7 +6,10 @@ import { ThemeToggler } from "./components/ThemeToggler";
 import dynamic from "next/dynamic";
 
 const UserNav = dynamic(
-  () => import("./components/UserNav").then((m) => m.UserNav),
+  () =>
+    import(/* webpackChunkName: "usernav" */ "./components/UserNav").then(
+      (m) => m.UserNav
+    ),
   { ssr: false }
 );
 

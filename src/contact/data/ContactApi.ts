@@ -3,6 +3,7 @@ import { ok } from "neverthrow";
 import { Config } from "../../constants/Constants";
 import { AddConctactDTO, ContactDTO } from "../models/ContactDTOs";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
+import AxiosApi from "../../core/AxiosInstance";
 
 export class ContactApi {
   static async sendMessage(message: AddConctactDTO): AppResult<boolean> {
@@ -14,18 +15,11 @@ export class ContactApi {
     }
   }
 
-  static async fetchContactMessages(token: string): AppResult<ContactDTO[]> {
-    try {
-      const response = await axios.get<ContactDTO[]>(
-        `${Config.API_URL}/contact`,
-        {
-          headers: { Authorization: token },
-        }
-      );
+  static async fetchContactMessages(): Promise<ContactDTO[]> {
+    const response = await AxiosApi.get<ContactDTO[]>(
+      `${Config.API_URL}/contact`
+    );
 
-      return ok(response.data);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    return response.data;
   }
 }

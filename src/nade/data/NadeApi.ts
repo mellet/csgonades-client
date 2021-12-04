@@ -11,19 +11,14 @@ import {
 } from "../models/Nade";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Favorite } from "../../favorites/models/Favorite";
+import AxiosApi from "../../core/AxiosInstance";
 
 export class NadeApi {
-  static async favoriteNade(
-    nadeId: string,
-    token: string
-  ): AppResult<Favorite> {
+  static async favoriteNade(nadeId: string): AppResult<Favorite> {
     try {
-      const res = await axios.post<Favorite>(
+      const res = await AxiosApi.post<Favorite>(
         `${Config.API_URL}/nades/${nadeId}/favorite`,
-        undefined,
-        {
-          headers: { Authorization: token },
-        }
+        undefined
       );
       return ok(res.data);
     } catch (error) {
@@ -31,31 +26,13 @@ export class NadeApi {
     }
   }
 
-  static async getUncomplete(token: string): AppResult<NadeLight[]> {
+  static async unFavoriteNade(nadeId: string): Promise<boolean> {
     try {
-      const res = await axios.get<NadeLight[]>(
-        `${Config.API_URL}/admin/uncompleteNades`,
-        {
-          headers: { Authorization: token },
-        }
-      );
-      return ok(res.data);
-    } catch (error) {
-      return extractApiError(error);
-    }
-  }
-
-  static async unFavoriteNade(nadeId: string, token: string): Promise<boolean> {
-    try {
-      await axios.delete<Favorite>(
-        `${Config.API_URL}/nades/${nadeId}/favorite`,
-        {
-          headers: { Authorization: token },
-        }
+      await AxiosApi.delete<Favorite>(
+        `${Config.API_URL}/nades/${nadeId}/favorite`
       );
       return true;
     } catch (error) {
-      console.error(error);
       return false;
     }
   }
@@ -84,44 +61,27 @@ export class NadeApi {
     }
   }
 
-  static async getPending(token: string): AppResult<NadeLight[]> {
-    try {
-      const res = await axios.get<NadeLight[]>(
-        `${Config.API_URL}/nades/pending`,
-        {
-          headers: { Authorization: token },
-        }
-      );
-      const nades = res.data;
+  static async getPending(): Promise<NadeLight[]> {
+    const res = await AxiosApi.get<NadeLight[]>(
+      `${Config.API_URL}/nades/pending`
+    );
+    const nades = res.data;
 
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    return nades;
   }
 
-  static async getDeclined(token: string): AppResult<NadeLight[]> {
-    try {
-      const res = await axios.get<NadeLight[]>(
-        `${Config.API_URL}/nades/declined`,
-        {
-          headers: { Authorization: token },
-        }
-      );
-      const nades = res.data;
+  static async getDeclined(): Promise<NadeLight[]> {
+    const res = await AxiosApi.get<NadeLight[]>(
+      `${Config.API_URL}/nades/declined`
+    );
+    const nades = res.data;
 
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    return nades;
   }
 
-  static async getDeleted(token: string): Promise<NadeLight[]> {
-    const res = await axios.get<NadeLight[]>(
-      `${Config.API_URL}/nades/deleted`,
-      {
-        headers: { Authorization: token },
-      }
+  static async getDeleted(): Promise<NadeLight[]> {
+    const res = await AxiosApi.get<NadeLight[]>(
+      `${Config.API_URL}/nades/deleted`
     );
 
     return res.data;
@@ -149,6 +109,7 @@ export class NadeApi {
       const nades = res.data as Nade;
       return ok(nades);
     } catch (error) {
+      console.log("# Failed to fetch nade", error);
       return extractApiError(error);
     }
   }
@@ -172,11 +133,9 @@ export class NadeApi {
     }
   }
 
-  static async save(nadeBody: NadeCreateBody, token: string): AppResult<Nade> {
+  static async save(nadeBody: NadeCreateBody): AppResult<Nade> {
     try {
-      const res = await axios.post(`${Config.API_URL}/nades`, nadeBody, {
-        headers: { Authorization: token },
-      });
+      const res = await AxiosApi.post(`${Config.API_URL}/nades`, nadeBody);
       const nade = res.data as Nade;
       return ok(nade);
     } catch (error) {
@@ -186,16 +145,12 @@ export class NadeApi {
 
   static async update(
     nadeId: string,
-    updateFields: NadeUpdateBody,
-    token: string
+    updateFields: NadeUpdateBody
   ): AppResult<Nade> {
     try {
-      const res = await axios.put(
+      const res = await AxiosApi.put(
         `${Config.API_URL}/nades/${nadeId}`,
-        updateFields,
-        {
-          headers: { Authorization: token },
-        }
+        updateFields
       );
 
       const updatedNade = res.data as Nade;
@@ -206,11 +161,9 @@ export class NadeApi {
     }
   }
 
-  static async delete(nadeId: string, token: string): AppResult<boolean> {
+  static async delete(nadeId: string): AppResult<boolean> {
     try {
-      await axios.delete(`${Config.API_URL}/nades/${nadeId}`, {
-        headers: { Authorization: token },
-      });
+      await AxiosApi.delete(`${Config.API_URL}/nades/${nadeId}`);
 
       return ok(true);
     } catch (error) {

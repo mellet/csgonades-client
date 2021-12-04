@@ -3,7 +3,7 @@ import { useLocalStorage } from "usehooks-ts";
 import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
 
 export const useShouldFavoriteHint = () => {
-  const favorites = useFavorites();
+  const { favoritedNades } = useFavorites();
   const [shownFavoriteHint, setShowFavoriteHint] = useLocalStorage(
     "shownFavoriteHint",
     false
@@ -14,10 +14,10 @@ export const useShouldFavoriteHint = () => {
   }, [setShowFavoriteHint]);
 
   const shouldDisplayFavoriteButtonHint = useMemo(() => {
-    const favoriteCount = favorites.length;
+    const favoriteCount = favoritedNades.length;
 
     return favoriteCount > 0 && !shownFavoriteHint;
-  }, [favorites, shownFavoriteHint]);
+  }, [favoritedNades, shownFavoriteHint]);
 
   return { shouldDisplayFavoriteButtonHint, setShownFavoriteHint };
 };

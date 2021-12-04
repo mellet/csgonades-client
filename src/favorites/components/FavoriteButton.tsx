@@ -1,14 +1,12 @@
 import { FC, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
-import { useIsFavoriteInProgress } from "../data/hooks/useIsFavoriteInProgress";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
-import { useIsFavorited } from "../data/hooks/useIsFavorited";
 import { SquareButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
-import { useNadeFavoriteActions } from "../../nade/data/useNadeFavoriteActions";
+import { useFavorites, useIsNadeFavorited } from "../data/hooks/useFavorites";
 
 type Props = {
   nadeId: string;
@@ -16,42 +14,36 @@ type Props = {
 };
 
 export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
+  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavorites();
   const { colors } = useTheme();
   const ga = useGa();
   const [internalFavCount, setInternalFavoriteCount] = useState(favoriteCount);
   const { setSignInWarning } = useSignInWarning();
-  const isFavoriteInProgress = useIsFavoriteInProgress();
   const isSignedIn = useIsSignedIn();
-  const favorite = useIsFavorited(nadeId);
-  const [optimisticIsFavorites, setOptimisticIsFavorited] = useState(
-    !!favorite
-  );
-  const { addFavorite, unFavorite } = useNadeFavoriteActions();
+  const isFavorited = useIsNadeFavorited(nadeId);
+  const [optimisticIsFavorites, setOptimisticIsFavorited] =
+    useState(isFavorited);
 
   useEffect(() => {
-    if (favorite) {
+    if (isFavorited) {
       setOptimisticIsFavorited(true);
     } else {
       setOptimisticIsFavorited(false);
     }
-  }, [favorite]);
+  }, [isFavorited]);
 
   function onFavoriteClick() {
     if (!isSignedIn) {
       return setSignInWarning("favorite");
     }
 
-    if (isFavoriteInProgress) {
-      return;
-    }
-
-    if (favorite) {
+    if (isFavorited) {
       ga.event({
         category: "nade_page",
         action: "click_remove_favorite",
         label: nadeId,
       });
-      unFavorite(nadeId);
+      removeNadeAsFavorite(nadeId);
       setInternalFavoriteCount(internalFavCount - 1);
       setOptimisticIsFavorited(false);
     } else {
@@ -60,7 +52,7 @@ export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
         action: "click_add_favorite",
         label: nadeId,
       });
-      addFavorite(nadeId);
+      addNadeAsFavorite(nadeId);
       setInternalFavoriteCount(internalFavCount + 1);
       setOptimisticIsFavorited(true);
     }

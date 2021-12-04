@@ -7,9 +7,9 @@ import { ThemeToggler } from "../../../core/layout/defaultheader/components/Them
 
 const UserNav = dynamic(
   () =>
-    import("../../../core/layout/defaultheader/components/UserNav").then(
-      (m) => m.UserNav
-    ),
+    import(
+      /* webpackChunkName: "usernav" */ "../../../core/layout/defaultheader/components/UserNav"
+    ).then((m) => m.UserNav),
   { ssr: false }
 );
 

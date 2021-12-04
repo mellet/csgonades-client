@@ -11,13 +11,13 @@ import { GfycatData } from "../models/GfycatData";
 import { NadeType } from "../models/NadeType";
 import { Movement } from "../models/NadeMovement";
 import { Technique } from "../models/Technique";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { NadeApi } from "./NadeApi";
 import { useRouter } from "next/router";
 import { assertNever } from "../../utils/Common";
 import { Tickrate } from "../models/NadeTickrate";
 import { TeamSide } from "../models/TeamSide";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 interface EditNadeState extends Partial<NadeCreateBody> {
   loading: boolean;
@@ -290,7 +290,7 @@ const reducer: Reducer<EditNadeState, Actions> = (state, action) => {
 export const useEditNadeState = (nade: Nade) => {
   const router = useRouter();
   const displayToast = useDisplayToast();
-  const getToken = useGetOrUpdateToken();
+  const { signedInUser } = useSignedInUser();
   const [state, dispatch] = useReducer(reducer, {
     originalNade: nade,
     showImageAdder: false,
@@ -313,8 +313,7 @@ export const useEditNadeState = (nade: Nade) => {
       return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
-    const token = await getToken();
-    if (!token) {
+    if (!signedInUser) {
       displayToast({
         severity: "error",
         title: "Not Signed In",
@@ -323,11 +322,7 @@ export const useEditNadeState = (nade: Nade) => {
       return dispatch({ type: "EditNade/SetNotLoading" });
     }
 
-    const result = await NadeApi.update(
-      state.originalNade.id,
-      updateDto,
-      token
-    );
+    const result = await NadeApi.update(state.originalNade.id, updateDto);
 
     if (result.isErr()) {
       displayToast({
@@ -349,7 +344,7 @@ export const useEditNadeState = (nade: Nade) => {
       "/nades/[nade]",
       `/nades/${state.originalNade.slug || state.originalNade.id}`
     );
-  }, [state, getToken, displayToast, router]);
+  }, [state, displayToast, router, signedInUser]);
 
   const disableSubmit = useMemo(() => {
     const updateDto = createNadeUpdateBody(state);

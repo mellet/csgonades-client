@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { useAdminUsers } from "../data/hooks";
+import { useAdminUsers } from "../data/hooks/useAdminUsers";
 import { prettyDateTime } from "../../utils/DateUtils";
 
 const USER_LIMIT = 15;
@@ -10,12 +10,7 @@ export const AdminUserList: FC = () => {
   const { colors } = useTheme();
   const [page] = useState(1);
   const [sortByActivity, setSortByActivity] = useState(false);
-  const { users, fetchUsers } = useAdminUsers();
-
-  useEffect(() => {
-    fetchUsers(page, USER_LIMIT, sortByActivity);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, sortByActivity]);
+  const { users } = useAdminUsers(page, USER_LIMIT, sortByActivity);
 
   return (
     <>

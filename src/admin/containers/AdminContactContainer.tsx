@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { AdminContactMessage } from "../components/AdminContactMessage";
-import { useAdminContact } from "../data/hooks";
+import { useAdminContact } from "../data/hooks/useAdminContact";
 
 export const AdminContactContainer: FC = () => {
   const { contactMessages } = useAdminContact();

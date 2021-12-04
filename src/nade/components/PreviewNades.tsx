@@ -51,6 +51,12 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
           technique={technique}
           tickrate={tickrate}
           viewCount={10}
+          addAsFavorite={() => {
+            // no-op
+          }}
+          removeAsFavorite={() => {
+            // no-op
+          }}
         />
       </div>
       <style jsx>{`

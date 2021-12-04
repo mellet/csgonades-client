@@ -9,9 +9,9 @@ import dynamic from "next/dynamic";
 
 const NadeCopyPosition = dynamic(
   () =>
-    import("../components/NadeActions/NadeCopyPosition").then(
-      (mod) => mod.NadeCopyPosition
-    ),
+    import(
+      /* webpackChunkName: "nadecopyposition" */ "../components/NadeActions/NadeCopyPosition"
+    ).then((mod) => mod.NadeCopyPosition),
   { ssr: false }
 );
 

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useAdminReports } from "../data/hooks";
+import { useAdminReports } from "../data/hooks/useAdminReports";
 import { AdminReportItem } from "../components/AdminReportItem";
 import { AdminPageTitle } from "../components/AdminPageTitle";
 

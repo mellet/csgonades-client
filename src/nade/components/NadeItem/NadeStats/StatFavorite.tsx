@@ -3,53 +3,57 @@ import { FaStar } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useTheme } from "styled-components";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
+import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 import { useGa } from "../../../../utils/Analytics";
-import { useNadeFavoriteActions } from "../../../data/useNadeFavoriteActions";
 
 type Props = {
   nadeId: string;
   isFavorited?: boolean;
   favoriteCount: number;
+  addAsFavorite: (nadeId: string) => void;
+  removeAsFavorite: (nadeId: string) => void;
 };
 
 export const StatFavorite: FC<Props> = ({
   favoriteCount,
   isFavorited,
   nadeId,
+  addAsFavorite,
+  removeAsFavorite,
 }) => {
   const ga = useGa();
+
+  const { setSignInWarning } = useSignInWarning();
 
   const isSignedIn = useIsSignedIn();
   const [internalFavorited, setInternalFavorited] = useState(
     isFavorited || false
   );
   const [internalFavCount, setInternalFavCount] = useState(favoriteCount);
-  const { addFavorite, unFavorite } = useNadeFavoriteActions();
   const { colors } = useTheme();
 
   function onFavoriteClick() {
+    if (!isSignedIn) {
+      return setSignInWarning("favorite");
+    }
     if (internalFavorited) {
-      if (isSignedIn) {
-        setInternalFavorited(false);
-        setInternalFavCount(internalFavCount - 1);
-        ga.event({
-          category: "nade_item",
-          action: "click_remove_favorite",
-          label: nadeId,
-        });
-      }
-      unFavorite(nadeId);
+      removeAsFavorite(nadeId);
+      setInternalFavorited(false);
+      setInternalFavCount(internalFavCount - 1);
+      ga.event({
+        category: "nade_item",
+        action: "click_remove_favorite",
+        label: nadeId,
+      });
     } else {
-      if (isSignedIn) {
-        setInternalFavorited(true);
-        setInternalFavCount(internalFavCount + 1);
-        ga.event({
-          category: "nade_item",
-          action: "click_add_favorite",
-          label: nadeId,
-        });
-      }
-      addFavorite(nadeId);
+      addAsFavorite(nadeId);
+      setInternalFavorited(true);
+      setInternalFavCount(internalFavCount + 1);
+      ga.event({
+        category: "nade_item",
+        action: "click_add_favorite",
+        label: nadeId,
+      });
     }
   }
 

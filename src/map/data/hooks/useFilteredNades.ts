@@ -1,9 +1,7 @@
 import { useMemo } from "react";
-import { useSelector } from "react-redux";
 import { NadeLight } from "../../../nade/models/Nade";
 import { Tickrate } from "../../../nade/models/NadeTickrate";
 import { NadeType } from "../../../nade/models/NadeType";
-import { favoritedNadeIdsSelector } from "../../../favorites/data/FavoriteSelectors";
 import {
   addFavoriteToNades,
   filterByFavorite,
@@ -18,6 +16,7 @@ import { useFilterByFavorites } from "./useFilterByFavorites";
 import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
+import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
 
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]
@@ -27,7 +26,7 @@ export const useFilterServerSideNades = (
   const { byTickrate } = useFilterByTickrate();
   const { byType } = useFilterByType();
   const { byTeam } = useFilterByTeam();
-  const favoritedNades = useSelector(favoritedNadeIdsSelector);
+  const { favoritedNades } = useFavorites();
 
   return useMemo(() => {
     const actualNades = ssrNades;

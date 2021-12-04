@@ -1,30 +1,28 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
-import { useGetOrUpdateToken } from "../../core/authentication/useGetToken";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { AdminPageTitle } from "../components/AdminPageTitle";
+import useSWR from "swr";
+
+async function fetchDeclinedNades() {
+  const res = await NadeApi.getDeclined();
+  return res;
+}
+
+const useDeclinedNades = () => {
+  const { data: declinedNades } = useSWR(
+    ["/nades/declined"],
+    fetchDeclinedNades,
+    { errorRetryCount: 1, focusThrottleInterval: 1000 * 60 }
+  );
+
+  return declinedNades || [];
+};
 
 export const AdminDeclinedContainer: FC = () => {
-  const getToken = useGetOrUpdateToken();
-  const [declinedNades, setDeclinedNades] = useState<NadeLight[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const token = await getToken();
-
-      if (!token) {
-        return;
-      }
-
-      const res = await NadeApi.getDeclined(token);
-      if (res.isOk()) {
-        setDeclinedNades(res.value);
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const declinedNades = useDeclinedNades();
 
   function renderItem(item: NadeLight) {
     return <NadeItem nade={item} />;

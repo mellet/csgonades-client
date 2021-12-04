@@ -171,10 +171,10 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           grid-area: close;
           font-size: 24px;
           justify-self: end;
-          color: rgba(0, 0, 0, 0.6);
+          color: rgba(255, 255, 255, 1);
           cursor: pointer;
           transition: color, background 0.3s;
-          background: rgba(255, 255, 255, 0.9);
+          background: rgba(196, 12, 12, 0.7);
           border-radius: 50%;
           width: 36px;
           height: 36px;
@@ -186,7 +186,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
 
         .close-btn:hover {
           color: rgba(255, 255, 255, 1);
-          background: rgba(196, 12, 12, 0.75);
+          background: rgba(196, 12, 12, 1);
         }
 
         @keyframes fadeId {

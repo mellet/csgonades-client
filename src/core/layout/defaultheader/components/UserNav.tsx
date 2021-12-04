@@ -6,9 +6,9 @@ import { Dimensions } from "../../../../constants/Constants";
 import { useSignedInUser } from "../../../authentication/useSignedInUser";
 
 export const UserNav: FC = memo(() => {
-  const user = useSignedInUser();
+  const { signedInUser } = useSignedInUser();
 
-  if (!user) {
+  if (!signedInUser) {
     return <SignInnButton />;
   } else {
     return (
@@ -17,7 +17,7 @@ export const UserNav: FC = memo(() => {
           <div id="noti-ind">
             <NotificationIndicator />
           </div>
-          <UserDropdown user={user} />
+          <UserDropdown user={signedInUser} />
         </div>
         <style jsx>{`
           .user-nav {
