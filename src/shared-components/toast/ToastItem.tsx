@@ -2,13 +2,13 @@ import { FC, useEffect, useState, memo } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { AppToast, ToastSeverity } from "../../core/toasts/ToastModels";
-import { useToast } from "./useToast";
+import { useToast } from "./ToastContext";
 
 type Props = {
-  notification: AppToast;
+  toast: AppToast;
 };
 
-export const ToastItem: FC<Props> = memo(({ notification }) => {
+export const ToastItem: FC<Props> = memo(({ toast }) => {
   const { colors } = useTheme();
   const { removeToast } = useToast();
   const [fadingOut, setIsFadingOut] = useState(false);
@@ -16,11 +16,12 @@ export const ToastItem: FC<Props> = memo(({ notification }) => {
   useEffect(() => {
     const fadeOutTimer = setTimeout(() => {
       setIsFadingOut(true);
-    }, notification.durationSeconds * 1000 - 500);
+    }, toast.durationSeconds * 1000);
     return () => {
       clearTimeout(fadeOutTimer);
     };
-  }, [notification]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function colorFromSeverity(severity: ToastSeverity) {
     switch (severity) {
@@ -42,22 +43,22 @@ export const ToastItem: FC<Props> = memo(({ notification }) => {
   return (
     <>
       <div className={className}>
-        {notification.title && (
+        {toast.title && (
           <div className="toast-title">
-            {notification.title}
+            {toast.title}
             <span
               className="toast-close-btn"
-              onClick={() => removeToast(notification.id)}
+              onClick={() => removeToast(toast.id)}
             >
               <FaTimes />
             </span>
           </div>
         )}
-        <div className="noti-msg">{notification.message}</div>
+        <div className="noti-msg">{toast.message}</div>
       </div>
       <style jsx>{`
         .notification-item {
-          animation-duration: 1s;
+          animation-duration: 0.5s;
           animation-fill-mode: forwards;
           animation-name: fadeIn;
           background: ${colors.DP02};
@@ -67,19 +68,18 @@ export const ToastItem: FC<Props> = memo(({ notification }) => {
           display: flex;
           display: inline-block;
           flex-direction: column;
-          margin-bottom: 12px;
-          opacity: 0;
+          margin-top: 12px;
           opacity: 1;
           overflow: hidden;
           padding-bottom: 5px;
           position: relative;
-          transition: opacity 0.15s;
+          transition: all 0.3s;
           width: 250px;
         }
 
         .toast-title {
           background: ${colors.DP01};
-          color: ${colorFromSeverity(notification.severity)};
+          color: ${colorFromSeverity(toast.severity)};
           display: flex;
           font-weight: 400;
           justify-content: space-between;
@@ -103,7 +103,6 @@ export const ToastItem: FC<Props> = memo(({ notification }) => {
 
         .fade-out {
           opacity: 0;
-          transform: scale(1, 0);
         }
 
         .noti-msg p {

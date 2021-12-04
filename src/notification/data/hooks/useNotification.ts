@@ -7,7 +7,6 @@ async function fetchNotifications() {
   const result = await NotificationApi.getNotifications();
 
   if (result.isOk()) {
-    console.log("#Fetching notification", result.value.length);
     return result.value;
   } else {
     throw Error(result.error.message);

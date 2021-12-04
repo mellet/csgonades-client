@@ -20,7 +20,6 @@ export class NadeApi {
         `${Config.API_URL}/nades/${nadeId}/favorite`,
         undefined
       );
-      console.log("# Success adding favorite");
       return ok(res.data);
     } catch (error) {
       return extractApiError(error);
@@ -32,10 +31,8 @@ export class NadeApi {
       await AxiosApi.delete<Favorite>(
         `${Config.API_URL}/nades/${nadeId}/favorite`
       );
-      console.log("# Success remove favorite");
       return true;
     } catch (error) {
-      console.error(error);
       return false;
     }
   }
@@ -73,17 +70,13 @@ export class NadeApi {
     return nades;
   }
 
-  static async getDeclined(): AppResult<NadeLight[]> {
-    try {
-      const res = await AxiosApi.get<NadeLight[]>(
-        `${Config.API_URL}/nades/declined`
-      );
-      const nades = res.data;
+  static async getDeclined(): Promise<NadeLight[]> {
+    const res = await AxiosApi.get<NadeLight[]>(
+      `${Config.API_URL}/nades/declined`
+    );
+    const nades = res.data;
 
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    return nades;
   }
 
   static async getDeleted(): Promise<NadeLight[]> {
@@ -109,13 +102,14 @@ export class NadeApi {
 
   static async byId(id: string): AppResult<Nade> {
     try {
-      const res = await AxiosApi.get(`${Config.API_URL}/nades/${id}`, {
+      const res = await axios.get(`${Config.API_URL}/nades/${id}`, {
         withCredentials: true,
       });
 
       const nades = res.data as Nade;
       return ok(nades);
     } catch (error) {
+      console.log("# Failed to fetch nade", error);
       return extractApiError(error);
     }
   }

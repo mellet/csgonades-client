@@ -11,9 +11,9 @@ import { SortByBar } from "./SuggestedNades/SortByBar";
 import useSortedNades from "./SuggestedNades/useSortedNades";
 
 const NadeItemMobile = dynamic(() =>
-  import("../../nade/components/NadeItem/NadeItemMobile").then(
-    (mod) => mod.NadeItemMobile
-  )
+  import(
+    /* webpackChunkName: "nadeitemmobile" */ "../../nade/components/NadeItem/NadeItemMobile"
+  ).then((mod) => mod.NadeItemMobile)
 );
 
 type Props = {

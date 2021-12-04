@@ -13,17 +13,13 @@ export const sharedFetchConfig: SWRConfiguration = {
 
 export const useSession = () => {
   async function sessionFetcher() {
-    console.log("# useSession | Setting session cookie");
     const result = await AuthApi.setSessionCookie();
-    console.log("# useSession | Is authed", result.authenticated);
     return result.authenticated;
   }
 
-  const { data, mutate } = useSWR<boolean>(
-    "session",
-    sessionFetcher,
-    sharedFetchConfig
-  );
+  const { data, mutate } = useSWR<boolean>("session", sessionFetcher, {
+    dedupingInterval: 60 * 1000,
+  });
 
   const clearSession = useCallback(() => {
     mutate(false, false);

@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useTheme } from "styled-components";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
+import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 import { useGa } from "../../../../utils/Analytics";
 
 type Props = {
@@ -22,6 +23,8 @@ export const StatFavorite: FC<Props> = ({
 }) => {
   const ga = useGa();
 
+  const { setSignInWarning } = useSignInWarning();
+
   const isSignedIn = useIsSignedIn();
   const [internalFavorited, setInternalFavorited] = useState(
     isFavorited || false
@@ -31,8 +34,7 @@ export const StatFavorite: FC<Props> = ({
 
   function onFavoriteClick() {
     if (!isSignedIn) {
-      console.error("# TODO: Show sign in warning");
-      return;
+      return setSignInWarning("favorite");
     }
     if (internalFavorited) {
       removeAsFavorite(nadeId);

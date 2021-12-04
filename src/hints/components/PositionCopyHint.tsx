@@ -11,8 +11,6 @@ export const PositionCopyHint: FC = ({ children }) => {
     useShouldShowPositionCopyHint();
   const { event } = useGa();
 
-  console.log({ shownPositionCopyHint });
-
   if (isMobile || shownPositionCopyHint) {
     return <>{children}</>;
   }

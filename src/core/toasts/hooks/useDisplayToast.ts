@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { useCallback } from "react";
-import { useToast } from "../../../shared-components/toast/useToast";
+import { useToast } from "../../../shared-components/toast/ToastContext";
 import { capitalize } from "../../../utils/Common";
 import { AppToast, AppToastCreate } from "../ToastModels";
 
@@ -11,7 +11,7 @@ export const useDisplayToast = () => {
     async (notification: AppToastCreate) => {
       const toast = createToast(notification);
       addToast(toast);
-      await notificationDeleteDelay(notification.durationSeconds);
+      await notificationDeleteDelay(toast.durationSeconds);
       removeToast(toast.id);
     },
     [addToast, removeToast]
@@ -20,8 +20,8 @@ export const useDisplayToast = () => {
   return displayToast;
 };
 
-const notificationDeleteDelay = (seconds?: number) => {
-  const time = seconds ? seconds * 1000 : 8 * 1000;
+const notificationDeleteDelay = (seconds: number) => {
+  const time = (seconds + 1) * 1000;
   return new Promise<void>((resolve) => setTimeout(() => resolve(), time));
 };
 
@@ -30,7 +30,7 @@ function createToast(createToast: AppToastCreate): AppToast {
   const noti: AppToast = {
     ...createToast,
     id,
-    durationSeconds: createToast.durationSeconds || 8,
+    durationSeconds: createToast.durationSeconds || 10,
     title: createToast.title || capitalize(createToast.severity),
   };
   return noti;

@@ -5,11 +5,15 @@ import { AuthApi } from "./authentication/AuthApi";
 const AxiosApi = axios.create();
 
 const refreshLogic = async (failedRequest: any) => {
-  console.error("## Running refresh logic");
-  const accessToken = await AuthApi.refreshToken();
-  localStorage.setItem("accessToken", accessToken);
-  failedRequest.response.config.headers["Authorization"] = accessToken;
-  return;
+  try {
+  } catch (error) {}
+  const result = await AuthApi.refreshToken();
+  if (result.authenticated) {
+    localStorage.setItem("accessToken", result.accessToken);
+    failedRequest.response.config.headers["Authorization"] = result.accessToken;
+  } else {
+    await AuthApi.signOut();
+  }
 };
 
 // Instantiate the interceptor

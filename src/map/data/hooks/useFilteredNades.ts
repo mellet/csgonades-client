@@ -16,7 +16,7 @@ import { useFilterByFavorites } from "./useFilterByFavorites";
 import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
-import { useFavoritesV2 } from "../../../favorites/data/hooks/useFavoritesV2";
+import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
 
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]
@@ -26,7 +26,7 @@ export const useFilterServerSideNades = (
   const { byTickrate } = useFilterByTickrate();
   const { byType } = useFilterByType();
   const { byTeam } = useFilterByTeam();
-  const { favoritedNades } = useFavoritesV2();
+  const { favoritedNades } = useFavorites();
 
   return useMemo(() => {
     const actualNades = ssrNades;

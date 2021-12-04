@@ -20,7 +20,7 @@ export class NotificationApi {
     try {
       await AxiosApi.patch(`${Config.API_URL}/notifications/viewed`, {});
     } catch (error) {
-      console.error(error);
+      // TODO
     }
   }
 }

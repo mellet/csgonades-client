@@ -7,16 +7,16 @@ import { NadeItemTitle } from "./NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
 import {
-  useFavoritesV2,
+  useFavorites,
   useIsNadeFavorited,
-} from "../../../favorites/data/hooks/useFavoritesV2";
+} from "../../../favorites/data/hooks/useFavorites";
 
 interface Props {
   nade: NadeLight;
 }
 
 export const NadeItem: FC<Props> = memo(({ nade }) => {
-  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavoritesV2();
+  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavorites();
   const isFavorited = useIsNadeFavorited(nade.id);
   const { colors } = useTheme();
 

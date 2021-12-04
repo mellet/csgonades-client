@@ -3,7 +3,10 @@ import { FC } from "react";
 import { ContListProps } from "./topContributorsProps";
 
 const TopContributors = dynamic(
-  () => import("./TopContributor").then((mod) => mod.TopContributorList),
+  () =>
+    import(/* webpackChunkName: "topcontributors" */ "./TopContributor").then(
+      (mod) => mod.TopContributorList
+    ),
   { ssr: false }
 );
 

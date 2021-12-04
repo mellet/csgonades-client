@@ -7,12 +7,10 @@ import { FavoriteApi } from "../FavoriteApi";
 async function fetchFavorites() {
   const favorites = await FavoriteApi.getUserFavoritesV2();
 
-  console.log("# Fetched favorited nades", favorites.length);
-
   return favorites.map((favorite) => favorite.nadeId);
 }
 
-export const useFavoritesV2 = () => {
+export const useFavorites = () => {
   const { isAuthenticated } = useSession();
   const { data, mutate } = useSWR(
     isAuthenticated ? ["/favorites"] : null,
@@ -33,7 +31,6 @@ export const useFavoritesV2 = () => {
       if (!isAuthenticated) {
         return;
       }
-      console.log("# Adding favorite");
       mutate(
         (prevFavoritedNades) =>
           prevFavoritedNades ? [...prevFavoritedNades, nadeId] : [nadeId],
@@ -75,6 +72,6 @@ export const useFavoritesV2 = () => {
 };
 
 export const useIsNadeFavorited = (nadeId: string) => {
-  const { favoritedNades } = useFavoritesV2();
+  const { favoritedNades } = useFavorites();
   return favoritedNades.includes(nadeId);
 };

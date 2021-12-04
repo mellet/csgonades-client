@@ -25,8 +25,6 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
 
   const nadeCounts = useNadeCount(allNades);
 
-  console.log("# Num nades", allNades.length);
-
   useEffect(() => {
     if (isMobileOnly) {
       setMapView("list");
@@ -41,7 +39,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
     suggestedNades,
     dismissSuggested,
     hasSuggestedNades,
-  } = useOnNadeClusterClick();
+  } = useOnNadeClusterClick(map);
 
   const displayMapOverview: boolean = mapView === "overview" && !isServer;
 

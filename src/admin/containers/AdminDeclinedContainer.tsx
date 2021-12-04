@@ -8,12 +8,7 @@ import useSWR from "swr";
 
 async function fetchDeclinedNades() {
   const res = await NadeApi.getDeclined();
-  if (res.isOk()) {
-    return res.value;
-  } else {
-    console.error("Failed to get declined nades");
-    return [];
-  }
+  return res;
 }
 
 const useDeclinedNades = () => {

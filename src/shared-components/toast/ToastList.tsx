@@ -2,7 +2,7 @@ import { FC, memo, useEffect } from "react";
 import { Dimensions, LayerPosition } from "../../constants/Constants";
 import { ToastItem } from "./ToastItem";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
-import { useToast } from "./useToast";
+import { useToast } from "./ToastContext";
 
 const DEBUG = false;
 
@@ -14,19 +14,13 @@ export const ToastList: FC = memo(() => {
     if (DEBUG) {
       setTimeout(() => {
         displayToast({
-          severity: "error",
-          message: "This is a error toast.",
-        });
-      }, 1000);
-      setTimeout(() => {
-        displayToast({
           severity: "success",
           message:
             "Your profile is ready! Btw, come join the rest of us on Discord 😎 You can find the link to join on the bottom of the website.",
           title: "All set!",
-          durationSeconds: 20,
+          durationSeconds: 10,
         });
-      }, 2000);
+      }, 3000);
       displayToast({
         severity: "info",
         message: "This is a info toast.",
@@ -39,7 +33,7 @@ export const ToastList: FC = memo(() => {
     <>
       <div className="notification-container">
         {toasts.map((toast) => (
-          <ToastItem key={toast.id} notification={toast} />
+          <ToastItem key={toast.id} toast={toast} />
         ))}
       </div>
       <style jsx>{`
@@ -50,7 +44,7 @@ export const ToastList: FC = memo(() => {
           flex-direction: column;
           position: fixed;
           right: ${Dimensions.GUTTER_SIZE}px;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          bottom: ${Dimensions.GUTTER_SIZE}px;
           z-index: ${LayerPosition.MODAL};
         }
       `}</style>

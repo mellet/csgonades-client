@@ -9,8 +9,12 @@ type SessionResponse = {
   authenticated: boolean;
 };
 
+type RefreshTokenResponse =
+  | { authenticated: true; accessToken: string }
+  | { authenticated: false };
+
 export class AuthApi {
-  static async refreshToken(cookie?: string): Promise<string> {
+  static async refreshToken(cookie?: string): Promise<RefreshTokenResponse> {
     let config: AxiosRequestConfig = {
       withCredentials: true,
     };
@@ -29,7 +33,16 @@ export class AuthApi {
       config
     );
 
-    return res.data.accessToken;
+    if (res.status === 200) {
+      return {
+        authenticated: true,
+        accessToken: res.data.accessToken,
+      };
+    } else {
+      return {
+        authenticated: false,
+      };
+    }
   }
 
   static async setSessionCookie(): Promise<SessionResponse> {
@@ -52,7 +65,7 @@ export class AuthApi {
         }
       );
     } catch (error) {
-      console.error(error);
+      console.error("Failed to sign out", error);
     }
   }
 }

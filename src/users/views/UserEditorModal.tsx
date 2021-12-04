@@ -9,7 +9,6 @@ import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
 import { useUpdateUser } from "../data/useUpdateUser";
 import { Dimensions } from "../../constants/Constants";
-import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 type Props = {
   user: User;
@@ -19,8 +18,6 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
   const updateUser = useUpdateUser();
   const allowEdit = useIsAllowedUserEdit(user);
   const [isEditing, setIsEditing] = useState(false);
-  const { signedInUser } = useSignedInUser();
-  const [loading, setLoading] = useState(false);
   const [nickname, setNickname] = useState(user.nickname);
   const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState(user.bio);
@@ -30,14 +27,7 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
   }
 
   function onSave() {
-    if (!signedInUser) {
-      console.warn("No signed in user");
-      return;
-    }
-
-    setLoading(true);
-
-    updateUser(signedInUser.steamId, {
+    updateUser(user.steamId, {
       nickname,
       email,
       bio,
@@ -61,13 +51,12 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
           <CsgnInput label="E-mail" onChange={setEmail} initialValue={email} />
           <br />
           <CsgnTextArea label="Bio" value={bio} onChange={setBio} />
-          <CsgnSaveButton disabled={loading} onClick={onSave} />
+          <CsgnSaveButton onClick={onSave} />
         </div>
       </CSGNModal>
       <ButtonWithIcon
         icon={<FaEdit />}
         value="Edit user profile"
-        backgroundColor="#3252a8"
         onClick={() => setIsEditing(true)}
       />
       <style jsx>{`

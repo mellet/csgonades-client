@@ -3,18 +3,23 @@ import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
 import { useRouter } from "next/router";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
-import { useSession } from "../../core/authentication/useSession";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 
 export const useUpdateUser = () => {
   const router = useRouter();
-  const { isAuthenticated } = useSession();
   const { refetch } = useSignedInUser();
+  const displayToast = useDisplayToast();
+  const { signedInUser } = useSignedInUser();
 
   const updateUser = useCallback(
     async (steamId: string, updatedFields: UserUpdateDTO) => {
-      if (!steamId || !isAuthenticated) {
-        console.warn("Not viewing a user or missing token, cant update.");
-        return;
+      if (!steamId || !signedInUser) {
+        return displayToast({
+          message:
+            "Unexpected error, please contact us on Discord if you continue to see this error.",
+          severity: "error",
+          title: "Failed to update user",
+        });
       }
 
       const result = await UserApi.updateUser(steamId, updatedFields);
@@ -27,7 +32,7 @@ export const useUpdateUser = () => {
       refetch();
       router.reload();
     },
-    [router, refetch, isAuthenticated]
+    [router, refetch, signedInUser, displayToast]
   );
 
   return updateUser;

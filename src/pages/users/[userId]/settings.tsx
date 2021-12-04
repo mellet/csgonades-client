@@ -1,7 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 
 const UserSettings: NextPage = (props) => {
-  console.log(props);
   return (
     <>
       <div>Hello</div>

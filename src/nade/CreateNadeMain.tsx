@@ -67,7 +67,6 @@ export const CreateNadeMain: FC = ({}) => {
     const res = await NadeApi.save(body);
 
     if (res.isErr()) {
-      console.error(res.error);
       dispatch({ type: "CreateNade/SetNotLoading" });
       return showToast({
         severity: "error",

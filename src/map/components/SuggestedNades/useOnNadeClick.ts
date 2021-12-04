@@ -2,12 +2,13 @@ import { useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
 import { useLocalStorage } from "usehooks-ts";
+import { CsgoMap } from "../../models/CsGoMap";
 
-export const useOnNadeClusterClick = () => {
+export const useOnNadeClusterClick = (map: CsgoMap) => {
   const { event } = useGa();
   const [suggestedNades, setSuggestedNades] = useLocalStorage<
     NadeLight[] | null
-  >("suggestedNades", null);
+  >(`${map}/suggestedNades`, null);
 
   function dismissSuggested() {
     setSuggestedNades(null);

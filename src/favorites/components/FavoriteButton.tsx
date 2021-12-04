@@ -6,10 +6,7 @@ import { SquareButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
-import {
-  useFavoritesV2,
-  useIsNadeFavorited,
-} from "../data/hooks/useFavoritesV2";
+import { useFavorites, useIsNadeFavorited } from "../data/hooks/useFavorites";
 
 type Props = {
   nadeId: string;
@@ -17,31 +14,30 @@ type Props = {
 };
 
 export const FavoriteButton: FC<Props> = ({ nadeId, favoriteCount }) => {
-  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavoritesV2();
+  const { addNadeAsFavorite, removeNadeAsFavorite } = useFavorites();
   const { colors } = useTheme();
   const ga = useGa();
   const [internalFavCount, setInternalFavoriteCount] = useState(favoriteCount);
   const { setSignInWarning } = useSignInWarning();
   const isSignedIn = useIsSignedIn();
-  const favorite = useIsNadeFavorited(nadeId);
-  const [optimisticIsFavorites, setOptimisticIsFavorited] = useState(
-    !!favorite
-  );
+  const isFavorited = useIsNadeFavorited(nadeId);
+  const [optimisticIsFavorites, setOptimisticIsFavorited] =
+    useState(isFavorited);
 
   useEffect(() => {
-    if (favorite) {
+    if (isFavorited) {
       setOptimisticIsFavorited(true);
     } else {
       setOptimisticIsFavorited(false);
     }
-  }, [favorite]);
+  }, [isFavorited]);
 
   function onFavoriteClick() {
     if (!isSignedIn) {
       return setSignInWarning("favorite");
     }
 
-    if (favorite) {
+    if (isFavorited) {
       ga.event({
         category: "nade_page",
         action: "click_remove_favorite",

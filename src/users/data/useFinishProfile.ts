@@ -1,28 +1,24 @@
 import { useCallback } from "react";
-import { UserApi } from "./UserApi";
 import { UserUpdateDTO } from "../models/User";
-import { useSession } from "../../core/authentication/useSession";
+import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 export const useFinishProfile = () => {
-  const { isAuthenticated } = useSession();
+  const { signedInUser, updatedSignedInUser } = useSignedInUser();
+  const displayToast = useDisplayToast();
 
   const finishProfile = useCallback(
     async (steamId: string, updatedField: UserUpdateDTO) => {
-      if (!isAuthenticated) {
-        console.error("Missing token, cant update.");
-        return;
+      if (!signedInUser) {
+        return displayToast({
+          severity: "error",
+          message: "Seems like you are not signed in",
+        });
       }
 
-      const result = await UserApi.updateUser(steamId, updatedField);
-
-      if (result.isErr()) {
-        return;
-      }
-
-      // dispatch(setUserAction(result.value));
-      // TODO: Mutate useSignedInUser
+      await updatedSignedInUser(steamId, updatedField);
     },
-    [isAuthenticated]
+    [signedInUser, displayToast, updatedSignedInUser]
   );
   return finishProfile;
 };
