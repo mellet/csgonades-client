@@ -52,7 +52,9 @@ const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
       </div>
       <style jsx>{`
         .ph-inlist {
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           order: ${position};
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};

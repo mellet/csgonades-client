@@ -8,8 +8,8 @@ type Props = {
 
 type AdsenseFixedConfig = {
   slot: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 };
 
 export const AdsenseCustom: FC<Props> = memo(({ size }) => {
@@ -39,7 +39,6 @@ export const AdsenseCustom: FC<Props> = memo(({ size }) => {
       return {
         slot: "2264364431",
         height: 230,
-        width: 250,
       };
     }
   }, [size]);
