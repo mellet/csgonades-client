@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { Dimensions } from "../../constants/Constants";
 import { ListAds } from "./ListAds";
-import { isMobile } from "react-device-detect";
+import { useIsAdmin } from "../../core/authentication/useIsAdmin";
 
 type Props<T> = {
   data: T[];
@@ -27,11 +27,12 @@ function ListBase<T>(props: Props<T>): JSX.Element {
 
 const List: FC<Props<any>> = memo(
   ({ data, keyExtractor, renderItem, enableAds = false, emptyMessage }) => {
+    const isAdmin = useIsAdmin();
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
 
-    const enableInListAds = enableAds && isMobile;
+    const enableInListAds = enableAds && isAdmin;
 
     return (
       <>

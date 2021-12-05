@@ -1,35 +1,26 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { EzoicPlaceholder } from "../adunits/EzoicPlaceholder";
+import { useTheme } from "../../core/settings/SettingsHooks";
+import { AdUnitAdSense } from "../adunits/Adsense";
 
 type Props = {
   numNades: number;
 };
 
-export const ListAds: FC<Props> = ({ numNades }) => {
-  const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(false);
+export const ListAds: FC<Props> = () => {
+  const [isAdBlockEnabled, setIsAdBlockEnabled] = useState(true);
 
   useEffect(() => {
-    if (!window.ezstandalone) {
-      setIsAdBlockEnabled(true);
+    // @ts-ignore
+    if (window.adsbygoogle && window.adsbygoogle.loaded) {
+      console.log("> Adblock is disabled");
+      setIsAdBlockEnabled(false);
     }
   }, []);
 
-  const adIds = [
-    "173",
-    "176",
-    "179",
-    "180",
-    "181",
-    "183",
-    "184",
-    "185",
-    "186",
-    "187",
-  ];
-
+  /**
   const numberOfAds = useMemo(() => {
-    const nadeCalc = Math.floor(numNades / 13);
+    const nadeCalc = Math.floor(numNades / 13) || 1;
 
     if (nadeCalc < 5) {
       return nadeCalc;
@@ -37,50 +28,40 @@ export const ListAds: FC<Props> = ({ numNades }) => {
 
     return 5;
   }, [numNades]);
+   */
 
-  const ads = new Array(numberOfAds).fill(0);
+  // const ads = new Array(numberOfAds).fill(0);
 
   if (isAdBlockEnabled) {
     return null;
   }
 
-  return (
-    <>
-      {ads.map((_, i) => {
-        const adId = adIds[i] || null;
-        if (adId) {
-          return <ListAdUnit key={`ad-${i}`} adId={adId} position={i} />;
-        } else {
-          return null;
-        }
-      })}
-    </>
-  );
+  return <ListAdUnit key={`ad-${0}`} position={0} />;
 };
 
 type AdUnitProps = {
-  adId: string;
   position: number;
 };
 
-const ListAdUnit: FC<AdUnitProps> = ({ adId, position }) => {
-  const order = useMemo(() => {
-    return 5 + 5 * position;
-  }, [position]);
-
+const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
+  const { colors } = useTheme();
   return (
     <>
       <div className="ph-inlist">
-        <EzoicPlaceholder id={adId} />
+        <AdUnitAdSense adFormat="in-nade-list" />
       </div>
       <style jsx>{`
         .ph-inlist {
           align-items: center;
           display: flex;
-          grid-column: 2;
-          grid-row: ${order} / ${order + 1};
+          order: ${position};
           justify-content: center;
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          background: ${colors.DP02};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.BORDER};
+          height: 100%;
+          overflow: hidden;
         }
 
         @media only screen and (max-width: 1020px) {

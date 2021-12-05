@@ -86,7 +86,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
                     data={sortedNades}
                     renderItem={renderItem}
                     keyExtractor={keyExtractor}
-                    enableAds={false}
+                    enableAds={true}
                   />
                 </div>
                 {open && (

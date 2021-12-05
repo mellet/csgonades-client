@@ -7,13 +7,26 @@ type AdFormat =
   | "square"
   | "vertical"
   | "fixed728x90"
-  | "in-blog";
+  | "in-blog"
+  | "in-nade-list";
 
 type Props = {
   adFormat: AdFormat;
 };
 
 export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
+  if (adFormat === "in-nade-list") {
+    return (
+      <AdSense
+        client="ca-pub-2255854420599519"
+        slot="1542966243"
+        style={{ display: "block" }}
+        format="auto"
+        responsive="true"
+      />
+    );
+  }
+
   if (adFormat === "in-blog") {
     return (
       <AdSense
