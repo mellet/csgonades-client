@@ -49,7 +49,7 @@ export const AdsenseCustom: FC<Props> = memo(({ size }) => {
         className="adsbygoogle"
         style={{
           display: "inline-block",
-          width: config.width,
+          width: config.width || "100%",
           height: config.height,
         }}
         data-ad-client="ca-pub-2255854420599519"
