@@ -104,8 +104,7 @@ export const LayoutBuilder: FC<Props> = memo(
 
           main {
             grid-area: main;
-            max-width: 100vw;
-            overflow: hidden;
+            max-width: 100vw !important;
           }
 
           aside#sidebar {
