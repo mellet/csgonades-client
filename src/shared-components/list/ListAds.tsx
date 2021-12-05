@@ -36,7 +36,7 @@ export const ListAds: FC<Props> = () => {
     return null;
   }
 
-  return <ListAdUnit key={`ad-${0}`} position={0} />;
+  return <ListAdUnit key={`ad-${2}`} position={2} />;
 };
 
 type AdUnitProps = {
@@ -59,7 +59,9 @@ const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
           border: 1px solid ${colors.BORDER};
           height: 100%;
           width: 100%;
+          max-height: 230px !important;
           overflow: hidden;
+          align-self: center;
         }
       `}</style>
     </>
