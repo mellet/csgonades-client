@@ -89,7 +89,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
                     enableAds={true}
                   />
                 </div>
-                {open && (
+                {false && (
                   <div className="a">
                     <AdUnitAdSense adFormat="fixed728x90" />
                   </div>
