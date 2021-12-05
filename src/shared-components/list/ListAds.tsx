@@ -59,7 +59,6 @@ const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
           border: 1px solid ${colors.BORDER};
           height: 100%;
           width: 100%;
-          max-height: 230px !important;
           overflow: hidden;
           align-self: center;
         }

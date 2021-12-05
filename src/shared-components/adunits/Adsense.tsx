@@ -1,5 +1,6 @@
 import { FC } from "react";
 import AdSense from "react-ssr-adsense";
+import { AdsenseCustom } from "./AdsenseCustom";
 
 type AdFormat =
   | "in-article"
@@ -18,23 +19,11 @@ type Props = {
 
 export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
   if (adFormat === "fixed300") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="6691131972"
-        style={{ display: "inline-block", width: 300, height: 300 }}
-      />
-    );
+    return <AdsenseCustom size="300" />;
   }
 
   if (adFormat === "fixed250") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="2264364431"
-        style={{ display: "inline-block", height: 230, width: 250 }}
-      />
-    );
+    return <AdsenseCustom size="250" />;
   }
 
   if (adFormat === "in-nade-list") {
