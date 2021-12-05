@@ -76,6 +76,8 @@ export const BlogPostArticle: FC<Props> = memo(({ children, data }) => {
           grid-template-areas: "title-img" "article";
           grid-template-columns: 1fr;
           grid-template-rows: min-content min-content min-content min-content;
+          max-width: 100vw;
+          overflow: hidden;
         }
 
         #title-image {

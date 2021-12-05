@@ -78,7 +78,8 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
       <style jsx>{`
         #front-page {
           grid-area: main;
-          max-width: 100%;
+          max-width: 100vw;
+          overflow: hidden;
         }
 
         .ph {
