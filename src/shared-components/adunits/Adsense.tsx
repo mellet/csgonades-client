@@ -9,13 +9,24 @@ type AdFormat =
   | "fixed728x90"
   | "in-blog"
   | "in-nade-list"
-  | "fixed250";
+  | "fixed250"
+  | "fixed300";
 
 type Props = {
   adFormat: AdFormat;
 };
 
 export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
+  if (adFormat === "fixed300") {
+    return (
+      <AdSense
+        client="ca-pub-2255854420599519"
+        slot="6691131972"
+        style={{ display: "inline-block", width: 300, height: 300 }}
+      />
+    );
+  }
+
   if (adFormat === "fixed250") {
     return (
       <AdSense
