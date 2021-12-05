@@ -6,13 +6,27 @@ type AdFormat =
   | "horizontal"
   | "square"
   | "vertical"
-  | "fixed728x90";
+  | "fixed728x90"
+  | "in-blog";
 
 type Props = {
   adFormat: AdFormat;
 };
 
 export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
+  if (adFormat === "in-blog") {
+    return (
+      <AdSense
+        client="ca-pub-2255854420599519"
+        slot="1182382908"
+        style={{ display: "block" }}
+        format="fluid"
+        layoutKey="-5j+bp-1o-3z+u7"
+        responsive="true"
+      />
+    );
+  }
+
   if (adFormat === "horizontal") {
     return (
       <AdSense

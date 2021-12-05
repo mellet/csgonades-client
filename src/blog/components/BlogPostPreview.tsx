@@ -7,16 +7,17 @@ import Image from "next/image";
 
 type Props = {
   blogPost: BlogPost;
+  index?: number;
 };
 
-export const BlogPostPreview: FC<Props> = ({ blogPost }) => {
+export const BlogPostPreview: FC<Props> = ({ blogPost, index }) => {
   const { colors } = useTheme();
 
   const { thumbnailUrl, intro, title } = blogPost;
 
   return (
     <>
-      <div className="blog-post-preview">
+      <div className="blog-post-preview" style={{ order: index }}>
         <PageLink href={`/blog/${blogPost.slug}`} as={`/blog/${blogPost.slug}`}>
           <span>
             <div className="blog-img">
