@@ -48,7 +48,7 @@ const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
   return (
     <>
       <div className="ph-inlist">
-        <AdUnitAdSense adFormat="in-nade-list" />
+        <AdUnitAdSense adFormat="fixed250" />
       </div>
       <style jsx>{`
         .ph-inlist {
