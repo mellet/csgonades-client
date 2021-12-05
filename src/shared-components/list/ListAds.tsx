@@ -56,24 +56,11 @@ const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
           display: flex;
           order: ${position};
           justify-content: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};
           border: 1px solid ${colors.BORDER};
           height: 100%;
           overflow: hidden;
-        }
-
-        @media only screen and (max-width: 1020px) {
-          .ph-inlist {
-            grid-column: 2;
-          }
-        }
-
-        @media only screen and (max-width: 600px) {
-          .ph-inlist {
-            grid-column: 1;
-          }
         }
       `}</style>
     </>
