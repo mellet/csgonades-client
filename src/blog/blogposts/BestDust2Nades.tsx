@@ -22,6 +22,10 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           need to excel on Dust2.
         </p>
 
+        <div className="a-tag">
+          <AdUnitAdSense adFormat="horizontal" />
+        </div>
+
         <div className="dust2-nades">
           <span>There are many nades to discover on dust2!</span>
           <Link href="/maps/dust2">
@@ -127,6 +131,10 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           enjoy!
         </p>
 
+        <div className="a-tag">
+          <AdUnitAdSense adFormat="horizontal" />
+        </div>
+
         <p>And as always, when playing Dust2, rush B!</p>
         <div className="video-container">
           <iframe
@@ -168,9 +176,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
 
         .a-tag {
           margin: 30px 0px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 100%;
         }
 
         .tip {
