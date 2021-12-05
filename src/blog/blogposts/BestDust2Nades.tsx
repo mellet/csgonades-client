@@ -22,10 +22,6 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           need to excel on Dust2.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <div className="dust2-nades">
           <span>There are many nades to discover on dust2!</span>
           <Link href="/maps/dust2">
@@ -130,10 +126,6 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           . Or, if you know a good one, sign in and add it for everyone else to
           enjoy!
         </p>
-
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
 
         <p>And as always, when playing Dust2, rush B!</p>
         <div className="video-container">
