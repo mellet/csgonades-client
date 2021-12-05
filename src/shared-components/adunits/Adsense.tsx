@@ -20,7 +20,7 @@ export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
       <AdSense
         client="ca-pub-2255854420599519"
         slot="1542966243"
-        style={{ display: "block" }}
+        style={{ display: "block", height: 230 }}
         format="auto"
         responsive="true"
       />
