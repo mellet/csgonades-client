@@ -5,7 +5,7 @@ import { Navigation } from "../../../navigation/Navigation";
 import { SEO } from "../../../shared-components/SEO";
 import { UserApi } from "../../../users/data/UserApi";
 import { User } from "../../../users/models/User";
-import { UserPage } from "../../../users/UsersPage";
+import { UserMain } from "../../../users/UserMain";
 
 type Props = {
   user: User;
@@ -18,7 +18,7 @@ const UserPageComponent: NextPage<Props> = ({ user }) => {
       <LayoutBuilder
         header={<HeaderDefault />}
         nav={<Navigation />}
-        main={<UserPage user={user} key={user.steamId} />}
+        main={<UserMain user={user} key={user.steamId} />}
       />
     </>
   );

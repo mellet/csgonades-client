@@ -16,9 +16,8 @@ export const useFavorites = () => {
     isAuthenticated ? ["/favorites"] : null,
     fetchFavorites,
     {
-      dedupingInterval: 30 * 60 * 1000, // 30 minutes
-      errorRetryCount: 1,
-      focusThrottleInterval: 30 * 60 * 1000, // 30 minutes
+      dedupingInterval: 60 * 60 * 1000, // 60 minutes
+      focusThrottleInterval: 60 * 60 * 1000, // 60 minutes
     }
   );
 

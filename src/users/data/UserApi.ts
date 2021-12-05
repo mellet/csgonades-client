@@ -3,6 +3,7 @@ import { Config } from "../../constants/Constants";
 import { User, UserUpdateDTO } from "../models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import AxiosApi from "../../core/AxiosInstance";
+import axios from "axios";
 
 export class UserApi {
   static fetchSelf = async (): Promise<User> => {
@@ -13,7 +14,7 @@ export class UserApi {
 
   static fetchUser = async (steamId: string): AppResult<User> => {
     try {
-      const res = await AxiosApi.get(`${Config.API_URL}/users/${steamId}`);
+      const res = await axios.get(`${Config.API_URL}/users/${steamId}`);
       const user = res.data as User;
       return ok(user);
     } catch (error) {

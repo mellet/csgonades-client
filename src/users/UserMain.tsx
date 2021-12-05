@@ -6,7 +6,7 @@ type Props = {
   user: User | null;
 };
 
-export const UserPage: React.FC<Props> = ({ user }) => {
+export const UserMain: React.FC<Props> = ({ user }) => {
   return (
     <>
       {!user && <UserNotFound />}

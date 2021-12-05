@@ -16,6 +16,7 @@ export const NewNadeNotificationItem: FC<Props> = ({ notification }) => {
           icon={<FaPlusCircle />}
           createdAt={notification.createdAt}
           message={"New nade added for review."}
+          isUnviewed={!notification.viewed}
         />
       </a>
     </Link>

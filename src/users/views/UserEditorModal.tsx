@@ -9,6 +9,7 @@ import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
 import { useUpdateUser } from "../data/useUpdateUser";
 import { Dimensions } from "../../constants/Constants";
+import { ButtonGroup } from "../../map/components/nadefilter/component/ButtonGroup";
 
 type Props = {
   user: User;
@@ -54,11 +55,13 @@ export const UserEditorModal: FC<Props> = ({ user }) => {
           <CsgnSaveButton onClick={onSave} />
         </div>
       </CSGNModal>
-      <ButtonWithIcon
-        icon={<FaEdit />}
-        value="Edit user profile"
-        onClick={() => setIsEditing(true)}
-      />
+      <ButtonGroup>
+        <ButtonWithIcon
+          icon={<FaEdit />}
+          value="Edit user profile"
+          onClick={() => setIsEditing(true)}
+        />
+      </ButtonGroup>
       <style jsx>{`
         .user-editor {
           display: flex;

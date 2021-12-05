@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { NotificationItem } from "./NotificationItem";
 import { Notification } from "../models/Notification";
 import styled from "styled-components";
+import { Dimensions } from "../../constants/Constants";
 
 export type NotificationListProps = {
   markAsViewed: () => void;
@@ -13,11 +14,15 @@ export const NotificationList: FC<NotificationListProps> = ({
   markAsViewed,
 }) => {
   useEffect(() => {
-    const unviewedCount = notifications.filter((n) => !n.viewed).length;
+    const timer = setTimeout(() => {
+      const unviewedCount = notifications.filter((n) => !n.viewed).length;
 
-    if (unviewedCount > 0) {
-      markAsViewed();
-    }
+      if (unviewedCount > 0) {
+        markAsViewed();
+      }
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, [markAsViewed, notifications]);
 
   if (notifications.length === 0) {
@@ -34,13 +39,10 @@ export const NotificationList: FC<NotificationListProps> = ({
 };
 
 const NotificationListWrapper = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.BORDER};
-  border-bottom: none;
-  max-width: 350px;
+  margin-bottom: ${Dimensions.GUTTER_SIZE}px;
 `;
 
 const EmptyNotifications = styled.div`
-  max-width: 350px;
   background: ${({ theme }) => theme.colors.DP03};
   color: ${({ theme }) => theme.colors.TEXT};
   border: 1px solid ${({ theme }) => theme.colors.BORDER};
