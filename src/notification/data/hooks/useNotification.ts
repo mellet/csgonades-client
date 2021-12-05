@@ -14,16 +14,16 @@ async function fetchNotifications() {
 }
 
 export const useRawNotifications = () => {
-  const notificationFetchDelay = 5 * 60 * 1000;
+  const twentyMinutesInMs = 20 * 60 * 1000;
   const { isAuthenticated } = useSession();
 
   const { data: rawNotification, mutate } = useSWR(
     "/notifications",
     fetchNotifications,
     {
-      dedupingInterval: notificationFetchDelay,
+      dedupingInterval: twentyMinutesInMs,
       revalidateOnFocus: true,
-      focusThrottleInterval: notificationFetchDelay,
+      focusThrottleInterval: twentyMinutesInMs,
     }
   );
 

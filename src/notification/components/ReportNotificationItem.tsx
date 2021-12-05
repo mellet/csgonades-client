@@ -16,6 +16,7 @@ export const ReportNotificationItem: FC<Props> = ({ notification }) => {
           icon={<FaExclamationTriangle />}
           createdAt={notification.createdAt}
           message={"Nade reported."}
+          isUnviewed={!notification.viewed}
         />
       </a>
     </Link>

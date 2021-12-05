@@ -16,6 +16,7 @@ export const ContactNotificationItem: FC<Props> = ({ notification }) => {
           icon={<FaComment />}
           createdAt={notification.createdAt}
           message={"New contact message"}
+          isUnviewed={!notification.viewed}
         />
       </a>
     </Link>

@@ -18,6 +18,7 @@ export const FavoriteNotificationItem: FC<Props> = ({ notification }) => {
           createdAt={notification.createdAt}
           message={notificationMessage(notification)}
           imageUrl={notification.thumnailUrl}
+          isUnviewed={!notification.viewed}
         />
       </a>
     </Link>

@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { UserApi } from "../../users/data/UserApi";
 import { User, UserUpdateDTO } from "../../users/models/User";
 import { useDisplayToast } from "../toasts/hooks/useDisplayToast";
-import { sharedFetchConfig, useSession } from "./useSession";
+import { useSession } from "./useSession";
 
 export const useSignedInUser = () => {
   const { isAuthenticated } = useSession();
@@ -16,8 +16,7 @@ export const useSignedInUser = () => {
 
   const { data, mutate, isValidating } = useSWR<User>(
     isAuthenticated ? "/user/self" : null,
-    fetchSignedInUser,
-    sharedFetchConfig
+    fetchSignedInUser
   );
 
   const isLoadingUser = !data && isValidating;
