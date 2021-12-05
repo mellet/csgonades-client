@@ -114,7 +114,6 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           and find your favourite ones.
         </p>
         <NadeBlogList>
-          <BlogNadeItem nadeSlug="dust2-smoke-b-doors-from-upper-tunnel" />
           <BlogNadeItem nadeSlug="dust2-smoke-b-doors-from-upper-tunnel-xmR" />
         </NadeBlogList>
 

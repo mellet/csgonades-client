@@ -129,7 +129,6 @@ export const NadeAlignCrosshairPost: FC = () => {
 
         <NadeBlogList>
           <BlogNadeItem nadeSlug="inferno-smoke-library-from-top-mid" />
-          <BlogNadeItem nadeSlug="dust2-smoke-a-cross-from-long-doors" />
           <BlogNadeItem nadeSlug="cache-balcony-smoke" />
           <BlogNadeItem nadeSlug="inferno-smoke-coffins-from-banana" />
         </NadeBlogList>
