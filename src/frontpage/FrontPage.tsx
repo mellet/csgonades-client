@@ -78,13 +78,11 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
       <style jsx>{`
         #front-page {
           grid-area: main;
-          max-width: 100vw;
-          overflow: hidden;
         }
 
         .ph {
-          padding-bottom: ${Dimensions.GUTTER_SIZE}px;
-          max-width: 100%;
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          width: 100%;
         }
 
         .recent-nades {
@@ -110,6 +108,11 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
         @media only screen and (max-width: 1210px) {
           aside {
             width: 100%;
+          }
+
+          .ph {
+            padding: ${Dimensions.GUTTER_SIZE}px;
+            max-width: 90vw;
           }
         }
       `}</style>
