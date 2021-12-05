@@ -1,9 +1,15 @@
 import { FC, memo, useEffect, useMemo } from "react";
 
-type FixedSize = "250" | "300";
+type FixedSize = "250x230" | "300x300" | "728x90";
 
 type Props = {
   size: FixedSize;
+};
+
+type AdsenseFixedConfig = {
+  slot: string;
+  width: number;
+  height: number;
 };
 
 export const AdsenseCustom: FC<Props> = memo(({ size }) => {
@@ -16,11 +22,25 @@ export const AdsenseCustom: FC<Props> = memo(({ size }) => {
     }
   }, []);
 
-  const sizeInNumber = useMemo(() => {
-    if (size === "300") {
-      return 300;
+  const config = useMemo<AdsenseFixedConfig>(() => {
+    if (size === "300x300") {
+      return {
+        slot: "6691131972",
+        height: 300,
+        width: 300,
+      };
+    } else if (size === "728x90") {
+      return {
+        slot: "6474383821",
+        height: 90,
+        width: 728,
+      };
     } else {
-      return 200;
+      return {
+        slot: "2264364431",
+        height: 230,
+        width: 250,
+      };
     }
   }, [size]);
 
@@ -30,11 +50,11 @@ export const AdsenseCustom: FC<Props> = memo(({ size }) => {
         className="adsbygoogle"
         style={{
           display: "inline-block",
-          width: sizeInNumber,
-          height: sizeInNumber,
+          width: config.width,
+          height: config.height,
         }}
         data-ad-client="ca-pub-2255854420599519"
-        data-ad-slot={size === "300" ? "6691131972" : "2264364431"}
+        data-ad-slot={config.slot}
       ></ins>
     </>
   );

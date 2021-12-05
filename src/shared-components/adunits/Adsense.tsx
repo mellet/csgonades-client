@@ -19,11 +19,11 @@ type Props = {
 
 export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
   if (adFormat === "fixed300") {
-    return <AdsenseCustom size="300" />;
+    return <AdsenseCustom size="300x300" />;
   }
 
   if (adFormat === "fixed250") {
-    return <AdsenseCustom size="250" />;
+    return <AdsenseCustom size="250x230" />;
   }
 
   if (adFormat === "in-nade-list") {
@@ -64,13 +64,7 @@ export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
   }
 
   if (adFormat === "fixed728x90") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="6474383821"
-        style={{ display: "inline-block", width: 728, height: 90 }}
-      />
-    );
+    return <AdsenseCustom size="728x90" />;
   }
 
   if (adFormat === "vertical") {
