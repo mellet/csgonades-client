@@ -1,5 +1,4 @@
-import React, { FC, memo, useEffect } from "react";
-import { isMobileOnly } from "react-device-detect";
+import React, { FC, memo } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { NadeLight } from "../../nade/models/Nade";
 import { SEO } from "../../shared-components/SEO";
@@ -12,6 +11,8 @@ import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeCli
 import { useNadeCount } from "../data/hooks/useNadeCount";
 import { useSetMapView } from "../data/hooks/useSetMapView";
 import { CsgoMap } from "../models/CsGoMap";
+import { useMediaQuery } from "react-responsive";
+import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
 
 const isServer = typeof window === "undefined";
 
@@ -21,18 +22,11 @@ type Props = {
 };
 
 export const MapMain: FC<Props> = memo(({ map, allNades }) => {
-  const { mapView, setMapView } = useSetMapView();
+  const { mapView } = useSetMapView();
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const isOverviewView = mapView === "overview";
 
   const nadeCounts = useNadeCount(allNades);
-
-  useEffect(() => {
-    if (isMobileOnly) {
-      setMapView("list");
-    } else {
-      setMapView("overview");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const {
     onNadeClusterClick,
@@ -41,7 +35,13 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
     hasSuggestedNades,
   } = useOnNadeClusterClick(map);
 
-  const displayMapOverview: boolean = mapView === "overview" && !isServer;
+  const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
+  const displayListView = isMobile || !isOverviewView;
+
+  console.log({
+    displayMapOverview,
+    displayListView,
+  });
 
   return (
     <>
@@ -55,18 +55,24 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
 
       <div id="nade-page">
         <div id="filter">
-          <div className="sticky">
-            <FilterBar nadeCounts={nadeCounts} />
-          </div>
+          {isMobile ? (
+            <FilterBarMobile nadeCounts={nadeCounts} />
+          ) : (
+            <div className="sticky">
+              <FilterBar nadeCounts={nadeCounts} />
+            </div>
+          )}
         </div>
         <div id="nade-nades">
-          {mapView === "list" && <MapPageNades allNades={allNades} />}
+          {displayListView && <MapPageNades allNades={allNades} />}
 
-          <MapViewSuggested
-            open={hasSuggestedNades}
-            nades={suggestedNades}
-            onDismiss={dismissSuggested}
-          />
+          {displayMapOverview && (
+            <MapViewSuggested
+              open={hasSuggestedNades}
+              nades={suggestedNades}
+              onDismiss={dismissSuggested}
+            />
+          )}
 
           {displayMapOverview && (
             <MapViewScreen
@@ -100,6 +106,19 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
           flex: 1;
           grid-area: nades;
           width: 100%;
+        }
+
+        @media only screen and (max-width: 600px) {
+          #nade-page {
+            position: relative;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              "filter"
+              "nades";
+            grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
+          }
         }
       `}</style>
     </>

@@ -1,9 +1,9 @@
 import { FC, memo, useState, useEffect } from "react";
 import { Nade } from "../../nade/models/Nade";
 import { NadeApi } from "../../nade/data/NadeApi";
-import { isMobile } from "react-device-detect";
 import { NadeItemMobile } from "../../nade/components/NadeItem/NadeItemMobile";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
+import { useMediaQuery } from "react-responsive";
 
 interface Props {
   nadeSlug: string;
@@ -12,6 +12,7 @@ interface Props {
 export const BlogNadeItem: FC<Props> = memo(({ nadeSlug }) => {
   const [nade, setNade] = useState<Nade | null>(null);
   const [loading, setLoading] = useState(true);
+  const isMobile = useMediaQuery({ maxWidth: 600 });
 
   useEffect(() => {
     (async () => {

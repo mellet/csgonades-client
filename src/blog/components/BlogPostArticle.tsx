@@ -172,7 +172,8 @@ export const BlogPostArticle: FC<Props> = memo(({ children, data }) => {
 
         @media only screen and (max-width: 600px) {
           #blog-article {
-            margin: 0px;
+            margin-left: -${Dimensions.GUTTER_SIZE}px;
+            margin-right: -${Dimensions.GUTTER_SIZE}px;
           }
         }
       `}</style>

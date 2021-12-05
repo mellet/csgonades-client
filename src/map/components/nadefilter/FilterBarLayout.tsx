@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { isMobileOnly } from "react-device-detect";
 import styled from "styled-components";
 import { Dimensions } from "../../../constants/Constants";
 
@@ -40,13 +39,9 @@ export const FilterBarLayout: FC<Props> = ({
         <div style={{ gridArea: "pro", marginBottom: Dimensions.GUTTER_SIZE }}>
           {proFilter}
         </div>
-        {!isMobileOnly && (
-          <div
-            style={{ gridArea: "view", marginBottom: Dimensions.GUTTER_SIZE }}
-          >
-            {viewFilter}
-          </div>
-        )}
+        <div style={{ gridArea: "view", marginBottom: Dimensions.GUTTER_SIZE }}>
+          {viewFilter}
+        </div>
         <div style={{ gridArea: "reset" }}>{resetFilter}</div>
       </FilterBarLayoutWrapper>
     </>

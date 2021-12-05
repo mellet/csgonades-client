@@ -176,6 +176,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         .a-tag {
           margin: 30px 0px;
           width: 100%;
+          max-width: 100%;
         }
 
         .tip {

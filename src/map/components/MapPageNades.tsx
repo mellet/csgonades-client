@@ -2,13 +2,12 @@ import { FC, memo } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
-import { isMobileOnly } from "react-device-detect";
 import { useFilterServerSideNades } from "../data/hooks/useFilteredNades";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { useSetMapView } from "../data/hooks/useSetMapView";
 import dynamic from "next/dynamic";
 import { SortByBar } from "./SuggestedNades/SortByBar";
 import useSortedNades from "./SuggestedNades/useSortedNades";
+import { useMediaQuery } from "react-responsive";
 
 const NadeItemMobile = dynamic(() =>
   import(
@@ -21,13 +20,13 @@ type Props = {
 };
 
 export const MapPageNades: FC<Props> = memo(({ allNades }) => {
-  const { mapView } = useSetMapView();
   const { colors } = useTheme();
   const nades = useFilterServerSideNades(allNades);
   const sortedNades = useSortedNades(nades);
+  const isMobile = useMediaQuery({ maxWidth: 600 });
 
   function renderItem(item: NadeLight) {
-    if (isMobileOnly) {
+    if (isMobile) {
       return <NadeItemMobile nade={item} />;
     } else {
       return <NadeItem nade={item} />;
@@ -38,15 +37,12 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
     return item.id;
   }
 
-  const mapNadesClassName =
-    mapView === "overview" ? "mappage-nades hidden" : "mappage-nades";
-
   return (
     <>
       <div className="sort-bar">
         <SortByBar />
       </div>
-      <div className={mapNadesClassName}>
+      <div className="mappage-nades">
         {sortedNades && (
           <CsgnList<NadeLight>
             data={sortedNades}

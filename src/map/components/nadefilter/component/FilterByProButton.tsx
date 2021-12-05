@@ -5,7 +5,11 @@ import { useFilterByPro } from "../../../data/hooks/useFilterByPro";
 import { FilterLabel } from "./FilterLabel";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 
-export const FilterByProButton: FC = () => {
+type Props = {
+  vertical?: boolean;
+};
+
+export const FilterByProButton: FC<Props> = ({ vertical }) => {
   const { byPro, toggleFilterByPro } = useFilterByPro();
 
   function onFilterByPro() {
@@ -14,7 +18,7 @@ export const FilterByProButton: FC = () => {
 
   return (
     <>
-      <FilterLabel value="PRO" />
+      <FilterLabel value="PRO" center={vertical} />
       <SquareButton
         active={byPro}
         icon={<FaCheckCircle />}

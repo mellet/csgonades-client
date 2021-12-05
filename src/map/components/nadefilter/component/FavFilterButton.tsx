@@ -12,7 +12,7 @@ type Props = {
   vertical?: boolean;
 };
 
-export const FavFilterButton: FC<Props> = ({}) => {
+export const FavFilterButton: FC<Props> = ({ vertical }) => {
   const { colors } = useTheme();
   const isSignedIn = useIsSignedIn();
   const { byFavorites, toggleFilterByFavorites } = useFilterByFavorites();
@@ -28,7 +28,7 @@ export const FavFilterButton: FC<Props> = ({}) => {
 
   return (
     <>
-      <FilterLabel value="FAV" />
+      <FilterLabel value="FAV" center={vertical} />
       <FavoriteHint>
         <SquareButton
           onClick={onFilterByFavorite}

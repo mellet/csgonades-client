@@ -14,10 +14,10 @@ import { CsgnList } from "../shared-components/list/CsgnList";
 import { NadeItem } from "../nade/components/NadeItem/NadeItem";
 import { addFavoriteToNades } from "../map/data/hooks/helpers";
 import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
-import { isMobileOnly } from "react-device-detect";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { AdUnitAdSense } from "../shared-components/adunits/Adsense";
 import { useFavorites } from "../favorites/data/hooks/useFavorites";
+import { useMediaQuery } from "react-responsive";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -34,9 +34,10 @@ type Props = {
 export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
   const { colors } = useTheme();
   const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
+  const isMobile = useMediaQuery({ maxWidth: 600 });
 
   function renderItem(item: NadeLight) {
-    if (isMobileOnly) {
+    if (isMobile) {
       return <NadeItemMobile nade={item} />;
     } else {
       return <NadeItem nade={item} />;
@@ -75,17 +76,19 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
       </div>
 
       <style jsx>{`
+        #front-page {
+          grid-area: main;
+          max-width: 100%;
+        }
+
         .ph {
           padding-bottom: ${Dimensions.GUTTER_SIZE}px;
+          max-width: 100%;
         }
 
         .recent-nades {
           padding-bottom: ${Dimensions.GUTTER_SIZE}px;
           color: ${colors.TEXT};
-        }
-
-        #front-page {
-          grid-area: main;
         }
 
         .recent-wrap {

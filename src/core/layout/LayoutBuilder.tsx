@@ -1,8 +1,8 @@
 import { FC, memo, useMemo } from "react";
-import { isMobile } from "react-device-detect";
 import { Dimensions } from "../../constants/Constants";
 import { useNavigation } from "../global/hooks/useNavigation";
 import { useTheme } from "../settings/SettingsHooks";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
   header: JSX.Element;
@@ -15,6 +15,7 @@ export const LayoutBuilder: FC<Props> = memo(
   ({ header, main, sidebar, nav }) => {
     const { colors } = useTheme();
     const { isNavOpen } = useNavigation();
+    const isMobile = useMediaQuery({ maxWidth: 600 });
 
     const displayNav = !!nav;
     const displaySidebar = !!sidebar;

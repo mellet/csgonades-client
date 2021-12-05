@@ -4,7 +4,11 @@ import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 import { useFilterByTeam } from "../../../data/hooks/useFilterByTeam";
 import { OptionCarusel } from "./OptionCarusel";
 
-export const TeamSelector: FC = () => {
+type Props = {
+  vertical?: boolean;
+};
+
+export const TeamSelector: FC<Props> = ({ vertical }) => {
   const { byTeam, filterByTeam } = useFilterByTeam();
 
   const selectedIndex = useMemo(() => {
@@ -31,7 +35,7 @@ export const TeamSelector: FC = () => {
   return (
     <>
       <div className="tick-filter-wrap">
-        <FilterLabel value="TEAM" />
+        <FilterLabel value="TEAM" center={vertical} />
         <SquareButton
           onClick={onChange}
           icon={

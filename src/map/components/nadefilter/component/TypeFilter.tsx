@@ -8,9 +8,10 @@ import { NadeCounts } from "../../../data/hooks/useNadeCount";
 
 type Props = {
   nadeCounts: NadeCounts;
+  vertical?: boolean;
 };
 
-export const TypeFilter: FC<Props> = ({ nadeCounts }) => {
+export const TypeFilter: FC<Props> = ({ nadeCounts, vertical }) => {
   const { byType, filterByType } = useFilterByType();
 
   const showSmokeButton = nadeCounts.numSmokes > 0;
@@ -21,8 +22,8 @@ export const TypeFilter: FC<Props> = ({ nadeCounts }) => {
   return (
     <>
       <>
-        <FilterLabel value="TYPE" />
-        <IconButtonGroup vertical>
+        <FilterLabel value="TYPE" center={vertical} />
+        <IconButtonGroup vertical={vertical}>
           {showSmokeButton && (
             <SquareButton
               inGroup

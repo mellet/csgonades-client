@@ -5,7 +5,11 @@ import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton";
 
-export const MapViewSelector: FC = () => {
+type Props = {
+  vertical?: boolean;
+};
+
+export const MapViewSelector: FC<Props> = ({ vertical }) => {
   const { mapView, setMapView } = useSetMapView({ trackEvent: true });
 
   function onSwitchToOverview() {
@@ -18,7 +22,7 @@ export const MapViewSelector: FC = () => {
 
   return (
     <>
-      <FilterLabel value="VIEW" />
+      <FilterLabel value="VIEW" center={vertical} />
       <IconButtonGroup vertical>
         <SquareButton
           inGroup

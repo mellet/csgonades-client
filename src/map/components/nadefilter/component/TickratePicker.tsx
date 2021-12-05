@@ -4,7 +4,11 @@ import { useFilterByTickrate } from "../../../data/hooks/useFilterByTickrate";
 import { FilterLabel } from "./FilterLabel";
 import { OptionCarusel } from "./OptionCarusel";
 
-export const TickratePicker: FC = () => {
+type Props = {
+  vertical?: boolean;
+};
+
+export const TickratePicker: FC<Props> = ({ vertical }) => {
   const { byTickrate, filterByTickrate } = useFilterByTickrate();
 
   const selectedIndex = useMemo(() => {
@@ -30,7 +34,7 @@ export const TickratePicker: FC = () => {
 
   return (
     <>
-      <FilterLabel value="TICK" />
+      <FilterLabel value="TICK" center={vertical} />
       <SquareButton
         onClick={onChangeTickrate}
         icon={

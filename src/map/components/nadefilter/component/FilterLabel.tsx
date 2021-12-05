@@ -3,9 +3,10 @@ import { useTheme } from "../../../../core/settings/SettingsHooks";
 
 type Props = {
   value: string;
+  center?: boolean;
 };
 
-export const FilterLabel: FC<Props> = ({ value }) => {
+export const FilterLabel: FC<Props> = ({ value, center }) => {
   const { colors } = useTheme();
 
   return (
@@ -18,7 +19,7 @@ export const FilterLabel: FC<Props> = ({ value }) => {
           line-height: 11px;
           margin-bottom: 4px;
           font-weight: 500;
-          text-align: center;
+          text-align: ${center ? "center" : "left"};
           width: 100%;
         }
       `}</style>

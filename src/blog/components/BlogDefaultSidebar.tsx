@@ -3,12 +3,15 @@ import { SidebarSkyskraperAd } from "../../shared-components/adunits/SidebarSkys
 import { NadeShareActions } from "../../nade/components/NadeShareActions";
 import { BlogPost } from "../models/BlogPost";
 import { Dimensions } from "../../constants/Constants";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
   data: BlogPost;
 };
 
 export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+
   return (
     <>
       <div id="blog-share" className="spacer">
@@ -20,9 +23,12 @@ export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
         />
       </div>
 
-      <div id="blog-sidebar-wrap" className="spacer">
-        <SidebarSkyskraperAd />
-      </div>
+      {!isMobile && (
+        <div id="blog-sidebar-wrap" className="spacer">
+          <SidebarSkyskraperAd />
+        </div>
+      )}
+
       <style jsx>{`
         #blog-share {
           border-radius: 8px;
