@@ -32,10 +32,14 @@ export const useRawNotifications = () => {
       return;
     }
 
-    const viewed = rawNotification.map((n) => ({ ...n, viewed: true }));
+    const unviewedCount = rawNotification.filter((n) => !n.viewed).length;
 
-    mutate(viewed);
-    await NotificationApi.markAllAsViewed();
+    if (unviewedCount) {
+      const viewed = rawNotification.map((n) => ({ ...n, viewed: true }));
+
+      mutate(viewed);
+      await NotificationApi.markAllAsViewed();
+    }
   }, [rawNotification, mutate, isAuthenticated]);
 
   return {

@@ -15,15 +15,12 @@ export const NotificationList: FC<NotificationListProps> = ({
 }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      const unviewedCount = notifications.filter((n) => !n.viewed).length;
-
-      if (unviewedCount > 0) {
-        markAsViewed();
-      }
+      markAsViewed();
     }, 1500);
 
     return () => clearTimeout(timer);
-  }, [markAsViewed, notifications]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (notifications.length === 0) {
     return <EmptyNotifications>No notifications.</EmptyNotifications>;

@@ -1,9 +1,9 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useNotifications } from "../data/NotificationHooks";
 import { NotificationList } from "./NotificationList";
 
-export const NotificationMain: FC = () => {
+export const NotificationMain: FC = memo(() => {
   const { notifications, setAllNotificationsAsViewed } = useNotifications();
 
   return (
@@ -22,4 +22,4 @@ export const NotificationMain: FC = () => {
       `}</style>
     </>
   );
-};
+});
