@@ -1,7 +1,7 @@
-import { FC, CSSProperties } from "react";
+import { FC, CSSProperties, memo, useRef } from "react";
 import AdSense from "react-ssr-adsense";
 import { AdsenseCustom } from "./AdsenseCustom";
-
+import { useInViewport } from "react-in-viewport";
 type AdFormat =
   | "in-article"
   | "horizontal"
@@ -18,7 +18,18 @@ type Props = {
   style?: CSSProperties;
 };
 
-export const AdUnitAdSense: FC<Props> = ({ adFormat, style }) => {
+export const AdUnitAdSense: FC<Props> = memo((props) => {
+  const myRef = useRef<HTMLDivElement>(null);
+  const { enterCount } = useInViewport(myRef, {
+    rootMargin: "100px",
+  });
+
+  const renderAd = Boolean(enterCount);
+
+  return <div ref={myRef}>{renderAd && <AdSenseSwitch {...props} />}</div>;
+});
+
+const AdSenseSwitch: FC<Props> = memo(({ adFormat, style }) => {
   if (adFormat === "fixed300") {
     return <AdsenseCustom size="300x300" />;
   }
@@ -105,4 +116,4 @@ export const AdUnitAdSense: FC<Props> = ({ adFormat, style }) => {
   }
 
   return null;
-};
+});
