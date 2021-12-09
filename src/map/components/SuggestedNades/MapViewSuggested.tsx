@@ -105,7 +105,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           margin: ${Dimensions.GUTTER_SIZE / 2}px;
           display: block;
           align-self: center;
-          max-width: 90%;
+          width: 95%;
         }
 
         .wrapper {
@@ -117,8 +117,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           z-index: 800;
           background: transparent;
           border-radius: 8px;
-          overflow: hidden;
           pointer-events: ${open ? "auto" : "none"};
+          overflow: hidden;
         }
 
         .nades {
@@ -205,6 +205,7 @@ const MapViewWrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  overflow: hidden;
+  overflow-x: hidden;
   pointer-events: none;
+  border-radius: 8px;
 `;
