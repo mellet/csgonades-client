@@ -104,6 +104,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
         .a {
           margin: ${Dimensions.GUTTER_SIZE / 2}px;
           display: block;
+          align-self: center;
+          max-width: 90%;
         }
 
         .wrapper {
