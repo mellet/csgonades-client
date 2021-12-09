@@ -86,14 +86,15 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
                     data={sortedNades}
                     renderItem={renderItem}
                     keyExtractor={keyExtractor}
-                    enableAds={true}
+                    enableAds={false}
                   />
                 </div>
-                {false && (
-                  <div className="a">
-                    <AdUnitAdSense adFormat="fixed728x90" />
-                  </div>
-                )}
+                <div className="a">
+                  <AdUnitAdSense
+                    adFormat="horizontal"
+                    style={{ height: 100 }}
+                  />
+                </div>
               </>
             )}
           </div>
@@ -101,13 +102,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
       </div>
       <style jsx>{`
         .a {
-          max-width: 728px;
-          height: 90px;
           margin: ${Dimensions.GUTTER_SIZE / 2}px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          align-self: center;
+          display: block;
         }
 
         .wrapper {

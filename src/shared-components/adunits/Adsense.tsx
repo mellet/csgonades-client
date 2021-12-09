@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, CSSProperties } from "react";
 import AdSense from "react-ssr-adsense";
 import { AdsenseCustom } from "./AdsenseCustom";
 
@@ -15,9 +15,10 @@ type AdFormat =
 
 type Props = {
   adFormat: AdFormat;
+  style?: CSSProperties;
 };
 
-export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
+export const AdUnitAdSense: FC<Props> = ({ adFormat, style }) => {
   if (adFormat === "fixed300") {
     return <AdsenseCustom size="300x300" />;
   }
@@ -56,7 +57,7 @@ export const AdUnitAdSense: FC<Props> = ({ adFormat }) => {
       <AdSense
         client="ca-pub-2255854420599519"
         slot="4299769366"
-        style={{ display: "block" }}
+        style={style ? { ...style, display: "block" } : { display: "block" }}
         format="auto"
         responsive="true"
       />
