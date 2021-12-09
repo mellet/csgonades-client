@@ -109,7 +109,6 @@ export class NadeApi {
       const nades = res.data as Nade;
       return ok(nades);
     } catch (error) {
-      console.log("# Failed to fetch nade", error);
       return extractApiError(error);
     }
   }

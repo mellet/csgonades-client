@@ -13,7 +13,6 @@ export const ListAds: FC<Props> = () => {
   useEffect(() => {
     // @ts-ignore
     if (window.adsbygoogle && window.adsbygoogle.loaded) {
-      console.log("> Adblock is disabled");
       setIsAdBlockEnabled(false);
     }
   }, []);

@@ -38,11 +38,6 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
   const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
   const displayListView = isMobile || !isOverviewView;
 
-  console.log({
-    displayMapOverview,
-    displayListView,
-  });
-
   return (
     <>
       <SEO

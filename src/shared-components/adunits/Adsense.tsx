@@ -30,6 +30,7 @@ export const AdUnitAdSense: FC<Props> = memo((props) => {
 });
 
 const AdSenseSwitch: FC<Props> = memo(({ adFormat, style }) => {
+  console.log(`> Rendering Adsense ad - ${adFormat}`);
   if (adFormat === "fixed300") {
     return <AdsenseCustom size="300x300" />;
   }
