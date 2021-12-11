@@ -112,7 +112,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
         .a {
           display: block;
           align-self: center;
-          width: 100%;
+          width: 95%;
         }
 
         .wrapper {
