@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
+import { AppConfig } from "../../constants/Constants";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import { GfycatData } from "../models/GfycatData";
 import {
@@ -17,7 +17,7 @@ export class NadeApi {
   static async favoriteNade(nadeId: string): AppResult<Favorite> {
     try {
       const res = await AxiosApi.post<Favorite>(
-        `${Config.API_URL}/nades/${nadeId}/favorite`,
+        `${AppConfig.API_URL}/nades/${nadeId}/favorite`,
         undefined
       );
       return ok(res.data);
@@ -29,7 +29,7 @@ export class NadeApi {
   static async unFavoriteNade(nadeId: string): Promise<boolean> {
     try {
       await AxiosApi.delete<Favorite>(
-        `${Config.API_URL}/nades/${nadeId}/favorite`
+        `${AppConfig.API_URL}/nades/${nadeId}/favorite`
       );
       return true;
     } catch (error) {
@@ -40,7 +40,7 @@ export class NadeApi {
   static async isSlugAvailable(slug: string): Promise<boolean> {
     try {
       const res = await axios.get<boolean>(
-        `${Config.API_URL}/nades/${slug}/checkslug`
+        `${AppConfig.API_URL}/nades/${slug}/checkslug`
       );
 
       const isFree = res.data;
@@ -52,7 +52,7 @@ export class NadeApi {
 
   static async getRecent(): AppResult<NadeLight[]> {
     try {
-      const res = await axios.get(`${Config.API_URL}/nades`);
+      const res = await axios.get(`${AppConfig.API_URL}/nades`);
       const nades = res.data as NadeLight[];
 
       return ok(nades);
@@ -63,7 +63,7 @@ export class NadeApi {
 
   static async getPending(): Promise<NadeLight[]> {
     const res = await AxiosApi.get<NadeLight[]>(
-      `${Config.API_URL}/nades/pending`
+      `${AppConfig.API_URL}/nades/pending`
     );
     const nades = res.data;
 
@@ -72,7 +72,7 @@ export class NadeApi {
 
   static async getDeclined(): Promise<NadeLight[]> {
     const res = await AxiosApi.get<NadeLight[]>(
-      `${Config.API_URL}/nades/declined`
+      `${AppConfig.API_URL}/nades/declined`
     );
     const nades = res.data;
 
@@ -81,7 +81,7 @@ export class NadeApi {
 
   static async getDeleted(): Promise<NadeLight[]> {
     const res = await AxiosApi.get<NadeLight[]>(
-      `${Config.API_URL}/nades/deleted`
+      `${AppConfig.API_URL}/nades/deleted`
     );
 
     return res.data;
@@ -90,7 +90,7 @@ export class NadeApi {
   static async getByMap(mapName: CsgoMap): AppResult<NadeLight[]> {
     try {
       const res = await axios.get<NadeLight[]>(
-        `${Config.API_URL}/nades/map/${mapName}`
+        `${AppConfig.API_URL}/nades/map/${mapName}`
       );
       const nades = res.data;
 
@@ -102,7 +102,7 @@ export class NadeApi {
 
   static async byId(id: string): AppResult<Nade> {
     try {
-      const res = await axios.get(`${Config.API_URL}/nades/${id}`, {
+      const res = await axios.get(`${AppConfig.API_URL}/nades/${id}`, {
         withCredentials: true,
       });
 
@@ -118,7 +118,7 @@ export class NadeApi {
     csgoMap?: CsgoMap
   ): AppResult<NadeLight[]> {
     try {
-      let url = `${Config.API_URL}/nades/user/${steamId}`;
+      let url = `${AppConfig.API_URL}/nades/user/${steamId}`;
 
       if (csgoMap) {
         url = url + `?map=${csgoMap}`;
@@ -134,7 +134,7 @@ export class NadeApi {
 
   static async save(nadeBody: NadeCreateBody): AppResult<Nade> {
     try {
-      const res = await AxiosApi.post(`${Config.API_URL}/nades`, nadeBody);
+      const res = await AxiosApi.post(`${AppConfig.API_URL}/nades`, nadeBody);
       const nade = res.data as Nade;
       return ok(nade);
     } catch (error) {
@@ -148,7 +148,7 @@ export class NadeApi {
   ): AppResult<Nade> {
     try {
       const res = await AxiosApi.put(
-        `${Config.API_URL}/nades/${nadeId}`,
+        `${AppConfig.API_URL}/nades/${nadeId}`,
         updateFields
       );
 
@@ -162,7 +162,7 @@ export class NadeApi {
 
   static async delete(nadeId: string): AppResult<boolean> {
     try {
-      await AxiosApi.delete(`${Config.API_URL}/nades/${nadeId}`);
+      await AxiosApi.delete(`${AppConfig.API_URL}/nades/${nadeId}`);
 
       return ok(true);
     } catch (error) {
@@ -172,9 +172,12 @@ export class NadeApi {
 
   static async validateGfycat(gfyIdOrUrl: string): AppResult<GfycatData> {
     try {
-      const res = await axios.post(`${Config.API_URL}/nades/validateGfycat`, {
-        gfycatIdOrUrl: gfyIdOrUrl,
-      });
+      const res = await axios.post(
+        `${AppConfig.API_URL}/nades/validateGfycat`,
+        {
+          gfycatIdOrUrl: gfyIdOrUrl,
+        }
+      );
       const gfycatData = res.data as GfycatData;
       return ok(gfycatData);
     } catch (error) {

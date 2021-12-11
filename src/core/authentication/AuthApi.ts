@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { Config } from "../../constants/Constants";
+import { AppConfig } from "../../constants/Constants";
 
 type TokenRes = {
   accessToken: string;
@@ -29,7 +29,7 @@ export class AuthApi {
     }
 
     const res = await axios.get<TokenRes>(
-      `${Config.API_URL}/auth/refresh`,
+      `${AppConfig.API_URL}/auth/refresh`,
       config
     );
 
@@ -47,7 +47,7 @@ export class AuthApi {
 
   static async setSessionCookie(): Promise<SessionResponse> {
     const response = await axios.post<SessionResponse>(
-      `${Config.API_URL}/initSession`,
+      `${AppConfig.API_URL}/initSession`,
       {},
       { withCredentials: true }
     );
@@ -58,7 +58,7 @@ export class AuthApi {
   static async signOut(): Promise<void> {
     try {
       await axios.post(
-        `${Config.API_URL}/auth/signout`,
+        `${AppConfig.API_URL}/auth/signout`,
         {},
         {
           withCredentials: true,

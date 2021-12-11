@@ -2,7 +2,7 @@ import { FC } from "react";
 import { blogTickrateAndJumpthrow } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogPostArticle } from "../components/BlogPostArticle";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 export const TickrateAndJumpthrowPost: FC = () => {
   return (
@@ -16,9 +16,7 @@ export const TickrateAndJumpthrowPost: FC = () => {
           below.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
+        <AdUnit horizontalSpacing name="blogHorizontalFirst" />
 
         <h2>What is tickrate?</h2>
         <p>
@@ -38,10 +36,6 @@ export const TickrateAndJumpthrowPost: FC = () => {
           for you and which won&apos;t.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <h2>What is the jump throw bind?</h2>
         <p>
           The jump throw bind is a small script you can bind to one of your
@@ -56,6 +50,9 @@ export const TickrateAndJumpthrowPost: FC = () => {
           throws as your not a robot, and you probably release the mouse button
           at slightly different times.
         </p>
+
+        <AdUnit horizontalSpacing name="blogHorizontalSecond" />
+
         <h2>Why does the tickrate affect the jump throw bind?</h2>
         <p>
           As we have explained, the jumpthrow bind removes the need for you to
@@ -80,10 +77,6 @@ export const TickrateAndJumpthrowPost: FC = () => {
           different heights on the two tickrates.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <div
           style={{
             position: "relative",
@@ -101,6 +94,8 @@ export const TickrateAndJumpthrowPost: FC = () => {
           ></iframe>
         </div>
         <br />
+
+        <AdUnit horizontalSpacing name="blogHorizontalThird" />
 
         <p>
           Using the jumpthrow bind will give you the same result every time, if

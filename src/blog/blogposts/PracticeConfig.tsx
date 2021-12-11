@@ -2,7 +2,7 @@ import { blogPractiseConfig } from "../ArticleData/blogPosts";
 import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
 import { BlogCopyPaste } from "../components/BlogCopyPaste";
 import { BlogPostArticle } from "../components/BlogPostArticle";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 export const PractiseConfigBlogPost = () => {
   return (
@@ -30,9 +30,7 @@ export const PractiseConfigBlogPost = () => {
           }
         />
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
+        <AdUnit horizontalSpacing name="blogHorizontalFirst" />
 
         <h2>The config</h2>
         <BlogCodeSnippet
@@ -40,10 +38,6 @@ export const PractiseConfigBlogPost = () => {
             "sv_cheats 1\nbot_kick\nmp_limitteams 0\nmp_autoteambalance 0\nmp_maxmoney 60000\nmp_startmoney 60000\nmp_buytime 9999\nmp_buy_anywhere 1\nmp_freezetime 0\nmp_roundtime 60\nmp_roundtime_defuse 60\nmp_respawn_on_death_ct 1\nmp_respawn_on_death_t 1\nsv_infinite_ammo 1\nsv_grenade_trajectory 1\nsv_grenade_trajectory_time 15\nsv_showimpacts 1\nsv_showimpacts_time 10\nammo_grenade_limit_total 5\nmp_warmup_end\nmp_restartgame 1"
           }
         />
-
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
 
         <h2>What does the config do?</h2>
         <h3>Basics</h3>
@@ -70,6 +64,8 @@ export const PractiseConfigBlogPost = () => {
           wall bangs and see if bullets can penetrate walls.
         </p>
 
+        <AdUnit horizontalSpacing name="blogHorizontalSecond" />
+
         <h2>Useful commands while practising</h2>
         <p>
           Here are some of the commands I find most helpful while I&apos;m
@@ -86,10 +82,6 @@ export const PractiseConfigBlogPost = () => {
           </a>
           .
         </p>
-
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
 
         <h3>1. Fly command</h3>
         <p>Allows you to fly freely in the air.</p>
@@ -108,6 +100,8 @@ export const PractiseConfigBlogPost = () => {
 
         <BlogCodeSnippet code="bind X cl_sim_grenade_trajectory" />
 
+        <AdUnit horizontalSpacing name="blogHorizontalThird" />
+
         <h3>3. Preview grenade trajectory</h3>
         <p>
           Shows a line where the nade will go. When enabled, it will show you
@@ -121,10 +115,6 @@ export const PractiseConfigBlogPost = () => {
           can then test out if someone in that spot will get flashed.
         </p>
         <BlogCodeSnippet code="bind X sv_rethrow_last_grenade" />
-
-        <AdUnitAdSense adFormat="horizontal" />
-
-        <AdUnitAdSense adFormat="in-article" />
       </BlogPostArticle>
       <style jsx>{`
         .a-tag {

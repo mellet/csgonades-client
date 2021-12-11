@@ -1,12 +1,12 @@
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
+import { AppConfig } from "../../constants/Constants";
 import { Report, ReportAddDto } from "../models/Report";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import AxiosApi from "../../core/AxiosInstance";
 
 export class ReportApi {
   static async getAll(): Promise<Report[]> {
-    const res = await AxiosApi.get<Report[]>(`${Config.API_URL}/reports`);
+    const res = await AxiosApi.get<Report[]>(`${AppConfig.API_URL}/reports`);
     const reports = res.data;
 
     return reports;
@@ -15,7 +15,7 @@ export class ReportApi {
   static async add(data: ReportAddDto): AppResult<Report> {
     try {
       const res = await AxiosApi.post<Report>(
-        `${Config.API_URL}/reports`,
+        `${AppConfig.API_URL}/reports`,
         data
       );
 
@@ -27,7 +27,7 @@ export class ReportApi {
 
   static async delete(id: string): AppResult<boolean> {
     try {
-      await AxiosApi.delete(`${Config.API_URL}/reports/${id}`);
+      await AxiosApi.delete(`${AppConfig.API_URL}/reports/${id}`);
       return ok(true);
     } catch (error) {
       return extractApiError(error);

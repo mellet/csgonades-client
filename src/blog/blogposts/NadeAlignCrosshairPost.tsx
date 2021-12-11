@@ -5,7 +5,7 @@ import { BlogNadeItem } from "../components/BlogNadeItem";
 import { BlogPostArticle } from "../components/BlogPostArticle";
 import { CsConsole } from "../components/CsConsole";
 import { NadeBlogList } from "../components/NadeBlogList";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 export const NadeAlignCrosshairPost: FC = () => {
   return (
@@ -22,9 +22,7 @@ export const NadeAlignCrosshairPost: FC = () => {
           have to edit your config file.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
+        <AdUnit horizontalSpacing name="blogHorizontalFirst" />
 
         <h2>How to set it up</h2>
         <h3>1. Simple: Toggle crosshair</h3>
@@ -53,10 +51,6 @@ export const NadeAlignCrosshairPost: FC = () => {
           back to normal.
         </p>
         <BlogCodeSnippet code={'bind "X" "toggle cl_crosshairsize 2.5 5000"'} />
-
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
 
         <h3>2. Advanced: Hide on release</h3>
         <p>
@@ -96,6 +90,8 @@ export const NadeAlignCrosshairPost: FC = () => {
             'bind "X" "+crosshairsmoke"\nalias "-crosshairsmoke" "cl_crosshairsize 2.5;cl_crosshairdot 0;cl_crosshairgap -1"\nalias "+crosshairsmoke" "cl_crosshairsize 1337;cl_crosshairdot 1;cl_crosshairgap 10"\n'
           }
         />
+
+        <AdUnit horizontalSpacing name="blogHorizontalSecond" />
 
         <p>Change out X with whatever key you prefer.</p>
         <p>

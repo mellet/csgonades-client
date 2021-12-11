@@ -5,7 +5,7 @@ import { BlogPostArticle } from "../components/BlogPostArticle";
 import { PageLink } from "../../shared-components/PageLink";
 import { BlogNadeItem } from "../components/BlogNadeItem";
 import { NadeBlogList } from "../components/NadeBlogList";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 export const JumpThrowBindBlogMain: FC = () => {
   return (
@@ -16,9 +16,7 @@ export const JumpThrowBindBlogMain: FC = () => {
           you can copy the bind.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
+        <AdUnit horizontalSpacing name="blogHorizontalFirst" />
 
         <h2>Is jumpthrow bind legal?</h2>
         <p>
@@ -45,10 +43,6 @@ export const JumpThrowBindBlogMain: FC = () => {
 
         <h2>Setting up jumpthrow bind</h2>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <h3>Simple keybind</h3>
         <p>
           If you don&apos;t want to mess around with your config files, use this
@@ -58,6 +52,8 @@ export const JumpThrowBindBlogMain: FC = () => {
         <p>
           <em>Change out X with your prefered key.</em>
         </p>
+
+        <AdUnit horizontalSpacing name="blogHorizontalSecond" />
 
         <h3>Alias bind, autoexec</h3>
         <p>
@@ -100,10 +96,6 @@ export const JumpThrowBindBlogMain: FC = () => {
           will jump, and release both mouse buttons for you.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <b>Normal range jumpthrow</b>
         <p>
           Hold down <em>left mouse button</em>, click the bind.
@@ -118,6 +110,8 @@ export const JumpThrowBindBlogMain: FC = () => {
         <p>
           Holde down <em>both mouse button</em>, click the bind.
         </p>
+
+        <AdUnit horizontalSpacing name="blogHorizontalThird" />
 
         <h2>Conclusion</h2>
         <p>

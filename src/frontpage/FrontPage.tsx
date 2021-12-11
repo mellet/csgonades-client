@@ -15,7 +15,7 @@ import { NadeItem } from "../nade/components/NadeItem/NadeItem";
 import { addFavoriteToNades } from "../map/data/hooks/helpers";
 import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
 import { useTheme } from "../core/settings/SettingsHooks";
-import { AdUnitAdSense } from "../shared-components/adunits/Adsense";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 import { useFavorites } from "../favorites/data/hooks/useFavorites";
 import { useMediaQuery } from "react-responsive";
 
@@ -35,6 +35,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
   const { colors } = useTheme();
   const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
   const isMobile = useMediaQuery({ maxWidth: 600 });
+  const useMobileAd = useMediaQuery({ maxWidth: 800 });
 
   function renderItem(item: NadeLight) {
     if (isMobile) {
@@ -53,6 +54,12 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
       <div id="front-page">
         <FrontPageJumbo stats={stats} />
 
+        {useMobileAd ? (
+          <AdUnit horizontalSpacing name="frontPageMobile" />
+        ) : (
+          <AdUnit horizontalSpacing name="fixed728x90" />
+        )}
+
         {recentNades && (
           <div className="recent-nades">
             <h3>Recently added nades</h3>
@@ -65,10 +72,6 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
           </div>
         )}
 
-        <div className="ph">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <div className="recent-wrap">
           <h3>Most recent blog posts</h3>
           <BlogList posts={recentPosts} />
@@ -78,11 +81,6 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
       <style jsx>{`
         #front-page {
           grid-area: main;
-        }
-
-        .ph {
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          width: 100%;
         }
 
         .recent-nades {

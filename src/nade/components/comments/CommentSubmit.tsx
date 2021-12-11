@@ -2,7 +2,7 @@ import { FC, useState, memo } from "react";
 import { NadeCommentApi, NadeComment } from "../../data/NadeCommentApi";
 import { useIsSignedIn } from "../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { Config, Dimensions } from "../../../constants/Constants";
+import { AppConfig, Dimensions } from "../../../constants/Constants";
 import { useSession } from "../../../core/authentication/useSession";
 
 type Props = {
@@ -60,7 +60,7 @@ export const CommentSubmit: FC<Props> = memo(
           <div id="comments" className="comment-sign-in">
             <p>Do you want to comment on this nade?</p>
             <div>
-              <a href={Config.SIGN_IN_URL}>Sign in with steam</a>
+              <a href={AppConfig.SIGN_IN_URL}>Sign in with steam</a>
             </div>
           </div>
         )}

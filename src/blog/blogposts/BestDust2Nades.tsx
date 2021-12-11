@@ -6,7 +6,7 @@ import { BlogNadeItem } from "../components/BlogNadeItem";
 import { Dimensions } from "../../constants/Constants";
 import { PageLink } from "../../shared-components/PageLink";
 import { NadeBlogList } from "../components/NadeBlogList";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 export const BestDust2NadesBlogPost = (): JSX.Element => {
   return (
@@ -22,9 +22,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           need to excel on Dust2.
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
+        <AdUnit horizontalSpacing name="blogHorizontalFirst" />
 
         <div className="dust2-nades">
           <span>There are many nades to discover on dust2!</span>
@@ -57,10 +55,6 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           <BlogNadeItem nadeSlug="dust2-smoke-xbox-from-lower-tunnels-gXs" />
         </NadeBlogList>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
-
         <h2>2. Long Corner Smoke</h2>
         <p>
           Why do we throw this smoke? It forces the CT to have to go wide to
@@ -80,6 +74,9 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-long-doors" />
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-outside-long" />
         </NadeBlogList>
+
+        <AdUnit horizontalSpacing name="blogHorizontalSecond" />
+
         <h2>3. A Site, CT Spawn</h2>
         <p>
           Almost there, let&apos;s plant A site! Nothing can stop us now... Oh,
@@ -130,9 +127,7 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
           enjoy!
         </p>
 
-        <div className="a-tag">
-          <AdUnitAdSense adFormat="horizontal" />
-        </div>
+        <AdUnit horizontalSpacing name="blogHorizontalThird" />
 
         <p>And as always, when playing Dust2, rush B!</p>
         <div className="video-container">

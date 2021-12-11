@@ -1,120 +1,158 @@
-import { FC, CSSProperties, memo, useRef } from "react";
-import AdSense from "react-ssr-adsense";
-import { AdsenseCustom } from "./AdsenseCustom";
-import { useInViewport } from "react-in-viewport";
-type AdFormat =
-  | "in-article"
-  | "horizontal"
-  | "square"
-  | "vertical"
-  | "fixed728x90"
-  | "in-blog"
-  | "in-nade-list"
-  | "fixed250"
-  | "fixed300";
+import { FC, memo, useEffect, useMemo, CSSProperties } from "react";
+import { AppConfig, IS_PROD } from "../../constants/Constants";
+import { assertNever } from "../../utils/Common";
 
-type Props = {
-  adFormat: AdFormat;
-  style?: CSSProperties;
+export type AdUnitName =
+  | "mapSidebarSquare"
+  | "blogSidebar"
+  | "fixed728x90"
+  | "nadePageSkyscraper"
+  | "blogHorizontalFirst"
+  | "blogHorizontalSecond"
+  | "blogHorizontalThird"
+  | "frontPageMobile"
+  | "suggestedNadesHorizontal";
+
+type AdsenseConfig = {
+  style: CSSProperties;
+  adSlot: string;
+  adFormat?: "auto";
+  fullWidthResponsive?: true;
 };
 
-export const AdUnitAdSense: FC<Props> = memo((props) => {
-  const myRef = useRef<HTMLDivElement>(null);
-  const { enterCount } = useInViewport(myRef, {
-    rootMargin: "100px",
-  });
+type Props = {
+  adName: AdUnitName;
+};
 
-  const renderAd = Boolean(enterCount);
+export const Adsense: FC<Props> = memo(({ adName }) => {
+  useEffect(() => {
+    if (!AppConfig.enableAdsense) {
+      return;
+    }
+    try {
+      // @ts-ignore
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.warn("Failed to init ad");
+    }
+  }, []);
 
-  return <div ref={myRef}>{renderAd && <AdSenseSwitch {...props} />}</div>;
+  const config = useMemo<AdsenseConfig>(() => {
+    return adNameToConfig(adName);
+  }, [adName]);
+
+  return (
+    <>
+      <ins
+        className="adsbygoogle"
+        style={{ ...config.style, ...debugStyle(adName) }}
+        data-ad-client="ca-pub-2255854420599519"
+        data-ad-slot={config.adSlot}
+        data-ad-format={config.adFormat}
+        data-full-width-responsive={
+          config.fullWidthResponsive ? "true" : undefined
+        }
+      >
+        {!IS_PROD && (
+          <span style={{ textAlign: "center" }}>
+            Ad
+            <br />
+            {adName}
+          </span>
+        )}
+      </ins>
+    </>
+  );
 });
 
-const AdSenseSwitch: FC<Props> = memo(({ adFormat, style }) => {
-  console.log(`> Rendering Adsense ad - ${adFormat}`);
-  if (adFormat === "fixed300") {
-    return <AdsenseCustom size="300x300" />;
-  }
+export function adNameToConfig(adName: AdUnitName): AdsenseConfig {
+  const sharedResponsiveConfig: Pick<
+    AdsenseConfig,
+    "adFormat" | "fullWidthResponsive" | "style"
+  > = {
+    adFormat: "auto",
+    fullWidthResponsive: true,
+    style: {
+      display: "block",
+    },
+  };
 
-  if (adFormat === "fixed250") {
-    return <AdsenseCustom size="250x230" />;
+  switch (adName) {
+    case "mapSidebarSquare":
+      return {
+        adSlot: "6691131972",
+        style: {
+          display: "inline-block",
+          width: 300,
+          height: 300,
+        },
+      };
+    case "blogSidebar":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "8306403888",
+      };
+    case "fixed728x90":
+      return {
+        adSlot: "6474383821",
+        style: {
+          display: "inline-block",
+          width: 728,
+          height: 90,
+        },
+      };
+    case "nadePageSkyscraper":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "4143797591",
+      };
+    case "blogHorizontalFirst":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "4299769366",
+      };
+    case "blogHorizontalSecond":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "5609579041",
+      };
+    case "blogHorizontalThird":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "1670334030",
+      };
+    case "frontPageMobile":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "7322632881",
+      };
+    case "suggestedNadesHorizontal":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "2939167761",
+      };
+    default:
+      return assertNever(adName);
   }
+}
 
-  if (adFormat === "in-nade-list") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="1542966243"
-        style={{ display: "block", height: 230 }}
-        format="auto"
-        responsive="true"
-      />
-    );
+const debugStyle = (adName: AdUnitName): CSSProperties => {
+  const config = adNameToConfig(adName);
+
+  if (IS_PROD) {
+    return {};
+  } else {
+    return {
+      ...config.style,
+      height: config.style.height || 200,
+      background: "#e8e8e8",
+      display: "flex",
+      whiteSpace: "nowrap",
+      alignItems: "center",
+      justifyContent: "center",
+      color: "#666",
+      border: "1px solid #ccc",
+      textDecoration: "none",
+    };
   }
-
-  if (adFormat === "in-blog") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="1182382908"
-        style={{ display: "block" }}
-        format="fluid"
-        layoutKey="-5j+bp-1o-3z+u7"
-        responsive="true"
-      />
-    );
-  }
-
-  if (adFormat === "horizontal") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="4299769366"
-        style={style ? { ...style, display: "block" } : { display: "block" }}
-        format="auto"
-        responsive="true"
-      />
-    );
-  }
-
-  if (adFormat === "fixed728x90") {
-    return <AdsenseCustom size="728x90" />;
-  }
-
-  if (adFormat === "vertical") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="6719702506"
-        style={{ display: "block" }}
-        format="auto"
-        responsive="true"
-      />
-    );
-  }
-
-  if (adFormat === "square") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="6893569697"
-        style={{ display: "block" }}
-        format="auto"
-        responsive="true"
-      />
-    );
-  }
-
-  if (adFormat === "in-article") {
-    return (
-      <AdSense
-        client="ca-pub-2255854420599519"
-        slot="1671636402"
-        style={{ display: "block", textAlign: "center" }}
-        layout="in-article"
-        format="fluid"
-      />
-    );
-  }
-
-  return null;
-});
+};

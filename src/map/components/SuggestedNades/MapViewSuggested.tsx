@@ -10,7 +10,7 @@ import { motion, MotionProps } from "framer-motion";
 import styled from "styled-components";
 import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
-import { AdUnitAdSense } from "../../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 
 type Props = {
   open: boolean;
@@ -49,12 +49,23 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
     return item.id;
   }
 
+  const onBackgroundClick: MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation();
+
+    ga.event({
+      category: "map_page",
+      action: "close_suggested_nades_bg",
+    });
+
+    onDismiss();
+  };
+
   const onDismissCloseClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
 
     ga.event({
       category: "map_page",
-      action: "close_suggested_nades",
+      action: "close_suggested_nades_btn",
     });
 
     onDismiss();
@@ -66,7 +77,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
         <MapViewWrapper
           {...fadeInUp}
           animate={open ? "visible" : "hidden"}
-          onClick={onDismissCloseClick}
+          onClick={onBackgroundClick}
           initial={initialOpenState ? "visible" : "hidden"}
         >
           <div className="bg" />
@@ -90,10 +101,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
                   />
                 </div>
                 <div className="a">
-                  <AdUnitAdSense
-                    adFormat="horizontal"
-                    style={{ height: 100 }}
-                  />
+                  <AdUnit name="suggestedNadesHorizontal" />
                 </div>
               </>
             )}
@@ -102,10 +110,9 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
       </div>
       <style jsx>{`
         .a {
-          margin: ${Dimensions.GUTTER_SIZE / 2}px;
           display: block;
           align-self: center;
-          width: 95%;
+          width: 100%;
         }
 
         .wrapper {
@@ -131,11 +138,13 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           pointer-events: ${open ? "auto" : "none"};
           display: flex;
           flex-direction: column;
+          padding: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .nade-list-wrap {
-          margin: ${Dimensions.GUTTER_SIZE / 2}px;
           flex: 1;
+          margin-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
+          margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .bg {
@@ -154,7 +163,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-areas: "msg . close";
-          padding: 8px 8px 0px 8px;
         }
 
         .label {

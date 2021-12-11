@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
 import styled from "styled-components";
-import { Dimensions } from "../../constants/Constants";
 import { prettyDateTime } from "../../utils/DateUtils";
 
 type Props = {
@@ -42,11 +41,9 @@ const NotificationItemLayoutWrap = styled.div<{ isUnviewed?: boolean }>`
   grid-row-gap: 10px;
   background: ${({ theme, isUnviewed }) =>
     isUnviewed ? theme.colors.HIGHLIGHT_BG : theme.colors.DP03};
-  border: 1px solid ${({ theme }) => theme.colors.BORDER};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.BORDER};
   color: ${({ theme }) => theme.colors.TEXT};
   padding: 10px 12px;
-  margin-bottom: 4px;
-  border-radius: ${Dimensions.BORDER_RADIUS};
 
   &:hover {
     background: ${({ theme }) => theme.colors.DP02};

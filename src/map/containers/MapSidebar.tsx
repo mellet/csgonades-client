@@ -6,7 +6,7 @@ import { Spacer } from "../../shared-components/Spacer";
 import { Dimensions } from "../../constants/Constants";
 import { BuyMeABeerAction } from "../components/Sidebar/BuyMeABeerAction";
 import { SideJumbo } from "../components/Sidebar/SideJumbo";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 type Props = {
   map: CsgoMap;
@@ -25,7 +25,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
         <SideJumbo nades={nades} map={map} />
       </Spacer>
       <div className="ad">
-        <AdUnitAdSense adFormat="fixed300" />
+        <AdUnit name="mapSidebarSquare" />
       </div>
       <style jsx>{`
         .ctas {

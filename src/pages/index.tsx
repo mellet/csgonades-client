@@ -8,7 +8,7 @@ import { HeaderDefault } from "../core/layout/defaultheader/Header";
 import { Navigation } from "../navigation/Navigation";
 import { NadeApi } from "../nade/data/NadeApi";
 import { NadeLight } from "../nade/models/Nade";
-import { Config } from "../constants/Constants";
+import { AppConfig } from "../constants/Constants";
 
 type Props = {
   stats: SiteStats | null;
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       stats,
       recentNades,
     },
-    revalidate: Config.revalidationTime,
+    revalidate: AppConfig.revalidationTime,
   };
 };
 

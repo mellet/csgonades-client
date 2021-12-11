@@ -81,6 +81,10 @@ export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
         </table>
       </div>
       <style jsx>{`
+        #nade-list {
+          border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
         table {
           border-collapse: collapse;
           width: 100%;

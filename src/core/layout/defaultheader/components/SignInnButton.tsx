@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
-import { Config, Dimensions } from "../../../../constants/Constants";
+import { AppConfig, Dimensions } from "../../../../constants/Constants";
 import { useGa } from "../../../../utils/Analytics";
 
 export const SignInnButton: FC = () => {
@@ -18,7 +18,7 @@ export const SignInnButton: FC = () => {
       <div className="steam-login-wrapper">
         <a
           className="steam-login"
-          href={Config.SIGN_IN_URL}
+          href={AppConfig.SIGN_IN_URL}
           rel="nofollow"
           onClick={onSignInClick}
         >

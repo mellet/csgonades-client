@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { SidebarSkyskraperAd } from "../../shared-components/adunits/SidebarSkyskraper";
 import { NadeShareActions } from "../../nade/components/NadeShareActions";
 import { BlogPost } from "../models/BlogPost";
 import { Dimensions } from "../../constants/Constants";
 import { useMediaQuery } from "react-responsive";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 type Props = {
   data: BlogPost;
@@ -14,7 +14,7 @@ export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
 
   return (
     <>
-      <div id="blog-share" className="spacer">
+      <div id="blog-share">
         <NadeShareActions
           url={`/blog/${data.slug}`}
           title={data.title}
@@ -24,8 +24,8 @@ export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
       </div>
 
       {!isMobile && (
-        <div id="blog-sidebar-wrap" className="spacer">
-          <SidebarSkyskraperAd />
+        <div id="blog-sidebar-wrap">
+          <AdUnit name="blogSidebar" />
         </div>
       )}
 

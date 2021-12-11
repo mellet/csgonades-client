@@ -5,7 +5,7 @@ import { NadeLight } from "../../nade/models/Nade";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
-import { Config } from "../../constants/Constants";
+import { AppConfig } from "../../constants/Constants";
 import { MapMain } from "../../map/containers/MapMain";
 import { MapSidebar } from "../../map/containers/MapSidebar";
 
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<Props, { map: CsgoMap }> = async ({
       mapName,
       initialNades: nades,
     },
-    revalidate: Config.revalidationTime,
+    revalidate: AppConfig.revalidationTime,
   };
 };
 

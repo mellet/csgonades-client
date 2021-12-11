@@ -6,7 +6,7 @@ import Document, {
   DocumentContext,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { Config } from "../constants/Constants";
+import { AppConfig } from "../constants/Constants";
 import { GA_TRACKING_ID } from "../utils/gtag";
 
 class MyDocument extends Document {
@@ -99,10 +99,10 @@ class MyDocument extends Document {
           `,
               }}
             />
-            {Config.enableEzoic && (
+            {AppConfig.enableEzoic && (
               <script src="//www.ezojs.com/ezoic/sa.min.js" />
             )}
-            {Config.enableAdsense && (
+            {AppConfig.enableAdsense && (
               <script
                 async
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2255854420599519"

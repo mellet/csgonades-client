@@ -3,11 +3,11 @@ import packageJson from "../../package.json";
 // Set to true if you want to use API on localhost
 const USE_DEV_API = false;
 
-const IS_PROD = process.env.NODE_ENV === "production";
+export const IS_PROD = process.env.NODE_ENV === "production";
 
 const useLocalApi = USE_DEV_API && !IS_PROD;
 
-export const Config = {
+export const AppConfig = {
   enableEzoic: false,
   enableAdsense: IS_PROD,
   API_URL: useLocalApi ? "http://localhost:5000" : "https://api.csgonades.com",

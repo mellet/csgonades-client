@@ -1,5 +1,5 @@
 import { ok } from "neverthrow";
-import { Config } from "../../constants/Constants";
+import { AppConfig } from "../../constants/Constants";
 import AxiosApi from "../../core/AxiosInstance";
 import { Role } from "../../users/models/User";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
@@ -29,7 +29,7 @@ export class NadeCommentApi {
   static async getCommentsForNade(nadeId: string): AppResult<NadeComment[]> {
     try {
       const res = await AxiosApi.get<NadeComment[]>(
-        `${Config.API_URL}/nades/${nadeId}/comments`
+        `${AppConfig.API_URL}/nades/${nadeId}/comments`
       );
 
       return ok(res.data);
@@ -40,7 +40,7 @@ export class NadeCommentApi {
 
   static async getRecent(): Promise<NadeComment[]> {
     const res = await AxiosApi.get<NadeComment[]>(
-      `${Config.API_URL}/comments/recent`
+      `${AppConfig.API_URL}/comments/recent`
     );
 
     return res.data;
@@ -51,7 +51,7 @@ export class NadeCommentApi {
   ): AppResult<NadeComment> {
     try {
       const res = await AxiosApi.post<NadeComment>(
-        `${Config.API_URL}/nades/${comment.nadeId}/comments`,
+        `${AppConfig.API_URL}/nades/${comment.nadeId}/comments`,
         comment
       );
 
@@ -67,7 +67,7 @@ export class NadeCommentApi {
   ): AppResult<NadeComment> {
     try {
       const res = await AxiosApi.patch<NadeComment>(
-        `${Config.API_URL}/nades/${nadeId}/comments/${commentUpdate.id}`,
+        `${AppConfig.API_URL}/nades/${nadeId}/comments/${commentUpdate.id}`,
         commentUpdate
       );
       return ok(res.data);
@@ -82,7 +82,7 @@ export class NadeCommentApi {
   ): AppResult<boolean> {
     try {
       await AxiosApi.delete(
-        `${Config.API_URL}/nades/${nadeId}/comments/${commentId}`
+        `${AppConfig.API_URL}/nades/${nadeId}/comments/${commentId}`
       );
       return ok(true);
     } catch (error) {

@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { AdUnitAdSense } from "../adunits/Adsense";
 
 type Props = {
   numNades: number;
@@ -46,9 +45,7 @@ const ListAdUnit: FC<AdUnitProps> = ({ position }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div className="ph-inlist">
-        <AdUnitAdSense adFormat="fixed250" />
-      </div>
+      <div className="ph-inlist"></div>
       <style jsx>{`
         .ph-inlist {
           display: flex;

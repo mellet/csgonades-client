@@ -61,7 +61,7 @@ export function cleanGfycatUrl(gfycatIdOrUrl: string) {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function assertNever(_: never): void {
+export function assertNever(_: never): any {
   // no-op
 }
 

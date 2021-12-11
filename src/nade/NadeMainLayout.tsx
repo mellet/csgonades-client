@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { Dimensions } from "../constants/Constants";
-import { AdUnitAdSense } from "../shared-components/adunits/Adsense";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 type Props = {
   mobileTitle: JSX.Element;
@@ -27,7 +27,7 @@ export const NadeMainLayoutBuild: FC<Props> = ({
         <div className="mobile-title">{mobileTitle}</div>
         <div className="advert">
           <div className="sticky">
-            <AdUnitAdSense adFormat="vertical" />
+            <AdUnit name="nadePageSkyscraper" />
           </div>
         </div>
         <div className="video">{video}</div>

@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { EzoicPlaceholder } from "../shared-components/adunits/EzoicPlaceholder";
 
 const AdTesting: NextPage = () => {
   return (
@@ -9,15 +8,9 @@ const AdTesting: NextPage = () => {
         <span id="ezoic-pub-video-placeholder-1"></span>
         <h1>Adtesting</h1>
         <p>Ids: 170,172,173</p>
-        <div className="med-rec">
-          <EzoicPlaceholder id="172" />
-        </div>
-        <div className="med-rec">
-          <EzoicPlaceholder id="173" />
-        </div>
-        <div className="skyskraper">
-          <EzoicPlaceholder id="170" />
-        </div>
+        <div className="med-rec"></div>
+        <div className="med-rec"></div>
+        <div className="skyskraper"></div>
       </div>
       <style jsx>{`
         h1 {

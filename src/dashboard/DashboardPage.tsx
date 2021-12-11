@@ -37,24 +37,19 @@ export const DashboardPage: FC = () => {
         </div>
       </div>
       <style jsx>{`
-        #dashboard-page-wrap {
-          margin: ${Dimensions.GUTTER_SIZE}px;
-        }
-
         #message {
           display: none;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.WARNING};
           color: white;
           border-radius: 5px;
           padding: 10px;
           text-align: center;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
         #dashboard-page {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.DP02};
-          border-radius: 5px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-rows: min-content min-content;
@@ -64,6 +59,7 @@ export const DashboardPage: FC = () => {
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           overflow: hidden;
+          border: 1px solid ${colors.BORDER};
         }
 
         #title {
@@ -71,7 +67,7 @@ export const DashboardPage: FC = () => {
           margin: 0;
           padding: 0;
           font-size: 20px;
-          padding: 20px 30px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.PRIMARY};
           color: white;
         }
@@ -85,7 +81,8 @@ export const DashboardPage: FC = () => {
 
         #nade-list {
           grid-area: dbnades;
-          padding: 0px 30px 20px 30px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          padding-top: 0;
           color: ${colors.TEXT};
         }
       `}</style>

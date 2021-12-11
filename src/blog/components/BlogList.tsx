@@ -2,7 +2,6 @@ import { FC } from "react";
 import { BlogPostPreview } from "./BlogPostPreview";
 import { BlogPost } from "../models/BlogPost";
 import { Dimensions } from "../../constants/Constants";
-import { AdUnitAdSense } from "../../shared-components/adunits/Adsense";
 
 type Props = {
   posts: BlogPost[];
@@ -15,9 +14,6 @@ export const BlogList: FC<Props> = ({ posts }) => {
         {posts.map((bp, index) => (
           <BlogPostPreview key={bp.title} blogPost={bp} index={index} />
         ))}
-        <div className="a">
-          <AdUnitAdSense adFormat="in-blog" />
-        </div>
       </div>
 
       <style jsx>{`
