@@ -37,7 +37,7 @@ export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
           transition: background 0.1s;
           height: 100%;
           background: transparent;
-          color: #111;
+          color: ${colors.TEXT};
           align-items: center;
           color: rgb(88, 102, 126);
           font-weight: 400;
@@ -57,9 +57,12 @@ export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
           opacity: 1;
         }
 
+        .map-link:hover > .map-link-label {
+          opacity: 1;
+        }
+
         .map-link-label {
           margin-left: 10px;
-          color: ${colors.TEXT};
           opacity: 0.8;
           font-size: 15px;
           line-height: 15px;

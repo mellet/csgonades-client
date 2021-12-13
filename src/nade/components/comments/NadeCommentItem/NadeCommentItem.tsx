@@ -1,5 +1,8 @@
 import { FC } from "react";
-import { NadeComment } from "../../../data/NadeCommentApi";
+import {
+  NadeComment,
+  NadeCommentUpdateDTO,
+} from "../../../data/NadeCommentApi";
 import { timeSince } from "../../../../utils/DateUtils";
 import Link from "next/link";
 import { RenderMarkdown } from "../../RenderMarkdown";
@@ -14,18 +17,22 @@ import {
 } from "./NadeCommentLayout";
 import { NadeCommentActionButtons } from "./NadeCommentActions";
 import { RoleLabel } from "../../../../users/components/RoleLabel";
-import { useSignedInUser } from "../../../../core/authentication/useSignedInUser";
+import { User } from "../../../../users/models/User";
 
 export type NadeCommentItemProps = {
   nadeComment: NadeComment;
-  onRefetchComment: () => void;
+  signedInUser?: Pick<User, "role" | "steamId">;
+  onUpdateComment: (commentUpdate: NadeCommentUpdateDTO) => void;
+  onDeleteComment: (commentId: string) => void;
 };
 
 export const NadeCommentItem: FC<NadeCommentItemProps> = ({
   nadeComment,
-  onRefetchComment: refetchComment,
+  signedInUser,
+  onUpdateComment,
+  onDeleteComment,
 }) => {
-  const allowEditAndDelete = useAllowEditComment(nadeComment);
+  const allowEditAndDelete = isAllowedToEditComment(nadeComment, signedInUser);
 
   const showRoleLabel = nadeComment.role !== "user";
 
@@ -59,7 +66,8 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
           {allowEditAndDelete && (
             <NadeCommentActionButtons
               nadeComment={nadeComment}
-              refetchComment={refetchComment}
+              onDeleteComment={onDeleteComment}
+              onUpdateComment={onUpdateComment}
             />
           )}
         </NadeCommentActions>
@@ -68,9 +76,10 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
   );
 };
 
-const useAllowEditComment = (nadeComment: NadeComment) => {
-  const { signedInUser } = useSignedInUser();
-
+const isAllowedToEditComment = (
+  nadeComment: NadeComment,
+  signedInUser?: Pick<User, "role" | "steamId">
+) => {
   if (!signedInUser) {
     return false;
   }

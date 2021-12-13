@@ -2,7 +2,7 @@ import { FC, memo, useEffect } from "react";
 import { Dimensions, LayerPosition } from "../../constants/Constants";
 import { ToastItem } from "./ToastItem";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
-import { useToast } from "./ToastContext";
+import { useToast } from "./useToast";
 
 const DEBUG = false;
 

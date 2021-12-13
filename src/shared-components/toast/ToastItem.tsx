@@ -2,7 +2,7 @@ import { FC, useEffect, useState, memo } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { AppToast, ToastSeverity } from "../../core/toasts/ToastModels";
-import { useToast } from "./ToastContext";
+import { useToast } from "./useToast";
 
 type Props = {
   toast: AppToast;

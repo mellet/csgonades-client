@@ -27,7 +27,13 @@ export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
         </div>
 
         <div className="main-title">
-          <NadeTitle nade={nade} />
+          <NadeTitle
+            csGoMap={nade.map}
+            isOneWay={nade.oneWay}
+            nadeEndPosition={nade.endPosition}
+            nadeStartPosition={nade.startPosition}
+            nadeType={nade.type}
+          />
         </div>
       </div>
 

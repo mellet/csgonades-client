@@ -36,7 +36,11 @@ export const NadeActions: FC<Props> = ({ nade }) => {
         <NadeCopyPosition setPos={nade.setPos} nadeId={nade.id} />
       )}
       <NadeReportButton nadeId={nade.id} />
-      <NadeEditButton nade={nade} />
+      <NadeEditButton
+        nadeId={nade.id}
+        nadeSteamId={nade.steamId}
+        nadeSlug={nade.slug}
+      />
       <style jsx>{`
         .user-avatar img {
           width: 40px;

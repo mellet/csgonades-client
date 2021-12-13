@@ -6,13 +6,13 @@ import AxiosApi from "../../core/AxiosInstance";
 import axios from "axios";
 
 export class UserApi {
-  static fetchSelf = async (): Promise<User> => {
+  public static fetchSelf = async (): Promise<User> => {
     const res = await AxiosApi.get(`${AppConfig.API_URL}/users/self`);
     const user = res.data as User;
     return user;
   };
 
-  static fetchUser = async (steamId: string): AppResult<User> => {
+  public static fetchUser = async (steamId: string): AppResult<User> => {
     try {
       const res = await axios.get(`${AppConfig.API_URL}/users/${steamId}`);
       const user = res.data as User;
@@ -22,7 +22,7 @@ export class UserApi {
     }
   };
 
-  static fetchUsers = async (
+  public static fetchUsers = async (
     page: number,
     limit: number,
     sortByActivity: boolean
@@ -33,7 +33,7 @@ export class UserApi {
     return res.data;
   };
 
-  static updateUser = async (
+  public static updateUser = async (
     steamId: string,
     updatedUser: UserUpdateDTO
   ): AppResult<User> => {

@@ -36,14 +36,12 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
               <div className="video">
                 <GfycatThumbnail
                   avgColor={nade.gfycat.avgColor}
-                  downVoteCount={nade.downVoteCount}
                   gfyId={nade.gfycat.gfyId}
                   lineUpThumnUrl={getNadeLineUpImageThumb(nade)}
                   nadeId={nade.id}
                   nadeSlug={nade.slug}
                   smallVideoUrl={nade.gfycat.smallVideoUrl}
                   thumbnailUrl={getNadeMainImage(nade)}
-                  upVoteCount={nade.upVoteCount}
                 />
               </div>
             </a>
@@ -88,6 +86,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
 
         .video {
           overflow: hidden;
+          position: relative;
         }
 
         @media only screen and (max-width: ${Dimensions.MOBILE_THRESHHOLD}) {

@@ -15,14 +15,12 @@ const MiniGfycatIframe = dynamic(
 type Props = {
   avgColor?: string;
   disableAction?: boolean;
-  downVoteCount?: number;
   gfyId: string;
   lineUpThumnUrl?: string;
   nadeId: string;
   nadeSlug?: string;
   smallVideoUrl?: string;
   thumbnailUrl?: string;
-  upVoteCount?: number;
 };
 
 export const GfycatThumbnail: FC<Props> = ({

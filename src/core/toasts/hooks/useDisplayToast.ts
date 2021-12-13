@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { useCallback } from "react";
-import { useToast } from "../../../shared-components/toast/ToastContext";
+import { useToast } from "../../../shared-components/toast/useToast";
 import { capitalize } from "../../../utils/Common";
 import { AppToast, AppToastCreate } from "../ToastModels";
 

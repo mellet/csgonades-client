@@ -52,7 +52,15 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
       <NadeMainLayoutBuild
         status={<NadeStatus status={nade.status} />}
-        mobileTitle={<NadeTitle nade={nade} />}
+        mobileTitle={
+          <NadeTitle
+            csGoMap={nade.map}
+            isOneWay={nade.oneWay}
+            nadeEndPosition={nade.endPosition}
+            nadeStartPosition={nade.startPosition}
+            nadeType={nade.type}
+          />
+        }
         video={<NadeVideoContainer nade={nade} />}
         actions={<NadeActions nade={nade} />}
         description={<NadeDescription nade={nade} />}

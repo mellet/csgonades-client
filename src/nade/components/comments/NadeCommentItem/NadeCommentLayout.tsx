@@ -51,6 +51,8 @@ export const NadeCommentTime = styled.div`
 export const NadeCommentActions = styled.div`
   grid-area: action;
   padding: 0px 0px 0px 0px;
+  padding-top: 8px;
+  padding-right: 8px;
   background: ${({ theme }) => theme.colors.DP03};
   border-top-right-radius: 8px;
   overflow: hidden;

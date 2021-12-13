@@ -26,16 +26,12 @@ export type NadeCommentUpdateDTO = {
 };
 
 export class NadeCommentApi {
-  static async getCommentsForNade(nadeId: string): AppResult<NadeComment[]> {
-    try {
-      const res = await AxiosApi.get<NadeComment[]>(
-        `${AppConfig.API_URL}/nades/${nadeId}/comments`
-      );
+  static async getCommentsForNade(nadeId: string): Promise<NadeComment[]> {
+    const res = await AxiosApi.get<NadeComment[]>(
+      `${AppConfig.API_URL}/nades/${nadeId}/comments`
+    );
 
-      return ok(res.data);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    return res.data;
   }
 
   static async getRecent(): Promise<NadeComment[]> {

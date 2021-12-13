@@ -1,18 +1,23 @@
 import Link from "next/link";
 import { FC } from "react";
 import { FaPencilAlt } from "react-icons/fa";
-import { Nade } from "../models/Nade";
 import { useCanEditNade } from "../data/useCanEditNade";
 import { SquareButton } from "../../shared-components/buttons/IconButton";
 import { useTheme } from "styled-components";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 
 type Props = {
-  nade: Nade;
+  nadeId: string;
+  nadeSteamId: string;
+  nadeSlug?: string;
 };
 
-export const NadeEditButton: FC<Props> = ({ nade }) => {
-  const canEdit = useCanEditNade(nade.steamId);
+export const NadeEditButton: FC<Props> = ({
+  nadeId,
+  nadeSteamId,
+  nadeSlug,
+}) => {
+  const canEdit = useCanEditNade(nadeSteamId);
   const { colors } = useTheme();
 
   if (!canEdit) {
@@ -21,7 +26,7 @@ export const NadeEditButton: FC<Props> = ({ nade }) => {
 
   return (
     <Tooltip message="Edit" direction="right">
-      <Link href={`/nades/${nade.slug || nade.id}/edit`}>
+      <Link href={`/nades/${nadeSlug || nadeId}/edit`}>
         <a>
           <SquareButton
             icon={<FaPencilAlt />}

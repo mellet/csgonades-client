@@ -19,7 +19,11 @@ export const NadeOverVideo: FC<Props> = ({ nade }) => {
         <Spacer>
           <FavoriteButton nadeId={nade.id} favoriteCount={nade.favoriteCount} />
           <NadeReportButton nadeId={nade.id} />
-          <NadeEditButton nade={nade} />
+          <NadeEditButton
+            nadeId={nade.id}
+            nadeSteamId={nade.steamId}
+            nadeSlug={nade.slug}
+          />
         </Spacer>
       </div>
       <style jsx>{`

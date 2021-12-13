@@ -3,6 +3,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { useTheme } from "./SettingsHooks";
 import { DEFAULT_THEME } from "./Themes";
 import { Normalize } from "styled-normalize";
+import { ToastProvider } from "../../shared-components/toast/ToastContext";
 
 const GlobalStyle = createGlobalStyle`
  html {
@@ -77,17 +78,17 @@ const GlobalStyle = createGlobalStyle`
 export const AppThemeProvider: FC = ({ children }) => {
   const { colors } = useTheme();
 
-  const theme = {
-    colors,
-  };
+  const theme = { colors };
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Normalize />
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
+      <ToastProvider>
+        <ThemeProvider theme={theme}>
+          <Normalize />
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      </ToastProvider>
     </>
   );
 };
@@ -95,11 +96,13 @@ export const AppThemeProvider: FC = ({ children }) => {
 export const StoryBookThemeProvider: FC = ({ children }) => {
   return (
     <>
-      <ThemeProvider theme={DEFAULT_THEME.theme}>
-        <Normalize />
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
+      <ToastProvider>
+        <ThemeProvider theme={DEFAULT_THEME.theme}>
+          <Normalize />
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      </ToastProvider>
     </>
   );
 };

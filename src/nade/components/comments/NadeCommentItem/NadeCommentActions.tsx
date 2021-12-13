@@ -1,66 +1,60 @@
 import { FC, useState } from "react";
+import { FaBan, FaPen } from "react-icons/fa";
 import { useTheme } from "styled-components";
 import { Dimensions } from "../../../../constants/Constants";
-import { useSession } from "../../../../core/authentication/useSession";
 import { CSGNModal } from "../../../../shared-components/CSGNModal";
 import { CsgnSaveButton } from "../../../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../../../shared-components/inputs/CsgnTextArea";
-import { NadeComment, NadeCommentApi } from "../../../data/NadeCommentApi";
+import {
+  NadeComment,
+  NadeCommentUpdateDTO,
+} from "../../../data/NadeCommentApi";
 
 type Props = {
   nadeComment: NadeComment;
-  refetchComment: () => void;
+  onUpdateComment: (commentUpdate: NadeCommentUpdateDTO) => void;
+  onDeleteComment: (commentId: string) => void;
 };
 
 export const NadeCommentActionButtons: FC<Props> = ({
   nadeComment,
-  refetchComment,
+  onDeleteComment,
+  onUpdateComment,
 }) => {
   const { colors } = useTheme();
-  const { isAuthenticated } = useSession();
   const [editorVisisble, setEditorVisisble] = useState(false);
   const [deleteConfirmVisisble, setDeleteConfirmVisible] = useState(false);
   const [message, setMessage] = useState(nadeComment.message);
 
-  async function onUpdateComment() {
-    if (!isAuthenticated) {
-      setEditorVisisble(false);
+  async function updateComment() {
+    if (!message.length) {
       return;
     }
-
-    await NadeCommentApi.updateNadeComment(nadeComment.nadeId, {
+    setEditorVisisble(false);
+    onUpdateComment({
       id: nadeComment.id,
       message,
     });
-
-    setEditorVisisble(false);
-    refetchComment();
   }
 
-  async function onDeleteComment() {
-    if (!isAuthenticated) {
-      setDeleteConfirmVisible(false);
-      return;
-    }
-
-    const res = await NadeCommentApi.deleteNadeComment(
-      nadeComment.nadeId,
-      nadeComment.id
-    );
-
-    if (res.isErr()) {
-      // TODO: Show error toast
-    }
-
-    refetchComment();
+  async function deleteComment() {
     setDeleteConfirmVisible(false);
+    onDeleteComment(nadeComment.id);
   }
 
   return (
     <>
       <div className="actions">
-        <button onClick={() => setEditorVisisble(true)}>Edit</button>
-        <button onClick={() => setDeleteConfirmVisible(true)}>Delete</button>
+        <button className="edit-btn" onClick={() => setEditorVisisble(true)}>
+          <span>Edit</span>
+          <FaPen />
+        </button>
+        <button
+          className="delete-btn"
+          onClick={() => setDeleteConfirmVisible(true)}
+        >
+          <span>Delete</span> <FaBan />
+        </button>
       </div>
 
       <CSGNModal
@@ -74,7 +68,7 @@ export const NadeCommentActionButtons: FC<Props> = ({
             defaultValue={message}
             onChange={setMessage}
           />
-          <CsgnSaveButton onClick={onUpdateComment} />
+          <CsgnSaveButton onClick={updateComment} />
         </div>
       </CSGNModal>
 
@@ -85,7 +79,7 @@ export const NadeCommentActionButtons: FC<Props> = ({
       >
         <div className="comment-delete-confirm">
           <p>Are you sure you want to delete this comment?</p>
-          <button onClick={onDeleteComment}>Yes</button>
+          <button onClick={deleteComment}>Yes</button>
           <button
             className="cancel-btn"
             onClick={() => setDeleteConfirmVisible(false)}
@@ -130,37 +124,39 @@ export const NadeCommentActionButtons: FC<Props> = ({
         .actions {
           display: flex;
           flex-direction: row;
-          padding: 2px;
         }
 
         .actions button {
           border: none;
           padding: 6px 10px;
-          background: ${colors.DP03};
           cursor: pointer;
           color: ${colors.TEXT};
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 300;
-          border: 1px solid ${colors.buttonBorder};
+          border: 1px solid ${colors.BORDER};
+          margin-right: 4px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          display: flex;
+          align-items: center;
+          background: ${colors.DP02};
+          transition: all 0.2s;
+        }
+
+        .actions button span {
+          margin-right: 4px;
         }
 
         .actions button:focus-visible {
           outline: 1px auto ${colors.PRIMARY};
         }
 
-        .actions button:first-child {
-          border-right: none;
-          border-bottom-left-radius: ${Dimensions.BORDER_RADIUS};
-          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
-        }
-
-        .actions button:last-child {
-          border-top-right-radius: ${Dimensions.BORDER_RADIUS};
-          border-bottom-right-radius: ${Dimensions.BORDER_RADIUS};
-        }
-
         .actions button:hover {
-          text-decoration: underline;
+          background: ${colors.DP03};
+        }
+
+        .delete-btn:hover {
+          background: ${colors.reportRed} !important;
+          color: white !important;
         }
       `}</style>
     </>

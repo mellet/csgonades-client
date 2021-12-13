@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import dynamic from "next/dynamic";
 import { ToastProvider } from "../shared-components/toast/ToastContext";
-import { useNewPageView } from "../utils/Analytics";
+import { PageViewTracker } from "./PageViewTracker";
 
 const ServiceDown = dynamic(
   () =>
@@ -28,14 +28,13 @@ const SignInWarning = dynamic(
 );
 
 export const CoreWrapper: FC = memo(({ children }) => {
-  useNewPageView();
-
   return (
     <ToastProvider>
       {children}
       {false && <ServiceDown />}
       <ToastList />
       <SignInWarning />
+      <PageViewTracker />
     </ToastProvider>
   );
 });

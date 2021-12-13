@@ -1,13 +1,13 @@
 import { AppToast } from "../../core/toasts/ToastModels";
-import React, { createContext, FC, useMemo, useState, useContext } from "react";
+import React, { createContext, FC, useMemo, useState } from "react";
 
-interface ToastContext {
+export interface ToastContext {
   toasts: AppToast[];
   addToast: (toast: AppToast) => void;
   removeToast: (toastId: string) => void;
 }
 
-const ToastContext = createContext<ToastContext | null>(null);
+export const ToastContext = createContext<ToastContext | null>(null);
 
 export const ToastProvider: FC = ({ children }) => {
   const [toasts, setToasts] = useState<AppToast[]>([]);
@@ -29,14 +29,4 @@ export const ToastProvider: FC = ({ children }) => {
   return (
     <ToastContext.Provider value={toastState}>{children}</ToastContext.Provider>
   );
-};
-
-export const useToast = () => {
-  const toastContext = useContext(ToastContext);
-
-  if (!toastContext) {
-    throw Error("Trying to consume ToastContext without provider.");
-  }
-
-  return toastContext;
 };
