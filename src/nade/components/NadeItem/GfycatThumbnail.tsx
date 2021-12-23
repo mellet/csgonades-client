@@ -1,13 +1,13 @@
 import { FC, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { ThumbImage } from "./ThumbImage";
+import { ThumbImage } from "./Views/ThumbImage";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 
 const MiniGfycatIframe = dynamic(
   () =>
     import(
-      /* webpackChunkName: "minigfycatiframe" */ "./MiniGfycatIframe"
+      /* webpackChunkName: "minigfycatiframe" */ "./Views/MiniGfycatIframe"
     ).then((m) => m.MiniGfycatIframe),
   { ssr: false }
 );

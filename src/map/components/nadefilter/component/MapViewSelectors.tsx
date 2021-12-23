@@ -2,8 +2,8 @@ import { FC } from "react";
 import { useSetMapView } from "../../../data/hooks/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
-import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton";
+import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 
 type Props = {
   vertical?: boolean;
@@ -32,6 +32,7 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
         />
         <SquareButton
           inGroup
+          last
           icon={<FaListUl />}
           active={mapView === "list"}
           onClick={onSwtichToList}

@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
-import { useTheme } from "styled-components";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useGa } from "../../../../utils/Analytics";
 
 type Props = {

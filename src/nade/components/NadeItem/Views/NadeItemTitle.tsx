@@ -1,9 +1,9 @@
 import { FC, useMemo } from "react";
-import { Status } from "../../models/Status";
-import { useTheme } from "../../../core/settings/SettingsHooks";
-import { generateNadeItemTitle } from "../../../utils/Common";
-import { NadeType } from "../../models/NadeType";
-import { NadeIcon } from "../../../shared-components/nade-icons";
+import { Status } from "../../../models/Status";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { generateNadeItemTitle } from "../../../../utils/Common";
+import { NadeType } from "../../../models/NadeType";
+import { NadeIcon } from "../../../../shared-components/nade-icons";
 
 type Props = {
   endPosition?: string;

@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { FaUndo } from "react-icons/fa";
 import { useFilterReset } from "../../../data/hooks/useFilterReset";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 
 export const ResetFilterButton: FC = memo(() => {
   const { canReset, resetFilter } = useFilterReset();

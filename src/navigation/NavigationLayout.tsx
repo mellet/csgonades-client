@@ -1,6 +1,6 @@
 import { FC } from "react";
-import styled from "styled-components";
 import { Dimensions } from "../constants/Constants";
+import { useTheme } from "../core/settings/SettingsHooks";
 
 type Props = {
   mainNav: JSX.Element;
@@ -13,66 +13,70 @@ export const NavigationLayout: FC<Props> = ({
   mainNav,
   secondaryNav,
 }) => {
+  const { colors } = useTheme();
   return (
     <>
-      <NavigationLayoutWrap>
+      <nav>
         <div className="main">{mainNav}</div>
         <div className="secondary">{secondaryNav}</div>
         <div className="footer">{footer}</div>
-      </NavigationLayoutWrap>
+      </nav>
+      <style jsx>{`
+        nav {
+          position: sticky;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+        }
+
+        .secondary {
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .main,
+        .secondary {
+          background: ${colors.DP03};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.BORDER};
+        }
+
+        .secondary {
+          border-bottom: 0;
+          border-bottom-left-radius: 0px;
+          border-bottom-right-radius: 0px;
+        }
+
+        .footer {
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+          overflow: hidden;
+          border: 1px solid ${colors.BORDER};
+          border-top: 0;
+        }
+
+        @media only screen and (max-width: 1200px) {
+          nav {
+            height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
+            background: ${colors.DP03};
+            overflow-y: auto;
+          }
+
+          .main,
+          .secondary {
+            margin: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0px;
+          }
+
+          .secondary {
+            flex: 1;
+          }
+
+          .footer {
+            border-radius: 0px;
+            border: none;
+          }
+        }
+      `}</style>
     </>
   );
 };
-
-const NavigationLayoutWrap = styled.nav`
-  position: sticky;
-  top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
-
-  & .secondary {
-    margin-top: ${Dimensions.GUTTER_SIZE}px;
-  }
-
-  .main,
-  .secondary {
-    background: ${({ theme }) => theme.colors.DP03};
-    border-radius: ${Dimensions.BORDER_RADIUS};
-    border: 1px solid ${({ theme }) => theme.colors.BORDER};
-  }
-
-  .secondary {
-    border-bottom: 0;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-  }
-
-  .footer {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    overflow: hidden;
-    border: 1px solid ${({ theme }) => theme.colors.BORDER};
-    border-top: 0;
-  }
-
-  @media only screen and (max-width: 1200px) {
-    height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
-    background: ${({ theme }) => theme.colors.DP03};
-    overflow-y: auto;
-
-    .main,
-    .secondary {
-      margin: 0;
-      background: transparent;
-      border: none;
-      border-radius: 0px;
-    }
-
-    .secondary {
-      flex: 1;
-    }
-
-    .footer {
-      border-radius: 0px;
-      border: none;
-    }
-  }
-`;

@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import { FaCrosshairs } from "react-icons/fa";
-import { useTheme } from "styled-components";
-import { SquareButton } from "../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../shared-components/buttons/IconButton/IconButton";
 import copy from "copy-to-clipboard";
 import { useGa } from "../../../utils/Analytics";
 import { PositionCopyHint } from "../../../hints/components/PositionCopyHint";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type Props = {
   nadeId: string;

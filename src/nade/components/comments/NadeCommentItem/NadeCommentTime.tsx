@@ -1,20 +1,20 @@
 import { FC } from "react";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 
-export const NadeCommentActions: FC = ({ children }) => {
+export const NadeCommentTime: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
       <div>{children}</div>
       <style jsx>{`
         div {
-          grid-area: action;
-          padding: 0px 0px 0px 0px;
-          padding-top: 8px;
-          padding-right: 8px;
+          grid-area: time;
+          color: ${colors.GREY};
+          font-size: 12px;
           background: ${colors.DP03};
-          border-top-right-radius: 8px;
-          overflow: hidden;
+          padding: 16px 16px 8px 16px;
+          border-bottom-right-radius: 8px;
+          border-bottom-left-radius: 8px;
         }
       `}</style>
     </>

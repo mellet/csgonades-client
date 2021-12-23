@@ -4,10 +4,10 @@ import { ReportAddDto } from "../../../reports/models/Report";
 import { ReportApi } from "../../../reports/data/ReportApi";
 import { FaFlag } from "react-icons/fa";
 import { Modal, Form, TextArea, Button } from "semantic-ui-react";
-import { SquareButton } from "../../../shared-components/buttons/IconButton";
-import { useTheme } from "styled-components";
+import { SquareButton } from "../../../shared-components/buttons/IconButton/IconButton";
 import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../../utils/Analytics";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type Props = {
   nadeId: string;

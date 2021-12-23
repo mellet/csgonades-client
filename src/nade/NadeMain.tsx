@@ -8,7 +8,7 @@ import { Nade } from "./models/Nade";
 import NadeStatus from "./components/NadeStatus/NadeStatus";
 import { NadeTitle } from "./components/NadeHeader/NadeTitle";
 import { NadeDescription } from "./components/NadeDescription";
-import { NadeMainLayoutBuild } from "./NadeMainLayout";
+import { NadeMainLayout } from "./NadeMainLayout";
 import { NadeActions } from "./containers/NadeActions";
 
 type Props = {
@@ -50,7 +50,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         video={nade.gfycat.smallVideoUrl}
       />
 
-      <NadeMainLayoutBuild
+      <NadeMainLayout
         status={<NadeStatus status={nade.status} />}
         mobileTitle={
           <NadeTitle

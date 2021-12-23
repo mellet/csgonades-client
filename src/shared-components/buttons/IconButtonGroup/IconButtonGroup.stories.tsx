@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { IconButtonGroup } from "./IconButtonGroup";
-import { SquareButton } from "../IconButton";
+import { SquareButton } from "../IconButton/IconButton";
 import { FaCloud, FaStar } from "react-icons/fa";
 import { ButtonWithIcon } from "../ButtonWithIcon";
 

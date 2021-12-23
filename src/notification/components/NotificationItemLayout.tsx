@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
-import styled from "styled-components";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { prettyDateTime } from "../../utils/DateUtils";
 
 type Props = {
@@ -18,61 +18,69 @@ export const NotificationItemLayout: FC<Props> = ({
   imageUrl,
   isUnviewed,
 }) => {
+  const { colors } = useTheme();
   return (
-    <NotificationItemLayoutWrap isUnviewed={isUnviewed}>
-      {icon && <NotificationItemIcon>{icon}</NotificationItemIcon>}
-      <NotificationItemMessage>{message}</NotificationItemMessage>
-      <NotificationItemDate>{prettyDateTime(createdAt)}</NotificationItemDate>
-      {imageUrl && (
-        <NotificationImageWrap>
-          <Image src={imageUrl} layout="fill" objectFit="cover" quality={100} />
-        </NotificationImageWrap>
-      )}
-    </NotificationItemLayoutWrap>
+    <>
+      <div className="notification-layout">
+        {icon && <span className="icon">{icon}</span>}
+        <span className="message">{message}</span>
+        <span className="date">{prettyDateTime(createdAt)}</span>
+        {imageUrl && (
+          <div className="image">
+            <Image
+              src={imageUrl}
+              layout="fill"
+              objectFit="cover"
+              quality={100}
+            />
+          </div>
+        )}
+      </div>
+      <style jsx>{`
+        .notification-layout {
+          display: grid;
+          grid-template-columns: min-content min-content 1fr min-content;
+          grid-template-areas:
+            "image icon message date"
+            "image icon message date";
+          grid-row-gap: 10px;
+          background: ${isUnviewed ? colors.HIGHLIGHT_BG : colors.DP03};
+          border-bottom: 1px solid ${colors.BORDER};
+          color: ${colors.TEXT};
+          padding: 10px 12px;
+        }
+
+        .notification-layout:hover {
+          background: ${colors.DP02};
+        }
+
+        .icon {
+          grid-area: icon;
+          margin-right: 10px;
+        }
+
+        .message {
+          grid-area: message;
+        }
+
+        .date {
+          grid-area: date;
+          font-size: 14px;
+          white-space: nowrap;
+          color: ${colors.GREY};
+        }
+
+        .image {
+          grid-area: image;
+          width: 100px;
+          position: relative;
+          height: 100%;
+          border-radius: 4px;
+          overflow: hidden;
+          margin-right: 8px;
+          min-height: 40px;
+        }
+      `}</style>
+    </>
   );
 };
-
-const NotificationItemLayoutWrap = styled.div<{ isUnviewed?: boolean }>`
-  display: grid;
-  grid-template-columns: min-content min-content 1fr min-content;
-  grid-template-areas:
-    "image icon message date"
-    "image icon message date";
-  grid-row-gap: 10px;
-  background: ${({ theme, isUnviewed }) =>
-    isUnviewed ? theme.colors.HIGHLIGHT_BG : theme.colors.DP03};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.BORDER};
-  color: ${({ theme }) => theme.colors.TEXT};
-  padding: 10px 12px;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.DP02};
-  }
-`;
-
-const NotificationItemIcon = styled.span`
-  grid-area: icon;
-  margin-right: 10px;
-`;
-
-const NotificationItemDate = styled.span`
-  grid-area: date;
-  font-size: 14px;
-  white-space: nowrap;
-  color: ${({ theme }) => theme.colors.GREY};
-`;
-
-const NotificationItemMessage = styled.span`
-  grid-area: message;
-`;
-
-const NotificationImageWrap = styled.div`
-  grid-area: image;
-  width: 100px;
-  position: relative;
-  height: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-right: 8px;
-  min-height: 40px;
-`;

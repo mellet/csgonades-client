@@ -6,18 +6,16 @@ import {
 import { timeSince } from "../../../../utils/DateUtils";
 import Link from "next/link";
 import { RenderMarkdown } from "../../RenderMarkdown";
-import {
-  NadeCommentActions,
-  NadeCommentArrow,
-  NadeCommentAvatar,
-  NadeCommentBody,
-  NadeCommentLayout,
-  NadeCommentNickname,
-  NadeCommentTime,
-} from "./NadeCommentLayout";
-import { NadeCommentActionButtons } from "./NadeCommentActions";
+import { NadeCommentLayout } from "./NadeCommentLayout";
+import { NadeCommentActionButtons } from "./NadeCommentActionButtons";
 import { RoleLabel } from "../../../../users/components/RoleLabel";
 import { User } from "../../../../users/models/User";
+import { NadeCommentAvatar } from "./NadeCommentAvatar";
+import { NadeCommentNickname } from "./NadeCommentNickname";
+import { NadeCommentBody } from "./NadeCommentBody";
+import { NadeCommentTime } from "./NadeCommentTime";
+import { NadeCommentActions } from "./NadeCommentActions";
+import { NadeCommentArrow } from "./NadeCommentArrow";
 
 export type NadeCommentItemProps = {
   nadeComment: NadeComment;

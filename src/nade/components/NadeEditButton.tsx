@@ -2,9 +2,9 @@ import Link from "next/link";
 import { FC } from "react";
 import { FaPencilAlt } from "react-icons/fa";
 import { useCanEditNade } from "../data/useCanEditNade";
-import { SquareButton } from "../../shared-components/buttons/IconButton";
-import { useTheme } from "styled-components";
+import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   nadeId: string;

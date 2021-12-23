@@ -1,6 +1,6 @@
 import { FC, useCallback, useMemo } from "react";
 import { FilterLabel } from "./FilterLabel";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 import { useFilterByTeam } from "../../../data/hooks/useFilterByTeam";
 import { OptionCarusel } from "./OptionCarusel";
 

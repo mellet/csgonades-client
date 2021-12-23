@@ -4,7 +4,7 @@ import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useFilterByFavorites } from "../../../data/hooks/useFilterByFavorites";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 import { FilterLabel } from "./FilterLabel";
 import { FavoriteHint } from "../../../../hints/components/FavoriteHint";
 

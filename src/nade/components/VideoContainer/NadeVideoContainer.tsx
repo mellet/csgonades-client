@@ -4,7 +4,7 @@ import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
 import { NadeMeta } from "../NadeMeta/NadeMeta";
 import { Nade } from "../../models/Nade";
-import { getNadeLineUpImage } from "../NadeItem/NadeItem";
+import { getNadeLineUpImage } from "../NadeItem/Utils/NadeUtils";
 
 type Props = {
   nade: Nade;
