@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 
 type Props = {
@@ -10,8 +9,6 @@ type Props = {
 
 export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
   const ga = useGa();
-  const { colors } = useTheme();
-
   const isVideoSelected = selectedTab === "video";
   const isLineUpSelected = selectedTab === "lineup";
 
@@ -45,24 +42,9 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
         </button>
       </div>
       <style jsx>{`
-        .tab-selector {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          z-index: 1;
-          display: flex;
-          border-radius: 8px;
-          background: ${colors.DP03};
-          transition: all 0.2s;
-          overflow: hidden;
-          width: 140px;
-          height: 40px;
-          padding: 2px;
-        }
-
         .selected-bg {
           position: absolute;
-          padding: 1px;
+          padding: 0px;
           top: 0px;
           bottom: 0px;
           left: 0px;
@@ -70,11 +52,31 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           transform: translateX(${selectedTab === "video" ? 0 : "100%"});
           transition: transform 0.15s;
           z-index: 2;
-          border-radius: 8px;
+        }
+
+        .selected-bg-fill {
+          background: rgba(255, 255, 255, 0.85);
+          width: 100%;
+          height: 100%;
+          z-index: 3;
+        }
+
+        .tab-selector {
+          position: absolute;
+          top: ${Dimensions.GUTTER_SIZE}px;
+          right: ${Dimensions.GUTTER_SIZE}px;
+          z-index: 1;
+          display: flex;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          background: transparent;
+          transition: all 0.2s;
+          overflow: hidden;
+          width: 120px;
+          height: 40px;
+          border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
         .tab-btn {
-          color: ${colors.TEXT};
           z-index: 3;
           background: transparent;
           cursor: pointer;
@@ -82,30 +84,18 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           text-transform: uppercase;
           font-size: 12px;
           font-weight: 500;
-          border-radius: 8px;
           border: none;
           flex: 1;
-        }
-
-        .selected-bg-fill {
-          background: #111;
-          width: 100%;
-          height: 100%;
-          z-index: 3;
-          border-radius: 8px;
-          color: white;
-        }
-
-        .selected-btn {
-          color: white;
+          color: rgba(255, 255, 255, 0.9);
+          transition: all 0.2s;
         }
 
         .tab-btn:hover {
-          text-decoration: underline;
+          background: rgba(255, 255, 255, 0.3);
         }
 
         .selected {
-          color: white;
+          color: #222;
         }
 
         .selected:hover {
