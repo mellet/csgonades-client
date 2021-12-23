@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
-import { custerNades } from "../../../utils/Cluster";
+import { NadeLight } from "../../nade/models/Nade";
+import { custerNades } from "../../utils/Cluster";
 
 export const useNadeClusters = (nades: NadeLight[]): NadeLight[][] => {
   const unqiueNadesForPosition = useMemo(() => {

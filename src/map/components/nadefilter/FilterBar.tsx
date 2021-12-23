@@ -7,18 +7,13 @@ import { FilterByProButton } from "./component/FilterByProButton";
 import { FilterBarLayout } from "./FilterBarLayout";
 import { TeamSelector } from "./component/TeamSelector";
 import { TickratePicker } from "./component/TickratePicker";
-import { NadeCounts } from "../../data/hooks/useNadeCount";
 
-type Props = {
-  nadeCounts: NadeCounts;
-};
-
-const FilterBar: FC<Props> = memo(({ nadeCounts }) => {
+const FilterBar: FC = memo(() => {
   return (
     <>
       <FilterBarLayout
         favoriteFilter={<FavFilterButton vertical />}
-        typeFilter={<TypeFilter nadeCounts={nadeCounts} vertical />}
+        typeFilter={<TypeFilter vertical />}
         tickFiler={<TickratePicker vertical />}
         teamFilter={<TeamSelector vertical />}
         proFilter={<FilterByProButton vertical />}

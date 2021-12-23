@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { NadeCounts } from "../../data/hooks/useNadeCount";
 import { FavFilterButton } from "./component/FavFilterButton";
 import { FilterByProButton } from "./component/FilterByProButton";
 import { ResetFilterButton } from "./component/ResetFilterButton";
@@ -7,11 +6,7 @@ import { TeamSelector } from "./component/TeamSelector";
 import { TickratePicker } from "./component/TickratePicker";
 import { TypeFilter } from "./component/TypeFilter";
 
-type Props = {
-  nadeCounts: NadeCounts;
-};
-
-export const FilterBarMobile: FC<Props> = ({ nadeCounts }) => {
+export const FilterBarMobile: FC = () => {
   return (
     <>
       <div id="fiter-bar-mobile">
@@ -19,7 +14,7 @@ export const FilterBarMobile: FC<Props> = ({ nadeCounts }) => {
           <FavFilterButton />
         </div>
         <div className="type-filter">
-          <TypeFilter nadeCounts={nadeCounts} />
+          <TypeFilter />
         </div>
         <div className="tick-filter">
           <TickratePicker />

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { Tickrate } from "../../../nade/models/NadeTickrate";
-import { useGa } from "../../../utils/Analytics";
+import { Tickrate } from "../../nade/models/NadeTickrate";
+import { useGa } from "../../utils/Analytics";
 import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByTickrate = () => {

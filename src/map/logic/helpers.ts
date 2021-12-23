@@ -1,7 +1,7 @@
-import { NadeLight } from "../../../nade/models/Nade";
-import { Tickrate } from "../../../nade/models/NadeTickrate";
-import { NadeType } from "../../../nade/models/NadeType";
-import { TeamSide } from "../../../nade/models/TeamSide";
+import { NadeLight } from "../../nade/models/Nade";
+import { Tickrate } from "../../nade/models/NadeTickrate";
+import { NadeType } from "../../nade/models/NadeType";
+import { TeamSide } from "../../nade/models/TeamSide";
 
 export function filterByPro(nades: NadeLight[], byPro?: boolean): NadeLight[] {
   if (byPro) {
