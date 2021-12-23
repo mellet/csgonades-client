@@ -29,7 +29,6 @@ export const useNadesForMapFromApi = (
     ["map", mapName, byType],
     nadeForMapFetcher,
     {
-      revalidateOnMount: byType === "smoke" ? false : true,
       revalidateOnFocus: false,
       fallbackData: byType === "smoke" && fallback,
     }
