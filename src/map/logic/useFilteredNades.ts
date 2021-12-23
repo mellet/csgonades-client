@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
-import { Tickrate } from "../../../nade/models/NadeTickrate";
-import { NadeType } from "../../../nade/models/NadeType";
+import { NadeLight } from "../../nade/models/Nade";
+import { Tickrate } from "../../nade/models/NadeTickrate";
+import { NadeType } from "../../nade/models/NadeType";
 import {
   addFavoriteToNades,
   filterByFavorite,
@@ -10,13 +10,13 @@ import {
   filterByPro,
   filterByTeam,
 } from "./helpers";
-import { TeamSide } from "../../../nade/models/TeamSide";
+import { TeamSide } from "../../nade/models/TeamSide";
 import { useFilterByTickrate } from "./useFilterByTickrate";
 import { useFilterByFavorites } from "./useFilterByFavorites";
 import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
-import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
+import { useFavorites } from "../../favorites/data/hooks/useFavorites";
 
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]

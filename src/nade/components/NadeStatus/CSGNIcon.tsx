@@ -13,7 +13,7 @@ export const CSGNIcon: FC<Props> = ({ icon, size = 18, spin }) => {
       <style jsx>{`
         span {
           animation-name: ${spin ? "spin" : "none"};
-          animation-duration: 2000ms;
+          animation-duration: 800ms;
           animation-iteration-count: infinite;
           animation-timing-function: linear;
           margin: 0;

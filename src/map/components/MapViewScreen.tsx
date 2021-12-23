@@ -1,22 +1,30 @@
 import { FC, useRef, useState, useEffect } from "react";
-import { useSetMapView } from "../data/hooks/useSetMapView";
+import { useSetMapView } from "../logic/useSetMapView";
 import { Dimensions } from "../../constants/Constants";
-import { useNadeClusters } from "../data/hooks/useNadesForMapView";
+import { useNadeClusters } from "../logic/useNadesForMapView";
 import { NadeLight } from "../../nade/models/Nade";
 import { CsgoMap } from "../models/CsGoMap";
-import { useFilterServerSideNades } from "../data/hooks/useFilteredNades";
+import { useFilterServerSideNades } from "../logic/useFilteredNades";
 import { useWindowSize } from "../../shared-components/MinSizeRender";
 import { AddNadeButton } from "./AddNadeButton";
 import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
+import { FaSpinner } from "react-icons/fa";
+import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
 
 type Props = {
   allNades: NadeLight[];
   map: CsgoMap;
   onClusterClick: (cluster: NadeLight[]) => void;
+  isLoading: boolean;
 };
 
-const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
+const MapViewScreen: FC<Props> = ({
+  allNades,
+  map,
+  onClusterClick,
+  isLoading,
+}) => {
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
@@ -76,9 +84,15 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
                 onClusterClick={onClusterClick}
               />
 
-              {!hasNades && (
+              {!hasNades && !isLoading && (
                 <div className="no-nades-wrap">
                   <NoNadesMessage />
+                </div>
+              )}
+
+              {isLoading && (
+                <div className="spinner">
+                  <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
                 </div>
               )}
             </div>
@@ -87,6 +101,18 @@ const MapViewScreen: FC<Props> = ({ allNades, map, onClusterClick }) => {
       </div>
 
       <style jsx>{`
+        .spinner {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+        }
+
         .no-nades-wrap {
           position: absolute;
           top: 0;

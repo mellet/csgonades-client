@@ -12,6 +12,7 @@ import {
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";
+import { NadeType } from "../models/NadeType";
 
 export class NadeApi {
   static async favoriteNade(nadeId: string): AppResult<Favorite> {
@@ -87,11 +88,16 @@ export class NadeApi {
     return res.data;
   }
 
-  static async getByMap(mapName: CsgoMap): AppResult<NadeLight[]> {
+  static async getByMap(
+    mapName: CsgoMap,
+    nadeType?: NadeType
+  ): AppResult<NadeLight[]> {
     try {
-      const res = await axios.get<NadeLight[]>(
-        `${AppConfig.API_URL}/nades/map/${mapName}`
-      );
+      let url = `${AppConfig.API_URL}/nades/map/${mapName}`;
+      if (nadeType) {
+        url += `?type=${nadeType}`;
+      }
+      const res = await axios.get<NadeLight[]>(url);
       const nades = res.data;
 
       return ok(nades);
