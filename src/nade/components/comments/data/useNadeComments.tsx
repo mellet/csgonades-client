@@ -12,10 +12,10 @@ async function fetchComments(_url: string, nadeId: string) {
   return res;
 }
 
-export const useNadeComments = (nadeId: string) => {
+export const useNadeComments = (nadeId: string, commentCount: number) => {
   const { signedInUser } = useSignedInUser();
   const { data, mutate, isValidating } = useSWR(
-    ["comments", nadeId],
+    commentCount > 0 ? ["comments", nadeId] : null,
     fetchComments
   );
 
