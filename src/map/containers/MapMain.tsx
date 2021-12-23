@@ -8,8 +8,7 @@ import MapViewScreen from "../components/MapViewScreen";
 import FilterBar from "../components/nadefilter/FilterBar";
 import { MapViewSuggested } from "../components/SuggestedNades/MapViewSuggested";
 import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
-import { useNadeCount } from "../data/hooks/useNadeCount";
-import { useSetMapView } from "../data/hooks/useSetMapView";
+import { useSetMapView } from "../logic/useSetMapView";
 import { CsgoMap } from "../models/CsGoMap";
 import { useMediaQuery } from "react-responsive";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
@@ -19,14 +18,13 @@ const isServer = typeof window === "undefined";
 type Props = {
   map: CsgoMap;
   allNades: NadeLight[];
+  isLoading: boolean;
 };
 
-export const MapMain: FC<Props> = memo(({ map, allNades }) => {
+export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const { mapView } = useSetMapView();
   const isMobile = useMediaQuery({ maxWidth: 600 });
   const isOverviewView = mapView === "overview";
-
-  const nadeCounts = useNadeCount(allNades);
 
   const {
     onNadeClusterClick,
@@ -51,10 +49,10 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
       <div id="nade-page">
         <div id="filter">
           {isMobile ? (
-            <FilterBarMobile nadeCounts={nadeCounts} />
+            <FilterBarMobile />
           ) : (
             <div className="sticky">
-              <FilterBar nadeCounts={nadeCounts} />
+              <FilterBar />
             </div>
           )}
         </div>
@@ -74,6 +72,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades }) => {
               map={map}
               allNades={allNades}
               onClusterClick={onNadeClusterClick}
+              isLoading={isLoading}
             />
           )}
         </div>

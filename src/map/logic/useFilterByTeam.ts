@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { TeamSide } from "../../../nade/models/TeamSide";
-import { useGa } from "../../../utils/Analytics";
+import { TeamSide } from "../../nade/models/TeamSide";
+import { useGa } from "../../utils/Analytics";
 import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByTeam = () => {

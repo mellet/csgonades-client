@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { useFilterByPro } from "../../../data/hooks/useFilterByPro";
+import { useFilterByPro } from "../../../logic/useFilterByPro";
 import { FilterLabel } from "./FilterLabel";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 

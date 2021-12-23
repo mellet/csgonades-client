@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
-import { useFilterServerSideNades } from "../data/hooks/useFilteredNades";
+import { useFilterServerSideNades } from "../logic/useFilteredNades";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import dynamic from "next/dynamic";
 import { SortByBar } from "./SuggestedNades/SortByBar";

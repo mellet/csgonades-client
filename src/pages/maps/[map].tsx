@@ -8,6 +8,7 @@ import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { AppConfig } from "../../constants/Constants";
 import { MapMain } from "../../map/containers/MapMain";
 import { MapSidebar } from "../../map/containers/MapSidebar";
+import { useNadesForMapFromApi } from "../../map/data/useNadesForMap";
 
 interface Props {
   mapName: CsgoMap;
@@ -15,16 +16,21 @@ interface Props {
 }
 
 const Map: NextPage<Props> = ({ mapName, initialNades }) => {
-  if (!initialNades) {
-    return null;
-  }
+  const { nades, isLoading } = useNadesForMapFromApi(mapName, initialNades);
 
   return (
     <LayoutBuilder
       header={<HeaderDefault />}
       nav={<Navigation />}
-      main={<MapMain key={mapName} map={mapName} allNades={initialNades} />}
-      sidebar={<MapSidebar key={mapName} map={mapName} nades={initialNades} />}
+      main={
+        <MapMain
+          key={mapName}
+          map={mapName}
+          allNades={nades}
+          isLoading={isLoading}
+        />
+      }
+      sidebar={<MapSidebar key={mapName} map={mapName} nades={nades} />}
     />
   );
 };
@@ -52,7 +58,7 @@ export const getStaticProps: GetStaticProps<Props, { map: CsgoMap }> = async ({
   }
 
   const mapName = params.map;
-  const mapNadesResult = await NadeApi.getByMap(mapName);
+  const mapNadesResult = await NadeApi.getByMap(mapName, "smoke");
 
   const nades = mapNadesResult.isOk() ? mapNadesResult.value : [];
 

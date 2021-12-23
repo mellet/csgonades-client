@@ -5,7 +5,7 @@ import { ImStarFull } from "react-icons/im";
 import { IconButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
 import { useGa } from "../../../utils/Analytics";
-import { useFilterBySortingMethod } from "../../data/hooks/useFilterBySortingMethods";
+import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
 
 export const SortByBar: FC = () => {
   const { event } = useGa();

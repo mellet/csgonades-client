@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { NadeType } from "../../../nade/models/NadeType";
-import { useGa } from "../../../utils/Analytics";
+import { NadeType } from "../../nade/models/NadeType";
+import { useGa } from "../../utils/Analytics";
 import { useLocalStorage } from "usehooks-ts";
 
 export const useFilterByType = () => {

@@ -1,6 +1,6 @@
 import { FC, useCallback, useMemo } from "react";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
-import { useFilterByTickrate } from "../../../data/hooks/useFilterByTickrate";
+import { useFilterByTickrate } from "../../../logic/useFilterByTickrate";
 import { FilterLabel } from "./FilterLabel";
 import { OptionCarusel } from "./OptionCarusel";
 

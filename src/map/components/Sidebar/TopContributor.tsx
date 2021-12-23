@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ContListProps } from "./topContributorsProps";
 import { Dimensions } from "../../../constants/Constants";
 import { Popup } from "semantic-ui-react";
+import { useFilterByType } from "../../logic/useFilterByType";
+import { nadeTypeString } from "../../../nade/models/NadeType";
 
 interface UserContribution extends UserLight {
   nadeCount: number;
@@ -13,6 +15,7 @@ interface UserContribution extends UserLight {
 }
 
 export const TopContributorList: FC<ContListProps> = ({ nades }) => {
+  const { byType } = useFilterByType();
   const { colors } = useTheme();
   const contributors = useMemo(() => {
     const contCount: { [key: string]: UserContribution } = {};
@@ -58,10 +61,14 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
     return top;
   }, [nades]);
 
+  if (nades.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <div className="cont-list">
-        <div className="label">Nade Contributors</div>
+        <div className="label">{nadeTypeString(byType)} Contributors</div>
         <div className="contributors">
           {contributors.map((c) => (
             <TopContributor key={c.steamId} user={c} />
@@ -85,8 +92,7 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
         .contributors {
           display: flex;
           flex-wrap: wrap;
-          align-items: center;
-          justify-content: space-between;
+          align-items: flex-start;
           margin-left: -2px;
           margin-right: -2px;
         }

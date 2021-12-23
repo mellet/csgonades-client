@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useSetMapView } from "../../../data/hooks/useSetMapView";
+import { useSetMapView } from "../../../logic/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";

@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { useGa } from "../../../utils/Analytics";
+import { useGa } from "../../utils/Analytics";
 import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByTickrate } from "./useFilterByTickrate";
 import { useFilterByFavorites } from "./useFilterByFavorites";

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useLocalStorage } from "usehooks-ts";
-import { useGa } from "../../../utils/Analytics";
+import { useGa } from "../../utils/Analytics";
 
 export const useFilterByFavorites = () => {
   const ga = useGa();
