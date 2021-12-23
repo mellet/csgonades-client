@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { InputWrapper } from "./TextInputWrapper";
 import { TextInputLabel } from "./TextInputLabel";
 import { TextInputField } from "./TextInputField";
 
@@ -22,7 +21,7 @@ export const CsgnInput: FC<CsgnInputProps> = ({
 }) => {
   return (
     <>
-      <InputWrapper>
+      <div className="input-wrap">
         <TextInputLabel label={label} required={required} />
         <TextInputField
           defaultValue={initialValue}
@@ -30,7 +29,13 @@ export const CsgnInput: FC<CsgnInputProps> = ({
           placeholder={placeholder}
           value={value}
         />
-      </InputWrapper>
+      </div>
+      <style jsx>{`
+        .input-wrap {
+          display: flex;
+          flex-direction: column;
+        }
+      `}</style>
     </>
   );
 };

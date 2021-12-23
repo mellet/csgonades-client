@@ -30,7 +30,7 @@ import { TeamSideSelector } from "./components/NadeInputs/TeamSideSelector";
 import {
   getNadeLineUpImage,
   getNadeMainImage,
-} from "./components/NadeItem/NadeItem";
+} from "./components/NadeItem/Utils/NadeUtils";
 import { DeleteBtn } from "./components/NadeInputs/DeleteBtn";
 
 type Props = {

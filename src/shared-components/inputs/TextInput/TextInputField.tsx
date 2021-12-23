@@ -1,19 +1,35 @@
-import styled from "styled-components";
+import { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 
-export const TextInputField = styled.input`
-  background: ${({ theme }) => theme.colors.DP03};
-  border-radius: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.BORDER};
-  color: ${({ theme }) => theme.colors.TEXT};
-  outline: none;
-  padding: 10px 12px;
+type Props = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
-  &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.filterBgHover};
-  }
+export const TextInputField: FC<Props> = (props) => {
+  const { colors } = useTheme();
+  return (
+    <>
+      <input {...props} />
+      <style jsx>{`
+        input {
+          background: ${colors.DP03};
+          border-radius: 5px;
+          border: 1px solid ${colors.BORDER};
+          color: ${colors.TEXT};
+          outline: none;
+          padding: 10px 12px;
+        }
 
-  &::placeholder {
-    color: #ccc;
-    font-weight: 300;
-  }
-`;
+        input:focus {
+          border: 1px solid ${colors.filterBgHover};
+        }
+
+        input::placeholder {
+          color: #ccc;
+          font-weight: 300;
+        }
+      `}</style>
+    </>
+  );
+};

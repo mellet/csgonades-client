@@ -1,5 +1,4 @@
 import { FC } from "react";
-import styled from "styled-components";
 import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
@@ -48,15 +47,24 @@ export const FilterBarLayout: FC<Props> = ({
   );
 };
 
-const FilterBarLayoutWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "fav"
-    "type"
-    "tick"
-    "team"
-    "pro"
-    "view"
-    "reset";
-`;
+const FilterBarLayoutWrapper: FC = ({ children }) => {
+  return (
+    <>
+      <div className="filterbar-layout-wrapper">{children}</div>
+      <style jsx>{`
+        .filterbar-layout-wrapper {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "fav"
+            "type"
+            "tick"
+            "team"
+            "pro"
+            "view"
+            "reset";
+        }
+      `}</style>
+    </>
+  );
+};

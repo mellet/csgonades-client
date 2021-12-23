@@ -7,7 +7,6 @@ import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 import { motion, MotionProps } from "framer-motion";
-import styled from "styled-components";
 import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
 import { AdUnit } from "../../../shared-components/adunits/AdUnit";
@@ -74,11 +73,12 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
   return (
     <>
       <div className="wrapper">
-        <MapViewWrapper
-          {...fadeInUp}
+        <motion.div
           animate={open ? "visible" : "hidden"}
           onClick={onBackgroundClick}
           initial={initialOpenState ? "visible" : "hidden"}
+          className="mapview-wrapper"
+          {...fadeInUp}
         >
           <div className="bg" />
           <div className="nades">
@@ -106,7 +106,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
               </>
             )}
           </div>
-        </MapViewWrapper>
+        </motion.div>
       </div>
       <style jsx>{`
         .a {
@@ -126,6 +126,15 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           border-radius: 8px;
           pointer-events: ${open ? "auto" : "none"};
           overflow: hidden;
+        }
+
+        .mapview-wrapper {
+          width: 100%;
+          height: 100%;
+          overflow-y: auto;
+          overflow-x: hidden;
+          pointer-events: none;
+          border-radius: 8px;
         }
 
         .nades {
@@ -208,12 +217,3 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
     </>
   );
 };
-
-const MapViewWrapper = styled(motion.div)`
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  pointer-events: none;
-  border-radius: 8px;
-`;

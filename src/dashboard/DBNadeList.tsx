@@ -25,7 +25,7 @@ import { User } from "../users/models/User";
 import { NadeIcon } from "../shared-components/nade-icons";
 import Image from "next/image";
 import { Dimensions } from "../constants/Constants";
-import { getNadeMainImage } from "../nade/components/NadeItem/NadeItem";
+import { getNadeMainImage } from "../nade/components/NadeItem/Utils/NadeUtils";
 
 type Props = {
   csgoMap: CsgoMap;

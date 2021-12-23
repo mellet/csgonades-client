@@ -2,11 +2,11 @@ import { FC, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
-import { SquareButton } from "../../shared-components/buttons/IconButton";
-import { useTheme } from "styled-components";
+import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
 import { useFavorites, useIsNadeFavorited } from "../data/hooks/useFavorites";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   nadeId: string;

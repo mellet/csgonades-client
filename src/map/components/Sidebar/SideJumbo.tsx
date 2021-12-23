@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "styled-components";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { NadeLight } from "../../../nade/models/Nade";
 import { capitalize } from "../../../utils/Common";
 import { CsgoMap } from "../../models/CsGoMap";

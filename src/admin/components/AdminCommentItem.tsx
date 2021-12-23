@@ -3,7 +3,7 @@ import { FC } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { NadeCommentAvatar } from "../../nade/components/comments/NadeCommentItem/NadeCommentLayout";
+import { NadeCommentAvatar } from "../../nade/components/comments/NadeCommentItem/NadeCommentAvatar";
 import { RenderMarkdown } from "../../nade/components/RenderMarkdown";
 import { NadeComment } from "../../nade/data/NadeCommentApi";
 

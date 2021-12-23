@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { FC, memo, useEffect, useState } from "react";
-import { CrossHair } from "../VideoContainer/CrossHair";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { CrossHair } from "../../VideoContainer/CrossHair";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { FaVideo } from "react-icons/fa";
-import { CSGNIcon } from "../NadeStatus/CSGNIcon";
+import { CSGNIcon } from "../../NadeStatus/CSGNIcon";
 
 type Props = {
   lineupThumbUrl?: string;

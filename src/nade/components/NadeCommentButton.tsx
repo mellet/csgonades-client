@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaComment } from "react-icons/fa";
-import { SquareButton } from "../../shared-components/buttons/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
 

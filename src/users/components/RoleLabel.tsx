@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
 import { FaCrown, FaShieldAlt } from "react-icons/fa";
-import { useTheme } from "styled-components";
 import { Dimensions } from "../../constants/Constants";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { Role } from "../models/User";
 
 type Props = {

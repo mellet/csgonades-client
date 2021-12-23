@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useFilterByType } from "../../../data/hooks/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
-import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup.tsx/IconButtonGroup";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton";
+import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 import { NadeIcon } from "../../../../shared-components/nade-icons";
 import { NadeCounts } from "../../../data/hooks/useNadeCount";
 
@@ -51,6 +51,7 @@ export const TypeFilter: FC<Props> = ({ nadeCounts, vertical }) => {
           {showGrenadeButton && (
             <SquareButton
               inGroup
+              last
               icon={<NadeIcon nadeType="hegrenade" size={26} />}
               active={byType === "hegrenade"}
               onClick={() => filterByType("hegrenade")}

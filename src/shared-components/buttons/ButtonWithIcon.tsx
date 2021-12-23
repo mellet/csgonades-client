@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from "react";
-import { useTheme } from "styled-components";
-import { IconTextButtonWrapper } from "./IconButton";
+import { useTheme } from "../../core/settings/SettingsHooks";
+import { IconTextButtonWrapper } from "./IconButton/WrapProps";
 
 export type ButtonWithIconProps = {
   backgroundColor?: string;
@@ -9,10 +9,11 @@ export type ButtonWithIconProps = {
   active?: boolean;
   value: string;
   inGroup?: boolean;
+  last?: boolean;
 };
 
 export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
-  ({ icon, onClick, value, backgroundColor, active, inGroup }) => {
+  ({ icon, onClick, value, backgroundColor, active, inGroup, last }) => {
     const { colors } = useTheme();
 
     const classNames = useMemo(() => {
@@ -25,7 +26,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
 
     return (
       <>
-        <IconTextButtonWrapper inGroup={inGroup}>
+        <IconTextButtonWrapper inGroup={inGroup} last={last}>
           <button className={classNames} onClick={onClick}>
             <span className="btn-icon">
               <span className="btn-icon-fa">{icon}</span>

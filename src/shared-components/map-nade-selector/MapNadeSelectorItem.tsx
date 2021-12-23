@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC } from "react";
-import { useTheme } from "styled-components";
 import { Dimensions } from "../../constants/Constants";
+import { useTheme } from "../../core/settings/SettingsHooks";
 import { CsgoMap, mapString } from "../../map/models/CsGoMap";
 
 type Props = {

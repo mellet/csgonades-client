@@ -2,7 +2,7 @@ import { FC } from "react";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import Link from "next/link";
 import { useFilterReset } from "../../map/data/hooks/useFilterReset";
-import { useTheme } from "styled-components";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   map: CsgoMap;

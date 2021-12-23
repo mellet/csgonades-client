@@ -3,11 +3,11 @@ import { FaChevronRight, FaPlay, FaStop } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
 import { NadeLight } from "../../models/Nade";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { NadeItemTitle } from "./NadeItemTitle";
+import { NadeItemTitle } from "./Views/NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
-import { ThumbImage } from "./ThumbImage";
-import { getNadeLineUpImageThumb, getNadeMainImage } from "./NadeItem";
+import { ThumbImage } from "./Views/ThumbImage";
+import { getNadeLineUpImageThumb, getNadeMainImage } from "./Utils/NadeUtils";
 import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
 
 interface Props {
