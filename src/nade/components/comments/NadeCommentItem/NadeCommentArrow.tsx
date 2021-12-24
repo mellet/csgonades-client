@@ -9,7 +9,7 @@ export const NadeCommentArrow: FC = ({ children }) => {
       <style jsx>{`
         div {
           position: absolute;
-          top: 16px;
+          top: 20px;
           left: -8px;
           width: 0;
           height: 0;
