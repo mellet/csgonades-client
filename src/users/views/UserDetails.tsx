@@ -5,50 +5,86 @@ import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUser
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { capitalize } from "../../utils/Common";
 import { prettyDate, prettyDateTime } from "../../utils/DateUtils";
-import { UserEditorModal } from "./UserEditorModal";
+import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";
+import { FaEdit } from "react-icons/fa";
+import Link from "next/link";
 
 type Props = {
   user: User;
 };
 
-export const UserDetails: FC<Props> = ({ user }) => {
+export const UserPanel: FC<Props> = ({ user }) => {
   const { colors } = useTheme();
   const allowEdit = useIsAllowedUserEdit(user);
+
+  const { role, bio, nickname, avatar, steamId, createdAt, lastActive } = user;
+
+  console.log("# UserPanel", user);
 
   return (
     <>
       <div className="user-details">
-        <h1>
-          <img src={user.avatar || ""} alt={`avatar for ${user.nickname}`} />{" "}
+        <h1 className="avatar">
+          <img src={avatar || ""} alt={`avatar for ${nickname}`} />{" "}
           <a
-            href={`https://steamcommunity.com/profiles/${user.steamId}`}
+            href={`https://steamcommunity.com/profiles/${steamId}`}
             rel="noopener noreferrer nofollow"
             target="_blank"
           >
-            {user.nickname}
+            {nickname}
           </a>
         </h1>
 
-        {user.role !== "user" && (
-          <span className="user-role-badge">{capitalize(user.role)}</span>
-        )}
-
-        <div className="member-since">
-          <span>Member since</span> {prettyDate(user.createdAt)}
+        <div className="user-role">
+          {role !== "user" && (
+            <span className="user-role-badge">{capitalize(role)}</span>
+          )}
         </div>
 
-        {allowEdit && user.lastActive && (
-          <div className="member-since">
-            <span>Last active</span> {prettyDateTime(user.lastActive)}
+        <div className="member-since">
+          <span className="label">Member since</span>
+          <br />
+          {prettyDate(createdAt)}
+        </div>
+
+        {allowEdit && lastActive && (
+          <div className="active-since">
+            <span className="label">Last active</span>
+            <br />
+            {prettyDateTime(lastActive)}
           </div>
         )}
 
-        {!!user.bio && <div className="bio">{user.bio}</div>}
+        {Boolean(bio) && (
+          <div className="bio">
+            <span className="label">Bio</span>
+            <br />
+            {bio}
+          </div>
+        )}
 
-        {!!user && <UserEditorModal user={user} />}
+        {allowEdit && (
+          <div className="action">
+            <Link href={`/users/${steamId}/edit`}>
+              <ButtonWithIcon icon={<FaEdit />} value="Edit user profile" />
+            </Link>
+          </div>
+        )}
       </div>
       <style jsx>{`
         .user-details {
+          display: grid;
+          width: 100%;
+          background: ${colors.DP00};
+          grid-template-columns: 1fr min-content;
+          grid-column-gap: ${Dimensions.GUTTER_SIZE / 2}px;
+          grid-row-gap: ${Dimensions.GUTTER_SIZE / 2}px;
+          grid-template-areas:
+            "avatar role"
+            "member member"
+            "active active"
+            "bio bio"
+            "action action";
           background: ${colors.DP01};
           margin-right: 18px;
           padding: 12px;
@@ -57,6 +93,26 @@ export const UserDetails: FC<Props> = ({ user }) => {
           align-self: flex-start;
           border-radius: ${Dimensions.BORDER_RADIUS};
           margin-bottom: ${Dimensions.GUTTER_SIZE};
+        }
+
+        .avatar {
+          grid-area: avatar;
+        }
+
+        .user-role {
+          grid-area: role;
+        }
+
+        .member-since {
+          grid-area: member;
+        }
+
+        .action {
+          grid-area: action;
+        }
+
+        .active-since {
+          grid-area: active;
         }
 
         .user-details a {
@@ -72,21 +128,17 @@ export const UserDetails: FC<Props> = ({ user }) => {
 
         .user-details img {
           border-radius: 50%;
-          width: 30px;
-          margin-right: 12px;
+          width: 36px;
+          margin-right: 4px;
         }
 
-        .member-since {
-          margin-bottom: 12px;
-          color: ${colors.TEXT};
-        }
-
-        .member-since span {
-          font-weight: normal;
-          margin-right: 6px;
+        .label {
+          font-weight: 400;
+          font-size: 14px;
         }
 
         .bio {
+          grid-area: bio;
           margin-bottom: 12px;
           color: ${colors.TEXT};
           overflow-wrap: break-word;
@@ -94,13 +146,11 @@ export const UserDetails: FC<Props> = ({ user }) => {
         }
 
         .user-role-badge {
-          position: absolute;
-          top: 12px;
-          right: 12px;
+          display: inline-block;
           background: ${colors.PRIMARY};
           color: white;
           font-size: 0.8em;
-          padding: 3px 6px;
+          padding: 1px 4px;
           border-radius: ${Dimensions.BORDER_RADIUS};
         }
       `}</style>

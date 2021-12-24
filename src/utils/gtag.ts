@@ -21,7 +21,8 @@ export type GTagEvent = {
     | "auth"
     | "nade_item"
     | "settings"
-    | "share";
+    | "share"
+    | "user_page";
   label?: string;
   value?: number;
   non_interaction?: boolean;

@@ -1,5 +1,7 @@
 import { User } from "./models/User";
+import { UserPanel } from "./views/UserDetails";
 import { UserNotFound } from "./views/UserNotFound";
+import { UserPageLayout } from "./views/UserPageLayout";
 import { UserUI } from "./views/UserUI";
 
 type Props = {
@@ -7,10 +9,16 @@ type Props = {
 };
 
 export const UserMain: React.FC<Props> = ({ user }) => {
+  if (!user) {
+    return <UserNotFound />;
+  }
+
   return (
     <>
-      {!user && <UserNotFound />}
-      {user && <UserUI user={user} />}
+      <UserPageLayout
+        main={<UserUI user={user} />}
+        panel={<UserPanel user={user} />}
+      />
     </>
   );
 };

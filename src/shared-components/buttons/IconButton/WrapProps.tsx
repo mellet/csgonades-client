@@ -42,6 +42,7 @@ export const IconTextButtonWrapper: FC<WrapProps> = ({
       <div>{children}</div>
       <style jsx>{`
         div {
+          display: inline-block;
           height: 40px;
           position: relative;
           border-width: ${inGroup ? 0 : 1}px;
@@ -49,6 +50,7 @@ export const IconTextButtonWrapper: FC<WrapProps> = ({
           border-color: ${colors.buttonBorder};
           border-radius: ${inGroup ? "none" : "8px"};
           border-right-width: ${last ? 0 : 1}px;
+          overflow: hidden;
         }
       `}</style>
     </>

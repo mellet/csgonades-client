@@ -2,37 +2,36 @@ import { GetServerSideProps, NextPage } from "next";
 import { HeaderDefault } from "../../../core/layout/defaultheader/Header";
 import { LayoutBuilder } from "../../../core/layout/LayoutBuilder";
 import { Navigation } from "../../../navigation/Navigation";
-import { SEO } from "../../../shared-components/SEO";
+import { UserEditPage } from "../../../users/containers/UserEditPage";
 import { UserApi } from "../../../users/data/UserApi";
 import { useUser } from "../../../users/data/useUser";
 import { User } from "../../../users/models/User";
-import { UserMain } from "../../../users/UserMain";
 
 type Props = {
   initialUser: User;
 };
 
-const UserPageComponent: NextPage<Props> = ({ initialUser }) => {
+const UserSettings: NextPage<Props> = ({ initialUser }) => {
   const { user } = useUser(initialUser.steamId);
   const theUser = user || initialUser;
 
   return (
     <>
-      <SEO title={theUser.nickname} canonical={`/user/${theUser.steamId}`} />
       <LayoutBuilder
         header={<HeaderDefault />}
         nav={<Navigation />}
-        main={<UserMain user={theUser} key={theUser.steamId} />}
+        main={<UserEditPage user={theUser} />}
       />
+      <style jsx>{``}</style>
     </>
   );
 };
 
-type GSSParams = {
+type QueryProps = {
   userId: string;
 };
 
-export const getServerSideProps: GetServerSideProps<Props, GSSParams> = async (
+export const getServerSideProps: GetServerSideProps<Props, QueryProps> = async (
   context
 ) => {
   const steamId = context.params?.userId;
@@ -58,4 +57,4 @@ export const getServerSideProps: GetServerSideProps<Props, GSSParams> = async (
   };
 };
 
-export default UserPageComponent;
+export default UserSettings;
