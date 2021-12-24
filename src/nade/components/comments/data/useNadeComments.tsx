@@ -12,10 +12,10 @@ async function fetchComments(_url: string, nadeId: string) {
   return res;
 }
 
-export const useNadeComments = (nadeId: string, commentCount: number) => {
+export const useNadeComments = (nadeId: string) => {
   const { signedInUser } = useSignedInUser();
   const { data, mutate, isValidating } = useSWR(
-    commentCount > 0 ? ["comments", nadeId] : null,
+    ["comments", nadeId],
     fetchComments
   );
 
@@ -68,6 +68,7 @@ export const useNadeComments = (nadeId: string, commentCount: number) => {
         }, false);
       }, false);
       await NadeCommentApi.updateNadeComment(nadeId, commentUpdate);
+      mutate();
     },
     [mutate, nadeId, signedInUser]
   );
@@ -85,6 +86,7 @@ export const useNadeComments = (nadeId: string, commentCount: number) => {
         }
       }, false);
       await NadeCommentApi.deleteNadeComment(nadeId, commentId);
+      mutate();
     },
     [mutate, nadeId, signedInUser]
   );

@@ -10,7 +10,7 @@ type Props = {
 
 export const NadeComments: FC<Props> = memo(({ nade }) => {
   const { comments, onAddComment, onEditComment, onDeleteComment } =
-    useNadeComments(nade.id, nade.commentCount);
+    useNadeComments(nade.id);
   const { signedInUser } = useSignedInUser();
 
   return (
