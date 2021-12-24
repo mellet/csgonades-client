@@ -16,7 +16,7 @@ export const useFilterBySortingMethod = () => {
       setSortBy(sortBy);
       ga.event({
         category: "map_page",
-        action: `click_click_filter_sort_${sortBy}`,
+        action: `click_filter_sort_${sortBy}`,
       });
     },
     [ga, setSortBy]
