@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { Dimensions } from "../../../constants/Constants";
+import { Adsense } from "../../../shared-components/adunits/Adsense";
 import { User } from "../../../users/models/User";
 import { NadeComment, NadeCommentUpdateDTO } from "../../data/NadeCommentApi";
 import { CommentSubmit } from "./CommentSubmit";
@@ -26,6 +28,12 @@ export const NadeCommentsView: FC<NadeCommentsViewProps> = ({
         isSignedIn={Boolean(signedInUser)}
       />
 
+      {comments.length > 0 && (
+        <div className="comment-ad">
+          <Adsense adName="nadeComment" />
+        </div>
+      )}
+
       {comments.map((nc) => (
         <NadeCommentItem
           key={nc.id}
@@ -35,6 +43,11 @@ export const NadeCommentsView: FC<NadeCommentsViewProps> = ({
           onUpdateComment={onEditComment}
         />
       ))}
+      <style jsx>{`
+        .comment-ad {
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+      `}</style>
     </>
   );
 };
