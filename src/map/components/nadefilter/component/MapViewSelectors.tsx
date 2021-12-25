@@ -4,12 +4,14 @@ import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { useTheme } from "../../../../core/settings/SettingsHooks";
 
 type Props = {
   vertical?: boolean;
 };
 
 export const MapViewSelector: FC<Props> = ({ vertical }) => {
+  const { colors } = useTheme();
   const { mapView, setMapView } = useSetMapView({ trackEvent: true });
 
   function onSwitchToOverview() {
@@ -29,6 +31,7 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
           icon={<FaMap />}
           active={mapView === "overview"}
           onClick={onSwitchToOverview}
+          activeColor={colors.TEXT}
         />
         <SquareButton
           inGroup
@@ -36,6 +39,7 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
           icon={<FaListUl />}
           active={mapView === "list"}
           onClick={onSwtichToList}
+          activeColor={colors.TEXT}
         />
       </IconButtonGroup>
     </>

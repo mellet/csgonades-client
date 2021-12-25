@@ -100,9 +100,11 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
                     enableAds={false}
                   />
                 </div>
-                <div className="a">
-                  <AdUnit name="suggestedNadesHorizontal" />
-                </div>
+                {sortedNades.length <= 3 && (
+                  <div className="a">
+                    <AdUnit name="suggestedNadesHorizontal" />
+                  </div>
+                )}
               </>
             )}
           </div>
@@ -113,6 +115,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           display: block;
           align-self: center;
           width: 95%;
+          margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .wrapper {
@@ -151,7 +154,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
         }
 
         .nade-list-wrap {
-          flex: 1;
           margin-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
           margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }

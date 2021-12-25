@@ -66,6 +66,7 @@ export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
           opacity: 0.8;
           font-size: 15px;
           line-height: 15px;
+          color: ${colors.TEXT};
         }
 
         .nav-icon {

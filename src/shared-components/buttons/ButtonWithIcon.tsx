@@ -56,7 +56,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
           }
 
           .btn:hover .btn-icon {
-            color: ${colors.primaryBtnBg};
+            color: rgba(34, 148, 201, 0.9);
           }
 
           .btn-icon {
@@ -88,7 +88,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
           }
 
           .active .btn-icon {
-            color: ${colors.primaryBtnBg};
+            color: rgba(34, 148, 201, 0.9);
           }
         `}</style>
       </>
