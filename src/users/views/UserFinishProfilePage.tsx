@@ -6,6 +6,7 @@ import { useFinishProfile } from "../data/useFinishProfile";
 import { Dimensions } from "../../constants/Constants";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { useGa } from "../../utils/Analytics";
+import { TickrateSelector } from "../../nade/components/NadeInputs/TickrateSelector";
 
 type Props = { user: User };
 
@@ -16,6 +17,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
   const [nickname, setNickname] = useState(user.nickname);
   const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState(user.bio);
+  const [defaultTick, setDefaultTick] = useState(user.defaultTick);
   const [error, setError] = useState<string | undefined>();
   const { colors } = useTheme();
   const displayToast = useDisplayToast();
@@ -25,7 +27,13 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
       setError(
         "It looks like you put your e-mail as your nickname. This is not very smart as it will be visible to anyone."
       );
-      ga.error("profile_create_wrong_email");
+      ga.error("profile_create_email_as_displayname");
+      return;
+    }
+
+    if (!email || !email.includes("@")) {
+      setError("E-mail is required and needs to be a valid e-mail.");
+      ga.error("profile_no_email");
       return;
     }
 
@@ -34,6 +42,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
       nickname,
       email,
       bio,
+      defaultTick,
     });
     ga.event({
       category: "auth",
@@ -50,30 +59,31 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
 
   return (
     <>
-      <div className="wrap">
+      <div className="background">
         <div className="finish-profile-wrap">
-          <div className="finish-profile">
+          <div className="finish-profile-header">
             <div className="welcome">
               <h1>Hi {user.nickname}, let&apos;s finish your profile!</h1>
               <h2>Then go favorite some nades or add your own 👊</h2>
             </div>
           </div>
-          {!!error && (
+          {Boolean(error) && (
             <div className="error">
-              <h3>Error</h3>
               <p>{error}</p>
             </div>
           )}
           <div className="profile-form">
             <span className="label">
-              Nickname <span className="require">*</span>
+              Display name <span className="require">*</span>
             </span>
             <input
               value={nickname}
               placeholder="Nickname"
               onChange={(e) => setNickname(e.target.value)}
             />
-            <span className="label">E-mail</span>
+            <span className="label">
+              E-mail <span className="require">*</span>
+            </span>
             <input
               value={email}
               placeholder="E-mail"
@@ -86,6 +96,14 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
               onChange={(e) => setBio(e.target.value)}
               rows={5}
             />
+            <TickrateSelector
+              label="Preferred tickrate"
+              onChange={setDefaultTick}
+              defaultValue={defaultTick}
+              hintText="Optional: If you only play on a specific tickrate and don't care about nades for the opposite tickrate."
+            />
+            <br />
+
             <button disabled={loading} className="save-btn" onClick={onSubmit}>
               SAVE
             </button>
@@ -93,8 +111,8 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
         </div>
       </div>
       <style jsx>{`
-        .wrap {
-          background: ${colors.DP00};
+        .background {
+          background: ${colors.BORDER};
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -103,14 +121,17 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
         }
 
         .finish-profile-wrap {
-          background: ${colors.DP02};
+          background: ${colors.DP03};
           margin: ${Dimensions.GUTTER_SIZE}px;
           border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
+          max-width: 500px;
         }
 
-        .finish-profile {
+        .finish-profile-header {
+          background: ${colors.DP03};
           padding: ${Dimensions.GUTTER_SIZE}px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .welcome {
@@ -131,19 +152,19 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
         }
 
         .error {
-          background: #800d0d;
+          background: ${colors.ERROR};
           color: white;
-          max-width: 400px;
-          margin: 30px auto;
-          padding: 20px;
-          border-radius: 5px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        .error p {
+          font-size: 16px;
         }
 
         .profile-form {
           display: flex;
           flex-direction: column;
           padding: ${Dimensions.GUTTER_SIZE}px;
-          background: ${colors.DP01};
         }
 
         .label {
