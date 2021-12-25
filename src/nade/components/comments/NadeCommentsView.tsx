@@ -28,12 +28,6 @@ export const NadeCommentsView: FC<NadeCommentsViewProps> = ({
         isSignedIn={Boolean(signedInUser)}
       />
 
-      {comments.length > 0 && (
-        <div className="comment-ad">
-          <Adsense adName="nadeComment" />
-        </div>
-      )}
-
       {comments.map((nc) => (
         <NadeCommentItem
           key={nc.id}
@@ -43,9 +37,14 @@ export const NadeCommentsView: FC<NadeCommentsViewProps> = ({
           onUpdateComment={onEditComment}
         />
       ))}
+      {comments.length > 0 && (
+        <div className="comment-ad">
+          <Adsense adName="nadeComment" />
+        </div>
+      )}
       <style jsx>{`
         .comment-ad {
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>
