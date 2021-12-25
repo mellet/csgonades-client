@@ -5,13 +5,26 @@ import { CSGNIcon } from "../nade/components/NadeStatus/CSGNIcon";
 import { FaSpinner } from "react-icons/fa";
 import Router from "next/router";
 import { useEffect } from "react";
+import { useSignedInUser } from "../core/authentication/useSignedInUser";
 
 const Auth: NextPage = () => {
+  const { signedInUser } = useSignedInUser();
   const { colors } = useTheme();
 
   useEffect(() => {
-    Router.push("/");
-  }, []);
+    const timer = setTimeout(() => {
+      if (!signedInUser) {
+        Router.push("/");
+      } else {
+        if (!signedInUser.email) {
+          Router.push("/finishprofile");
+        } else {
+          Router.push("/");
+        }
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [signedInUser]);
 
   return (
     <>
