@@ -1,6 +1,7 @@
 import { FC, useCallback, useState } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
+import { TickrateSelector } from "../../nade/components/NadeInputs/TickrateSelector";
 import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../shared-components/inputs/CsgnTextArea";
 import { CsgnInput } from "../../shared-components/inputs/TextInput/CsgnInput";
@@ -16,6 +17,7 @@ export const UserEditMain: FC<Props> = ({ user }) => {
   const [nickname, setNickname] = useState(user.nickname);
   const [bio, setBio] = useState(user.bio);
   const [email, setEmail] = useState(user.email);
+  const [defaultTick, setDefaultTick] = useState(user.defaultTick);
   const { updateUser, isUpdatingUser } = useUpdateUser(user.steamId);
 
   const onSave = useCallback(() => {
@@ -23,8 +25,9 @@ export const UserEditMain: FC<Props> = ({ user }) => {
       nickname,
       bio,
       email,
+      defaultTick,
     });
-  }, [user.steamId, nickname, bio, email, updateUser]);
+  }, [user.steamId, nickname, bio, email, updateUser, defaultTick]);
 
   return (
     <>
@@ -44,8 +47,21 @@ export const UserEditMain: FC<Props> = ({ user }) => {
           placeholder="Tell us a little about yourself"
           onChange={setBio}
         />
+        <TickrateSelector
+          label="Default tickrate"
+          defaultValue={defaultTick || "any"}
+          onChange={setDefaultTick}
+          hintText="Default tickrate when browsing nades."
+        />
+        <br />
 
-        <CsgnSaveButton onClick={onSave} disabled={isUpdatingUser} />
+        <div className="save-wrap">
+          <CsgnSaveButton
+            value="Save"
+            onClick={onSave}
+            disabled={isUpdatingUser}
+          />
+        </div>
       </div>
       <style jsx>{`
         .user-edit {
@@ -53,6 +69,12 @@ export const UserEditMain: FC<Props> = ({ user }) => {
           padding: ${Dimensions.PADDING_MEDIUM};
           border-radius: ${Dimensions.BORDER_RADIUS};
           border: 1px solid ${colors.BORDER};
+        }
+
+        .save-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
         }
       `}</style>
     </>

@@ -19,8 +19,6 @@ export const UserEditPage: FC<Props> = ({ user }) => {
     return <ForbiddenWarning />;
   }
 
-  console.log("# User", user);
-
   return (
     <>
       <UserPageLayout

@@ -2,9 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { useGa } from "../../utils/Analytics";
 import { useLocalStorage } from "usehooks-ts";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 export const useFilterByTickrate = () => {
-  const defaultTickrate: Tickrate = "any";
+  const { signedInUser } = useSignedInUser();
+
+  const defaultTickrate: Tickrate = signedInUser?.defaultTick || "any";
+
   const ga = useGa();
 
   const [byTickrate, setTicktrate] = useLocalStorage<Tickrate>(
@@ -41,7 +45,7 @@ export const useFilterByTickrate = () => {
 
   const resetFilterByTickrate = useCallback(() => {
     setTicktrate(defaultTickrate);
-  }, [setTicktrate]);
+  }, [setTicktrate, defaultTickrate]);
 
   return {
     byTickrate,

@@ -5,8 +5,10 @@ import { useFilterByTickrate } from "./useFilterByTickrate";
 import { useFilterByFavorites } from "./useFilterByFavorites";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 export const useFilterReset = () => {
+  const { signedInUser } = useSignedInUser();
   const ga = useGa();
 
   const { byPro, resetFilterByPro } = useFilterByPro();
@@ -41,10 +43,15 @@ export const useFilterReset = () => {
   );
 
   const canReset = useMemo(() => {
+    const userDefaultTickrate = signedInUser?.defaultTick;
+
     if (byFavorites) {
       return true;
     }
-    if (byTickrate !== "any") {
+    if (byTickrate !== "any" && userDefaultTickrate === undefined) {
+      return true;
+    }
+    if (userDefaultTickrate && userDefaultTickrate !== byTickrate) {
       return true;
     }
     if (byType !== "smoke") {
@@ -58,7 +65,7 @@ export const useFilterReset = () => {
     }
 
     return false;
-  }, [byTickrate, byFavorites, byType, byPro, byTeam]);
+  }, [byTickrate, byFavorites, byType, byPro, byTeam, signedInUser]);
 
   return {
     resetFilter,

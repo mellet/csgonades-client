@@ -4,21 +4,30 @@ import { CsgnDropdown } from "../../../shared-components/inputs/CsgnDropdown";
 import { Tickrate, nadeTickrateOptions } from "../../models/NadeTickrate";
 
 type Props = {
+  label?: string;
   defaultValue?: Tickrate;
+  hintText?: string;
   onChange: (tech: Tickrate) => void;
 };
 
-export const TickrateSelector: FC<Props> = ({ onChange, defaultValue }) => {
+export const TickrateSelector: FC<Props> = ({
+  onChange,
+  defaultValue,
+  hintText,
+  label,
+}) => {
+  const defualtHintString = "Jumpthrow bind, please specify tickrate.";
+
   return (
     <>
-      <MiniLabel value="Tickrate" />
+      <MiniLabel value={label || "Tickrate"} />
 
       <CsgnDropdown<Tickrate>
         defaultValue={defaultValue}
         onChange={onChange}
         options={nadeTickrateOptions()}
       />
-      <em>Jumpthrow bind, please specify tickrate.</em>
+      <em>{hintText || defualtHintString}</em>
 
       <style jsx>{`
         em {
