@@ -19,7 +19,7 @@ export const AdUnit: FC<Props> = memo(({ name, horizontalSpacing }) => {
   return (
     <>
       <div
-        className="ad-clearfix"
+        className="ad-unit"
         ref={myRef}
         style={{
           marginTop: horizontalSpacing ? Dimensions.GUTTER_SIZE : 0,
@@ -29,7 +29,11 @@ export const AdUnit: FC<Props> = memo(({ name, horizontalSpacing }) => {
         {renderAd && <Adsense adName={name} />}
       </div>
       <style jsx>{`
-        .ad-clearfix:after {
+        .ad-unit {
+          max-width: 90vw;
+        }
+
+        .ad-unit:after {
           content: "";
           display: table;
           clear: both;
