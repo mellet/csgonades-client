@@ -3,7 +3,7 @@ import { NadeLight } from "../../models/Nade";
 import {
   useFavorites,
   useIsNadeFavorited,
-} from "../../../favorites/data/hooks/useFavorites";
+} from "../../../favorites/data/useFavorites";
 import { NadeItemView } from "./Views/NadeItemView";
 
 interface Props {

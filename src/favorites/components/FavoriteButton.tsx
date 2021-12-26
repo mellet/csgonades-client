@@ -5,7 +5,7 @@ import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
-import { useFavorites, useIsNadeFavorited } from "../data/hooks/useFavorites";
+import { useFavorites, useIsNadeFavorited } from "../data/useFavorites";
 import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {

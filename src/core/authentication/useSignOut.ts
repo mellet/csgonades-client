@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useFavorites } from "../../favorites/data/hooks/useFavorites";
+import { useFavorites } from "../../favorites/data/useFavorites";
 import { AuthApi } from "./AuthApi";
 import { useSession } from "./useSession";
 import { useSignedInUser } from "./useSignedInUser";

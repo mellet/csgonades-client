@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from "react";
 import useSWR from "swr";
-import { useSession } from "../../../core/authentication/useSession";
-import { NadeApi } from "../../../nade/data/NadeApi";
-import { FavoriteApi } from "../FavoriteApi";
+import { useSession } from "../../core/authentication/useSession";
+import { NadeApi } from "../../nade/data/NadeApi";
+import { FavoriteApi } from "./FavoriteApi";
 
 async function fetchFavorites() {
   const favorites = await FavoriteApi.getUserFavoritesV2();

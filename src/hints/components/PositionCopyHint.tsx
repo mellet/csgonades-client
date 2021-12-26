@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Popup } from "semantic-ui-react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { useGa } from "../../utils/Analytics";
-import { useShouldShowPositionCopyHint } from "../data/hooks/useShouldShowPositionCopyHint";
+import { useShouldShowPositionCopyHint } from "../logic/useShouldShowPositionCopyHint";
 import { useMediaQuery } from "react-responsive";
 
 export const PositionCopyHint: FC = ({ children }) => {

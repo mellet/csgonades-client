@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Popup } from "semantic-ui-react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { useGa } from "../../utils/Analytics";
-import { useShouldFavoriteHint } from "../data/hooks/useShouldShowFavoriteHint";
+import { useShouldFavoriteHint } from "../logic/useShouldShowFavoriteHint";
 
 export const FavoriteHint: FC = ({ children }) => {
   const { colors, theme } = useTheme();

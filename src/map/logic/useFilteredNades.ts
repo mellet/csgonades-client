@@ -16,7 +16,7 @@ import { useFilterByFavorites } from "./useFilterByFavorites";
 import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
-import { useFavorites } from "../../favorites/data/hooks/useFavorites";
+import { useFavorites } from "../../favorites/data/useFavorites";
 
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]

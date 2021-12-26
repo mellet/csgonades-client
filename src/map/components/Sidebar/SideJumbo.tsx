@@ -1,9 +1,17 @@
+import dynamic from "next/dynamic";
 import { FC } from "react";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { NadeLight } from "../../../nade/models/Nade";
 import { capitalize } from "../../../utils/Common";
 import { CsgoMap } from "../../models/CsGoMap";
-import { TopContributorsLazy } from "./TopContributorsLazy";
+
+const TopContributors = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: "topcontributors" */ "./NadeContributors/TopContributor"
+    ).then((mod) => mod.TopContributorList),
+  { ssr: false }
+);
 
 type Props = {
   nades: NadeLight[];
@@ -21,8 +29,7 @@ export const SideJumbo: FC<Props> = ({ nades, map }) => {
           {capitalize(map)}.
         </h1>
         <h2>Don&apos;t be like BOT Bob, get some nades.</h2>
-
-        <TopContributorsLazy nades={nades} />
+        <TopContributors nades={nades} />
       </div>
       <style jsx>{`
         .jumbo {

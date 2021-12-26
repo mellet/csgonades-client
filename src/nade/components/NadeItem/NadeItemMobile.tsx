@@ -8,7 +8,7 @@ import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";
 import { ThumbImage } from "./Views/ThumbImage";
 import { getNadeLineUpImageThumb, getNadeMainImage } from "./Utils/NadeUtils";
-import { useFavorites } from "../../../favorites/data/hooks/useFavorites";
+import { useFavorites } from "../../../favorites/data/useFavorites";
 
 interface Props {
   nade: NadeLight;

@@ -16,7 +16,7 @@ import { addFavoriteToNades } from "../map/logic/helpers";
 import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { AdUnit } from "../shared-components/adunits/AdUnit";
-import { useFavorites } from "../favorites/data/hooks/useFavorites";
+import { useFavorites } from "../favorites/data/useFavorites";
 import { useMediaQuery } from "react-responsive";
 
 const recentPosts = [
