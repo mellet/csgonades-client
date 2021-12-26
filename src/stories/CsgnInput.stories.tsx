@@ -1,7 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { CsgnInput, CsgnInputProps } from "./CsgnInput";
+import {
+  CsgnInput,
+  CsgnInputProps,
+} from "../shared-components/inputs/TextInput/CsgnInput";
 
 export default {
   title: "Input/Text Input",

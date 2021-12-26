@@ -11,9 +11,9 @@ export const ButtonLabel: FC<ButtonLabelProps> = ({
 }) => {
   return (
     <>
-      <div>{children}</div>
+      <div className="btn-label">{children}</div>
       <style jsx>{`
-        div {
+        .btn-label {
           display: inline-flex;
           align-items: center;
           justify-content: space-around;

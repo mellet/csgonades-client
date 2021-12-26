@@ -1,7 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { NadeCommentsViewProps, NadeCommentsView } from "./NadeCommentsView";
-import { NadeComment } from "../../data/NadeCommentApi";
+import {
+  NadeCommentsViewProps,
+  NadeCommentsView,
+} from "../nade/components/comments/NadeCommentsView";
+import { NadeComment } from "../nade/data/NadeCommentApi";
 
 const mockedNadeId = "nadeId";
 

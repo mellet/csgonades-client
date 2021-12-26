@@ -1,7 +1,10 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { NotificationList, NotificationListProps } from "./NotificationList";
-import { Notification } from "../models/Notification";
+import {
+  NotificationList,
+  NotificationListProps,
+} from "../notification/container/NotificationList";
+import { Notification } from "../notification/models/Notification";
 
 export default {
   title: "Notification/List",

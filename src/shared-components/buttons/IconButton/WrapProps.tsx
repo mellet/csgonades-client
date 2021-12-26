@@ -14,9 +14,9 @@ export const IconButtonWrapper: FC<WrapProps> = ({
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="wrap">{children}</div>
       <style jsx>{`
-        div {
+        .wrap {
           width: 40px;
           height: 40px;
           position: relative;
@@ -39,9 +39,9 @@ export const IconTextButtonWrapper: FC<WrapProps> = ({
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="icon-text-button-wrapper">{children}</div>
       <style jsx>{`
-        div {
+        .icon-text-button-wrapper {
           display: inline-block;
           height: 40px;
           position: relative;

@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { IconButtonGroup } from "./IconButtonGroup";
-import { SquareButton } from "../IconButton/IconButton";
+import { IconButtonGroup } from "../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { SquareButton } from "../shared-components/buttons/IconButton/IconButton";
 import { FaCloud, FaStar } from "react-icons/fa";
-import { ButtonWithIcon } from "../ButtonWithIcon";
+import { ButtonWithIcon } from "../shared-components/buttons/ButtonWithIcon";
 
 export default {
   title: "Button/Icon Button Group",

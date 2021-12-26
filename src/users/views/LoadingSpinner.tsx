@@ -5,11 +5,11 @@ import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
 export const LoadingSpinner: FC = () => {
   return (
     <>
-      <div>
+      <div className="loading-spinner">
         <CSGNIcon icon={<FaSpinner />} size={30} spin />
       </div>
       <style jsx>{`
-        div {
+        .loading-spinner {
           display: flex;
           align-items: center;
           justify-content: center;

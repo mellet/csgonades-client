@@ -1,14 +1,13 @@
 import React, { FC } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-
-import { NadeIcon, NadeIconProps } from "..";
+import { NadeIcon, NadeIconProps } from "../shared-components/nade-icons";
 
 const BoxContainer: FC = ({ children }) => {
   return (
     <>
-      <div>{children}</div>
+      <div className="box-container">{children}</div>
       <style jsx>{`
-        div {
+        .box-container {
           display: inline-block;
           border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 5px;
@@ -20,7 +19,7 @@ const BoxContainer: FC = ({ children }) => {
 };
 
 export default {
-  title: "Icon/Flash Icon",
+  title: "Icon/Grenade Icon",
   component: NadeIcon,
 } as Meta;
 
@@ -30,10 +29,10 @@ const Template: Story = (args) => (
   </BoxContainer>
 );
 
-export const Small = Template.bind({});
+export const SmallAnimated = Template.bind({});
 
-Small.args = {
-  nadeType: "flash",
+SmallAnimated.args = {
+  nadeType: "hegrenade",
   size: 24,
   animated: true,
 } as NadeIconProps;
@@ -41,7 +40,7 @@ Small.args = {
 export const SmallStatic = Template.bind({});
 
 SmallStatic.args = {
-  nadeType: "flash",
+  nadeType: "hegrenade",
   size: 24,
   animated: false,
 } as NadeIconProps;
@@ -49,16 +48,16 @@ SmallStatic.args = {
 export const MediumWithCount = Template.bind({});
 
 MediumWithCount.args = {
-  nadeType: "flash",
+  nadeType: "hegrenade",
   size: 44,
-  count: 2,
+  count: 10,
   animated: true,
 } as NadeIconProps;
 
 export const MediumWithCountAndLabel = Template.bind({});
 
 MediumWithCountAndLabel.args = {
-  nadeType: "flash",
+  nadeType: "hegrenade",
   size: 44,
   count: 10,
   isNew: true,

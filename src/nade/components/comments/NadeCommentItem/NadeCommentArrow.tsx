@@ -5,9 +5,9 @@ export const NadeCommentArrow: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="nade-comment-arrow">{children}</div>
       <style jsx>{`
-        div {
+        .nade-comment-arrow {
           position: absolute;
           top: 20px;
           left: -8px;

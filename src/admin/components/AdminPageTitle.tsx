@@ -12,12 +12,12 @@ export const AdminPageTitle: FC<Props> = ({ title, description }) => {
 
   return (
     <>
-      <div>
+      <div className="admin-page-title">
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
       <style jsx>{`
-        div {
+        .admin-page-title {
           background: ${colors.DP02};
           border-radius: ${Dimensions.BORDER_RADIUS};
           color: ${colors.TEXT};
@@ -26,7 +26,7 @@ export const AdminPageTitle: FC<Props> = ({ title, description }) => {
           border: 1px solid ${colors.BORDER};
         }
 
-        h1 {
+        .admin-page-title h1 {
           font-size: 24px;
         }
       `}</style>

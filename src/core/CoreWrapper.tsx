@@ -56,7 +56,15 @@ export const CoreWrapper: FC = memo(({ children }) => {
   );
 });
 
-const GlobalStyles: FC = ({ children }) => {
+export const CoreWrapperStory: FC = ({ children }) => {
+  return (
+    <GlobalStyles>
+      <ToastProvider>{children}</ToastProvider>
+    </GlobalStyles>
+  );
+};
+
+export const GlobalStyles: FC = ({ children }) => {
   return (
     <>
       {children}

@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { NadeIcon, NadeIconProps } from "..";
+import { MolotovIcon } from "../shared-components/nade-icons/MolotovIcon";
+import { NadeSpecificIconProps } from "../shared-components/nade-icons/shared/NadeIconProps";
 
 const BoxContainer: FC = ({ children }) => {
   return (
     <>
-      <div>{children}</div>
+      <div className="box-container">{children}</div>
       <style jsx>{`
-        div {
+        .box-container {
           display: inline-block;
           border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 5px;
@@ -19,47 +20,33 @@ const BoxContainer: FC = ({ children }) => {
 };
 
 export default {
-  title: "Icon/Grenade Icon",
-  component: NadeIcon,
+  title: "Icon/Molotov Icon",
+  component: MolotovIcon,
 } as Meta;
 
 const Template: Story = (args) => (
   <BoxContainer>
-    <NadeIcon {...args} />
+    <MolotovIcon {...args} />
   </BoxContainer>
 );
 
-export const SmallAnimated = Template.bind({});
+export const Small = Template.bind({});
 
-SmallAnimated.args = {
-  nadeType: "hegrenade",
+Small.args = {
   size: 24,
-  animated: true,
-} as NadeIconProps;
-
-export const SmallStatic = Template.bind({});
-
-SmallStatic.args = {
-  nadeType: "hegrenade",
-  size: 24,
-  animated: false,
-} as NadeIconProps;
+} as NadeSpecificIconProps;
 
 export const MediumWithCount = Template.bind({});
 
 MediumWithCount.args = {
-  nadeType: "hegrenade",
   size: 44,
-  count: 10,
-  animated: true,
-} as NadeIconProps;
+  count: 2,
+} as NadeSpecificIconProps;
 
 export const MediumWithCountAndLabel = Template.bind({});
 
 MediumWithCountAndLabel.args = {
-  nadeType: "hegrenade",
   size: 44,
   count: 10,
   isNew: true,
-  animated: true,
-} as NadeIconProps;
+} as NadeSpecificIconProps;

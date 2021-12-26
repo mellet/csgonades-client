@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { NadeIcon, NadeIconProps } from "..";
+import { NadeIcon, NadeIconProps } from "../shared-components/nade-icons";
 
 const BoxContainer: FC = ({ children }) => {
   return (
     <>
-      <div>{children}</div>
+      <div className="box-container">{children}</div>
       <style jsx>{`
-        div {
+        .box-container {
           display: inline-block;
           border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 5px;

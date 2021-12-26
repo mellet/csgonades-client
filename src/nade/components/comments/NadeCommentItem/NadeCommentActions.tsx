@@ -5,9 +5,9 @@ export const NadeCommentActions: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="nade-comment-actions">{children}</div>
       <style jsx>{`
-        div {
+        .nade-comment-actions {
           grid-area: action;
           padding: 0px 0px 0px 0px;
           padding-top: 8px;

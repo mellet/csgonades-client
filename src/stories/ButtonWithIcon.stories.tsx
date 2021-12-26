@@ -1,6 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { ButtonWithIcon, ButtonWithIconProps } from "./ButtonWithIcon";
+import {
+  ButtonWithIcon,
+  ButtonWithIconProps,
+} from "../shared-components/buttons/ButtonWithIcon";
 import { FaStar } from "react-icons/fa";
 
 export default {

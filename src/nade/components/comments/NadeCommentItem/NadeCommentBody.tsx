@@ -5,9 +5,9 @@ export const NadeCommentBody: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="nade-comment-body">{children}</div>
       <style jsx>{`
-        div {
+        .nade-comment-body {
           grid-area: body;
           background: ${colors.DP03};
           padding: 0px 16px;

@@ -64,9 +64,9 @@ const EmptyNotification: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="empty-notfi">{children}</div>
       <style jsx>{`
-        div {
+        .empty-notfi {
           background: ${colors.DP03};
           color: ${colors.TEXT};
           border: 1px solid ${colors.BORDER};

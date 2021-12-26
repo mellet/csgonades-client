@@ -5,9 +5,9 @@ export const NadeCommentTime: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="nade-comment-time">{children}</div>
       <style jsx>{`
-        div {
+        .nade-comment-time {
           grid-area: time;
           color: ${colors.GREY};
           font-size: 12px;

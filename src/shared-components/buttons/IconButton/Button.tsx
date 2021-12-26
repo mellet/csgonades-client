@@ -22,9 +22,9 @@ export const Button: FC<Props> = ({
   const { colors } = useTheme();
   return (
     <>
-      <button {...rest}></button>
+      <button className="btn" {...rest}></button>
       <style jsx>{`
-        button {
+        .btn {
           height: 100%;
           width: 100%;
           background: ${active ? colors.DP03 : "transparent"};
@@ -41,14 +41,14 @@ export const Button: FC<Props> = ({
           transition: color 0.1s, background 0.1s;
         }
 
-        button:hover,
-        button:active {
+        .btn:hover,
+        .btn:active {
           cursor: pointer;
           color: ${activeColor ? activeColor : "#0d0c22"};
           background: ${colors.DP03};
         }
 
-        button:focus-visible {
+        .btn:focus-visible {
           outline: 1px auto ${colors.PRIMARY};
         }
       `}</style>

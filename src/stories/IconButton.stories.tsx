@@ -1,6 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { SquareButton, IconButtonProps } from "./IconButton/IconButton";
+import {
+  SquareButton,
+  IconButtonProps,
+} from "../shared-components/buttons/IconButton/IconButton";
 import { FaStar } from "react-icons/fa";
 
 export default {

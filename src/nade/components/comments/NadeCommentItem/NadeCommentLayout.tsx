@@ -6,9 +6,9 @@ export const NadeCommentLayout: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="nade-comment-layout">{children}</div>
       <style jsx>{`
-        div {
+        .nade-comment-layout {
           display: grid;
           grid-template-columns: min-content 1fr min-content;
           grid-template-areas:

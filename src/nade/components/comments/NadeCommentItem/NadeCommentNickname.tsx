@@ -6,9 +6,9 @@ export const NadeCommentNickname: FC = ({ children }) => {
 
   return (
     <>
-      <div>{children}</div>
+      <div className="nade-comment-nickname">{children}</div>
       <style jsx>{`
-        div {
+        .nade-comment-nickname {
           position: relative;
           grid-area: username;
           color: ${colors.TEXT};
