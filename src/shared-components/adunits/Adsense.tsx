@@ -44,33 +44,24 @@ export const Adsense: FC<Props> = memo(({ adName }) => {
 
   return (
     <>
-      <div className="ad-clearfix">
-        <ins
-          className="adsbygoogle"
-          style={{ ...config.style, ...debugStyle(adName) }}
-          data-ad-client="ca-pub-2255854420599519"
-          data-ad-slot={config.adSlot}
-          data-ad-format={config.adFormat}
-          data-full-width-responsive={
-            config.fullWidthResponsive ? "true" : undefined
-          }
-        >
-          {!IS_PROD && (
-            <span style={{ textAlign: "center" }}>
-              Ad
-              <br />
-              {adName}
-            </span>
-          )}
-        </ins>
-      </div>
-      <style jsx>{`
-        .ad-clearfix:after {
-          content: "";
-          display: table;
-          clear: both;
+      <ins
+        className="adsbygoogle"
+        style={{ ...config.style, ...debugStyle(adName) }}
+        data-ad-client="ca-pub-2255854420599519"
+        data-ad-slot={config.adSlot}
+        data-ad-format={config.adFormat}
+        data-full-width-responsive={
+          config.fullWidthResponsive ? "true" : undefined
         }
-      `}</style>
+      >
+        {!IS_PROD && (
+          <span style={{ textAlign: "center" }}>
+            Ad
+            <br />
+            {adName}
+          </span>
+        )}
+      </ins>
     </>
   );
 });

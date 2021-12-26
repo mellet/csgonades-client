@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { Dimensions } from "../../../constants/Constants";
-import { Adsense } from "../../../shared-components/adunits/Adsense";
+import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 import { User } from "../../../users/models/User";
 import { NadeComment, NadeCommentUpdateDTO } from "../../data/NadeCommentApi";
 import { CommentSubmit } from "./CommentSubmit";
@@ -37,16 +36,7 @@ export const NadeCommentsView: FC<NadeCommentsViewProps> = ({
           onUpdateComment={onEditComment}
         />
       ))}
-      {comments.length > 0 && (
-        <div className="comment-ad">
-          <Adsense adName="nadeComment" />
-        </div>
-      )}
-      <style jsx>{`
-        .comment-ad {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-        }
-      `}</style>
+      {comments.length > 0 && <AdUnit name="nadeComment" horizontalSpacing />}
     </>
   );
 };

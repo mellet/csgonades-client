@@ -17,14 +17,24 @@ export const AdUnit: FC<Props> = memo(({ name, horizontalSpacing }) => {
   const renderAd = Boolean(enterCount);
 
   return (
-    <div
-      ref={myRef}
-      style={{
-        marginTop: horizontalSpacing ? Dimensions.GUTTER_SIZE : 0,
-        marginBottom: horizontalSpacing ? Dimensions.GUTTER_SIZE : 0,
-      }}
-    >
-      {renderAd && <Adsense adName={name} />}
-    </div>
+    <>
+      <div
+        className="ad-clearfix"
+        ref={myRef}
+        style={{
+          marginTop: horizontalSpacing ? Dimensions.GUTTER_SIZE : 0,
+          marginBottom: horizontalSpacing ? Dimensions.GUTTER_SIZE : 0,
+        }}
+      >
+        {renderAd && <Adsense adName={name} />}
+      </div>
+      <style jsx>{`
+        .ad-clearfix:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+      `}</style>
+    </>
   );
 });
