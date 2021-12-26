@@ -25,7 +25,7 @@ export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
 
       {!isMobile && (
         <div id="blog-sidebar-wrap">
-          <AdUnit name="blogSidebar" applyMaxWidth={false} />
+          <AdUnit name="blogSidebar" />
         </div>
       )}
 
