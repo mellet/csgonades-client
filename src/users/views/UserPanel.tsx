@@ -8,6 +8,7 @@ import { prettyDate, prettyDateTime } from "../../utils/DateUtils";
 import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
+import { RenderMarkdown } from "../../nade/components/RenderMarkdown";
 
 type Props = {
   user: User;
@@ -18,8 +19,6 @@ export const UserPanel: FC<Props> = ({ user }) => {
   const allowEdit = useIsAllowedUserEdit(user);
 
   const { role, bio, nickname, avatar, steamId, createdAt, lastActive } = user;
-
-  console.log("# UserPanel", user);
 
   return (
     <>
@@ -55,11 +54,11 @@ export const UserPanel: FC<Props> = ({ user }) => {
           </div>
         )}
 
-        {Boolean(bio) && (
+        {bio && (
           <div className="bio">
             <span className="label">Bio</span>
             <br />
-            {bio}
+            <RenderMarkdown value={bio} />
           </div>
         )}
 

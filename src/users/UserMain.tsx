@@ -1,5 +1,5 @@
 import { User } from "./models/User";
-import { UserPanel } from "./views/UserDetails";
+import { UserPanel } from "./views/UserPanel";
 import { UserNotFound } from "./views/UserNotFound";
 import { UserPageLayout } from "./views/UserPageLayout";
 import { UserUI } from "./views/UserUI";

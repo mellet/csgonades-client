@@ -3,7 +3,7 @@ import { useIsAdminOrModerator } from "../../core/authentication/useIsAdminOrMod
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 import { ForbiddenWarning } from "../../shared-components/ForbiddenWarning";
 import { User } from "../models/User";
-import { UserPanel } from "../views/UserDetails";
+import { UserPanel } from "../views/UserPanel";
 import { UserEditMain } from "../views/UserEditMain";
 import { UserPageLayout } from "../views/UserPageLayout";
 
@@ -20,13 +20,10 @@ export const UserEditPage: FC<Props> = ({ user }) => {
   }
 
   return (
-    <>
-      <UserPageLayout
-        main={<UserEditMain user={user} />}
-        panel={<UserPanel user={user} />}
-      />
-      <style jsx>{``}</style>
-    </>
+    <UserPageLayout
+      main={<UserEditMain user={user} />}
+      panel={<UserPanel user={user} />}
+    />
   );
 };
 
