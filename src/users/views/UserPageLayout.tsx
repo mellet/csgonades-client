@@ -13,9 +13,7 @@ export const UserPageLayout: FC<Props> = ({ main, panel }) => {
   return (
     <>
       <div className="user-page-layout">
-        <div className="user-panel">
-          <div className="user-panel-stick">{panel}</div>
-        </div>
+        <div className="user-panel">{panel}</div>
         <div className="user-main">{main}</div>
       </div>
       <style jsx>{`
