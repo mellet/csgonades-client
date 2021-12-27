@@ -23,18 +23,19 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
   const displayToast = useDisplayToast();
 
   function onSubmit() {
-    if (nickname.includes("@")) {
-      setError(
-        "It looks like you put your e-mail as your nickname. This is not very smart as it will be visible to anyone."
-      );
-      ga.error("profile_create_email_as_displayname");
-      return;
-    }
+    const isValidNickname = Boolean(nickname.match("^[A-Za-z0-9]+$"));
 
+    if (!nickname) {
+      ga.error("profile_create_email_as_displayname");
+      return setError("Display name is required");
+    }
+    if (!isValidNickname) {
+      ga.error("profile_create_email_as_displayname");
+      return setError("Nickname can only include letters and numbers.");
+    }
     if (!email || !email.includes("@")) {
-      setError("E-mail is required and needs to be a valid e-mail.");
       ga.error("profile_no_email");
-      return;
+      return setError("E-mail is required and needs to be a valid e-mail.");
     }
 
     setLoading(true);
@@ -74,7 +75,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
           )}
           <div className="profile-form">
             <span className="label">
-              Display name <span className="require">*</span>
+              Nickname <span className="require">*</span>
             </span>
             <input
               value={nickname}
@@ -92,7 +93,7 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
             <span className="label">Bio</span>
             <textarea
               value={bio}
-              placeholder="Write something funny... Or keep it blank if your mysterious."
+              placeholder="(Optional) Tell us about yourself."
               onChange={(e) => setBio(e.target.value)}
               rows={5}
             />

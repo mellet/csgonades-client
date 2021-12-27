@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { ToastProvider } from "../shared-components/toast/ToastContext";
 import { PageViewTracker } from "./PageViewTracker";
 import { SWRConfig } from "swr";
+import { UserProfileChecker } from "./UserProfileChecker";
 
 const tenMinutesInMs = 10 * 60 * 1000;
 
@@ -50,6 +51,7 @@ export const CoreWrapper: FC = memo(({ children }) => {
           <ToastList />
           <SignInWarning />
           <PageViewTracker />
+          <UserProfileChecker />
         </ToastProvider>
       </GlobalStyles>
     </SWRConfig>
