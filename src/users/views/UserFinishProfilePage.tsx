@@ -53,7 +53,6 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
       severity: "success",
       message: "Your profile is ready!",
       title: "All set!",
-      durationSeconds: 30,
     });
     Router.push("/");
   }
