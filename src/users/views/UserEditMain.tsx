@@ -6,7 +6,7 @@ import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../shared-components/inputs/CsgnTextArea";
 import { CsgnInput } from "../../shared-components/inputs/TextInput/CsgnInput";
 import { useUpdateUser } from "../data/useUpdateUser";
-import { User } from "../models/User";
+import { User, UserUpdateDTO } from "../models/User";
 
 type Props = {
   user: User;
@@ -17,29 +17,46 @@ export const UserEditMain: FC<Props> = ({ user }) => {
   const [nickname, setNickname] = useState(user.nickname);
   const [bio, setBio] = useState(user.bio);
   const [email, setEmail] = useState(user.email);
+  const [error, setError] = useState<string | null>(null);
   const [defaultTick, setDefaultTick] = useState(user.defaultTick);
   const { updateUser, isUpdatingUser } = useUpdateUser(user.steamId);
 
   const onSave = useCallback(() => {
-    updateUser(user.steamId, {
+    setError(null);
+    const updates = {
       nickname,
       bio,
       email,
       defaultTick,
-    });
+    };
+    const { error } = validateUserProfile(updates);
+
+    if (error) {
+      return setError(error);
+    }
+
+    updateUser(user.steamId, updates);
   }, [user.steamId, nickname, bio, email, updateUser, defaultTick]);
 
   return (
     <>
       <div className="user-edit">
         <h2>Edit {user.nickname}</h2>
+        {error && <div className="error">{error}</div>}
         <CsgnInput
-          label="Display name"
+          required
+          maxLength={18}
+          label="Nickname"
           onChange={setNickname}
           initialValue={nickname}
         />
         <br />
-        <CsgnInput label="E-mail" onChange={setEmail} initialValue={email} />
+        <CsgnInput
+          required
+          label="E-mail"
+          onChange={setEmail}
+          initialValue={email}
+        />
         <br />
         <CsgnTextArea
           label="Bio"
@@ -76,7 +93,32 @@ export const UserEditMain: FC<Props> = ({ user }) => {
           flex-direction: column;
           align-items: flex-end;
         }
+
+        .error {
+          background: ${colors.ERROR};
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          padding: ${Dimensions.PADDING_MEDIUM};
+          color: white;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+        }
       `}</style>
     </>
   );
 };
+
+function validateUserProfile(userUpdateDto: UserUpdateDTO) {
+  const { email, nickname } = userUpdateDto;
+  if (email && !email.includes("@")) {
+    return { error: "Error: Not a valid e-mail" };
+  }
+  if (nickname && !isValidNickname(nickname)) {
+    return { error: "Error: Nickname can only contain letters and number" };
+  }
+  return {
+    error: null,
+  };
+}
+
+function isValidNickname(nickname: string) {
+  return Boolean(nickname.match("^[A-Za-z0-9]+$"));
+}

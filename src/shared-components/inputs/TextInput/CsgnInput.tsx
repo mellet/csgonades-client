@@ -9,6 +9,7 @@ export type CsgnInputProps = {
   placeholder?: string;
   required?: boolean;
   value?: string;
+  maxLength?: number;
 };
 
 export const CsgnInput: FC<CsgnInputProps> = ({
@@ -18,6 +19,7 @@ export const CsgnInput: FC<CsgnInputProps> = ({
   placeholder,
   required,
   value,
+  maxLength,
 }) => {
   return (
     <>
@@ -28,6 +30,7 @@ export const CsgnInput: FC<CsgnInputProps> = ({
           onBlur={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           value={value}
+          maxLength={maxLength}
         />
       </div>
       <style jsx>{`
