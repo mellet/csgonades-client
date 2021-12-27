@@ -1,4 +1,4 @@
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { User } from "../models/User";
 import { useTheme } from "../../core/settings/SettingsHooks";
@@ -7,6 +7,7 @@ import { Dimensions } from "../../constants/Constants";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";
 import { useGa } from "../../utils/Analytics";
 import { TickrateSelector } from "../../nade/components/NadeInputs/TickrateSelector";
+import { useSignOut } from "../../core/authentication/useSignOut";
 
 type Props = { user: User };
 
@@ -21,6 +22,17 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
   const [error, setError] = useState<string | undefined>();
   const { colors } = useTheme();
   const displayToast = useDisplayToast();
+  const signOut = useSignOut();
+  const router = useRouter();
+
+  function onSignout() {
+    signOut();
+    ga.event({
+      category: "auth",
+      action: "signed_out_before_complete",
+    });
+    router.push("/");
+  }
 
   function onSubmit() {
     const isValidNickname = Boolean(nickname.match("^[A-Za-z0-9]+$"));
@@ -106,6 +118,9 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
 
             <button disabled={loading} className="save-btn" onClick={onSubmit}>
               SAVE
+            </button>
+            <button className="sign-out-btn" onClick={onSignout}>
+              SIGN OUT
             </button>
           </div>
         </div>
@@ -198,6 +213,19 @@ export const UserFinishProfilePage: FC<Props> = ({ user }) => {
           background: ${colors.PRIMARY};
           color: white;
           border-radius: 5px;
+        }
+
+        .sign-out-btn {
+          border: none;
+          outline: none;
+          cursor: pointer;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          background: transparent;
+          font-size: 14px;
+        }
+
+        .sign-out-btn:hover {
+          text-decoration: underline;
         }
       `}</style>
     </>
