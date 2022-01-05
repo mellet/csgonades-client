@@ -49,8 +49,6 @@ export const GfycatIframe: FC<Props> = ({ gfyId }) => {
           position: relative;
           padding-bottom: calc(56.25% + 44px);
           background: #000;
-          overflow: hidden;
-          transform: scale(1.002);
           opacity: ${loaded ? 1 : 0};
           transition: opacity 0.5s;
         }

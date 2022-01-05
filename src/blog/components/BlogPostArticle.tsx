@@ -171,13 +171,6 @@ export const BlogPostArticle: FC<Props> = memo(({ children, data }) => {
         .image-credit a:hover {
           text-decoration: underline;
         }
-
-        @media only screen and (max-width: 600px) {
-          #blog-article {
-            margin-left: -${Dimensions.GUTTER_SIZE}px;
-            margin-right: -${Dimensions.GUTTER_SIZE}px;
-          }
-        }
       `}</style>
     </>
   );

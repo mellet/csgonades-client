@@ -87,10 +87,13 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
           right: 6px;
           z-index: 1;
           color: #111;
-          background: rgba(255, 255, 255, 0.8);
-          padding: 0px 6px;
+          background: rgba(255, 255, 255, 0.7);
+          padding: 3px 6px;
           border-radius: 4px;
           opacity: 0.8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .thumb-image {

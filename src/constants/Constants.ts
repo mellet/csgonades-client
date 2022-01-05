@@ -48,4 +48,9 @@ export const LayerPosition = {
   UNDER_UI: 900,
 } as const;
 
+export const LayoutBreakpoint = {
+  MOBILE: 600,
+  TABLET: 1200,
+};
+
 export const APP_VERSION = packageJson.version;

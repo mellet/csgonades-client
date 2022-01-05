@@ -1,5 +1,5 @@
 import React, { FC, memo } from "react";
-import { Dimensions } from "../../constants/Constants";
+import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { NadeLight } from "../../nade/models/Nade";
 import { SEO } from "../../shared-components/SEO";
 import { capitalize } from "../../utils/Common";
@@ -102,7 +102,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
           width: 100%;
         }
 
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
           #nade-page {
             position: relative;
             width: 100%;
@@ -112,6 +112,11 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
               "filter"
               "nades";
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
+          }
+
+          #filter {
+            padding: ${Dimensions.GUTTER_SIZE}px;
+            padding-bottom: 0;
           }
         }
       `}</style>

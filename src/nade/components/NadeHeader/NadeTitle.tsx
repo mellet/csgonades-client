@@ -3,6 +3,7 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 import { generateNadeItemTitle } from "../../../utils/Common";
 import { NadeType } from "../../models/NadeType";
 import { CsgoMap } from "../../../map/models/CsGoMap";
+import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 type Props = {
   nadeStartPosition?: string;
@@ -14,6 +15,7 @@ type Props = {
 
 export const NadeTitle: FC<Props> = memo(
   ({ csGoMap, isOneWay, nadeEndPosition, nadeStartPosition, nadeType }) => {
+    const { isMobile } = useIsDeviceSize();
     const [title, subTitle] = generateNadeItemTitle(
       nadeStartPosition,
       nadeEndPosition,
@@ -21,6 +23,7 @@ export const NadeTitle: FC<Props> = memo(
       isOneWay,
       csGoMap
     );
+
     const { colors } = useTheme();
 
     return (
@@ -31,17 +34,12 @@ export const NadeTitle: FC<Props> = memo(
 
         <style jsx>{`
           h1 {
-            font-size: 28px;
+            font-size: ${isMobile ? "22px" : "28px"};
             margin: 0;
             padding: 0;
             font-weight: 300;
             color: ${colors.TEXT};
-          }
-
-          @media only screen and (max-width: 800px) {
-            h1 {
-              font-size: 24px;
-            }
+            text-align: ${isMobile ? "center" : "auto"};
           }
         `}</style>
       </>

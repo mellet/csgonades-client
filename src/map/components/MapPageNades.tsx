@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { SortByBar } from "./SuggestedNades/SortByBar";
 import useSortedNades from "./SuggestedNades/useSortedNades";
 import { useMediaQuery } from "react-responsive";
+import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 
 const NadeItemMobile = dynamic(() =>
   import(
@@ -103,6 +104,13 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
           border: none;
           cursor: pointer;
           margin-left: 5px;
+        }
+
+        @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
+          .sort-bar {
+            padding: 0px ${Dimensions.GUTTER_SIZE}px;
+            padding-bottom: ${Dimensions.GUTTER_SIZE}px;
+          }
         }
       `}</style>
     </>

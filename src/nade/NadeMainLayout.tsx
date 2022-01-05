@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Dimensions } from "../constants/Constants";
+import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
 import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 type Props = {
@@ -90,16 +90,16 @@ export const NadeMainLayout: FC<Props> = ({
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
 
-        @media only screen and (max-width: 1100px) {
+        @media only screen and (max-width: ${LayoutBreakpoint.TABLET}px) {
           .nade-main-layout {
             width: 100%;
             grid-template-columns: 1fr;
             grid-column-gap: 0;
             grid-template-areas:
               "status"
-              "title"
               "video"
               "actions"
+              "title"
               "desc"
               "comments"
               "ad";
@@ -121,10 +121,16 @@ export const NadeMainLayout: FC<Props> = ({
           }
         }
 
-        @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
           .mobile-title {
             display: block;
             grid-area: title;
+            padding: 0px ${Dimensions.GUTTER_SIZE}px;
+          }
+
+          .actions {
+            padding: 0px ${Dimensions.GUTTER_SIZE}px;
+            justify-content: center;
           }
         }
       `}</style>

@@ -4,6 +4,7 @@ import { nadeTypeString, NadeType } from "../../models/NadeType";
 import { techniqueString, Technique } from "../../models/Technique";
 import { capitalize } from "../../../utils/Common";
 import { Movement } from "../../models/NadeMovement";
+import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 type Props = {
   movement?: Movement;
@@ -15,6 +16,8 @@ type Props = {
 
 export const NadeMeta: FC<Props> = memo(
   ({ movement, type, technique, tickrate }) => {
+    const { isMobile } = useIsDeviceSize();
+
     return (
       <>
         <div className="nade-meta">
@@ -58,12 +61,12 @@ export const NadeMeta: FC<Props> = memo(
           }
 
           .nade-meta-item:first-child {
-            border-top-left-radius: 8px;
+            border-top-left-radius: ${isMobile ? 0 : 8}px;
           }
 
           .nade-meta-item:last-child {
             border-right: none;
-            border-top-right-radius: 8px;
+            border-top-right-radius: ${isMobile ? 0 : 8}px;
           }
 
           h4 {

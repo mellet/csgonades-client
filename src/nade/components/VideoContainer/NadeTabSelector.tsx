@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Dimensions } from "../../../constants/Constants";
+import { FC, MouseEventHandler } from "react";
+import { Dimensions, LayoutBreakpoint } from "../../../constants/Constants";
 import { useGa } from "../../../utils/Analytics";
 
 type Props = {
@@ -12,19 +12,25 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
   const isVideoSelected = selectedTab === "video";
   const isLineUpSelected = selectedTab === "lineup";
 
-  function onChangeToVideo() {
+  const onChangeToVideo: MouseEventHandler<HTMLButtonElement> = (e) => {
     onChangeTab("video");
     ga.event({ category: "nade_page", action: "click_video_tab" });
-  }
+    e.stopPropagation();
+  };
 
-  function onChangeToLineup() {
+  const onChangeToLineup: MouseEventHandler<HTMLButtonElement> = (e) => {
     onChangeTab("lineup");
     ga.event({ category: "nade_page", action: "click_linup_tab" });
-  }
+    e.stopPropagation();
+  };
+
+  const stopBubble: MouseEventHandler<HTMLDivElement> = (e) => {
+    e.stopPropagation();
+  };
 
   return (
     <>
-      <div className="tab-selector">
+      <div className="tab-selector" onClick={stopBubble}>
         <div className="selected-bg">
           <div className="selected-bg-fill" />
         </div>
@@ -42,6 +48,21 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
         </button>
       </div>
       <style jsx>{`
+        .tab-selector {
+          position: absolute;
+          top: ${Dimensions.GUTTER_SIZE}px;
+          right: ${Dimensions.GUTTER_SIZE}px;
+          z-index: 1;
+          display: flex;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          background: rgba(255, 255, 255, 0.2);
+          transition: all 0.2s;
+          overflow: hidden;
+          width: 120px;
+          height: 40px;
+          border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
         .selected-bg {
           position: absolute;
           padding: 0px;
@@ -52,6 +73,7 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           transform: translateX(${selectedTab === "video" ? 0 : "100%"});
           transition: transform 0.15s;
           z-index: 2;
+          pointer-events: none;
         }
 
         .selected-bg-fill {
@@ -59,21 +81,6 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           width: 100%;
           height: 100%;
           z-index: 3;
-        }
-
-        .tab-selector {
-          position: absolute;
-          top: ${Dimensions.GUTTER_SIZE}px;
-          right: ${Dimensions.GUTTER_SIZE}px;
-          z-index: 1;
-          display: flex;
-          border-radius: ${Dimensions.BORDER_RADIUS};
-          background: transparent;
-          transition: all 0.2s;
-          overflow: hidden;
-          width: 120px;
-          height: 40px;
-          border: 1px solid rgba(255, 255, 255, 0.9);
         }
 
         .tab-btn {
@@ -102,16 +109,17 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           text-decoration: none;
         }
 
-        @media only screen and (max-width: ${Dimensions.TABLET_THRESHHOLD}) {
+        @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
           .tab-selector {
             position: absolute;
-            top: 5px;
-            left: 5px;
-            right: auto;
+            top: 0;
+            right: 0;
+            height: 36px;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
           }
 
           .tab-btn {
-            padding: 10px 10px;
           }
         }
       `}</style>

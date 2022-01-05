@@ -14,10 +14,8 @@ type Tabs = "video" | "lineup";
 
 export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("video");
-
   const lineUpUrl = getNadeLineUpImage(nade);
-
-  const hasLineUp = !!lineUpUrl;
+  const hasLineUp = Boolean(lineUpUrl);
 
   return (
     <>

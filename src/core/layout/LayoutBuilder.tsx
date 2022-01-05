@@ -1,5 +1,5 @@
 import { FC, memo, useMemo } from "react";
-import { Dimensions } from "../../constants/Constants";
+import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { useNavigation } from "../global/hooks/useNavigation";
 import { useTheme } from "../settings/SettingsHooks";
 import { useMediaQuery } from "react-responsive";
@@ -104,14 +104,13 @@ export const LayoutBuilder: FC<Props> = memo(
 
           main {
             grid-area: main;
-            max-width: 100vw !important;
           }
 
           aside#sidebar {
             grid-area: sidebar;
           }
 
-          @media only screen and (max-width: 1200px) {
+          @media only screen and (max-width: ${LayoutBreakpoint.TABLET}px) {
             .default-page {
               grid-template-areas:
                 "header header header header header"
@@ -147,22 +146,32 @@ export const LayoutBuilder: FC<Props> = memo(
             }
           }
 
-          @media only screen and (max-width: 950px) {
+          @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
             #page {
               display: grid;
               min-height: 100vh;
               width: 100%;
               background: ${colors.DP00};
               grid-template-columns: 1fr;
-              grid-template-rows: auto;
+              grid-template-rows: 1fr;
+              grid-column-gap: 0px;
+              grid-row-gap: 0px;
               padding-bottom: ${Dimensions.GUTTER_SIZE}px;
             }
 
             .with-sidebar-and-nav {
+              grid-column-gap: 0px;
+              grid-row-gap: 0px;
               grid-template-areas:
-                "header header header"
-                ". main ."
-                ". sidebar .";
+                "header"
+                "main"
+                "sidebar";
+            }
+
+            .with-main-only {
+              grid-template-areas:
+                "header"
+                "main";
             }
 
             header {
