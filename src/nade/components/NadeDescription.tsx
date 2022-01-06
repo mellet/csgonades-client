@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Nade } from "../models/Nade";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { NadeDescriptionDisplay } from "./NadeDescriptionDisplay";
+import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 
 type Props = {
   nade: Nade;
@@ -9,6 +11,7 @@ type Props = {
 
 export const NadeDescription: FC<Props> = ({ nade }) => {
   const { colors } = useTheme();
+  const displayAd = useDisplayDescriptionAd(nade.commentCount);
 
   return (
     <>
@@ -18,6 +21,8 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
           <NadeDescriptionDisplay value={nade.description} />
         </div>
       </div>
+      {displayAd && <AdUnit name="nadeComment" horizontalSpacing />}
+
       <style jsx>{`
         .nade-info {
           border: 1px solid ${colors.BORDER};
@@ -49,3 +54,11 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
     </>
   );
 };
+
+function useDisplayDescriptionAd(commentCount: number) {
+  const { isMobile } = useIsDeviceSize();
+
+  const hasComments = commentCount > 0;
+
+  return isMobile || hasComments;
+}

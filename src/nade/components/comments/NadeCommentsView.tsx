@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 import { User } from "../../../users/models/User";
 import { NadeComment, NadeCommentUpdateDTO } from "../../data/NadeCommentApi";
 import { CommentSubmit } from "./CommentSubmit";
@@ -36,7 +35,6 @@ export const NadeCommentsView: FC<NadeCommentsViewProps> = ({
           onUpdateComment={onEditComment}
         />
       ))}
-      {comments.length > 0 && <AdUnit name="nadeComment" horizontalSpacing />}
     </>
   );
 };
