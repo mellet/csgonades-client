@@ -9,6 +9,7 @@ import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
 import { RenderMarkdown } from "../../nade/components/RenderMarkdown";
+import Image from "next/image";
 
 type Props = {
   user: User;
@@ -24,7 +25,15 @@ export const UserPanel: FC<Props> = ({ user }) => {
     <>
       <div className="user-details">
         <h1 className="avatar">
-          <img src={avatar || ""} alt={`avatar for ${nickname}`} />{" "}
+          <div className="avatar-img">
+            <Image
+              unoptimized
+              src={avatar}
+              alt={`avatar for ${nickname}`}
+              width={30}
+              height={30}
+            />
+          </div>
           <a
             href={`https://steamcommunity.com/profiles/${steamId}`}
             rel="noopener noreferrer nofollow"
@@ -71,6 +80,15 @@ export const UserPanel: FC<Props> = ({ user }) => {
         )}
       </div>
       <style jsx>{`
+        .avatar-img {
+          border: 1px solid ${colors.BORDER};
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin-right: 4px;
+        }
+
         .user-details {
           display: grid;
           width: 100%;
@@ -123,12 +141,6 @@ export const UserPanel: FC<Props> = ({ user }) => {
           align-items: center;
           font-size: 1.2em;
           color: ${colors.TEXT};
-        }
-
-        .user-details img {
-          border-radius: 50%;
-          width: 36px;
-          margin-right: 4px;
         }
 
         .label {
