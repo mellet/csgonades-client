@@ -7,6 +7,10 @@ import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
+type ResetFilterClickConfig = {
+  disableAnalytics?: boolean;
+};
+
 export const useFilterReset = () => {
   const { signedInUser } = useSignedInUser();
   const ga = useGa();
@@ -18,14 +22,14 @@ export const useFilterReset = () => {
   const { byTeam, resetFilterByTeam } = useFilterByTeam();
 
   const resetFilter = useCallback(
-    (disableAnalytics?: boolean) => {
+    (config?: ResetFilterClickConfig) => {
       resetFilterByPro();
       resetFilterByTickrate();
       resetFilterByFavorites();
       resetFilterByType();
       resetFilterByTeam();
 
-      if (!disableAnalytics) {
+      if (!config?.disableAnalytics) {
         ga.event({
           category: "map_page",
           action: "click_reset_filter",
