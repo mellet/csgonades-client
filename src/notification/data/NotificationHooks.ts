@@ -15,7 +15,7 @@ function combineFavoriteNotifications(notis: FavoriteNotification[]) {
     const found = aggregatedFavorites[favForNadeId];
     if (found) {
       const newestTime =
-        favNoti.createdAt.getTime() > found.createdAt.getTime()
+        favNoti.createdAt?.getTime() > found.createdAt?.getTime()
           ? favNoti.createdAt
           : found.createdAt;
 
