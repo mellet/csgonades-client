@@ -14,12 +14,18 @@ function combineFavoriteNotifications(notis: FavoriteNotification[]) {
     const favForNadeId = favNoti.nadeId;
     const found = aggregatedFavorites[favForNadeId];
     if (found) {
+      const newestTime =
+        favNoti.createdAt.getTime() > found.createdAt.getTime()
+          ? favNoti.createdAt
+          : found.createdAt;
+
       aggregatedFavorites = {
         ...aggregatedFavorites,
         [favForNadeId]: {
           ...found,
           count: found.count + 1,
           viewed: favNoti.viewed ? found.viewed : favNoti.viewed,
+          createdAt: newestTime,
         },
       };
     } else {
