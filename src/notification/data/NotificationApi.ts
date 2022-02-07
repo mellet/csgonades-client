@@ -3,6 +3,7 @@ import { AppConfig } from "../../constants/Constants";
 import { Notification } from "../models/Notification";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import AxiosApi from "../../core/AxiosInstance";
+import { dateFromStringOrDate } from "../../utils/DateUtils";
 
 export class NotificationApi {
   static async getNotifications(): AppResult<Notification[]> {
@@ -10,7 +11,13 @@ export class NotificationApi {
       const res = await AxiosApi.get<Notification[]>(
         `${AppConfig.API_URL}/notifications`
       );
-      return ok(res.data);
+
+      const datify = res.data.map((noti) => ({
+        ...noti,
+        createdAt: dateFromStringOrDate(noti.createdAt),
+      }));
+
+      return ok(datify);
     } catch (error) {
       return extractApiError(error);
     }

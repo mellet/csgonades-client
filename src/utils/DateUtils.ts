@@ -8,6 +8,14 @@ export function prettyDate(date: Date | string) {
   return `${month} ${dateNumber}. ${year}`;
 }
 
+export function dateFromStringOrDate(date: Date | string) {
+  if (typeof date === "string") {
+    return new Date(date);
+  } else {
+    return date;
+  }
+}
+
 export function prettyDateTime(date: Date | string) {
   const jsDate = typeof date === "string" ? new Date(date) : date;
 

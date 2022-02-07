@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { dateFromStringOrDate } from "../../utils/DateUtils";
 import {
   FavoriteNotification,
   FavoriteNotificationAgregate,
@@ -14,10 +15,11 @@ function combineFavoriteNotifications(notis: FavoriteNotification[]) {
     const favForNadeId = favNoti.nadeId;
     const found = aggregatedFavorites[favForNadeId];
     if (found) {
-      /* const newestTime =
-        favNoti.createdAt?.getTime() > found.createdAt?.getTime()
-          ? favNoti.createdAt
-          : found.createdAt; */
+      const newestTime =
+        dateFromStringOrDate(favNoti.createdAt).getTime() >
+        dateFromStringOrDate(found.createdAt).getTime()
+          ? dateFromStringOrDate(favNoti.createdAt)
+          : dateFromStringOrDate(found.createdAt);
 
       aggregatedFavorites = {
         ...aggregatedFavorites,
@@ -25,8 +27,7 @@ function combineFavoriteNotifications(notis: FavoriteNotification[]) {
           ...found,
           count: found.count + 1,
           viewed: favNoti.viewed ? found.viewed : favNoti.viewed,
-          createdAt: found.createdAt,
-          //          createdAt: newestTime,
+          createdAt: newestTime,
         },
       };
     } else {
@@ -38,7 +39,7 @@ function combineFavoriteNotifications(notis: FavoriteNotification[]) {
           count: 1,
           type: "favorite-agregate",
           viewed: favNoti.viewed,
-          createdAt: favNoti.createdAt,
+          createdAt: dateFromStringOrDate(favNoti.createdAt),
           nadeId: favNoti.nadeId,
           nadeSlug: favNoti.nadeSlug,
           thumnailUrl: favNoti.thumnailUrl,

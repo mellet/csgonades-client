@@ -31,7 +31,7 @@ export type DeclinedNadeNotification = {
 export type FavoriteNotification = {
   byNickname: string;
   bySteamId: string;
-  createdAt: Date;
+  createdAt: Date | string;
   id: string;
   nadeId: string;
   nadeSlug?: string;
