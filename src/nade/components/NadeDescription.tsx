@@ -4,6 +4,8 @@ import { useTheme } from "../../core/settings/SettingsHooks";
 import { NadeDescriptionDisplay } from "./NadeDescriptionDisplay";
 import { AdUnit } from "../../shared-components/adunits/AdUnit";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
+import { prettyDateTime } from "../../utils/DateUtils";
+import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   nade: Nade;
@@ -19,6 +21,9 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
         <h3>Description</h3>
         <div className="nade-desc-meta">
           <NadeDescriptionDisplay value={nade.description} />
+          <div className="nade-created-at">
+            Created {prettyDateTime(nade.createdAt)}
+          </div>
         </div>
       </div>
       {displayAd && <AdUnit name="nadeComment" horizontalSpacing />}
@@ -30,6 +35,13 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
           border-radius: 8px;
           overflow: hidden;
           color: ${colors.TEXT};
+        }
+
+        .nade-created-at {
+          padding-top: ${Dimensions.GUTTER_SIZE}px;
+          text-align: right;
+          font-size: 0.7em;
+          color: ${colors.GREY};
         }
 
         h3 {
