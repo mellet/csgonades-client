@@ -39,7 +39,7 @@
     "semantic-ui-react": "^2.0.4",
     "swr": "^1.1.2",
     "twemoji": "^13.1.0",
-    "usehooks-ts": "^2.3.0"
+    "usehooks-ts": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
