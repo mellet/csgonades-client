@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { TickrateAndJumpthrowPost } from "../../blog/blogposts/TickrateAndJumpthrowPost";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { blogTickrateAndJumpthrow } from "../../blog/ArticleData/blogPosts";
 import { BlogDefaultSidebar } from "../../blog/components/BlogDefaultSidebar";
+import { TickrateAndJumpthrowPost } from "../../blog-pages/TickrateAndJumpthrowPost";
 
 const TickRateAndJumpthrowBindBlogPost: FC = () => {
   return (

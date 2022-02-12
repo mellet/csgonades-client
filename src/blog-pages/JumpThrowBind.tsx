@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { blogJumpthrowBind } from "../ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
-import { BlogPostArticle } from "../components/BlogPostArticle";
-import { PageLink } from "../../shared-components/PageLink";
-import { BlogNadeItem } from "../components/BlogNadeItem";
-import { NadeBlogList } from "../components/NadeBlogList";
-import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { blogJumpthrowBind } from "../blog/ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../blog/components/BlogCodeSnippet";
+import { BlogPostArticle } from "../blog/components/BlogPostArticle";
+import { PageLink } from "../shared-components/PageLink";
+import { BlogNadeItem } from "../blog/components/BlogNadeItem";
+import { NadeBlogList } from "../blog/components/NadeBlogList";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 export const JumpThrowBindBlogMain: FC = () => {
   return (

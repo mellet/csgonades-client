@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { blogNadeAlignCrosshair } from "../ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
-import { BlogNadeItem } from "../components/BlogNadeItem";
-import { BlogPostArticle } from "../components/BlogPostArticle";
-import { CsConsole } from "../components/CsConsole";
-import { NadeBlogList } from "../components/NadeBlogList";
-import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { blogNadeAlignCrosshair } from "../blog/ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../blog/components/BlogCodeSnippet";
+import { BlogNadeItem } from "../blog/components/BlogNadeItem";
+import { BlogPostArticle } from "../blog/components/BlogPostArticle";
+import { CsConsole } from "../blog/components/CsConsole";
+import { NadeBlogList } from "../blog/components/NadeBlogList";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 export const NadeAlignCrosshairPost: FC = () => {
   return (

@@ -1,8 +1,8 @@
-import { blogPractiseConfig } from "../ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
-import { BlogCopyPaste } from "../components/BlogCopyPaste";
-import { BlogPostArticle } from "../components/BlogPostArticle";
-import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { blogPractiseConfig } from "../blog/ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../blog/components/BlogCodeSnippet";
+import { BlogCopyPaste } from "../blog/components/BlogCopyPaste";
+import { BlogPostArticle } from "../blog/components/BlogPostArticle";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 export const PractiseConfigBlogPost = () => {
   return (
