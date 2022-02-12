@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import React, { memo } from "react";
 import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 
-export const withPrivlegedUser = (PageComponent: NextPage) => {
+export const withAuthenticatedUser = (PageComponent: NextPage) => {
   const WithPrivlegedUser: NextPage = memo(({ ...props }) => {
     const isAdminOrMod = useIsAdminOrModerator();
 

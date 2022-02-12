@@ -1,5 +1,5 @@
 import { createContext, FC, useContext } from "react";
-import { useLocalStorage } from "usehooks-ts";
+import { useLocalStorage } from "../../utils/useLocalStorage";
 
 export interface FeatureFlags {
   showAdsenseTopSuggestedNades: boolean;

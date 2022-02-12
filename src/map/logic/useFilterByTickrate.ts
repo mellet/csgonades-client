@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { useGa } from "../../utils/Analytics";
-import { useLocalStorage } from "usehooks-ts";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
+import { useLocalStorage } from "../../utils/useLocalStorage";
 
 export const useFilterByTickrate = () => {
   const { signedInUser } = useSignedInUser();

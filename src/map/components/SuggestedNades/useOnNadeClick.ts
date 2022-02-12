@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
-import { useLocalStorage } from "usehooks-ts";
+import { useLocalStorage } from "../../../utils/useLocalStorage";
 import { CsgoMap } from "../../models/CsGoMap";
 
 function useSuggestedNadesLocal(map: CsgoMap) {

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { AdminLayout } from "../../admin/AdminLayout";
 import { AdminWelcomeContainer } from "../../admin/containers/AdminWelcomeContainer";
-import { withPrivlegedUser } from "../../admin/withPrivilegedUser";
+import { withAuthenticatedUser } from "../../admin/withPrivilegedUser";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
@@ -24,4 +24,4 @@ const AdminPage: NextPage = () => {
   );
 };
 
-export default withPrivlegedUser(AdminPage);
+export default withAuthenticatedUser(AdminPage);

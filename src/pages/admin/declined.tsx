@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { AdminLayout } from "../../admin/AdminLayout";
 import { AdminDeclinedContainer } from "../../admin/containers/AdminDeclinedContainer";
-import { withPrivlegedUser } from "../../admin/withPrivilegedUser";
+import { withAuthenticatedUser } from "../../admin/withPrivilegedUser";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
@@ -24,4 +24,4 @@ const AdminDeclinedNadesPage: NextPage = () => {
   );
 };
 
-export default withPrivlegedUser(AdminDeclinedNadesPage);
+export default withAuthenticatedUser(AdminDeclinedNadesPage);

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useGa } from "../../utils/Analytics";
+import { useLocalStorage } from "../../utils/useLocalStorage";
 import { ThemeKeys, themes } from "./Themes";
-import { useLocalStorage } from "usehooks-ts";
 
 export const useTheme = () => {
   const ga = useGa();
