@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useGa } from "../../utils/Analytics";
-import { useLocalStorage } from "../../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 import { ThemeKeys, themes } from "./Themes";
 
 export const useTheme = () => {

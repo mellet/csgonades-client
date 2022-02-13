@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useFavorites } from "../../favorites/data/useFavorites";
-import { useLocalStorage } from "../../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useShouldFavoriteHint = () => {
   const { favoritedNades } = useFavorites();

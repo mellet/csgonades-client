@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useLocalStorage } from "../../../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useNavigation = () => {
   const [isNavOpen, setIsNavOpen] = useLocalStorage("isNavOpen", false);

@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useLocalStorage } from "../../../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 
 type ApiStatus = "init" | "online" | "offline";
 

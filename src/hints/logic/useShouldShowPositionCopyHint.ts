@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useLocalStorage } from "../../utils/useLocalStorage";
+import { useLocalStorage } from "usehooks-ts";
 
 export const useShouldShowPositionCopyHint = () => {
   const [shownPositionCopyHint, setShowPositionCopyHint] = useLocalStorage(
