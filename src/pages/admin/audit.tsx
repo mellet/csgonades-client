@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { AdminLayout } from "../../admin/AdminLayout";
 import { AdminAuditContainer } from "../../admin/containers/AdminAuditContainer";
-import { withPrivlegedUser } from "../../admin/withPrivilegedUser";
+import { withAuthenticatedUser } from "../../admin/withPrivilegedUser";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
@@ -24,4 +24,4 @@ const AdminAuditPage: NextPage = () => {
   );
 };
 
-export default withPrivlegedUser(AdminAuditPage);
+export default withAuthenticatedUser(AdminAuditPage);

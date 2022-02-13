@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useGa } from "../../utils/Analytics";
-import { useLocalStorage } from "usehooks-ts";
 import { NadeLightSort } from "../../nade/models/Nade";
+import { useLocalStorage } from "../../utils/useLocalStorage";
 
 export const useFilterBySortingMethod = () => {
   const ga = useGa();

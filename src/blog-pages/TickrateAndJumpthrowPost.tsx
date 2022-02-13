@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { blogTickrateAndJumpthrow } from "../ArticleData/blogPosts";
-import { BlogCodeSnippet } from "../components/BlogCodeSnippet";
-import { BlogPostArticle } from "../components/BlogPostArticle";
-import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { blogTickrateAndJumpthrow } from "../blog/ArticleData/blogPosts";
+import { BlogCodeSnippet } from "../blog/components/BlogCodeSnippet";
+import { BlogPostArticle } from "../blog/components/BlogPostArticle";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 export const TickrateAndJumpthrowPost: FC = () => {
   return (

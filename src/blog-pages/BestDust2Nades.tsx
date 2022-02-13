@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Link from "next/link";
-import { BlogPostArticle } from "../components/BlogPostArticle";
-import { bestDust2Nades } from "../ArticleData/blogPosts";
-import { BlogNadeItem } from "../components/BlogNadeItem";
-import { Dimensions } from "../../constants/Constants";
-import { PageLink } from "../../shared-components/PageLink";
-import { NadeBlogList } from "../components/NadeBlogList";
-import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { BlogPostArticle } from "../blog/components/BlogPostArticle";
+import { bestDust2Nades } from "../blog/ArticleData/blogPosts";
+import { BlogNadeItem } from "../blog/components/BlogNadeItem";
+import { Dimensions } from "../constants/Constants";
+import { PageLink } from "../shared-components/PageLink";
+import { NadeBlogList } from "../blog/components/NadeBlogList";
+import { AdUnit } from "../shared-components/adunits/AdUnit";
 
 export const BestDust2NadesBlogPost = (): JSX.Element => {
   return (

@@ -15,7 +15,7 @@ export const RenderMarkdown: FC<Props> = ({ value }) => {
           linkTarget="_blank"
           disallowedElements={["heading"]}
           skipHtml={false}
-          plugins={[breaks]}
+          remarkPlugins={[breaks]}
         >
           {value}
         </ReactMarkdown>

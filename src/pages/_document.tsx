@@ -66,9 +66,6 @@ class MyDocument extends Document {
           `,
               }}
             />
-            {AppConfig.enableEzoic && (
-              <script src="//www.ezojs.com/ezoic/sa.min.js" />
-            )}
             {AppConfig.enableAdsense && (
               <script
                 async

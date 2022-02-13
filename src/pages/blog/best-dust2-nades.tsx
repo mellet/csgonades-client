@@ -1,7 +1,7 @@
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
 import { HeaderDefault } from "../../core/layout/defaultheader/Header";
-import { BestDust2NadesBlogPost } from "../../blog/blogposts/BestDust2Nades";
+import { BestDust2NadesBlogPost } from "../../blog-pages/BestDust2Nades";
 import { BlogDefaultSidebar } from "../../blog/components/BlogDefaultSidebar";
 import { bestDust2Nades } from "../../blog/ArticleData/blogPosts";
 
