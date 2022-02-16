@@ -13,6 +13,7 @@ import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";
 import { NadeType } from "../models/NadeType";
+import { endMeasurement, startMeasurement } from "../../utils/Instrumentation";
 
 export class NadeApi {
   static async favoriteNade(nadeId: string): AppResult<Favorite> {
@@ -97,8 +98,10 @@ export class NadeApi {
       if (nadeType) {
         url += `?type=${nadeType}`;
       }
+      const start = startMeasurement("getByMap", "NadeApi");
       const res = await axios.get<NadeLight[]>(url);
       const nades = res.data;
+      endMeasurement(start);
 
       return ok(nades);
     } catch (error) {

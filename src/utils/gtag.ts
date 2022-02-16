@@ -52,6 +52,20 @@ export const exception = (description: string, fatal = false) => {
   });
 };
 
+export const timing = (
+  name: string,
+  durationMs: number,
+  category: string,
+  label: string
+) => {
+  window.gtag("event", "timing_complete", {
+    name: name,
+    value: durationMs,
+    event_category: category,
+    event_label: label,
+  });
+};
+
 function makeActionsTheSame(action: string) {
   const words = action.split(" ");
   const newAction = words.map((word) => word.toLowerCase()).join("_");
