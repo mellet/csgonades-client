@@ -3,7 +3,7 @@ const IS_PROD = process.env.NODE_ENV === "production";
 export const GA_TRACKING_ID = "G-QRDVMPQ5C5";
 
 export const pageview = (url: string) => {
-  if (!IS_PROD) {
+  if (!window || !IS_PROD) {
     return;
   }
 
@@ -29,7 +29,7 @@ export type GTagEvent = {
 };
 
 export const event = (eventData: GTagEvent) => {
-  if (!IS_PROD) {
+  if (!window || !IS_PROD) {
     return;
   }
 
@@ -46,6 +46,10 @@ export const event = (eventData: GTagEvent) => {
 };
 
 export const exception = (description: string, fatal = false) => {
+  if (!window || !IS_PROD) {
+    return;
+  }
+
   window.gtag("event", "exception", {
     description: description,
     fatal: fatal,
@@ -58,6 +62,10 @@ export const timing = (
   category: string,
   label: string
 ) => {
+  if (!window || !IS_PROD) {
+    return;
+  }
+
   window.gtag("event", "timing_complete", {
     name: name,
     value: durationMs,

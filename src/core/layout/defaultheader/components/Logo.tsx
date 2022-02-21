@@ -13,7 +13,7 @@ export const Logo: FC = memo(() => {
 
   return (
     <>
-      <PageLink href="/" as="/">
+      <PageLink href="/">
         <div key={logoUrl} id="logo">
           <Image
             alt="CSGO Nades logo"

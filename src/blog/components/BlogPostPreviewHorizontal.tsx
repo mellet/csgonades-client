@@ -15,7 +15,7 @@ export const BlogPostPreviewHorizontal: FC<Props> = ({ blogPost }) => {
 
   return (
     <>
-      <PageLink href={`/blog/${blogPost.slug}`} as={`/blog/${blogPost.slug}`}>
+      <PageLink href={`/blog/${blogPost.slug}`}>
         <div className="blog-post-preview">
           <div className="blog-img"></div>
 

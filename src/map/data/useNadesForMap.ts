@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
+import { endMeasurement, startMeasurement } from "../../utils/Instrumentation";
 import { useFilterByType } from "../logic/useFilterByType";
 import { CsgoMap } from "../models/CsGoMap";
 
@@ -10,7 +11,9 @@ async function nadeForMapFetcher(
   mapName: CsgoMap,
   nadeType: NadeType
 ) {
+  const start = startMeasurement("getByMap", "NadeApi");
   const result = await NadeApi.getByMap(mapName, nadeType);
+  endMeasurement(start);
 
   if (result.isOk()) {
     return result.value;

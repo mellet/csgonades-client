@@ -18,7 +18,7 @@ export const BlogPostPreview: FC<Props> = ({ blogPost, index }) => {
   return (
     <>
       <div className="blog-post-preview" style={{ order: index }}>
-        <PageLink href={`/blog/${blogPost.slug}`} as={`/blog/${blogPost.slug}`}>
+        <PageLink href={`/blog/${blogPost.slug}`}>
           <span>
             <div className="blog-img">
               <Image
@@ -36,10 +36,7 @@ export const BlogPostPreview: FC<Props> = ({ blogPost, index }) => {
         <p>{intro}</p>
 
         <div className="actions">
-          <PageLink
-            href={`/blog/${blogPost.slug}`}
-            as={`/blog/${blogPost.slug}`}
-          >
+          <PageLink href={`/blog/${blogPost.slug}`}>
             <span className="actions-read-more">Read more</span>
           </PageLink>
           <span className="blog-post-date">

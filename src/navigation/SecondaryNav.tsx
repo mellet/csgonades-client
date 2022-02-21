@@ -11,7 +11,7 @@ export const SecondaryNav: FC = memo(({}) => {
     <>
       <div className="site-nav">
         <div className="nav-item-wrap">
-          <PageLink href="/blog" as="/blog" prefetch="false">
+          <PageLink href="/blog" prefetch="false">
             <span className="nav-item">
               <span className="nav-item-icon">
                 <FaRss />
@@ -21,7 +21,7 @@ export const SecondaryNav: FC = memo(({}) => {
           </PageLink>
         </div>
         <div className="nav-item-wrap">
-          <PageLink href="/about" as="/about" prefetch="false">
+          <PageLink href="/about" prefetch="false">
             <span className="nav-item">
               <span className="nav-item-icon">
                 <FaInfo />
@@ -32,7 +32,7 @@ export const SecondaryNav: FC = memo(({}) => {
           </PageLink>
         </div>
         <div className="nav-item-wrap">
-          <PageLink href="/contact" as="/contact" prefetch="false">
+          <PageLink href="/contact" prefetch="false">
             <span className="nav-item">
               <span className="nav-item-icon">
                 <FaEnvelope />
