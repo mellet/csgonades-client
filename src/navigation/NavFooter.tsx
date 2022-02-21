@@ -23,11 +23,7 @@ export const Footer: FC = memo(() => {
               © {year} CSGO Nades
             </div>
             <div className="legal">
-              <PageLink
-                href="/privacypolicy"
-                as="/privacypolicy"
-                prefetch="false"
-              >
+              <PageLink href="/privacypolicy" prefetch="false">
                 <span className="nav-item">Privacy Policy</span>
               </PageLink>
             </div>

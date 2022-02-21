@@ -104,11 +104,8 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         <p>
           Recently the skybox in tunnels was removed on Dust2; thrown some
           smokes through the roof! These are for B doors, but head over to the
-          rest of the{" "}
-          <PageLink href={`/maps/[map]`} as={`/maps/dust2`}>
-            dust2 nades
-          </PageLink>{" "}
-          and find your favourite ones.
+          rest of the <PageLink href={`/maps/dust2`}>dust2 nades</PageLink> and
+          find your favourite ones.
         </p>
         <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-b-doors-from-upper-tunnel-xmR" />
@@ -234,19 +231,19 @@ const BlogSideBar: FC = () => {
   return (
     <>
       <div className="blog-sidebar spacer">
-        <Link href="/maps/dust2">
+        <Link href="/maps/dust2" passHref>
           <button className="cta">
             <span>More Dust2 Smokes</span>{" "}
             <img src="/icons/grenades/smoke.png" />
           </button>
         </Link>
-        <Link href="/maps/dust2">
+        <Link href="/maps/dust2" passHref>
           <button className="cta">
             <span>More Dust2 Flashes</span>{" "}
             <img src="/icons/grenades/flash.png" />
           </button>
         </Link>
-        <Link href="/maps/dust2">
+        <Link href="/maps/dust2" passHref>
           <button className="cta">
             <span>More Dust2 Molotovs</span>{" "}
             <img src="/icons/grenades/molotov.png" />

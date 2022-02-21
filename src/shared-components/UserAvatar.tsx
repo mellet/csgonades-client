@@ -14,7 +14,7 @@ export const UserAvatar: FC<Props> = ({ user, hideNickname, size }) => {
 
   return (
     <>
-      <PageLink href={`/users/[user]`} as={`/users/${user.steamId}`}>
+      <PageLink href={`/users/${user.steamId}`}>
         <div className="user">
           <img src={user.avatar} />{" "}
           {!hideNickname && (

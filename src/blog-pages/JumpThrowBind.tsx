@@ -132,10 +132,7 @@ export const JumpThrowBindBlogMain: FC = () => {
 
         <h2>Read more</h2>
         <p>
-          <PageLink
-            href="/blog/tickrate-and-jumpthrow-bind"
-            as="/blog/tickrate-and-jumpthrow-bind"
-          >
+          <PageLink href="/blog/tickrate-and-jumpthrow-bind">
             <span>Why Jumpthrow Smokes Are Different on 64 and 128 Tick</span>
           </PageLink>
         </p>

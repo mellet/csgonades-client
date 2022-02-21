@@ -73,7 +73,7 @@ export const UserPanel: FC<Props> = ({ user }) => {
 
         {allowEdit && (
           <div className="action">
-            <Link href={`/users/${steamId}/edit`}>
+            <Link href={`/users/${steamId}/edit`} passHref>
               <ButtonWithIcon icon={<FaEdit />} value="Edit user profile" />
             </Link>
           </div>

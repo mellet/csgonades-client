@@ -126,14 +126,14 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
           <NadeIcon nadeType={nade.type} size={30} />
         </td>
         <td className="nade-thumb">
-          <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
+          <PageLink href={`/nades/${nade.slug || nade.id}`}>
             <div className="nade-thumb-image">
               <Image src={nadeMainImage} layout="fill" />
             </div>
           </PageLink>
         </td>
         <td id="nade-title">
-          <PageLink href="/nades/[nade]" as={`/nades/${nade.slug || nade.id}`}>
+          <PageLink href={`/nades/${nade.slug || nade.id}`}>
             <span>
               {generateTitle(
                 nade.startPosition,
@@ -149,7 +149,7 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-comments">{kFormatter(nade.commentCount)}</td>
         <td>{prettyDate(nade.createdAt)}</td>
         <td>
-          <Link href={`/nades/${nade.slug || nade.id}/edit`}>
+          <Link href={`/nades/${nade.slug || nade.id}/edit`} passHref>
             <button className="edit-btn">
               <FaEdit /> Edit
             </button>

@@ -27,9 +27,17 @@ export const useUser = (steamId: string): UserState => {
     };
   }
 
-  return {
-    isLoading: false,
-    user: data!,
-    refetchUser: mutate,
-  };
+  if (data) {
+    return {
+      isLoading: false,
+      user: data,
+      refetchUser: mutate,
+    };
+  } else {
+    return {
+      isLoading: true,
+      user: undefined,
+      refetchUser: mutate,
+    };
+  }
 };
