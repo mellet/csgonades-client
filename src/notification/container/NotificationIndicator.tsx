@@ -12,7 +12,7 @@ export const NotificationIndicator: FC = memo(() => {
   return (
     <>
       <div className="notification-wrapper">
-        <Link href="/notifications">
+        <Link href="/notifications" passHref>
           <SquareButton
             icon={<FaBell />}
             labelCount={notificationCount}

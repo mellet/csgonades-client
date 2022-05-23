@@ -13,6 +13,14 @@ const UserNav = dynamic(
   { ssr: false }
 );
 
+const AdminNav = dynamic(
+  () =>
+    import(/* webpackChunkName: "adminnav" */ "./AdminNav").then(
+      (m) => m.AdminNav
+    ),
+  { ssr: false }
+);
+
 export const HeaderDefault: FC = memo(() => {
   return (
     <>
@@ -22,6 +30,7 @@ export const HeaderDefault: FC = memo(() => {
           <Logo />
 
           <div className="spacer"></div>
+          <AdminNav />
           <div id="theme-toggler">
             <ThemeToggler />
           </div>
