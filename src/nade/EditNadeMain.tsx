@@ -348,6 +348,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
 
         #title {
           background: ${colors.DP01};
+          color: ${colors.TEXT};
           font-size: 24px;
           padding: 15px 30px;
           margin: 0;

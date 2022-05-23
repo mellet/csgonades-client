@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Checkbox } from "semantic-ui-react";
+import { CsgnCheckbox } from "../../../shared-components/inputs/CsgnCheckbox";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
 
 type Props = {
@@ -18,7 +18,7 @@ export const OneWaySelector: FC<Props> = ({ initialValue, onClick }) => {
   return (
     <>
       <MiniLabel value="One Way" />
-      <Checkbox label="Is One Way" checked={checked} onClick={onClicked} />
+      <CsgnCheckbox checked={checked} label="Is One Way" onClick={onClicked} />
     </>
   );
 };
