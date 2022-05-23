@@ -17,7 +17,6 @@ export const AdminLayout: FC = ({ children }) => {
           grid-template-columns: 200px 1fr;
           grid-template-areas: "nav main";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
-          margin: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>
