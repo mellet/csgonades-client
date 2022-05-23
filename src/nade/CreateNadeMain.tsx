@@ -27,6 +27,7 @@ import { OneWaySelector } from "./components/NadeInputs/OneWaySelector";
 import { ImageUploadMessage } from "../shared-components/ImageUploadMessage";
 import { ImageResultImageMessage } from "../shared-components/ImageResultImageMessage";
 import { useSession } from "../core/authentication/useSession";
+import { SetPosInput } from "./components/NadeInputs/SetPosInput";
 
 export const CreateNadeMain: FC = ({}) => {
   const router = useRouter();
@@ -128,6 +129,14 @@ export const CreateNadeMain: FC = ({}) => {
             <ThrownFromInput
               onChange={(startPosition) =>
                 dispatch({ type: "CreateNade/SetStartPosition", startPosition })
+              }
+            />
+          </div>
+
+          <div id="set-pos">
+            <SetPosInput
+              onChange={(setPos) =>
+                dispatch({ type: "CreateNade/SetSetPosition", setPos })
               }
             />
           </div>

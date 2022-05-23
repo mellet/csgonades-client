@@ -77,6 +77,11 @@ type SetNotLoading = {
   type: "CreateNade/SetNotLoading";
 };
 
+type SetSetPosition = {
+  type: "CreateNade/SetSetPosition";
+  setPos: string;
+};
+
 type SetTickrate = {
   type: "CreateNade/SetTickrate";
   tick: Tickrate;
@@ -116,6 +121,7 @@ type Actions =
   | SetStartPosition
   | SetTeamSide
   | SetTechnique
+  | SetSetPosition
   | SetTickrate
   | ToggleImageSelector
   | ToggleLineupImageAdder
@@ -193,6 +199,11 @@ const reducer: Reducer<CreateNadeState, Actions> = (state, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case "CreateNade/SetSetPosition":
+      return {
+        ...state,
+        setPos: action.setPos,
       };
     case "CreateNade/SetTickrate":
       return {
