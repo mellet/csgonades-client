@@ -323,6 +323,7 @@ export const validateState = (
   ) {
     return false;
   }
+
   return {
     map,
     description,
@@ -338,6 +339,13 @@ export const validateState = (
     lineUpImageBase64,
     oneWay,
     teamSide,
-    setPos,
+    setPos: setPosStringFix(setPos),
   };
 };
+
+function setPosStringFix(setPos?: string) {
+  if (setPos && setPos.length > 0) {
+    return setPos;
+  }
+  return undefined;
+}
