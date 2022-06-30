@@ -10,6 +10,10 @@ export const PendingNadeIndicator: FC = ({}) => {
   const { pendingNades } = useAdminPendingNades();
   const { colors } = useTheme();
 
+  if (pendingNades.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <div className="pending-nade-indicator">
