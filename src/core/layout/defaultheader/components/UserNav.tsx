@@ -4,6 +4,7 @@ import { SignInnButton } from "./SignInnButton";
 import { UserDropdown } from "./UserDropdown";
 import { Dimensions } from "../../../../constants/Constants";
 import { useSignedInUser } from "../../../authentication/useSignedInUser";
+import { PendingNadeIndicatorWrapper } from "./PendingNadeIndicatorWrapper";
 
 export const UserNav: FC = memo(() => {
   const { signedInUser } = useSignedInUser();
@@ -14,6 +15,7 @@ export const UserNav: FC = memo(() => {
     return (
       <>
         <div className="user-nav">
+          <PendingNadeIndicatorWrapper />
           <div id="noti-ind">
             <NotificationIndicator />
           </div>

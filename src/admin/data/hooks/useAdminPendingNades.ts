@@ -6,7 +6,9 @@ async function fetchPendingNades() {
 }
 
 export const useAdminPendingNades = () => {
-  const { data } = useSWR(["/nades/pending"], fetchPendingNades);
+  const { data } = useSWR(["/nades/pending"], fetchPendingNades, {
+    dedupingInterval: 3 * 60 * 1000,
+  });
   const pendingNades = data || [];
 
   return {
