@@ -12,7 +12,7 @@ import { SetPosInput } from "./components/NadeInputs/SetPosInput";
 import { ThrownFromInput } from "./components/NadeInputs/ThrownFromInput";
 import { DescriptionInput } from "./components/NadeInputs/DescriptionInput";
 import { ImageSelector } from "./components/NadeInputs/ImageSelector";
-import { MapPositionEditor } from "./components/MapPositionEditor";
+import { MapPositionSelectorWrapper } from "./components/MapPositionSelector/MapPositionSelectorWrapper";
 import { TypeSelector } from "./components/NadeInputs/TypeSelector";
 import { MovementSelector } from "./components/NadeInputs/MovementSelector";
 import { TechniqueSelector } from "./components/NadeInputs/TechniqueSelector";
@@ -148,7 +148,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           </div>
 
           <div id="map-position-selector">
-            <MapPositionEditor
+            <MapPositionSelectorWrapper
               endPos={state.mapEndCoord || nade.mapEndCoord}
               map={nade.map}
               onSave={(coords) =>

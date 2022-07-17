@@ -9,7 +9,7 @@
     "start": "next start -p $PORT",
     "analyze": "cross-env ANALYZE=true next build",
     "start-dev": "next start",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook"
   },
   "dependencies": {

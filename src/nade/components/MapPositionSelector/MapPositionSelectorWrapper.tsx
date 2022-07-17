@@ -1,17 +1,21 @@
 import { FC, useState } from "react";
-import { MapCoordinates } from "../models/Nade";
-import { MapPositionModal } from "./MapPositionModal";
-import { CsgoMap } from "../../map/models/CsGoMap";
-import { useTheme } from "../../core/settings/SettingsHooks";
-import { MiniLabel } from "./NadeLabels/MiniLabel";
+import { MapCoordinates } from "../../models/Nade";
+import { MapPositionModal } from "../MapPositionModal";
+import { CsgoMap } from "../../../map/models/CsGoMap";
+import { useTheme } from "../../../core/settings/SettingsHooks";
+import { MiniLabel } from "../NadeLabels/MiniLabel";
 
-type Props = {
+export type MapPositionSelectorProps = {
   endPos?: MapCoordinates;
   map?: CsgoMap;
   onSave: (coords: MapCoordinates) => void;
 };
 
-export const MapPositionEditor: FC<Props> = ({ onSave, map, endPos }) => {
+export const MapPositionSelectorWrapper: FC<MapPositionSelectorProps> = ({
+  onSave,
+  map,
+  endPos,
+}) => {
   const { colors } = useTheme();
   const [showPositionEditor, setShowPositionEditor] = useState(false);
 

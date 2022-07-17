@@ -14,7 +14,7 @@ import { TechniqueSelector } from "./components/NadeInputs/TechniqueSelector";
 import { useCreateNadeState, validateState } from "./data/CreateNadeReducer";
 import { PreviewNade } from "./components/PreviewNades";
 import { ImageUploader } from "./components/NadeInputs/ImageUploader";
-import { MapPositionEditor } from "./components/MapPositionEditor";
+import { MapPositionSelectorWrapper } from "./components/MapPositionSelector/MapPositionSelectorWrapper";
 import { SumbitBtn } from "./components/NadeInputs/SubmitBtn";
 import { NadeApi } from "./data/NadeApi";
 import { useDisplayToast } from "../core/toasts/hooks/useDisplayToast";
@@ -172,7 +172,7 @@ export const CreateNadeMain: FC = ({}) => {
           </div>
 
           <div id="map-position-selector">
-            <MapPositionEditor
+            <MapPositionSelectorWrapper
               map={state.map}
               endPos={state.mapEndCoord}
               onSave={(coords) =>
