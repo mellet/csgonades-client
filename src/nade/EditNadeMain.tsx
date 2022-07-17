@@ -22,7 +22,6 @@ import { ImageUploader } from "./components/NadeInputs/ImageUploader";
 import { OneWaySelector } from "./components/NadeInputs/OneWaySelector";
 import { SEO } from "../shared-components/SEO";
 import { StatusSelector } from "./components/NadeInputs/StatusSelector";
-import { useIsAdmin } from "../core/authentication/useIsAdmin";
 import { useIsAdminOrModerator } from "../core/authentication/useIsAdminOrModerator";
 import { TickrateSelector } from "./components/NadeInputs/TickrateSelector";
 import { IsProSelector } from "./components/NadeInputs/IsProSelector";
@@ -38,7 +37,6 @@ type Props = {
 };
 
 export const EditNadeMain: FC<Props> = ({ nade }) => {
-  const isAdmin = useIsAdmin();
   const isAdminOrModerator = useIsAdminOrModerator();
   const { state, dispatch, onUpdate, disableSubmit } = useEditNadeState(nade);
   const { colors } = useTheme();
@@ -247,8 +245,12 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
           </div>
 
           <div id="submit">
-            <SumbitBtn onSubmit={onUpdate} disabled={disableSubmit} />
-            {isAdmin && <DeleteBtn nadeId={nade.id} />}
+            <SumbitBtn
+              label="UPDATE"
+              onSubmit={onUpdate}
+              disabled={disableSubmit}
+            />
+            <DeleteBtn nadeId={nade.id} confirmWord={nade.map || ""} />
           </div>
 
           {isAdminOrModerator && (
@@ -378,8 +380,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             "modlabel preview"
             "status preview"
             "slug preview"
-            "pro preview"
-            ". submit";
+            "pro preview";
           grid-row-gap: ${Dimensions.GUTTER_SIZE / 1.5}px;
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           padding: 30px 30px;
@@ -483,7 +484,17 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
         }
 
         #submit {
-          grid-area: submit;
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          display: flex;
+          justify-content: end;
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          padding-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
+          background: ${colors.DP03};
+          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.BORDER};
+          z-index: 1;
         }
 
         #preview-label {

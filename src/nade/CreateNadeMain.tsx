@@ -247,10 +247,6 @@ export const CreateNadeMain: FC = ({}) => {
           </div>
 
           <div id="submit">
-            <SumbitBtn
-              onSubmit={onSubmit}
-              disabled={disableSubmit || state.loading}
-            />
             {missingFields.length > 0 && (
               <div className="missing">
                 <h4>Missing fields:</h4>
@@ -261,6 +257,12 @@ export const CreateNadeMain: FC = ({}) => {
                 </ul>
               </div>
             )}
+          </div>
+          <div id="submit-btn">
+            <SumbitBtn
+              onSubmit={onSubmit}
+              disabled={disableSubmit || state.loading}
+            />
           </div>
 
           {state.showImageAdder && (
@@ -299,7 +301,6 @@ export const CreateNadeMain: FC = ({}) => {
       <style jsx>{`
         .missing {
           border: 1px solid red;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.WARNING};
           padding: 6px;
           border-radius: ${Dimensions.BORDER_RADIUS};
@@ -468,6 +469,18 @@ export const CreateNadeMain: FC = ({}) => {
         #preview-label {
           grid-area: previewlabel;
           align-self: end;
+        }
+
+        #submit-btn {
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          padding-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
+          background: ${colors.DP03};
+          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.BORDER};
+          z-index: 1;
         }
       `}</style>
     </>

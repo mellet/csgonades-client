@@ -1,17 +1,20 @@
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
+import { FaTimes } from "react-icons/fa";
+import { Button, Input } from "semantic-ui-react";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
 import { CSGNModal } from "../../../shared-components/CSGNModal";
 import { NadeApi } from "../../data/NadeApi";
 
 type Props = {
   nadeId: string;
+  confirmWord: string;
 };
 
-export const DeleteBtn: FC<Props> = ({ nadeId }) => {
+export const DeleteBtn: FC<Props> = ({ nadeId, confirmWord }) => {
   const [confirmModalVisisble, setConfirmModalVisisble] = useState(false);
-  const { colors } = useTheme();
+  const [confirmWordCheck, setConfirmWordCheck] = useState("");
   const router = useRouter();
 
   async function onPermaDeletNade() {
@@ -30,51 +33,62 @@ export const DeleteBtn: FC<Props> = ({ nadeId }) => {
         title="Are you sure you want to delete this nade?"
       >
         <div className="confirm-modal">
-          <button onClick={onPermaDeletNade}>Yes</button>{" "}
-          <button onClick={() => setConfirmModalVisisble(false)}>No</button>
+          <p>
+            Write <code>{confirmWord}</code> to confirm deletion:
+          </p>
+          <p>
+            <Input
+              fluid
+              onChange={(_, data) => {
+                setConfirmWordCheck(data.value);
+              }}
+            />
+          </p>
+          <p>
+            <Button
+              disabled={confirmWordCheck !== confirmWord}
+              onClick={onPermaDeletNade}
+              color="red"
+            >
+              Delete
+            </Button>
+            <Button onClick={() => setConfirmModalVisisble(false)}>
+              Cancel
+            </Button>
+          </p>
         </div>
       </CSGNModal>
 
-      <button
-        className="delete-btn"
-        onClick={() => setConfirmModalVisisble(true)}
-      >
-        DELETE
-      </button>
+      <div className="delete-btn-wrapper">
+        <ButtonWithIcon
+          icon={<FaTimes />}
+          value={"Delete"}
+          onClick={() => setConfirmModalVisisble(true)}
+          color="#94150c"
+        />
+      </div>
+
       <style jsx>{`
         .confirm-modal {
           padding: ${Dimensions.GUTTER_SIZE}px;
           min-width: 33vw;
         }
 
-        .delete-btn {
-          width: 100%;
-          background: ${colors.ERROR};
-          color: white;
-          border: none;
-          outline: none;
-          height: 41px;
-          border-radius: 5px;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          font-size: 14px;
-          cursor: pointer;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
+        p {
+          margin-bottom: 14px;
+        }
+        p:last-child {
+          margin: 0;
         }
 
-        .delete-btn:hover {
-          background: ${colors.ERROR};
+        code {
+          background: #ccc;
+          padding: 3px;
+          border-radius: 3px;
         }
 
-        .delete-btn:disabled {
-          background: #636363;
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .delete-btn:disabled:hover {
-          background: #636363;
+        .delete-btn-wrapper {
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

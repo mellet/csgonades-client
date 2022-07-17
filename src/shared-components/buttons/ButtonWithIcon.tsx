@@ -10,10 +10,22 @@ export type ButtonWithIconProps = {
   value: string;
   inGroup?: boolean;
   last?: boolean;
+  disabled?: boolean;
+  color?: string;
 };
 
 export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
-  ({ icon, onClick, value, backgroundColor, active, inGroup, last }) => {
+  ({
+    icon,
+    onClick,
+    value,
+    backgroundColor,
+    active,
+    inGroup,
+    last,
+    disabled,
+    color,
+  }) => {
     const { colors } = useTheme();
 
     const classNames = useMemo(() => {
@@ -27,7 +39,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
     return (
       <>
         <IconTextButtonWrapper inGroup={inGroup} last={last}>
-          <button className={classNames} onClick={onClick}>
+          <button className={classNames} onClick={onClick} disabled={disabled}>
             <span className="btn-icon">
               <span className="btn-icon-fa">{icon}</span>
             </span>
@@ -39,7 +51,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
             align-items: center;
             appearance: none;
             background: ${backgroundColor ? backgroundColor : "transparent"};
-            color: ${colors.TEXT};
+            color: ${color || colors.TEXT};
             border: none;
             border-radius: 0;
             cursor: pointer;
@@ -55,8 +67,15 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
             background: ${colors.DP03};
           }
 
-          .btn:hover .btn-icon {
-            color: rgba(34, 148, 201, 0.9);
+          .btn:disabled {
+            background: #d9d9d9;
+            color: white;
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          .btn:disabled:hover {
+            background: #d9d9d9;
           }
 
           .btn-icon {
@@ -66,6 +85,11 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
             justify-content: space-around;
             padding-left: 8px;
             transition: all 0.2s;
+            opacity: 0.75;
+          }
+
+          .btn:hover .btn-icon {
+            opacity: 1;
           }
 
           .btn-icon-fa {
@@ -77,10 +101,10 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
             display: block;
             flex: 1;
             font-size: 15px;
-            font-weight: 400;
+            font-weight: 500;
             text-align: center;
             padding-left: 6px;
-            padding-right: 8px;
+            padding-right: 10px;
           }
 
           .active {

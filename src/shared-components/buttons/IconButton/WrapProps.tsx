@@ -4,6 +4,7 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 type WrapProps = {
   inGroup?: boolean;
   last?: boolean;
+  color?: string;
 };
 
 export const IconButtonWrapper: FC<WrapProps> = ({
@@ -35,6 +36,7 @@ export const IconTextButtonWrapper: FC<WrapProps> = ({
   children,
   inGroup,
   last,
+  color,
 }) => {
   const { colors } = useTheme();
   return (
@@ -47,7 +49,7 @@ export const IconTextButtonWrapper: FC<WrapProps> = ({
           position: relative;
           border-width: ${inGroup ? 0 : 1}px;
           border-style: solid;
-          border-color: ${colors.buttonBorder};
+          border-color: ${color || colors.buttonBorder};
           border-radius: ${inGroup ? "none" : "8px"};
           border-right-width: ${last ? 0 : 1}px;
           overflow: hidden;
