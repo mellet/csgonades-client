@@ -64,6 +64,13 @@ export function dateMinutesAgo(date: Date | string) {
   }
 }
 
+export function dateDaysAgo(date: Date | string) {
+  const minutesAgo = dateMinutesAgo(date);
+  const hoursAgo = minutesAgo / 60;
+  const daysAgo = hoursAgo / 24;
+  return Math.round(daysAgo);
+}
+
 export function timeSince(date: Date | string) {
   const theDate = typeof date === "string" ? new Date(date) : date;
   // @ts-ignore

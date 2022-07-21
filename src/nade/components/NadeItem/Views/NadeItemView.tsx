@@ -6,6 +6,7 @@ import { GfycatThumbnail } from "../GfycatThumbnail";
 import { NadeItemTitle } from "../Views/NadeItemTitle";
 import { NadeStats } from "../NadeStats/NadeStats";
 import Link from "next/link";
+import { useIsLowEngagementNade } from "../Utils/NadeUtils";
 
 interface Props {
   nade: NadeLight;
@@ -18,6 +19,14 @@ interface Props {
 export const NadeItemView: FC<Props> = memo(
   ({ nade, isFavorited, onAddAsFavorite, onRemoveAsFavorite, width }) => {
     const { colors } = useTheme();
+
+    const isLowEngagementNade = useIsLowEngagementNade(
+      nade.favoriteCount,
+      nade.viewCount,
+      nade.createdAt
+    );
+
+    const borderColor = isLowEngagementNade ? colors.WARNING : colors.BORDER;
 
     return (
       <>
@@ -70,7 +79,7 @@ export const NadeItemView: FC<Props> = memo(
           .nadebox {
             background: ${colors.DP02};
             border-radius: ${Dimensions.BORDER_RADIUS};
-            border: 1px solid ${colors.BORDER};
+            border: 1px solid ${borderColor};
             max-width: 400px;
             min-width: 265px;
             overflow: hidden;
