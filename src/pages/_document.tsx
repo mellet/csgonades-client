@@ -1,5 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
-import { AppConfig } from "../constants/Constants";
+import { AppConfig, IS_PROD } from "../constants/Constants";
 import { GA_TRACKING_ID } from "../utils/gtag";
 
 class MyDocument extends Document {
@@ -66,6 +66,21 @@ class MyDocument extends Document {
           `,
               }}
             />
+            {IS_PROD && (
+              <script
+                type="text/javascript"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                      (function(c,l,a,r,i,t,y){
+                        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                      })(window, document, "clarity", "script", "cvp8l02vfi");
+                    `,
+                }}
+              />
+            )}
+
             {AppConfig.enableAdsense && (
               <script
                 async
