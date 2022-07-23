@@ -53,7 +53,7 @@ export const MapPosIcon: FC<Props> = memo(
 
     return (
       <>
-        <div
+        <button
           className="point"
           style={{
             position: "absolute",
@@ -62,15 +62,15 @@ export const MapPosIcon: FC<Props> = memo(
           }}
           onClick={onClick}
         >
-          <div className="nade-icon">
+          <span className="nade-icon">
             <NadeIcon
               nadeType={nade.type}
               count={numNades > 1 ? numNades : undefined}
               isNew={hasNew}
               animated={true}
             />
-          </div>
-        </div>
+          </span>
+        </button>
         <style jsx>{`
           .point {
             width: ${iconBaseSize}px;
@@ -80,6 +80,9 @@ export const MapPosIcon: FC<Props> = memo(
             z-index: ${zIndexByType(nade.type)};
             z-index: 499;
             overflow: hidden;
+            background: transparent;
+            border: none;
+            padding: 0;
           }
 
           .nade-icon {
@@ -90,6 +93,7 @@ export const MapPosIcon: FC<Props> = memo(
             display: flex;
             align-items: center;
             justify-content: center;
+            pointer-events: none;
           }
 
           .point:hover > .nade-icon {

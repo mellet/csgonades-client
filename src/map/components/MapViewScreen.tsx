@@ -91,9 +91,9 @@ const MapViewScreen: FC<Props> = ({
               )}
 
               {isLoading && (
-                <div className="spinner">
+                <span className="spinner">
                   <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
-                </div>
+                </span>
               )}
             </div>
           </div>
@@ -166,6 +166,7 @@ const MapViewScreen: FC<Props> = ({
         #mapview img {
           width: 100%;
           display: block;
+          pointer-events: none;
         }
       `}</style>
     </>
