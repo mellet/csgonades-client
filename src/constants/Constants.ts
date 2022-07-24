@@ -34,7 +34,7 @@ export const Dimensions = {
   PAGE_WIDTH: 1300 + 4 * 30,
   SIDEBAR_WIDTH: "180px",
   TABLET_THRESHHOLD: "1024px",
-  SITE_WIDTH: 1450,
+  SITE_WIDTH: 1500,
 } as const;
 
 export const AnimationTimings = {

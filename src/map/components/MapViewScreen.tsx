@@ -29,35 +29,28 @@ const MapViewScreen: FC<Props> = ({
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
-  const [mapLoaded, setMapLoaded] = useState(false);
-  const [mapSize, setMapSize] = useState(0);
+  const [mapSize, setMapSize] = useState<number>();
   const mapViewRef = useRef<HTMLDivElement>(null);
   const clusters = useNadeClusters(filteredNades);
   const { colors } = useTheme();
 
-  function recalcMapSize(offsetHeight: number, offsetWidth: number) {
-    if (offsetHeight < offsetWidth) {
-      setMapSize(offsetHeight);
-    } else {
+  const mapUrl = `/mapsoverlays/${map}.jpg`;
+
+  function recalcMapSize(offsetWidth: number, offsetHeight: number) {
+    if (offsetWidth < offsetHeight) {
       setMapSize(offsetWidth);
+    } else {
+      setMapSize(offsetHeight);
     }
   }
 
   // Adjust mapview on resize
   useEffect(() => {
     if (mapViewRef.current) {
-      const { offsetHeight, offsetWidth } = mapViewRef.current;
-      recalcMapSize(offsetHeight, offsetWidth);
+      const { offsetWidth, offsetHeight } = mapViewRef.current;
+      recalcMapSize(offsetWidth, offsetHeight);
     }
   }, [windowSize]);
-
-  function onMapViewImageLoaded() {
-    if (mapViewRef.current) {
-      const { offsetHeight, offsetWidth } = mapViewRef.current;
-      setMapLoaded(true);
-      recalcMapSize(offsetHeight, offsetWidth);
-    }
-  }
 
   if (mapView === "list") {
     return null;
@@ -72,35 +65,29 @@ const MapViewScreen: FC<Props> = ({
         <div id="ad-nade-wrapper">
           <AddNadeButton />
         </div>
-        <div id="mapview-absolute">
-          <div id="mapview-screen">
-            <div id="mapview">
-              <img
-                src={`/mapsoverlays/${map}.jpg`}
-                onLoad={onMapViewImageLoaded}
-              />
-              <MapIcons
-                clusters={clusters}
-                visible={mapLoaded}
-                canvasSize={canvasSize}
-                onClusterClick={onClusterClick}
-              />
+        <div className="mapview-dark-bg">
+          <div id="mapview">
+            <MapIcons
+              clusters={clusters}
+              visible={true}
+              canvasSize={canvasSize || 0}
+              onClusterClick={onClusterClick}
+            />
 
-              {!hasNades && !isLoading && (
-                <div className="no-nades-wrap">
-                  <NoNadesMessage />
+            {!hasNades && !isLoading && (
+              <div className="no-nades-wrap">
+                <NoNadesMessage />
+              </div>
+            )}
+
+            {isLoading && (
+              <span className="spinner">
+                <div className="spinner-content">
+                  <p>Loading nades</p>
+                  <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
                 </div>
-              )}
-
-              {isLoading && (
-                <span className="spinner">
-                  <div className="spinner-content">
-                    <p>Loading nades</p>
-                    <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
-                  </div>
-                </span>
-              )}
-            </div>
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -151,10 +138,16 @@ const MapViewScreen: FC<Props> = ({
 
         #mapview-wrap {
           position: relative;
-          background: #151515;
-          border-radius: 8px;
-          overflow: hidden;
           height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px - (16px * 2));
+        }
+
+        .mapview-dark-bg {
+          background: #151515;
+          border-radius: 5px;
+          height: ${canvasSize}px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
         }
 
         #ad-nade-wrapper {
@@ -164,34 +157,14 @@ const MapViewScreen: FC<Props> = ({
           z-index: 1;
         }
 
-        #mapview-absolute {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          display: grid;
-          grid-template-rows: 1fr;
-          grid-template-areas: "mpoverview";
-          overflow: hidden;
-        }
-
-        #mapview-screen {
-          justify-self: center;
-          align-self: center;
-          grid-area: mpoverview;
-          height: ${canvasSize}px;
-          width: ${canvasSize}px;
-        }
-
         #mapview {
           position: relative;
-        }
-
-        #mapview img {
+          background: url(${mapUrl});
+          height: 100%;
           width: 100%;
-          display: block;
-          pointer-events: none;
+          background-size: contain;
+          width: ${canvasSize}px;
+          height: ${canvasSize}px;
         }
       `}</style>
     </>
