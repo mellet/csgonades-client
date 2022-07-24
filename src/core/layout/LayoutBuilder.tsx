@@ -122,9 +122,10 @@ export const LayoutBuilder: FC<Props> = memo(
             .with-sidebar-and-nav {
               grid-template-areas:
                 "header header header header header"
-                ". main main sidebar ."
-                ". main main sidebar ."
-                ". main main sidebar .";
+                ". main main main ."
+                ". main main main ."
+                ". main main main ."
+                ". sidebar sidebar sidebar .";
             }
 
             nav {
@@ -143,6 +144,11 @@ export const LayoutBuilder: FC<Props> = memo(
 
             .closed {
               transform: translateX(-100%);
+            }
+
+            aside#sidebar {
+              display: flex;
+              flex-wrap: wrap;
             }
           }
 

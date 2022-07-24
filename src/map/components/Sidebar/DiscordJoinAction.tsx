@@ -46,6 +46,7 @@ export const DiscordJoinAction: FC = () => {
 
         .discord-msg {
           font-size: 16px;
+          white-space: nowrap;
         }
 
         .discord-msg span {

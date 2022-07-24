@@ -25,7 +25,7 @@ type Props = {
 
 export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const { mapView } = useSetMapView();
-  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const isMobile = useMediaQuery({ maxWidth: LayoutBreakpoint.MOBILE });
   const isOverviewView = mapView === "overview";
 
   const {
