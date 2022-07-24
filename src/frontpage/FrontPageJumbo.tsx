@@ -4,6 +4,8 @@ import { SiteStats } from "../core/api/StatsApi";
 import { kFormatter } from "../utils/Common";
 import { NadeIcon } from "../shared-components/nade-icons";
 import { FaUserFriends } from "react-icons/fa";
+import { Dropdown } from "semantic-ui-react";
+import Link from "next/link";
 
 type Props = {
   stats: SiteStats | null;
@@ -29,27 +31,35 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
         {stats && (
           <div className="stats">
             <div className="stat-item">
-              <span className="stat-label">
-                <NadeIcon nadeType="smoke" />
-              </span>
+              <Link href="maps/mirage?type=smoke">
+                <a className="stat-label">
+                  <NadeIcon nadeType="smoke" />
+                </a>
+              </Link>
               <span className="stat-count">{stats.numSmokes}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label">
-                <NadeIcon nadeType="flash" />
-              </span>
+              <Link href="maps/mirage?type=flash">
+                <a className="stat-label">
+                  <NadeIcon nadeType="flash" />
+                </a>
+              </Link>
               <span className="stat-count">{stats.numFlashes}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label">
-                <NadeIcon nadeType="molotov" />
-              </span>
+              <Link href="maps/mirage?type=molotov">
+                <a className="stat-label">
+                  <NadeIcon nadeType="molotov" />
+                </a>
+              </Link>
               <span className="stat-count">{stats.numMolotovs}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label">
-                <NadeIcon nadeType="hegrenade" />
-              </span>
+              <Link href="maps/mirage?type=hegrenade">
+                <a className="stat-label">
+                  <NadeIcon nadeType="hegrenade" />
+                </a>
+              </Link>
               <span className="stat-count">{stats.numGrenades}</span>
             </div>
             <div className="stat-item">
@@ -78,7 +88,6 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
           background-size: cover;
           margin-bottom: 30px;
           border-radius: 5px;
-          overflow: hidden;
         }
 
         #message {
@@ -182,3 +191,24 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
     </>
   );
 });
+
+const options = [
+  {
+    key: "today",
+    text: "today",
+    value: "today",
+    content: "Today",
+  },
+  {
+    key: "this week",
+    text: "this week",
+    value: "this week",
+    content: "This Week",
+  },
+  {
+    key: "this month",
+    text: "this month",
+    value: "this month",
+    content: "This Month",
+  },
+];
