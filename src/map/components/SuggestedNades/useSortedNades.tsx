@@ -1,30 +1,31 @@
 import { useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
+import { useFilterServerSideNades } from "../../logic/useFilteredNades";
 
 export default function useSortedNades(unsortedNades: NadeLight[] | null) {
   const { bySortingMethod } = useFilterBySortingMethod();
 
+  const theNades = useFilterServerSideNades(unsortedNades || []);
+
   const artificialBoost = useMemo(() => {
-    if (unsortedNades && unsortedNades.length >= 6) {
-      const canditateBoosts = unsortedNades.filter((nade) => {
+    if (theNades && theNades.length >= 6) {
+      const canditateBoosts = theNades.filter((nade) => {
         return nade.favoriteCount <= 10;
       });
 
       if (canditateBoosts.length < 2) {
-        return unsortedNades;
+        return theNades;
       }
 
-      const noneCandidates = unsortedNades.filter(
-        (nade) => nade.favoriteCount > 10
-      );
+      const noneCandidates = theNades.filter((nade) => nade.favoriteCount > 10);
 
       const randomIndexToBoost = randomIntFromInterval(
         0,
         canditateBoosts.length - 1
       );
 
-      const allScores = unsortedNades.map((nade) => nade.score);
+      const allScores = theNades.map((nade) => nade.score);
       const boostScore = secondMax(allScores) - 1;
 
       const boostedCandidates = canditateBoosts.map((nade, idx) => {
@@ -40,8 +41,8 @@ export default function useSortedNades(unsortedNades: NadeLight[] | null) {
 
       return [...noneCandidates, ...boostedCandidates];
     }
-    return unsortedNades;
-  }, [unsortedNades]);
+    return theNades;
+  }, [theNades]);
 
   const sortedNades = useMemo(() => {
     if (artificialBoost) {

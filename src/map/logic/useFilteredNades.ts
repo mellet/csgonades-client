@@ -62,7 +62,6 @@ function filterNades(
 ): NadeLight[] {
   let thenades = [...nades];
   thenades.sort(sortByScore);
-
   thenades = addFavoriteToNades(thenades, favoritedNades);
   thenades = filterByType(thenades, byType);
   thenades = filterByTickrate(thenades, byTickrate);

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaRunning, FaCheckCircle, FaEye, FaCommentDots } from "react-icons/fa";
 import { RiMouseLine } from "react-icons/ri";
-import { tickrateString, Tickrate } from "../../../models/NadeTickrate";
+import { Tickrate, tickrateShortString } from "../../../models/NadeTickrate";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { Popup } from "semantic-ui-react";
 import { StatItem } from "./StatItem";
@@ -10,6 +10,7 @@ import { Movement } from "../../../models/NadeMovement";
 import { isNewNade } from "../../../../utils/Common";
 import { StatFavorite } from "./StatFavorite";
 import Link from "next/link";
+import { TeamSide } from "../../../models/TeamSide";
 
 type NadeStatsProps = {
   slug?: string;
@@ -20,6 +21,7 @@ type NadeStatsProps = {
   isFavorited?: boolean;
   isPro?: boolean;
   movement?: Movement;
+  side?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
   viewCount: number;
@@ -37,6 +39,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
   isPro,
   movement,
   technique,
+  side,
   tickrate,
   viewCount,
   addAsFavorite,
@@ -124,7 +127,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
                     <RiMouseLine />
                   </div>
                   <span className="special-text">
-                    {tickrateString(tickrate || "any")}
+                    {tickrateShortString(tickrate || "any")}
                   </span>
                 </div>
               }
@@ -158,6 +161,14 @@ export const NadeStats: FC<NadeStatsProps> = ({
               }
             />
           )}
+
+          {side === "counterTerrorist" && (
+            <div className="special teamside side-ct"></div>
+          )}
+
+          {side === "terrorist" && (
+            <div className="special teamside side-t"></div>
+          )}
         </div>
       </div>
       <style jsx>{`
@@ -189,13 +200,14 @@ export const NadeStats: FC<NadeStatsProps> = ({
           display: flex;
           align-items: center;
           flex: 1;
+          margin-top: -2px;
         }
 
         .stat-item {
           align-self: center;
           display: inline-flex;
           align-items: center;
-          margin-right: 10px;
+          margin-right: 8px;
         }
 
         .stat-item:last-child {
@@ -212,7 +224,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
           align-items: center;
           color: ${colors.NADE_ITEM_HIGHLIGHT};
           display: flex;
-          margin-right: 12px;
+          margin-right: 8px;
         }
 
         .special:last-child {
@@ -233,6 +245,24 @@ export const NadeStats: FC<NadeStatsProps> = ({
 
         .pro {
           color: #00b8d9;
+        }
+
+        .side-ct {
+          background: url("/icons/ct.webp");
+          background-size: contain;
+        }
+
+        .side-t {
+          background: url("/icons/terrorist.webp");
+          background-size: contain;
+        }
+
+        .teamside {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          margin-bottom: 2px;
+          opacity: 0.9;
         }
       `}</style>
       <style jsx global>{`

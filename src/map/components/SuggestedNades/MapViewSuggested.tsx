@@ -8,6 +8,8 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
+import { TeamSelector } from "../nadefilter/component/TeamSelector";
+import { TickratePicker } from "../nadefilter/component/TickratePicker";
 
 type Props = {
   nades: NadeLight[] | null;
@@ -62,9 +64,18 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
         <div className="title">
           <div className="title-content">
-            <div onClick={stopPropagation}>
+            <div className="filter-wrap" onClick={stopPropagation}>
               <SortByBar />
+              <div className="filters" onClick={stopPropagation}>
+                <div className="filter-btn">
+                  <TeamSelector />
+                </div>
+                <div className="filter-btn">
+                  <TickratePicker />
+                </div>
+              </div>
             </div>
+
             <div className="close-btn" onClick={onDismissCloseClick}>
               <FaTimes />
             </div>
@@ -87,6 +98,20 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         </div>
       </div>
       <style jsx>{`
+        .filter-wrap {
+          display: flex;
+          align-items: flex-end;
+        }
+
+        .filters {
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
+          display: flex;
+        }
+
+        .filter-btn {
+          margin-right: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         .map-view-wrapper {
           position: fixed;
           top: 0;
@@ -107,7 +132,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
         .nade-list-wrap {
           padding: ${Dimensions.GUTTER_SIZE}px;
-          padding-top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          padding-top: ${Dimensions.HEADER_HEIGHT +
+          Dimensions.GUTTER_SIZE * 2}px;
           padding-bottom: ${Dimensions.HEADER_HEIGHT +
           Dimensions.GUTTER_SIZE}px;
         }

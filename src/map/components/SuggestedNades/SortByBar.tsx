@@ -26,36 +26,46 @@ export const SortByBar: FC = () => {
   }
 
   return (
-    <IconButtonGroup>
-      <ButtonWithIcon
-        inGroup
-        value="Hot"
-        icon={<FaRocket />}
-        onClick={onSortByHot}
-        active={bySortingMethod === "score"}
-      />
-      <ButtonWithIcon
-        inGroup
-        value="Top"
-        icon={<ImStarFull />}
-        onClick={onSortByTop}
-        active={bySortingMethod === "favoriteCount"}
-      />
-      <ButtonWithIcon
-        inGroup
-        value="View"
-        icon={<FaEye />}
-        onClick={onSortByViews}
-        active={bySortingMethod === "viewCount"}
-      />
-      <ButtonWithIcon
-        inGroup
-        last
-        value="New"
-        icon={<MdFiberNew />}
-        onClick={onSortByNew}
-        active={bySortingMethod === "createdAt"}
-      />
-    </IconButtonGroup>
+    <>
+      <div className="sort-by-bar-wrap">
+        <IconButtonGroup>
+          <ButtonWithIcon
+            inGroup
+            value="Hot"
+            icon={<FaRocket />}
+            onClick={onSortByHot}
+            active={bySortingMethod === "score"}
+          />
+          <ButtonWithIcon
+            inGroup
+            value="Top"
+            icon={<ImStarFull />}
+            onClick={onSortByTop}
+            active={bySortingMethod === "favoriteCount"}
+          />
+          <ButtonWithIcon
+            inGroup
+            value="View"
+            icon={<FaEye />}
+            onClick={onSortByViews}
+            active={bySortingMethod === "viewCount"}
+          />
+          <ButtonWithIcon
+            inGroup
+            last
+            value="New"
+            icon={<MdFiberNew />}
+            onClick={onSortByNew}
+            active={bySortingMethod === "createdAt"}
+          />
+        </IconButtonGroup>
+      </div>
+      <style jsx>{`
+        .sort-by-bar-wrap {
+          height: 40px;
+          margin-bottom: 1px;
+        }
+      `}</style>
+    </>
   );
 };

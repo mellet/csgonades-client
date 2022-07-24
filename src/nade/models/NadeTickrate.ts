@@ -1,13 +1,23 @@
 export const NadeTickrate = {
-  any: "Both",
+  any: "Any",
   tick128: "128 Tick",
   tick64: "64 Tick",
+};
+
+const NadeTickrateShort = {
+  any: "Any",
+  tick128: "128T",
+  tick64: "64T",
 };
 
 export type Tickrate = keyof typeof NadeTickrate;
 
 export function tickrateString(tick: Tickrate): string {
   return NadeTickrate[tick];
+}
+
+export function tickrateShortString(tick: Tickrate): string {
+  return NadeTickrateShort[tick];
 }
 
 type TickrateOption = {

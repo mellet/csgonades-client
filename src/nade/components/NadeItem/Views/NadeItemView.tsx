@@ -66,6 +66,7 @@ export const NadeItemView: FC<Props> = memo(
               technique={nade.technique}
               tickrate={nade.tickrate}
               viewCount={nade.viewCount}
+              side={nade.teamSide}
               addAsFavorite={onAddAsFavorite}
               removeAsFavorite={onRemoveAsFavorite}
             />
