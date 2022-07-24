@@ -15,15 +15,7 @@ export default function useSortedNades(unsortedNades: NadeLight[] | null) {
       const boostScore = secondMax(allScores) - 1;
 
       return unsortedNades.map((nade, idx) => {
-        console.log(
-          "Nade score",
-          idx,
-          nade.score,
-          nade.endPosition,
-          nade.startPosition
-        );
         if (idx === randomIndexToBoost) {
-          console.log("Found nade to boost");
           return {
             ...nade,
             score: boostScore,
