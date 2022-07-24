@@ -29,8 +29,6 @@ export const MapMain: FC<Props> = memo(
     const isMobile = useMediaQuery({ maxWidth: 600 });
     const isOverviewView = mapView === "overview";
 
-    console.log("Initial type", initialType);
-
     const {
       onNadeClusterClick,
       suggestedNades,

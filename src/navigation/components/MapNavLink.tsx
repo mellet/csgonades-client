@@ -22,7 +22,7 @@ export const MapPageLink: FC<Props> = ({ map, children }) => {
 
   return (
     <>
-      <Link href={`/maps/${map}`}>
+      <Link href={`/maps/${map}?type=smoke`}>
         <a onClick={onMapLinkClick}>{children}</a>
       </Link>
       <style jsx>{`

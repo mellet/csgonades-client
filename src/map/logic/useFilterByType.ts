@@ -48,10 +48,8 @@ const useQueryNadeType = (): NadeType | undefined => {
   const { query } = useRouter();
 
   if (!query.type) {
-    console.log("No query type");
     return;
   }
-  console.log("Query type", query.type);
 
   switch (query.type) {
     case "smoke":
