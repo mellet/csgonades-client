@@ -23,111 +23,108 @@ type Props = {
   initialType?: NadeType;
 };
 
-export const MapMain: FC<Props> = memo(
-  ({ map, allNades, isLoading, initialType }) => {
-    const { mapView } = useSetMapView();
-    const isMobile = useMediaQuery({ maxWidth: 600 });
-    const isOverviewView = mapView === "overview";
+export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
+  const { mapView } = useSetMapView();
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const isOverviewView = mapView === "overview";
 
-    const {
-      onNadeClusterClick,
-      suggestedNades,
-      dismissSuggested,
-      hasSuggestedNades,
-    } = useOnNadeClusterClick(map);
+  const {
+    onNadeClusterClick,
+    suggestedNades,
+    dismissSuggested,
+    hasSuggestedNades,
+  } = useOnNadeClusterClick(map);
 
-    const displayMapOverview: boolean =
-      !isMobile && isOverviewView && !isServer;
-    const displayListView = isMobile || !isOverviewView;
+  const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
+  const displayListView = isMobile || !isOverviewView;
 
-    return (
-      <>
-        <SEO
-          title={mapPageTitleSeo(map)}
-          canonical={`/maps/${map}`}
-          description={`Find and learn the best smoke, flashbang, molotov and grenade spots for ${capitalize(
-            map
-          )}. Browse our large collection of nades for CS:GO.`}
-        />
+  return (
+    <>
+      <SEO
+        title={mapPageTitleSeo(map)}
+        canonical={`/maps/${map}`}
+        description={`Find and learn the best smoke, flashbang, molotov and grenade spots for ${capitalize(
+          map
+        )}. Browse our large collection of nades for CS:GO.`}
+      />
 
-        <div id="nade-page">
-          <div id="filter">
-            {isMobile ? (
-              <FilterBarMobile />
-            ) : (
-              <div className="sticky">
-                <FilterBar />
-              </div>
-            )}
-          </div>
-          <div id="nade-nades">
-            {displayListView && <MapPageNades allNades={allNades} />}
-
-            {displayMapOverview && (
-              <MapViewSuggested
-                open={hasSuggestedNades}
-                nades={suggestedNades}
-                onDismiss={dismissSuggested}
-              />
-            )}
-
-            {displayMapOverview && (
-              <MapViewScreen
-                map={map}
-                allNades={allNades}
-                onClusterClick={onNadeClusterClick}
-                isLoading={isLoading}
-              />
-            )}
-          </div>
+      <div id="nade-page">
+        <div id="filter">
+          {isMobile ? (
+            <FilterBarMobile />
+          ) : (
+            <div className="sticky">
+              <FilterBar />
+            </div>
+          )}
         </div>
-        <style jsx>{`
+        <div id="nade-nades">
+          {displayListView && <MapPageNades allNades={allNades} />}
+
+          {displayMapOverview && (
+            <MapViewSuggested
+              open={hasSuggestedNades}
+              nades={suggestedNades}
+              onDismiss={dismissSuggested}
+            />
+          )}
+
+          {displayMapOverview && (
+            <MapViewScreen
+              map={map}
+              allNades={allNades}
+              onClusterClick={onNadeClusterClick}
+              isLoading={isLoading}
+            />
+          )}
+        </div>
+      </div>
+      <style jsx>{`
+        #nade-page {
+          position: relative;
+          width: 100%;
+          display: grid;
+          grid-template-columns: min-content 1fr;
+          grid-template-areas: "filter nades";
+          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+        }
+
+        #filter {
+          grid-area: filter;
+        }
+
+        .sticky {
+          position: sticky;
+          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+        }
+
+        #nade-nades {
+          flex: 1;
+          grid-area: nades;
+          width: 100%;
+        }
+
+        @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
           #nade-page {
             position: relative;
             width: 100%;
             display: grid;
-            grid-template-columns: min-content 1fr;
-            grid-template-areas: "filter nades";
-            grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              "filter"
+              "nades";
+            grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
           }
 
           #filter {
-            grid-area: filter;
+            padding: ${Dimensions.GUTTER_SIZE}px;
+            padding-bottom: 0;
           }
-
-          .sticky {
-            position: sticky;
-            top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
-          }
-
-          #nade-nades {
-            flex: 1;
-            grid-area: nades;
-            width: 100%;
-          }
-
-          @media only screen and (max-width: ${LayoutBreakpoint.MOBILE}px) {
-            #nade-page {
-              position: relative;
-              width: 100%;
-              display: grid;
-              grid-template-columns: 1fr;
-              grid-template-areas:
-                "filter"
-                "nades";
-              grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-            }
-
-            #filter {
-              padding: ${Dimensions.GUTTER_SIZE}px;
-              padding-bottom: 0;
-            }
-          }
-        `}</style>
-      </>
-    );
-  }
-);
+        }
+      `}</style>
+    </>
+  );
+});
 
 function mapPageTitleSeo(map: CsgoMap) {
   if (!map) {
