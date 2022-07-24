@@ -15,7 +15,7 @@ export const LayoutBuilder: FC<Props> = memo(
   ({ header, main, sidebar, nav }) => {
     const { colors } = useTheme();
     const { isNavOpen } = useNavigation();
-    const isMobile = useMediaQuery({ maxWidth: 600 });
+    const isMobile = useMediaQuery({ maxWidth: LayoutBreakpoint.MOBILE });
 
     const displayNav = !!nav;
     const displaySidebar = !!sidebar;

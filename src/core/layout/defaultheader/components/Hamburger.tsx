@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { LayoutBreakpoint } from "../../../../constants/Constants";
 import { useNavigation } from "../../../global/hooks/useNavigation";
 import { useTheme } from "../../../settings/SettingsHooks";
 
@@ -41,7 +42,7 @@ export const Hamburger: FC = memo(({}) => {
           opacity: 1;
         }
 
-        @media only screen and (max-width: 1200px) {
+        @media only screen and (max-width: ${LayoutBreakpoint.TABLET}px) {
           .hamburger {
             display: block;
           }
