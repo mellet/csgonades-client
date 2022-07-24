@@ -25,7 +25,7 @@ export function useIsLowEngagementNade(
   const isLowEngagementNade = useMemo(() => {
     const isOldEnough = dateDaysAgo(created) > 60;
 
-    if (!isAdmin || !isOldEnough) {
+    if (!isAdmin || !isOldEnough || favoriteCount > 5) {
       return false;
     }
 
