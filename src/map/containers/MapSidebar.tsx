@@ -16,6 +16,9 @@ type Props = {
 export const MapSidebar: FC<Props> = ({ map, nades }) => {
   return (
     <>
+      <div className="ad">
+        <AdUnit name="mapSidebarSquare" />
+      </div>
       <Spacer vertical>
         <SideJumbo nades={nades} map={map} />
         <div className="ctas">
@@ -23,9 +26,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
           {false && <BuyMeABeerAction />}
         </div>
       </Spacer>
-      <div className="ad">
-        <AdUnit name="mapSidebarSquare" />
-      </div>
+
       <style jsx>{`
         .ctas {
         }
@@ -33,7 +34,7 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
         .ad {
           position: sticky;
           top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
           max-height: 300px;
         }
       `}</style>
