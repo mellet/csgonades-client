@@ -1,10 +1,13 @@
 import { FC, useRef, useState, useMemo } from "react";
+import { FaCopy } from "react-icons/fa";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   value: string;
 };
 
 export const BlogCopyPaste: FC<Props> = ({ value }) => {
+  const { colors } = useTheme();
   const [displayConfirm, setDisplayConfirm] = useState(false);
   const ref = useRef<HTMLInputElement>(null);
   const confirmClassName = useMemo(() => {
@@ -38,7 +41,9 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
       <div className="copy-paste">
         <div className={confirmClassName}>Copied to clipboard</div>
         <input ref={ref} defaultValue={value} />
-        <button onClick={copyToClipboard}>Copy</button>
+        <button onClick={copyToClipboard}>
+          <FaCopy /> <span>Copy</span>
+        </button>
       </div>
       <style jsx>{`
         .copy-paste {
@@ -75,16 +80,34 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
           flex: 1;
           outline: none;
           padding: 15px;
+          background: #d1d1d1;
+          color: ${colors.TEXT};
+          border: 1px solid ${colors.BORDER};
+          background: ${colors.DP01};
         }
 
         button {
-          background: rgba(201, 101, 0, 0.9);
           border-bottom-right-radius: 5px;
           border-top-right-radius: 5px;
           border: none;
           color: white;
           cursor: pointer;
           padding: 15px;
+          display: flex;
+          align-items: center;
+          border: 1px solid ${colors.BORDER};
+          background: ${colors.DP03_transparent};
+          color: ${colors.TEXT};
+          border-left: none;
+        }
+
+        button:hover {
+          background: ${colors.DP01};
+        }
+
+        button span {
+          margin-left: 4px;
+          pointer-events: none;
         }
       `}</style>
     </>
