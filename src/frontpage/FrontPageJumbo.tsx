@@ -4,7 +4,6 @@ import { SiteStats } from "../core/api/StatsApi";
 import { kFormatter } from "../utils/Common";
 import { NadeIcon } from "../shared-components/nade-icons";
 import { FaUserFriends } from "react-icons/fa";
-import { Dropdown } from "semantic-ui-react";
 import Link from "next/link";
 
 type Props = {
