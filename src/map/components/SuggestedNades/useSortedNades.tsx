@@ -6,15 +6,28 @@ export default function useSortedNades(unsortedNades: NadeLight[] | null) {
   const { bySortingMethod } = useFilterBySortingMethod();
 
   const artificialBoost = useMemo(() => {
-    if (unsortedNades && unsortedNades.length > 6) {
-      const lastIndex = unsortedNades.length - 1;
-      const randomIndexToBoost = randomIntFromInterval(3, lastIndex);
-      console.log("Random index to boost", randomIndexToBoost, lastIndex);
+    if (unsortedNades && unsortedNades.length >= 6) {
+      const canditateBoosts = unsortedNades.filter((nade) => {
+        return nade.favoriteCount <= 10;
+      });
+
+      if (canditateBoosts.length < 2) {
+        return unsortedNades;
+      }
+
+      const noneCandidates = unsortedNades.filter(
+        (nade) => nade.favoriteCount > 10
+      );
+
+      const randomIndexToBoost = randomIntFromInterval(
+        0,
+        canditateBoosts.length - 1
+      );
 
       const allScores = unsortedNades.map((nade) => nade.score);
       const boostScore = secondMax(allScores) - 1;
 
-      return unsortedNades.map((nade, idx) => {
+      const boostedCandidates = canditateBoosts.map((nade, idx) => {
         if (idx === randomIndexToBoost) {
           return {
             ...nade,
@@ -24,6 +37,8 @@ export default function useSortedNades(unsortedNades: NadeLight[] | null) {
 
         return nade;
       });
+
+      return [...noneCandidates, ...boostedCandidates];
     }
     return unsortedNades;
   }, [unsortedNades]);
