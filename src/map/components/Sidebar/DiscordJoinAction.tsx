@@ -31,12 +31,13 @@ export const DiscordJoinAction: FC = () => {
       <style jsx>{`
         .action {
           display: flex;
-          padding: 10px 16px;
+          padding: 8px 16px;
           color: white;
           justify-content: space-between;
           align-items: center;
           background: #7289da;
-          height: 50px;
+          height: 40px;
+          border-radius: 8px;
         }
 
         .action:hover {

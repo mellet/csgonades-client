@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useFilterByType } from "../../../logic/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
 import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
@@ -9,7 +9,7 @@ type Props = {
   vertical?: boolean;
 };
 
-export const TypeFilter: FC<Props> = ({ vertical }) => {
+export const TypeFilter: FC<Props> = memo(({ vertical }) => {
   const { byType, filterByType } = useFilterByType();
 
   return (
@@ -46,4 +46,4 @@ export const TypeFilter: FC<Props> = ({ vertical }) => {
       </>
     </>
   );
-};
+});

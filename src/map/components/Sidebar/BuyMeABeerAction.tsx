@@ -29,7 +29,7 @@ export const BuyMeABeerAction: FC = ({}) => {
       <style jsx>{`
         .bma {
           background: #f7ae05;
-          padding: 10px 16px;
+          padding: 8px 16px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -40,7 +40,8 @@ export const BuyMeABeerAction: FC = ({}) => {
           transition: background 0.15s;
           position: relative;
           overflow: hidden;
-          height: 50px;
+          height: 40px;
+          border-radius: 8px;
         }
 
         .bma:hover {

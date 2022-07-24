@@ -17,20 +17,17 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
   return (
     <>
       <Spacer vertical>
+        <SideJumbo nades={nades} map={map} />
         <div className="ctas">
           <DiscordJoinAction />
-          <BuyMeABeerAction />
+          {false && <BuyMeABeerAction />}
         </div>
-
-        <SideJumbo nades={nades} map={map} />
       </Spacer>
       <div className="ad">
         <AdUnit name="mapSidebarSquare" />
       </div>
       <style jsx>{`
         .ctas {
-          border-radius: 8px;
-          overflow: hidden;
         }
 
         .ad {

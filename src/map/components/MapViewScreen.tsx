@@ -11,6 +11,7 @@ import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
 import { FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
+import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   allNades: NadeLight[];
@@ -32,6 +33,7 @@ const MapViewScreen: FC<Props> = ({
   const [mapSize, setMapSize] = useState(0);
   const mapViewRef = useRef<HTMLDivElement>(null);
   const clusters = useNadeClusters(filteredNades);
+  const { colors } = useTheme();
 
   function recalcMapSize(offsetHeight: number, offsetWidth: number) {
     if (offsetHeight < offsetWidth) {
@@ -92,7 +94,10 @@ const MapViewScreen: FC<Props> = ({
 
               {isLoading && (
                 <span className="spinner">
-                  <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
+                  <div className="spinner-content">
+                    <p>Loading nades</p>
+                    <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
+                  </div>
                 </span>
               )}
             </div>
@@ -111,6 +116,26 @@ const MapViewScreen: FC<Props> = ({
           align-items: center;
           justify-content: center;
           color: white;
+          z-index: 999;
+        }
+
+        .spinner-content {
+          border: 1px solid ${colors.PRIMARY};
+          background: ${colors.DP03};
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px ${Dimensions.GUTTER_SIZE}px;
+          color: ${colors.TEXT};
+        }
+
+        .spinner-content p {
+          font-size: 16px;
+          font-weight: 500;
+          margin: 0;
+          padding: 0;
+          margin-right: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .no-nades-wrap {

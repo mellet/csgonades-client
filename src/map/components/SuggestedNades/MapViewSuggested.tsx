@@ -150,12 +150,11 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           pointer-events: ${open ? "auto" : "none"};
           display: flex;
           flex-direction: column;
-          padding: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .nade-list-wrap {
-          margin-bottom: ${Dimensions.GUTTER_SIZE / 2}px;
-          margin-top: ${Dimensions.GUTTER_SIZE / 2}px;
+          padding: ${Dimensions.GUTTER_SIZE / 2}px;
+          overflow-y: auto;
         }
 
         .bg {
@@ -167,13 +166,16 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           background: ${colors.DP03};
           opacity: 0.9;
           border-radius: 8px;
-          border: 1px solid ${colors.BORDER};
         }
 
         .title {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-areas: "msg . close";
+          align-items: center;
+          background: ${colors.DP03};
+          padding: ${Dimensions.GUTTER_SIZE / 2}px;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .label {
@@ -200,6 +202,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           align-items: center;
           justify-content: center;
           pointer-events: ${open ? "auto" : "none"};
+          margin-right: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .close-btn:hover {

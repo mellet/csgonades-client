@@ -7,6 +7,7 @@ export type ThemeColors = {
   DP01: string;
   DP02: string;
   DP03: string;
+  DP03_transparent: string;
   ERROR: string;
   FAV_YELLOW: string;
   filterBg: string;
@@ -54,6 +55,7 @@ const DARK_THEME: ThemeColors = {
   DP01: "#1f1f1f",
   DP02: "#292929",
   DP03: "#363636",
+  DP03_transparent: "rgab(54, 54, 54,0.8)",
   SITE_BG: "#121212",
   UI_BG: "#212121",
   PRIMARY: "#364958",
@@ -100,6 +102,7 @@ export const LIGHT_THEME: ThemeColors = {
   DP01: "#f5f5f5",
   DP02: "#fafafa",
   DP03: "#fff",
+  DP03_transparent: "rgab(255, 255, 255,0.8)",
   SITE_BG: "#f3f3f3",
   UI_BG: "white",
   PRIMARY: "#364958",
