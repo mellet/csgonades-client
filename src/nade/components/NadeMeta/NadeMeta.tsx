@@ -5,6 +5,7 @@ import { techniqueString, Technique } from "../../models/Technique";
 import { capitalize } from "../../../utils/Common";
 import { Movement } from "../../models/NadeMovement";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
+import { TickrateHint } from "./TickrateHint";
 
 type Props = {
   movement?: Movement;
@@ -39,11 +40,24 @@ export const NadeMeta: FC<Props> = memo(
           {tickrate && (
             <div className="nade-meta-item">
               <h4>Tickrate</h4>
-              <span>{tickrateString(tickrate)}</span>
+              <span className="nade-meta-tick">
+                <span>{tickrateString(tickrate)} </span>
+                <TickrateHint tick={tickrate} />
+              </span>
             </div>
           )}
         </div>
         <style jsx>{`
+          .nade-meta-tick {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .nade-meta-tick span {
+            margin-right: 4px;
+          }
+
           .nade-meta {
             display: flex;
             color: white;
