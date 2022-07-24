@@ -62,7 +62,7 @@ export const LayoutBuilder: FC<Props> = memo(
             min-height: 90vh;
             max-width: ${Dimensions.SITE_WIDTH}px;
             margin: 0 auto;
-            padding-top: ${Dimensions.GUTTER_SIZE}px;
+            padding: ${Dimensions.GUTTER_SIZE}px;
           }
 
           .default-page {
@@ -90,9 +90,7 @@ export const LayoutBuilder: FC<Props> = memo(
             height: ${Dimensions.HEADER_HEIGHT}px;
             background: ${colors.DP03};
             border-bottom: 1px solid ${colors.BORDER};
-            padding-left: ${Dimensions.GUTTER_SIZE}px;
-            padding-right: ${Dimensions.GUTTER_SIZE}px;
-            max-width: 100vw;
+            width: 100%;
             position: sticky;
             top: 0px;
             z-index: 500;
@@ -100,6 +98,8 @@ export const LayoutBuilder: FC<Props> = memo(
 
           .header-content {
             max-width: ${Dimensions.SITE_WIDTH}px;
+            padding-left: ${Dimensions.GUTTER_SIZE}px;
+            padding-right: ${Dimensions.GUTTER_SIZE}px;
             margin: 0 auto;
           }
 

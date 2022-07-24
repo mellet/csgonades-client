@@ -117,7 +117,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           top: 0;
           left: 0;
           right: 0;
-          padding: ${Dimensions.GUTTER_SIZE / 2}px ${Dimensions.GUTTER_SIZE}px;
           border-bottom: 2px solid ${colors.BORDER};
           background: ${colors.DP03};
           z-index: 801;
@@ -130,6 +129,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           grid-template-areas: "msg . close";
           align-items: center;
           max-width: ${Dimensions.SITE_WIDTH}px;
+          padding: ${Dimensions.GUTTER_SIZE / 2}px ${Dimensions.GUTTER_SIZE}px;
         }
 
         .close-btn {
