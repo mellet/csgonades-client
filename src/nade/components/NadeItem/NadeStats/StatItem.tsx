@@ -8,6 +8,7 @@ type Props = {
   hidden?: boolean;
   icon: any;
   iconColor?: string;
+  hoverColor?: string;
 };
 
 export const StatItem: FC<Props> = ({
@@ -17,6 +18,7 @@ export const StatItem: FC<Props> = ({
   hidden,
   icon,
   iconColor,
+  hoverColor,
 }) => {
   if ((hidden || !count) && !alwaysShow) {
     return null;
@@ -45,6 +47,11 @@ export const StatItem: FC<Props> = ({
           margin-right: 3px;
           position: relative;
           top: 1px;
+          transition: color 0.14s;
+        }
+
+        .icon:hover {
+          color: ${hoverColor || iconColor || color};
         }
       `}</style>
     </>

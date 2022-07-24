@@ -56,6 +56,7 @@ export const NadeItemView: FC<Props> = memo(
             </Link>
             <NadeStats
               nadeId={nade.id}
+              slug={nade.slug}
               commentCount={nade.commentCount}
               createdAt={nade.createdAt}
               favoriteCount={nade.favoriteCount}

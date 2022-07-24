@@ -9,8 +9,10 @@ import { Technique } from "../../../models/Technique";
 import { Movement } from "../../../models/NadeMovement";
 import { isNewNade } from "../../../../utils/Common";
 import { StatFavorite } from "./StatFavorite";
+import Link from "next/link";
 
 type NadeStatsProps = {
+  slug?: string;
   nadeId: string;
   commentCount: number;
   createdAt: Date | string;
@@ -27,6 +29,7 @@ type NadeStatsProps = {
 
 export const NadeStats: FC<NadeStatsProps> = ({
   nadeId,
+  slug,
   commentCount,
   createdAt,
   favoriteCount,
@@ -81,14 +84,16 @@ export const NadeStats: FC<NadeStatsProps> = ({
               />
             </div>
           )}
-
-          <div className="stat-item">
-            <StatItem
-              color={colors.GREY}
-              count={commentCount}
-              icon={<FaCommentDots />}
-            />
-          </div>
+          <Link href={`/nades/${slug || nadeId}#comments`}>
+            <a className="stat-item">
+              <StatItem
+                color={colors.GREY}
+                count={commentCount}
+                icon={<FaCommentDots />}
+                hoverColor={colors.SUCCESS}
+              />
+            </a>
+          </Link>
         </div>
         <div className="specials">
           {hasMovement && (
