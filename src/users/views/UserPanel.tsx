@@ -146,14 +146,21 @@ export const UserPanel: FC<Props> = ({ user }) => {
         .label {
           font-weight: 400;
           font-size: 14px;
+          color: ${colors.TEXT};
         }
 
         .bio {
           grid-area: bio;
           margin-bottom: 12px;
-          color: ${colors.TEXT};
           overflow-wrap: break-word;
           word-wrap: break-word;
+        }
+
+        .user-role,
+        .bio,
+        .member-since,
+        .active-since {
+          color: ${colors.TEXT};
         }
 
         .user-role-badge {
