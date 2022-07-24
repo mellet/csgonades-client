@@ -61,11 +61,13 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
     <>
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
         <div className="title">
-          <div onClick={stopPropagation}>
-            <SortByBar />
-          </div>
-          <div className="close-btn" onClick={onDismissCloseClick}>
-            <FaTimes />
+          <div className="title-content">
+            <div onClick={stopPropagation}>
+              <SortByBar />
+            </div>
+            <div className="close-btn" onClick={onDismissCloseClick}>
+              <FaTimes />
+            </div>
           </div>
         </div>
 
@@ -115,15 +117,19 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           top: 0;
           left: 0;
           right: 0;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-template-areas: "msg . close";
-          align-items: center;
-          background: ${colors.DP03};
           padding: ${Dimensions.GUTTER_SIZE / 2}px ${Dimensions.GUTTER_SIZE}px;
           border-bottom: 2px solid ${colors.BORDER};
           background: ${colors.DP03};
           z-index: 801;
+        }
+
+        .title-content {
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-areas: "msg . close";
+          align-items: center;
+          max-width: ${Dimensions.SITE_WIDTH}px;
         }
 
         .close-btn {

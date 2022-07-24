@@ -32,9 +32,10 @@ export const LayoutBuilder: FC<Props> = memo(
 
     return (
       <>
+        <header>
+          <div className="header-content">{header}</div>
+        </header>
         <div id="page" className={classNameSelector}>
-          <header>{header}</header>
-
           {displayNav && (
             <nav
               hidden={!isNavOpen && isMobile}
@@ -54,39 +55,38 @@ export const LayoutBuilder: FC<Props> = memo(
             display: grid;
             width: 100%;
             background: ${colors.DP00};
-            grid-template-columns: min-content min-content 1fr 300px min-content;
-            grid-template-rows: ${Dimensions.HEADER_HEIGHT}px 1fr 1fr 1fr;
+            grid-template-columns: min-content 1fr 300px;
+            grid-template-rows: 1fr 1fr 1fr;
             grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
             grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-            min-height: 100vh;
+            min-height: 90vh;
+            max-width: ${Dimensions.SITE_WIDTH}px;
+            margin: 0 auto;
+            padding-top: ${Dimensions.GUTTER_SIZE}px;
           }
 
           .default-page {
             grid-template-areas:
-              "header header header header header"
-              ". nav main main ."
-              ". nav main main ."
-              ". nav main main .";
+              "nav main main"
+              "nav main main"
+              "nav main main";
           }
 
           .with-sidebar-and-nav {
             grid-template-areas:
-              "header header header header header"
-              ". nav main sidebar ."
-              ". nav main sidebar ."
-              ". nav main sidebar .";
+              "nav main sidebar"
+              "nav main sidebar"
+              "nav main sidebar";
           }
 
           .with-main-only {
             grid-template-areas:
-              "header header header header header"
-              ". main main main ."
-              ". main main main ."
-              ". main main main .";
+              "main main main"
+              "main main main"
+              "main main main";
           }
 
           header {
-            grid-area: header;
             height: ${Dimensions.HEADER_HEIGHT}px;
             background: ${colors.DP03};
             border-bottom: 1px solid ${colors.BORDER};
@@ -96,6 +96,11 @@ export const LayoutBuilder: FC<Props> = memo(
             position: sticky;
             top: 0px;
             z-index: 500;
+          }
+
+          .header-content {
+            max-width: ${Dimensions.SITE_WIDTH}px;
+            margin: 0 auto;
           }
 
           nav {
@@ -113,18 +118,16 @@ export const LayoutBuilder: FC<Props> = memo(
           @media only screen and (max-width: ${LayoutBreakpoint.TABLET}px) {
             .default-page {
               grid-template-areas:
-                "header header header header header"
-                ". main main main ."
-                ". main main main ."
-                ". main main main .";
+                "main main main"
+                "main main main"
+                "main main main";
             }
 
             .with-sidebar-and-nav {
               grid-template-areas:
-                "header header header header header"
-                ". main main sidebar ."
-                ". main main sidebar ."
-                ". main main sidebar .";
+                "main main sidebar"
+                "main main sidebar"
+                "main main sidebar";
             }
 
             nav {
@@ -168,15 +171,12 @@ export const LayoutBuilder: FC<Props> = memo(
               grid-column-gap: 0px;
               grid-row-gap: 0px;
               grid-template-areas:
-                "header"
                 "main"
                 "sidebar";
             }
 
             .with-main-only {
-              grid-template-areas:
-                "header"
-                "main";
+              grid-template-areas: "main";
             }
 
             header {
@@ -196,6 +196,11 @@ export const LayoutBuilder: FC<Props> = memo(
               width: 100%;
               border-radius: ${Dimensions.BORDER_RADIUS};
             }
+          }
+        `}</style>
+        <style jsx global>{`
+          body {
+            background: ${colors.DP00};
           }
         `}</style>
       </>
