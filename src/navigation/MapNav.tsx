@@ -37,7 +37,11 @@ export const MapNav: FC = () => {
               <NavItem csMap="overpass" selected={selectedMap === "overpass"} />
             </MapPageLink>
           </li>
-
+          <li>
+            <MapPageLink map="ancient">
+              <NavItem csMap="ancient" selected={selectedMap === "ancient"} />
+            </MapPageLink>
+          </li>
           <li>
             <MapPageLink map="nuke">
               <NavItem csMap="nuke" selected={selectedMap === "nuke"} />
@@ -49,18 +53,13 @@ export const MapNav: FC = () => {
             </MapPageLink>
           </li>
           <li>
-            <MapPageLink map="ancient">
-              <NavItem csMap="ancient" selected={selectedMap === "ancient"} />
+            <MapPageLink map="train">
+              <NavItem csMap="train" selected={selectedMap === "train"} />
             </MapPageLink>
           </li>
           <li>
             <MapPageLink map="cache">
               <NavItem csMap="cache" selected={selectedMap === "cache"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="train">
-              <NavItem csMap="train" selected={selectedMap === "train"} />
             </MapPageLink>
           </li>
           {false && (
