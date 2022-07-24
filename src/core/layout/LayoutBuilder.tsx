@@ -2,7 +2,7 @@ import { FC, memo, useMemo } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { useNavigation } from "../global/hooks/useNavigation";
 import { useTheme } from "../settings/SettingsHooks";
-import { useMediaQuery } from "react-responsive";
+import { useIsDeviceSize } from "./useDeviceSize";
 
 type Props = {
   header: JSX.Element;
@@ -15,7 +15,7 @@ export const LayoutBuilder: FC<Props> = memo(
   ({ header, main, sidebar, nav }) => {
     const { colors } = useTheme();
     const { isNavOpen } = useNavigation();
-    const isMobile = useMediaQuery({ maxWidth: LayoutBreakpoint.MOBILE });
+    const { isMobile } = useIsDeviceSize();
 
     const displayNav = !!nav;
     const displaySidebar = !!sidebar;
@@ -122,10 +122,9 @@ export const LayoutBuilder: FC<Props> = memo(
             .with-sidebar-and-nav {
               grid-template-areas:
                 "header header header header header"
-                ". main main main ."
-                ". main main main ."
-                ". main main main ."
-                ". sidebar sidebar sidebar .";
+                ". main main sidebar ."
+                ". main main sidebar ."
+                ". main main sidebar .";
             }
 
             nav {

@@ -17,7 +17,7 @@ import { NadeItemMobile } from "../nade/components/NadeItem/NadeItemMobile";
 import { useTheme } from "../core/settings/SettingsHooks";
 import { AdUnit } from "../shared-components/adunits/AdUnit";
 import { useFavorites } from "../favorites/data/useFavorites";
-import { useMediaQuery } from "react-responsive";
+import { useIsDeviceSize } from "../core/layout/useDeviceSize";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -34,8 +34,7 @@ type Props = {
 export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
   const { colors } = useTheme();
   const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
-  const isMobile = useMediaQuery({ maxWidth: 600 });
-  const useMobileAd = useMediaQuery({ maxWidth: 800 });
+  const { isMobile } = useIsDeviceSize();
 
   function renderItem(item: NadeLight) {
     if (isMobile) {
@@ -54,7 +53,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
       <div id="front-page">
         <FrontPageJumbo stats={stats} />
 
-        {useMobileAd ? (
+        {isMobile ? (
           <AdUnit horizontalSpacing name="frontPageMobile" />
         ) : (
           <AdUnit horizontalSpacing name="fixed728x90" />

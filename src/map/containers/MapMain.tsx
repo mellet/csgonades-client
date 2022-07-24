@@ -10,9 +10,9 @@ import { MapViewSuggested } from "../components/SuggestedNades/MapViewSuggested"
 import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../logic/useSetMapView";
 import { CsgoMap } from "../models/CsGoMap";
-import { useMediaQuery } from "react-responsive";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
 import { NadeType } from "../../nade/models/NadeType";
+import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 
 const isServer = typeof window === "undefined";
 
@@ -25,7 +25,7 @@ type Props = {
 
 export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const { mapView } = useSetMapView();
-  const isMobile = useMediaQuery({ maxWidth: LayoutBreakpoint.MOBILE });
+  const { isMobile } = useIsDeviceSize();
   const isOverviewView = mapView === "overview";
 
   const {

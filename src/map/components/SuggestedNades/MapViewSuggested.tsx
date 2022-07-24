@@ -10,6 +10,7 @@ import { motion, MotionProps } from "framer-motion";
 import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
 import { AdUnit } from "../../../shared-components/adunits/AdUnit";
+import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 type Props = {
   open: boolean;
@@ -27,6 +28,7 @@ const fadeInUp: MotionProps = {
 };
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
+  const { isTablet } = useIsDeviceSize();
   const [initialOpenState] = useState(open);
   const { colors } = useTheme();
   const sortedNades = useSortedNades(nades);
@@ -129,6 +131,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
           border-radius: 8px;
           pointer-events: ${open ? "auto" : "none"};
           overflow: hidden;
+          margin-right: ${isTablet ? -(300 + Dimensions.GUTTER_SIZE) : 0}px;
         }
 
         .mapview-wrapper {

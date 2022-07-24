@@ -3,14 +3,14 @@ import { Popup } from "semantic-ui-react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { useGa } from "../../utils/Analytics";
 import { useShouldShowPositionCopyHint } from "../logic/useShouldShowPositionCopyHint";
-import { useMediaQuery } from "react-responsive";
+import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 
 export const PositionCopyHint: FC = ({ children }) => {
   const { colors, theme } = useTheme();
   const { setShownPositionCopyHint, shownPositionCopyHint } =
     useShouldShowPositionCopyHint();
   const { event } = useGa();
-  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const { isMobile } = useIsDeviceSize();
 
   if (isMobile || shownPositionCopyHint) {
     return <>{children}</>;

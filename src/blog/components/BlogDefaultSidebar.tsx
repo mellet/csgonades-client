@@ -2,15 +2,15 @@ import { FC } from "react";
 import { NadeShareActions } from "../../nade/components/NadeShareActions";
 import { BlogPost } from "../models/BlogPost";
 import { Dimensions } from "../../constants/Constants";
-import { useMediaQuery } from "react-responsive";
 import { AdUnit } from "../../shared-components/adunits/AdUnit";
+import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 
 type Props = {
   data: BlogPost;
 };
 
 export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
-  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const { isMobile } = useIsDeviceSize();
 
   return (
     <>

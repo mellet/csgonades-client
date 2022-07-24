@@ -3,7 +3,7 @@ import { Nade } from "../../nade/models/Nade";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { NadeItemMobile } from "../../nade/components/NadeItem/NadeItemMobile";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
-import { useMediaQuery } from "react-responsive";
+import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 
 interface Props {
   nadeSlug: string;
@@ -12,7 +12,7 @@ interface Props {
 export const BlogNadeItem: FC<Props> = memo(({ nadeSlug }) => {
   const [nade, setNade] = useState<Nade | null>(null);
   const [loading, setLoading] = useState(true);
-  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const { isMobile } = useIsDeviceSize();
 
   useEffect(() => {
     (async () => {
