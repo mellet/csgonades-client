@@ -100,7 +100,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss, open }) => {
                     enableAds={false}
                   />
                 </div>
-                {sortedNades.length <= 3 && (
+                {false && (
                   <div className="a">
                     <AdUnit name="suggestedNadesHorizontal" />
                   </div>
