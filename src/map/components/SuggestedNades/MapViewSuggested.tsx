@@ -17,7 +17,7 @@ type Props = {
   onDismiss: () => void;
 };
 
-const MAX_MODAL_WIDTH = 1400;
+const MAX_MODAL_WIDTH = 1540;
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
@@ -115,14 +115,16 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
       <style jsx>{`
         .suggested-main {
           display: grid;
-          grid-template-columns: 60px 1fr 60px;
+          grid-template-columns: 30px 1fr 30px;
+          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-template-areas:
             ". filter side"
             ". main side"
             ". main side";
           width: 100%;
           max-width: ${MAX_MODAL_WIDTH}px;
-          padding: ${Dimensions.GUTTER_SIZE * 2}px;
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          padding-top: ${Dimensions.GUTTER_SIZE * 2}px;
         }
 
         .filter-wrapper {
