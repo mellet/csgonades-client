@@ -19,7 +19,7 @@ export const AdminCommentItem: FC<Props> = ({ comment }) => {
       <div className="admin-nade-comment">
         <div className="body">
           <div className="user">
-            <NadeCommentAvatar src={comment.avatar} />{" "}
+            <NadeCommentAvatar user={comment} />{" "}
             <span className="nickname">{comment.nickname}</span>
           </div>
           <div className="message">
