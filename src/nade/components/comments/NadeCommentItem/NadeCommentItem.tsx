@@ -37,16 +37,16 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
   return (
     <>
       <NadeCommentLayout>
-        <NadeCommentAvatar src={nadeComment.avatar} />
+        <NadeCommentAvatar user={nadeComment} />
         <NadeCommentNickname>
-          <Link href={`/users/${nadeComment.steamId}`}>
+          <Link href={`/users/${nadeComment.steamId}`} passHref>
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
               }}
             >
-              <a>{nadeComment.nickname}</a>
+              <a className="nickname">{nadeComment.nickname}</a>
               {nadeComment.role && showRoleLabel && (
                 <RoleLabel role={nadeComment.role} />
               )}
@@ -70,6 +70,12 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
           )}
         </NadeCommentActions>
       </NadeCommentLayout>
+      <style jsx>{`
+        .nickname:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      `}</style>
     </>
   );
 };

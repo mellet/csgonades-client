@@ -1,19 +1,20 @@
 import { FC } from "react";
+import { UserAvatar } from "../../../../shared-components/UserAvatar";
+import { UserLight } from "../../../../users/models/User";
 
 type Props = {
-  src: string;
+  user: UserLight;
 };
 
-export const NadeCommentAvatar: FC<Props> = ({ src }) => {
+export const NadeCommentAvatar: FC<Props> = ({ user }) => {
   return (
     <>
-      <img src={src} />
+      <div className="nade-comment-avatar">
+        <UserAvatar hideNickname user={user} size={36} />
+      </div>
       <style jsx>{`
-        img {
+        .nade-comment-avatar {
           grid-area: avatar;
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
           margin-right: 12px;
           margin-top: 8px;
         }

@@ -9,7 +9,7 @@ import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";
 import { FaEdit } from "react-icons/fa";
 import Link from "next/link";
 import { RenderMarkdown } from "../../nade/components/RenderMarkdown";
-import Image from "next/image";
+import { UserAvatar } from "../../shared-components/UserAvatar";
 
 type Props = {
   user: User;
@@ -19,25 +19,20 @@ export const UserPanel: FC<Props> = ({ user }) => {
   const { colors } = useTheme();
   const allowEdit = useIsAllowedUserEdit(user);
 
-  const { role, bio, nickname, avatar, steamId, createdAt, lastActive } = user;
+  const { role, bio, nickname, steamId, createdAt, lastActive } = user;
 
   return (
     <>
       <div className="user-details">
         <h1 className="avatar">
           <div className="avatar-img">
-            <Image
-              unoptimized
-              src={avatar}
-              alt={`avatar for ${nickname}`}
-              width={30}
-              height={30}
-            />
+            <UserAvatar user={user} hideNickname size={40} disableLink />
           </div>
           <a
             href={`https://steamcommunity.com/profiles/${steamId}`}
             rel="noopener noreferrer nofollow"
             target="_blank"
+            className="user-nickname"
           >
             {nickname}
           </a>
@@ -81,12 +76,7 @@ export const UserPanel: FC<Props> = ({ user }) => {
       </div>
       <style jsx>{`
         .avatar-img {
-          border: 1px solid ${colors.BORDER};
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          overflow: hidden;
-          margin-right: 4px;
+          margin-right: 6px;
         }
 
         .user-details {
@@ -109,11 +99,11 @@ export const UserPanel: FC<Props> = ({ user }) => {
           border: 1px solid ${colors.BORDER};
           align-self: flex-start;
           border-radius: ${Dimensions.BORDER_RADIUS};
-          margin-bottom: ${Dimensions.GUTTER_SIZE};
         }
 
         .avatar {
           grid-area: avatar;
+          margin: 0;
         }
 
         .user-role {
@@ -122,6 +112,8 @@ export const UserPanel: FC<Props> = ({ user }) => {
 
         .member-since {
           grid-area: member;
+          border-top: 1px solid ${colors.BORDER};
+          padding-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .action {
@@ -130,6 +122,8 @@ export const UserPanel: FC<Props> = ({ user }) => {
 
         .active-since {
           grid-area: active;
+          border-top: 1px solid ${colors.BORDER};
+          padding-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .user-details a {
@@ -151,9 +145,10 @@ export const UserPanel: FC<Props> = ({ user }) => {
 
         .bio {
           grid-area: bio;
-          margin-bottom: 12px;
           overflow-wrap: break-word;
           word-wrap: break-word;
+          border-top: 1px solid ${colors.BORDER};
+          padding-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .user-role,
@@ -170,6 +165,10 @@ export const UserPanel: FC<Props> = ({ user }) => {
           font-size: 0.8em;
           padding: 1px 4px;
           border-radius: ${Dimensions.BORDER_RADIUS};
+        }
+
+        .user-nickname {
+          font-weight: 400;
         }
       `}</style>
     </>
