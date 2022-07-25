@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { NadeShareActions } from "../../nade/components/NadeShareActions";
 import { BlogPost } from "../models/BlogPost";
 import { Dimensions } from "../../constants/Constants";
 import { AdUnit } from "../../shared-components/adunits/AdUnit";
@@ -9,20 +8,11 @@ type Props = {
   data: BlogPost;
 };
 
-export const BlogDefaultSidebar: FC<Props> = ({ data }) => {
+export const BlogDefaultSidebar: FC<Props> = () => {
   const { isMobile } = useIsDeviceSize();
 
   return (
     <>
-      <div id="blog-share">
-        <NadeShareActions
-          url={`/blog/${data.slug}`}
-          title={data.title}
-          image={data.thumbnailUrl}
-          visisble={true}
-        />
-      </div>
-
       {!isMobile && (
         <div id="blog-sidebar-wrap">
           <AdUnit name="blogSidebar" />

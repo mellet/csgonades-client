@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Dimensions } from "../constants/Constants";
+import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
 import { useTheme } from "../core/settings/SettingsHooks";
 
 type Props = {
@@ -52,11 +52,14 @@ export const NavigationLayout: FC<Props> = ({
           border-top: 0;
         }
 
-        @media only screen and (max-width: 1200px) {
+        @media only screen and (max-width: ${LayoutBreakpoint.TABLET}px) {
           nav {
             height: calc(100vh - ${Dimensions.HEADER_HEIGHT}px);
             background: ${colors.DP03};
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid ${colors.BORDER};
           }
 
           .main,
