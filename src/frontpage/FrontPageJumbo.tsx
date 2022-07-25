@@ -4,7 +4,7 @@ import { SiteStats } from "../core/api/StatsApi";
 import { kFormatter } from "../utils/Common";
 import { NadeIcon } from "../shared-components/nade-icons";
 import { FaUserFriends } from "react-icons/fa";
-import Link from "next/link";
+import { FrontPageMapSelector } from "./FrontPageMapSelector";
 
 type Props = {
   stats: SiteStats | null;
@@ -30,35 +30,37 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
         {stats && (
           <div className="stats">
             <div className="stat-item">
-              <Link href="maps/mirage?type=smoke">
-                <a className="stat-label">
-                  <NadeIcon nadeType="smoke" />
-                </a>
-              </Link>
+              <FrontPageMapSelector nadeType="smoke">
+                <span className="stat-label">
+                  <NadeIcon nadeType="smoke" size={30} />
+                </span>
+              </FrontPageMapSelector>
+
               <span className="stat-count">{stats.numSmokes}</span>
             </div>
             <div className="stat-item">
-              <Link href="maps/mirage?type=flash">
-                <a className="stat-label">
+              <FrontPageMapSelector nadeType="flash">
+                <span className="stat-label">
                   <NadeIcon nadeType="flash" />
-                </a>
-              </Link>
+                </span>
+              </FrontPageMapSelector>
+
               <span className="stat-count">{stats.numFlashes}</span>
             </div>
             <div className="stat-item">
-              <Link href="maps/mirage?type=molotov">
-                <a className="stat-label">
+              <FrontPageMapSelector nadeType="molotov">
+                <span className="stat-label">
                   <NadeIcon nadeType="molotov" />
-                </a>
-              </Link>
+                </span>
+              </FrontPageMapSelector>
               <span className="stat-count">{stats.numMolotovs}</span>
             </div>
             <div className="stat-item">
-              <Link href="maps/mirage?type=hegrenade">
-                <a className="stat-label">
+              <FrontPageMapSelector nadeType="hegrenade">
+                <span className="stat-label">
                   <NadeIcon nadeType="hegrenade" />
-                </a>
-              </Link>
+                </span>
+              </FrontPageMapSelector>
               <span className="stat-count">{stats.numGrenades}</span>
             </div>
             <div className="stat-item">
