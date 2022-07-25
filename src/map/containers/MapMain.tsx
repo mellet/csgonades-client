@@ -28,12 +28,8 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const { isMobile } = useIsDeviceSize();
   const isOverviewView = mapView === "overview";
 
-  const {
-    onNadeClusterClick,
-    suggestedNades,
-    dismissSuggested,
-    hasSuggestedNades,
-  } = useOnNadeClusterClick(map);
+  const { onNadeClusterClick, suggestedNades, dismissSuggested } =
+    useOnNadeClusterClick(map);
 
   const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
   const displayListView = isMobile || !isOverviewView;
@@ -61,7 +57,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
         <div id="nade-nades">
           {displayListView && <MapPageNades allNades={allNades} />}
 
-          {displayMapOverview && hasSuggestedNades && (
+          {displayMapOverview && suggestedNades && (
             <MapViewSuggested
               nades={suggestedNades}
               onDismiss={dismissSuggested}

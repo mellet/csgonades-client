@@ -20,6 +20,7 @@ export const IconButtonGroup: FC<IconButtonGroupProps> = ({
           display: inline-flex;
           flex-direction: ${vertical ? "column" : "row"};
           border: 1px solid ${colors.BORDER};
+          height: ${vertical ? "auto" : "40px"};
         }
       `}</style>
     </>

@@ -5,6 +5,7 @@ import { ImStarFull } from "react-icons/im";
 import { IconButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
+import { FilterLabel } from "../nadefilter/component/FilterLabel";
 
 export const SortByBar: FC = () => {
   const { bySortingMethod, setSortingMethod } = useFilterBySortingMethod();
@@ -28,6 +29,7 @@ export const SortByBar: FC = () => {
   return (
     <>
       <div className="sort-by-bar-wrap">
+        <FilterLabel value="SORT" center={false} />
         <IconButtonGroup>
           <ButtonWithIcon
             inGroup
@@ -60,12 +62,6 @@ export const SortByBar: FC = () => {
           />
         </IconButtonGroup>
       </div>
-      <style jsx>{`
-        .sort-by-bar-wrap {
-          height: 40px;
-          margin-bottom: 1px;
-        }
-      `}</style>
     </>
   );
 };

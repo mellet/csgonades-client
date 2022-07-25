@@ -10,16 +10,21 @@ import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
 import { TeamSelector } from "../nadefilter/component/TeamSelector";
 import { TickratePicker } from "../nadefilter/component/TickratePicker";
+import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 
 type Props = {
-  nades: NadeLight[] | null;
+  nades: NadeLight[];
   onDismiss: () => void;
 };
+
+const MAX_MODAL_WIDTH = 1400;
 
 export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
   const sortedNades = useSortedNades(nades);
   const ga = useGa();
+  const numNades = nades.length;
+  const showAdUnit = numNades <= 8;
 
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -62,6 +67,10 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   return (
     <>
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
+        <div className="close-btn" onClick={onDismissCloseClick}>
+          <FaTimes />
+        </div>
+
         <div className="title">
           <div className="title-content">
             <div className="filter-wrap" onClick={stopPropagation}>
@@ -75,27 +84,29 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
                 </div>
               </div>
             </div>
-
-            <div className="close-btn" onClick={onDismissCloseClick}>
-              <FaTimes />
-            </div>
           </div>
         </div>
 
-        <div className="mapview-wrapper">
+        <div className="nade-list">
           {sortedNades && (
             <>
-              <div className="nade-list-wrap">
-                <CsgnList<NadeLight>
-                  data={sortedNades}
-                  renderItem={renderItem}
-                  keyExtractor={keyExtractor}
-                  enableAds={false}
-                />
-              </div>
+              <CsgnList<NadeLight>
+                data={sortedNades}
+                renderItem={renderItem}
+                keyExtractor={keyExtractor}
+                enableAds={false}
+              />
             </>
           )}
         </div>
+
+        {showAdUnit && (
+          <div className="ad-wrap">
+            <div className="ad-unit">
+              <AdUnit name="fixed728x90" />
+            </div>
+          </div>
+        )}
       </div>
       <style jsx>{`
         .filter-wrap {
@@ -120,55 +131,55 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           left: 0;
           z-index: 800;
           display: flex;
-          justify-content: space-around;
-          background: ${colors.DP03_transparent};
+          align-items: center;
+          flex-direction: column;
+          background: rgba(0, 0, 0, 0.7);
           overflow-y: auto;
-        }
-
-        .mapview-wrapper {
-          max-width: 1210px;
-          flex: 1;
-        }
-
-        .nade-list-wrap {
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          padding-top: ${Dimensions.HEADER_HEIGHT +
-          Dimensions.GUTTER_SIZE * 2}px;
-          padding-bottom: ${Dimensions.HEADER_HEIGHT +
-          Dimensions.GUTTER_SIZE}px;
+          padding-right: ${Dimensions.GUTTER_SIZE * 4}px;
+          padding-left: ${Dimensions.GUTTER_SIZE * 4}px;
         }
 
         .title {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          border-bottom: 2px solid ${colors.BORDER};
-          background: ${colors.DP03};
+          margin-top: ${Dimensions.GUTTER_SIZE * 2}px;
+          width: 100%;
+          max-width: ${MAX_MODAL_WIDTH}px;
           z-index: 801;
         }
 
         .title-content {
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-template-areas: "msg . close";
-          align-items: center;
-          max-width: ${Dimensions.SITE_WIDTH}px;
           padding: ${Dimensions.GUTTER_SIZE / 2}px ${Dimensions.GUTTER_SIZE}px;
+          background: ${colors.DP03};
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          border: 1px solid ${colors.BORDER};
+        }
+
+        .nade-list {
+          max-width: ${MAX_MODAL_WIDTH}px;
+          width: 100%;
+          background: ${colors.DP00};
+          padding: ${Dimensions.GUTTER_SIZE}px;
+          border: 1px solid ${colors.BORDER};
+          border-top: none;
+          margin-bottom: ${Dimensions.GUTTER_SIZE * 2}px;
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
         }
 
         .close-btn {
+          position: fixed;
+          top: ${Dimensions.GUTTER_SIZE}px;
+          right: ${Dimensions.GUTTER_SIZE}px;
           grid-area: close;
-          font-size: 24px;
+          font-size: 20px;
           justify-self: end;
-          color: rgba(255, 255, 255, 1);
+          color: rgba(0, 0, 0, 0.8);
           cursor: pointer;
           transition: color, background 0.3s;
-          background: rgba(196, 12, 12, 0.7);
+          background: rgba(230, 230, 230, 0.95);
           border-radius: 50%;
-          width: 36px;
-          height: 36px;
+          width: 30px;
+          height: 30px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -177,6 +188,20 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         .close-btn:hover {
           color: rgba(255, 255, 255, 1);
           background: rgba(196, 12, 12, 1);
+        }
+
+        .ad-wrap {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: space-around;
+        }
+
+        .ad-unit {
+          width: 728px;
+          height: 90px;
         }
 
         @keyframes fadeId {
