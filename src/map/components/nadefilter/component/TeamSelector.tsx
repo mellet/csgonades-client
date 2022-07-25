@@ -2,7 +2,7 @@ import { FC, useCallback, useMemo } from "react";
 import { FilterLabel } from "./FilterLabel";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
 import { useFilterByTeam } from "../../../logic/useFilterByTeam";
-import { OptionCarusel } from "./OptionCarusel";
+import { TeamCarusel } from "./TeamCarusel";
 
 type Props = {
   vertical?: boolean;
@@ -38,12 +38,7 @@ export const TeamSelector: FC<Props> = ({ vertical }) => {
         <FilterLabel value="TEAM" center={vertical} />
         <SquareButton
           onClick={onChange}
-          icon={
-            <OptionCarusel
-              values={["Any", "T", "CT"]}
-              selectedIndex={selectedIndex}
-            />
-          }
+          icon={<TeamCarusel selectedIndex={selectedIndex} />}
         />
       </div>
     </>

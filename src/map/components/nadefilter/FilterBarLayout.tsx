@@ -58,8 +58,8 @@ const FilterBarLayoutWrapper: FC = ({ children }) => {
           grid-template-areas:
             "fav"
             "type"
-            "tick"
             "team"
+            "tick"
             "pro"
             "view"
             "reset";
