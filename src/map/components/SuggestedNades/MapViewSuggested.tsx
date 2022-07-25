@@ -67,37 +67,41 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   return (
     <>
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
-        <div className="close-btn" onClick={onDismissCloseClick}>
-          <FaTimes />
-        </div>
-
-        <div className="title">
-          <div className="title-content">
-            <div className="filter-wrap" onClick={stopPropagation}>
-              <SortByBar />
-              <div className="filters" onClick={stopPropagation}>
-                <div className="filter-btn">
-                  <TeamSelector />
-                </div>
-                <div className="filter-btn">
-                  <TickratePicker />
+        <div className="suggested-main">
+          <div className="filter-wrapper">
+            <div className="title-content">
+              <div className="filter-wrap" onClick={stopPropagation}>
+                <SortByBar />
+                <div className="filters" onClick={stopPropagation}>
+                  <div className="filter-btn">
+                    <TeamSelector />
+                  </div>
+                  <div className="filter-btn">
+                    <TickratePicker />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="nade-list">
-          {sortedNades && (
-            <>
-              <CsgnList<NadeLight>
-                data={sortedNades}
-                renderItem={renderItem}
-                keyExtractor={keyExtractor}
-                enableAds={false}
-              />
-            </>
-          )}
+          <div className="nade-list">
+            {sortedNades && (
+              <>
+                <CsgnList<NadeLight>
+                  data={sortedNades}
+                  renderItem={renderItem}
+                  keyExtractor={keyExtractor}
+                  enableAds={false}
+                />
+              </>
+            )}
+          </div>
+
+          <div id="close-wrap">
+            <div className="close-btn" onClick={onDismissCloseClick}>
+              <FaTimes />
+            </div>
+          </div>
         </div>
 
         {showAdUnit && (
@@ -109,9 +113,35 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         )}
       </div>
       <style jsx>{`
+        .suggested-main {
+          display: grid;
+          grid-template-columns: 60px 1fr 60px;
+          grid-template-areas:
+            ". filter side"
+            ". main side"
+            ". main side";
+          width: 100%;
+          max-width: ${MAX_MODAL_WIDTH}px;
+          padding: ${Dimensions.GUTTER_SIZE * 2}px;
+        }
+
+        .filter-wrapper {
+          grid-area: filter;
+          width: 100%;
+        }
+
+        #close-wrap {
+          grid-area: side;
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .nade-list {
+          grid-area: main;
+        }
+
         .filter-wrap {
           display: flex;
-          align-items: flex-end;
         }
 
         .filters {
@@ -135,15 +165,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           flex-direction: column;
           background: rgba(0, 0, 0, 0.7);
           overflow-y: auto;
-          padding-right: ${Dimensions.GUTTER_SIZE * 4}px;
-          padding-left: ${Dimensions.GUTTER_SIZE * 4}px;
-        }
-
-        .title {
-          margin-top: ${Dimensions.GUTTER_SIZE * 2}px;
-          width: 100%;
-          max-width: ${MAX_MODAL_WIDTH}px;
-          z-index: 801;
         }
 
         .title-content {
@@ -167,12 +188,9 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         }
 
         .close-btn {
-          position: fixed;
-          top: ${Dimensions.GUTTER_SIZE}px;
-          right: ${Dimensions.GUTTER_SIZE}px;
-          grid-area: close;
+          position: sticky;
+          top: ${Dimensions.GUTTER_SIZE * 2}px;
           font-size: 20px;
-          justify-self: end;
           color: rgba(0, 0, 0, 0.8);
           cursor: pointer;
           transition: color, background 0.3s;
@@ -197,6 +215,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           right: 0;
           display: flex;
           justify-content: space-around;
+          z-index: 801;
         }
 
         .ad-unit {
