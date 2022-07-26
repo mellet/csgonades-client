@@ -17,7 +17,7 @@ export const NadeDescription: FC<Props> = ({ nade }) => {
 
   return (
     <>
-      <div className="nade-info">
+      <div className="nade-info" id="description">
         <h3>Description</h3>
         <div className="nade-desc-meta">
           <NadeDescriptionDisplay value={nade.description} />

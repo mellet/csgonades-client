@@ -8,6 +8,7 @@ import dynamic from "next/dynamic";
 import { Spacer } from "../../shared-components/Spacer";
 import { UserAvatar } from "../../shared-components/UserAvatar";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
+import { NadeInfoButton } from "../components/NadeInfoButton";
 
 const NadeCopyPosition = dynamic(
   () =>
@@ -27,6 +28,7 @@ export const NadeActions: FC<Props> = ({ nade }) => {
       <Spacer vertical={!isTablet}>
         <UserAvatar hideNickname user={nade.user} size={40} />
         <FavoriteButton nadeId={nade.id} favoriteCount={nade.favoriteCount} />
+        <NadeInfoButton />
         <NadeCommentButton
           slug={nade.slug || nade.id}
           commentCount={nade.commentCount}
