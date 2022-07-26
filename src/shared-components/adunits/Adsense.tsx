@@ -12,7 +12,8 @@ export type AdUnitName =
   | "blogHorizontalThird"
   | "frontPageMobile"
   | "suggestedNadesHorizontal"
-  | "nadeComment";
+  | "nadeComment"
+  | "nadeModal";
 
 type AdsenseConfig = {
   style: CSSProperties;
@@ -136,6 +137,11 @@ export function adNameToConfig(adName: AdUnitName): AdsenseConfig {
       return {
         ...sharedResponsiveConfig,
         adSlot: "2808057820",
+      };
+    case "nadeModal":
+      return {
+        ...sharedResponsiveConfig,
+        adSlot: "1120073926",
       };
     default:
       return assertNever(adName);

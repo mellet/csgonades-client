@@ -24,7 +24,7 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
   const sortedNades = useSortedNades(nades);
   const ga = useGa();
   const numNades = nades.length;
-  const showAdUnit = numNades <= 8;
+  const showAdUnit = numNades <= 12;
 
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -95,6 +95,11 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
                 />
               </>
             )}
+            {showAdUnit && (
+              <div className="ad-wrap">
+                <AdUnit name="nadeModal" />
+              </div>
+            )}
           </div>
 
           <div id="close-wrap">
@@ -103,14 +108,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
             </div>
           </div>
         </div>
-
-        {showAdUnit && (
-          <div className="ad-wrap">
-            <div className="ad-unit">
-              <AdUnit name="fixed728x90" />
-            </div>
-          </div>
-        )}
       </div>
       <style jsx>{`
         .suggested-main {
@@ -211,18 +208,10 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         }
 
         .ad-wrap {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
           display: flex;
           justify-content: space-around;
-          z-index: 801;
-        }
-
-        .ad-unit {
-          width: 728px;
-          height: 90px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          width: 100%;
         }
 
         @keyframes fadeId {
