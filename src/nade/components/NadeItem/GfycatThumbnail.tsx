@@ -121,6 +121,7 @@ export const GfycatThumbnail: FC<Props> = ({
           position: absolute;
           right: 0;
           top: 0;
+          pointer-events: none;
         }
 
         .video-icon-wrapper {
@@ -154,6 +155,7 @@ export const GfycatThumbnail: FC<Props> = ({
           position: absolute;
           right: 0;
           top: 0;
+          pointer-events: none;
         }
 
         .visible {
