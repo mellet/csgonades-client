@@ -126,7 +126,6 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           max-width: ${MAX_MODAL_WIDTH}px;
           padding: ${Dimensions.GUTTER_SIZE}px;
           padding-top: ${Dimensions.GUTTER_SIZE * 2}px;
-          height: 100%;
         }
 
         .filter-wrapper {
