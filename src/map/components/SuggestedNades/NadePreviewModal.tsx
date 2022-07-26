@@ -105,7 +105,9 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
 
           {showAdUnit && (
             <div className="ad-wrap">
-              <AdUnit name="nadeModal" />
+              <div className="ad">
+                <AdUnit name="nadeModal" />
+              </div>
             </div>
           )}
         </div>
@@ -143,7 +145,13 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
 
         .ad-wrap {
           grid-area: footer;
-          width: 100%;
+          display: flex;
+          justify-content: space-around;
+        }
+
+        .ad {
+          width: 60vw;
+          height: 100px;
         }
 
         .filter-wrap {
