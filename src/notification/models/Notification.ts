@@ -62,6 +62,7 @@ export type NewNadeNotification = {
 export type NewCommentNotification = {
   byNickname: string;
   bySteamId: string;
+  nadeOwner?: string;
   createdAt: Date;
   id: string;
   nadeId: string;
