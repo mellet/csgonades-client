@@ -143,8 +143,6 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
 
         .ad-wrap {
           grid-area: footer;
-          display: flex;
-          justify-content: space-around;
           width: 100%;
         }
 
