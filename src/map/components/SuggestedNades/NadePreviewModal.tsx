@@ -116,16 +116,18 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
         .suggested-main {
           display: grid;
           grid-template-columns: 30px 1fr 30px;
+          grid-template-rows: min-content 1fr 1fr min-content;
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-template-areas:
             ". filter side"
             ". main side"
-            ". main side"
+            ". . side"
             ". footer .";
           width: 100%;
           max-width: ${MAX_MODAL_WIDTH}px;
           padding: ${Dimensions.GUTTER_SIZE}px;
           padding-top: ${Dimensions.GUTTER_SIZE * 2}px;
+          height: 100%;
         }
 
         .filter-wrapper {
@@ -152,6 +154,7 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
         .ad {
           width: 60vw;
           height: 100px;
+          max-height: 100px !important;
         }
 
         .filter-wrap {
