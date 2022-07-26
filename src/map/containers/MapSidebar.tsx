@@ -16,13 +16,13 @@ export const MapSidebar: FC<Props> = ({ map, nades }) => {
   return (
     <>
       <Spacer vertical>
-        <div className="ad">
-          <AdUnit name="mapSidebarSquare" />
-        </div>
         <SideJumbo nades={nades} map={map} />
         <div className="ctas">
           <DiscordJoinAction />
           {false && <BuyMeABeerAction />}
+        </div>
+        <div className="ad">
+          <AdUnit name="mapSidebarSquare" />
         </div>
       </Spacer>
 
