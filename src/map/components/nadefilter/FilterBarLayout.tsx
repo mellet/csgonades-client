@@ -17,7 +17,6 @@ export const FilterBarLayout: FC<Props> = ({
   resetFilter,
   tickFiler,
   typeFilter,
-  viewFilter,
   teamFilter,
 }) => {
   return (
@@ -37,9 +36,6 @@ export const FilterBarLayout: FC<Props> = ({
         </div>
         <div style={{ gridArea: "pro", marginBottom: Dimensions.GUTTER_SIZE }}>
           {proFilter}
-        </div>
-        <div style={{ gridArea: "view", marginBottom: Dimensions.GUTTER_SIZE }}>
-          {viewFilter}
         </div>
         <div style={{ gridArea: "reset" }}>{resetFilter}</div>
       </FilterBarLayoutWrapper>
