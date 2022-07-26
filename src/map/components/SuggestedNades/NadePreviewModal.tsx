@@ -19,7 +19,7 @@ type Props = {
 
 const MAX_MODAL_WIDTH = 1540;
 
-export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
+export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
   const sortedNades = useSortedNades(nades);
   const ga = useGa();
@@ -95,11 +95,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
                 />
               </>
             )}
-            {showAdUnit && (
-              <div className="ad-wrap">
-                <AdUnit name="nadeModal" />
-              </div>
-            )}
           </div>
 
           <div id="close-wrap">
@@ -107,6 +102,12 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
               <FaTimes />
             </div>
           </div>
+
+          {showAdUnit && (
+            <div className="ad-wrap">
+              <AdUnit name="nadeModal" />
+            </div>
+          )}
         </div>
       </div>
       <style jsx>{`
@@ -117,7 +118,8 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
           grid-template-areas:
             ". filter side"
             ". main side"
-            ". main side";
+            ". main side"
+            ". footer .";
           width: 100%;
           max-width: ${MAX_MODAL_WIDTH}px;
           padding: ${Dimensions.GUTTER_SIZE}px;
@@ -137,6 +139,13 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
 
         .nade-list {
           grid-area: main;
+        }
+
+        .ad-wrap {
+          grid-area: footer;
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
         }
 
         .filter-wrap {
@@ -205,13 +214,6 @@ export const MapViewSuggested: FC<Props> = ({ nades, onDismiss }) => {
         .close-btn:hover {
           color: rgba(255, 255, 255, 1);
           background: rgba(196, 12, 12, 1);
-        }
-
-        .ad-wrap {
-          display: flex;
-          justify-content: space-around;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-          width: 100%;
         }
 
         @keyframes fadeId {

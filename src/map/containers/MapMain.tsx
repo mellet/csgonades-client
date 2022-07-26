@@ -6,7 +6,7 @@ import { capitalize } from "../../utils/Common";
 import { MapPageNades } from "../components/MapPageNades";
 import MapViewScreen from "../components/MapViewScreen";
 import FilterBar from "../components/nadefilter/FilterBar";
-import { MapViewSuggested } from "../components/SuggestedNades/MapViewSuggested";
+import { NadePreviewModal } from "../components/SuggestedNades/NadePreviewModal";
 import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../logic/useSetMapView";
 import { CsgoMap } from "../models/CsGoMap";
@@ -58,7 +58,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
           {displayListView && <MapPageNades allNades={allNades} />}
 
           {displayMapOverview && suggestedNades && (
-            <MapViewSuggested
+            <NadePreviewModal
               nades={suggestedNades}
               onDismiss={dismissSuggested}
             />
