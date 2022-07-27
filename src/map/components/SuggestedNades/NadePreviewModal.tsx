@@ -106,7 +106,7 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           {showAdUnit && (
             <div className="ad-wrap">
               <div className="ad">
-                <AdUnit name="nadeModal" />
+                <AdUnit name="nadeModalFixed" />
               </div>
             </div>
           )}
@@ -126,6 +126,7 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           max-width: ${MAX_MODAL_WIDTH}px;
           padding: ${Dimensions.GUTTER_SIZE}px;
           padding-top: ${Dimensions.GUTTER_SIZE * 2}px;
+          padding-bottom: 0;
         }
 
         .filter-wrapper {
@@ -150,8 +151,8 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
         }
 
         .ad {
-          width: 60vw;
-          height: 100px;
+          width: 728px;
+          height: 90px;
         }
 
         .filter-wrap {

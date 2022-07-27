@@ -13,7 +13,8 @@ export type AdUnitName =
   | "frontPageMobile"
   | "suggestedNadesHorizontal"
   | "nadeComment"
-  | "nadeModal";
+  | "nadeModal"
+  | "nadeModalFixed";
 
 type AdsenseConfig = {
   style: CSSProperties;
@@ -142,6 +143,15 @@ export function adNameToConfig(adName: AdUnitName): AdsenseConfig {
       return {
         ...sharedResponsiveConfig,
         adSlot: "1120073926",
+      };
+    case "nadeModalFixed":
+      return {
+        adSlot: "1001257068",
+        style: {
+          display: "inline-block",
+          width: 728,
+          height: 90,
+        },
       };
     default:
       return assertNever(adName);
