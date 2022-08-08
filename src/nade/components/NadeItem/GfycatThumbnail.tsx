@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { ThumbImage } from "./Views/ThumbImage";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
+import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 const MiniGfycatIframe = dynamic(
   () =>
@@ -36,6 +37,7 @@ export const GfycatThumbnail: FC<Props> = ({
   const [isReadyForHover, setIsReadyForHover] = useState(false);
   const [hasHovered, setHasHovered] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const { isMobile } = useIsDeviceSize();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -60,6 +62,9 @@ export const GfycatThumbnail: FC<Props> = ({
   }, [ga, hovering, nadeId, nadeSlug]);
 
   function onMouseEnter() {
+    if (isMobile) {
+      return;
+    }
     if (isReadyForHover) {
       setHovering(true);
     }

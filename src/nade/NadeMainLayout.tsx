@@ -132,6 +132,11 @@ export const NadeMainLayout: FC<Props> = ({
             padding: 0px ${Dimensions.GUTTER_SIZE}px;
             justify-content: center;
           }
+
+          .video {
+            margin-left: -${Dimensions.GUTTER_SIZE}px;
+            margin-right: -${Dimensions.GUTTER_SIZE}px;
+          }
         }
       `}</style>
     </>

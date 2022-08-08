@@ -3,8 +3,6 @@ import { NadeLight } from "../../nade/models/Nade";
 import { User } from "../models/User";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { CsgnList } from "../../shared-components/list/CsgnList";
-import { NadeItemMobile } from "../../nade/components/NadeItem/NadeItemMobile";
-import { isMobileOnly } from "react-device-detect";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { CsgoMap, mapString } from "../../map/models/CsGoMap";
 import { MapNadeSelector } from "../../shared-components/map-nade-selector/MapNadeSelector";
@@ -23,11 +21,7 @@ export const UserUI: FC<Props> = ({ user }) => {
   const emptyMessage = `${user.nickname} has no nades on ${mapString(csgoMap)}`;
 
   function renderItem(item: NadeLight) {
-    if (isMobileOnly) {
-      return <NadeItemMobile nade={item} />;
-    } else {
-      return <NadeItem nade={item} />;
-    }
+    return <NadeItem nade={item} />;
   }
 
   function keyExtractor(item: NadeLight) {

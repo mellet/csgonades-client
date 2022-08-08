@@ -113,7 +113,7 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           .tab-selector {
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             height: 36px;
             border-top-right-radius: 0;
             border-top-left-radius: 0;

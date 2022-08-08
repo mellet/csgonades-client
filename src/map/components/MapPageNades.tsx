@@ -4,17 +4,9 @@ import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { useFilterServerSideNades } from "../logic/useFilteredNades";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import dynamic from "next/dynamic";
 import { SortByBar } from "./SuggestedNades/SortByBar";
 import useSortedNades from "./SuggestedNades/useSortedNades";
-import { useMediaQuery } from "react-responsive";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
-
-const NadeItemMobile = dynamic(() =>
-  import(
-    /* webpackChunkName: "nadeitemmobile" */ "../../nade/components/NadeItem/NadeItemMobile"
-  ).then((mod) => mod.NadeItemMobile)
-);
 
 type Props = {
   allNades: NadeLight[];
@@ -24,14 +16,9 @@ export const MapPageNades: FC<Props> = memo(({ allNades }) => {
   const { colors } = useTheme();
   const nades = useFilterServerSideNades(allNades);
   const sortedNades = useSortedNades(nades);
-  const isMobile = useMediaQuery({ maxWidth: 600 });
 
   function renderItem(item: NadeLight) {
-    if (isMobile) {
-      return <NadeItemMobile nade={item} />;
-    } else {
-      return <NadeItem nade={item} />;
-    }
+    return <NadeItem nade={item} />;
   }
 
   function keyExtractor(item: NadeLight) {
