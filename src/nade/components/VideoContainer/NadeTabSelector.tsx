@@ -50,8 +50,8 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
       <style jsx>{`
         .tab-selector {
           position: absolute;
-          top: ${Dimensions.GUTTER_SIZE}px;
-          right: ${Dimensions.GUTTER_SIZE}px;
+          top: 0;
+          left: calc(50% - 60px);
           z-index: 1;
           display: flex;
           border-radius: ${Dimensions.BORDER_RADIUS};
@@ -59,8 +59,10 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           transition: all 0.2s;
           overflow: hidden;
           width: 120px;
-          height: 40px;
+          height: 32px;
           border: 1px solid rgba(255, 255, 255, 0.9);
+          border-top-right-radius: 0;
+          border-top-left-radius: 0;
         }
 
         .selected-bg {
@@ -115,8 +117,7 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
             top: 0;
             left: calc(50% - 55px);
             height: 30px;
-            border-top-right-radius: 0;
-            border-top-left-radius: 0;
+
             width: 110px;
           }
 

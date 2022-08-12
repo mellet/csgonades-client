@@ -179,7 +179,7 @@ export function generateSeoTitle(
 
     return `${capitalize(map)} ${endPosition} ${nadeTypeString(
       nadeType
-    )} from ${starPosition} `;
+    )} from ${starPosition}`;
   } else {
     return "No Title";
   }

@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { SEO } from "../shared-components/SEO";
 import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContainer";
 import { NadeComments } from "./components/comments/NadeComments";
-import { ArticleJsonLd } from "next-seo";
+import { VideoJsonLd } from "next-seo";
 import { descriptionSimplify, generateSeoTitle } from "../utils/Common";
 import { Nade } from "./models/Nade";
 import NadeStatus from "./components/NadeStatus/NadeStatus";
@@ -28,17 +28,16 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
 
   return (
     <>
-      <ArticleJsonLd
+      <VideoJsonLd
         key={`ld-${nade.id}`}
-        url={`https://www.csgonades.com/nades/${nade.slug || nade.id}`}
-        title={seoTitle}
-        authorName={addslashes(nade.user.nickname)}
-        datePublished={createdAtString}
-        dateModified={nade.updatedAt}
-        images={[nade.imageMain?.url]}
+        name={seoTitle}
         description={descriptionSimplify(nade?.description)}
-        publisherName={"CSGO Nades"}
-        publisherLogo={"https://www.csgonades.com/logo.png"}
+        thumbnailUrls={[nade.imageMain?.url]}
+        uploadDate={createdAtString}
+        contentUrl={nade.gfycat.smallVideoUrl}
+        duration={nade.gfycat.duration}
+        watchCount={nade.viewCount}
+        embedUrl={`https://gfycat.com/ifr/${nade.gfycat.gfyId}`}
       />
 
       <SEO
@@ -69,7 +68,3 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
     </>
   );
 });
-
-function addslashes(str: string) {
-  return (str + "").replace(/[\\"']/g, "\\$&").replace(/\u0000/g, "\\0");
-}
