@@ -2,7 +2,7 @@ const CsGoMaps = {
   ancient: "Ancient",
   anubis: "Anubis",
   cache: "Cache",
-  cobblestone: "Cobblestone",
+  // cobblestone: "Cobblestone",
   dust2: "Dust2",
   inferno: "Inferno",
   mirage: "Mirage",
