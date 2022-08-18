@@ -62,13 +62,6 @@ export const MapNav: FC = () => {
               <NavItem csMap="cache" selected={selectedMap === "cache"} />
             </MapPageLink>
           </li>
-          {false && (
-            <li>
-              <MapPageLink map="anubis">
-                <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
-              </MapPageLink>
-            </li>
-          )}
         </ul>
       </div>
       <style jsx>{`

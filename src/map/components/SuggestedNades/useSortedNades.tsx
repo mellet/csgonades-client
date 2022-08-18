@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
+import { isNewNade } from "../../../utils/Common";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
 import { useFilterServerSideNades } from "../../logic/useFilteredNades";
 
-export default function useSortedNades(unsortedNades: NadeLight[] | null) {
+export default function useSortedNades(unsortedNades: NadeLight[]) {
   const { bySortingMethod } = useFilterBySortingMethod();
 
   const theNades = useFilterServerSideNades(unsortedNades || []);
@@ -45,20 +46,23 @@ export default function useSortedNades(unsortedNades: NadeLight[] | null) {
   }, [theNades]);
 
   const sortedNades = useMemo(() => {
-    if (artificialBoost) {
-      if (bySortingMethod === "createdAt") {
-        return [...artificialBoost].sort(
-          (a, b) =>
-            new Date(b[bySortingMethod]).valueOf() -
-            new Date(a[bySortingMethod]).valueOf()
-        );
-      }
+    if (bySortingMethod === "createdAt") {
       return [...artificialBoost].sort(
-        (a, b) => b[bySortingMethod] - a[bySortingMethod]
+        (a, b) =>
+          new Date(b[bySortingMethod]).valueOf() -
+          new Date(a[bySortingMethod]).valueOf()
       );
     }
-    return null;
+    return [...artificialBoost].sort(
+      (a, b) => b[bySortingMethod] - a[bySortingMethod]
+    );
   }, [artificialBoost, bySortingMethod]);
+
+  const topNonNew = sortedNades.filter((n) => !isNewNade(n.createdAt))[0];
+
+  if (topNonNew) {
+    return [topNonNew, ...sortedNades.filter((n) => n.id !== topNonNew.id)];
+  }
 
   return sortedNades;
 }
