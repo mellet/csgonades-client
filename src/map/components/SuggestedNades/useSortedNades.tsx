@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
-import { isNewNade } from "../../../utils/Common";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
 import { useFilterServerSideNades } from "../../logic/useFilteredNades";
 
@@ -57,12 +56,6 @@ export default function useSortedNades(unsortedNades: NadeLight[]) {
       (a, b) => b[bySortingMethod] - a[bySortingMethod]
     );
   }, [artificialBoost, bySortingMethod]);
-
-  const topNonNew = sortedNades.filter((n) => !isNewNade(n.createdAt))[0];
-
-  if (topNonNew) {
-    return [topNonNew, ...sortedNades.filter((n) => n.id !== topNonNew.id)];
-  }
 
   return sortedNades;
 }
