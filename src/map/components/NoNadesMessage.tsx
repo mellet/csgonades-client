@@ -16,13 +16,11 @@ export const NoNadesMessage: FC = memo(() => {
       <div className="no-nades-msg">
         <h3>No nades found</h3>
         <p>
-          Maybe you know one?
-          <br />
-          Click the button + in the corner.
+          No nades found. Either none excist or try too{" "}
+          <button className="reset" onClick={onReset}>
+            reset filter
+          </button>
         </p>
-        <button className="reset" onClick={onReset}>
-          Reset Filter
-        </button>
       </div>
       <style jsx>{`
         .no-nades-msg {
@@ -33,6 +31,9 @@ export const NoNadesMessage: FC = memo(() => {
           border: 1px solid ${colors.BORDER};
           display: flex;
           flex-direction: column;
+          padding: 0px ${Dimensions.GUTTER_SIZE}px ${Dimensions.GUTTER_SIZE}px
+            ${Dimensions.GUTTER_SIZE}px;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
 
         h3 {
@@ -40,29 +41,33 @@ export const NoNadesMessage: FC = memo(() => {
           padding: 10px ${Dimensions.GUTTER_SIZE}px;
           border-bottom: 1px solid ${colors.BORDER};
           margin: 0;
-          font-size: 20px;
+          font-size: 18px;
           text-align: center;
+          margin-left: -${Dimensions.GUTTER_SIZE}px;
+          margin-right: -${Dimensions.GUTTER_SIZE}px;
         }
 
         p {
-          padding: 10px ${Dimensions.GUTTER_SIZE}px;
+          padding: 0;
           margin: 0;
+          margin-top: ${Dimensions.GUTTER_SIZE}px;
           font-size: 16px;
         }
 
         .reset {
-          margin: ${Dimensions.GUTTER_SIZE}px;
           border-radius: ${Dimensions.BORDER_RADIUS};
-          background: ${colors.primaryBtnBg};
-          color: white;
-          border: none;
-          padding: 10px 16px;
+          background: transparent;
+          color: ${colors.primaryBtnBg};
+          border: 1px solid ${colors.primaryBtnBg};
+          padding: 4px;
           cursor: pointer;
           transition: background 0.2s;
+          display: inline-block;
         }
 
         .reset:hover {
           background: ${colors.primaryBtnHover};
+          color: white;
         }
       `}</style>
     </>
