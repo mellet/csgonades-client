@@ -9,8 +9,8 @@ const CsGoMaps = {
   nuke: "Nuke",
   overpass: "Overpass",
   train: "Train",
-  vertigo: "Vertigo",
   tuscan: "Tuscan",
+  vertigo: "Vertigo",
 };
 
 export type CsgoMap = keyof typeof CsGoMaps;
