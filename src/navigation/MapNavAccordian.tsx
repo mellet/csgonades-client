@@ -1,4 +1,5 @@
-import { FC, useState } from "react";
+import { useRouter } from "next/router";
+import { FC, useMemo, useState } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -6,6 +7,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
+import { CsgoMap } from "../map/models/CsGoMap";
 import { AccordianTitle } from "./AccordionTitle";
 import { ActiveDutyNav } from "./ActiveDutyNav";
 import { ReserveNav } from "./ReserveNav";
@@ -15,9 +17,18 @@ const RESERVE_ACCORDION = "reserve" as const;
 type ActiveAccordion = typeof ACTIVE_DUTY_ACCORDION | typeof RESERVE_ACCORDION;
 
 export const MapNavAccordian: FC = ({}) => {
-  const [activeAccordion, setActiveAccordion] = useState<ActiveAccordion>(
-    ACTIVE_DUTY_ACCORDION
-  );
+  const { query } = useRouter();
+  const selectedMap = query.map as CsgoMap;
+
+  const preExpanded = useMemo(() => {
+    if (selectedMap === "tuscan") {
+      return RESERVE_ACCORDION;
+    }
+    return ACTIVE_DUTY_ACCORDION;
+  }, [selectedMap]);
+
+  const [activeAccordion, setActiveAccordion] =
+    useState<ActiveAccordion>(preExpanded);
 
   function onAccordianChange(activeUui: string[]) {
     console.log("Active", activeUui);
@@ -27,7 +38,7 @@ export const MapNavAccordian: FC = ({}) => {
 
   return (
     <>
-      <Accordion preExpanded={["activeduty"]} onChange={onAccordianChange}>
+      <Accordion preExpanded={[preExpanded]} onChange={onAccordianChange}>
         <AccordionItem uuid={ACTIVE_DUTY_ACCORDION}>
           <AccordionItemHeading>
             <AccordionItemButton>
@@ -47,6 +58,7 @@ export const MapNavAccordian: FC = ({}) => {
               <AccordianTitle
                 title={"Reserve"}
                 isActive={RESERVE_ACCORDION === activeAccordion}
+                hasNew={true}
               />
             </AccordionItemButton>
           </AccordionItemHeading>

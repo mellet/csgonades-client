@@ -5,14 +5,16 @@ import { useTheme } from "../core/settings/SettingsHooks";
 type Props = {
   title: string;
   isActive?: boolean;
+  hasNew?: boolean;
 };
 
-export const AccordianTitle: FC<Props> = ({ title, isActive }) => {
+export const AccordianTitle: FC<Props> = ({ title, isActive, hasNew }) => {
   const { colors } = useTheme();
   return (
     <>
       <div className="accordion-title">
         <span className="title"> {title}</span>
+        {hasNew && <span className="new">NEW</span>}
         <span className="icon">
           {isActive ? <FaArrowDown /> : <FaArrowRight />}
         </span>
@@ -37,6 +39,13 @@ export const AccordianTitle: FC<Props> = ({ title, isActive }) => {
         .icon {
           position: relative;
           top: 2px;
+        }
+
+        .new {
+          display: block;
+          font-size: 10px;
+          color: ${colors.SUCCESS};
+          font-weight: 500;
         }
       `}</style>
     </>

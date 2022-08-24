@@ -10,9 +10,16 @@ type Props = {
   csMap: CsgoMap;
   isFirst?: boolean;
   isLast?: boolean;
+  isNew?: boolean;
 };
 
-export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
+export const NavItem: FC<Props> = ({
+  selected,
+  csMap,
+  isFirst,
+  isLast,
+  isNew,
+}) => {
   const { colors } = useTheme();
 
   return (
@@ -29,6 +36,7 @@ export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
           />
         </div>
         <span className="map-link-label">{capitalize(csMap)}</span>
+        {isNew && <span className="new">NEW</span>}
       </span>
       <style jsx>{`
         .map-link {
@@ -49,6 +57,13 @@ export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
           border-bottom-right-radius: ${isLast ? Dimensions.BORDER_RADIUS : 0};
         }
 
+        .new {
+          display: block;
+          font-size: 10px;
+          color: ${colors.SUCCESS};
+          font-weight: 500;
+        }
+
         .map-link:hover {
           background: ${colors.DP01};
         }
@@ -67,6 +82,7 @@ export const NavItem: FC<Props> = ({ selected, csMap, isFirst, isLast }) => {
           font-size: 15px;
           line-height: 15px;
           color: ${colors.TEXT};
+          flex: 1;
         }
 
         .nav-icon {
