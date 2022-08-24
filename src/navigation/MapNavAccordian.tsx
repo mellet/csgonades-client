@@ -32,7 +32,7 @@ export const MapNavAccordian: FC = ({}) => {
           <AccordionItemHeading>
             <AccordionItemButton>
               <AccordianTitle
-                title={"ActiveDuty"}
+                title={"Active Duty"}
                 isActive={ACTIVE_DUTY_ACCORDION === activeAccordion}
               />
             </AccordionItemButton>
