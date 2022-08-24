@@ -27,7 +27,10 @@ export const NadeActions: FC<Props> = ({ nade }) => {
     <>
       <Spacer vertical={!isTablet}>
         <UserAvatar hideNickname user={nade.user} size={40} />
-        <FavoriteButton nadeId={nade.id} favoriteCount={nade.favoriteCount} />
+        <FavoriteButton
+          nadeId={nade.id}
+          favoriteCount={nade.favoriteCount || 0}
+        />
         <NadeInfoButton />
         <NadeCommentButton
           slug={nade.slug || nade.id}

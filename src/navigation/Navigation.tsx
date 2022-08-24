@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { Footer } from "./NavFooter";
-import { MapNav } from "./MapNav";
 import { SecondaryNav } from "./SecondaryNav";
 import { NavigationLayout } from "./NavigationLayout";
+import { MapNavAccordian } from "./MapNavAccordian";
 
 export const Navigation: FC = ({}) => {
   return (
     <>
       <NavigationLayout
-        mainNav={<MapNav />}
+        mainNav={<MapNavAccordian />}
         secondaryNav={<SecondaryNav />}
         footer={<Footer />}
       />

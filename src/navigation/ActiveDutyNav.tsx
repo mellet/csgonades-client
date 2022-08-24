@@ -4,7 +4,7 @@ import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
 import { CsgoMap } from "../map/models/CsGoMap";
 
-export const MapNav: FC = () => {
+export const ActiveDutyNav: FC = () => {
   const { query } = useRouter();
   const selectedMap = query.map as CsgoMap;
 
@@ -50,16 +50,6 @@ export const MapNav: FC = () => {
           <li>
             <MapPageLink map="vertigo">
               <NavItem csMap="vertigo" selected={selectedMap === "vertigo"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="train">
-              <NavItem csMap="train" selected={selectedMap === "train"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="cache">
-              <NavItem csMap="cache" selected={selectedMap === "cache"} />
             </MapPageLink>
           </li>
         </ul>

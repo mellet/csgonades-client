@@ -36,6 +36,7 @@ export const NavigationLayout: FC<Props> = ({
           background: ${colors.DP03};
           border-radius: ${Dimensions.BORDER_RADIUS};
           border: 1px solid ${colors.BORDER};
+          overflow: hidden;
         }
 
         .secondary {
