@@ -21,7 +21,13 @@ export const MapNavAccordian: FC = ({}) => {
   const selectedMap = query.map as CsgoMap;
 
   const preExpanded = useMemo(() => {
-    if (selectedMap === "tuscan") {
+    if (
+      selectedMap === "tuscan" ||
+      selectedMap === "train" ||
+      selectedMap === "anubis" ||
+      selectedMap === "cache" ||
+      selectedMap === "cobblestone"
+    ) {
       return RESERVE_ACCORDION;
     }
     return ACTIVE_DUTY_ACCORDION;
