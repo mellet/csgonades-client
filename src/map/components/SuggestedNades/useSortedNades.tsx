@@ -8,24 +8,39 @@ export default function useSortedNades(unsortedNades: NadeLight[]) {
 
   const theNades = useFilterServerSideNades(unsortedNades || []);
 
+  const sortedNades = useMemo(() => {
+    if (bySortingMethod === "createdAt") {
+      return [...theNades].sort(
+        (a, b) =>
+          new Date(b[bySortingMethod]).valueOf() -
+          new Date(a[bySortingMethod]).valueOf()
+      );
+    }
+    return [...theNades].sort(
+      (a, b) => b[bySortingMethod] - a[bySortingMethod]
+    );
+  }, [theNades, bySortingMethod]);
+
+  // Boost low scored nades for visibility
   const artificialBoost = useMemo(() => {
-    if (theNades && theNades.length >= 6) {
-      const canditateBoosts = theNades.filter((nade) => {
+    if (sortedNades && sortedNades.length >= 6) {
+      const canditateBoosts = sortedNades.filter((nade) => {
         return nade.favoriteCount <= 10;
       });
+      const noneCandidates = sortedNades.filter(
+        (nade) => nade.favoriteCount > 10
+      );
 
       if (canditateBoosts.length < 2) {
-        return theNades;
+        return sortedNades;
       }
-
-      const noneCandidates = theNades.filter((nade) => nade.favoriteCount > 10);
 
       const randomIndexToBoost = randomIntFromInterval(
         0,
         canditateBoosts.length - 1
       );
 
-      const allScores = theNades.map((nade) => nade.score);
+      const allScores = sortedNades.map((nade) => nade.score);
       const boostScore = secondMax(allScores) - 1;
 
       const boostedCandidates = canditateBoosts.map((nade, idx) => {
@@ -42,22 +57,9 @@ export default function useSortedNades(unsortedNades: NadeLight[]) {
       return [...noneCandidates, ...boostedCandidates];
     }
     return theNades;
-  }, [theNades]);
+  }, [sortedNades, theNades]);
 
-  const sortedNades = useMemo(() => {
-    if (bySortingMethod === "createdAt") {
-      return [...artificialBoost].sort(
-        (a, b) =>
-          new Date(b[bySortingMethod]).valueOf() -
-          new Date(a[bySortingMethod]).valueOf()
-      );
-    }
-    return [...artificialBoost].sort(
-      (a, b) => b[bySortingMethod] - a[bySortingMethod]
-    );
-  }, [artificialBoost, bySortingMethod]);
-
-  return sortedNades;
+  return artificialBoost;
 }
 
 function randomIntFromInterval(min: number, max: number) {
