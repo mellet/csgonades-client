@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
+import { Popup } from "semantic-ui-react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { CsgoMap, mapString } from "../../map/models/CsGoMap";
@@ -19,19 +20,26 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
 
   return (
     <>
-      <button className="user-map-nav-item" onClick={onItemClick}>
-        <span className="nav-icon">
-          <Image
-            priority
-            src={`/mapicons/${map}.png`}
-            layout="fill"
-            objectFit="contain"
-            quality={100}
-            alt="Mirage icon"
-          />
-        </span>
-        {mapString(map)}
-      </button>
+      <Popup
+        content={mapString(map)}
+        inverted
+        position="top center"
+        trigger={
+          <button className="user-map-nav-item" onClick={onItemClick}>
+            <span className="nav-icon">
+              <Image
+                priority
+                src={`/mapicons/${map}.png`}
+                layout="fill"
+                objectFit="contain"
+                quality={100}
+                alt="Mirage icon"
+              />
+            </span>
+          </button>
+        }
+      />
+
       <style jsx>{`
         .user-map-nav-item {
           border: none;
@@ -67,6 +75,8 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
           height: 20px;
           position: relative;
           margin-right: 4px;
+          border-radius: 50%;
+          overflow: hidden;
         }
       `}</style>
     </>

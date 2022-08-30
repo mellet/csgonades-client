@@ -57,6 +57,22 @@ export const MapNadeSelector: FC<Props> = ({ onMapSelect, selectedMap }) => {
           onClick={onMapSelect}
           active={selectedMap === "train"}
         />
+        <MapNadeSelectorItem
+          map="tuscan"
+          onClick={onMapSelect}
+          active={selectedMap === "tuscan"}
+        />
+
+        <MapNadeSelectorItem
+          map="anubis"
+          onClick={onMapSelect}
+          active={selectedMap === "anubis"}
+        />
+        <MapNadeSelectorItem
+          map="cobblestone"
+          onClick={onMapSelect}
+          active={selectedMap === "cobblestone"}
+        />
       </div>
       <style jsx>{`
         .user-nade-map-nav {
