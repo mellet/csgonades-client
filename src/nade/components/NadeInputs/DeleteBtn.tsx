@@ -21,7 +21,7 @@ export const DeleteBtn: FC<Props> = ({ nadeId, confirmWord }) => {
     await NadeApi.delete(nadeId);
 
     setTimeout(() => {
-      router.push("/admin/deleted", "/admin/deleted");
+      router.push("/", "/");
     }, 3000);
   }
 
