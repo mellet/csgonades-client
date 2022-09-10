@@ -58,10 +58,12 @@ export const ImageUploader: FC<Props> = ({
     setImage(image);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function onCropComplete(_: ReactCrop.Crop, __: ReactCrop.PercentCrop) {
     // @no-op
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function onCropChange(crop: ReactCrop.Crop, _: ReactCrop.PercentCrop) {
     setCrop(crop);
   }
