@@ -64,7 +64,6 @@ export const MapNavAccordian: FC = ({}) => {
               <AccordianTitle
                 title={"Reserve"}
                 isActive={RESERVE_ACCORDION === activeAccordion}
-                hasNew={true}
               />
             </AccordionItemButton>
           </AccordionItemHeading>
