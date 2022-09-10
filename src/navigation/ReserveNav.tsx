@@ -14,11 +14,7 @@ export const ReserveNav: FC = () => {
         <ul>
           <li>
             <MapPageLink map="tuscan">
-              <NavItem
-                csMap="tuscan"
-                selected={selectedMap === "tuscan"}
-                isNew
-              />
+              <NavItem csMap="tuscan" selected={selectedMap === "tuscan"} />
             </MapPageLink>
           </li>
           <li>
