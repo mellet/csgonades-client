@@ -13,6 +13,11 @@ export const ReserveNav: FC = () => {
       <div id="map-nav-wrap">
         <ul>
           <li>
+            <MapPageLink map="dust2">
+              <NavItem csMap="dust2" selected={selectedMap === "dust2"} />
+            </MapPageLink>
+          </li>
+          <li>
             <MapPageLink map="tuscan">
               <NavItem csMap="tuscan" selected={selectedMap === "tuscan"} />
             </MapPageLink>
@@ -20,12 +25,6 @@ export const ReserveNav: FC = () => {
           <li>
             <MapPageLink map="train">
               <NavItem csMap="train" selected={selectedMap === "train"} />
-            </MapPageLink>
-          </li>
-
-          <li>
-            <MapPageLink map="anubis">
-              <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
             </MapPageLink>
           </li>
           <li>
