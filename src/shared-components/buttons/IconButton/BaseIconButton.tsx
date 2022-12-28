@@ -13,7 +13,7 @@ type Props = DetailedHTMLProps<
 > &
   ButtonProps;
 
-export const Button: FC<Props> = ({
+export const BaseIconButton: FC<Props> = ({
   active,
   activeColor,
   inGroup,
@@ -22,7 +22,7 @@ export const Button: FC<Props> = ({
   const { colors } = useTheme();
   return (
     <>
-      <button className="btn" {...rest}></button>
+      <button className="btn" {...rest} />
       <style jsx>{`
         .btn {
           height: 100%;
