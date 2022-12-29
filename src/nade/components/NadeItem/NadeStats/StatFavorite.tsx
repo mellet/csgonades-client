@@ -80,7 +80,6 @@ export const StatFavorite: FC<Props> = ({
           align-items: center;
           font-size: 11px;
           line-height: 11px;
-          height: 11px;
           font-weight: 400;
           color: ${colors.GREY};
         }
@@ -88,6 +87,10 @@ export const StatFavorite: FC<Props> = ({
         .fav-icon {
           color: ${internalFavorited ? colors.FAV_YELLOW : colors.GREY};
           cursor: pointer;
+          position: relative;
+          top: 0px;
+          font-size: 11px;
+          line-height: 10px;
         }
 
         .fav-icon:hover {
@@ -95,7 +98,7 @@ export const StatFavorite: FC<Props> = ({
         }
 
         .fav-count {
-          margin-left: 4px;
+          margin-left: 2px;
         }
       `}</style>
     </>
