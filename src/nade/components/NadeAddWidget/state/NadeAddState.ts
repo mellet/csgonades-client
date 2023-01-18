@@ -1,14 +1,11 @@
 import { NadeCreateBody } from "../../../models/Nade";
 
 export type NadeCreateSteps =
-  | "typeStep"
-  | "mapStep"
-  | "videoStep"
-  | "titleDescriptionStep"
-  | "resultImgStep"
-  | "lineupImgStep"
-  | "metaStep"
-  | "proStep"
+  | "video"
+  | "info"
+  | "map"
+  | "resultImage"
+  | "lineupImage"
   | "confirmStep";
 
 export interface NadeAddState {
@@ -17,6 +14,6 @@ export interface NadeAddState {
 }
 
 export const initialNadeAddState: NadeAddState = {
-  currentStep: "typeStep",
+  currentStep: "video",
   nadeData: {},
 };

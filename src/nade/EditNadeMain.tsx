@@ -7,7 +7,7 @@ import { BigLabel } from "./components/NadeLabels/BigLabel";
 import { MapSelector } from "./components/NadeInputs/MapSelector";
 import { useEditNadeState } from "./data/EditNadeReducer";
 import { GfyInput } from "./components/NadeInputs/GfyInput";
-import { EndPosInput } from "./components/NadeInputs/EndPosInput";
+import { NadeEndPosInput } from "./components/NadeInputs/EndPosInput";
 import { SetPosInput } from "./components/NadeInputs/SetPosInput";
 import { ThrownFromInput } from "./components/NadeInputs/ThrownFromInput";
 import { DescriptionInput } from "./components/NadeInputs/DescriptionInput";
@@ -18,7 +18,7 @@ import { MovementSelector } from "./components/NadeInputs/MovementSelector";
 import { TechniqueSelector } from "./components/NadeInputs/TechniqueSelector";
 import { PreviewNade } from "./components/PreviewNades";
 import { SumbitBtn } from "./components/NadeInputs/SubmitBtn";
-import { ImageUploader } from "./components/NadeInputs/ImageUploader";
+import { ImageUploader } from "./components/NadeInputs/ImageUploader/ImageUploader";
 import { OneWaySelector } from "./components/NadeInputs/OneWaySelector";
 import { SEO } from "../shared-components/SEO";
 import { StatusSelector } from "./components/NadeInputs/StatusSelector";
@@ -88,7 +88,7 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
             />
           </div>
           <div id="end-pos">
-            <EndPosInput
+            <NadeEndPosInput
               defaultValue={nade.endPosition}
               onChange={(endPosition) =>
                 dispatch({ type: "EditNade/SetEndPosition", endPosition })

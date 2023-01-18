@@ -93,6 +93,10 @@ export const GlobalStyles: FC = ({ children }) => {
           font-size: 16px;
         }
 
+        button {
+          font-family: "Roboto", Helvetica, sans-serif !important;
+        }
+
         h1,
         h2,
         h3,
@@ -119,11 +123,13 @@ export const GlobalStyles: FC = ({ children }) => {
         }
 
         p {
-          font-size: 18px;
-          margin-bottom: 22px;
+          font-size: 16px;
+          margin-bottom: 20px;
         }
 
-        input {
+        input,
+        button,
+        textarea {
           font-family: "Roboto", sans-serif;
         }
 

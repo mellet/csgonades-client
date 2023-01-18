@@ -16,9 +16,14 @@ export const OneWaySelector: FC<Props> = ({ initialValue, onClick }) => {
   }
 
   return (
-    <>
-      <MiniLabel value="One Way" />
+    <div className="one-way-container">
+      <MiniLabel value="One Way" optional />
       <CsgnCheckbox checked={checked} label="Is One Way" onClick={onClicked} />
-    </>
+      <style jsx>{`
+        .one-way-container {
+          height: 66px;
+        }
+      `}</style>
+    </div>
   );
 };

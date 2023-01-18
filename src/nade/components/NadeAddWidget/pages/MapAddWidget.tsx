@@ -1,31 +1,37 @@
 import { FC } from "react";
-import { CsgoMap } from "../../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../../models/Nade";
+import { Box } from "../../../../shared-components/box/Box";
+import { Seperator } from "../../../../shared-components/Seperator";
+import { Title } from "../../../../shared-components/title/Title";
 import { MapPositionSelector } from "../../MapPositionSelector";
 import { NextNavigation } from "../NextNavigation";
+import { useCreateNade } from "../state/NadeAddStateProvider";
 
-type Props = {
-  selectedMap: CsgoMap;
-  onSetMapPosition: (position: MapCoordinates) => void;
-  onNextStep: () => void;
-};
+export const MapAddWidget: FC = ({}) => {
+  const { nade, actions } = useCreateNade();
 
-export const MapAddWidget: FC<Props> = ({
-  selectedMap,
-  onSetMapPosition,
-  onNextStep,
-}) => {
+  if (!nade.map) {
+    return <></>;
+  }
+
   return (
     <>
-      <div className="add-map-container">
-        <div className="map-position-container">
-          <MapPositionSelector
-            selectedMap={selectedMap}
-            onPositionChange={onSetMapPosition}
-          />
+      <Box>
+        <Title titleStyle="primary" title="Nade landing location" />
+        <Seperator />
+        <div className="add-map-container">
+          <div className="map-position-container">
+            <MapPositionSelector
+              selectedMap={nade.map}
+              selectedMapPosition={nade.mapEndCoord}
+              onPositionChange={actions.setMapPosition}
+            />
+          </div>
         </div>
-        <NextNavigation onNextStep={onNextStep} enabled={Boolean(true)} />
-      </div>
+        <NextNavigation
+          onNextStep={() => actions.setCurrentStep("resultImage")}
+          enabled={Boolean(nade.mapEndCoord)}
+        />
+      </Box>
       <style jsx>{`
         .add-map-container {
         }

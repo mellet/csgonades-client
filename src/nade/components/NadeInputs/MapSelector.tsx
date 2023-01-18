@@ -10,13 +10,14 @@ type Props = {
 
 export const MapSelector: FC<Props> = ({ onChange, defaultValue }) => {
   return (
-    <>
+    <div>
       <MiniLabel value="Map" />
       <CsgnDropdown<CsgoMap>
         defaultValue={defaultValue}
+        hintText={"Select map"}
         onChange={onChange}
         options={nadeMapOptions()}
       />
-    </>
+    </div>
   );
 };

@@ -6,9 +6,9 @@ export const Box: FC = ({ children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <div>{children}</div>
+      <div className="box">{children}</div>
       <style jsx>{`
-        div {
+        .box {
           padding: ${Dimensions.GUTTER_SIZE}px;
           background: ${colors.DP03};
           border: 1px solid ${colors.BORDER};

@@ -1,6 +1,6 @@
 export const NadeMovements = {
   crouching: "Crouching",
-  crouchwalking: "Crouchwalking",
+  crouchwalking: "Crouch walking",
   running: "Running",
   stationary: "Stationary",
   walking: "Walking",
@@ -14,6 +14,12 @@ type MovementOption = {
   value: MovementKeys;
 };
 
+export function movementString(movement?: Movement) {
+  if (!movement) {
+    return "";
+  }
+  return NadeMovements[movement];
+}
 export function nadeMovementOptions(): MovementOption[] {
   const options: MovementOption[] = [];
   for (const key in NadeMovements) {

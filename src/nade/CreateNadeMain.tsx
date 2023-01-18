@@ -6,14 +6,14 @@ import { BigLabel } from "./components/NadeLabels/BigLabel";
 import { GfyInput } from "./components/NadeInputs/GfyInput";
 import { MapSelector } from "./components/NadeInputs/MapSelector";
 import { ThrownFromInput } from "./components/NadeInputs/ThrownFromInput";
-import { EndPosInput } from "./components/NadeInputs/EndPosInput";
+import { NadeEndPosInput } from "./components/NadeInputs/EndPosInput";
 import { DescriptionInput } from "./components/NadeInputs/DescriptionInput";
 import { ImageSelector } from "./components/NadeInputs/ImageSelector";
 import { MovementSelector } from "./components/NadeInputs/MovementSelector";
 import { TechniqueSelector } from "./components/NadeInputs/TechniqueSelector";
 import { useCreateNadeState, validateState } from "./data/CreateNadeReducer";
 import { PreviewNade } from "./components/PreviewNades";
-import { ImageUploader } from "./components/NadeInputs/ImageUploader";
+import { ImageUploader } from "./components/NadeInputs/ImageUploader/ImageUploader";
 import { MapPositionEditor } from "./components/MapPositionEditor";
 import { SumbitBtn } from "./components/NadeInputs/SubmitBtn";
 import { NadeApi } from "./data/NadeApi";
@@ -118,7 +118,7 @@ export const CreateNadeMain: FC = ({}) => {
           </div>
 
           <div id="end-pos">
-            <EndPosInput
+            <NadeEndPosInput
               onChange={(endPosition) =>
                 dispatch({ type: "CreateNade/SetEndPosition", endPosition })
               }

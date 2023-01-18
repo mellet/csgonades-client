@@ -10,13 +10,14 @@ type Props = {
 
 export const MovementSelector: FC<Props> = ({ onChange, defaultValue }) => {
   return (
-    <>
+    <div>
       <MiniLabel value="Movement" />
       <CsgnDropdown<Movement>
         defaultValue={defaultValue}
+        hintText={"Select movement"}
         onChange={onChange}
         options={nadeMovementOptions()}
       />
-    </>
+    </div>
   );
 };

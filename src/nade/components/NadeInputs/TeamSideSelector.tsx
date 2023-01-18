@@ -10,13 +10,14 @@ type Props = {
 
 export const TeamSideSelector: FC<Props> = ({ onChange, defaultValue }) => {
   return (
-    <>
+    <div>
       <MiniLabel value="Team" />
       <CsgnDropdown
+        hintText="Select team"
         defaultValue={defaultValue}
         onChange={onChange}
         options={nadeTeamSideOptions()}
       />
-    </>
+    </div>
   );
 };

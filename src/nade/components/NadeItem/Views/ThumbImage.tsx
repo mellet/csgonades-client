@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC, memo, useEffect, useState } from "react";
-import { CrossHair } from "../../VideoContainer/CrossHair";
+import { CrossHairSvg } from "../../VideoContainer/CrossHairSvg";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { FaVideo } from "react-icons/fa";
 import { CSGNIcon } from "../../NadeStatus/CSGNIcon";
@@ -74,7 +74,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
                 />
               </div>
               <div className="crosshair">
-                <CrossHair size={20} />
+                <CrossHairSvg size={20} />
               </div>
             </div>
           </>

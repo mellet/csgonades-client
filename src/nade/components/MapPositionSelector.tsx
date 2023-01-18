@@ -1,10 +1,10 @@
-import { FC, MouseEvent, useMemo, useRef, useState } from "react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { FC, MouseEvent, useEffect, useRef, useState } from "react";
+import { Dimensions } from "../../constants/Constants";
 import { CsgoMap } from "../../map/models/CsGoMap";
-import { Button } from "../../shared-components/buttons/Button";
 import { MapCoordinates } from "../models/Nade";
 
 type Props = {
+  selectedMapPosition?: MapCoordinates;
   selectedMap: CsgoMap;
   onPositionChange: (position: MapCoordinates) => void;
 };
@@ -15,30 +15,29 @@ const CIRCLE_RADIUS = CIRCLE_SIZE / 2;
 export const MapPositionSelector: FC<Props> = ({
   onPositionChange,
   selectedMap,
+  selectedMapPosition,
 }) => {
-  const { colors } = useTheme();
   const ref = useRef<HTMLDivElement>(null);
-  const [point, setPoint] = useState<MapCoordinates | undefined>();
+  const [point, setPoint] = useState<MapCoordinates | undefined>(
+    selectedMapPosition
+  );
+  const [coords, setCoords] = useState<MapCoordinates | null>(null);
 
-  const coords = useMemo(() => {
-    const sizeRatio = 1024 / (ref.current?.clientWidth || 0);
-
-    if (!point) {
-      return null;
+  useEffect(() => {
+    if (point) {
+      const sizeRatio = 1024 / (ref.current?.clientWidth || 0);
+      const x = point.x / sizeRatio;
+      const y = point.y / sizeRatio;
+      setCoords({ x, y });
     }
-
-    return {
-      x: point.x / sizeRatio,
-      y: point.y / sizeRatio,
-    };
-  }, [point]);
+  }, [point, ref]);
 
   function onMapClick(event: MouseEvent<HTMLDivElement>) {
     const offsetX = ref.current?.offsetLeft || 0;
     const offsetY = ref.current?.offsetTop || 0;
 
     const x = event.clientX - offsetX;
-    const y = event.clientY - offsetY;
+    const y = event.clientY - offsetY + window.scrollY;
 
     const sizeRatio = 1024 / (ref.current?.clientWidth || 0);
 
@@ -46,17 +45,12 @@ export const MapPositionSelector: FC<Props> = ({
     const realY = Math.round(y * sizeRatio);
 
     setPoint({ x: realX, y: realY });
-  }
-
-  function onPosSave() {
-    if (point) {
-      onPositionChange(point);
-    }
+    onPositionChange({ x: realX, y: realY });
   }
 
   return (
     <>
-      <div>
+      <div className="map-wrapper">
         <div className="map-container" ref={ref}>
           <div className="map-image" onClick={onMapClick}>
             {coords && (
@@ -71,19 +65,17 @@ export const MapPositionSelector: FC<Props> = ({
               </div>
             )}
           </div>
-
-          {coords && (
-            <div className="confirm-btn-container">
-              <Button onClick={onPosSave} title="Confirm" />
-            </div>
-          )}
         </div>
       </div>
       <style jsx>{`
-        .map-container {
-          position: relative;
+        .map-wrapper {
           overflow: hidden;
           background: #4679bd;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+        }
+
+        .map-container {
+          position: relative;
         }
 
         .map-container:before {
@@ -120,22 +112,6 @@ export const MapPositionSelector: FC<Props> = ({
           height: 25%;
           background: #bdeb34;
           border-radius: 50%;
-        }
-
-        .confirm-btn-container {
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
-        }
-
-        .confirm-btn {
-          border: none;
-          background: ${colors.SUCCESS};
-          color: white;
-          padding: 8px;
-          border-radius: 3px;
-          font-weight: 500;
-          font-size: 14px;
         }
       `}</style>
     </>

@@ -1,67 +1,33 @@
 import { FC } from "react";
-import { CsgoMap } from "../../../map/models/CsGoMap";
-import { GfycatData } from "../../models/GfycatData";
-import { MapCoordinates, NadeCreateBody } from "../../models/Nade";
-import { NadeType } from "../../models/NadeType";
+import { assertNever } from "../../../utils/Common";
 import { NadeStepIndicator } from "./NadeStepIndicator";
+import { ConfirmNewNade } from "./pages/ConfirmNewNade";
 import { InfoAddWidget } from "./pages/InfoAddWidget";
+import { LineUpImageWidget } from "./pages/LineUpImageWidget";
 import { MapAddWidget } from "./pages/MapAddWidget";
-import { TypeAddWidget } from "./pages/TypeAddWidget";
+import { ResultImageWidget } from "./pages/ResultImageWidget";
 import { VideoAddWidget } from "./pages/VideoAddWidget";
-import { NadeCreateSteps } from "./state/NadeAddState";
+import { useCreateNade } from "./state/NadeAddStateProvider";
 
-type Props = {
-  currentStep: NadeCreateSteps;
-  nadeData: Partial<NadeCreateBody>;
-  onSetType: (type: NadeType) => void;
-  onSetMap: (map: CsgoMap) => void;
-  onSetMapPosition: (position: MapCoordinates) => void;
-  onSetVideo: (gfycat: GfycatData) => void;
-  onSetCurrentStep: (step: NadeCreateSteps) => void;
-};
+export const NadeStepSwitcher: FC = () => {
+  const { step, nade, actions } = useCreateNade();
 
-export const NadeStepSwitcher: FC<Props> = ({
-  currentStep,
-  nadeData,
-  onSetType,
-  onSetMap,
-  onSetMapPosition,
-  onSetVideo,
-  onSetCurrentStep,
-}) => {
   const nadeStepComponent = () => {
-    switch (currentStep) {
-      case "typeStep":
-        return (
-          <TypeAddWidget
-            onTypeSelect={onSetType}
-            onSetMap={onSetMap}
-            nadeType={nadeData.type}
-            selectedMap={nadeData.map}
-            onNextStep={() => onSetCurrentStep("mapStep")}
-          />
-        );
-      case "mapStep":
-        return nadeData.map ? (
-          <MapAddWidget
-            selectedMap={nadeData.map}
-            onSetMapPosition={onSetMapPosition}
-          />
-        ) : (
-          <></>
-        );
-      case "videoStep":
-        return (
-          <VideoAddWidget
-            onSetVideo={onSetVideo}
-            gfycat={nadeData.gfycat}
-            onNextStep={() => onSetCurrentStep("metaStep")}
-          />
-        );
-      case "metaStep":
+    switch (step) {
+      case "video":
+        return <VideoAddWidget />;
+      case "info":
         return <InfoAddWidget />;
+      case "map":
+        return nade.map ? <MapAddWidget /> : <></>;
+      case "resultImage":
+        return <ResultImageWidget />;
+      case "lineupImage":
+        return <LineUpImageWidget />;
+      case "confirmStep":
+        return <ConfirmNewNade />;
       default:
-        return <>Nope</>;
+        assertNever(step);
     }
   };
 
@@ -69,8 +35,8 @@ export const NadeStepSwitcher: FC<Props> = ({
     <>
       <div className="nade-step-switcher-container">
         <NadeStepIndicator
-          currentStep={currentStep}
-          setCurrentStep={onSetCurrentStep}
+          currentStep={step}
+          setCurrentStep={actions.setCurrentStep}
         />
         {nadeStepComponent()}
       </div>
@@ -78,6 +44,7 @@ export const NadeStepSwitcher: FC<Props> = ({
         .nade-step-switcher-container {
           margin: 0 auto;
           max-width: 75vw;
+          margin-bottom: 10vh;
         }
       `}</style>
     </>

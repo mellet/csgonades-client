@@ -26,29 +26,8 @@ export const TypeAddWidget: FC<Props> = ({
   return (
     <>
       <Box>
-        <p>Select the type of nade you want to add</p>
-        <div className="nade-type-selector">
-          <TypeSelectButton
-            nadeType="smoke"
-            onTypeSelect={onTypeSelect}
-            selectedNadeType={nadeType}
-          />
-          <TypeSelectButton
-            nadeType="flash"
-            onTypeSelect={onTypeSelect}
-            selectedNadeType={nadeType}
-          />
-          <TypeSelectButton
-            nadeType="molotov"
-            onTypeSelect={onTypeSelect}
-            selectedNadeType={nadeType}
-          />
-          <TypeSelectButton
-            nadeType="hegrenade"
-            onTypeSelect={onTypeSelect}
-            selectedNadeType={nadeType}
-          />
-        </div>
+        <h2>Nade Details</h2>
+
         <div>Select your map</div>
         <MapSelector onChange={onSetMap} defaultValue={selectedMap} />
       </Box>
@@ -56,50 +35,6 @@ export const TypeAddWidget: FC<Props> = ({
         onNextStep={onNextStep}
         enabled={Boolean(nadeType && selectedMap)}
       />
-    </>
-  );
-};
-
-type TypeSelectButtonProps = {
-  selectedNadeType?: NadeType;
-  nadeType: NadeType;
-  onTypeSelect: (nadeType: NadeType) => void;
-};
-
-const TypeSelectButton: FC<TypeSelectButtonProps> = ({
-  nadeType,
-  onTypeSelect,
-  selectedNadeType,
-}) => {
-  const { colors } = useTheme();
-
-  function onClick() {
-    onTypeSelect(nadeType);
-  }
-
-  const isSelected = nadeType === selectedNadeType;
-
-  return (
-    <>
-      <button
-        className={isSelected ? "type-btn selected" : "type-btn"}
-        onClick={onClick}
-      >
-        <NadeIcon nadeType={nadeType} size={40} />
-      </button>
-      <style jsx>{`
-        .type-btn {
-          border: 1px solid ${colors.BORDER};
-          margin: 0;
-          padding: 5px;
-          margin-right: 5px;
-          border-radius: ${Dimensions.BORDER_RADIUS};
-        }
-
-        .selected {
-          border: 1px solid red;
-        }
-      `}</style>
     </>
   );
 };

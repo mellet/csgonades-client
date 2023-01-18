@@ -17,49 +17,37 @@ export const NadeStepIndicator: FC<Props> = ({
         <section className="step-indicator">
           <Step
             number={1}
-            stepName={"Type"}
-            active={currentStep === "typeStep"}
-            onClick={() => setCurrentStep("typeStep")}
+            stepName={"Video"}
+            active={currentStep === "video"}
+            onClick={() => setCurrentStep("video")}
           />
           <Step
             number={2}
-            stepName={"Map"}
-            active={currentStep === "mapStep"}
-            onClick={() => setCurrentStep("mapStep")}
+            stepName={"Info"}
+            active={currentStep === "info"}
+            onClick={() => setCurrentStep("info")}
           />
           <Step
             number={3}
-            stepName={"Video"}
-            active={currentStep === "videoStep"}
-            onClick={() => setCurrentStep("videoStep")}
+            stepName={"Map"}
+            active={currentStep === "map"}
+            onClick={() => setCurrentStep("map")}
           />
           <Step
             number={4}
-            stepName={"Info"}
-            active={currentStep === "metaStep"}
-            onClick={() => setCurrentStep("metaStep")}
+            stepName={"Result image"}
+            active={currentStep === "resultImage"}
+            onClick={() => setCurrentStep("resultImage")}
           />
           <Step
             number={5}
-            stepName={"Result image"}
-            active={currentStep === "resultImgStep"}
-            onClick={() => setCurrentStep("resultImgStep")}
-          />
-          <Step
-            number={6}
             stepName={"Lineup image"}
-            active={currentStep === "lineupImgStep"}
-            onClick={() => setCurrentStep("lineupImgStep")}
-          />
-          <Step
-            number={7}
-            stepName={"Pro"}
-            active={currentStep === "proStep"}
-            onClick={() => setCurrentStep("proStep")}
+            active={currentStep === "lineupImage"}
+            onClick={() => setCurrentStep("lineupImage")}
           />
           <Step
             isLast
-            number={8}
+            number={6}
             stepName={"Confirm"}
             active={currentStep === "confirmStep"}
             onClick={() => setCurrentStep("confirmStep")}

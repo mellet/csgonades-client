@@ -3,33 +3,57 @@ import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
   onClick: () => void;
-  title: string;
+  title?: string | JSX.Element;
   disabled?: boolean;
+  icon?: JSX.Element;
+  primary?: boolean;
 };
 
-export const Button: FC<Props> = ({ onClick, title, disabled }) => {
+export const Button: FC<Props> = ({
+  onClick,
+  title,
+  disabled,
+  icon,
+  primary,
+}) => {
   const { colors } = useTheme();
   return (
     <>
       <button onClick={onClick} disabled={disabled}>
-        {title}
+        {Boolean(title) && <span className="title">{title}</span>}
+        {Boolean(icon) && <span className="icon">{icon}</span>}
       </button>
       <style jsx>{`
         button {
           border: none;
           outline: none;
-          font-size: 18px;
           display: flex;
-          background: ${colors.buttonBackground};
-          color: white;
-          font-size: 14px;
+          align-items: center;
+          background: ${primary ? colors.buttonPrimaryBg : "transparent"};
+          color: ${primary ? "white" : colors.TEXT};
+          font-size: 16px;
+          line-height: 16px;
           font-weight: 500;
-          padding: 6px 12px;
+          padding: 0;
           border-radius: 3px;
+          border: ${primary
+            ? "1px solid transparent"
+            : `1px solid ${colors.BORDER}`};
+        }
+
+        .icon {
+          padding: 8px;
+          border-left: ${title ? `1px solid ${colors.BORDER}` : "none"};
+        }
+
+        .title {
+          padding: 8px 16px;
+          display: flex;
+          align-items: center;
         }
 
         button:hover {
-          background: ${colors.buttonBackgroundHover};
+          background: ${primary ? colors.buttonBgHover : colors.DP03};
           cursor: pointer;
         }
 

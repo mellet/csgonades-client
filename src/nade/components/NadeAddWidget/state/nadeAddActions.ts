@@ -48,10 +48,6 @@ type SetImage = {
   image: string;
 };
 
-type ToggleImageSelector = {
-  type: "CreateNade/ShowImageSelector";
-};
-
 type SetEndPosCoords = {
   type: "CreateNade/SetEndPosCoords";
   coords: MapCoordinates;
@@ -62,26 +58,14 @@ type SetTechnique = {
   technique: Technique;
 };
 
-type SetLoading = {
-  type: "CreateNade/SetLoading";
-};
-
-type SetNotLoading = {
-  type: "CreateNade/SetNotLoading";
-};
-
-type SetSetPosition = {
-  type: "CreateNade/SetSetPosition";
+type SetTeleportCoordinates = {
+  type: "CreateNade/SetTeleportCoordinates";
   setPos: string;
 };
 
 type SetTickrate = {
   type: "CreateNade/SetTickrate";
   tick: Tickrate;
-};
-
-type ToggleLineupImageAdder = {
-  type: "CreateNade/ToggleLineupImageAdder";
 };
 
 type SetLineUpImage = {
@@ -105,23 +89,19 @@ type SetCurrentStep = {
 };
 
 export type NadeAddActions =
+  | SetCurrentStep
   | SetDescription
   | SetEndPosCoords
   | SetEndPosition
   | SetGfyData
   | SetImage
   | SetLineUpImage
-  | SetLoading
   | SetMap
   | SetMovement
   | SetNadeType
-  | SetNotLoading
+  | SetOneWay
   | SetStartPosition
   | SetTeamSide
   | SetTechnique
-  | SetSetPosition
-  | SetTickrate
-  | ToggleImageSelector
-  | ToggleLineupImageAdder
-  | SetOneWay
-  | SetCurrentStep;
+  | SetTeleportCoordinates
+  | SetTickrate;

@@ -20,13 +20,12 @@ export const SquareButton: FC<IconButtonProps> = ({
   labelCount,
   onClick,
   inGroup,
-  last,
 }) => {
   const hasLabelCount = Boolean(labelCount);
   const buttonLabelCount = labelCount || 0;
 
   return (
-    <IconButtonWrapper inGroup={inGroup} last={last}>
+    <IconButtonWrapper inGroup={inGroup}>
       <BaseIconButton
         inGroup={inGroup}
         onClick={onClick}

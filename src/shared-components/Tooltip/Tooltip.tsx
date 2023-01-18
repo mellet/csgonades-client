@@ -18,11 +18,13 @@ export const Tooltip: FC<Props> = ({ message, children, direction }) => {
         .tooltip {
           position: relative;
           display: inline-block;
+          background: orange;
         }
 
         .tooltiptext {
           pointer-events: none;
           white-space: nowrap;
+          background: pink;
         }
 
         /* Tooltip text */

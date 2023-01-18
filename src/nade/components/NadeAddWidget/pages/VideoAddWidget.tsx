@@ -1,52 +1,73 @@
 import { FC } from "react";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { FaEye, FaVideo } from "react-icons/fa";
+import { BlogCopyPaste } from "../../../../blog/components/BlogCopyPaste";
+import { Dimensions } from "../../../../constants/Constants";
 import { Box } from "../../../../shared-components/box/Box";
-import { GfycatData } from "../../../models/GfycatData";
+import { SplitLayout } from "../../../../shared-components/box/SplitBox";
+import { Seperator } from "../../../../shared-components/Seperator";
+import { Title } from "../../../../shared-components/title/Title";
 import { GfyInput } from "../../NadeInputs/GfyInput";
 import { GfycatPreview } from "../GfycatPreview";
+import { HintBox } from "../HintBox";
 import { NextNavigation } from "../NextNavigation";
+import { Rule } from "../Rule";
+import { useCreateNade } from "../state/NadeAddStateProvider";
 
-type Props = {
-  gfycat?: GfycatData;
-  onSetVideo: (gfycatData: GfycatData) => void;
-  onNextStep: () => void;
-};
-
-export const VideoAddWidget: FC<Props> = ({
-  onSetVideo,
-  gfycat,
-  onNextStep,
-}) => {
-  const { colors } = useTheme();
+export const VideoAddWidget: FC = () => {
+  const { nade, actions } = useCreateNade();
 
   return (
     <>
       <Box>
-        <div className="video-add-container">
-          <div className="video-input-section">
-            {" "}
-            <GfyInput onChange={onSetVideo} />
-          </div>
-          <div className="video-preview-section">
-            <GfycatPreview gfycat={gfycat} />
-          </div>
-        </div>
+        <Title titleStyle="primary" title="Video" />
+        <Seperator />
+        <SplitLayout
+          right={
+            <div className="gfycat-container">
+              <HintBox title="Video requirements">
+                <p>
+                  Start by recording your nade throw. Follow the requirements
+                  below to avoid getting your nade declined.
+                </p>
+                <Rule icon={<FaEye />}>
+                  HUD and net graph should be hidden, and make sure your
+                  crosshair has good visbility in the video. Use the below
+                  command to hide clutter.
+                  <br />
+                  <BlogCopyPaste value="cl_draw_only_deathnotices 1; net_graph 0;" />
+                </Rule>
+                <Rule icon={<FaVideo />}>
+                  Aspect ratio of video should be 16:9
+                </Rule>
+              </HintBox>
+            </div>
+          }
+          left={
+            <div className="gfycat-container">
+              <div className="video-input-section">
+                <GfyInput onChange={actions.setVideo} />
+              </div>
+              <div className="video-preview-section">
+                <GfycatPreview gfycat={nade.gfycat} />
+              </div>
+            </div>
+          }
+        />
+        <NextNavigation
+          onNextStep={() => actions.setCurrentStep("info")}
+          enabled={Boolean(nade.gfycat)}
+        />
       </Box>
-      <NextNavigation onNextStep={onNextStep} enabled={Boolean(gfycat)} />
+
       <style jsx>{`
-        .video-add-container {
+        .gfycat-container {
           display: flex;
+          flex-direction: column;
+          gap: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .video-input-section {
           flex: 1;
-          padding-right: 12px;
-        }
-
-        .video-preview-section {
-          width: 60%;
-          border-left: 1px dashed ${colors.BORDER};
-          padding-left: 12px;
         }
       `}</style>
     </>

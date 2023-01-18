@@ -1,5 +1,6 @@
 import { FC, useRef, useState, useMemo } from "react";
 import { FaCopy } from "react-icons/fa";
+import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Props = {
@@ -36,32 +37,33 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
     }, 1500);
   }
 
+  const inputSize =
+    value.length > 50 ? undefined : Math.round(value.length * 0.9);
+
   return (
     <>
       <div className="copy-paste">
         <div className={confirmClassName}>Copied to clipboard</div>
-        <input ref={ref} defaultValue={value} />
+        <input ref={ref} defaultValue={value} size={inputSize} />
         <button onClick={copyToClipboard}>
           <FaCopy /> <span>Copy</span>
         </button>
       </div>
       <style jsx>{`
         .copy-paste {
-          display: flex;
-          margin-bottom: 20px;
-          margin-top: 20px;
           position: relative;
+          display: inline-flex;
         }
 
         .copy-confirm {
           background: #79c900;
-          border-radius: 5px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
           bottom: 100%;
           color: white;
           margin-bottom: 10px;
           margin-left: 10px;
           opacity: 0;
-          padding: 5px;
+          padding: 2px;
           position: absolute;
           right: 0;
           transition: opacity 0.5s;
@@ -79,11 +81,14 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
           border: none;
           flex: 1;
           outline: none;
-          padding: 15px;
+          padding: 9px ${Dimensions.PADDING_MEDIUM};
           background: #d1d1d1;
           color: ${colors.TEXT};
           border: 1px solid ${colors.BORDER};
           background: ${colors.DP01};
+          font-size: 14px;
+          min-width: 300px;
+          height: 40px;
         }
 
         button {
@@ -92,13 +97,15 @@ export const BlogCopyPaste: FC<Props> = ({ value }) => {
           border: none;
           color: white;
           cursor: pointer;
-          padding: 15px;
+          padding: ${Dimensions.PADDING_MEDIUM};
           display: flex;
           align-items: center;
           border: 1px solid ${colors.BORDER};
           background: ${colors.DP03_transparent};
           color: ${colors.TEXT};
           border-left: none;
+          font-size: 14px;
+          height: 40px;
         }
 
         button:hover {

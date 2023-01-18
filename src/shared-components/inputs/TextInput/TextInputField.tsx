@@ -13,12 +13,14 @@ export const TextInputField: FC<Props> = (props) => {
       <input {...props} />
       <style jsx>{`
         input {
-          background: ${colors.DP03};
+          background: ${colors.DP02};
           border-radius: 5px;
           border: 1px solid ${colors.BORDER};
           color: ${colors.TEXT};
           outline: none;
           padding: 10px 12px;
+          height: 40px;
+          width: 100%;
         }
 
         input:focus {

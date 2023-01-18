@@ -27,7 +27,7 @@ export const BaseIconButton: FC<Props> = ({
         .btn {
           height: 100%;
           width: 100%;
-          background: ${active ? colors.DP03 : "transparent"};
+          background: ${active ? colors.buttonBgActive : colors.buttonBg};
           border: none;
           outline: none;
           font-size: 18px;
@@ -45,7 +45,7 @@ export const BaseIconButton: FC<Props> = ({
         .btn:active {
           cursor: pointer;
           color: ${activeColor ? activeColor : "#0d0c22"};
-          background: ${colors.DP03};
+          background: ${active ? colors.buttonBgActive : colors.DP02};
         }
 
         .btn:focus-visible {
