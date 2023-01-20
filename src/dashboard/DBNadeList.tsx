@@ -128,7 +128,7 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-thumb">
           <PageLink href={`/nades/${nade.slug || nade.id}`}>
             <div className="nade-thumb-image">
-              <Image src={nadeMainImage} layout="fill" />
+              <Image unoptimized src={nadeMainImage} layout="fill" />
             </div>
           </PageLink>
         </td>

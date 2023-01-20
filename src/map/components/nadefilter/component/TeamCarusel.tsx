@@ -79,5 +79,5 @@ const TeamSideImage: FC<TeamSideImageProps> = ({ teamSide }) => {
     }
   }, [teamSide]);
 
-  return <Image src={imageUrl} width={26} height={26} />;
+  return <Image unoptimized src={imageUrl} width={26} height={26} />;
 };

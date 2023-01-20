@@ -52,6 +52,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
         <div className="result-image">
           {thumbUrl && (
             <Image
+              unoptimized
               onLoad={onResultImgRdy}
               src={thumbUrl}
               layout="fill"
@@ -66,6 +67,7 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
             <div className="lineup-image">
               <div className="lineup-img-wrap">
                 <Image
+                  unoptimized
                   onLoad={onLineupImgRdy}
                   src={lineupThumbUrl}
                   layout="fill"
