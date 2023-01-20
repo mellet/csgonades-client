@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { useFilterByType } from "../../../logic/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
 import { ButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 import { NadeIcon } from "../../../../shared-components/nade-icons";
 
 type Props = {

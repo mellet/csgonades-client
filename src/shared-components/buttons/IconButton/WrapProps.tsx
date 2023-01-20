@@ -14,8 +14,8 @@ export const IconButtonWrapper: FC<WrapProps> = ({ children, inGroup }) => {
       <div className="icon-button-wrap">{children}</div>
       <style jsx>{`
         .icon-button-wrap {
-          width: 40px;
-          height: 40px;
+          width: ${inGroup ? 40 : 42}px;
+          height: ${inGroup ? 40 : 42}px;
           position: relative;
           border-radius: ${inGroup ? "0" : "8px"};
           border: ${inGroup ? "none" : `1px solid ${colors.BORDER}`};

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useTheme } from "../../../core/settings/SettingsHooks";
-import { SquareButton } from "../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../shared-components/buttons/IconButton/SquareButton";
 import { ButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { Movement, movementString } from "../../models/NadeMovement";
 import { MiniLabel } from "../NadeLabels/MiniLabel";

@@ -15,5 +15,9 @@ export interface NadeAddState {
 
 export const initialNadeAddState: NadeAddState = {
   currentStep: "video",
-  nadeData: {},
+  nadeData: {
+    type: "smoke",
+    teamSide: "both",
+    movement: "stationary",
+  },
 };

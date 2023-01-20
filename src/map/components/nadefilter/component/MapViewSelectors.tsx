@@ -3,7 +3,7 @@ import { useSetMapView } from "../../../logic/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
 import { ButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 
 type Props = {

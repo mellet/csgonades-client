@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SquareButton } from "../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../shared-components/buttons/IconButton/SquareButton";
 import { ButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { NadeIcon } from "../../../shared-components/nade-icons";
 import { NadeType } from "../../models/NadeType";

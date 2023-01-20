@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { FaCrosshairs } from "react-icons/fa";
-import { SquareButton } from "../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../shared-components/buttons/IconButton/SquareButton";
 import copy from "copy-to-clipboard";
 import { useGa } from "../../../utils/Analytics";
 import { PositionCopyHint } from "../../../hints/components/PositionCopyHint";

@@ -43,6 +43,7 @@ export const GfycatIframe: FC<Props> = ({ gfyId }) => {
           background-position: 50% 46.5%;
           background-repeat: no-repeat;
           background-size: 20px;
+          width: 100%;
         }
 
         .gfycat-wrap {

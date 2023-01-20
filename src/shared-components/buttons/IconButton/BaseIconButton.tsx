@@ -25,20 +25,22 @@ export const BaseIconButton: FC<Props> = ({
       <button className="btn" {...rest} />
       <style jsx>{`
         .btn {
-          height: 100%;
           width: 100%;
-          background: ${active ? colors.buttonBgActive : colors.buttonBg};
-          border: none;
+          height: 100%;
+          background: ${active ? colors.buttonBgActive : colors.DP01};
           outline: none;
           font-size: 18px;
-          display: flex;
-          border-radius: ${inGroup ? "none" : "8px"};
+          display: inline-flex;
+          border-radius: ${inGroup ? "0px" : "8px"};
           align-items: center;
           justify-content: space-around;
-          padding: 0;
-          margin: 0;
-          color: ${active ? activeColor : colors.buttonDefaultIcon};
+          padding: 0px;
+          margin: 0px;
+          color: ${active && activeColor
+            ? activeColor
+            : colors.buttonDefaultIcon};
           transition: color 0.1s, background 0.1s;
+          border: 0px solid transparent;
         }
 
         .btn:hover,

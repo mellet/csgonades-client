@@ -18,6 +18,11 @@ export const Rule: FC<Props> = ({ icon, children }) => {
           gap: ${Dimensions.PADDING_MEDIUM};
           margin-bottom: ${Dimensions.GUTTER_SIZE}px;
         }
+
+        .icon {
+          position: relative;
+          top: 3px;
+        }
       `}</style>
     </>
   );

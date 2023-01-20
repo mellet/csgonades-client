@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaInfo } from "react-icons/fa";
-import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton/SquareButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 
 export const NadeInfoButton: FC = () => {

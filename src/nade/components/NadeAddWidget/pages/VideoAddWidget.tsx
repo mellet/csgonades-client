@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FaEye, FaVideo } from "react-icons/fa";
+import { FaCrosshairs, FaEye, FaVideo } from "react-icons/fa";
 import { BlogCopyPaste } from "../../../../blog/components/BlogCopyPaste";
 import { Dimensions } from "../../../../constants/Constants";
 import { Box } from "../../../../shared-components/box/Box";
@@ -26,18 +26,25 @@ export const VideoAddWidget: FC = () => {
             <div className="gfycat-container">
               <HintBox title="Video requirements">
                 <p>
-                  Start by recording your nade throw. Follow the requirements
-                  below to avoid getting your nade declined.
+                  Record and upload your nade throw to{" "}
+                  <a
+                    href="https://gfycat.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "white" }}
+                  >
+                    gfycat
+                  </a>
+                  . Follow the requirements below to avoid getting your nade
+                  declined.
                 </p>
+                <Rule icon={<FaVideo />}>Aspect ratio must be 16:9</Rule>
+                <Rule icon={<FaCrosshairs />}>High visibility crosshair</Rule>
                 <Rule icon={<FaEye />}>
-                  HUD and net graph should be hidden, and make sure your
-                  crosshair has good visbility in the video. Use the below
-                  command to hide clutter.
+                  Hide HUD and net graph. Use the below command to hide clutter.
+                  <br />
                   <br />
                   <BlogCopyPaste value="cl_draw_only_deathnotices 1; net_graph 0;" />
-                </Rule>
-                <Rule icon={<FaVideo />}>
-                  Aspect ratio of video should be 16:9
                 </Rule>
               </HintBox>
             </div>

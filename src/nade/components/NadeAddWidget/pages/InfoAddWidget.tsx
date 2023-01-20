@@ -9,7 +9,6 @@ import { Technique } from "../../../models/Technique";
 import { DescriptionInput } from "../../NadeInputs/DescriptionInput";
 import { NadeEndPosInput } from "../../NadeInputs/EndPosInput";
 import { MapSelector } from "../../NadeInputs/MapSelector";
-import { MovementSelector } from "../../NadeInputs/MovementSelector";
 import { OneWaySelector } from "../../NadeInputs/OneWaySelector";
 import { ProLinkInput } from "../../NadeInputs/ProLinkInput";
 import { SetPosInput } from "../../NadeInputs/SetPosInput";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { ButtonGroup } from "../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { SquareButton } from "../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../shared-components/buttons/IconButton/SquareButton";
 import { FaCloud, FaStar } from "react-icons/fa";
 import { ButtonWithIcon } from "../shared-components/buttons/ButtonWithIcon";
 

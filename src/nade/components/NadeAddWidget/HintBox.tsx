@@ -1,7 +1,6 @@
 import { CSSProperties, FC } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type Props = {
   title?: string;
@@ -9,51 +8,42 @@ type Props = {
 };
 
 export const HintBox: FC<Props> = ({ children, title, style }) => {
-  const { colors } = useTheme();
   return (
     <>
       <div className="hint-box" style={style}>
-        {title && (
-          <h3>
-            {title}{" "}
-            <span className="icon">
-              <FaInfoCircle />
-            </span>
-          </h3>
-        )}
+        {title && <h3>{title} </h3>}
+        <span className="icon">
+          <FaInfoCircle />
+        </span>
         <div className="hintbox-content">{children}</div>
       </div>
       <style jsx>{`
         .hint-box {
-          border: 1px solid #ffcc40;
           border-radius: ${Dimensions.BORDER_RADIUS};
-          background: #fff9eb;
-          color: #543f00;
+          background: #0080a3;
+          color: white;
           position: relative;
-        }
-
-        .hint-label {
-          position: absolute;
-          left: ${Dimensions.GUTTER_SIZE}px;
-          top: -10px;
-          font-size: 12px;
+          overflow: hidden;
         }
 
         h3 {
-          font-size: 20px;
-          line-height: 20px;
-          background: #fffbf0;
+          font-size: 18px;
+          line-height: 18px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          border-bottom: 1px solid #ffcc40;
+          padding: ${Dimensions.GUTTER_SIZE}px ${Dimensions.GUTTER_SIZE}px 0
+            ${Dimensions.GUTTER_SIZE}px;
           margin: 0;
-          color: #a67c00;
+          font-weight: 400;
         }
 
         .icon {
-          color: #ffcc40;
+          font-size: 75px;
+          opacity: 0.25;
+          position: absolute;
+          top: -15px;
+          right: -15px;
         }
 
         .hintbox-content {

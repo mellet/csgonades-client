@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type IconButtonGroupProps = {
@@ -10,6 +10,7 @@ export const ButtonGroup: FC<IconButtonGroupProps> = ({
   vertical,
 }) => {
   const { colors } = useTheme();
+
   return (
     <>
       <div className="icon-button-group">{children}</div>
@@ -19,7 +20,6 @@ export const ButtonGroup: FC<IconButtonGroupProps> = ({
           overflow: hidden;
           display: inline-flex;
           flex-direction: ${vertical ? "column" : "row"};
-          height: ${vertical ? "auto" : "40px"};
           border: 1px solid ${colors.BORDER};
         }
 
