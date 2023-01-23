@@ -2,6 +2,7 @@ import { FC, useCallback, useState } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useTheme } from "../../core/settings/SettingsHooks";
 import { TickrateSelector } from "../../nade/components/NadeInputs/TickrateSelector";
+import { MiniLabel } from "../../nade/components/NadeLabels/MiniLabel";
 import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../shared-components/inputs/CsgnTextArea";
 import { CsgnInput } from "../../shared-components/inputs/TextInput/CsgnInput";
@@ -43,20 +44,16 @@ export const UserEditMain: FC<Props> = ({ user }) => {
       <div className="user-edit">
         <h2>Edit {user.nickname}</h2>
         {error && <div className="error">{error}</div>}
+        <MiniLabel value="Nickname" />
         <CsgnInput
           required
           maxLength={18}
-          value="Nickname"
           onChange={setNickname}
           initialValue={nickname}
         />
         <br />
-        <CsgnInput
-          required
-          value="E-mail"
-          onChange={setEmail}
-          initialValue={email}
-        />
+        <MiniLabel value="E-mail" />
+        <CsgnInput required onChange={setEmail} initialValue={email} />
         <br />
         <CsgnTextArea
           label="Bio"

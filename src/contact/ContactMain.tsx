@@ -5,6 +5,7 @@ import { CsgnInput } from "../shared-components/inputs/TextInput/CsgnInput";
 import { CsgnTextArea } from "../shared-components/inputs/CsgnTextArea";
 import { AddConctactDTO } from "./models/ContactDTOs";
 import { useTheme } from "../core/settings/SettingsHooks";
+import { MiniLabel } from "../nade/components/NadeLabels/MiniLabel";
 
 export const ContactMain: FC = () => {
   const { colors } = useTheme();
@@ -55,8 +56,10 @@ export const ContactMain: FC = () => {
           </Message>
         )}
 
-        <CsgnInput value="Name" initialValue={name} onChange={setName} />
-        <CsgnInput value="E-mail" initialValue={email} onChange={setEmail} />
+        <MiniLabel value="Name" />
+        <CsgnInput initialValue={name} onChange={setName} />
+        <MiniLabel value="E-mail" />
+        <CsgnInput initialValue={email} onChange={setEmail} />
         <CsgnTextArea label="Message" value={message} onChange={setMessage} />
 
         <Button positive onClick={onSubmit}>
