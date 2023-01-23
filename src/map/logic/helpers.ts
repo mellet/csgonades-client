@@ -5,7 +5,7 @@ import { TeamSide } from "../../nade/models/TeamSide";
 
 export function filterByPro(nades: NadeLight[], byPro?: boolean): NadeLight[] {
   if (byPro) {
-    return nades.filter((n) => n.isPro);
+    return nades.filter((n) => Boolean(n.proUrl) || n.isPro);
   }
   return nades;
 }
