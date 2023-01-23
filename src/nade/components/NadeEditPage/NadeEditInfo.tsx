@@ -155,6 +155,8 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
               lineUpImageBase64: nadeUpdates.lineUpImageBase64,
               isPro: nadeUpdates.isPro,
               teamSide: nadeUpdates.teamSide,
+              proUrl: nadeUpdates.proUrl,
+              setPos: nadeUpdates.setPos,
             }}
           />
         </div>
