@@ -139,6 +139,9 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
 
         <div id="preview">
           <PreviewNade
+            commentCount={nade.commentCount}
+            createdAt={nade.createdAt}
+            viewCount={nade.viewCount}
             nade={{
               description: nadeUpdates.description,
               endPosition: nadeUpdates.endPosition,

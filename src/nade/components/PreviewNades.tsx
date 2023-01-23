@@ -7,9 +7,17 @@ import { NadeStats } from "./NadeItem/NadeStats/NadeStats";
 
 type Props = {
   nade: Partial<NadeCreateBody>;
+  viewCount?: number;
+  commentCount?: number;
+  createdAt?: Date | string;
 };
 
-export const PreviewNade: FC<Props> = ({ nade }) => {
+export const PreviewNade: FC<Props> = ({
+  nade,
+  commentCount,
+  viewCount,
+  createdAt,
+}) => {
   const { colors } = useTheme();
   const {
     endPosition,
@@ -46,15 +54,15 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
         />
         <NadeStats
           nadeId={"preview"}
-          commentCount={10}
-          createdAt={new Date()}
+          commentCount={commentCount || 10}
+          createdAt={createdAt || new Date()}
           favoriteCount={100}
           movement={movement}
           technique={technique}
           tickrate={tickrate}
           isPro={Boolean(proUrl)}
           side={teamSide}
-          viewCount={10}
+          viewCount={viewCount || 10}
           addAsFavorite={() => {
             // no-op
           }}
