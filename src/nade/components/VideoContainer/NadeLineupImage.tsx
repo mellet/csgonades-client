@@ -3,7 +3,7 @@ import { FC, useCallback, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
 import { useGa } from "../../../utils/Analytics";
-import { CrossHair } from "./CrossHair";
+import { CrossHairSvg } from "./CrossHairSvg";
 
 type Props = {
   url: string;
@@ -58,7 +58,7 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
         </div>
         <div className="line-up-img">
           <div className="crosshair">
-            <CrossHair />
+            <CrossHairSvg />
           </div>
         </div>
       </div>

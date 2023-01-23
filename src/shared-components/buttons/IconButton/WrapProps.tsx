@@ -3,42 +3,29 @@ import { useTheme } from "../../../core/settings/SettingsHooks";
 
 type WrapProps = {
   inGroup?: boolean;
-  last?: boolean;
   color?: string;
 };
 
-export const IconButtonWrapper: FC<WrapProps> = ({
-  children,
-  inGroup,
-  last,
-}) => {
+export const IconButtonWrapper: FC<WrapProps> = ({ children, inGroup }) => {
   const { colors } = useTheme();
+
   return (
     <>
-      <div className="wrap">{children}</div>
+      <div className="icon-button-wrap">{children}</div>
       <style jsx>{`
-        .wrap {
-          width: 40px;
-          height: 40px;
+        .icon-button-wrap {
+          width: ${inGroup ? 40 : 42}px;
+          height: ${inGroup ? 40 : 42}px;
           position: relative;
-          border-width: ${inGroup ? 0 : 1}px;
-          border-style: solid;
-          border-color: ${colors.buttonBorder};
-          border-radius: ${inGroup ? "none" : "8px"};
-          border-bottom-width: ${last ? 0 : 1}px;
+          border-radius: ${inGroup ? "0" : "8px"};
+          border: ${inGroup ? "none" : `1px solid ${colors.BORDER}`};
         }
       `}</style>
     </>
   );
 };
 
-export const IconTextButtonWrapper: FC<WrapProps> = ({
-  children,
-  inGroup,
-  last,
-  color,
-}) => {
-  const { colors } = useTheme();
+export const IconTextButtonWrapper: FC<WrapProps> = ({ children, inGroup }) => {
   return (
     <>
       <div className="icon-text-button-wrapper">{children}</div>
@@ -47,11 +34,7 @@ export const IconTextButtonWrapper: FC<WrapProps> = ({
           display: inline-block;
           height: 40px;
           position: relative;
-          border-width: ${inGroup ? 0 : 1}px;
-          border-style: solid;
-          border-color: ${color || colors.buttonBorder};
           border-radius: ${inGroup ? "none" : "8px"};
-          border-right-width: ${last ? 0 : 1}px;
           overflow: hidden;
         }
       `}</style>

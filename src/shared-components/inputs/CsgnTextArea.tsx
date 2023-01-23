@@ -57,11 +57,10 @@ export const CsgnTextArea: FC<Props> = ({
           color: ${colors.TEXT};
           display: flex;
           flex-direction: column;
-          margin-bottom: 20px;
         }
 
         textarea {
-          background: ${colors.DP03};
+          background: ${colors.DP02};
           border-radius: 5px;
           border: 1px solid rgba(0, 0, 0, 0.15);
           color: ${colors.TEXT};

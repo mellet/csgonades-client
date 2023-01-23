@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
 import { useFilterByType } from "../../../logic/useFilterByType";
 import { FilterLabel } from "./FilterLabel";
-import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { ButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 import { NadeIcon } from "../../../../shared-components/nade-icons";
 
 type Props = {
@@ -16,7 +16,7 @@ export const TypeFilter: FC<Props> = memo(({ vertical }) => {
     <>
       <>
         <FilterLabel value="TYPE" center={vertical} />
-        <IconButtonGroup vertical={vertical}>
+        <ButtonGroup vertical={vertical}>
           <SquareButton
             inGroup
             icon={<NadeIcon nadeType="smoke" size={26} />}
@@ -42,7 +42,7 @@ export const TypeFilter: FC<Props> = memo(({ vertical }) => {
             active={byType === "hegrenade"}
             onClick={() => filterByType("hegrenade")}
           />
-        </IconButtonGroup>
+        </ButtonGroup>
       </>
     </>
   );

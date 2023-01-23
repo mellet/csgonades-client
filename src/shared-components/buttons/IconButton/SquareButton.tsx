@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button } from "./Button";
+import { BaseIconButton } from "./BaseIconButton";
 import { ButtonLabel } from "./ButtonLabel";
 import { IconButtonWrapper } from "./WrapProps";
 
@@ -20,21 +20,20 @@ export const SquareButton: FC<IconButtonProps> = ({
   labelCount,
   onClick,
   inGroup,
-  last,
 }) => {
   const hasLabelCount = Boolean(labelCount);
   const buttonLabelCount = labelCount || 0;
 
   return (
-    <IconButtonWrapper inGroup={inGroup} last={last}>
-      <Button
+    <IconButtonWrapper inGroup={inGroup}>
+      <BaseIconButton
         inGroup={inGroup}
         onClick={onClick}
         active={active}
         activeColor={activeColor}
       >
         {icon}
-      </Button>
+      </BaseIconButton>
       {hasLabelCount && (
         <ButtonLabel bgColor={activeColor} labelCount={buttonLabelCount}>
           {labelCount}

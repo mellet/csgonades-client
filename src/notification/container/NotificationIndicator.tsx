@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { FaBell } from "react-icons/fa";
 import { useNotifications } from "../data/NotificationHooks";
 import { useTheme } from "../../core/settings/SettingsHooks";
-import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton/SquareButton";
 import Link from "next/link";
 
 export const NotificationIndicator: FC = memo(() => {

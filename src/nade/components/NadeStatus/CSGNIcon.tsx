@@ -1,17 +1,20 @@
-import { FC } from "react";
+import { CSSProperties, FC } from "react";
 
 type Props = {
   icon: JSX.Element;
   spin?: boolean;
   size?: number;
+  style?: CSSProperties;
 };
 
-export const CSGNIcon: FC<Props> = ({ icon, size = 18, spin }) => {
+export const CSGNIcon: FC<Props> = ({ icon, size = 18, spin, style }) => {
   return (
     <>
-      <span>{icon}</span>
+      <span className="csgonades-icon" style={style}>
+        {icon}
+      </span>
       <style jsx>{`
-        span {
+        .csgonades-icon {
           animation-name: ${spin ? "spin" : "none"};
           animation-duration: 800ms;
           animation-iteration-count: infinite;

@@ -46,14 +46,14 @@ export const UserEditMain: FC<Props> = ({ user }) => {
         <CsgnInput
           required
           maxLength={18}
-          label="Nickname"
+          value="Nickname"
           onChange={setNickname}
           initialValue={nickname}
         />
         <br />
         <CsgnInput
           required
-          label="E-mail"
+          value="E-mail"
           onChange={setEmail}
           initialValue={email}
         />

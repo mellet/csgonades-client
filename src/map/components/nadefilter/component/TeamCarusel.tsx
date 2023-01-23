@@ -73,9 +73,9 @@ const TeamSideImage: FC<TeamSideImageProps> = ({ teamSide }) => {
       case "T":
         return "/icons/terrorist.webp";
       case "CT":
-        return "/icons/ct.webp";
+        return "/icons/counterTerrorist.webp";
       default:
-        return "/icons/team-both.webp";
+        return "/icons/both.webp";
     }
   }, [teamSide]);
 

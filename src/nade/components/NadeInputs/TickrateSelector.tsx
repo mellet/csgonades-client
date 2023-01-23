@@ -19,22 +19,17 @@ export const TickrateSelector: FC<Props> = ({
   const defualtHintString = "Jumpthrow bind, please specify tickrate.";
 
   return (
-    <>
-      <MiniLabel value={label || "Tickrate"} />
-
+    <div>
+      <MiniLabel
+        value={label || "Tickrate"}
+        hint={hintText || defualtHintString}
+      />
       <CsgnDropdown<Tickrate>
         defaultValue={defaultValue}
         onChange={onChange}
         options={nadeTickrateOptions()}
+        hintText={"Select tickrate"}
       />
-      <em>{hintText || defualtHintString}</em>
-
-      <style jsx>{`
-        em {
-          margin-top: 5px;
-          font-size: 12px;
-        }
-      `}</style>
-    </>
+    </div>
   );
 };

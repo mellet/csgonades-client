@@ -10,13 +10,14 @@ type Props = {
 
 export const TechniqueSelector: FC<Props> = ({ onChange, defaultValue }) => {
   return (
-    <>
+    <div>
       <MiniLabel value="Technique" />
       <CsgnDropdown<Technique>
         defaultValue={defaultValue}
         onChange={onChange}
         options={nadeTechniqueOptions()}
+        hintText="Select technique"
       />
-    </>
+    </div>
   );
 };

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { FaRocket, FaEye } from "react-icons/fa";
 import { MdFiberNew } from "react-icons/md";
 import { ImStarFull } from "react-icons/im";
-import { IconButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { ButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
 import { FilterLabel } from "../nadefilter/component/FilterLabel";
@@ -30,7 +30,7 @@ export const SortByBar: FC = () => {
     <>
       <div className="sort-by-bar-wrap">
         <FilterLabel value="SORT" center={false} />
-        <IconButtonGroup>
+        <ButtonGroup>
           <ButtonWithIcon
             inGroup
             value="Hot"
@@ -54,13 +54,12 @@ export const SortByBar: FC = () => {
           />
           <ButtonWithIcon
             inGroup
-            last
             value="New"
             icon={<MdFiberNew />}
             onClick={onSortByNew}
             active={bySortingMethod === "createdAt"}
           />
-        </IconButtonGroup>
+        </ButtonGroup>
       </div>
     </>
   );

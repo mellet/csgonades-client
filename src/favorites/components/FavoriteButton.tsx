@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
-import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton/SquareButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../utils/Analytics";
 import { useFavorites, useIsNadeFavorited } from "../data/useFavorites";

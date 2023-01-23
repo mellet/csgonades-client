@@ -43,6 +43,10 @@ export type ThemeColors = {
   link: string;
   linkHover: string;
   focusOutline: string;
+  buttonBg: string;
+  buttonPrimaryBg: string;
+  buttonBgHover: string;
+  buttonBgActive: string;
 };
 
 type Themes = {
@@ -95,6 +99,10 @@ const DARK_THEME: ThemeColors = {
   link: "#148ec7",
   linkHover: "#10a5eb",
   focusOutline: "#fff",
+  buttonPrimaryBg: "rgba(28, 143, 192, 1)",
+  buttonBgHover: "#1784b3",
+  buttonBgActive: "#5DBCE5",
+  buttonBg: "#fff",
 };
 
 export const LIGHT_THEME: ThemeColors = {
@@ -142,6 +150,10 @@ export const LIGHT_THEME: ThemeColors = {
   link: "#148ec7",
   linkHover: "#10a5eb",
   focusOutline: "#263942",
+  buttonPrimaryBg: "rgba(28, 143, 192, 1)",
+  buttonBgHover: "#1784b3",
+  buttonBgActive: "#fff",
+  buttonBg: "#ededed",
 };
 
 export const themes: Themes = {

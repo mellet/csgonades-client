@@ -4,7 +4,7 @@ type Props = {
   size?: number;
 };
 
-export const CrossHair: FC<Props> = ({ size }) => {
+export const CrossHairSvg: FC<Props> = ({ size }) => {
   return (
     <>
       <svg width={size || 43} height={size ? size + 1 : 44} viewBox="0 0 43 44">

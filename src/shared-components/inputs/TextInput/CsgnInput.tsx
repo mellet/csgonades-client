@@ -1,10 +1,8 @@
 import { FC } from "react";
-import { TextInputLabel } from "./TextInputLabel";
 import { TextInputField } from "./TextInputField";
 
 export type CsgnInputProps = {
   initialValue?: string;
-  label?: string;
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
@@ -14,29 +12,37 @@ export type CsgnInputProps = {
 
 export const CsgnInput: FC<CsgnInputProps> = ({
   initialValue,
-  label,
   onChange,
   placeholder,
-  required,
   value,
   maxLength,
 }) => {
   return (
     <>
       <div className="input-wrap">
-        <TextInputLabel label={label} required={required} />
-        <TextInputField
-          defaultValue={initialValue}
-          onBlur={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          value={value}
-          maxLength={maxLength}
-        />
+        <div className="input">
+          <TextInputField
+            defaultValue={initialValue}
+            onBlur={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+            value={value}
+            maxLength={maxLength}
+          />
+        </div>
       </div>
       <style jsx>{`
         .input-wrap {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          position: relative;
+          width: 100%;
+        }
+
+        .input {
+          flex: 1;
+        }
+
+        button {
         }
       `}</style>
     </>

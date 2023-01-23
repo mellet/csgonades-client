@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { Status } from "../../models/Status";
+import { NadeStatus } from "../../models/Status";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { ThemeColors } from "../../../core/settings/Themes";
 import { FaExclamationCircle, FaSpinner } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { CSGNIcon } from "./CSGNIcon";
 import { Dimensions } from "../../../constants/Constants";
 
 type Props = {
-  status: Status;
+  status: NadeStatus;
 };
 
 const NadeStatus: FC<Props> = memo(({ status }) => {
@@ -104,7 +104,7 @@ const NadeStatus: FC<Props> = memo(({ status }) => {
   );
 });
 
-function statusColor(status: Status, colors: ThemeColors) {
+function statusColor(status: NadeStatus, colors: ThemeColors) {
   switch (status) {
     case "accepted":
       return {

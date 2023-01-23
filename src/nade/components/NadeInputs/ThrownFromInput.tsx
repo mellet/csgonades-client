@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { CsgnInput } from "../../../shared-components/inputs/TextInput/CsgnInput";
+import { MiniLabel } from "../NadeLabels/MiniLabel";
 
 type Props = {
   defaultValue?: string;
@@ -8,13 +9,13 @@ type Props = {
 
 export const ThrownFromInput: FC<Props> = ({ onChange, defaultValue }) => {
   return (
-    <>
+    <div>
+      <MiniLabel value="Start position" />
       <CsgnInput
         initialValue={defaultValue}
-        label="Thrown from"
         onChange={onChange}
         placeholder="Example: T Spawn"
       />
-    </>
+    </div>
   );
 };

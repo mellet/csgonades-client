@@ -1,7 +1,7 @@
 import { MapCoordinates, NadeLight } from "../nade/models/Nade";
 
 export function custerNades(nades: NadeLight[]) {
-  const maxDistance = 30;
+  const maxDistance = 25;
   const clusters: NadeLight[][] = [];
 
   for (const nade of nades) {

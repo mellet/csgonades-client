@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const OneWaySelector: FC<Props> = ({ initialValue, onClick }) => {
-  const [checked, setChecked] = useState(initialValue);
+  const [checked, setChecked] = useState(Boolean(initialValue));
 
   function onClicked() {
     setChecked(!checked);
@@ -16,9 +16,14 @@ export const OneWaySelector: FC<Props> = ({ initialValue, onClick }) => {
   }
 
   return (
-    <>
-      <MiniLabel value="One Way" />
+    <div className="one-way-container">
+      <MiniLabel value="One Way" optional />
       <CsgnCheckbox checked={checked} label="Is One Way" onClick={onClicked} />
-    </>
+      <style jsx>{`
+        .one-way-container {
+          height: 66px;
+        }
+      `}</style>
+    </div>
   );
 };

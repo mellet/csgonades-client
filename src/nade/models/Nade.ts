@@ -1,10 +1,10 @@
 import { UserLight } from "../../users/models/User";
 import { GfycatData } from "./GfycatData";
-import { Movement } from "./NadeMovement";
+import { NadeMovement } from "./NadeMovement";
 import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
 import { Technique } from "./Technique";
-import { Status } from "./Status";
+import { NadeStatus } from "./Status";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 
@@ -33,16 +33,17 @@ export interface Nade {
   imageLineupThumb?: NadeImageData;
   imageMain: NadeImageData;
   isFavorited?: boolean;
+  proUrl?: string;
   isPro?: boolean;
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
-  movement?: Movement;
+  movement?: NadeMovement;
   oneWay?: boolean;
   score: number;
   setPos?: string;
   slug?: string;
   startPosition?: string;
-  status: Status;
+  status: NadeStatus;
   statusInfo?: StatusInfo;
   steamId: string;
   teamSide?: TeamSide;
@@ -70,12 +71,13 @@ export interface NadeLight {
   isPro?: boolean;
   isNew?: boolean;
   mapEndCoord?: MapCoordinates;
-  movement?: Movement;
+  movement?: NadeMovement;
   oneWay?: boolean;
+  proUrl?: string;
   score: number;
   slug?: string;
   startPosition?: string;
-  status: Status;
+  status: NadeStatus;
   teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
@@ -99,8 +101,9 @@ export type NadeCreateBody = {
   lineUpImageBase64?: string;
   map: CsgoMap;
   mapEndCoord: MapCoordinates;
-  movement: Movement;
+  movement: NadeMovement;
   oneWay?: boolean;
+  proUrl?: string;
   setPos?: string;
   startPosition: string;
   teamSide?: TeamSide;
@@ -118,12 +121,13 @@ export type NadeUpdateBody = {
   lineUpImageBase64?: string;
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
-  movement?: Movement;
+  movement?: NadeMovement;
   oneWay?: boolean;
+  proUrl?: string;
   setPos?: string;
   slug?: string;
   startPosition?: string;
-  status?: Status;
+  status?: NadeStatus;
   teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
@@ -131,10 +135,6 @@ export type NadeUpdateBody = {
 };
 
 export type NadeStatusDTO = {
-  status: Status;
+  status: NadeStatus;
   statusInfo?: StatusInfo;
-};
-
-export const NewNade = (data: Nade): Nade => {
-  return data;
 };

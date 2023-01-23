@@ -9,7 +9,6 @@ export type ButtonWithIconProps = {
   active?: boolean;
   value: string;
   inGroup?: boolean;
-  last?: boolean;
   disabled?: boolean;
   color?: string;
 };
@@ -22,7 +21,6 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
     backgroundColor,
     active,
     inGroup,
-    last,
     disabled,
     color,
   }) => {
@@ -38,7 +36,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
 
     return (
       <>
-        <IconTextButtonWrapper inGroup={inGroup} last={last}>
+        <IconTextButtonWrapper inGroup={inGroup}>
           <button className={classNames} onClick={onClick} disabled={disabled}>
             <span className="btn-icon">
               <span className="btn-icon-fa">{icon}</span>

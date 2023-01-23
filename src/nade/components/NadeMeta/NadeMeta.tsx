@@ -3,12 +3,12 @@ import { tickrateString, Tickrate } from "../../models/NadeTickrate";
 import { nadeTypeString, NadeType } from "../../models/NadeType";
 import { techniqueString, Technique } from "../../models/Technique";
 import { capitalize } from "../../../utils/Common";
-import { Movement } from "../../models/NadeMovement";
+import { NadeMovement } from "../../models/NadeMovement";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 import { TickrateHint } from "./TickrateHint";
 
 type Props = {
-  movement?: Movement;
+  movement?: NadeMovement;
   rounded?: boolean;
   technique?: Technique;
   tickrate?: Tickrate;

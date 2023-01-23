@@ -1,26 +1,26 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import { IconButtonGroup } from "../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { SquareButton } from "../shared-components/buttons/IconButton/IconButton";
+import { ButtonGroup } from "../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { SquareButton } from "../shared-components/buttons/IconButton/SquareButton";
 import { FaCloud, FaStar } from "react-icons/fa";
 import { ButtonWithIcon } from "../shared-components/buttons/ButtonWithIcon";
 
 export default {
   title: "Button/Icon Button Group",
-  component: IconButtonGroup,
+  component: ButtonGroup,
   args: {},
 } as Meta;
 
 const Template: Story = () => (
-  <IconButtonGroup vertical>
+  <ButtonGroup vertical>
     <SquareButton icon={<FaStar />} active={false} />
     <SquareButton icon={<FaCloud />} active={true} />
     <SquareButton icon={<FaCloud />} active={false} />
-  </IconButtonGroup>
+  </ButtonGroup>
 );
 
 const TemplateWithTextButton: Story = () => (
-  <IconButtonGroup>
+  <ButtonGroup>
     <ButtonWithIcon inGroup icon={<FaStar />} active={true} value="Button 1" />
     <ButtonWithIcon
       inGroup
@@ -34,7 +34,7 @@ const TemplateWithTextButton: Story = () => (
       active={false}
       value="Button 3"
     />
-  </IconButtonGroup>
+  </ButtonGroup>
 );
 
 export const Default = Template.bind({});

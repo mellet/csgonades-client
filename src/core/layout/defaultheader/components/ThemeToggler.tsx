@@ -40,7 +40,7 @@ export const ThemeToggler: FC = memo(() => {
           margin: 0;
           border-radius: 8px;
           outline: none;
-          background: transparent;
+          background: ${colors.DP01};
           width: 40px;
           height: 40px;
           border: 1px solid ${colors.buttonBorder};

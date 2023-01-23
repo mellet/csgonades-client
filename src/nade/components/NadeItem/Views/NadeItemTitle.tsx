@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { Status } from "../../../models/Status";
+import { NadeStatus } from "../../../models/Status";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { generateNadeItemTitle } from "../../../../utils/Common";
 import { NadeType } from "../../../models/NadeType";
@@ -9,7 +9,7 @@ type Props = {
   endPosition?: string;
   oneWay?: boolean;
   startPosition?: string;
-  status: Status;
+  status: NadeStatus;
   type?: NadeType;
 };
 

@@ -2,8 +2,8 @@ import { FC } from "react";
 import { useSetMapView } from "../../../logic/useSetMapView";
 import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
-import { IconButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { ButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 
 type Props = {
@@ -25,7 +25,7 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
   return (
     <>
       <FilterLabel value="VIEW" center={vertical} />
-      <IconButtonGroup vertical>
+      <ButtonGroup vertical>
         <SquareButton
           inGroup
           icon={<FaMap />}
@@ -41,7 +41,7 @@ export const MapViewSelector: FC<Props> = ({ vertical }) => {
           onClick={onSwtichToList}
           activeColor={colors.TEXT}
         />
-      </IconButtonGroup>
+      </ButtonGroup>
     </>
   );
 };

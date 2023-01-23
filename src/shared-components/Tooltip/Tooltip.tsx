@@ -23,6 +23,7 @@ export const Tooltip: FC<Props> = ({ message, children, direction }) => {
         .tooltiptext {
           pointer-events: none;
           white-space: nowrap;
+          background: pink;
         }
 
         /* Tooltip text */

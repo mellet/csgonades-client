@@ -4,7 +4,7 @@ import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { useFilterByFavorites } from "../../../logic/useFilterByFavorites";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 import { FilterLabel } from "./FilterLabel";
 import { FavoriteHint } from "../../../../hints/components/FavoriteHint";
 

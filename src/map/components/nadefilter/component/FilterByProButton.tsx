@@ -2,7 +2,7 @@ import { FC } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { useFilterByPro } from "../../../logic/useFilterByPro";
 import { FilterLabel } from "./FilterLabel";
-import { SquareButton } from "../../../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 
 type Props = {
   vertical?: boolean;

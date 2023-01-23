@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { FaPencilAlt } from "react-icons/fa";
 import { useCanEditNade } from "../data/useCanEditNade";
-import { SquareButton } from "../../shared-components/buttons/IconButton/IconButton";
+import { SquareButton } from "../../shared-components/buttons/IconButton/SquareButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
 import { useTheme } from "../../core/settings/SettingsHooks";
 

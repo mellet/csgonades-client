@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import {
   SquareButton,
   IconButtonProps,
-} from "../shared-components/buttons/IconButton/IconButton";
+} from "../shared-components/buttons/IconButton/SquareButton";
 import { FaStar } from "react-icons/fa";
 
 export default {
