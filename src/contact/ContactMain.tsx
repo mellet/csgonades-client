@@ -55,8 +55,8 @@ export const ContactMain: FC = () => {
           </Message>
         )}
 
-        <CsgnInput label="Name" initialValue={name} onChange={setName} />
-        <CsgnInput label="E-mail" initialValue={email} onChange={setEmail} />
+        <CsgnInput value="Name" initialValue={name} onChange={setName} />
+        <CsgnInput value="E-mail" initialValue={email} onChange={setEmail} />
         <CsgnTextArea label="Message" value={message} onChange={setMessage} />
 
         <Button positive onClick={onSubmit}>

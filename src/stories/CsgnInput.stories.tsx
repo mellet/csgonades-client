@@ -12,6 +12,9 @@ export default {
   args: {
     label: "Text Input",
     placeholder: "Placeholder",
+    onChange: () => {
+      return;
+    },
   } as CsgnInputProps,
 } as Meta;
 

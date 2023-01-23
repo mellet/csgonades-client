@@ -54,7 +54,6 @@ export const SortByBar: FC = () => {
           />
           <ButtonWithIcon
             inGroup
-            last
             value="New"
             icon={<MdFiberNew />}
             onClick={onSortByNew}

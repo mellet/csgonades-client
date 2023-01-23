@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
+    "lint": "next lint",
     "build": "next build",
     "start": "next start -p $PORT",
     "analyze": "cross-env ANALYZE=true next build",

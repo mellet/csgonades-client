@@ -2,9 +2,9 @@ import { ChangeEventHandler, useState } from "react";
 import { useTheme } from "../../core/settings/SettingsHooks";
 
 type Option = {
-  key: string;
-  text: string;
-  value: string;
+  key: any;
+  text: any;
+  value: any;
 };
 
 type Props<T> = {
@@ -19,7 +19,7 @@ export function CsgnDropdown<T>(props: Props<T>) {
   const [value, setValue] = useState<T | undefined>(props.defaultValue);
 
   const onSelectChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    const newValue = e.target.value as T;
+    const newValue = e.target.value as any;
     setValue(newValue);
     props.onChange(newValue);
   };

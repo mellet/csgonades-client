@@ -14,6 +14,7 @@ export const StatusSelector: FC<Props> = ({ initValue, onChange }) => {
       <div>
         <MiniLabel value="Status" />
         <CsgnDropdown
+          hintText="Select status..."
           defaultValue={initValue}
           onChange={onChange}
           options={nadeStatusOptions()}

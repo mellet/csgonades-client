@@ -22,6 +22,8 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
     tickrate,
     type,
     lineUpImageBase64,
+    proUrl,
+    teamSide,
   } = nade;
 
   return (
@@ -50,6 +52,8 @@ export const PreviewNade: FC<Props> = ({ nade }) => {
           movement={movement}
           technique={technique}
           tickrate={tickrate}
+          isPro={Boolean(proUrl)}
+          side={teamSide}
           viewCount={10}
           addAsFavorite={() => {
             // no-op

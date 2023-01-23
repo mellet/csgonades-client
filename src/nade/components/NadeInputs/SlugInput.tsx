@@ -31,7 +31,7 @@ export const SlugInput: FC<Props> = ({ onChange, defaultValue }) => {
   return (
     <CsgnInput
       initialValue={defaultValue}
-      label="Slug"
+      value="Slug"
       onChange={onSlugChanged}
     />
   );
