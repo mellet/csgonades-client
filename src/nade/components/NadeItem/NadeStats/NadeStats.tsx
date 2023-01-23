@@ -248,7 +248,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
         }
 
         .side-ct {
-          background: url("/icons/ct.webp");
+          background: url("/icons/counterTerrorist.webp");
           background-size: contain;
         }
 
