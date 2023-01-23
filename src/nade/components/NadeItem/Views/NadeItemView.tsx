@@ -88,6 +88,7 @@ export const NadeItemView: FC<Props> = memo(
             transition: box-shadow ${AnimationTimings.fast}s;
             width: 100%;
             margin-bottom: -6px;
+            background: ${colors.DP02};
           }
 
           .nadebox:hover {

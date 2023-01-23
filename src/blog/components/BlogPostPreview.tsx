@@ -22,6 +22,7 @@ export const BlogPostPreview: FC<Props> = ({ blogPost, index }) => {
           <span>
             <div className="blog-img">
               <Image
+                unoptimized
                 src={thumbnailUrl}
                 layout="fill"
                 objectFit="cover"

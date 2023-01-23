@@ -16,22 +16,21 @@ const ACTIVE_DUTY_ACCORDION = "activeduty" as const;
 const RESERVE_ACCORDION = "reserve" as const;
 type ActiveAccordion = typeof ACTIVE_DUTY_ACCORDION | typeof RESERVE_ACCORDION;
 
+function isReserveMap(map: CsgoMap) {
+  const reserveMaps = ["tuscan", "train", "cache", "cobblestone", "dust2"];
+
+  return reserveMaps.includes(map);
+}
+
 export const MapNavAccordian: FC = ({}) => {
   const { query } = useRouter();
   const selectedMap = query.map as CsgoMap;
 
-  const preExpanded = useMemo(() => {
-    if (
-      selectedMap === "tuscan" ||
-      selectedMap === "train" ||
-      selectedMap === "anubis" ||
-      selectedMap === "cache" ||
-      selectedMap === "cobblestone"
-    ) {
-      return RESERVE_ACCORDION;
-    }
-    return ACTIVE_DUTY_ACCORDION;
-  }, [selectedMap]);
+  const preExpanded = useMemo(
+    () =>
+      isReserveMap(selectedMap) ? RESERVE_ACCORDION : ACTIVE_DUTY_ACCORDION,
+    [selectedMap]
+  );
 
   const [activeAccordion, setActiveAccordion] =
     useState<ActiveAccordion>(preExpanded);

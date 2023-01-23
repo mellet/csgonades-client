@@ -174,9 +174,9 @@ export const NadeStats: FC<NadeStatsProps> = ({
       <style jsx>{`
         .item-bottom {
           display: flex;
-          padding: 0px 10px;
+          padding: 0px 14px;
           align-items: center;
-          height: 35px;
+          height: 34px;
         }
 
         .new-badge {
@@ -186,9 +186,9 @@ export const NadeStats: FC<NadeStatsProps> = ({
         }
 
         .new-badge span {
-          background: #709c14;
+          background: #b2d600;
           border-radius: 4px;
-          color: white;
+          color: #f8ffd4;
           display: inline;
           font-size: 9px;
           font-weight: 500;

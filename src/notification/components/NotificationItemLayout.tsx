@@ -28,6 +28,7 @@ export const NotificationItemLayout: FC<Props> = ({
         {imageUrl && (
           <div className="image">
             <Image
+              unoptimized
               src={imageUrl}
               layout="fill"
               objectFit="cover"

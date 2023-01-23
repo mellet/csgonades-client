@@ -28,11 +28,6 @@ export const ActiveDutyNav: FC = () => {
             </MapPageLink>
           </li>
           <li>
-            <MapPageLink map="dust2">
-              <NavItem csMap="dust2" selected={selectedMap === "dust2"} />
-            </MapPageLink>
-          </li>
-          <li>
             <MapPageLink map="overpass">
               <NavItem csMap="overpass" selected={selectedMap === "overpass"} />
             </MapPageLink>
@@ -50,6 +45,11 @@ export const ActiveDutyNav: FC = () => {
           <li>
             <MapPageLink map="vertigo">
               <NavItem csMap="vertigo" selected={selectedMap === "vertigo"} />
+            </MapPageLink>
+          </li>
+          <li>
+            <MapPageLink map="anubis">
+              <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
             </MapPageLink>
           </li>
         </ul>

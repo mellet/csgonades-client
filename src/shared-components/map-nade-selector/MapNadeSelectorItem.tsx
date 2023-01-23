@@ -28,6 +28,7 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
           <button className="user-map-nav-item" onClick={onItemClick}>
             <span className="nav-icon">
               <Image
+                unoptimized
                 priority
                 src={`/mapicons/${map}.png`}
                 layout="fill"

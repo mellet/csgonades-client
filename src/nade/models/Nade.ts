@@ -69,6 +69,7 @@ export interface NadeLight {
   imageMain: NadeImageData;
   isFavorited?: boolean;
   isPro?: boolean;
+  isNew?: boolean;
   mapEndCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;

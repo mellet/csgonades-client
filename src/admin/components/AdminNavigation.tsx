@@ -11,33 +11,31 @@ export const AdminNavigation: FC = () => {
   return (
     <>
       <div className="admin-nav">
-        <Link href="/admin/pending">
+        <Link href="/admin/pending" passHref>
           <button>Pending nades</button>
         </Link>
-        <Link href="/admin/declined">
+        <Link href="/admin/declined" passHref>
           <button>Declined nades</button>
         </Link>
-        <Link href="/admin/deleted">
+        <Link href="/admin/deleted" passHref>
           <button>Deleted nades</button>
         </Link>
-        <Link href="/admin/comments">
+        <Link href="/admin/comments" passHref>
           <button>Recent comments</button>
         </Link>
-
-        <Link href="/admin/reports">
+        <Link href="/admin/reports" passHref>
           <button>Reports</button>
         </Link>
-
-        <Link href="/admin/audit">
+        <Link href="/admin/audit" passHref>
           <button>Audit</button>
         </Link>
         {isAdmin && (
-          <Link href="/admin/users">
+          <Link href="/admin/users" passHref>
             <button>Users</button>
           </Link>
         )}
         {isAdmin && (
-          <Link href="/admin/contact">
+          <Link href="/admin/contact" passHref>
             <button>Contacts</button>
           </Link>
         )}

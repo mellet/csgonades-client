@@ -27,6 +27,7 @@ export const NavItem: FC<Props> = ({
       <span className={selected ? "map-link selected" : "map-link"}>
         <div className="nav-icon">
           <Image
+            unoptimized
             priority
             src={`/mapicons/${csMap}.png`}
             layout="fill"
