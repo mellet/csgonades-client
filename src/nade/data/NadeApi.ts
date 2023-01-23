@@ -139,7 +139,6 @@ export class NadeApi {
   }
 
   static async save(nadeBody: NadeCreateBody): AppResult<Nade> {
-    console.log("Saving nade", nadeBody);
     try {
       const res = await AxiosApi.post(`${AppConfig.API_URL}/nades`, nadeBody);
       const nade = res.data as Nade;

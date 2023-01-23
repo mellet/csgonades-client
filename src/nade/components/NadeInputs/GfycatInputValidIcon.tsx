@@ -15,8 +15,6 @@ type Props = {
 export const GfycatInputValidIcon: FC<Props> = ({ isLoading, isValid }) => {
   const { colors } = useTheme();
 
-  console.log("Mjaru", { isLoading, isValid });
-
   if (!isLoading && isValid === null) {
     return <></>;
   }

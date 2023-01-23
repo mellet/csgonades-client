@@ -37,7 +37,6 @@ export const MapNavAccordian: FC = ({}) => {
     useState<ActiveAccordion>(preExpanded);
 
   function onAccordianChange(activeUui: string[]) {
-    console.log("Active", activeUui);
     const active = activeUui[0] as ActiveAccordion;
     setActiveAccordion(active);
   }
