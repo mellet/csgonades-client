@@ -7,14 +7,14 @@ type IconButtonGroupProps = {
 
 export const ButtonGroup: FC<IconButtonGroupProps> = ({
   children,
-  vertical,
+  vertical = false,
 }) => {
   const { colors } = useTheme();
 
   return (
     <>
       <div className="icon-button-group">{children}</div>
-      <style jsx global>{`
+      <style jsx>{`
         .icon-button-group {
           border-radius: 8px;
           overflow: hidden;
@@ -22,7 +22,8 @@ export const ButtonGroup: FC<IconButtonGroupProps> = ({
           flex-direction: ${vertical ? "column" : "row"};
           border: 1px solid ${colors.BORDER};
         }
-
+      `}</style>
+      <style jsx global>{`
         .icon-button-group > * {
           border-bottom: ${vertical ? 1 : 0}px solid ${colors.BORDER} !important;
           border-right: ${vertical ? 0 : 1}px solid ${colors.BORDER} !important;
