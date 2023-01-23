@@ -16,9 +16,10 @@ export const BigLabel: FC<Props> = ({ value }) => {
           margin: 0;
           padding: 0;
           font-size: 20px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+          border-bottom: 1px solid ${colors.BORDER};
           padding-bottom: 10px;
           color: ${colors.TEXT};
+          font-weight: 400;
         }
       `}</style>
     </>

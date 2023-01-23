@@ -39,7 +39,13 @@ export const VideoAddWidget: FC = () => {
                   declined.
                 </p>
                 <Rule icon={<FaVideo />}>Aspect ratio must be 16:9</Rule>
-                <Rule icon={<FaCrosshairs />}>High visibility crosshair</Rule>
+                <Rule icon={<FaCrosshairs />}>
+                  A high visibility crosshair. Below is a crosshair used for
+                  csgo broadcasts.
+                  <br />
+                  <br />
+                  <BlogCopyPaste value="CSGO-aNKFP-FzteR-6uRz5-4WP64-X6urD" />
+                </Rule>
                 <Rule icon={<FaEye />}>
                   Hide HUD and net graph. Use the below command to hide clutter.
                   <br />

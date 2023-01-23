@@ -1,29 +1,163 @@
-import { FC } from "react";
+import { useRouter } from "next/router";
+import { FC, useCallback, useState } from "react";
+import { FaCheck } from "react-icons/fa";
+import { useSession } from "../../../../core/authentication/useSession";
+import { useDisplayToast } from "../../../../core/toasts/hooks/useDisplayToast";
 import { Box } from "../../../../shared-components/box/Box";
-import { SplitLayout } from "../../../../shared-components/box/SplitBox";
+import { Button } from "../../../../shared-components/buttons/Button";
 import { Title } from "../../../../shared-components/title/Title";
-import { isValidNewNade } from "../../../../utils/NadeUtils";
+import { NadeApi } from "../../../data/NadeApi";
+import { NadeCreateBody } from "../../../models/Nade";
 import { PreviewNade } from "../../PreviewNades";
-import { NadeAddStatusList } from "../NadeAddStatusList";
 import { useCreateNade } from "../state/NadeAddStateProvider";
 
 export const ConfirmNewNade: FC = () => {
   const { nade } = useCreateNade();
+  const { isLoading, onSubmitClick } = useSumbitNade(nade);
 
   return (
     <>
       <Box>
-        <SplitLayout
-          left={<NadeAddStatusList newNade={nade} />}
-          right={
-            <>
-              <Title titleStyle="secondary" title="Preview" />
-              <PreviewNade nade={nade} />
-            </>
-          }
-        />
+        <Title titleStyle="primary" title="Confirm" bottomSpacing />
+        <p>You are ready to submit your nade!</p>
+        <p>
+          Once sumbitted, a moderator will approve your nade if everything looks
+          good. This usually takes less than 24 hours.
+        </p>
+        <div className="preview-nade">
+          <PreviewNade nade={nade} />
+        </div>
+        <div className="submit-btn-container">
+          <Button
+            icon={<FaCheck />}
+            onClick={onSubmitClick}
+            primary
+            title="Submit nade"
+            isLoading={isLoading}
+          />
+        </div>
       </Box>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .preview-nade {
+          max-width: 350px;
+        }
+
+        .submit-btn-container {
+          display: flex;
+          justify-content: flex-end;
+        }
+      `}</style>
     </>
   );
 };
+
+const useSumbitNade = (nadeBody: Partial<NadeCreateBody>) => {
+  const router = useRouter();
+  const { isAuthenticated } = useSession();
+  const showToast = useDisplayToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmitClick = useCallback(async () => {
+    setIsLoading(true);
+    const nadeCreateBody = validateState(nadeBody);
+
+    if (!nadeCreateBody) {
+      setIsLoading(false);
+      return setError("Failed to verify nade");
+    }
+    if (!isAuthenticated) {
+      setIsLoading(false);
+      return showToast({
+        severity: "error",
+        message: `You are not signed in.`,
+        durationSeconds: 20,
+      });
+    }
+
+    const result = await NadeApi.save(nadeCreateBody);
+    if (result.isErr()) {
+      return showToast({
+        severity: "error",
+        message: `Failed to add nade, check if you forgot to add something. Error: ${result.error.message}`,
+        durationSeconds: 20,
+      });
+    }
+
+    const newNade = result.value;
+
+    showToast({
+      severity: "success",
+      message: "Nade added!",
+      durationSeconds: 10,
+    });
+
+    router.push(`/nades/[nade]`, `/nades/${newNade.id}`);
+  }, [nadeBody, isAuthenticated, router, showToast]);
+
+  return { isLoading, error, onSubmitClick };
+};
+
+export const validateState = (
+  nade: Partial<NadeCreateBody>
+): NadeCreateBody | false => {
+  const {
+    description,
+    endPosition,
+    gfycat,
+    imageBase64,
+    lineUpImageBase64,
+    map,
+    mapEndCoord,
+    movement,
+    oneWay,
+    startPosition,
+    technique,
+    tickrate,
+    type,
+    teamSide,
+    setPos,
+    proUrl,
+  } = nade;
+  if (
+    !description ||
+    !endPosition ||
+    !gfycat ||
+    !imageBase64 ||
+    !lineUpImageBase64 ||
+    !map ||
+    !mapEndCoord ||
+    !movement ||
+    !startPosition ||
+    !technique ||
+    !type
+  ) {
+    return false;
+  }
+
+  return {
+    map,
+    description,
+    endPosition,
+    gfycat,
+    imageBase64,
+    mapEndCoord,
+    movement,
+    startPosition,
+    technique,
+    type,
+    tickrate,
+    lineUpImageBase64,
+    oneWay,
+    teamSide,
+    setPos: setPosStringFix(setPos),
+    proUrl,
+  };
+};
+
+function setPosStringFix(setPos?: string) {
+  if (setPos && setPos.length > 0) {
+    return setPos;
+  }
+  return undefined;
+}

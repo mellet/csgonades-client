@@ -14,7 +14,7 @@ type MovementOption = {
   value: MovementKeys;
 };
 
-export function movementString(movement?: Movement) {
+export function movementString(movement?: NadeMovement) {
   if (!movement) {
     return "";
   }
@@ -33,4 +33,4 @@ export function nadeMovementOptions(): MovementOption[] {
   return options;
 }
 
-export type Movement = keyof typeof NadeMovements;
+export type NadeMovement = keyof typeof NadeMovements;

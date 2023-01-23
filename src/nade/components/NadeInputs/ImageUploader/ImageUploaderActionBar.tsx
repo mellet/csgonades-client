@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FaPen, FaSave } from "react-icons/fa";
+import { FaSave } from "react-icons/fa";
 import { Dimensions } from "../../../../constants/Constants";
 import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { Button } from "../../../../shared-components/buttons/Button";
@@ -43,10 +43,11 @@ export const ImageUploaderActionBar: FC<Props> = ({
             onSelectImageClicked={onFileSelectClick}
           />
           <Button
+            primary
             onClick={onClick}
-            title={hasSavedImage ? "Edit crop" : "Save crop"}
-            icon={hasSavedImage ? <FaPen /> : <FaSave />}
-            disabled={disabled}
+            title={"Save crop"}
+            icon={<FaSave />}
+            disabled={disabled || hasSavedImage}
           />
         </div>
       </div>

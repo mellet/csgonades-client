@@ -9,7 +9,7 @@ import { ResultImageWidget } from "./pages/ResultImageWidget";
 import { VideoAddWidget } from "./pages/VideoAddWidget";
 import { useCreateNade } from "./state/NadeAddStateProvider";
 
-export const NadeStepSwitcher: FC = () => {
+export const AddNadeStepSwitcher: FC = () => {
   const { step, nade, actions } = useCreateNade();
 
   const nadeStepComponent = () => {
@@ -19,7 +19,7 @@ export const NadeStepSwitcher: FC = () => {
       case "info":
         return <InfoAddWidget />;
       case "map":
-        return nade.map ? <MapAddWidget /> : <></>;
+        return <MapAddWidget />;
       case "resultImage":
         return <ResultImageWidget />;
       case "lineupImage":
@@ -37,6 +37,7 @@ export const NadeStepSwitcher: FC = () => {
         <NadeStepIndicator
           currentStep={step}
           setCurrentStep={actions.setCurrentStep}
+          nadeBody={nade}
         />
         {nadeStepComponent()}
       </div>

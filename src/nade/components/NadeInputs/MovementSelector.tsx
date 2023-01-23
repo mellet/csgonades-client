@@ -1,18 +1,18 @@
 import { FC } from "react";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
 import { CsgnDropdown } from "../../../shared-components/inputs/CsgnDropdown";
-import { Movement, nadeMovementOptions } from "../../models/NadeMovement";
+import { NadeMovement, nadeMovementOptions } from "../../models/NadeMovement";
 
 type Props = {
-  defaultValue?: Movement;
-  onChange: (movement: Movement) => void;
+  defaultValue?: NadeMovement;
+  onChange: (movement: NadeMovement) => void;
 };
 
 export const MovementSelector: FC<Props> = ({ onChange, defaultValue }) => {
   return (
     <div>
       <MiniLabel value="Movement" />
-      <CsgnDropdown<Movement>
+      <CsgnDropdown<NadeMovement>
         defaultValue={defaultValue}
         hintText={"Select movement"}
         onChange={onChange}

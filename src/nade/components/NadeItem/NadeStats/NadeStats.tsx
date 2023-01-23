@@ -6,7 +6,7 @@ import { useTheme } from "../../../../core/settings/SettingsHooks";
 import { Popup } from "semantic-ui-react";
 import { StatItem } from "./StatItem";
 import { Technique } from "../../../models/Technique";
-import { Movement } from "../../../models/NadeMovement";
+import { NadeMovement } from "../../../models/NadeMovement";
 import { isNewNade } from "../../../../utils/Common";
 import { StatFavorite } from "./StatFavorite";
 import Link from "next/link";
@@ -20,7 +20,7 @@ type NadeStatsProps = {
   favoriteCount: number;
   isFavorited?: boolean;
   isPro?: boolean;
-  movement?: Movement;
+  movement?: NadeMovement;
   side?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;

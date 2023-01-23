@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react";
 import { NadeLight } from "../nade/models/Nade";
-import { Status } from "../nade/models/Status";
+import { NadeStatus } from "../nade/models/Status";
 import { generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../shared-components/PageLink";
 import { prettyDate } from "../utils/DateUtils";
@@ -203,7 +203,7 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
   );
 };
 
-const StatusText: FC<{ status: Status }> = ({ status }) => {
+const StatusText: FC<{ status: NadeStatus }> = ({ status }) => {
   const statusIcon = useMemo(() => {
     if (status === "accepted") {
       return (

@@ -9,7 +9,7 @@ export const Box: FC = ({ children }) => {
       <div className="box">{children}</div>
       <style jsx>{`
         .box {
-          padding: ${Dimensions.GUTTER_SIZE}px;
+          padding: ${Dimensions.GUTTER_SIZE * 1.5}px;
           background: ${colors.DP03};
           border: 1px solid ${colors.BORDER};
           border-radius: ${Dimensions.BORDER_RADIUS};

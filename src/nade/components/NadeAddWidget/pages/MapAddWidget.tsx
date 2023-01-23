@@ -10,7 +10,9 @@ export const MapAddWidget: FC = ({}) => {
   const { nade, actions } = useCreateNade();
 
   if (!nade.map) {
-    return <></>;
+    return (
+      <Box>Select a map before you can select the nade landing position.</Box>
+    );
   }
 
   return (

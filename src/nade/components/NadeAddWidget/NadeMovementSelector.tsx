@@ -2,12 +2,12 @@ import { FC } from "react";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { SquareButton } from "../../../shared-components/buttons/IconButton/SquareButton";
 import { ButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
-import { Movement, movementString } from "../../models/NadeMovement";
+import { NadeMovement, movementString } from "../../models/NadeMovement";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
 
 type Props = {
-  onMovementSelect: (movement: Movement) => void;
-  selectedMovement?: Movement;
+  onMovementSelect: (movement: NadeMovement) => void;
+  selectedMovement?: NadeMovement;
 };
 
 export const NadeMovementSelector: FC<Props> = ({
@@ -66,7 +66,7 @@ export const NadeMovementSelector: FC<Props> = ({
 };
 
 type TypeSelectButtonProps = {
-  movement: Movement;
+  movement: NadeMovement;
 };
 
 const MovementIcon: FC<TypeSelectButtonProps> = ({ movement }) => {

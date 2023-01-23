@@ -148,6 +148,15 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         },
       };
     }
+    case "CreateNade/SetProUrl": {
+      return {
+        ...state,
+        nadeData: {
+          ...state.nadeData,
+          proUrl: action.proUrl,
+        },
+      };
+    }
     default:
       assertNever(action);
       return state;

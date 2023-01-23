@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
-import { nadeStatusOptions, Status } from "../../models/Status";
+import { nadeStatusOptions, NadeStatus } from "../../models/Status";
 import { CsgnDropdown } from "../../../shared-components/inputs/CsgnDropdown";
 
 type Props = {
-  initValue: Status;
-  onChange: (status: Status) => void;
+  initValue: NadeStatus;
+  onChange: (status: NadeStatus) => void;
 };
 
 export const StatusSelector: FC<Props> = ({ initValue, onChange }) => {

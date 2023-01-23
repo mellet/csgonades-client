@@ -1,7 +1,7 @@
 import { CsgoMap } from "../../../../map/models/CsGoMap";
 import { GfycatData } from "../../../models/GfycatData";
 import { MapCoordinates } from "../../../models/Nade";
-import { Movement } from "../../../models/NadeMovement";
+import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
 import { NadeType } from "../../../models/NadeType";
 import { TeamSide } from "../../../models/TeamSide";
@@ -40,7 +40,7 @@ type SetNadeType = {
 
 type SetMovement = {
   type: "CreateNade/SetMovement";
-  movement: Movement;
+  movement: NadeMovement;
 };
 
 type SetImage = {
@@ -88,6 +88,11 @@ type SetCurrentStep = {
   step: NadeCreateSteps;
 };
 
+type SetProLink = {
+  type: "CreateNade/SetProUrl";
+  proUrl?: string;
+};
+
 export type NadeAddActions =
   | SetCurrentStep
   | SetDescription
@@ -100,6 +105,7 @@ export type NadeAddActions =
   | SetMovement
   | SetNadeType
   | SetOneWay
+  | SetProLink
   | SetStartPosition
   | SetTeamSide
   | SetTechnique

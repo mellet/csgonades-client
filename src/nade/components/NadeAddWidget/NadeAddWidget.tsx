@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { NadeStepSwitcher } from "./NadeStepSwitcher";
+import { AddNadeStepSwitcher } from "./NadeStepSwitcher";
 import { CreateNadeProvider } from "./state/NadeAddStateProvider";
 
 export const NadeAddWidget: FC = () => {
   return (
     <>
       <CreateNadeProvider>
-        <NadeStepSwitcher />
+        <AddNadeStepSwitcher />
       </CreateNadeProvider>
     </>
   );

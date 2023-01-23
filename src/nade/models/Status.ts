@@ -5,22 +5,22 @@ const StatusValues = {
   pending: "Pending",
 };
 
-export type Status = keyof typeof StatusValues;
+export type NadeStatus = keyof typeof StatusValues;
 
 type NadeStatusOption = {
-  key: Status;
+  key: NadeStatus;
   text: string;
-  value: Status;
+  value: NadeStatus;
 };
 
-export function nadeStatusString(status: Status): string {
+export function nadeStatusString(status: NadeStatus): string {
   return StatusValues[status];
 }
 
 export function nadeStatusOptions(): NadeStatusOption[] {
   const options: NadeStatusOption[] = [];
   for (const key in StatusValues) {
-    const objKey = key as Status;
+    const objKey = key as NadeStatus;
     const text = nadeStatusString(objKey);
     options.push({
       key: objKey,

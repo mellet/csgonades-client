@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const OneWaySelector: FC<Props> = ({ initialValue, onClick }) => {
-  const [checked, setChecked] = useState(initialValue);
+  const [checked, setChecked] = useState(Boolean(initialValue));
 
   function onClicked() {
     setChecked(!checked);

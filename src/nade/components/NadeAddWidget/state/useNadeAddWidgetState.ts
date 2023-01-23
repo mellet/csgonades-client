@@ -2,7 +2,7 @@ import { Dispatch, useReducer } from "react";
 import { CsgoMap } from "../../../../map/models/CsGoMap";
 import { GfycatData } from "../../../models/GfycatData";
 import { MapCoordinates } from "../../../models/Nade";
-import { Movement } from "../../../models/NadeMovement";
+import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
 import { NadeType } from "../../../models/NadeType";
 import { TeamSide } from "../../../models/TeamSide";
@@ -50,7 +50,7 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetMap", map });
   }
 
-  function setMovement(movement: Movement) {
+  function setMovement(movement: NadeMovement) {
     dispatch({ type: "CreateNade/SetMovement", movement });
   }
 
@@ -85,6 +85,10 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetTickrate", tick });
   }
 
+  function setProLink(proUrl: string) {
+    dispatch({ type: "CreateNade/SetProUrl", proUrl });
+  }
+
   return {
     setCurrentStep,
     setDescription,
@@ -96,6 +100,7 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     setNadeMap,
     setNadeType,
     setOneWay,
+    setProLink,
     setResultImage,
     setStartPosition,
     setTeamSide,

@@ -56,6 +56,7 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
           onChange={onSetGfycat}
           placeholder="Example: https://gfycat.com/confusedwiltedamazonparrot"
           defaultValue={defaultValue}
+          value={defaultValue}
           className="debounce-input"
         />
         <div className="icon">

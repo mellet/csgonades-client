@@ -94,10 +94,8 @@ export const InfoAddWidget: FC = ({}) => {
           <SplitLayout
             left={
               <ProLinkInput
-                currentProLink=""
-                onChange={() => {
-                  return;
-                }}
+                currentProLink={nade.proUrl}
+                onChange={actions.setProLink}
               />
             }
             right={

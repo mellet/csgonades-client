@@ -1,16 +1,28 @@
 import { FC } from "react";
+import { FaCheck } from "react-icons/fa";
 import { useTheme } from "../../../core/settings/SettingsHooks";
+import { NadeCreateBody } from "../../models/Nade";
 import { NadeCreateSteps } from "./state/NadeAddState";
 
 type Props = {
   currentStep: NadeCreateSteps;
   setCurrentStep: (step: NadeCreateSteps) => void;
+  nadeBody: Partial<NadeCreateBody>;
 };
 
 export const NadeStepIndicator: FC<Props> = ({
   currentStep,
   setCurrentStep,
+  nadeBody,
 }) => {
+  const videoDone = isValidVideo(nadeBody);
+  const infoDone = isValidInfo(nadeBody);
+  const mapDone = isValidMap(nadeBody);
+  const imageDone = Boolean(nadeBody.imageBase64);
+  const lineupImageDone = Boolean(nadeBody.lineUpImageBase64);
+  const allDone =
+    videoDone && infoDone && mapDone && imageDone && lineupImageDone;
+
   return (
     <>
       <div className="container">
@@ -20,30 +32,39 @@ export const NadeStepIndicator: FC<Props> = ({
             stepName={"Video"}
             active={currentStep === "video"}
             onClick={() => setCurrentStep("video")}
+            isDone={videoDone}
           />
           <Step
             number={2}
             stepName={"Info"}
             active={currentStep === "info"}
             onClick={() => setCurrentStep("info")}
+            isDone={infoDone}
+            disabled={!videoDone}
           />
           <Step
             number={3}
             stepName={"Map"}
             active={currentStep === "map"}
             onClick={() => setCurrentStep("map")}
+            isDone={mapDone}
+            disabled={!infoDone}
           />
           <Step
             number={4}
             stepName={"Result image"}
             active={currentStep === "resultImage"}
             onClick={() => setCurrentStep("resultImage")}
+            isDone={imageDone}
+            disabled={!mapDone}
           />
           <Step
             number={5}
             stepName={"Lineup image"}
             active={currentStep === "lineupImage"}
             onClick={() => setCurrentStep("lineupImage")}
+            isDone={lineupImageDone}
+            disabled={!imageDone}
           />
           <Step
             isLast
@@ -51,6 +72,7 @@ export const NadeStepIndicator: FC<Props> = ({
             stepName={"Confirm"}
             active={currentStep === "confirmStep"}
             onClick={() => setCurrentStep("confirmStep")}
+            disabled={!allDone}
           />
         </section>
       </div>
@@ -75,17 +97,31 @@ type StepProps = {
   stepName: string;
   number: number;
   isLast?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
+  isDone?: boolean;
+  disabled?: boolean;
 };
 
-const Step: FC<StepProps> = ({ stepName, isLast, active, number, onClick }) => {
+const Step: FC<StepProps> = ({
+  stepName,
+  isLast,
+  active,
+  number,
+  onClick,
+  isDone,
+  disabled,
+}) => {
   const { colors } = useTheme();
 
   return (
     <>
       <div className={active ? "step active" : "step"}>
-        <button onClick={onClick} className="step-icon">
-          {number}
+        <button onClick={onClick} className="step-icon" disabled={disabled}>
+          {isDone && !active ? (
+            <FaCheck style={{ position: "relative", top: 2 }} />
+          ) : (
+            number
+          )}
         </button>
         <p>{stepName}</p>
       </div>
@@ -104,7 +140,7 @@ const Step: FC<StepProps> = ({ stepName, isLast, active, number, onClick }) => {
           width: 24px;
           border: none;
           border-radius: 50%;
-          background: #c2c2c2;
+          background: ${isDone ? colors.SUCCESS : "#c2c2c2"};
           font-size: 8px;
           text-align: center;
           color: #ffffff;
@@ -113,6 +149,10 @@ const Step: FC<StepProps> = ({ stepName, isLast, active, number, onClick }) => {
           font-size: 12px;
           font-weight: 500;
           cursor: pointer;
+        }
+
+        .step-icon:disabled {
+          cursor: not-allowed;
         }
 
         .step.active .step-icon {
@@ -146,4 +186,40 @@ const Step: FC<StepProps> = ({ stepName, isLast, active, number, onClick }) => {
       `}</style>
     </>
   );
+};
+
+const isValidVideo = (newNade: Partial<NadeCreateBody>) => {
+  return Boolean(newNade.gfycat);
+};
+
+const isValidInfo = (newNade: Partial<NadeCreateBody>) => {
+  const {
+    description,
+    endPosition,
+    map,
+    movement,
+    startPosition,
+    technique,
+    type,
+    teamSide,
+  } = newNade;
+
+  if (
+    !description ||
+    !endPosition ||
+    !map ||
+    !movement ||
+    !startPosition ||
+    !technique ||
+    !type ||
+    !teamSide
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
+const isValidMap = (newNade: Partial<NadeCreateBody>) => {
+  return Boolean(newNade.mapEndCoord);
 };
