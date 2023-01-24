@@ -109,7 +109,7 @@ const PrivacyPolicyPageContainer: NextPage = () => {
               <p>
                 If you have any questions or suggestions about my Privacy
                 Policy, do not hesitate to{" "}
-                <Link href="/contact" as="/contact">
+                <Link href="/contact" as="/contact" legacyBehavior>
                   <a>contact us</a>
                 </Link>
                 .

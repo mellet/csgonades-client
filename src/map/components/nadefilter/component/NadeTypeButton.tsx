@@ -37,6 +37,7 @@ export const NadeTypeButton: FC<Props> = memo(
             <div className="type-icon">
               {iconUrl && (
                 <Image
+                  alt="Nade type icon"
                   unoptimized
                   priority
                   src={iconUrl}
@@ -53,6 +54,7 @@ export const NadeTypeButton: FC<Props> = memo(
             <div className="type-icon">
               {iconUrl && (
                 <Image
+                  alt="Nade type icon"
                   priority
                   src={iconUrl}
                   width={Dimensions.BUTTON_HEIGHT}

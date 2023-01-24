@@ -39,7 +39,7 @@ export const NadeCommentItem: FC<NadeCommentItemProps> = ({
       <NadeCommentLayout>
         <NadeCommentAvatar user={nadeComment} />
         <NadeCommentNickname>
-          <Link href={`/users/${nadeComment.steamId}`} passHref>
+          <Link href={`/users/${nadeComment.steamId}`} passHref legacyBehavior>
             <div
               style={{
                 display: "flex",

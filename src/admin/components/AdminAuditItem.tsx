@@ -23,7 +23,7 @@ export const AdminAuditItem: FC<Props> = ({ auditLogEvent }) => {
         <div className="body">
           <div className="body-header">
             <div className="body-title">
-              <Link href={`/nades/${onNadeId}`}>
+              <Link legacyBehavior href={`/nades/${onNadeId}`}>
                 <a>
                   <span className="nickname">
                     {byUser.nickname} updated a nade

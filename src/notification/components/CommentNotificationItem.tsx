@@ -18,7 +18,10 @@ export const CommentNotificationItem: FC<Props> = ({ notification }) => {
   }
 
   return (
-    <Link href={`/nades/${notification.nadeSlug || notification.nadeId}`}>
+    <Link
+      href={`/nades/${notification.nadeSlug || notification.nadeId}`}
+      legacyBehavior
+    >
       <a>
         <NotificationItemLayout
           icon={<FaCommentDots />}

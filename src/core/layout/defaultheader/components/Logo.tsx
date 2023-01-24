@@ -16,14 +16,16 @@ export const Logo: FC = memo(() => {
       <PageLink href="/">
         <div key={logoUrl} id="logo">
           <Image
+            fill
             unoptimized
             alt="CSGO Nades logo"
             priority
             src={logoUrl}
-            layout="fill"
-            objectFit="contain"
-            objectPosition="left"
             quality={100}
+            style={{
+              objectFit: "contain",
+              objectPosition: "left",
+            }}
           />
         </div>
       </PageLink>

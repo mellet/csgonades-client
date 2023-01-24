@@ -14,7 +14,10 @@ type Props = {
 
 export const StatusNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href={`/nades/${notification.nadeSlug || notification.nadeId}`}>
+    <Link
+      href={`/nades/${notification.nadeSlug || notification.nadeId}`}
+      legacyBehavior
+    >
       <a>
         <NotificationItemLayout
           icon={

@@ -27,11 +27,10 @@ export const NavItem: FC<Props> = ({
       <span className={selected ? "map-link selected" : "map-link"}>
         <div className="nav-icon">
           <Image
+            fill
             unoptimized
             priority
             src={`/mapicons/${csMap}.png`}
-            layout="fill"
-            objectFit="contain"
             quality={100}
             alt="Mirage icon"
           />

@@ -128,7 +128,15 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-thumb">
           <PageLink href={`/nades/${nade.slug || nade.id}`}>
             <div className="nade-thumb-image">
-              <Image unoptimized src={nadeMainImage} layout="fill" />
+              <Image
+                fill
+                alt="Nade image"
+                unoptimized
+                src={nadeMainImage}
+                style={{
+                  objectFit: "contain",
+                }}
+              />
             </div>
           </PageLink>
         </td>
@@ -149,7 +157,11 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-comments">{kFormatter(nade.commentCount)}</td>
         <td>{prettyDate(nade.createdAt)}</td>
         <td>
-          <Link href={`/nades/${nade.slug || nade.id}/edit`} passHref>
+          <Link
+            href={`/nades/${nade.slug || nade.id}/edit`}
+            passHref
+            legacyBehavior
+          >
             <button className="edit-btn">
               <FaEdit /> Edit
             </button>

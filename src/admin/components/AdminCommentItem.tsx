@@ -27,7 +27,7 @@ export const AdminCommentItem: FC<Props> = ({ comment }) => {
           </div>
         </div>
         <div className="link">
-          <Link href={`/nades/${comment.nadeId}`}>
+          <Link legacyBehavior href={`/nades/${comment.nadeId}`}>
             <a>
               <FaChevronRight />
             </a>

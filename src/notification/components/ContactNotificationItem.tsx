@@ -10,7 +10,7 @@ type Props = {
 
 export const ContactNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href="/admin/contact">
+    <Link href="/admin/contact" legacyBehavior>
       <a>
         <NotificationItemLayout
           icon={<FaComment />}
