@@ -28,10 +28,10 @@ export const NotificationItemLayout: FC<Props> = ({
         {imageUrl && (
           <div className="image">
             <Image
+              alt="Nade image"
+              fill
               unoptimized
               src={imageUrl}
-              layout="fill"
-              objectFit="cover"
               quality={100}
             />
           </div>

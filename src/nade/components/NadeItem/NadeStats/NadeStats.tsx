@@ -87,7 +87,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
               />
             </div>
           )}
-          <Link href={`/nades/${slug || nadeId}#comments`}>
+          <Link href={`/nades/${slug || nadeId}#comments`} legacyBehavior>
             <a className="stat-item">
               <StatItem
                 color={colors.GREY}

@@ -10,7 +10,7 @@ type Props = {
 
 export const ReportNotificationItem: FC<Props> = ({ notification }) => {
   return (
-    <Link href="/admin/reports">
+    <Link href="/admin/reports" legacyBehavior>
       <a>
         <NotificationItemLayout
           icon={<FaExclamationTriangle />}

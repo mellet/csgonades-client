@@ -40,12 +40,15 @@ export const BlogPostArticle: FC<Props> = memo(({ children, data }) => {
       <article id="blog-article">
         <div id="title-image">
           <Image
+            alt="Blog main image"
             unoptimized
             priority
             src={data.imageUrl}
-            layout="fill"
-            objectFit="cover"
+            fill
             quality={100}
+            style={{
+              objectFit: "cover",
+            }}
           />
           <div id="article-title">
             <h1>{data.title}</h1>

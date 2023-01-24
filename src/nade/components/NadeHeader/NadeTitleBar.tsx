@@ -22,6 +22,7 @@ export const NadeTitleBar: FC<Props> = memo(({ nade }) => {
               href={`/maps/${nade.map}?type=${nade.type}`}
               passHref
               scroll={false}
+              legacyBehavior
             >
               <button id="back">
                 <FaChevronLeft style={{ position: "relative", left: "-2px" }} />

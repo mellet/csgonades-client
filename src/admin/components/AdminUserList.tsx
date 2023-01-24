@@ -33,7 +33,11 @@ export const AdminUserList: FC = () => {
                   <img src={user.avatar} />
                 </td>
                 <td className="nickname">
-                  <Link href={`/users/${user.steamId}`} key={user.steamId}>
+                  <Link
+                    href={`/users/${user.steamId}`}
+                    key={user.steamId}
+                    legacyBehavior
+                  >
                     <a>{user.nickname}</a>
                   </Link>
                 </td>

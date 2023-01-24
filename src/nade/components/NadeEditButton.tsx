@@ -26,7 +26,7 @@ export const NadeEditButton: FC<Props> = ({
 
   return (
     <Tooltip message="Edit" direction="right">
-      <Link href={`/nades/${nadeSlug || nadeId}/edit`}>
+      <Link href={`/nades/${nadeSlug || nadeId}/edit`} legacyBehavior>
         <a>
           <SquareButton
             icon={<FaPencilAlt />}

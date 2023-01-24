@@ -52,12 +52,15 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
         <div className="result-image">
           {thumbUrl && (
             <Image
+              alt="Nade result image"
+              fill
               unoptimized
               onLoad={onResultImgRdy}
               src={thumbUrl}
-              layout="fill"
-              objectFit="cover"
               quality={100}
+              style={{
+                objectFit: "cover",
+              }}
             ></Image>
           )}
         </div>
@@ -67,12 +70,15 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
             <div className="lineup-image">
               <div className="lineup-img-wrap">
                 <Image
+                  fill
+                  alt="Nade lineup image"
                   unoptimized
                   onLoad={onLineupImgRdy}
                   src={lineupThumbUrl}
-                  layout="fill"
-                  objectFit="cover"
                   quality={100}
+                  style={{
+                    objectFit: "cover",
+                  }}
                 />
               </div>
               <div className="crosshair">

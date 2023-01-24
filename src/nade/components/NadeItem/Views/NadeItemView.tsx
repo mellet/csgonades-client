@@ -32,7 +32,11 @@ export const NadeItemView: FC<Props> = memo(
       <>
         <div className="nadebox-wrap">
           <div className={"nadebox"} style={{ display: "inline-block" }}>
-            <Link href={`/nades/${nade.slug || nade.id}`} scroll={true}>
+            <Link
+              href={`/nades/${nade.slug || nade.id}`}
+              scroll={true}
+              legacyBehavior
+            >
               <a role="button">
                 <NadeItemTitle
                   endPosition={nade.endPosition}

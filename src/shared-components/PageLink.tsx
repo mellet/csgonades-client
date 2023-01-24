@@ -7,7 +7,7 @@ export const PageLink = forwardRef<typeof Link, any>(
     const { colors } = useTheme();
     return (
       <>
-        <Link href={href} as={as}>
+        <Link href={href} as={as} legacyBehavior>
           <a ref={ref} {...rest}>
             {children}
           </a>

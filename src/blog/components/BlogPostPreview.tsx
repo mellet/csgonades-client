@@ -22,11 +22,14 @@ export const BlogPostPreview: FC<Props> = ({ blogPost, index }) => {
           <span>
             <div className="blog-img">
               <Image
+                fill
                 unoptimized
+                alt="Blog image"
                 src={thumbnailUrl}
-                layout="fill"
-                objectFit="cover"
                 quality={100}
+                style={{
+                  objectFit: "cover",
+                }}
               />
             </div>
 

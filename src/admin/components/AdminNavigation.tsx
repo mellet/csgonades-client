@@ -11,31 +11,31 @@ export const AdminNavigation: FC = () => {
   return (
     <>
       <div className="admin-nav">
-        <Link href="/admin/pending" passHref>
+        <Link href="/admin/pending" passHref legacyBehavior>
           <button>Pending nades</button>
         </Link>
-        <Link href="/admin/declined" passHref>
+        <Link href="/admin/declined" passHref legacyBehavior>
           <button>Declined nades</button>
         </Link>
-        <Link href="/admin/deleted" passHref>
+        <Link href="/admin/deleted" passHref legacyBehavior>
           <button>Deleted nades</button>
         </Link>
-        <Link href="/admin/comments" passHref>
+        <Link href="/admin/comments" passHref legacyBehavior>
           <button>Recent comments</button>
         </Link>
-        <Link href="/admin/reports" passHref>
+        <Link href="/admin/reports" passHref legacyBehavior>
           <button>Reports</button>
         </Link>
-        <Link href="/admin/audit" passHref>
+        <Link href="/admin/audit" passHref legacyBehavior>
           <button>Audit</button>
         </Link>
         {isAdmin && (
-          <Link href="/admin/users" passHref>
+          <Link href="/admin/users" passHref legacyBehavior>
             <button>Users</button>
           </Link>
         )}
         {isAdmin && (
-          <Link href="/admin/contact" passHref>
+          <Link href="/admin/contact" passHref legacyBehavior>
             <button>Contacts</button>
           </Link>
         )}

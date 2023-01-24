@@ -17,35 +17,35 @@ export const FrontPageMapSelector: FC<Props> = ({ nadeType, children }) => {
         <div className="map-selector">
           <span>Select map:</span>
           <div className="maps">
-            <Link href={`/maps/mirage?type=${nadeType}`}>
+            <Link href={`/maps/mirage?type=${nadeType}`} legacyBehavior>
               <a>Mirage</a>
             </Link>
-            <Link href={`/maps/inferno?type=${nadeType}`}>
+            <Link href={`/maps/inferno?type=${nadeType}`} legacyBehavior>
               <a>Inferno</a>
             </Link>
-            <Link href={`/maps/dust2?type=${nadeType}`}>
+            <Link href={`/maps/dust2?type=${nadeType}`} legacyBehavior>
               <a>Dust2</a>
             </Link>
           </div>
           <div className="maps">
-            <Link href={`/maps/overpass?type=${nadeType}`}>
+            <Link href={`/maps/overpass?type=${nadeType}`} legacyBehavior>
               <a>Overpass</a>
             </Link>
-            <Link href={`/maps/ancient?type=${nadeType}`}>
+            <Link href={`/maps/ancient?type=${nadeType}`} legacyBehavior>
               <a>Ancient</a>
             </Link>
-            <Link href={`/maps/nuke?type=${nadeType}`}>
+            <Link href={`/maps/nuke?type=${nadeType}`} legacyBehavior>
               <a>Nuke</a>
             </Link>
           </div>
           <div className="maps">
-            <Link href={`/maps/vertigo?type=${nadeType}`}>
+            <Link href={`/maps/vertigo?type=${nadeType}`} legacyBehavior>
               <a>Vertigo</a>
             </Link>
-            <Link href={`/maps/train?type=${nadeType}`}>
+            <Link href={`/maps/train?type=${nadeType}`} legacyBehavior>
               <a>Train</a>
             </Link>
-            <Link href={`/maps/cache?type=${nadeType}`}>
+            <Link href={`/maps/cache?type=${nadeType}`} legacyBehavior>
               <a>Cache</a>
             </Link>
           </div>
