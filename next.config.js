@@ -4,9 +4,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const base = {
-  typescript: {
-    ignoreDevErrors: true,
-  },
   images: {
     domains: ["storage.googleapis.com"],
   },
