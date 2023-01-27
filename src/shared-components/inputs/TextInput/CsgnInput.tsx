@@ -23,7 +23,12 @@ export const CsgnInput: FC<CsgnInputProps> = ({
         <div className="input">
           <TextInputField
             defaultValue={initialValue}
-            onBlur={(e) => onChange(e.target.value)}
+            onBlur={(e) => {
+              const value = e.target.value;
+              if (value.length > 0) {
+                onChange(e.target.value);
+              }
+            }}
             placeholder={placeholder}
             value={value}
             maxLength={maxLength}
