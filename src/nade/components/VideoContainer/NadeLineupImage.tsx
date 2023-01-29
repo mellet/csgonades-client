@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FC, useCallback, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
+import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
 import { CrossHairSvg } from "./CrossHairSvg";
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export const NadeLineUpImage: FC<Props> = ({ url }) => {
+  const { colors } = useTheme();
   const ga = useGa();
   const [hasSentGaEvent, setHasSentGaEvent] = useState(false);
   const [zoomMultiplier, setZoomMultiplier] = useState(1);
@@ -73,11 +75,10 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
           display: flex;
           flex-direction: column;
           position: absolute;
-          right: ${Dimensions.GUTTER_SIZE}px;
-          top: ${Dimensions.GUTTER_SIZE * 2 + 40}px;
+          right: 10px;
+          top: ${Dimensions.GUTTER_SIZE * 2 + 45}px;
           z-index: 1;
-          border-radius: ${Dimensions.BORDER_RADIUS};
-          border: 1px solid white;
+          border-radius: 8px;
           overflow: hidden;
         }
 
@@ -85,24 +86,25 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background: rgba(255, 255, 255, 0.5);
-          height: 36px;
-          width: 36px;
+          background: ${colors.DP01};
+          height: 34px;
+          width: 34px;
           padding: 0;
           margin: 0;
           border-radius: 0;
           cursor: pointer;
-          font-size: 20px;
+          font-size: 16px;
           border: none;
-          color: #111;
+          color: ${colors.TEXT};
         }
 
         .lineup-actions button:hover {
-          background: rgba(255, 255, 255, 0.85);
+          background: ${colors.DP03};
+          color: ${colors.filterBgHover};
         }
 
         .lineup-actions button:first-child {
-          border-bottom: 1px solid white;
+          border-bottom: 1px solid ${colors.BORDER};
         }
 
         .crosshair {

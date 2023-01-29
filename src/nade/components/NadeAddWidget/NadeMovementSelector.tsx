@@ -4,6 +4,7 @@ import { SquareButton } from "../../../shared-components/buttons/IconButton/Squa
 import { ButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { NadeMovement, movementString } from "../../models/NadeMovement";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
+import { MovementIcon } from "./MovementIcon";
 
 type Props = {
   onMovementSelect: (movement: NadeMovement) => void;
@@ -62,23 +63,5 @@ export const NadeMovementSelector: FC<Props> = ({
         }
       `}</style>
     </div>
-  );
-};
-
-type TypeSelectButtonProps = {
-  movement: NadeMovement;
-};
-
-const MovementIcon: FC<TypeSelectButtonProps> = ({ movement }) => {
-  return (
-    <>
-      <img src={`/icons/movement/${movement}.svg`} />
-
-      <style jsx>{`
-        img {
-          height: 26px;
-        }
-      `}</style>
-    </>
   );
 };

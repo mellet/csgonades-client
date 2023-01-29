@@ -5,6 +5,7 @@ import { NadeLineUpImage } from "./NadeLineupImage";
 import { NadeMeta } from "../NadeMeta/NadeMeta";
 import { Nade } from "../../models/Nade";
 import { getNadeLineUpImage } from "../NadeItem/Utils/NadeUtils";
+import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 type Props = {
   nade: Nade;
@@ -16,21 +17,38 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("video");
   const lineUpUrl = getNadeLineUpImage(nade);
   const hasLineUp = Boolean(lineUpUrl);
+  const { isMobile } = useIsDeviceSize();
 
   return (
     <>
-      <NadeMeta
-        movement={nade.movement}
-        technique={nade.technique}
-        tickrate={nade.tickrate}
-        type={nade.type}
-      />
+      {isMobile && (
+        <NadeMeta
+          movement={nade.movement}
+          technique={nade.technique}
+          tickrate={nade.tickrate}
+          type={nade.type}
+        />
+      )}
+
       <div className="video-wrap">
+        {!isMobile && (
+          <div className="nade-meta">
+            <NadeMeta
+              movement={nade.movement}
+              technique={nade.technique}
+              tickrate={nade.tickrate}
+              type={nade.type}
+            />
+          </div>
+        )}
+
         {hasLineUp && (
-          <NadeTabSelector
-            selectedTab={currentTab}
-            onChangeTab={setCurrentTab}
-          />
+          <div className="tab-selector">
+            <NadeTabSelector
+              selectedTab={currentTab}
+              onChangeTab={setCurrentTab}
+            />
+          </div>
         )}
 
         <div className="media-container">
@@ -50,6 +68,23 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
           position: relative;
           overflow: hidden;
           padding-bottom: calc(56.25% + 44px);
+        }
+
+        .video-tab {
+          z-index: 1;
+        }
+
+        .nade-meta {
+          position: absolute;
+          top: 10px;
+          right: 0;
+          z-index: 1;
+        }
+
+        .tab-selector {
+          position: absolute;
+          top: 10px;
+          left: 10px;
         }
 
         .media-container {
