@@ -63,6 +63,8 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
           grid-area: footer;
           display: flex;
           justify-content: space-around;
+          margin-top: 3px;
+          margin-bottom: 3px;
         }
 
         .ad {

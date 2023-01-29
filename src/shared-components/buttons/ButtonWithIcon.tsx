@@ -48,7 +48,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
           .btn {
             align-items: center;
             appearance: none;
-            background: ${backgroundColor ? backgroundColor : "transparent"};
+            background: ${backgroundColor ? backgroundColor : colors.DP01};
             color: ${color || colors.TEXT};
             border: none;
             border-radius: 0;
@@ -99,7 +99,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
             display: block;
             flex: 1;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 400;
             text-align: center;
             padding-left: 6px;
             padding-right: 10px;

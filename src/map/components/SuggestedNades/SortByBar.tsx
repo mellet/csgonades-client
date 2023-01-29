@@ -34,28 +34,30 @@ export const SortByBar: FC = () => {
           <ButtonWithIcon
             inGroup
             value="Hot"
-            icon={<FaRocket />}
+            icon={
+              <FaRocket size={16} style={{ position: "relative", top: 1 }} />
+            }
             onClick={onSortByHot}
             active={bySortingMethod === "score"}
           />
           <ButtonWithIcon
             inGroup
             value="Top"
-            icon={<ImStarFull />}
+            icon={<ImStarFull size={16} />}
             onClick={onSortByTop}
             active={bySortingMethod === "favoriteCount"}
           />
           <ButtonWithIcon
             inGroup
-            value="View"
-            icon={<FaEye />}
+            value="Views"
+            icon={<FaEye size={16} />}
             onClick={onSortByViews}
             active={bySortingMethod === "viewCount"}
           />
           <ButtonWithIcon
             inGroup
             value="New"
-            icon={<MdFiberNew />}
+            icon={<MdFiberNew size={16} />}
             onClick={onSortByNew}
             active={bySortingMethod === "createdAt"}
           />
