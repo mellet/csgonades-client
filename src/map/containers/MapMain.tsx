@@ -29,7 +29,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const isOverviewView = mapView === "overview";
 
   const { onNadeClusterClick, suggestedNades, dismissSuggested } =
-    useOnNadeClusterClick(map);
+    useOnNadeClusterClick();
 
   const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
   const displayListView = isMobile || !isOverviewView;

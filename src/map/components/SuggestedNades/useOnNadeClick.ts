@@ -1,13 +1,11 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
-import { useLocalStorage } from "usehooks-ts";
-import { CsgoMap } from "../../models/CsGoMap";
 
-function useSuggestedNadesLocal(map: CsgoMap) {
-  const [suggestedNades, setSuggestedNadesForMap] = useLocalStorage<
+function useSuggestedNades() {
+  const [suggestedNades, setSuggestedNadesForMap] = useState<
     NadeLight[] | null
-  >(`${map}/suggestedNades`, null);
+  >(null);
 
   const setSuggestedNades = useCallback(
     (nades: NadeLight[]) => {
@@ -23,10 +21,10 @@ function useSuggestedNadesLocal(map: CsgoMap) {
   return { suggestedNades, setSuggestedNades, clearSuggestedNades };
 }
 
-export const useOnNadeClusterClick = (map: CsgoMap) => {
+export const useOnNadeClusterClick = () => {
   const { event } = useGa();
   const { suggestedNades, setSuggestedNades, clearSuggestedNades } =
-    useSuggestedNadesLocal(map);
+    useSuggestedNades();
 
   function onNadeClusterClick(cluster: NadeLight[]) {
     setSuggestedNades(cluster);

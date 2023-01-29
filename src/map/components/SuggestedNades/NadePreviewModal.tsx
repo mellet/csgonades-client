@@ -1,30 +1,24 @@
 import { FC, MouseEventHandler } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
-import { FaTimes } from "react-icons/fa";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { useGa } from "../../../utils/Analytics";
-import { SortByBar } from "./SortByBar";
 import useSortedNades from "./useSortedNades";
-import { TeamSelector } from "../nadefilter/component/TeamSelector";
-import { TickratePicker } from "../nadefilter/component/TickratePicker";
-import { AdUnit } from "../../../shared-components/adunits/AdUnit";
+import { NadePreviewHeader } from "./NadePreviewHeader";
 
 type Props = {
   nades: NadeLight[];
   onDismiss: () => void;
 };
 
-const MAX_MODAL_WIDTH = 1540;
+const MAX_MODAL_WIDTH = 1420;
 
 export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
   const { colors } = useTheme();
   const sortedNades = useSortedNades(nades);
   const ga = useGa();
-  const numNades = nades.length;
-  const showAdUnit = numNades <= 12;
 
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -67,24 +61,11 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
   return (
     <>
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
+        <div className="filter-header">
+          <NadePreviewHeader onDismiss={onDismissCloseClick} />
+        </div>
         <div className="suggested-main">
-          <div className="filter-wrapper">
-            <div className="title-content">
-              <div className="filter-wrap" onClick={stopPropagation}>
-                <SortByBar />
-                <div className="filters" onClick={stopPropagation}>
-                  <div className="filter-btn">
-                    <TeamSelector />
-                  </div>
-                  <div className="filter-btn">
-                    <TickratePicker />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="nade-list">
+          <div className="nade-list" onClick={(e) => e.stopPropagation()}>
             {sortedNades && (
               <>
                 <CsgnList<NadeLight>
@@ -96,78 +77,9 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
               </>
             )}
           </div>
-
-          <div id="close-wrap">
-            <div className="close-btn" onClick={onDismissCloseClick}>
-              <FaTimes />
-            </div>
-          </div>
-
-          {showAdUnit && (
-            <div className="ad-wrap">
-              <div className="ad">
-                <AdUnit name="nadeModalFixed" />
-              </div>
-            </div>
-          )}
         </div>
       </div>
       <style jsx>{`
-        .suggested-main {
-          display: grid;
-          grid-template-columns: 30px 1fr 30px;
-          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
-          grid-template-areas:
-            ". filter side"
-            ". main side"
-            ". main side"
-            ". footer .";
-          width: 100%;
-          max-width: ${MAX_MODAL_WIDTH}px;
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          padding-top: ${Dimensions.GUTTER_SIZE * 2}px;
-          padding-bottom: 0;
-        }
-
-        .filter-wrapper {
-          grid-area: filter;
-          width: 100%;
-        }
-
-        #close-wrap {
-          grid-area: side;
-          display: flex;
-          justify-content: flex-end;
-        }
-
-        .nade-list {
-          grid-area: main;
-        }
-
-        .ad-wrap {
-          grid-area: footer;
-          display: flex;
-          justify-content: space-around;
-        }
-
-        .ad {
-          width: 728px;
-          height: 90px;
-        }
-
-        .filter-wrap {
-          display: flex;
-        }
-
-        .filters {
-          margin-left: ${Dimensions.GUTTER_SIZE}px;
-          display: flex;
-        }
-
-        .filter-btn {
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
-        }
-
         .map-view-wrapper {
           position: fixed;
           top: 0;
@@ -180,14 +92,24 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           flex-direction: column;
           background: rgba(0, 0, 0, 0.7);
           overflow-y: auto;
+          padding: 0px ${Dimensions.GUTTER_SIZE * 2}px;
         }
 
-        .title-content {
-          padding: ${Dimensions.GUTTER_SIZE / 2}px ${Dimensions.GUTTER_SIZE}px;
-          background: ${colors.DP03};
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
-          border: 1px solid ${colors.BORDER};
+        .filter-header {
+          position: sticky;
+          top: 0;
+          width: 100%;
+          max-width: ${MAX_MODAL_WIDTH}px;
+          z-index: 999;
+          margin: 0 auto;
+        }
+
+        .suggested-main {
+          width: 100%;
+          max-width: ${MAX_MODAL_WIDTH}px;
+          padding-top: ${Dimensions.GUTTER_SIZE}px;
+          margin: 0px 50px;
+          margin-bottom: 100px;
         }
 
         .nade-list {
@@ -197,39 +119,7 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           padding: ${Dimensions.GUTTER_SIZE}px;
           border: 1px solid ${colors.BORDER};
           border-top: none;
-          margin-bottom: ${Dimensions.GUTTER_SIZE * 2}px;
-          border-bottom-left-radius: 8px;
-          border-bottom-right-radius: 8px;
-        }
-
-        .close-btn {
-          position: sticky;
-          top: ${Dimensions.GUTTER_SIZE * 2}px;
-          font-size: 20px;
-          color: rgba(0, 0, 0, 0.8);
-          cursor: pointer;
-          transition: color, background 0.3s;
-          background: rgba(230, 230, 230, 0.95);
-          border-radius: 50%;
-          width: 30px;
-          height: 30px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .close-btn:hover {
-          color: rgba(255, 255, 255, 1);
-          background: rgba(196, 12, 12, 1);
-        }
-
-        @keyframes fadeId {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
+          border-radius: 8px;
         }
       `}</style>
     </>
