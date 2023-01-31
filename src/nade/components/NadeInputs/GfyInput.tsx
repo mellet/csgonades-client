@@ -7,6 +7,7 @@ import { MiniLabel } from "../NadeLabels/MiniLabel";
 import { GfycatInputValidIcon } from "./GfycatInputValidIcon";
 import { DebounceInput } from "react-debounce-input";
 import { useTheme } from "../../../core/settings/SettingsHooks";
+import { InfoBox } from "../../../shared-components/box/InfoBox";
 
 type Props = {
   defaultValue?: string;
@@ -18,6 +19,7 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
   const displayToast = useDisplayToast();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean | null>(null);
+  const [isLargeVideo, setIsLargeVideo] = useState(false);
 
   const onSetGfycat: ChangeEventHandler<HTMLInputElement> = useCallback(
     async (event) => {
@@ -26,6 +28,7 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
         return;
       }
 
+      setIsLargeVideo(false);
       setIsLoading(true);
       const gfycat = await verifyGfycat(value);
       setIsLoading(false);
@@ -39,6 +42,12 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
           severity: "error",
         });
       } else {
+        const sizeMb = gfycat.size ? gfycat.size / 1000000 : 0;
+
+        console.log("size", sizeMb);
+        if (sizeMb > 60) {
+          setIsLargeVideo(true);
+        }
         onChange(gfycat);
         setIsValid(true);
       }
@@ -62,8 +71,20 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
         <div className="icon">
           <GfycatInputValidIcon isLoading={isLoading} isValid={isValid} />
         </div>
+        {isLargeVideo && (
+          <InfoBox type="warning" style={{ marginTop: 15 }} title="Large Video">
+            Video size is very large! This will risk the video being very slow
+            loading for many people. Please see if you can reduce the size of
+            the video you uploaded.
+          </InfoBox>
+        )}
       </div>
       <style jsx>{`
+        .warning {
+          color: white;
+          background: #f09800;
+        }
+
         .input-wrap {
           position: relative;
         }

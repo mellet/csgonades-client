@@ -5,4 +5,5 @@ export type GfycatData = {
   largeVideoUrl: string;
   largeVideoWebm?: string;
   smallVideoUrl: string;
+  size?: number;
 };
