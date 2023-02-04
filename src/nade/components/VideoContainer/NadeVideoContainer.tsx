@@ -27,6 +27,8 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
           technique={nade.technique}
           tickrate={nade.tickrate}
           type={nade.type}
+          teamSide={nade.teamSide}
+          isPro={Boolean(nade.proUrl)}
         />
       )}
 
@@ -38,6 +40,8 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
               technique={nade.technique}
               tickrate={nade.tickrate}
               type={nade.type}
+              teamSide={nade.teamSide}
+              isPro={Boolean(nade.proUrl)}
             />
           </div>
         )}

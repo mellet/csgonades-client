@@ -7,6 +7,9 @@ import { NadeMovement } from "../../models/NadeMovement";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 import { TickrateHint } from "./TickrateHint";
 import { NadeIcon } from "../../../shared-components/nade-icons";
+import { TeamSide } from "../../models/TeamSide";
+import { TeamSideDisplay } from "../../../shared-components/TeamSideDisplay";
+import { ProDisplay } from "../../../shared-components/ProDisplay";
 
 type Props = {
   movement?: NadeMovement;
@@ -14,19 +17,35 @@ type Props = {
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;
+  teamSide?: TeamSide;
+  isPro?: boolean;
 };
 
 export const NadeMeta: FC<Props> = memo(
-  ({ movement, type, technique, tickrate }) => {
+  ({ movement, type, technique, tickrate, teamSide, isPro }) => {
     const { isMobile } = useIsDeviceSize();
 
     return (
       <>
         <div className="nade-meta">
-          <div className="nade-meta-item">
+          <div className="nade-meta-item type">
             <h4>Type</h4>
             <NadeIcon nadeType={type} size={24} />
           </div>
+
+          {teamSide && (
+            <div className="nade-meta-item">
+              <h4>Side</h4>
+              <TeamSideDisplay teamSide={teamSide} size={22} />
+            </div>
+          )}
+
+          {isPro && (
+            <div className="nade-meta-item">
+              <h4>Pro</h4>
+              <ProDisplay size={22} />
+            </div>
+          )}
 
           {movement && (
             <div className="nade-meta-item">
@@ -90,6 +109,10 @@ export const NadeMeta: FC<Props> = memo(
             font-size: 12px;
             line-height: 12px;
             font-weight: 500;
+            margin-bottom: 5px;
+          }
+
+          .type h4 {
             margin-bottom: 4px;
           }
         `}</style>
