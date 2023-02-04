@@ -1,6 +1,7 @@
 import { ReportApi } from "../../../reports/data/ReportApi";
 import { sortByDate } from "../../../utils/Common";
 import useSWR from "swr";
+import { useCallback } from "react";
 
 async function fetchReports() {
   const result = await ReportApi.getAll();
@@ -10,7 +11,19 @@ async function fetchReports() {
 }
 
 export const useAdminReports = () => {
-  const { data } = useSWR("/admin/reports", fetchReports);
+  const { data, mutate } = useSWR("/admin/reports", fetchReports);
 
-  return { reports: data || [] };
+  const removeReport = useCallback(
+    (reportId: string) => {
+      if (data) {
+        mutate([...data.filter((r) => r.id !== reportId)], {
+          revalidate: false,
+        });
+      }
+      ReportApi.delete(reportId);
+    },
+    [data, mutate]
+  );
+
+  return { reports: data || [], removeReport };
 };

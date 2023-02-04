@@ -84,7 +84,7 @@ export const UserAvatar: FC<Props> = ({
           .user-nickname {
             color: ${colors.TEXT};
             font-weight: 400;
-            font-size: 18px;
+            font-size: 16px;
           }
 
           .user-letter {
