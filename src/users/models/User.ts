@@ -13,6 +13,7 @@ export type User = {
   steamId: string;
   updatedAt: Date;
   defaultTick?: Tickrate;
+  numNades?: number;
 };
 
 export type UserUpdateDTO = {

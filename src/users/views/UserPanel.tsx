@@ -50,6 +50,14 @@ export const UserPanel: FC<Props> = ({ user }) => {
           {prettyDate(createdAt)}
         </div>
 
+        {user.numNades && (
+          <div className="num-nades">
+            <span className="label">Nades added</span>
+            <br />
+            {user.numNades}
+          </div>
+        )}
+
         {allowEdit && lastActive && (
           <div className="active-since">
             <span className="label">Last active</span>
@@ -89,6 +97,7 @@ export const UserPanel: FC<Props> = ({ user }) => {
           grid-template-areas:
             "avatar role"
             "member member"
+            "nadecount nadecount"
             "active active"
             "bio bio"
             "action action";
@@ -99,6 +108,12 @@ export const UserPanel: FC<Props> = ({ user }) => {
           border: 1px solid ${colors.BORDER};
           align-self: flex-start;
           border-radius: ${Dimensions.BORDER_RADIUS};
+        }
+
+        .num-nades {
+          grid-area: nadecount;
+          border-top: 1px solid ${colors.BORDER};
+          padding-top: ${Dimensions.GUTTER_SIZE / 2}px;
         }
 
         .avatar {
@@ -154,7 +169,8 @@ export const UserPanel: FC<Props> = ({ user }) => {
         .user-role,
         .bio,
         .member-since,
-        .active-since {
+        .active-since,
+        .num-nades {
           color: ${colors.TEXT};
         }
 
