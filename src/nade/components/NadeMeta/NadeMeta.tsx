@@ -24,6 +24,7 @@ type Props = {
 export const NadeMeta: FC<Props> = memo(
   ({ movement, type, technique, tickrate, teamSide, isPro }) => {
     const { isMobile } = useIsDeviceSize();
+    const isJumpThrowThrow = isJumpthrowTechnique(technique);
 
     return (
       <>
@@ -59,7 +60,7 @@ export const NadeMeta: FC<Props> = memo(
             <span>{technique ? techniqueString(technique) : "Not set."}</span>
           </div>
 
-          {tickrate && (
+          {tickrate && isJumpThrowThrow && (
             <div className="nade-meta-item">
               <h4>Tickrate</h4>
               <span className="nade-meta-tick">
@@ -120,3 +121,11 @@ export const NadeMeta: FC<Props> = memo(
     );
   }
 );
+
+function isJumpthrowTechnique(technique?: Technique) {
+  return (
+    technique === "jumpthrow" ||
+    technique === "jumpthrowBoth" ||
+    technique === "jumpthrowW"
+  );
+}
