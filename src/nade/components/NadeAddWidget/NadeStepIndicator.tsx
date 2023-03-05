@@ -40,7 +40,6 @@ export const NadeStepIndicator: FC<Props> = ({
             active={currentStep === "info"}
             onClick={() => setCurrentStep("info")}
             isDone={infoDone}
-            disabled={!videoDone}
           />
           <Step
             number={3}
@@ -56,7 +55,6 @@ export const NadeStepIndicator: FC<Props> = ({
             active={currentStep === "resultImage"}
             onClick={() => setCurrentStep("resultImage")}
             isDone={imageDone}
-            disabled={!mapDone}
           />
           <Step
             number={5}
@@ -64,7 +62,6 @@ export const NadeStepIndicator: FC<Props> = ({
             active={currentStep === "lineupImage"}
             onClick={() => setCurrentStep("lineupImage")}
             isDone={lineupImageDone}
-            disabled={!imageDone}
           />
           <Step
             isLast
