@@ -54,10 +54,8 @@ export const ThumbImage: FC<Props> = memo(({ lineupThumbUrl, thumbUrl }) => {
             <Image
               alt="Nade result image"
               fill
-              unoptimized
               onLoad={onResultImgRdy}
               src={thumbUrl}
-              quality={100}
               style={{
                 objectFit: "cover",
               }}
