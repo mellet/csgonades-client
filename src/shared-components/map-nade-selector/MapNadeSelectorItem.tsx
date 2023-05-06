@@ -29,7 +29,6 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
             <span className="nav-icon">
               <Image
                 fill
-                unoptimized
                 priority
                 src={`/mapicons/${map}.png`}
                 quality={100}

@@ -28,7 +28,6 @@ export const NavItem: FC<Props> = ({
         <div className="nav-icon">
           <Image
             fill
-            unoptimized
             priority
             src={`/mapicons/${csMap}.png`}
             quality={100}

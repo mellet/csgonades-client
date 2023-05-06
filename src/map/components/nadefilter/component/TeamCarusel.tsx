@@ -82,10 +82,10 @@ const TeamSideImage: FC<TeamSideImageProps> = ({ teamSide }) => {
   return (
     <Image
       alt="Team side icon"
-      unoptimized
       src={imageUrl}
       width={26}
       height={26}
+      quality={100}
     />
   );
 };

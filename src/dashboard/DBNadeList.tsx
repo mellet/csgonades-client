@@ -131,7 +131,6 @@ export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
               <Image
                 fill
                 alt="Nade image"
-                unoptimized
                 src={nadeMainImage}
                 style={{
                   objectFit: "contain",

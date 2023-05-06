@@ -17,7 +17,6 @@ export const Logo: FC = memo(() => {
         <div key={logoUrl} id="logo">
           <Image
             fill
-            unoptimized
             alt="CSGO Nades logo"
             priority
             src={logoUrl}
