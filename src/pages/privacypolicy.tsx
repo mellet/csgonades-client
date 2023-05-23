@@ -20,44 +20,41 @@ const PrivacyPolicyPageContainer: NextPage = () => {
             <div className="privacy-policy">
               <h1>Privacy Policy</h1>
               <p>
-                At csgonades.com, the privacy of our visitors is of extreme
-                importance to us. This privacy policy document outlines the
-                types of personal information is received and collected by
-                csgonades.com and how it is used.
+                At csgonades.com, we highly value the privacy of our visitors.
+                This Privacy Policy document aims to provide you with clear
+                information on how we collect, use, and protect your personal
+                information.
               </p>
-
               <h2>Log Files</h2>
               <p>
-                Like many other Web sites, csgonades.com makes use of log files.
-                The information inside the log files includes internet protocol
-                (IP) addresses, type of browser, Internet Service Provider
-                (ISP), date/time stamp, referring/exit pages, and number of
-                clicks to analyze trends, administer the site, track user’s
-                movement around the site, and gather demographic information. IP
-                addresses, and other such information are not linked to any
-                information that is personally identifiable.
+                Like many other websites, csgonades.com utilizes log files to
+                gather certain information. These log files may include internet
+                protocol (IP) addresses, browser types, Internet Service
+                Provider (ISP) details, date/time stamps, referring/exit pages,
+                and the number of clicks. This data is analyzed to understand
+                trends, administer the site, track user movement, and gather
+                demographic information. However, please note that IP addresses
+                and similar information are not linked to personally
+                identifiable information.
               </p>
               <h2>Cookies and Web Beacons</h2>
               <p>
-                csgonades.com does use cookies to store information about
-                visitors preferences, record user-specific information on which
-                pages the user access or visit, customize Web page content based
-                on visitors browser type or other information that the visitor
-                sends via their browser.
+                We use cookies to store information about visitors&apos;
+                preferences and to record user-specific information on which
+                pages they access or visit. These cookies enable us to customize
+                web page content based on visitors&apos; browser types and other
+                information sent via their browsers.
               </p>
               <h2>Advertising</h2>
               <p>
-                Third-party ad servers or ad networks use technology to the
-                advertisements and links that appear on csgonades.com send
-                directly to your browsers. They automatically receive your IP
-                address when this occurs. Other technologies ( such as cookies,
-                JavaScript, or Web Beacons ) may also be used by the third-party
-                ad networks to measure the effectiveness of their advertisements
-                and / or to personalize the advertising content that you see.
-              </p>
-              <p>
-                csgonades.com has no access to or control over these cookies
-                that are used by third-party advertisers.
+                csgonades.com utilizes various third-party advertising
+                platforms, including Google AdSense, to display advertisements
+                on our site. These platforms may use cookies, web beacons, and
+                similar technologies to serve relevant ads based on your
+                browsing activities and interests. Please note that these
+                technologies are controlled by the respective third-party
+                advertising platforms, and csgonades.com does not have access to
+                or control over the information collected by these platforms.
               </p>
               <p>
                 You should consult the respective privacy policies of these
@@ -67,13 +64,33 @@ const PrivacyPolicyPageContainer: NextPage = () => {
                 apply to, and we cannot control the activities of, such other
                 advertisers or web sites.
               </p>
+              <h2>Analytics</h2>
+              <p>
+                To improve user experience and understand how visitors interact
+                with our website, we use Microsoft Clarity, an analytics
+                service. Microsoft Clarity may collect information such as mouse
+                movements, clicks, and scrolling behavior on our site. This data
+                helps us analyze user behavior and optimize our website
+                accordingly. Please note that all data collected by Microsoft
+                Clarity is anonymized and does not contain personally
+                identifiable information.
+              </p>
+              <h2>Embedded Content</h2>
+              <p>
+                csgonades.com may embed videos from YouTube or Gfycat, a
+                third-party video platform. By accessing pages with embedded
+                videos, you are subject to YouTube&apos;s or Gfycat&apos;s Terms
+                of Service and Privacy Policy. Please review these policies to
+                understand how YouTube handles your personal information.
+              </p>
               <h2>Security</h2>
               <p>
-                We value your trust in providing us your Personal Information,
-                thus we are striving to use commercially acceptable means of
-                protecting it. But remember that no method of transmission over
-                the internet, or method of electronic storage is 100% secure and
-                reliable, and we cannot guarantee its absolute security.
+                We strive to protect your Personal Information using
+                commercially acceptable means. However, it is important to
+                understand that no method of transmission over the internet or
+                electronic storage is 100% secure and reliable. While we take
+                measures to safeguard your data, we cannot guarantee absolute
+                security.
               </p>
               <h2>Links to Other Sites</h2>
               <p>
@@ -96,7 +113,6 @@ const PrivacyPolicyPageContainer: NextPage = () => {
                 information, please contact us so that I will be able to do
                 necessary actions.
               </p>
-
               <h2>Changes to This Privacy Policy</h2>
               <p>
                 We may update our Privacy Policy from time to time. Thus, you
@@ -121,6 +137,7 @@ const PrivacyPolicyPageContainer: NextPage = () => {
                 background: ${colors.DP03};
                 padding: 16px;
                 border-radius: 8px;
+                max-width: 900px;
               }
             `}</style>
           </>

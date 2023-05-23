@@ -19,38 +19,60 @@ const AboutPageContainer: NextPage = () => {
             <h1>About CSGO Nades</h1>
             <h2>The story</h2>
             <p>
-              CSGONades was created in 2016 to collect a large collection of
-              grenades that can be found with ease.
+              Welcome to CSGONades: Your Go-To Hub for Easy Access to an
+              Extensive Collection of Grenades!
             </p>
+
             <p>
-              I am Mellet and I am an avid Counter-Strike player and a computer
-              science student. During my matchmaking games, I wanted to be able
-              to find new smokes and teach them to my teammates in a simple way.
+              Established in 2016, CSGONades was born out of my passion for
+              Counter-Strike and my drive as a computer science student. As an
+              avid player, I found myself constantly searching for new smokes
+              and wanting to share them with my teammates in the simplest way
+              possible.
             </p>
+
             <p>
-              With my friends, we regularly rotate in new teammates and it often
-              happens that someone does not know how to throw a nade that we
-              need to execute a strategy for a bomb site. Now, with just a link
-              to the nade, they can learn it in a few seconds between rounds and
-              we can get on with our game.
+              In the dynamic world of matchmaking, where teammates come and go,
+              it became essential to have a quick and efficient method to teach
+              essential nades for executing bomb site strategies. That&apos;s
+              why I created CSGONades. Now, with just a click of a link, anyone
+              can learn a nade within seconds during rounds, allowing us to
+              seamlessly continue our gameplay.
             </p>
+
+            <p>
+              Join our thriving community and experience the convenience of
+              easily accessible nades, empowering you and your team to execute
+              flawless strategies. Let&apos;s enhance our gameplay together and
+              make every round count!
+            </p>
+
             <h2>My vision</h2>
             <p>
-              I wanted to make this site useful for both beginners and
-              experienced players.
+              Discover the Ultimate Grenade Arsenal: Empowering Beginners and
+              Seasoned Players Alike!
             </p>
             <p>
-              If you are new to Counter-Strike, this site can help you learn the
-              basic grenades that every player should know. Try to blind your
-              enemies with an easy pop flash, block off their vision with a nice
-              smoke or set them on fire with a quick molotov.
+              Whether you&apos;re a newcomer or a seasoned Counter-Strike
+              player, our site is designed to be your go-to resource.
             </p>
             <p>
-              Gain an edge over your opponents, teach new grenades to your
-              teammates and watch yourself rise through the ranks. If you are
-              already good at the game, try to coordinate a smoke execute onto a
-              bombsite together with your teammates or invent your strategies
-              with the use of some of the grenades you can find on this website.
+              If you&apos;re new to the game, unlock the power of fundamental
+              grenades that every player should master. Blindside your enemies
+              with an easy pop flash, shroud them in smoke to hinder their
+              vision, or unleash chaos with a well-placed molotov.
+            </p>
+            <p>
+              Seize the advantage, elevate your gameplay, and witness your
+              ascent through the ranks. Expand your skill set by sharing new
+              grenades with your teammates and watch your coordination soar.
+              Together, orchestrate a perfectly executed smoke assault on a
+              bombsite or unleash your creativity by crafting unique strategies
+              using the vast array of grenades available on our website.
+            </p>
+            <p>
+              Join us today and embark on an exciting journey of explosive
+              tactics, relentless improvement, and unparalleled success!
             </p>
           </div>
         }
@@ -62,6 +84,7 @@ const AboutPageContainer: NextPage = () => {
           color: ${colors.TEXT};
           background: ${colors.DP03};
           border-radius: 8px;
+          max-width: 900px;
         }
       `}</style>
     </>

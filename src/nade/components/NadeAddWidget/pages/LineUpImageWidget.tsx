@@ -17,8 +17,9 @@ export const LineUpImageWidget: FC = () => {
         <Title title="Lineup Image" titleStyle="primary" bottomSpacing />
         <HintBox style={{ marginBottom: Dimensions.GUTTER_SIZE }}>
           <p>
-            Make sure to hide eveything when taking a screenshot. Use the
-            following command:
+            When capturing a screenshot, it&apos;s essential to hide all
+            unnecessary elements. Use the following command to achieve a clean
+            and clutter-free screenshot:
           </p>
           <BlogCopyPaste value="cl_drawhud 0; r_drawviewmodel 0; net_graph 0;" />
         </HintBox>

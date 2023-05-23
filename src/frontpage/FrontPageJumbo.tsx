@@ -17,10 +17,17 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
     <>
       <div id="jumbo">
         <div id="message">
-          <h1>Welcome to CSGO Nades.</h1>
+          <h1>Welcome to CSGO Nades</h1>
           <p className="welcome-msg">
-            A community to learn and share
-            <br /> nades for Counter-Strike Global Offensive.
+            Discover, learn, and share nades for Counter-Strike Global Offensive
+            with our engaging gaming community.
+          </p>
+          <p className="welcome-mini">
+            Welcome to our thriving gaming community dedicated to Counter-Strike
+            Global Offensive! We provide an interactive platform where you can
+            explore, acquire knowledge, and exchange strategies for nade
+            throwing. Join us to enhance your gameplay and connect with fellow
+            CS:GO enthusiasts!
           </p>
         </div>
         <div id="jumbo-ill">
@@ -108,6 +115,10 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
 
         #message .welcome-msg {
           font-size: 1.6rem;
+        }
+
+        .welcome-mini {
+          font-size: 1.3rem;
         }
 
         #jumbo-ill {

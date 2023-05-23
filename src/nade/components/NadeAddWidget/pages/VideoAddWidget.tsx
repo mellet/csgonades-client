@@ -26,28 +26,26 @@ export const VideoAddWidget: FC = () => {
             <div className="gfycat-container">
               <HintBox title="Video requirements">
                 <p>
-                  Record and upload your nade throw to YouTube or{" "}
-                  <a
-                    href="https://gfycat.com/"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={{ color: "white" }}
-                  >
-                    Gfycat
-                  </a>
-                  . Follow the requirements below to avoid getting your nade
-                  declined.
+                  To ensure your nade throw is accepted, please follow these
+                  guidelines when recording and uploading your video to either
+                  YouTube or Gfycat:
                 </p>
-                <Rule icon={<FaVideo />}>Aspect ratio must be 16:9</Rule>
+                <Rule icon={<FaVideo />}>
+                  <b>Aspect Ratio:</b> Make sure the video has an aspect ratio
+                  of 16:9.
+                </Rule>
                 <Rule icon={<FaCrosshairs />}>
-                  A high visibility crosshair. Below is a crosshair used for
-                  csgo broadcasts.
+                  <b>High Visibility Crosshair:</b> Use a crosshair with
+                  excellent visibility. We recommend using the crosshair
+                  commonly used in CS:GO broadcasts.
                   <br />
                   <br />
                   <BlogCopyPaste value="CSGO-aNKFP-FzteR-6uRz5-4WP64-X6urD" />
                 </Rule>
                 <Rule icon={<FaEye />}>
-                  Hide HUD and net graph. Use the below command to hide clutter.
+                  <b>Hide In-Game HUD and Net Graph:</b> Remove any unnecessary
+                  clutter by hiding the in-game HUD and net graph. You can
+                  achieve this by using the command provided below:
                   <br />
                   <br />
                   <BlogCopyPaste value="cl_draw_only_deathnotices 1; net_graph 0;" />
@@ -58,6 +56,17 @@ export const VideoAddWidget: FC = () => {
           left={
             <div className="gfycat-container">
               <div className="video-input-section">
+                <HintBox
+                  title="Gfycat Issue!"
+                  style={{
+                    marginBottom: Dimensions.GUTTER_SIZE,
+                    backgroundColor: "#8f1111",
+                  }}
+                >
+                  Gfycat is currently experiencing video upload issues. Please
+                  use YouTube instead. Upload your video to YouTube and paste
+                  the link below. Thank you for your cooperation.
+                </HintBox>
                 <VideoUrlInput
                   onChange={actions.setVideo}
                   onSetYouTubeId={actions.setYouTubeId}

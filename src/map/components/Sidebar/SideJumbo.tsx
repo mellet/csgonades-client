@@ -25,10 +25,14 @@ export const SideJumbo: FC<Props> = ({ nades, map }) => {
     <>
       <div className="jumbo">
         <h1>
-          Find the best smokes, flashbangs, molotovs and grenades for{" "}
-          {capitalize(map)}.
+          Uncover the Best Smokes, Flashbangs, Molotovs, and Grenades on{" "}
+          {capitalize(map)} in Counter-Strike: Global Offensive.
         </h1>
-        <h2>Don&apos;t be like BOT Bob, get some nades.</h2>
+        <h2>
+          Prepare to dominate {capitalize(map)} with our meticulously crafted
+          and carefully curated collection of smokes, flashbangs, molotovs, and
+          grenades.
+        </h2>
         <TopContributors nades={nades} />
       </div>
       <style jsx>{`

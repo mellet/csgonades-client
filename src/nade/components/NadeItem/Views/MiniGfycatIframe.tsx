@@ -70,6 +70,7 @@ export const MiniGfycatIframe: FC<Props> = ({
           position: absolute;
           right: 0;
           top: 0;
+          border: none;
         }
       `}</style>
     </>

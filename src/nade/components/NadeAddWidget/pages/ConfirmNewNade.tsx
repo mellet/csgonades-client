@@ -18,11 +18,16 @@ export const ConfirmNewNade: FC = () => {
   return (
     <>
       <Box>
-        <Title titleStyle="primary" title="Confirm" bottomSpacing />
-        <p>You are ready to submit your nade!</p>
+        <Title titleStyle="primary" title="Review Your Nade" bottomSpacing />
+        <p>Thank you for creating your nade!</p>
         <p>
-          Once sumbitted, a moderator will approve your nade if everything looks
-          good. This usually takes less than 24 hours.
+          After submission, our dedicated moderators will review your nade for
+          approval. The review process typically takes less than 24 hours. If
+          everything meets the criteria, your nade will be approved.
+        </p>
+        <p>
+          We appreciate your patience and look forward to showcasing your
+          impressive nade soon!
         </p>
         <div className="preview-nade">
           <PreviewNade nade={nade} />
