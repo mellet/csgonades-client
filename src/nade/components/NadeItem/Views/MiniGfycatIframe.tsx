@@ -35,10 +35,8 @@ export const MiniGfycatIframe: FC<Props> = ({
           <iframe
             allowFullScreen
             className="gfycat-iframe"
-            frameBorder="0"
             height="100%"
             onLoad={onVideoLoaded}
-            scrolling="no"
             src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=${videoSpeed}`}
             width="100%"
           ></iframe>

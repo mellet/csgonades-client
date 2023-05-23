@@ -47,13 +47,14 @@ export const NadeItemView: FC<Props> = memo(
                 />
                 <div className="video">
                   <GfycatThumbnail
-                    avgColor={nade.gfycat.avgColor}
-                    gfyId={nade.gfycat.gfyId}
+                    avgColor={nade.gfycat?.avgColor}
+                    gfyId={nade.gfycat?.gfyId}
                     lineUpThumnUrl={getNadeLineUpImageThumb(nade)}
                     nadeId={nade.id}
                     nadeSlug={nade.slug}
-                    smallVideoUrl={nade.gfycat.smallVideoUrl}
+                    smallVideoUrl={nade.gfycat?.smallVideoUrl}
                     thumbnailUrl={getNadeMainImage(nade)}
+                    youTubeId={nade.youTubeId}
                   />
                 </div>
               </a>

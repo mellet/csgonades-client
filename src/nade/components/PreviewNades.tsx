@@ -32,6 +32,7 @@ export const PreviewNade: FC<Props> = ({
     lineUpImageBase64,
     proUrl,
     teamSide,
+    youTubeId,
   } = nade;
 
   return (
@@ -51,6 +52,7 @@ export const PreviewNade: FC<Props> = ({
           smallVideoUrl={gfycat?.smallVideoUrl}
           thumbnailUrl={imageBase64}
           lineUpThumnUrl={lineUpImageBase64}
+          youTubeId={youTubeId}
         />
         <NadeStats
           nadeId={"preview"}

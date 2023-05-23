@@ -12,9 +12,14 @@ import { InfoBox } from "../../../shared-components/box/InfoBox";
 type Props = {
   defaultValue?: string;
   onChange: (value: GfycatData) => void;
+  onSetYouTubeId: (youTubeId: string) => void;
 };
 
-export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
+export const VideoUrlInput: FC<Props> = ({
+  onChange,
+  defaultValue,
+  onSetYouTubeId,
+}) => {
   const { colors } = useTheme();
   const displayToast = useDisplayToast();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,9 +32,19 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
       if (!value.length || value.length < 5) {
         return;
       }
-
+      setIsLoading(false);
       setIsLargeVideo(false);
+      setIsValid(null);
+
+      const youTubeId = tryGetYouTubeId(value);
+
+      if (youTubeId) {
+        setIsValid(true);
+        return onSetYouTubeId(youTubeId);
+      }
+
       setIsLoading(true);
+
       const gfycat = await verifyGfycat(value);
       setIsLoading(false);
 
@@ -52,18 +67,18 @@ export const GfyInput: FC<Props> = ({ onChange, defaultValue }) => {
         setIsValid(true);
       }
     },
-    [displayToast, onChange]
+    [displayToast, onChange, onSetYouTubeId]
   );
 
   return (
     <>
-      <MiniLabel value="Gfycat Video Url" />
+      <MiniLabel value="Video Id (YouTube / Gfycat)" />
       <div className="input-wrap">
         <DebounceInput
           minLength={6}
           debounceTimeout={1000}
           onChange={onSetGfycat}
-          placeholder="Example: https://gfycat.com/confusedwiltedamazonparrot"
+          placeholder="Add YouTube or Gfycat url"
           defaultValue={defaultValue}
           value={defaultValue}
           className="debounce-input"
@@ -140,4 +155,17 @@ async function verifyGfycat(gfyUrl) {
   }
 
   return gfyResult.value;
+}
+
+function tryGetYouTubeId(input: string) {
+  const youTubeRegex =
+    /(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/;
+  const result = input.match(youTubeRegex);
+  console.log("Trying to get youtube id", input, result);
+
+  if (result && result.length > 1) {
+    return result[1];
+  }
+
+  return null;
 }

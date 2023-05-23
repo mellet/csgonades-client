@@ -27,18 +27,18 @@ export interface Nade {
   description?: string;
   endPosition?: string;
   favoriteCount: number;
-  gfycat: GfycatData;
+  gfycat?: GfycatData;
   id: string;
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
   imageMain: NadeImageData;
   isFavorited?: boolean;
-  proUrl?: string;
   isPro?: boolean;
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
+  proUrl?: string;
   score: number;
   setPos?: string;
   slug?: string;
@@ -53,6 +53,7 @@ export interface Nade {
   updatedAt: string;
   user: UserLight;
   viewCount: number;
+  youTubeId?: string;
 }
 
 export interface NadeLight {
@@ -61,7 +62,7 @@ export interface NadeLight {
   downVoteCount?: number;
   endPosition?: string;
   favoriteCount: number;
-  gfycat: GfycatData;
+  gfycat?: GfycatData;
   id: string;
   imageLineup?: NadeImageData;
   imageLineupThumb?: NadeImageData;
@@ -85,6 +86,7 @@ export interface NadeLight {
   upVoteCount?: number;
   user: UserLight;
   viewCount: number;
+  youTubeId?: string;
 }
 
 export type NadeLightSort = keyof Pick<
@@ -95,7 +97,7 @@ export type NadeLightSort = keyof Pick<
 export type NadeCreateBody = {
   description: string;
   endPosition: string;
-  gfycat: GfycatData;
+  gfycat?: GfycatData;
   imageBase64: string;
   isPro?: boolean;
   lineUpImageBase64?: string;
@@ -110,6 +112,7 @@ export type NadeCreateBody = {
   technique: Technique;
   tickrate?: Tickrate;
   type: NadeType;
+  youTubeId?: string;
 };
 
 export type NadeUpdateBody = {
@@ -132,6 +135,7 @@ export type NadeUpdateBody = {
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;
+  youTubeId?: string;
 };
 
 export type NadeStatusDTO = {

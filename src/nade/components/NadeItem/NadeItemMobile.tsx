@@ -92,7 +92,7 @@ export const NadeItemMobile: FC<Props> = ({ nade, onItemClick }) => {
             {isPlaying && (
               <div className="media-video">
                 <video autoPlay muted playsInline loop controls={false}>
-                  <source src={nade.gfycat.smallVideoUrl} type="video/mp4" />
+                  <source src={nade.gfycat?.smallVideoUrl} type="video/mp4" />
                 </video>
               </div>
             )}

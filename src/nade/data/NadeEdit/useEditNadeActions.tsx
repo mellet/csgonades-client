@@ -36,6 +36,13 @@ export const useEditNadeActions = (
     [dispatch]
   );
 
+  const onSetYouTubeId = useCallback(
+    (youTubeId: string) => {
+      dispatch({ type: "EditNade/SetYouTubeId", youTubeId });
+    },
+    [dispatch]
+  );
+
   const onSetEndPosition = useCallback(
     (endPosition: string) => {
       dispatch({ type: "EditNade/SetEndPosition", endPosition });
@@ -161,6 +168,7 @@ export const useEditNadeActions = (
     onSetTechnique,
     onSetTeleportPosition,
     onSetTickrate,
+    onSetYouTubeId,
     onUnSetIsPro,
   };
 };

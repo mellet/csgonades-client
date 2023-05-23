@@ -6,8 +6,8 @@ import { Box } from "../../../../shared-components/box/Box";
 import { SplitLayout } from "../../../../shared-components/box/SplitBox";
 import { Seperator } from "../../../../shared-components/Seperator";
 import { Title } from "../../../../shared-components/title/Title";
-import { GfyInput } from "../../NadeInputs/GfyInput";
-import { GfycatPreview } from "../GfycatPreview";
+import { VideoUrlInput } from "../../NadeInputs/GfyInput";
+import { VideoPreview } from "../VideoPreview";
 import { HintBox } from "../HintBox";
 import { NextNavigation } from "../NextNavigation";
 import { Rule } from "../Rule";
@@ -26,14 +26,14 @@ export const VideoAddWidget: FC = () => {
             <div className="gfycat-container">
               <HintBox title="Video requirements">
                 <p>
-                  Record and upload your nade throw to{" "}
+                  Record and upload your nade throw to YouTube or{" "}
                   <a
                     href="https://gfycat.com/"
                     target="_blank"
                     rel="noreferrer"
                     style={{ color: "white" }}
                   >
-                    gfycat
+                    Gfycat
                   </a>
                   . Follow the requirements below to avoid getting your nade
                   declined.
@@ -58,17 +58,20 @@ export const VideoAddWidget: FC = () => {
           left={
             <div className="gfycat-container">
               <div className="video-input-section">
-                <GfyInput onChange={actions.setVideo} />
+                <VideoUrlInput
+                  onChange={actions.setVideo}
+                  onSetYouTubeId={actions.setYouTubeId}
+                />
               </div>
               <div className="video-preview-section">
-                <GfycatPreview gfycat={nade.gfycat} />
+                <VideoPreview gfycat={nade.gfycat} youTubeId={nade.youTubeId} />
               </div>
             </div>
           }
         />
         <NextNavigation
           onNextStep={() => actions.setCurrentStep("info")}
-          enabled={Boolean(nade.gfycat)}
+          enabled={Boolean(nade.gfycat) || Boolean(nade.youTubeId)}
         />
       </Box>
 

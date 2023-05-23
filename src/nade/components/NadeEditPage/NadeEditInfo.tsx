@@ -4,7 +4,7 @@ import { useIsAdminOrModerator } from "../../../core/authentication/useIsAdminOr
 import { Nade } from "../../models/Nade";
 import { DescriptionInput } from "../NadeInputs/DescriptionInput";
 import { NadeEndPosInput } from "../NadeInputs/EndPosInput";
-import { GfyInput } from "../NadeInputs/GfyInput";
+import { VideoUrlInput } from "../NadeInputs/GfyInput";
 import { IsProSelector } from "../NadeInputs/IsProSelector";
 import { MapSelector } from "../NadeInputs/MapSelector";
 import { OneWaySelector } from "../NadeInputs/OneWaySelector";
@@ -51,9 +51,10 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
           />
         </div>
         <div id="gfy-input">
-          <GfyInput
-            defaultValue={nadeUpdates.gfycat?.gfyId}
+          <VideoUrlInput
+            defaultValue={nadeUpdates.gfycat?.gfyId || nadeUpdates.youTubeId}
             onChange={actions.onSetGfycat}
+            onSetYouTubeId={actions.onSetYouTubeId}
           />
         </div>
         <div id="end-pos">

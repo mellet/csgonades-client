@@ -59,7 +59,15 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         },
       };
     }
-
+    case "CreateNade/SetYouTubeId": {
+      return {
+        ...state,
+        nadeData: {
+          ...state.nadeData,
+          youTubeId: action.youTubeId,
+        },
+      };
+    }
     case "CreateNade/SetLineUpImage": {
       return {
         ...state,
@@ -157,6 +165,7 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         },
       };
     }
+
     default:
       assertNever(action);
       return state;

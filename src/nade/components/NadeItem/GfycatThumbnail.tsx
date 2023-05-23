@@ -13,15 +13,21 @@ const MiniGfycatIframe = dynamic(
   { ssr: false }
 );
 
+const MiniYouTubePlayer = dynamic(
+  () => import("./Views/MiniYouTubePlayer").then((m) => m.MiniYouTubePlayer),
+  { ssr: false }
+);
+
 type Props = {
   avgColor?: string;
   disableAction?: boolean;
-  gfyId: string;
+  gfyId?: string;
   lineUpThumnUrl?: string;
   nadeId: string;
   nadeSlug?: string;
   smallVideoUrl?: string;
   thumbnailUrl?: string;
+  youTubeId?: string;
 };
 
 export const GfycatThumbnail: FC<Props> = ({
@@ -31,6 +37,7 @@ export const GfycatThumbnail: FC<Props> = ({
   smallVideoUrl,
   thumbnailUrl,
   nadeSlug,
+  youTubeId,
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
@@ -74,7 +81,8 @@ export const GfycatThumbnail: FC<Props> = ({
     setHovering(false);
   }
 
-  const displayBack = hovering && !!smallVideoUrl;
+  const displayBack =
+    hovering && (Boolean(smallVideoUrl) || Boolean(youTubeId));
 
   return (
     <>
@@ -89,7 +97,15 @@ export const GfycatThumbnail: FC<Props> = ({
 
         <div className={displayBack ? "back visible" : "back"}>
           {displayBack && (
-            <MiniGfycatIframe gfyId={gfyId} hasAllreadyLoaded={hasHovered} />
+            <>
+              {gfyId && (
+                <MiniGfycatIframe
+                  gfyId={gfyId}
+                  hasAllreadyLoaded={hasHovered}
+                />
+              )}
+              {youTubeId && <MiniYouTubePlayer youTubeId={youTubeId} />}
+            </>
           )}
         </div>
       </div>
