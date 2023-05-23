@@ -100,8 +100,9 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
 
         #message {
           grid-area: msg;
-          padding: 80px 30px;
+          padding: 40px 30px;
           color: ${colors.TEXT};
+          max-width: 800px;
         }
 
         #message h1 {
