@@ -58,6 +58,7 @@ export const GfycatIframe: FC<Props> = ({ gfyId }) => {
           left: 0;
           bottom: 0;
           right: 0;
+          border: none;
         }
       `}</style>
     </>
