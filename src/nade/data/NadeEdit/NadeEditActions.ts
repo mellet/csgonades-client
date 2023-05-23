@@ -18,6 +18,11 @@ type SetGfyData = {
   data: GfycatData;
 };
 
+type SetYouTubeId = {
+  type: "EditNade/SetYouTubeId";
+  youTubeId: string;
+};
+
 type SetEndPosition = {
   type: "EditNade/SetEndPosition";
   endPosition: string;
@@ -126,4 +131,5 @@ export type NadeEditAction =
   | SetTeamSide
   | SetTechnique
   | SetTickrate
+  | SetYouTubeId
   | UnSetIsPro;

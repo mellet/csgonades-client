@@ -99,6 +99,7 @@ function createNadeUpdateBody(
   const teamSide = newValueIfDifferent(nade.teamSide, update.teamSide);
   const setPos = newValueIfDifferent(nade.setPos, update.setPos);
   const proUrl = newValueIfDifferent(nade.proUrl, update.proUrl);
+  const youTubeId = newValueIfDifferent(nade.youTubeId, update.youTubeId);
 
   const updateBody: NadeUpdateBody = {
     description,
@@ -119,6 +120,7 @@ function createNadeUpdateBody(
     teamSide,
     setPos,
     proUrl,
+    youTubeId,
   };
 
   // Remove undefine keys

@@ -39,6 +39,7 @@ export const EditNadeProvider: FC<EditNadeProviderProps> = ({
     teamSide: nade.teamSide,
     technique: nade.technique,
     tickrate: nade.tickrate,
+    youTubeId: nade.youTubeId,
     type: nade.type,
   });
   const actions = useEditNadeActions(dispatch);

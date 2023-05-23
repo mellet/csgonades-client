@@ -18,6 +18,11 @@ type SetGfyData = {
   data: GfycatData;
 };
 
+type SetYouTubeId = {
+  type: "CreateNade/SetYouTubeId";
+  youTubeId: string;
+};
+
 type SetEndPosition = {
   type: "CreateNade/SetEndPosition";
   endPosition: string;
@@ -110,4 +115,5 @@ export type NadeAddActions =
   | SetTeamSide
   | SetTechnique
   | SetTeleportCoordinates
-  | SetTickrate;
+  | SetTickrate
+  | SetYouTubeId;

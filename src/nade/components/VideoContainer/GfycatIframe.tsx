@@ -27,8 +27,6 @@ export const GfycatIframe: FC<Props> = ({ gfyId }) => {
             onLoad={onIframeLoaded}
             className="gfycat-iframe"
             src={`https://gfycat.com/ifr/${gfyId}?hd=1`}
-            frameBorder="0"
-            scrolling="no"
             width="100%"
             height="100%"
             allowFullScreen

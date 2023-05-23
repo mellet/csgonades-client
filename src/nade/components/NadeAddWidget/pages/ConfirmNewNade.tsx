@@ -118,11 +118,11 @@ export const validateState = (
     teamSide,
     setPos,
     proUrl,
+    youTubeId,
   } = nade;
   if (
     !description ||
     !endPosition ||
-    !gfycat ||
     !imageBase64 ||
     !lineUpImageBase64 ||
     !map ||
@@ -152,6 +152,7 @@ export const validateState = (
     teamSide,
     setPos: setPosStringFix(setPos),
     proUrl,
+    youTubeId,
   };
 };
 

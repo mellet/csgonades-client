@@ -31,12 +31,14 @@ export const NadeMeta: FC<Props> = memo(
         <div className="nade-meta">
           <div className="nade-meta-item type">
             <h4>Type</h4>
-            <NadeIcon nadeType={type} size={24} />
+
+            <NadeIcon nadeType={type} size={22} />
           </div>
 
           {teamSide && (
             <div className="nade-meta-item">
               <h4>Side</h4>
+
               <TeamSideDisplay teamSide={teamSide} size={22} />
             </div>
           )}
@@ -75,8 +77,9 @@ export const NadeMeta: FC<Props> = memo(
             display: flex;
             color: white;
             background: #729b79;
+            width: ${isMobile ? "100%" : "auto"};
             border-top-left-radius: ${isMobile ? 0 : 8}px;
-            border-bottom-left-radius: ${isMobile ? 0 : 8}px;
+            border-top-right-radius: ${isMobile ? 0 : 8}px;
           }
 
           .nade-meta-tick {
@@ -96,8 +99,11 @@ export const NadeMeta: FC<Props> = memo(
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-around;
             font-size: 14px;
-            padding: 8px 16px;
+            padding: 0px;
+            position: relative;
+            padding: 8px 10px;
           }
 
           .nade-meta-item:last-child {
@@ -108,12 +114,8 @@ export const NadeMeta: FC<Props> = memo(
             margin: 0;
             padding: 0;
             font-size: 12px;
-            line-height: 12px;
+            line-height: 10px;
             font-weight: 500;
-            margin-bottom: 5px;
-          }
-
-          .type h4 {
             margin-bottom: 4px;
           }
         `}</style>

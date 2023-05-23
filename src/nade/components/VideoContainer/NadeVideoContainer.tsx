@@ -6,6 +6,7 @@ import { NadeMeta } from "../NadeMeta/NadeMeta";
 import { Nade } from "../../models/Nade";
 import { getNadeLineUpImage } from "../NadeItem/Utils/NadeUtils";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
+import { YouTubePlayer } from "./YouTubePlayer";
 
 type Props = {
   nade: Nade;
@@ -21,7 +22,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
 
   return (
     <>
-      {isMobile && (
+      <div className="top-container">
         <NadeMeta
           movement={nade.movement}
           technique={nade.technique}
@@ -30,21 +31,6 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
           teamSide={nade.teamSide}
           isPro={Boolean(nade.proUrl)}
         />
-      )}
-
-      <div className="video-wrap">
-        {!isMobile && (
-          <div className="nade-meta">
-            <NadeMeta
-              movement={nade.movement}
-              technique={nade.technique}
-              tickrate={nade.tickrate}
-              type={nade.type}
-              teamSide={nade.teamSide}
-              isPro={Boolean(nade.proUrl)}
-            />
-          </div>
-        )}
 
         {hasLineUp && (
           <div className="tab-selector">
@@ -54,11 +40,14 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
             />
           </div>
         )}
+      </div>
 
+      <div className="video-wrap">
         <div className="media-container">
           {currentTab === "video" && (
             <div className="video-tab">
-              <GfycatIframe gfyId={nade.gfycat.gfyId} />
+              {nade.youTubeId && <YouTubePlayer youTubeId={nade.youTubeId} />}
+              {nade.gfycat && <GfycatIframe gfyId={nade.gfycat.gfyId} />}
             </div>
           )}
 
@@ -68,6 +57,13 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
         </div>
       </div>
       <style jsx>{`
+        .top-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          flex-direction: ${isMobile ? "column" : "row"};
+        }
+
         .video-wrap {
           position: relative;
           overflow: hidden;
@@ -86,9 +82,6 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
         }
 
         .tab-selector {
-          position: absolute;
-          top: 10px;
-          left: 10px;
         }
 
         .media-container {

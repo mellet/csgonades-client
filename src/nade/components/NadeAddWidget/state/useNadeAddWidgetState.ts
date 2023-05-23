@@ -38,6 +38,10 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetGfyData", data: gfycat });
   }
 
+  function setYouTubeId(youTubeId: string) {
+    dispatch({ type: "CreateNade/SetYouTubeId", youTubeId });
+  }
+
   function setResultImage(imageSrc: string) {
     dispatch({ type: "CreateNade/SetImage", image: imageSrc });
   }
@@ -108,6 +112,7 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     setTeleportCoordinates,
     setTickrate,
     setVideo,
+    setYouTubeId,
   };
 };
 
@@ -133,6 +138,10 @@ export const useNadeAddWidgetState = () => {
     dispatch({ type: "CreateNade/SetGfyData", data: gfycat });
   }
 
+  function setYouTubeId(youTubeId: string) {
+    dispatch({ type: "CreateNade/SetYouTubeId", youTubeId });
+  }
+
   function setCurrentStep(step: NadeCreateSteps) {
     dispatch({ type: "CreateNade/SetCurrentStep", step });
   }
@@ -148,6 +157,7 @@ export const useNadeAddWidgetState = () => {
     setMapPosition,
     setVideo,
     setCurrentStep,
+    setYouTubeId,
     setResultImage,
   };
 };

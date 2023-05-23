@@ -109,6 +109,11 @@ export const nadeEditReducer: Reducer<EditNadeState, NadeEditAction> = (
         ...state,
         proUrl: action.proUrl,
       };
+    case "EditNade/SetYouTubeId":
+      return {
+        ...state,
+        youTubeId: action.youTubeId,
+      };
     default:
       assertNever(action);
       return state;
