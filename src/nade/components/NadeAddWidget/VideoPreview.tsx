@@ -3,7 +3,7 @@ import { FaVideo } from "react-icons/fa";
 import { useTheme } from "../../../core/settings/SettingsHooks";
 import { GfycatData } from "../../models/GfycatData";
 import { GfycatIframe } from "../VideoContainer/GfycatIframe";
-import { YouTubePlayer } from "../VideoContainer/YouTubePlayer";
+import { CsGoYouTubePlayer } from "../VideoContainer/YouTubePlayer";
 
 type Props = {
   gfycat?: GfycatData;
@@ -27,7 +27,7 @@ export const VideoPreview: FC<Props> = ({ gfycat, youTubeId }) => {
           </div>
         )}
         {gfycat && <GfycatIframe gfyId={gfycat.gfyId} />}
-        {youTubeId && <YouTubePlayer youTubeId={youTubeId} />}
+        {youTubeId && <CsGoYouTubePlayer youTubeId={youTubeId} />}
       </div>
       <style jsx>{`
         .gfycat-preview-container {

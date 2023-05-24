@@ -1,36 +1,61 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import YouTube, { YouTubeEvent, YouTubePlayer } from "react-youtube";
 
 type Props = {
   youTubeId: string;
 };
 
-export const YouTubePlayer: FC<Props> = ({ youTubeId }) => {
+export const CsGoYouTubePlayer: FC<Props> = ({ youTubeId }) => {
+  const [loopCount, setLoopCount] = useState(1);
+  const [player, setPlayer] = useState<YouTubePlayer>();
+
+  async function onReady(event: YouTubeEvent<any>) {
+    setPlayer(event.target);
+    event.target.mute();
+    event.target.playVideo();
+  }
+
+  function onEnd() {
+    if (!player || loopCount >= 2) return;
+    player.playVideo();
+    setLoopCount((curCount) => curCount + 1);
+  }
+
   return (
     <>
       <div className="wrap">
-        <iframe
-          src={`https://www.youtube.com/embed/${youTubeId}?autoplay=1&mute=1&loop=1&playsinline=1&color=white`}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
+        <YouTube
+          videoId={youTubeId}
+          opts={{
+            playerVars: {
+              modestbranding: 1,
+            },
+          }}
+          className="youtubeContainer"
+          onReady={onReady}
+          onEnd={onEnd}
+        />
       </div>
-      <style jsx>{`
+      <style jsx global>{`
         .wrap {
-          width: 100%;
-          position: relative;
-          padding-bottom: 56.25%;
+          background: #000;
         }
 
-        iframe {
-          border: none;
+        .youtubeContainer {
+          position: relative;
+          width: 100%;
+          height: 0;
+          padding-bottom: 56.25%;
+          overflow: hidden;
+        }
+
+        .youtubeContainer iframe {
+          width: 100%;
+          height: 100%;
           position: absolute;
           top: 0;
           left: 0;
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 100%;
+          border: none;
         }
       `}</style>
     </>

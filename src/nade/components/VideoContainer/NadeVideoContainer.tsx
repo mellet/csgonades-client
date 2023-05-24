@@ -6,7 +6,7 @@ import { NadeMeta } from "../NadeMeta/NadeMeta";
 import { Nade } from "../../models/Nade";
 import { getNadeLineUpImage } from "../NadeItem/Utils/NadeUtils";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
-import { YouTubePlayer } from "./YouTubePlayer";
+import { CsGoYouTubePlayer } from "./YouTubePlayer";
 
 type Props = {
   nade: Nade;
@@ -46,7 +46,9 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
         <div className="media-container">
           {currentTab === "video" && (
             <div className="video-tab">
-              {nade.youTubeId && <YouTubePlayer youTubeId={nade.youTubeId} />}
+              {nade.youTubeId && (
+                <CsGoYouTubePlayer youTubeId={nade.youTubeId} />
+              )}
               {nade.gfycat && <GfycatIframe gfyId={nade.gfycat.gfyId} />}
             </div>
           )}
