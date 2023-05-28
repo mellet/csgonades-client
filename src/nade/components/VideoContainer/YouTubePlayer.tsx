@@ -12,7 +12,6 @@ export const CsGoYouTubePlayer: FC<Props> = ({ youTubeId }) => {
   async function onReady(event: YouTubeEvent<any>) {
     setPlayer(event.target);
     event.target.mute();
-    event.target.playVideo();
   }
 
   function onEnd() {
@@ -29,6 +28,7 @@ export const CsGoYouTubePlayer: FC<Props> = ({ youTubeId }) => {
           opts={{
             playerVars: {
               modestbranding: 1,
+              rel: 0,
             },
           }}
           className="youtubeContainer"
