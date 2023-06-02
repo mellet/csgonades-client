@@ -37,14 +37,18 @@ export function iconFromType(type?: NadeType): string | null {
   }
 }
 
-export function kFormatter(num: number): number {
+export function kFormatter(num: number): string {
   const isBelow1k = Math.abs(num) > 999;
 
+  if (num >= 1_000_000 && num < 1_000_000_000) {
+    const viewCount = num / 1_000_000;
+    return viewCount.toFixed(1) + "M";
+  }
+
   if (isBelow1k) {
-    // @ts-ignore
-    return Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k";
+    return (num / 1000).toFixed(1) + "K";
   } else {
-    return Math.sign(num) * Math.abs(num);
+    return String(Math.sign(num) * Math.abs(num));
   }
 }
 
