@@ -20,6 +20,8 @@ import { NadeTypeSelector } from "../NadeAddWidget/NadeTypeSelector";
 import { NadeMovementSelector } from "../NadeAddWidget/NadeMovementSelector";
 import { ProLinkInput } from "../NadeInputs/ProLinkInput";
 import { useEditNade } from "../../data/NadeEdit/useEditNade";
+import { NadeGameModeSelector } from "../NadeAddWidget/NadeGameModeSelector";
+
 type Props = {
   nade: Nade;
 };
@@ -43,6 +45,12 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
       <div id="edit-nade-page">
         <div id="info-label">
           <BigLabel value="Information" />
+        </div>
+        <div id="game-selector">
+          <NadeGameModeSelector
+            defaultValue={nadeUpdates.gameMode}
+            onChange={actions.onSetGameMode}
+          />
         </div>
         <div id="map-selector">
           <MapSelector
@@ -208,11 +216,12 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
           grid-template-columns: 1fr 300px;
           grid-template-areas:
             "infolabel metalabel"
-            "mapsel teamside"
-            "typesel movesel"
-            "gfyip techsel"
-            "endpos tick"
-            "startpos oneway"
+            "gamemode teamside"
+            "mapsel movesel"
+            "typesel techsel"
+            "gfyip tick"
+            "endpos oneway"
+            "startpos ."
             "prourl previewlabel"
             "setpos preview"
             "desc preview"
@@ -301,6 +310,10 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
 
         #map-selector {
           grid-area: mapsel;
+        }
+
+        #game-selector {
+          grid-area: gamemode;
         }
 
         #gfy-input {

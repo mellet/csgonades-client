@@ -20,6 +20,7 @@ import { NadeMovementSelector } from "../NadeMovementSelector";
 import { NadeTypeSelector } from "../NadeTypeSelector";
 import { NextNavigation } from "../NextNavigation";
 import { useCreateNade } from "../state/NadeAddStateProvider";
+import { NadeGameModeSelector } from "../NadeGameModeSelector";
 
 export const InfoAddWidget: FC = ({}) => {
   const { nade, actions } = useCreateNade();
@@ -32,15 +33,15 @@ export const InfoAddWidget: FC = ({}) => {
         <div className="info-add-widget-layout">
           <SplitLayout
             left={
-              <NadeTypeSelector
-                onTypeSelect={actions.setNadeType}
-                selectedType={nade.type}
+              <NadeGameModeSelector
+                defaultValue={nade.gameMode}
+                onChange={actions.setGameMode}
               />
             }
             right={
-              <TeamSideSelector
-                defaultValue={nade.teamSide}
-                onChange={actions.setTeamSide}
+              <NadeTypeSelector
+                onTypeSelect={actions.setNadeType}
+                selectedType={nade.type}
               />
             }
           />
@@ -49,9 +50,9 @@ export const InfoAddWidget: FC = ({}) => {
               <MapSelector defaultValue={nade.map} onChange={actions.setMap} />
             }
             right={
-              <NadeMovementSelector
-                selectedMovement={nade.movement}
-                onMovementSelect={actions.setMovement}
+              <TeamSideSelector
+                defaultValue={nade.teamSide}
+                onChange={actions.setTeamSide}
               />
             }
           />
@@ -63,9 +64,9 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
             right={
-              <TechniqueSelector
-                defaultValue={nade.technique}
-                onChange={actions.setTechnique}
+              <NadeMovementSelector
+                selectedMovement={nade.movement}
+                onMovementSelect={actions.setMovement}
               />
             }
           />
@@ -77,6 +78,16 @@ export const InfoAddWidget: FC = ({}) => {
                 onChange={actions.setEndPosition}
               />
             }
+            right={
+              <TechniqueSelector
+                defaultValue={nade.technique}
+                onChange={actions.setTechnique}
+              />
+            }
+          />
+
+          <SplitLayout
+            left={<></>}
             right={
               doesRequireTickrateTechnique(nade.technique) ? (
                 <TickrateSelector

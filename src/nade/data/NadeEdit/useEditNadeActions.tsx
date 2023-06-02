@@ -9,6 +9,7 @@ import { NadeStatus } from "../../models/Status";
 import { TeamSide } from "../../models/TeamSide";
 import { Technique } from "../../models/Technique";
 import { NadeEditAction } from "./NadeEditActions";
+import { GameMode } from "../../models/GameMode";
 
 export type EditNadeCallbacks = ReturnType<typeof useEditNadeActions>;
 
@@ -149,10 +150,18 @@ export const useEditNadeActions = (
     [dispatch]
   );
 
+  const onSetGameMode = useCallback(
+    (gameMode: GameMode) => {
+      dispatch({ type: "EditNade/SetGameMode", gameMode });
+    },
+    [dispatch]
+  );
+
   return {
     onSetDescription,
     onSetEndPosCoords,
     onSetEndPosition,
+    onSetGameMode,
     onSetGfycat,
     onSetImage,
     onSetIsPro,

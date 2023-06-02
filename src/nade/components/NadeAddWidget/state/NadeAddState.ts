@@ -19,5 +19,6 @@ export const initialNadeAddState: NadeAddState = {
     type: "smoke",
     teamSide: "both",
     movement: "stationary",
+    gameMode: "csgo",
   },
 };

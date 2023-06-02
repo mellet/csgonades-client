@@ -109,6 +109,7 @@ export const validateState = (
   const {
     description,
     endPosition,
+    gameMode,
     gfycat,
     imageBase64,
     lineUpImageBase64,
@@ -116,13 +117,13 @@ export const validateState = (
     mapEndCoord,
     movement,
     oneWay,
+    proUrl,
+    setPos,
     startPosition,
+    teamSide,
     technique,
     tickrate,
     type,
-    teamSide,
-    setPos,
-    proUrl,
     youTubeId,
   } = nade;
   if (
@@ -135,7 +136,8 @@ export const validateState = (
     !movement ||
     !startPosition ||
     !technique ||
-    !type
+    !type ||
+    !gameMode
   ) {
     return false;
   }
@@ -158,6 +160,7 @@ export const validateState = (
     setPos: setPosStringFix(setPos),
     proUrl,
     youTubeId,
+    gameMode,
   };
 };
 

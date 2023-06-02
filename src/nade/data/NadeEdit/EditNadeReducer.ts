@@ -114,6 +114,11 @@ export const nadeEditReducer: Reducer<EditNadeState, NadeEditAction> = (
         ...state,
         youTubeId: action.youTubeId,
       };
+    case "EditNade/SetGameMode":
+      return {
+        ...state,
+        gameMode: action.gameMode,
+      };
     default:
       assertNever(action);
       return state;

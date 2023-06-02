@@ -7,6 +7,7 @@ import { Technique } from "./Technique";
 import { NadeStatus } from "./Status";
 import { CsgoMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
+import { GameMode } from "./GameMode";
 
 export type StatusInfo = string;
 
@@ -27,6 +28,7 @@ export interface Nade {
   description?: string;
   endPosition?: string;
   favoriteCount: number;
+  gameMode?: GameMode;
   gfycat?: GfycatData;
   id: string;
   imageLineup?: NadeImageData;
@@ -62,6 +64,7 @@ export interface NadeLight {
   downVoteCount?: number;
   endPosition?: string;
   favoriteCount: number;
+  gameMode?: GameMode;
   gfycat?: GfycatData;
   id: string;
   imageLineup?: NadeImageData;
@@ -97,6 +100,7 @@ export type NadeLightSort = keyof Pick<
 export type NadeCreateBody = {
   description: string;
   endPosition: string;
+  gameMode: GameMode;
   gfycat?: GfycatData;
   imageBase64: string;
   isPro?: boolean;
@@ -118,6 +122,7 @@ export type NadeCreateBody = {
 export type NadeUpdateBody = {
   description?: string;
   endPosition?: string;
+  gameMode?: GameMode;
   gfycat?: GfycatData;
   imageBase64?: string;
   isPro?: boolean;

@@ -1,4 +1,5 @@
 import { CsgoMap } from "../../../map/models/CsGoMap";
+import { GameMode } from "../../models/GameMode";
 import { GfycatData } from "../../models/GfycatData";
 import { MapCoordinates } from "../../models/Nade";
 import { NadeMovement } from "../../models/NadeMovement";
@@ -111,10 +112,16 @@ type SetProUrl = {
   proUrl: string;
 };
 
+type SetGameMode = {
+  type: "EditNade/SetGameMode";
+  gameMode: GameMode;
+};
+
 export type NadeEditAction =
   | SetDescription
   | SetEndPosCoords
   | SetEndPosition
+  | SetGameMode
   | SetGfyData
   | SetImage
   | SetIsPro
