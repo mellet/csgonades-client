@@ -6,6 +6,7 @@ export const isValidNewNade = (
   const {
     description,
     endPosition,
+    gameMode,
     gfycat,
     imageBase64,
     lineUpImageBase64,
@@ -13,16 +14,17 @@ export const isValidNewNade = (
     mapEndCoord,
     movement,
     oneWay,
+    setPos,
     startPosition,
+    teamSide,
     technique,
     tickrate,
     type,
-    teamSide,
-    setPos,
   } = state;
   if (
     !description ||
     !endPosition ||
+    !gameMode ||
     !gfycat ||
     !imageBase64 ||
     !lineUpImageBase64 ||
@@ -37,21 +39,22 @@ export const isValidNewNade = (
   }
 
   return {
-    map,
     description,
     endPosition,
+    gameMode,
     gfycat,
     imageBase64,
+    lineUpImageBase64,
+    map,
     mapEndCoord,
     movement,
-    startPosition,
-    technique,
-    type,
-    tickrate,
-    lineUpImageBase64,
     oneWay,
-    teamSide,
     setPos: setPosStringFix(setPos),
+    startPosition,
+    teamSide,
+    technique,
+    tickrate,
+    type,
   };
 };
 

@@ -23,6 +23,7 @@ export const EditNadeProvider: FC<EditNadeProviderProps> = ({
   const [state, dispatch] = useReducer(nadeEditReducer, {
     description: nade.description,
     endPosition: nade.endPosition,
+    gameMode: nade.gameMode,
     gfycat: nade.gfycat,
     imageBase64: nade.imageMain.url,
     isPro: nade.isPro,
@@ -39,8 +40,8 @@ export const EditNadeProvider: FC<EditNadeProviderProps> = ({
     teamSide: nade.teamSide,
     technique: nade.technique,
     tickrate: nade.tickrate,
-    youTubeId: nade.youTubeId,
     type: nade.type,
+    youTubeId: nade.youTubeId,
   });
   const actions = useEditNadeActions(dispatch);
 

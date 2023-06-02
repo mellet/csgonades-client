@@ -100,26 +100,28 @@ function createNadeUpdateBody(
   const setPos = newValueIfDifferent(nade.setPos, update.setPos);
   const proUrl = newValueIfDifferent(nade.proUrl, update.proUrl);
   const youTubeId = newValueIfDifferent(nade.youTubeId, update.youTubeId);
+  const gameMode = newValueIfDifferent(nade.gameMode, update.gameMode);
 
   const updateBody: NadeUpdateBody = {
     description,
     endPosition,
+    gameMode,
     gfycat,
     imageBase64,
+    isPro,
+    lineUpImageBase64,
     map,
     mapEndCoord,
     movement,
+    oneWay,
+    proUrl,
+    setPos,
     startPosition,
     status,
+    teamSide,
     technique,
     tickrate,
     type,
-    oneWay,
-    lineUpImageBase64,
-    isPro,
-    teamSide,
-    setPos,
-    proUrl,
     youTubeId,
   };
 

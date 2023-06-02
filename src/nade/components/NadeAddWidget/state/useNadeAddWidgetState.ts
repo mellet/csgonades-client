@@ -10,6 +10,7 @@ import { Technique } from "../../../models/Technique";
 import { NadeAddActions } from "./nadeAddActions";
 import { nadeAddReducer } from "./nadeAddReducer";
 import { initialNadeAddState, NadeCreateSteps } from "./NadeAddState";
+import { GameMode } from "../../../models/GameMode";
 
 export type NadeAddCallbacks = ReturnType<typeof useNadeAddActions>;
 
@@ -93,10 +94,15 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetProUrl", proUrl });
   }
 
+  function setGameMode(gameMode: GameMode) {
+    dispatch({ type: "CreateNade/SetGameMode", gameMode });
+  }
+
   return {
     setCurrentStep,
     setDescription,
     setEndPosition,
+    setGameMode,
     setLineUpImage,
     setMap,
     setMapPosition,
