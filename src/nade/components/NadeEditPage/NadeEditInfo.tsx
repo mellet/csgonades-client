@@ -168,6 +168,7 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
               teamSide: nadeUpdates.teamSide,
               proUrl: nadeUpdates.proUrl,
               setPos: nadeUpdates.setPos,
+              youTubeId: nadeUpdates.youTubeId,
             }}
           />
         </div>
