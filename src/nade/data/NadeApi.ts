@@ -2,7 +2,6 @@ import axios from "axios";
 import { ok } from "neverthrow";
 import { AppConfig } from "../../constants/Constants";
 import { CsgoMap } from "../../map/models/CsGoMap";
-import { GfycatData } from "../models/GfycatData";
 import {
   Nade,
   NadeLight,
@@ -171,21 +170,6 @@ export class NadeApi {
       await AxiosApi.delete(`${AppConfig.API_URL}/nades/${nadeId}`);
 
       return ok(true);
-    } catch (error) {
-      return extractApiError(error);
-    }
-  }
-
-  static async validateGfycat(gfyIdOrUrl: string): AppResult<GfycatData> {
-    try {
-      const res = await axios.post(
-        `${AppConfig.API_URL}/nades/validateGfycat`,
-        {
-          gfycatIdOrUrl: gfyIdOrUrl,
-        }
-      );
-      const gfycatData = res.data as GfycatData;
-      return ok(gfycatData);
     } catch (error) {
       return extractApiError(error);
     }

@@ -13,11 +13,6 @@ export const nadeEditReducer: Reducer<EditNadeState, NadeEditAction> = (
         ...state,
         map: action.map,
       };
-    case "EditNade/SetGfyData":
-      return {
-        ...state,
-        gfycat: action.data,
-      };
     case "EditNade/SetEndPosition":
       return {
         ...state,

@@ -1,7 +1,4 @@
 import { ChangeEventHandler, FC, useCallback, useState } from "react";
-import { cleanGfycatUrl } from "../../../utils/Common";
-import { NadeApi } from "../../data/NadeApi";
-import { GfycatData } from "../../models/GfycatData";
 import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
 import { GfycatInputValidIcon } from "./GfycatInputValidIcon";
@@ -11,22 +8,17 @@ import { InfoBox } from "../../../shared-components/box/InfoBox";
 
 type Props = {
   defaultValue?: string;
-  onChange: (value: GfycatData) => void;
   onSetYouTubeId: (youTubeId: string) => void;
 };
 
-export const VideoUrlInput: FC<Props> = ({
-  onChange,
-  defaultValue,
-  onSetYouTubeId,
-}) => {
+export const VideoUrlInput: FC<Props> = ({ defaultValue, onSetYouTubeId }) => {
   const { colors } = useTheme();
   const displayToast = useDisplayToast();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isLargeVideo, setIsLargeVideo] = useState(false);
 
-  const onSetGfycat: ChangeEventHandler<HTMLInputElement> = useCallback(
+  const onSetVideoUrl: ChangeEventHandler<HTMLInputElement> = useCallback(
     async (event) => {
       const value = event.target.value;
       if (!value.length || value.length < 5) {
@@ -41,44 +33,27 @@ export const VideoUrlInput: FC<Props> = ({
       if (youTubeId) {
         setIsValid(true);
         return onSetYouTubeId(youTubeId);
-      }
-
-      setIsLoading(true);
-
-      const gfycat = await verifyGfycat(value);
-      setIsLoading(false);
-
-      if (!gfycat) {
+      } else {
         setIsValid(false);
         displayToast({
           durationSeconds: 20,
-          message:
-            "Failed to validate Gfycat Url. It is either mistyped or Gfycat is down at the moment.",
+          message: "Failed to validate URL",
           severity: "error",
         });
-      } else {
-        const sizeMb = gfycat.size ? gfycat.size / 1000000 : 0;
-
-        console.log("size", sizeMb);
-        if (sizeMb > 60) {
-          setIsLargeVideo(true);
-        }
-        onChange(gfycat);
-        setIsValid(true);
       }
     },
-    [displayToast, onChange, onSetYouTubeId]
+    [displayToast, onSetYouTubeId]
   );
 
   return (
     <>
-      <MiniLabel value="Video Id (YouTube / Gfycat)" />
+      <MiniLabel value="Video Url" />
       <div className="input-wrap">
         <DebounceInput
           minLength={6}
           debounceTimeout={1000}
-          onChange={onSetGfycat}
-          placeholder="Add YouTube or Gfycat url"
+          onChange={onSetVideoUrl}
+          placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           defaultValue={defaultValue}
           value={defaultValue}
           className="debounce-input"
@@ -141,27 +116,10 @@ export const VideoUrlInput: FC<Props> = ({
   );
 };
 
-async function verifyGfycat(gfyUrl) {
-  const cleanId = cleanGfycatUrl(gfyUrl);
-
-  if (!cleanId) {
-    return false;
-  }
-
-  const gfyResult = await NadeApi.validateGfycat(cleanId);
-
-  if (gfyResult.isErr()) {
-    return false;
-  }
-
-  return gfyResult.value;
-}
-
 function tryGetYouTubeId(input: string) {
   const youTubeRegex =
     /(?:youtu\.be\/|youtube\.com(?:\/embed\/|\/v\/|\/watch\?v=|\/user\/\S+|\/ytscreeningroom\?v=|\/sandalsResorts#\w\/\w\/.*\/))([^\/&]{10,12})/;
   const result = input.match(youTubeRegex);
-  console.log("Trying to get youtube id", input, result);
 
   if (result && result.length > 1) {
     return result[1];

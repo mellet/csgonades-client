@@ -15,7 +15,7 @@ export const VideoPreview: FC<Props> = ({ gfycat, youTubeId }) => {
 
   return (
     <>
-      <div className="gfycat-preview-container">
+      <div className="video-preview-container">
         {!gfycat && !youTubeId && (
           <div className="no-video-content">
             <div className="no-video-message">
@@ -30,7 +30,7 @@ export const VideoPreview: FC<Props> = ({ gfycat, youTubeId }) => {
         {youTubeId && <CsGoYouTubePlayer youTubeId={youTubeId} />}
       </div>
       <style jsx>{`
-        .gfycat-preview-container {
+        .video-preview-container {
           min-height: 280px;
           background: ${colors.DP01};
           display: flex;

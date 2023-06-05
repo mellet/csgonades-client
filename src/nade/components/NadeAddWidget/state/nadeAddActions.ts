@@ -1,6 +1,5 @@
 import { CsgoMap } from "../../../../map/models/CsGoMap";
 import { GameMode } from "../../../models/GameMode";
-import { GfycatData } from "../../../models/GfycatData";
 import { MapCoordinates } from "../../../models/Nade";
 import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
@@ -12,11 +11,6 @@ import { NadeCreateSteps } from "./NadeAddState";
 type SetMap = {
   type: "CreateNade/SetMap";
   map: CsgoMap;
-};
-
-type SetGfyData = {
-  type: "CreateNade/SetGfyData";
-  data: GfycatData;
 };
 
 type SetYouTubeId = {
@@ -110,7 +104,6 @@ export type NadeAddActions =
   | SetEndPosCoords
   | SetEndPosition
   | SetGameMode
-  | SetGfyData
   | SetImage
   | SetLineUpImage
   | SetMap

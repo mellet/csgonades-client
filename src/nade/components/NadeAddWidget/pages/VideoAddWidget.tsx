@@ -6,7 +6,7 @@ import { Box } from "../../../../shared-components/box/Box";
 import { SplitLayout } from "../../../../shared-components/box/SplitBox";
 import { Seperator } from "../../../../shared-components/Seperator";
 import { Title } from "../../../../shared-components/title/Title";
-import { VideoUrlInput } from "../../NadeInputs/GfyInput";
+import { VideoUrlInput } from "../../NadeInputs/VideoUrlInput";
 import { VideoPreview } from "../VideoPreview";
 import { HintBox } from "../HintBox";
 import { NextNavigation } from "../NextNavigation";
@@ -27,8 +27,7 @@ export const VideoAddWidget: FC = () => {
               <HintBox title="Video requirements">
                 <p>
                   To ensure your nade throw is accepted, please follow these
-                  guidelines when recording and uploading your video to either
-                  YouTube or Gfycat:
+                  guidelines when recording and uploading your video to YouTube:
                 </p>
                 <Rule icon={<FaVideo />}>
                   <b>Aspect Ratio:</b> Make sure the video has an aspect ratio
@@ -56,31 +55,17 @@ export const VideoAddWidget: FC = () => {
           left={
             <div className="gfycat-container">
               <div className="video-input-section">
-                <HintBox
-                  title="Gfycat Issue!"
-                  style={{
-                    marginBottom: Dimensions.GUTTER_SIZE,
-                    backgroundColor: "#8f1111",
-                  }}
-                >
-                  Gfycat is currently experiencing video upload issues. Please
-                  use YouTube instead. Upload your video to YouTube and paste
-                  the link below. Thank you for your cooperation.
-                </HintBox>
-                <VideoUrlInput
-                  onChange={actions.setVideo}
-                  onSetYouTubeId={actions.setYouTubeId}
-                />
+                <VideoUrlInput onSetYouTubeId={actions.setYouTubeId} />
               </div>
               <div className="video-preview-section">
-                <VideoPreview gfycat={nade.gfycat} youTubeId={nade.youTubeId} />
+                <VideoPreview youTubeId={nade.youTubeId} />
               </div>
             </div>
           }
         />
         <NextNavigation
           onNextStep={() => actions.setCurrentStep("info")}
-          enabled={Boolean(nade.gfycat) || Boolean(nade.youTubeId)}
+          enabled={Boolean(nade.youTubeId)}
         />
       </Box>
 

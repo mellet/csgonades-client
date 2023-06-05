@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { CsgoMap } from "../../../map/models/CsGoMap";
-import { GfycatData } from "../../models/GfycatData";
 import { MapCoordinates } from "../../models/Nade";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
@@ -26,13 +25,6 @@ export const useEditNadeActions = (
   const onSetMap = useCallback(
     (map: CsgoMap) => {
       dispatch({ type: "EditNade/SetMap", map });
-    },
-    [dispatch]
-  );
-
-  const onSetGfycat = useCallback(
-    (data: GfycatData) => {
-      dispatch({ type: "EditNade/SetGfyData", data });
     },
     [dispatch]
   );
@@ -162,7 +154,6 @@ export const useEditNadeActions = (
     onSetEndPosCoords,
     onSetEndPosition,
     onSetGameMode,
-    onSetGfycat,
     onSetImage,
     onSetIsPro,
     onSetLineUpImage,

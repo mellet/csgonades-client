@@ -41,15 +41,6 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         },
       };
     }
-    case "CreateNade/SetGfyData": {
-      return {
-        ...state,
-        nadeData: {
-          ...state.nadeData,
-          gfycat: action.data,
-        },
-      };
-    }
     case "CreateNade/SetImage": {
       return {
         ...state,

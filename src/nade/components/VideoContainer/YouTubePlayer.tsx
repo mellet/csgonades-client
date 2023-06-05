@@ -39,6 +39,7 @@ export const CsGoYouTubePlayer: FC<Props> = ({ youTubeId }) => {
       <style jsx global>{`
         .wrap {
           background: #000;
+          width: 100%;
         }
 
         .youtubeContainer {
