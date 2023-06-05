@@ -7,6 +7,7 @@ import { Nade } from "../../models/Nade";
 import { getNadeLineUpImage } from "../NadeItem/Utils/NadeUtils";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 import { CsGoYouTubePlayer } from "./YouTubePlayer";
+import { NadeStats } from "./NadeStats";
 
 type Props = {
   nade: Nade;
@@ -58,6 +59,9 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
           )}
         </div>
       </div>
+
+      <NadeStats commentCount={nade.commentCount} viewCount={nade.viewCount} />
+
       <style jsx>{`
         .top-container {
           display: flex;
@@ -69,7 +73,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
         .video-wrap {
           position: relative;
           overflow: hidden;
-          padding-bottom: calc(56.25% + 44px);
+          padding-bottom: calc(56.25%);
         }
 
         .video-tab {
