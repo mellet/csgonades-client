@@ -4,7 +4,6 @@ import { Logo } from "./components/Logo";
 import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 import dynamic from "next/dynamic";
-import { GameModeToggle } from "./components/GameModeToggle";
 import { Cs2Warning } from "./components/Cs2Warning";
 import { useGameMode } from "../../useGameMode";
 import { useIsDeviceSize } from "../useDeviceSize";
@@ -31,7 +30,6 @@ export const HeaderDefault: FC = memo(() => {
           <Logo />
 
           <div className="spacer"></div>
-          {!isMobile && <GameModeToggle />}
 
           <div id="theme-toggler">
             <ThemeToggler />
