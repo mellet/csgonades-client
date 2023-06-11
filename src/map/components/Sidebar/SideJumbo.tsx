@@ -16,9 +16,10 @@ const TopContributors = dynamic(
 type Props = {
   nades: NadeLight[];
   map: CsgoMap;
+  isLoading: boolean;
 };
 
-export const SideJumbo: FC<Props> = ({ nades, map }) => {
+export const SideJumbo: FC<Props> = ({ nades, map, isLoading }) => {
   const { colors } = useTheme();
 
   const { fullGameString } = useGameString();
@@ -35,7 +36,7 @@ export const SideJumbo: FC<Props> = ({ nades, map }) => {
           and carefully curated collection of smokes, flashbangs, molotovs, and
           grenades.
         </h2>
-        <TopContributors nades={nades} />
+        <TopContributors nades={nades} isLoading={isLoading} />
       </div>
       <style jsx>{`
         .jumbo {

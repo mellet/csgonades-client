@@ -33,6 +33,7 @@
     "react-icons": "^4.7.1",
     "react-image-crop": "^10.0.9",
     "react-in-viewport": "^1.0.0-alpha.29",
+    "react-loading-skeleton": "^3.3.1",
     "react-markdown": "^8.0.5",
     "react-responsive": "9.0.2",
     "react-share": "^4.4.1",

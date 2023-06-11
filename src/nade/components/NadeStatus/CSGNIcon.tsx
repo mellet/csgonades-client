@@ -18,7 +18,7 @@ export const CSGNIcon: FC<Props> = ({ icon, size = 18, spin, style }) => {
           animation-name: ${spin ? "spin" : "none"};
           animation-duration: 800ms;
           animation-iteration-count: infinite;
-          animation-timing-function: linear;
+          animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
           margin: 0;
           padding: 0;
           height: ${size}px;

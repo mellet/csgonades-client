@@ -27,7 +27,14 @@ const Map: NextPage<Props> = ({ mapName }) => {
           isLoading={isLoading}
         />
       }
-      sidebar={<MapSidebar key={mapName} map={mapName} nades={nades} />}
+      sidebar={
+        <MapSidebar
+          key={mapName}
+          map={mapName}
+          nades={nades}
+          isLoading={isLoading}
+        />
+      }
     />
   );
 };

@@ -11,7 +11,6 @@ import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
 import { FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
-import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   allNades: NadeLight[];
@@ -32,7 +31,6 @@ const MapViewScreen: FC<Props> = ({
   const [mapSize, setMapSize] = useState<number>();
   const mapViewRef = useRef<HTMLDivElement>(null);
   const clusters = useNadeClusters(filteredNades);
-  const { colors } = useTheme();
 
   const mapUrl = `/mapsoverlays/${map}.jpg`;
 
@@ -67,12 +65,14 @@ const MapViewScreen: FC<Props> = ({
         </div>
         <div className="mapview-dark-bg">
           <div id="mapview">
-            <MapIcons
-              clusters={clusters}
-              visible={true}
-              canvasSize={canvasSize || 0}
-              onClusterClick={onClusterClick}
-            />
+            {!isLoading && (
+              <MapIcons
+                clusters={clusters}
+                visible={true}
+                canvasSize={canvasSize || 0}
+                onClusterClick={onClusterClick}
+              />
+            )}
 
             {!hasNades && !isLoading && (
               <div className="no-nades-wrap">
@@ -83,7 +83,6 @@ const MapViewScreen: FC<Props> = ({
             {isLoading && (
               <span className="spinner">
                 <div className="spinner-content">
-                  <p>Loading nades</p>
                   <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
                 </div>
               </span>
@@ -107,14 +106,11 @@ const MapViewScreen: FC<Props> = ({
         }
 
         .spinner-content {
-          border: 1px solid ${colors.PRIMARY};
-          background: ${colors.DP03};
-          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 10px ${Dimensions.GUTTER_SIZE}px;
-          color: ${colors.TEXT};
+          color: rgba(255, 255, 255, 0.8);
         }
 
         .spinner-content p {

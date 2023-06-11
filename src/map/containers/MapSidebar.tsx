@@ -10,13 +10,14 @@ import { AdUnit } from "../../shared-components/adunits/AdUnit";
 type Props = {
   map: CsgoMap;
   nades: NadeLight[];
+  isLoading: boolean;
 };
 
-export const MapSidebar: FC<Props> = ({ map, nades }) => {
+export const MapSidebar: FC<Props> = ({ map, nades, isLoading }) => {
   return (
     <>
       <Spacer vertical>
-        <SideJumbo nades={nades} map={map} />
+        <SideJumbo nades={nades} map={map} isLoading={isLoading} />
         <div className="ctas">
           <DiscordJoinAction />
           {false && <BuyMeABeerAction />}

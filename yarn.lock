@@ -9947,6 +9947,11 @@ react-is@^16.13.1, react-is@^16.6.3, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-loading-skeleton@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.3.1.tgz#cd6e3a626ee86c76a46c14e2379243f2f8834e1b"
+  integrity sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==
+
 react-markdown@^8.0.5:
   version "8.0.5"
   resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-8.0.5.tgz#c9a70a33ca9aeeafb769c6582e7e38843b9d70ad"

@@ -6,17 +6,21 @@ import { nadeTypeString } from "../../../../nade/models/NadeType";
 import { ContributorUser } from "./ContributorUser";
 import { useNadeContributors } from "./useNadeContributors";
 import { NadeLight } from "../../../../nade/models/Nade";
+import { TopContributorLoading } from "./TopContributorLoading";
 
 type ContListProps = {
   nades: NadeLight[];
+  isLoading: boolean;
 };
 
-export const TopContributorList: FC<ContListProps> = ({ nades }) => {
+export const TopContributorList: FC<ContListProps> = ({ nades, isLoading }) => {
   const { byType } = useFilterByType();
   const { colors } = useTheme();
   const contributors = useNadeContributors(nades, 16);
 
-  if (nades.length === 0) {
+  if (isLoading) {
+    return <TopContributorLoading />;
+  } else if (!isLoading && nades.length === 0) {
     return null;
   }
 
@@ -48,8 +52,8 @@ export const TopContributorList: FC<ContListProps> = ({ nades }) => {
           display: flex;
           flex-wrap: wrap;
           align-items: flex-start;
-          margin-left: -2px;
-          margin-right: -2px;
+          margin-left: -3px;
+          margin-right: -3px;
         }
 
         .cont-list span {
