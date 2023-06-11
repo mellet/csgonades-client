@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { isSafari } from "react-device-detect";
 
 type Props = {

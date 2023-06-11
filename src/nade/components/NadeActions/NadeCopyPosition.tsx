@@ -4,7 +4,7 @@ import { SquareButton } from "../../../shared-components/buttons/IconButton/Squa
 import copy from "copy-to-clipboard";
 import { useGa } from "../../../utils/Analytics";
 import { PositionCopyHint } from "../../../hints/components/PositionCopyHint";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = {
   nadeId: string;

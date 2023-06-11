@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC, useMemo } from "react";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 
 type Props = {
   selectedIndex: number;

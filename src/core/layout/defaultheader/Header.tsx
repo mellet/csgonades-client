@@ -4,6 +4,7 @@ import { Logo } from "./components/Logo";
 import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 import dynamic from "next/dynamic";
+import { GameModeToggle } from "./components/GameModeToggle";
 
 const UserNav = dynamic(
   () =>
@@ -22,6 +23,8 @@ export const HeaderDefault: FC = memo(() => {
           <Logo />
 
           <div className="spacer"></div>
+          <GameModeToggle />
+
           <div id="theme-toggler">
             <ThemeToggler />
           </div>

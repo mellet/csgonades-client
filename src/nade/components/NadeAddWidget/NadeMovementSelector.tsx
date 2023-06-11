@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { SquareButton } from "../../../shared-components/buttons/IconButton/SquareButton";
 import { ButtonGroup } from "../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { NadeMovement, movementString } from "../../models/NadeMovement";

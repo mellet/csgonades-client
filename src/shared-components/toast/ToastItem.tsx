@@ -1,6 +1,6 @@
 import { FC, useEffect, useState, memo } from "react";
 import { FaTimes } from "react-icons/fa";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { AppToast, ToastSeverity } from "../../core/toasts/ToastModels";
 import { useToast } from "./useToast";
 

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaRegImage } from "react-icons/fa";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 
 export const NoImage: FC = () => {
   const { colors } = useTheme();

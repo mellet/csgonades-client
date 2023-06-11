@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { FaBan, FaPen } from "react-icons/fa";
 import { Dimensions } from "../../../../constants/Constants";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { CSGNModal } from "../../../../shared-components/CSGNModal";
 import { CsgnSaveButton } from "../../../../shared-components/inputs/CsgnSaveButton";
 import { CsgnTextArea } from "../../../../shared-components/inputs/CsgnTextArea";

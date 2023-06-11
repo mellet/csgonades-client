@@ -10,6 +10,8 @@ import { NadeApi } from "../../../data/NadeApi";
 import { NadeCreateBody } from "../../../models/Nade";
 import { PreviewNade } from "../../PreviewNades";
 import { useCreateNade } from "../state/NadeAddStateProvider";
+import { useGameMode } from "../../../../core/useGameMode";
+import { GameMode } from "../../../models/GameMode";
 
 export const ConfirmNewNade: FC = () => {
   const { nade } = useCreateNade();
@@ -57,6 +59,7 @@ export const ConfirmNewNade: FC = () => {
 };
 
 const useSumbitNade = (nadeBody: Partial<NadeCreateBody>) => {
+  const { gameMode } = useGameMode();
   const router = useRouter();
   const { isAuthenticated } = useSession();
   const showToast = useDisplayToast();
@@ -65,7 +68,7 @@ const useSumbitNade = (nadeBody: Partial<NadeCreateBody>) => {
 
   const onSubmitClick = useCallback(async () => {
     setIsLoading(true);
-    const nadeCreateBody = validateState(nadeBody);
+    const nadeCreateBody = validateState(nadeBody, gameMode);
 
     if (!nadeCreateBody) {
       setIsLoading(false);
@@ -98,18 +101,18 @@ const useSumbitNade = (nadeBody: Partial<NadeCreateBody>) => {
     });
 
     router.push(`/nades/[nade]`, `/nades/${newNade.id}`);
-  }, [nadeBody, isAuthenticated, router, showToast]);
+  }, [nadeBody, isAuthenticated, router, showToast, gameMode]);
 
   return { isLoading, error, onSubmitClick };
 };
 
 export const validateState = (
-  nade: Partial<NadeCreateBody>
+  nade: Partial<NadeCreateBody>,
+  gameMode: GameMode
 ): NadeCreateBody | false => {
   const {
     description,
     endPosition,
-    gameMode,
     gfycat,
     imageBase64,
     lineUpImageBase64,
@@ -136,8 +139,7 @@ export const validateState = (
     !movement ||
     !startPosition ||
     !technique ||
-    !type ||
-    !gameMode
+    !type
   ) {
     return false;
   }

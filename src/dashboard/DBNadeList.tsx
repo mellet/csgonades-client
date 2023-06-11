@@ -4,7 +4,7 @@ import { NadeStatus } from "../nade/models/Status";
 import { generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../shared-components/PageLink";
 import { prettyDate } from "../utils/DateUtils";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import Link from "next/link";
 import {
   FaCheck,
@@ -26,6 +26,7 @@ import { NadeIcon } from "../shared-components/nade-icons";
 import Image from "next/image";
 import { Dimensions } from "../constants/Constants";
 import { getNadeMainImage } from "../nade/components/NadeItem/Utils/NadeUtils";
+import { useGameMode } from "../core/useGameMode";
 
 type Props = {
   csgoMap: CsgoMap;
@@ -34,8 +35,13 @@ type Props = {
 
 export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
   const { colors } = useTheme();
+  const { gameMode } = useGameMode();
 
-  const { nades, isLoading } = useUserNadesByMap(user.steamId, csgoMap);
+  const { nades, isLoading } = useUserNadesByMap(
+    user.steamId,
+    csgoMap,
+    gameMode
+  );
 
   if (isLoading) {
     return <LoadingSpinner />;

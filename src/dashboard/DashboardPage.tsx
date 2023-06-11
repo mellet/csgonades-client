@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { DBNadeList } from "./DBNadeList";
 import { Dimensions } from "../constants/Constants";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { SEO } from "../shared-components/SEO";
 import { MapNadeSelector } from "../shared-components/map-nade-selector/MapNadeSelector";
 import { CsgoMap } from "../map/models/CsGoMap";

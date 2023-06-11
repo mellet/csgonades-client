@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { useNavigation } from "../global/hooks/useNavigation";
-import { useTheme } from "../settings/SettingsHooks";
+import { useTheme } from "../settings/useTheme";
 import { useIsDeviceSize } from "./useDeviceSize";
 
 type Props = {

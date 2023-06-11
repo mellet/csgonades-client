@@ -4,6 +4,7 @@ import { ToastProvider } from "../shared-components/toast/ToastContext";
 import { PageViewTracker } from "./PageViewTracker";
 import { SWRConfig } from "swr";
 import { UserProfileChecker } from "./UserProfileChecker";
+import { GameModeProvider } from "./useGameMode";
 
 const tenMinutesInMs = 10 * 60 * 1000;
 
@@ -45,14 +46,16 @@ export const CoreWrapper: FC = memo(({ children }) => {
       }}
     >
       <GlobalStyles>
-        <ToastProvider>
-          {children}
-          {false && <ServiceDown />}
-          <ToastList />
-          <SignInWarning />
-          <PageViewTracker />
-          <UserProfileChecker />
-        </ToastProvider>
+        <GameModeProvider>
+          <ToastProvider>
+            {children}
+            {false && <ServiceDown />}
+            <ToastList />
+            <SignInWarning />
+            <PageViewTracker />
+            <UserProfileChecker />
+          </ToastProvider>
+        </GameModeProvider>
       </GlobalStyles>
     </SWRConfig>
   );
@@ -143,6 +146,7 @@ export const GlobalStyles: FC = ({ children }) => {
 
         a {
           text-decoration: none;
+          cursor: pointer;
         }
       `}</style>
     </>

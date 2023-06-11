@@ -2,7 +2,7 @@ import { FC } from "react";
 import { FaRunning, FaCheckCircle, FaEye, FaCommentDots } from "react-icons/fa";
 import { RiMouseLine } from "react-icons/ri";
 import { Tickrate, tickrateShortString } from "../../../models/NadeTickrate";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { Popup } from "semantic-ui-react";
 import { StatItem } from "./StatItem";
 import { Technique } from "../../../models/Technique";

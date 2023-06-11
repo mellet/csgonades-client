@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import { FaChevronRight, FaPlay, FaStop } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
 import { NadeLight } from "../../models/Nade";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { NadeItemTitle } from "./Views/NadeItemTitle";
 import { NadeStats } from "./NadeStats/NadeStats";
 import Link from "next/link";

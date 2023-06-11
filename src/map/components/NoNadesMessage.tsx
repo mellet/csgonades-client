@@ -1,7 +1,8 @@
 import { FC, memo } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useFilterReset } from "../logic/useFilterReset";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
+import { Link } from "../../shared-components/link/Link";
 
 export const NoNadesMessage: FC = memo(() => {
   const { resetFilter } = useFilterReset();
@@ -14,26 +15,26 @@ export const NoNadesMessage: FC = memo(() => {
   return (
     <>
       <div className="no-nades-msg">
-        <h3>No nades found</h3>
         <p>
-          No nades found. Either none excist or try too{" "}
-          <button className="reset" onClick={onReset}>
-            reset filter
-          </button>
+          We can&apos;t find any nades 😟
+          <br />
+          Either no nades have been added or you can try{" "}
+          <Link onClick={onReset}>resetting the filter.</Link>
         </p>
       </div>
       <style jsx>{`
         .no-nades-msg {
-          background: ${colors.DP00};
-          border-radius: 5px;
+          background: ${colors.DP03};
+          border-bottom-left-radius: ${Dimensions.BORDER_RADIUS};
+          border-bottom-right-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
           color: ${colors.TEXT};
           border: 1px solid ${colors.BORDER};
+          border-top: none;
           display: flex;
           flex-direction: column;
-          padding: 0px ${Dimensions.GUTTER_SIZE}px ${Dimensions.GUTTER_SIZE}px
-            ${Dimensions.GUTTER_SIZE}px;
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
+          padding: 0px ${Dimensions.PADDING_MEDIUM} ${Dimensions.PADDING_MEDIUM}
+            ${Dimensions.PADDING_MEDIUM};
         }
 
         h3 {

@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from "react";
 import { NadeType } from "../../../../nade/models/NadeType";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { iconFromType } from "../../../../utils/Common";
 import { Dimensions } from "../../../../constants/Constants";
 import Image from "next/image";

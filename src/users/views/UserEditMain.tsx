@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { TickrateSelector } from "../../nade/components/NadeInputs/TickrateSelector";
 import { MiniLabel } from "../../nade/components/NadeLabels/MiniLabel";
 import { CsgnSaveButton } from "../../shared-components/inputs/CsgnSaveButton";

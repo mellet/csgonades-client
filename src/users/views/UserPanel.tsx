@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { User } from "../models/User";
 import { useIsAllowedUserEdit } from "../../core/authentication/useIsAllowedUserEdit";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { capitalize } from "../../utils/Common";
 import { prettyDate, prettyDateTime } from "../../utils/DateUtils";
 import { ButtonWithIcon } from "../../shared-components/buttons/ButtonWithIcon";

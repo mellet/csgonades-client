@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC, useMemo, useState } from "react";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { UserLight } from "../users/models/User";
 import { PageLink } from "./PageLink";
 

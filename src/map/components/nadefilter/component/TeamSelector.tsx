@@ -39,6 +39,7 @@ export const TeamSelector: FC<Props> = ({ vertical }) => {
         <SquareButton
           onClick={onChange}
           icon={<TeamCarusel selectedIndex={selectedIndex} />}
+          backgroundColor="transparent"
         />
       </div>
     </>

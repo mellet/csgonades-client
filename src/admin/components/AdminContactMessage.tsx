@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { prettyDateTime } from "../../utils/DateUtils";
 import { ContactDTO } from "../../contact/models/ContactDTOs";
 import { RenderMarkdown } from "../../nade/components/RenderMarkdown";

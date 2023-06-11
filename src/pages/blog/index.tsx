@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BlogList } from "../../blog/components/BlogList";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { SEO } from "../../shared-components/SEO";
 import { Dimensions } from "../../constants/Constants";
 import {

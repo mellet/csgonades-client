@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,

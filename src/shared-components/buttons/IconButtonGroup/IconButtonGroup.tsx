@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type IconButtonGroupProps = {
   vertical?: boolean;

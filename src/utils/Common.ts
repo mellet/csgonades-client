@@ -4,6 +4,7 @@ import removeMd from "remove-markdown";
 import { nadeTypeString } from "../nade/models/NadeType";
 import { CsgoMap } from "../map/models/CsGoMap";
 import { dateMinutesAgo } from "./DateUtils";
+import { useGameMode } from "../core/useGameMode";
 
 export const capitalize = (s: string): string => {
   if (typeof s !== "string") return "";
@@ -242,4 +243,17 @@ export function isNewNade(createdAt: Date | string) {
   const hoursAgoAdded = dateMinutesAgo(createdAt) / 60;
 
   return hoursAgoAdded < newDurationDaysHours;
+}
+
+export function useGameString() {
+  const { gameMode } = useGameMode();
+  const gameString =
+    gameMode === "csgo"
+      ? "Counter-Strike Global Offensice"
+      : "Counter-Strike 2";
+  const short = gameMode === "csgo" ? "CS:GO" : "CS2";
+  return {
+    fullGameString: gameString,
+    shortGameString: short,
+  };
 }

@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { FaEnvelope, FaInfo, FaRss } from "react-icons/fa";
 import { Dimensions } from "../constants/Constants";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { PageLink } from "../shared-components/PageLink";
 
 export const SecondaryNav: FC = memo(({}) => {

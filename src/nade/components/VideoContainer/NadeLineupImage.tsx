@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FC, useCallback, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
 import { CrossHairSvg } from "./CrossHairSvg";
 

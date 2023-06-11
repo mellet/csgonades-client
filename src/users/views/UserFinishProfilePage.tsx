@@ -1,7 +1,7 @@
 import Router, { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { User } from "../models/User";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { useFinishProfile } from "../data/useFinishProfile";
 import { Dimensions } from "../../constants/Constants";
 import { useDisplayToast } from "../../core/toasts/hooks/useDisplayToast";

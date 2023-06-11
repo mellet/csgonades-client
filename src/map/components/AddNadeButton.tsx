@@ -3,6 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { useIsSignedIn } from "../../core/authentication/useIsSignedIn";
 import Router from "next/router";
 import { useSignInWarning } from "../../core/global/hooks/useSignInWarning";
+import { Dimensions } from "../../constants/Constants";
 
 export const AddNadeButton: FC = memo(() => {
   const { setSignInWarning } = useSignInWarning();
@@ -25,15 +26,15 @@ export const AddNadeButton: FC = memo(() => {
       <style jsx>{`
         .add-btn {
           border: none;
-          border-radius: 10px;
+          border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
           outline: none;
-          background: rgba(140, 192, 28, 0.8);
-          color: white;
+          background: rgba(255, 255, 255, 0.75);
+          color: black;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: transform 0.2s, background 0.2s;
+          transition: background 0.1s;
           padding: 0;
           padding-right: 10px;
         }
@@ -42,15 +43,13 @@ export const AddNadeButton: FC = memo(() => {
           font-size: 13px;
           font-weight: 500;
           padding: 8px 6px 8px 10px;
-          background: rgba(140, 192, 28, 0.5);
           margin-right: 8px;
-          border-right: 1px solid #729c17;
+          border-right: 1px solid rgba(0, 0, 0, 0.25);
         }
 
         .add-btn:hover {
-          background: rgba(140, 192, 28, 1);
           cursor: pointer;
-          color: white;
+          background: white;
         }
       `}</style>
     </>

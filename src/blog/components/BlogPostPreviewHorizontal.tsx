@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { prettyDate } from "../../utils/DateUtils";
 import { BlogPost } from "../models/BlogPost";
 import { PageLink } from "../../shared-components/PageLink";

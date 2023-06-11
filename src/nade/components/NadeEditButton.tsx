@@ -4,7 +4,7 @@ import { FaPencilAlt } from "react-icons/fa";
 import { useCanEditNade } from "../data/useCanEditNade";
 import { SquareButton } from "../../shared-components/buttons/IconButton/SquareButton";
 import { Tooltip } from "../../shared-components/Tooltip/Tooltip";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   nadeId: string;

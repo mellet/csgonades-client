@@ -4,7 +4,7 @@ import { useGa } from "../utils/Analytics";
 import { SignInnButton } from "./layout/defaultheader/components/SignInnButton";
 import { useSignInWarning } from "./global/hooks/useSignInWarning";
 import { FaComment, FaPlus, FaStar } from "react-icons/fa";
-import { useTheme } from "./settings/SettingsHooks";
+import { useTheme } from "./settings/useTheme";
 import { Dimensions } from "../constants/Constants";
 
 // Lazy loaded

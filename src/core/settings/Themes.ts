@@ -31,6 +31,7 @@ export type ThemeColors = {
   PRIMARY: string;
   primaryBtnBg: string;
   primaryBtnHover: string;
+  primaryBtnActive: string;
   SHADOW: string;
   SITE_BG: string;
   SUCCESS: string;
@@ -47,11 +48,14 @@ export type ThemeColors = {
   buttonPrimaryBg: string;
   buttonBgHover: string;
   buttonBgActive: string;
+  smokeLogo: string;
 };
 
 type Themes = {
   dark: ThemeColors;
+  dark_cs2: ThemeColors;
   light: ThemeColors;
+  light_cs2: ThemeColors;
 };
 
 const DARK_THEME: ThemeColors = {
@@ -62,8 +66,8 @@ const DARK_THEME: ThemeColors = {
   DP03_transparent: "rgba(54, 54, 54, 0.9)",
   SITE_BG: "#121212",
   UI_BG: "#212121",
-  PRIMARY: "#364958",
-  PRIMARY_10: "rgba(28, 143, 192, 0.1)",
+  PRIMARY: "rgba(53, 135, 176, 1)",
+  PRIMARY_10: "rgba(53, 135, 176, 0.1)",
   PRIMARY_BLACK: "#262626",
   BORDER: "rgba(0, 0, 0, 1)",
   DARK_BORDER: "rgba(0, 0, 0, 1)",
@@ -77,8 +81,9 @@ const DARK_THEME: ThemeColors = {
   nadeItemHeadingBg: "#232323",
   footerBg: "#212121",
   footerColor: "white",
-  primaryBtnBg: "#363636",
-  primaryBtnHover: "#404040",
+  primaryBtnBg: "rgba(53, 135, 176, 0.95)",
+  primaryBtnHover: "rgba(53, 135, 176, 1)",
+  primaryBtnActive: "rgba(53, 135, 176, 1)",
   filterBg: "#09384d",
   filterBgHover: "#0d516e",
   filterColor: "white",
@@ -101,8 +106,9 @@ const DARK_THEME: ThemeColors = {
   focusOutline: "#fff",
   buttonPrimaryBg: "rgba(28, 143, 192, 1)",
   buttonBgHover: "#1784b3",
-  buttonBgActive: "#5DBCE5",
-  buttonBg: "#fff",
+  buttonBgActive: "rgba(53, 135, 176, 1)",
+  buttonBg: "#1f1f1f",
+  smokeLogo: "#c7c7c7",
 };
 
 export const LIGHT_THEME: ThemeColors = {
@@ -113,7 +119,7 @@ export const LIGHT_THEME: ThemeColors = {
   DP03_transparent: "rgba(230, 230, 230, 0.9)",
   SITE_BG: "#f3f3f3",
   UI_BG: "white",
-  PRIMARY: "#364958",
+  PRIMARY: "rgba(62, 157, 204, 1)",
   PRIMARY_10: "rgba(28, 143, 192, 0.1)",
   PRIMARY_BLACK: "#262626",
   BORDER: "rgba(0, 0, 0, 0.1)",
@@ -126,10 +132,11 @@ export const LIGHT_THEME: ThemeColors = {
   NAV_HOVER: "#f7f7f7",
   NADE_ITEM_HIGHLIGHT: "#00c9ab",
   nadeItemHeadingBg: "#eee",
-  footerBg: "#1c90c0",
+  footerBg: "#454545",
   footerColor: "white",
-  primaryBtnBg: "rgba(34, 148, 201, 0.9)",
-  primaryBtnHover: "rgba(34, 148, 201, 1.0)",
+  primaryBtnBg: "rgba(62, 157, 204, 0.95)",
+  primaryBtnHover: "rgba(62, 157, 204, 1)",
+  primaryBtnActive: "rgba(62, 157, 204, 1)",
   filterBg: "#545b69",
   filterBgHover: "rgba(28, 143, 192, 1)",
   filterColor: "#ffffff",
@@ -151,14 +158,38 @@ export const LIGHT_THEME: ThemeColors = {
   linkHover: "#10a5eb",
   focusOutline: "#263942",
   buttonPrimaryBg: "rgba(28, 143, 192, 1)",
-  buttonBgHover: "#1784b3",
+  buttonBgHover: "#fff",
   buttonBgActive: "#fff",
   buttonBg: "#ededed",
+  smokeLogo: "#EFEFEF",
+};
+
+const LIGHT_THEME_CS2: ThemeColors = {
+  ...LIGHT_THEME,
+  PRIMARY: "rgba(228, 135, 22, 1)",
+  PRIMARY_10: "rgba(228, 135, 22, 0.1)",
+  primaryBtnBg: "rgba(228, 135, 22, 0.95)",
+  primaryBtnHover: "rgba(228, 135, 22, 1)",
+  link: "rgba(201, 116, 12, 0.9)",
+  linkHover: "rgba(201, 116, 12, 1)",
+};
+
+const DARK_THEME_CS2: ThemeColors = {
+  ...DARK_THEME,
+  PRIMARY: "rgba(228, 135, 22, 1)",
+  PRIMARY_10: "rgba(228, 135, 22, 0.1)",
+  primaryBtnBg: "rgba(228, 135, 22, 0.95)",
+  primaryBtnHover: "rgba(228, 135, 22, 1)",
+  link: "rgba(201, 116, 12, 0.9)",
+  linkHover: "rgba(201, 116, 12, 1)",
+  buttonBgActive: "rgba(228, 135, 22, 1)",
 };
 
 export const themes: Themes = {
-  dark: DARK_THEME,
   light: LIGHT_THEME,
+  light_cs2: LIGHT_THEME_CS2,
+  dark: DARK_THEME,
+  dark_cs2: DARK_THEME_CS2,
 };
 
 export const DEFAULT_THEME = {

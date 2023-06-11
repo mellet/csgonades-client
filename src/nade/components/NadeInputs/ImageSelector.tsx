@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = {
   imageIsSet?: boolean;

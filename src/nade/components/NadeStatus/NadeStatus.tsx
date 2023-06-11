@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { NadeStatus } from "../../models/Status";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { ThemeColors } from "../../../core/settings/Themes";
 import { FaExclamationCircle, FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "./CSGNIcon";

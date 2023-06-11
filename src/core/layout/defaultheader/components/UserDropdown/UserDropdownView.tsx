@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Dropdown } from "semantic-ui-react";
 import { Role } from "../../../../../users/models/User";
-import { useTheme } from "../../../../settings/SettingsHooks";
+import { useTheme } from "../../../../settings/useTheme";
 
 export type UserDropdownViewProps = {
   avatar: string;

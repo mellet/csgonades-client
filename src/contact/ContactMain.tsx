@@ -4,7 +4,7 @@ import { ContactApi } from "./data/ContactApi";
 import { CsgnInput } from "../shared-components/inputs/TextInput/CsgnInput";
 import { CsgnTextArea } from "../shared-components/inputs/CsgnTextArea";
 import { AddConctactDTO } from "./models/ContactDTOs";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { MiniLabel } from "../nade/components/NadeLabels/MiniLabel";
 
 export const ContactMain: FC = () => {

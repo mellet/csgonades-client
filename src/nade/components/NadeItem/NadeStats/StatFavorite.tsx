@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { useGa } from "../../../../utils/Analytics";
 
 type Props = {

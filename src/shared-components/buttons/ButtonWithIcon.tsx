@@ -1,5 +1,5 @@
 import { FC, memo, useMemo } from "react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { IconTextButtonWrapper } from "./IconButton/WrapProps";
 
 export type ButtonWithIconProps = {
@@ -48,7 +48,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
           .btn {
             align-items: center;
             appearance: none;
-            background: ${backgroundColor ? backgroundColor : colors.DP01};
+            background: ${backgroundColor ? backgroundColor : "transparent"};
             color: ${color || colors.TEXT};
             border: none;
             border-radius: 0;
@@ -62,7 +62,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
           }
 
           .btn:hover {
-            background: ${colors.DP03};
+            background: ${colors.buttonBgHover};
           }
 
           .btn:disabled {
@@ -106,7 +106,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = memo(
           }
 
           .active {
-            background: ${colors.DP03};
+            background: ${colors.buttonBgActive};
           }
 
           .active .btn-icon {

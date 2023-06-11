@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { generateNadeItemTitle } from "../../../utils/Common";
 import { NadeType } from "../../models/NadeType";
 import { CsgoMap } from "../../../map/models/CsGoMap";

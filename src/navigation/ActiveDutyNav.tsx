@@ -4,7 +4,11 @@ import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
 import { CsgoMap } from "../map/models/CsGoMap";
 
-export const ActiveDutyNav: FC = () => {
+type Props = {
+  csMapList: CsgoMap[];
+};
+
+export const ActiveDutyNav: FC<Props> = ({ csMapList }) => {
   const { query } = useRouter();
   const selectedMap = query.map as CsgoMap;
 
@@ -12,46 +16,18 @@ export const ActiveDutyNav: FC = () => {
     <>
       <div id="map-nav-wrap">
         <ul>
-          <li>
-            <MapPageLink map="mirage">
-              <NavItem
-                isFirst
-                csMap="mirage"
-                selected={selectedMap === "mirage"}
-              />
-            </MapPageLink>
-          </li>
-
-          <li>
-            <MapPageLink map="inferno">
-              <NavItem csMap="inferno" selected={selectedMap === "inferno"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="overpass">
-              <NavItem csMap="overpass" selected={selectedMap === "overpass"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="ancient">
-              <NavItem csMap="ancient" selected={selectedMap === "ancient"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="nuke">
-              <NavItem csMap="nuke" selected={selectedMap === "nuke"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="vertigo">
-              <NavItem csMap="vertigo" selected={selectedMap === "vertigo"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="anubis">
-              <NavItem csMap="anubis" selected={selectedMap === "anubis"} />
-            </MapPageLink>
-          </li>
+          {csMapList.map((csMapName) => {
+            return (
+              <li key={csMapName}>
+                <MapPageLink map={csMapName}>
+                  <NavItem
+                    csMap={csMapName}
+                    selected={selectedMap === csMapName}
+                  />
+                </MapPageLink>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <style jsx>{`
@@ -67,14 +43,6 @@ export const ActiveDutyNav: FC = () => {
           padding: 0;
           display: flex;
           flex-direction: column;
-        }
-
-        ul li a {
-          display: block;
-        }
-
-        ul li:first-child a {
-          border-top-left-radius: 0px;
         }
       `}</style>
     </>

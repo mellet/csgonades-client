@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 
 type Props = {
   title: string;
@@ -25,7 +25,7 @@ export const AccordianTitle: FC<Props> = ({ title, isActive, hasNew }) => {
           align-items: center;
           justify-content: space-between;
           padding: 8px 12px;
-          background: ${colors.filterBg};
+          background: ${colors.primaryBtnBg};
           font-size: 14px;
           color: ${colors.filterColor};
           font-weight: 400;
@@ -33,7 +33,9 @@ export const AccordianTitle: FC<Props> = ({ title, isActive, hasNew }) => {
         }
 
         .accordion-title:hover {
-          background: ${isActive ? colors.filterBg : colors.filterBgHover};
+          background: ${isActive
+            ? colors.primaryBtnBg
+            : colors.primaryBtnHover};
           cursor: ${isActive ? "auto" : "pointer"};
         }
         .icon {

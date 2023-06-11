@@ -1,5 +1,5 @@
 import { FC, useState, memo, ChangeEventHandler } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { AppConfig, Dimensions } from "../../../constants/Constants";
 import { FaPaperPlane } from "react-icons/fa";
 

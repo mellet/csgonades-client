@@ -1,5 +1,5 @@
 import { FC, memo, useMemo } from "react";
-import { useTheme } from "../../../settings/SettingsHooks";
+import { useTheme } from "../../../settings/useTheme";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 export const ThemeToggler: FC = memo(() => {

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 
 type Props = {
   mainNav: JSX.Element;

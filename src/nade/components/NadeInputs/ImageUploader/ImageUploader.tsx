@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, FC, useCallback } from "react";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { Dimensions } from "../../../../constants/Constants";
 import "react-image-crop/dist/ReactCrop.css";
 import { NoImage } from "./NoImage";

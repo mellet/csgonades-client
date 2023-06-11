@@ -1,8 +1,9 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type ButtonProps = {
   activeColor?: string;
+  backgroundColor?: string;
   active: boolean;
   inGroup?: boolean;
 };
@@ -16,6 +17,7 @@ type Props = DetailedHTMLProps<
 export const BaseIconButton: FC<Props> = ({
   active,
   activeColor,
+  backgroundColor,
   inGroup,
   ...rest
 }) => {
@@ -27,7 +29,9 @@ export const BaseIconButton: FC<Props> = ({
         .btn {
           width: 100%;
           height: 100%;
-          background: ${active ? colors.buttonBgActive : colors.DP01};
+          background: ${active
+            ? colors.buttonBgActive
+            : backgroundColor || colors.buttonBg};
           outline: none;
           font-size: 18px;
           display: inline-flex;
@@ -46,8 +50,8 @@ export const BaseIconButton: FC<Props> = ({
         .btn:hover,
         .btn:active {
           cursor: pointer;
-          color: ${activeColor ? activeColor : "#0d0c22"};
-          background: ${active ? colors.buttonBgActive : colors.DP02};
+          color: ${activeColor ? activeColor : colors.buttonBgActive};
+          background: ${active ? colors.buttonBgActive : colors.buttonBgHover};
         }
 
         .btn:focus-visible {

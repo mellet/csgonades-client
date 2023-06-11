@@ -1,7 +1,8 @@
 import { FC, memo } from "react";
 import { APP_VERSION } from "../constants/Constants";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { PageLink } from "../shared-components/PageLink";
+import { Link } from "../shared-components/link/Link";
 
 export const Footer: FC = memo(() => {
   const { colors } = useTheme();
@@ -15,9 +16,9 @@ export const Footer: FC = memo(() => {
           <div className="footer-bottom">
             <div className="powered-by">
               Powered by{" "}
-              <a href="https://steamcommunity.com/" rel="nofollow">
+              <Link href="https://steamcommunity.com/" rel="nofollow">
                 Steam
-              </a>
+              </Link>
             </div>
             <div className="copyright" title={`Version ${APP_VERSION}`}>
               © {year} CSGO Nades
@@ -32,6 +33,12 @@ export const Footer: FC = memo(() => {
       </div>
 
       <style jsx>{`
+        .footer-wrap {
+          background: ${colors.DP02};
+          color: ${colors.TEXT};
+          border-top: 1px solid ${colors.BORDER};
+        }
+
         .legal {
           text-align: center;
           font-size: 12px;
@@ -39,23 +46,7 @@ export const Footer: FC = memo(() => {
           color: white;
         }
 
-        .legal span {
-          color: white;
-        }
-
         .legal span:hover {
-          text-decoration: underline;
-        }
-
-        .footer-wrap {
-          background: ${colors.primaryBtnBg};
-        }
-
-        a {
-          color: white;
-        }
-
-        a:hover {
           text-decoration: underline;
         }
 
@@ -79,7 +70,6 @@ export const Footer: FC = memo(() => {
 
         .powered-by {
           white-space: nowrap;
-          color: #fff;
           font-size: 14px;
           line-height: 14px;
           text-align: center;
@@ -90,7 +80,6 @@ export const Footer: FC = memo(() => {
           font-size: 12px;
           line-height: 12px;
           white-space: nowrap;
-          color: #fff;
           text-align: center;
           margin-bottom: 6px;
         }

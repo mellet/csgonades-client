@@ -1,26 +1,25 @@
 import { FC } from "react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
-  onClick: () => void;
-  title: string;
-  icon: JSX.Element;
+  onClick?: () => void;
+  icon?: JSX.Element;
+  href?: string;
+  rel?: string;
 };
 
-export const Link: FC<Props> = ({ onClick, icon, title }) => {
+export const Link: FC<Props> = ({ onClick, icon, href, rel, children }) => {
   const { colors } = useTheme();
   return (
     <>
-      <a onClick={onClick}>
+      <a onClick={onClick} href={href} rel={rel}>
         {icon && <span className="icon">{icon}</span>}
-        {<span>{title}</span>}
+        {<span>{children}</span>}
       </a>
       <style jsx>{`
         a {
           display: inline-flex;
           align-items: center;
-          font-size: 16px;
-          line-height: 16px;
           color: ${colors.link};
         }
 

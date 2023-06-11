@@ -13,10 +13,12 @@ import { NadeLight } from "../nade/models/Nade";
 import { CsgnList } from "../shared-components/list/CsgnList";
 import { NadeItem } from "../nade/components/NadeItem/NadeItem";
 import { addFavoriteToNades } from "../map/logic/helpers";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { AdUnit } from "../shared-components/adunits/AdUnit";
 import { useFavorites } from "../favorites/data/useFavorites";
 import { useIsDeviceSize } from "../core/layout/useDeviceSize";
+import { useGameMode } from "../core/useGameMode";
+import { useRecentNades } from "../nade/data/useRecentNades";
 
 const recentPosts = [
   blogJumpthrowBind,
@@ -27,11 +29,12 @@ const recentPosts = [
 
 type Props = {
   stats: SiteStats | null;
-  recentNades: NadeLight[];
 };
 
-export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
+export const FrontPage: FC<Props> = memo(({ stats }) => {
   const { colors } = useTheme();
+  const { gameMode } = useGameMode();
+  const { recentNades } = useRecentNades(gameMode);
   const recentNadesWithFavorites = useRecentNadesWithFavorites(recentNades);
   const { isMobile } = useIsDeviceSize();
 
@@ -54,7 +57,7 @@ export const FrontPage: FC<Props> = memo(({ stats, recentNades }) => {
           <AdUnit horizontalSpacing name="fixed728x90" />
         )}
 
-        {recentNades && (
+        {Boolean(recentNades.length) && (
           <div className="recent-nades">
             <h3>Recently added nades</h3>
             <CsgnList<NadeLight>

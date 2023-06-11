@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   numNades: number;

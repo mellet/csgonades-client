@@ -3,7 +3,7 @@ import { NadeLight } from "../../../nade/models/Nade";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
 import useSortedNades from "./useSortedNades";
 import { NadePreviewHeader } from "./NadePreviewHeader";
@@ -107,7 +107,6 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
         .suggested-main {
           width: 100%;
           max-width: ${MAX_MODAL_WIDTH}px;
-          padding-top: ${Dimensions.GUTTER_SIZE}px;
           margin: 0px 50px;
           margin-bottom: 100px;
         }

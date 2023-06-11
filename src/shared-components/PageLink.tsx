@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import Link from "next/link";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 
 export const PageLink = forwardRef<typeof Link, any>(
   ({ children, href, as, ...rest }, ref) => {

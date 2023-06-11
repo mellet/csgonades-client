@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaCheckCircle } from "react-icons/fa";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 export const ProHint: FC = ({}) => {
   const { colors } = useTheme();

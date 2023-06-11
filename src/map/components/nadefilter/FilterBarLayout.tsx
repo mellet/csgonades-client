@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
+import { useGameMode } from "../../../core/useGameMode";
 
 type Props = {
   favoriteFilter: JSX.Element;
@@ -19,6 +20,7 @@ export const FilterBarLayout: FC<Props> = ({
   typeFilter,
   teamFilter,
 }) => {
+  const { gameMode } = useGameMode();
   return (
     <>
       <FilterBarLayoutWrapper>
@@ -28,9 +30,13 @@ export const FilterBarLayout: FC<Props> = ({
         <div style={{ gridArea: "type", marginBottom: Dimensions.GUTTER_SIZE }}>
           {typeFilter}
         </div>
-        <div style={{ gridArea: "tick", marginBottom: Dimensions.GUTTER_SIZE }}>
-          {tickFiler}
-        </div>
+        {gameMode === "csgo" && (
+          <div
+            style={{ gridArea: "tick", marginBottom: Dimensions.GUTTER_SIZE }}
+          >
+            {tickFiler}
+          </div>
+        )}
         <div style={{ gridArea: "team", marginBottom: Dimensions.GUTTER_SIZE }}>
           {teamFilter}
         </div>
