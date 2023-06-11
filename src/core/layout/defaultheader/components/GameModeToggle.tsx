@@ -12,13 +12,20 @@ export const GameModeToggle: FC = () => {
       <div className="game-mode-toggle">
         <div className="btn-wrapper">
           <button
-            className={gameMode === "csgo" ? "game-btn active" : "game-btn"}
+            className={
+              gameMode === "csgo" ? "game-btn right active" : "game-btn right"
+            }
+            style={{ width: "54%" }}
             onClick={() => setGameMode("csgo")}
           >
             CS:GO
+            <div className="slant-right"></div>
           </button>
           <button
-            className={gameMode === "cs2" ? "game-btn active" : "game-btn"}
+            className={
+              gameMode === "cs2" ? "game-btn cs2 active" : "game-btn cs2"
+            }
+            style={{ width: "46%" }}
             onClick={() => setGameMode("cs2")}
           >
             CS2
@@ -45,18 +52,38 @@ export const GameModeToggle: FC = () => {
           background: ${colors.DP01};
           font-size: 14px;
           font-weight: 500;
-          width: 50%;
           color: ${colors.TEXT};
           cursor: pointer;
+          position: relative;
+        }
+
+        .right.active:after {
+          content: "";
+          background-color: ${colors.DP01};
+          display: block;
+          height: 100%;
+          position: absolute;
+          right: -5px;
+          top: 0;
+          width: 10px;
+          transform: skewX(-15deg);
+        }
+
+        .right:after {
+          content: "";
+          background-color: ${colors.PRIMARY};
+          display: block;
+          height: 100%;
+          position: absolute;
+          right: -5px;
+          top: 0;
+          width: 10px;
+          transform: skewX(-15deg);
         }
 
         .active {
           background: ${colors.PRIMARY};
           color: white;
-        }
-
-        .game-btn:first-child {
-          border-right: 1px solid ${colors.BORDER};
         }
       `}</style>
     </>
