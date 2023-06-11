@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { NadeType } from "../nade/models/NadeType";
 
 type Props = {

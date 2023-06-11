@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FC } from "react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { prettyDateTime } from "../../utils/DateUtils";
 
 type Props = {

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaSave } from "react-icons/fa";
 import { Dimensions } from "../../../../constants/Constants";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { Button } from "../../../../shared-components/buttons/Button";
 import { ImageFileSelector } from "./ImageFileSelector";
 

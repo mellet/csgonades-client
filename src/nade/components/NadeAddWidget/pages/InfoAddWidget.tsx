@@ -20,10 +20,11 @@ import { NadeMovementSelector } from "../NadeMovementSelector";
 import { NadeTypeSelector } from "../NadeTypeSelector";
 import { NextNavigation } from "../NextNavigation";
 import { useCreateNade } from "../state/NadeAddStateProvider";
-import { NadeGameModeSelector } from "../NadeGameModeSelector";
+import { useGameMode } from "../../../../core/useGameMode";
 
 export const InfoAddWidget: FC = ({}) => {
   const { nade, actions } = useCreateNade();
+  const { gameMode } = useGameMode();
 
   return (
     <>
@@ -33,15 +34,15 @@ export const InfoAddWidget: FC = ({}) => {
         <div className="info-add-widget-layout">
           <SplitLayout
             left={
-              <NadeGameModeSelector
-                defaultValue={nade.gameMode}
-                onChange={actions.setGameMode}
-              />
-            }
-            right={
               <NadeTypeSelector
                 onTypeSelect={actions.setNadeType}
                 selectedType={nade.type}
+              />
+            }
+            right={
+              <TeamSideSelector
+                defaultValue={nade.teamSide}
+                onChange={actions.setTeamSide}
               />
             }
           />
@@ -50,9 +51,9 @@ export const InfoAddWidget: FC = ({}) => {
               <MapSelector defaultValue={nade.map} onChange={actions.setMap} />
             }
             right={
-              <TeamSideSelector
-                defaultValue={nade.teamSide}
-                onChange={actions.setTeamSide}
+              <NadeMovementSelector
+                selectedMovement={nade.movement}
+                onMovementSelect={actions.setMovement}
               />
             }
           />
@@ -64,9 +65,9 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
             right={
-              <NadeMovementSelector
-                selectedMovement={nade.movement}
-                onMovementSelect={actions.setMovement}
+              <TechniqueSelector
+                defaultValue={nade.technique}
+                onChange={actions.setTechnique}
               />
             }
           />
@@ -79,16 +80,7 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
             right={
-              <TechniqueSelector
-                defaultValue={nade.technique}
-                onChange={actions.setTechnique}
-              />
-            }
-          />
-
-          <SplitLayout
-            left={<></>}
-            right={
+              gameMode === "csgo" &&
               doesRequireTickrateTechnique(nade.technique) ? (
                 <TickrateSelector
                   defaultValue={nade.tickrate}
@@ -117,10 +109,13 @@ export const InfoAddWidget: FC = ({}) => {
             }
           />
 
-          <OneWaySelector
-            initialValue={nade.oneWay}
-            onClick={actions.setOneWay}
-          />
+          {gameMode === "csgo" && (
+            <OneWaySelector
+              initialValue={nade.oneWay}
+              onClick={actions.setOneWay}
+            />
+          )}
+
           <DescriptionInput
             defaultValue={nade.description}
             onChange={actions.setDescription}

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaStarOfLife } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = {
   label?: string;

@@ -11,7 +11,7 @@ import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
 import { FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   allNades: NadeLight[];

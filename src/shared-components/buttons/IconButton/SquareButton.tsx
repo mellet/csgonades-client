@@ -6,6 +6,7 @@ import { IconButtonWrapper } from "./WrapProps";
 export type IconButtonProps = {
   icon: JSX.Element;
   activeColor?: string;
+  backgroundColor?: string;
   active?: boolean;
   labelCount?: number;
   onClick?: () => void;
@@ -20,6 +21,7 @@ export const SquareButton: FC<IconButtonProps> = ({
   labelCount,
   onClick,
   inGroup,
+  backgroundColor,
 }) => {
   const hasLabelCount = Boolean(labelCount);
   const buttonLabelCount = labelCount || 0;
@@ -31,6 +33,7 @@ export const SquareButton: FC<IconButtonProps> = ({
         onClick={onClick}
         active={active}
         activeColor={activeColor}
+        backgroundColor={backgroundColor}
       >
         {icon}
       </BaseIconButton>

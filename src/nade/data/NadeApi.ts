@@ -12,6 +12,7 @@ import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";
 import { NadeType } from "../models/NadeType";
+import { GameMode } from "../models/GameMode";
 
 export class NadeApi {
   static async favoriteNade(nadeId: string): AppResult<Favorite> {
@@ -50,9 +51,10 @@ export class NadeApi {
     }
   }
 
-  static async getRecent(): AppResult<NadeLight[]> {
+  static async getRecent(gameMode: GameMode): AppResult<NadeLight[]> {
     try {
-      const res = await axios.get(`${AppConfig.API_URL}/nades`);
+      const url = `${AppConfig.API_URL}/nades?gameMode=${gameMode}`;
+      const res = await axios.get(url);
       const nades = res.data as NadeLight[];
 
       return ok(nades);
@@ -89,12 +91,13 @@ export class NadeApi {
 
   static async getByMap(
     mapName: CsgoMap,
+    gameMode: GameMode,
     nadeType?: NadeType
   ): AppResult<NadeLight[]> {
     try {
-      let url = `${AppConfig.API_URL}/nades/map/${mapName}`;
+      let url = `${AppConfig.API_URL}/nades/map/${mapName}?gameMode=${gameMode}`;
       if (nadeType) {
-        url += `?type=${nadeType}`;
+        url += `&type=${nadeType}`;
       }
       const res = await axios.get<NadeLight[]>(url);
       const nades = res.data;
@@ -120,13 +123,14 @@ export class NadeApi {
 
   static async byUser(
     steamId: string,
-    csgoMap?: CsgoMap
+    gameMode: GameMode,
+    csgoMap: CsgoMap
   ): AppResult<NadeLight[]> {
     try {
-      let url = `${AppConfig.API_URL}/nades/user/${steamId}`;
+      let url = `${AppConfig.API_URL}/nades/user/${steamId}?gameMode=${gameMode}`;
 
       if (csgoMap) {
-        url = url + `?map=${csgoMap}`;
+        url = url + `&map=${csgoMap}`;
       }
 
       const res = await axios.get(url);

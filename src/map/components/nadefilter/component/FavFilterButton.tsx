@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaStar } from "react-icons/fa";
 import { useIsSignedIn } from "../../../../core/authentication/useIsSignedIn";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { useFilterByFavorites } from "../../../logic/useFilterByFavorites";
 import { useSignInWarning } from "../../../../core/global/hooks/useSignInWarning";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";

@@ -2,7 +2,7 @@ import { FC, useEffect, useMemo } from "react";
 import { Notification } from "../models/Notification";
 import { Dimensions } from "../../constants/Constants";
 import { NotificationGroup } from "./NotificationGroup";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 export type NotificationListProps = {
   markAsViewed: () => void;

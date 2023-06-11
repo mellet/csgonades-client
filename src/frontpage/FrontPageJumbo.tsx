@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { SiteStats } from "../core/api/StatsApi";
-import { kFormatter } from "../utils/Common";
+import { kFormatter, useGameString } from "../utils/Common";
 import { NadeIcon } from "../shared-components/nade-icons";
 import { FaUserFriends } from "react-icons/fa";
 import { FrontPageMapSelector } from "./FrontPageMapSelector";
@@ -12,22 +12,23 @@ type Props = {
 
 export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
   const { colors } = useTheme();
+  const { fullGameString, shortGameString } = useGameString();
 
   return (
     <>
       <div id="jumbo">
         <div id="message">
-          <h1>Welcome to CSGO Nades</h1>
+          <h1>Welcome to CS Nades</h1>
           <p className="welcome-msg">
-            Discover, learn, and share nades for Counter-Strike Global Offensive
-            with our engaging gaming community.
+            Discover, learn, and share nades for {fullGameString} with our
+            engaging gaming community.
           </p>
           <p className="welcome-mini">
-            Welcome to our thriving gaming community dedicated to Counter-Strike
-            Global Offensive! We provide an interactive platform where you can
+            Welcome to our thriving gaming community dedicated to{" "}
+            {fullGameString}! We provide an interactive platform where you can
             explore, acquire knowledge, and exchange strategies for nade
-            throwing. Join us to enhance your gameplay and connect with fellow
-            CS:GO enthusiasts!
+            throwing. Join us to enhance your gameplay and connect with fellow{" "}
+            {shortGameString} enthusiasts!
           </p>
         </div>
         <div id="jumbo-ill">

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FC } from "react";
 import { Popup } from "semantic-ui-react";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { CsgoMap, mapString } from "../../map/models/CsGoMap";
 
 type Props = {

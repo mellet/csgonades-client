@@ -1,11 +1,12 @@
 import { FC, MouseEventHandler } from "react";
 import { FaTimes } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 import { TeamSelector } from "../nadefilter/component/TeamSelector";
 import { TickratePicker } from "../nadefilter/component/TickratePicker";
 import { SortByBar } from "./SortByBar";
+import { useGameMode } from "../../../core/useGameMode";
 
 type Props = {
   onDismiss: MouseEventHandler<HTMLDivElement>;
@@ -13,6 +14,7 @@ type Props = {
 
 export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
   const { colors } = useTheme();
+  const { gameMode } = useGameMode();
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
@@ -28,9 +30,11 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
                 <div className="filter-btn">
                   <TeamSelector />
                 </div>
-                <div className="filter-btn">
-                  <TickratePicker />
-                </div>
+                {gameMode === "csgo" && (
+                  <div className="filter-btn">
+                    <TickratePicker />
+                  </div>
+                )}
               </div>
             </div>
             <div className="ad-wrap">

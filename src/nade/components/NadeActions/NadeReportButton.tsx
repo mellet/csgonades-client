@@ -7,7 +7,7 @@ import { Modal, Form, TextArea, Button } from "semantic-ui-react";
 import { SquareButton } from "../../../shared-components/buttons/IconButton/SquareButton";
 import { Tooltip } from "../../../shared-components/Tooltip/Tooltip";
 import { useGa } from "../../../utils/Analytics";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = {
   nadeId: string;

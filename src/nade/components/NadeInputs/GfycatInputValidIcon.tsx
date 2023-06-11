@@ -4,7 +4,7 @@ import {
   FaExclamationTriangle,
   FaSpinner,
 } from "react-icons/fa";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { CSGNIcon } from "../NadeStatus/CSGNIcon";
 
 type Props = {

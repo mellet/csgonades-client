@@ -1,18 +1,20 @@
 import useSWR from "swr";
 import { NadeApi } from "../../nade/data/NadeApi";
-import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
 import { endMeasurement, startMeasurement } from "../../utils/Instrumentation";
 import { useFilterByType } from "../logic/useFilterByType";
 import { CsgoMap } from "../models/CsGoMap";
+import { GameMode } from "../../nade/models/GameMode";
+import { useGameMode } from "../../core/useGameMode";
 
 async function nadeForMapFetcher(
   _url: string,
   mapName: CsgoMap,
+  gameMode: GameMode,
   nadeType: NadeType
 ) {
   const start = startMeasurement("getByMap", "NadeApi");
-  const result = await NadeApi.getByMap(mapName, nadeType);
+  const result = await NadeApi.getByMap(mapName, gameMode, nadeType);
   endMeasurement(start);
 
   if (result.isOk()) {
@@ -22,18 +24,15 @@ async function nadeForMapFetcher(
   }
 }
 
-export const useNadesForMapFromApi = (
-  mapName: CsgoMap,
-  fallback: NadeLight[]
-) => {
+export const useNadesForMapFromApi = (mapName: CsgoMap) => {
   const { byType } = useFilterByType();
+  const { gameMode } = useGameMode();
 
   const { data, isValidating } = useSWR(
-    ["map", mapName, byType],
+    ["map", mapName, gameMode, byType],
     nadeForMapFetcher,
     {
       revalidateOnFocus: false,
-      fallbackData: byType === "smoke" && fallback,
     }
   );
 

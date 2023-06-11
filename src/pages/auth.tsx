@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { SEO } from "../shared-components/SEO";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { CSGNIcon } from "../nade/components/NadeStatus/CSGNIcon";
 import { FaSpinner } from "react-icons/fa";
 import Router from "next/router";

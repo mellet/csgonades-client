@@ -1,7 +1,7 @@
 import { CSSProperties, FC, useMemo } from "react";
 import { FaExclamationTriangle, FaInfoCircle } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   type: "info" | "warning" | "error";

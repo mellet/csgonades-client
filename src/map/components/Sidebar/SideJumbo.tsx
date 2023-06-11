@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import { FC } from "react";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { NadeLight } from "../../../nade/models/Nade";
-import { capitalize } from "../../../utils/Common";
+import { capitalize, useGameString } from "../../../utils/Common";
 import { CsgoMap } from "../../models/CsGoMap";
 
 const TopContributors = dynamic(
@@ -21,12 +21,14 @@ type Props = {
 export const SideJumbo: FC<Props> = ({ nades, map }) => {
   const { colors } = useTheme();
 
+  const { fullGameString } = useGameString();
+
   return (
     <>
       <div className="jumbo">
         <h1>
           Uncover the Best Smokes, Flashbangs, Molotovs, and Grenades on{" "}
-          {capitalize(map)} in Counter-Strike: Global Offensive.
+          {capitalize(map)} in {fullGameString}.
         </h1>
         <h2>
           Prepare to dominate {capitalize(map)} with our meticulously crafted

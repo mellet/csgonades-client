@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Dimensions } from "../../../constants/Constants";
 import { FaEye } from "react-icons/fa";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = {
   viewCount: number;

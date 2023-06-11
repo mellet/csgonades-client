@@ -3,7 +3,7 @@ import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
 import { GfycatInputValidIcon } from "./GfycatInputValidIcon";
 import { DebounceInput } from "react-debounce-input";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { InfoBox } from "../../../shared-components/box/InfoBox";
 
 type Props = {

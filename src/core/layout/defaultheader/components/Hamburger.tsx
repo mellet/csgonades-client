@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { LayoutBreakpoint } from "../../../../constants/Constants";
 import { useNavigation } from "../../../global/hooks/useNavigation";
-import { useTheme } from "../../../settings/SettingsHooks";
+import { useTheme } from "../../../settings/useTheme";
 
 export const Hamburger: FC = memo(({}) => {
   const { colors } = useTheme();

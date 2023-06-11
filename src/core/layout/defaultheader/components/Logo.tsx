@@ -1,11 +1,11 @@
 import { FC, memo, useMemo } from "react";
-import { useTheme } from "../../../settings/SettingsHooks";
+import { useTheme } from "../../../settings/useTheme";
 import { PageLink } from "../../../../shared-components/PageLink";
-import Image from "next/image";
 import { Dimensions } from "../../../../constants/Constants";
+import { LogoSvg } from "./LogoSvg";
 
 export const Logo: FC = memo(() => {
-  const { theme } = useTheme();
+  const { theme, colors } = useTheme();
 
   const logoUrl = useMemo(() => {
     return theme === "light" ? "/logo.png" : "/logo-darkmode.png";
@@ -15,25 +15,24 @@ export const Logo: FC = memo(() => {
     <>
       <PageLink href="/">
         <div key={logoUrl} id="logo">
-          <Image
-            fill
-            alt="CSGO Nades logo"
-            priority
-            src={logoUrl}
-            quality={100}
-            style={{
-              objectFit: "contain",
-              objectPosition: "left",
-            }}
-          />
+          <LogoSvg />
         </div>
       </PageLink>
       <style jsx>{`
         #logo {
-          display: block;
           height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
           position: relative;
-          width: 70px;
+          color: ${colors.PRIMARY};
+          align-items: center;
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 18px;
+        }
+
+        .logo-nades {
+          color: black;
+          margin-left: 2px;
+          color: ${colors.TEXT};
         }
       `}</style>
     </>

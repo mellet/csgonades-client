@@ -11,25 +11,24 @@ import { CsgoMap } from "../map/models/CsGoMap";
 import { AccordianTitle } from "./AccordionTitle";
 import { ActiveDutyNav } from "./ActiveDutyNav";
 import { ReserveNav } from "./ReserveNav";
+import { useGameMode } from "../core/useGameMode";
 
 const ACTIVE_DUTY_ACCORDION = "activeduty" as const;
 const RESERVE_ACCORDION = "reserve" as const;
 type ActiveAccordion = typeof ACTIVE_DUTY_ACCORDION | typeof RESERVE_ACCORDION;
 
-function isReserveMap(map: CsgoMap) {
-  const reserveMaps = ["tuscan", "train", "cache", "cobblestone", "dust2"];
-
-  return reserveMaps.includes(map);
-}
-
 export const MapNavAccordian: FC = ({}) => {
   const { query } = useRouter();
   const selectedMap = query.map as CsgoMap;
+  const mapList = useActiveDutyMaps();
+  const reserveCsMapList = useReserveMaps();
 
   const preExpanded = useMemo(
     () =>
-      isReserveMap(selectedMap) ? RESERVE_ACCORDION : ACTIVE_DUTY_ACCORDION,
-    [selectedMap]
+      reserveCsMapList.includes(selectedMap)
+        ? RESERVE_ACCORDION
+        : ACTIVE_DUTY_ACCORDION,
+    [selectedMap, reserveCsMapList]
   );
 
   const [activeAccordion, setActiveAccordion] =
@@ -53,24 +52,56 @@ export const MapNavAccordian: FC = ({}) => {
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <ActiveDutyNav />
+            <ActiveDutyNav csMapList={mapList} />
           </AccordionItemPanel>
         </AccordionItem>
-        <AccordionItem uuid={RESERVE_ACCORDION}>
-          <AccordionItemHeading>
-            <AccordionItemButton>
-              <AccordianTitle
-                title={"Reserve"}
-                isActive={RESERVE_ACCORDION === activeAccordion}
-              />
-            </AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <ReserveNav />
-          </AccordionItemPanel>
-        </AccordionItem>
+        {reserveCsMapList.length > 0 && (
+          <AccordionItem uuid={RESERVE_ACCORDION}>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                <AccordianTitle
+                  title={"Reserve"}
+                  isActive={RESERVE_ACCORDION === activeAccordion}
+                />
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <ReserveNav />
+            </AccordionItemPanel>
+          </AccordionItem>
+        )}
       </Accordion>
       <style jsx>{``}</style>
     </>
   );
+};
+
+const useActiveDutyMaps = (): CsgoMap[] => {
+  const { gameMode } = useGameMode();
+
+  const maps: CsgoMap[] =
+    gameMode === "csgo"
+      ? [
+          "mirage",
+          "inferno",
+          "overpass",
+          "ancient",
+          "nuke",
+          "vertigo",
+          "anubis",
+        ]
+      : ["mirage", "dust2"];
+
+  return maps;
+};
+
+const useReserveMaps = (): CsgoMap[] => {
+  const { gameMode } = useGameMode();
+
+  const maps: CsgoMap[] =
+    gameMode === "csgo"
+      ? ["dust2", "tuscan", "train", "cache", "cobblestone"]
+      : [];
+
+  return maps;
 };

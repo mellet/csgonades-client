@@ -80,6 +80,7 @@ export const NadeMeta: FC<Props> = memo(
             width: ${isMobile ? "100%" : "auto"};
             border-top-left-radius: ${isMobile ? 0 : 8}px;
             border-top-right-radius: ${isMobile ? 0 : 8}px;
+            height: 50px;
           }
 
           .nade-meta-tick {

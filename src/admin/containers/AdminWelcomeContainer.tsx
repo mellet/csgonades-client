@@ -1,5 +1,5 @@
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 export function AdminWelcomeContainer(): JSX.Element {
   const { colors } = useTheme();

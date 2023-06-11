@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
+import { GameModeToggle } from "../core/layout/defaultheader/components/GameModeToggle";
 
 type Props = {
   mainNav: JSX.Element;
@@ -17,8 +18,12 @@ export const NavigationLayout: FC<Props> = ({
   return (
     <>
       <nav>
+        <div className="game-toggle">
+          <GameModeToggle />
+        </div>
         <div className="main">{mainNav}</div>
         <div className="secondary">{secondaryNav}</div>
+
         <div className="footer">{footer}</div>
       </nav>
       <style jsx>{`
@@ -45,6 +50,12 @@ export const NavigationLayout: FC<Props> = ({
           border-bottom-right-radius: 0px;
         }
 
+        .game-toggle {
+          display: flex;
+          justify-content: center;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+        }
+
         .footer {
           border-bottom-left-radius: 8px;
           border-bottom-right-radius: 8px;
@@ -64,7 +75,8 @@ export const NavigationLayout: FC<Props> = ({
           }
 
           .main,
-          .secondary {
+          .secondary,
+          .game-toggle {
             margin: 0;
             background: transparent;
             border: none;

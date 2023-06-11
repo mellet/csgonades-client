@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaVideo } from "react-icons/fa";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { GfycatData } from "../../models/GfycatData";
 import { GfycatIframe } from "../VideoContainer/GfycatIframe";
 import { CsGoYouTubePlayer } from "../VideoContainer/YouTubePlayer";

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 import { SEO } from "../shared-components/SEO";
 import { LayoutBuilder } from "../core/layout/LayoutBuilder";
 import { HeaderDefault } from "../core/layout/defaultheader/Header";

@@ -3,7 +3,7 @@ import { NadeLight } from "../../nade/models/Nade";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { useFilterServerSideNades } from "../logic/useFilteredNades";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { SortByBar } from "./SuggestedNades/SortByBar";
 import useSortedNades from "./SuggestedNades/useSortedNades";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";

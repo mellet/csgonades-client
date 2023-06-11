@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaTimes } from "react-icons/fa";
 import { LayerPosition } from "../constants/Constants";
-import { useTheme } from "../core/settings/SettingsHooks";
+import { useTheme } from "../core/settings/useTheme";
 
 type Props = {
   empty?: boolean;

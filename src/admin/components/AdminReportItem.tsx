@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { Report } from "../../reports/models/Report";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { prettyDateTime } from "../../utils/DateUtils";
 import { UserAvatar } from "../../shared-components/UserAvatar";
 import { FaChevronRight, FaTimes } from "react-icons/fa";

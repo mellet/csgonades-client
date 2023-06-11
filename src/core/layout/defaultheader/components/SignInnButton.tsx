@@ -2,9 +2,13 @@ import { FC } from "react";
 import { FaSteam } from "react-icons/fa";
 import { AppConfig, Dimensions } from "../../../../constants/Constants";
 import { useGa } from "../../../../utils/Analytics";
+import { useTheme } from "../../../settings/useTheme";
+import { useIsDeviceSize } from "../../useDeviceSize";
 
 export const SignInnButton: FC = () => {
   const ga = useGa();
+  const { colors } = useTheme();
+  const { isMobile } = useIsDeviceSize();
 
   function onSignInClick() {
     ga.event({
@@ -26,7 +30,13 @@ export const SignInnButton: FC = () => {
             <FaSteam />
           </div>
           <div className="steam-text">
-            Sign in with <span className="steam-name">STEAM</span>
+            {isMobile ? (
+              "Sign in"
+            ) : (
+              <span>
+                Sign in with <span className="steam-name">STEAM</span>
+              </span>
+            )}
           </div>
         </a>
       </div>
@@ -41,7 +51,7 @@ export const SignInnButton: FC = () => {
           border-radius: ${Dimensions.BORDER_RADIUS};
           align-items: center;
           color: white;
-          background: #2295c9;
+          background: ${colors.primaryBtnBg};
           padding: 0px 6px;
           transition: background 0.25s;
           height: ${Math.round(Dimensions.HEADER_HEIGHT * 0.65)}px;
@@ -68,7 +78,7 @@ export const SignInnButton: FC = () => {
         }
 
         .steam-login:hover {
-          background: #0688bd;
+          background: ${colors.primaryBtnHover};
         }
 
         .steam-login:hover > .steam-logo {

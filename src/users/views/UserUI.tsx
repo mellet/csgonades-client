@@ -1,13 +1,14 @@
 import { FC, useState } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { User } from "../models/User";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { CsgoMap, mapString } from "../../map/models/CsGoMap";
 import { MapNadeSelector } from "../../shared-components/map-nade-selector/MapNadeSelector";
 import { useUserNadesByMap } from "../data/useUserNadesByMap";
 import { LoadingSpinner } from "./LoadingSpinner";
+import { useGameMode } from "../../core/useGameMode";
 
 type Props = {
   user: User;
@@ -15,8 +16,13 @@ type Props = {
 
 export const UserUI: FC<Props> = ({ user }) => {
   const { colors } = useTheme();
+  const { gameMode } = useGameMode();
   const [csgoMap, setCsGoMap] = useState<CsgoMap>("mirage");
-  const { nades, isLoading } = useUserNadesByMap(user.steamId, csgoMap);
+  const { nades, isLoading } = useUserNadesByMap(
+    user.steamId,
+    csgoMap,
+    gameMode
+  );
 
   const emptyMessage = `${user.nickname} has no nades on ${mapString(csgoMap)}`;
 

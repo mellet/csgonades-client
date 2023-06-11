@@ -4,7 +4,7 @@ import { FaMap, FaListUl } from "react-icons/fa";
 import { FilterLabel } from "./FilterLabel";
 import { ButtonGroup } from "../../../../shared-components/buttons/IconButtonGroup/IconButtonGroup";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 
 type Props = {
   vertical?: boolean;

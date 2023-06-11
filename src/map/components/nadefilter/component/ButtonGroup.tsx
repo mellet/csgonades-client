@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 
 export const ButtonGroup: FC = ({ children }) => {
   const { colors } = useTheme();

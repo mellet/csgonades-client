@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Popup } from "semantic-ui-react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { useGa } from "../../utils/Analytics";
 import { useShouldShowPositionCopyHint } from "../logic/useShouldShowPositionCopyHint";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";

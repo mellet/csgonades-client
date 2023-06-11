@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { ThumbImage } from "./Views/ThumbImage";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 

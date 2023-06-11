@@ -1,8 +1,9 @@
 import { FC, MouseEventHandler } from "react";
 import { FaCrosshairs, FaVideo } from "react-icons/fa";
-import { Dimensions, LayoutBreakpoint } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { LayoutBreakpoint } from "../../../constants/Constants";
+import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
+import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 type Props = {
   onChangeTab: (newTab: "video" | "lineup") => void;
@@ -10,6 +11,7 @@ type Props = {
 };
 
 export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
+  const { isMobile } = useIsDeviceSize();
   const { colors } = useTheme();
   const ga = useGa();
   const isVideoSelected = selectedTab === "video";
@@ -53,11 +55,14 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
         .tab-selector {
           position: relative;
           display: flex;
-          border-radius: ${Dimensions.BORDER_RADIUS};
           transition: all 0.2s;
           overflow: hidden;
-          height: 40px;
+          height: 50px;
           z-index: 1;
+          border-top-left-radius: ${isMobile ? 0 : 8}px;
+          border-top-right-radius: ${isMobile ? 0 : 8}px;
+          border: 1px solid ${colors.BORDER};
+          border-bottom: none;
         }
 
         .tab-btn {
@@ -78,6 +83,8 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
           display: flex;
           align-items: center;
           padding: 4px 8px;
+          width: 80px;
+          justify-content: center;
         }
 
         .tab-btn:last-child {
@@ -90,7 +97,7 @@ export const NadeTabSelector: FC<Props> = ({ selectedTab, onChangeTab }) => {
 
         .selected {
           background: ${colors.DP03};
-          color: ${colors.filterBgHover};
+          color: ${colors.PRIMARY};
         }
 
         .selected:hover {

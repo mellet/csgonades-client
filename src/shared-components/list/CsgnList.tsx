@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { Dimensions } from "../../constants/Constants";
 import { ListAds } from "./ListAds";
 

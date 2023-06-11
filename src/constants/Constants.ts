@@ -1,4 +1,5 @@
 import packageJson from "../../package.json";
+import { GameMode } from "../nade/models/GameMode";
 
 // Set to true if you want to use API on localhost
 const USE_DEV_API = false;
@@ -16,6 +17,7 @@ export const AppConfig = {
     : "https://api.csgonades.com/auth/steam",
   revalidationTime: 60 * 30, // Refetch time for map and frontpage
   maintenance: false,
+  defaultGameMode: "csgo" as GameMode,
 } as const;
 
 export const Dimensions = {

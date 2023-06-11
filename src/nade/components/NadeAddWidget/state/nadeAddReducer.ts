@@ -156,16 +156,6 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         },
       };
     }
-    case "CreateNade/SetGameMode": {
-      return {
-        ...state,
-        nadeData: {
-          ...state.nadeData,
-          gameMode: action.gameMode,
-        },
-      };
-    }
-
     default:
       assertNever(action);
       return state;

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaCheck } from "react-icons/fa";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { ButtonWithIcon } from "../../../shared-components/buttons/ButtonWithIcon";
 
 type Props = {

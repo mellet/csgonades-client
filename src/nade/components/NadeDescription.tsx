@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Nade } from "../models/Nade";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { NadeDescriptionDisplay } from "./NadeDescriptionDisplay";
 import { AdUnit } from "../../shared-components/adunits/AdUnit";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";

@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { AnimationTimings, Dimensions } from "../../../../constants/Constants";
 import { NadeLight } from "../../../models/Nade";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { GfycatThumbnail } from "../GfycatThumbnail";
 import { NadeItemTitle } from "../Views/NadeItemTitle";
 import { NadeStats } from "../NadeStats/NadeStats";

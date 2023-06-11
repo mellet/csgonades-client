@@ -1,7 +1,7 @@
 import { FC, useRef, useState, useMemo } from "react";
 import { FaCopy } from "react-icons/fa";
 import { Dimensions } from "../../constants/Constants";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   value: string;

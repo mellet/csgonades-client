@@ -2,7 +2,7 @@ import { FC } from "react";
 import { FaBox } from "react-icons/fa";
 import { useAdminPendingNades } from "../../../../admin/data/hooks/useAdminPendingNades";
 import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
-import { useTheme } from "../../../settings/SettingsHooks";
+import { useTheme } from "../../../settings/useTheme";
 import Link from "next/link";
 import { Dimensions } from "../../../../constants/Constants";
 

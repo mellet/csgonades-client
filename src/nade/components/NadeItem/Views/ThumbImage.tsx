@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FC, memo, useEffect, useState } from "react";
 import { CrossHairSvg } from "../../VideoContainer/CrossHairSvg";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { FaVideo } from "react-icons/fa";
 import { CSGNIcon } from "../../NadeStatus/CSGNIcon";
 

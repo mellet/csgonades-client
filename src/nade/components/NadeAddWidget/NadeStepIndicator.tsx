@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaCheck } from "react-icons/fa";
-import { useTheme } from "../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../core/settings/useTheme";
 import { NadeCreateBody } from "../../models/Nade";
 import { NadeCreateSteps } from "./state/NadeAddState";
 
@@ -15,6 +15,7 @@ export const NadeStepIndicator: FC<Props> = ({
   setCurrentStep,
   nadeBody,
 }) => {
+  const hasMap = Boolean(nadeBody.map);
   const videoDone = isValidVideo(nadeBody);
   const infoDone = isValidInfo(nadeBody);
   const mapDone = isValidMap(nadeBody);
@@ -47,7 +48,7 @@ export const NadeStepIndicator: FC<Props> = ({
             active={currentStep === "map"}
             onClick={() => setCurrentStep("map")}
             isDone={mapDone}
-            disabled={!infoDone}
+            disabled={!hasMap}
           />
           <Step
             number={4}

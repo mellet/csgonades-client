@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Checkbox } from "semantic-ui-react";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
   checked?: boolean;

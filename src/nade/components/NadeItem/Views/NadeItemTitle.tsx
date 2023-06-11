@@ -1,6 +1,6 @@
 import { FC, useMemo } from "react";
 import { NadeStatus } from "../../../models/Status";
-import { useTheme } from "../../../../core/settings/SettingsHooks";
+import { useTheme } from "../../../../core/settings/useTheme";
 import { generateNadeItemTitle } from "../../../../utils/Common";
 import { NadeType } from "../../../models/NadeType";
 import { NadeIcon } from "../../../../shared-components/nade-icons";

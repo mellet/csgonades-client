@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaSpinner } from "react-icons/fa";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
 
 type Props = {

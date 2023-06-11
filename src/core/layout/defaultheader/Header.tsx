@@ -4,6 +4,9 @@ import { Logo } from "./components/Logo";
 import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 import dynamic from "next/dynamic";
+import { Cs2Warning } from "./components/Cs2Warning";
+import { useGameMode } from "../../useGameMode";
+import { useIsDeviceSize } from "../useDeviceSize";
 
 const UserNav = dynamic(
   () =>
@@ -14,14 +17,20 @@ const UserNav = dynamic(
 );
 
 export const HeaderDefault: FC = memo(() => {
+  const { gameMode } = useGameMode();
+  const { isMobile } = useIsDeviceSize();
+
   return (
     <>
       <div id="header">
+        {gameMode === "cs2" && !isMobile && <Cs2Warning />}
+
         <div className="header-wrap">
           <Hamburger />
           <Logo />
 
           <div className="spacer"></div>
+
           <div id="theme-toggler">
             <ThemeToggler />
           </div>

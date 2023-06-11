@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
 import { useIsAdmin } from "../../core/authentication/useIsAdmin";
-import { useTheme } from "../../core/settings/SettingsHooks";
+import { useTheme } from "../../core/settings/useTheme";
 
 export const AdminNavigation: FC = () => {
   const { colors } = useTheme();
