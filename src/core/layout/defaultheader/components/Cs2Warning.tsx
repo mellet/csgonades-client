@@ -7,7 +7,7 @@ export const Cs2Warning: FC = () => {
   return (
     <>
       <div className="cs2-warning">
-        CS2 is in closed beta so expect very little content at this time.
+        CS2 is in limited testing. Expect very little content at this time.
       </div>
       <style jsx>{`
         .cs2-warning {
