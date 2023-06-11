@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
 import { useTheme } from "../core/settings/useTheme";
+import { GameModeToggle } from "../core/layout/defaultheader/components/GameModeToggle";
+import { useIsDeviceSize } from "../core/layout/useDeviceSize";
 
 type Props = {
   mainNav: JSX.Element;
@@ -14,12 +16,19 @@ export const NavigationLayout: FC<Props> = ({
   secondaryNav,
 }) => {
   const { colors } = useTheme();
+  const { isMobile } = useIsDeviceSize();
   return (
     <>
       <nav>
         <div className="main">{mainNav}</div>
         <div className="secondary">{secondaryNav}</div>
-        <div className="footer">{footer}</div>
+        {isMobile && (
+          <div className="game-toggle">
+            <GameModeToggle />
+          </div>
+        )}
+
+        {!isMobile && <div className="footer">{footer}</div>}
       </nav>
       <style jsx>{`
         nav {
@@ -43,6 +52,12 @@ export const NavigationLayout: FC<Props> = ({
           border-bottom: 0;
           border-bottom-left-radius: 0px;
           border-bottom-right-radius: 0px;
+        }
+
+        .game-toggle {
+          display: flex;
+          justify-content: center;
+          padding-bottom: 10px;
         }
 
         .footer {

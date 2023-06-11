@@ -8,6 +8,7 @@ import {
 } from "react";
 import { GameMode } from "../nade/models/GameMode";
 import { useGa } from "../utils/Analytics";
+import { AppConfig } from "../constants/Constants";
 
 type GameModeState = {
   gameMode: GameMode;
@@ -15,7 +16,7 @@ type GameModeState = {
 };
 
 const GameModeContext = createContext<GameModeState>({
-  gameMode: "csgo",
+  gameMode: AppConfig.defaultGameMode,
   setGameMode: () => {
     return;
   },
@@ -23,7 +24,7 @@ const GameModeContext = createContext<GameModeState>({
 
 export const GameModeProvider: FC = ({ children }) => {
   const ga = useGa();
-  const [gameMode, setGameMode] = useState<GameMode>("csgo");
+  const [gameMode, setGameMode] = useState<GameMode>(AppConfig.defaultGameMode);
 
   const onSetGameMode = useCallback(
     (gameMode: GameMode) => {

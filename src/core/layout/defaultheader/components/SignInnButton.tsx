@@ -3,10 +3,12 @@ import { FaSteam } from "react-icons/fa";
 import { AppConfig, Dimensions } from "../../../../constants/Constants";
 import { useGa } from "../../../../utils/Analytics";
 import { useTheme } from "../../../settings/useTheme";
+import { useIsDeviceSize } from "../../useDeviceSize";
 
 export const SignInnButton: FC = () => {
   const ga = useGa();
   const { colors } = useTheme();
+  const { isMobile } = useIsDeviceSize();
 
   function onSignInClick() {
     ga.event({
@@ -28,7 +30,13 @@ export const SignInnButton: FC = () => {
             <FaSteam />
           </div>
           <div className="steam-text">
-            Sign in with <span className="steam-name">STEAM</span>
+            {isMobile ? (
+              "Sign in"
+            ) : (
+              <span>
+                Sign in with <span className="steam-name">STEAM</span>
+              </span>
+            )}
           </div>
         </a>
       </div>
