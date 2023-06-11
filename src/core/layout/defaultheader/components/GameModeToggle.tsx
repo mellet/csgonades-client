@@ -46,6 +46,7 @@ export const GameModeToggle: FC = () => {
           font-weight: 500;
           width: 60px;
           color: ${colors.TEXT};
+          cursor: pointer;
         }
 
         .active {

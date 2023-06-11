@@ -51,7 +51,7 @@ export const LogoSvg: FC = ({}) => {
             transform="rotate(45 26.2542 21.3536)"
             fill="#B4B4B4"
             stroke="black"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <circle
             cx="28.3442"
@@ -59,7 +59,7 @@ export const LogoSvg: FC = ({}) => {
             r="1.81915"
             transform="rotate(-45 28.3442 24.3442)"
             stroke="black"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
         </g>
         <defs>

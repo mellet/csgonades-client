@@ -46,16 +46,16 @@ export const CoreWrapper: FC = memo(({ children }) => {
       }}
     >
       <GlobalStyles>
-        <GameModeProvider>
-          <ToastProvider>
+        <ToastProvider>
+          <GameModeProvider>
             {children}
             {false && <ServiceDown />}
             <ToastList />
             <SignInWarning />
             <PageViewTracker />
             <UserProfileChecker />
-          </ToastProvider>
-        </GameModeProvider>
+          </GameModeProvider>
+        </ToastProvider>
       </GlobalStyles>
     </SWRConfig>
   );

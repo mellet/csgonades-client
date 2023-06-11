@@ -5,6 +5,8 @@ import { Dimensions } from "../../../constants/Constants";
 import { ThemeToggler } from "./components/ThemeToggler";
 import dynamic from "next/dynamic";
 import { GameModeToggle } from "./components/GameModeToggle";
+import { Cs2Warning } from "./components/Cs2Warning";
+import { useGameMode } from "../../useGameMode";
 
 const UserNav = dynamic(
   () =>
@@ -15,9 +17,12 @@ const UserNav = dynamic(
 );
 
 export const HeaderDefault: FC = memo(() => {
+  const { gameMode } = useGameMode();
   return (
     <>
       <div id="header">
+        {gameMode === "cs2" && <Cs2Warning />}
+
         <div className="header-wrap">
           <Hamburger />
           <Logo />
