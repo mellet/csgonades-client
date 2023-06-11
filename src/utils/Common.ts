@@ -249,7 +249,7 @@ export function useGameString() {
   const { gameMode } = useGameMode();
   const gameString =
     gameMode === "csgo"
-      ? "Counter-Strike Global Offensice"
+      ? "Counter-Strike Global Offensive"
       : "Counter-Strike 2";
   const short = gameMode === "csgo" ? "CS:GO" : "CS2";
   return {
