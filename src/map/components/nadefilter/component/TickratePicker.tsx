@@ -36,6 +36,7 @@ export const TickratePicker: FC<Props> = ({ vertical }) => {
     <>
       <FilterLabel value="TICK" center={vertical} />
       <SquareButton
+        backgroundColor="transparent"
         onClick={onChangeTickrate}
         icon={
           <OptionCarusel
