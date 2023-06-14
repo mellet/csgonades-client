@@ -24,8 +24,14 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetDescription", description });
   }
 
-  function setMapPosition(position: MapCoordinates) {
-    dispatch({ type: "CreateNade/SetEndPosCoords", coords: position });
+  function setMapPosition(
+    startPosition: MapCoordinates,
+    endPosition: MapCoordinates
+  ) {
+    dispatch({
+      type: "CreateNade/SetEndPosCoords",
+      positions: { endPosition, startPosition },
+    });
   }
 
   function setEndPosition(endPosition: string) {

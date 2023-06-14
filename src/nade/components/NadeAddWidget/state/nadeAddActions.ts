@@ -49,7 +49,10 @@ type SetImage = {
 
 type SetEndPosCoords = {
   type: "CreateNade/SetEndPosCoords";
-  coords: MapCoordinates;
+  positions: {
+    startPosition: MapCoordinates;
+    endPosition: MapCoordinates;
+  };
 };
 
 type SetTechnique = {

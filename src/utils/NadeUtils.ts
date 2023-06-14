@@ -12,6 +12,7 @@ export const isValidNewNade = (
     lineUpImageBase64,
     map,
     mapEndCoord,
+    mapStartCoord,
     movement,
     oneWay,
     setPos,
@@ -30,6 +31,7 @@ export const isValidNewNade = (
     !lineUpImageBase64 ||
     !map ||
     !mapEndCoord ||
+    !mapStartCoord ||
     !movement ||
     !startPosition ||
     !technique ||
@@ -47,6 +49,7 @@ export const isValidNewNade = (
     lineUpImageBase64,
     map,
     mapEndCoord,
+    mapStartCoord,
     movement,
     oneWay,
     setPos: setPosStringFix(setPos),

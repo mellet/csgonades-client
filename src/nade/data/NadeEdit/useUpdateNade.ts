@@ -81,6 +81,10 @@ function createNadeUpdateBody(
   );
   const map = newValueIfDifferent(nade.map, update.map);
   const mapEndCoord = newValueIfDifferent(nade.mapEndCoord, update.mapEndCoord);
+  const mapStartCoord = newValueIfDifferent(
+    nade.mapStartCoord,
+    update.mapStartCoord
+  );
   const movement = newValueIfDifferent(nade.movement, update.movement);
   const startPosition = newValueIfDifferent(
     nade.startPosition,
@@ -112,6 +116,7 @@ function createNadeUpdateBody(
     lineUpImageBase64,
     map,
     mapEndCoord,
+    mapStartCoord,
     movement,
     oneWay,
     proUrl,

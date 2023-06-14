@@ -30,6 +30,7 @@ export const EditNadeProvider: FC<EditNadeProviderProps> = ({
     lineUpImageBase64: nade.imageLineup?.url,
     map: nade.map,
     mapEndCoord: nade.mapEndCoord,
+    mapStartCoord: nade.mapStartCoord,
     movement: nade.movement,
     oneWay: nade.oneWay,
     proUrl: nade.proUrl,

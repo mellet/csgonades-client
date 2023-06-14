@@ -6,11 +6,13 @@ import { MapPositionSelector } from "../MapPositionSelector";
 type Props = {
   map: CsgoMap;
   currentEndCoords?: MapCoordinates;
-  setEndCoords: (endCoords: MapCoordinates) => void;
+  currentStartCoords?: MapCoordinates;
+  setEndCoords: (startCoord: MapCoordinates, endCoord: MapCoordinates) => void;
 };
 
 export const NadeEditMapPosition: FC<Props> = ({
   currentEndCoords,
+  currentStartCoords,
   map,
   setEndCoords,
 }) => {
@@ -19,7 +21,8 @@ export const NadeEditMapPosition: FC<Props> = ({
       <div>
         <MapPositionSelector
           selectedMap={map}
-          selectedMapPosition={currentEndCoords}
+          selectedEndPosition={currentEndCoords}
+          selectedStartPosition={currentStartCoords}
           onPositionChange={setEndCoords}
         />
       </div>

@@ -128,9 +128,15 @@ export const useEditNadeActions = (
     [dispatch]
   );
 
-  const onSetEndPosCoords = useCallback(
-    (coords: MapCoordinates) => {
-      dispatch({ type: "EditNade/SetEndPosCoords", coords });
+  const onSetCoords = useCallback(
+    (mapStartCoord: MapCoordinates, mapEndCoord: MapCoordinates) => {
+      dispatch({
+        type: "EditNade/SetEndPosCoords",
+        data: {
+          mapEndCoord,
+          mapStartCoord,
+        },
+      });
     },
     [dispatch]
   );
@@ -151,7 +157,7 @@ export const useEditNadeActions = (
 
   return {
     onSetDescription,
-    onSetEndPosCoords,
+    onSetCoords,
     onSetEndPosition,
     onSetGameMode,
     onSetImage,

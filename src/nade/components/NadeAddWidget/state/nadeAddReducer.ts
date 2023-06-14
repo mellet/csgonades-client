@@ -28,7 +28,8 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         ...state,
         nadeData: {
           ...state.nadeData,
-          mapEndCoord: action.coords,
+          mapEndCoord: action.positions.endPosition,
+          mapStartCoord: action.positions.startPosition,
         },
       };
     }

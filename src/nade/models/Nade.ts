@@ -37,6 +37,7 @@ export interface Nade {
   isFavorited?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
+  mapStartCoord?: MapCoordinates;
   mapEndCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
@@ -107,6 +108,7 @@ export type NadeCreateBody = {
   lineUpImageBase64?: string;
   map: CsgoMap;
   mapEndCoord: MapCoordinates;
+  mapStartCoord: MapCoordinates;
   movement: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;
@@ -129,6 +131,7 @@ export type NadeUpdateBody = {
   lineUpImageBase64?: string;
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
+  mapStartCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

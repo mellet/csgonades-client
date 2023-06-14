@@ -24,7 +24,8 @@ export const MapAddWidget: FC = ({}) => {
           <div className="map-position-container">
             <MapPositionSelector
               selectedMap={nade.map}
-              selectedMapPosition={nade.mapEndCoord}
+              selectedStartPosition={nade.mapStartCoord}
+              selectedEndPosition={nade.mapEndCoord}
               onPositionChange={actions.setMapPosition}
             />
           </div>

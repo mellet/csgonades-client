@@ -118,6 +118,7 @@ export const validateState = (
     lineUpImageBase64,
     map,
     mapEndCoord,
+    mapStartCoord,
     movement,
     oneWay,
     proUrl,
@@ -136,6 +137,7 @@ export const validateState = (
     !lineUpImageBase64 ||
     !map ||
     !mapEndCoord ||
+    !mapStartCoord ||
     !movement ||
     !startPosition ||
     !technique ||
@@ -151,6 +153,7 @@ export const validateState = (
     gfycat,
     imageBase64,
     mapEndCoord,
+    mapStartCoord,
     movement,
     startPosition,
     technique,

@@ -53,9 +53,12 @@ type SetLineUpImage = {
   image: string;
 };
 
-type SetEndPosCoords = {
+type SetNadeCoords = {
   type: "EditNade/SetEndPosCoords";
-  coords: MapCoordinates;
+  data: {
+    mapStartCoord: MapCoordinates;
+    mapEndCoord: MapCoordinates;
+  };
 };
 
 type SetTechnique = {
@@ -113,7 +116,7 @@ type SetGameMode = {
 
 export type NadeEditAction =
   | SetDescription
-  | SetEndPosCoords
+  | SetNadeCoords
   | SetEndPosition
   | SetGameMode
   | SetImage

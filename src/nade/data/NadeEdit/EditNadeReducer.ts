@@ -47,7 +47,8 @@ export const nadeEditReducer: Reducer<EditNadeState, NadeEditAction> = (
     case "EditNade/SetEndPosCoords":
       return {
         ...state,
-        mapEndCoord: action.coords,
+        mapEndCoord: action.data.mapEndCoord,
+        mapStartCoord: action.data.mapStartCoord,
       };
     case "EditNade/SetTechnique":
       return {

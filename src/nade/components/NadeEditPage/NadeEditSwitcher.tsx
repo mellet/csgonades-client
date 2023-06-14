@@ -38,7 +38,8 @@ export const NadeEditSwitcher: FC<Props> = ({ nade }) => {
           {currentPane === "mapPosition" && nadeUpdates.map && (
             <NadeEditMapPosition
               currentEndCoords={nadeUpdates.mapEndCoord}
-              setEndCoords={actions.onSetEndPosCoords}
+              currentStartCoords={nadeUpdates.mapStartCoord}
+              setEndCoords={actions.onSetCoords}
               map={nadeUpdates.map}
             />
           )}
