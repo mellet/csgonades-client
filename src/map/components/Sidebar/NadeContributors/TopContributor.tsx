@@ -35,16 +35,10 @@ export const TopContributorList: FC<ContListProps> = ({ nades, isLoading }) => {
         </div>
       </div>
       <style jsx>{`
-        .cont-list {
-          margin-top: ${Dimensions.GUTTER_SIZE}px;
-          border-top: 1px solid ${colors.BORDER};
-        }
-
         .label {
           color: ${colors.TEXT};
-          padding: 16px 16px;
+          padding: 16px 0px;
           padding-bottom: 8px;
-          text-align: center;
           font-size: 16px;
         }
 

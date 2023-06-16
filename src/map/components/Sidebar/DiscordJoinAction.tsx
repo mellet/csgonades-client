@@ -38,6 +38,7 @@ export const DiscordJoinAction: FC = () => {
           background: #7289da;
           height: 40px;
           border-radius: 8px;
+          transition: 0.15s;
         }
 
         .action:hover {

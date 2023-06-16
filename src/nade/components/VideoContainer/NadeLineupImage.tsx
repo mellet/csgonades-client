@@ -69,11 +69,12 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
           display: flex;
           flex-direction: column;
           position: absolute;
-          right: 10px;
-          top: ${Dimensions.GUTTER_SIZE * 2 + 45}px;
+          right: ${Dimensions.GUTTER_SIZE}px;
+          top: ${Dimensions.GUTTER_SIZE}px;
           z-index: 1;
           border-radius: 8px;
           overflow: hidden;
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .lineup-actions button {

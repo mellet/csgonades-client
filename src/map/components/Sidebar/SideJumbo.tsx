@@ -28,13 +28,12 @@ export const SideJumbo: FC<Props> = ({ nades, map, isLoading }) => {
     <>
       <div className="jumbo">
         <h1>
-          Uncover the Best Smokes, Flashbangs, Molotovs, and Grenades on{" "}
+          Find the Best Smokes, Flashbangs, Molotovs, and Grenades on{" "}
           {capitalize(map)} in {fullGameString}.
         </h1>
         <h2>
-          Prepare to dominate {capitalize(map)} with our meticulously crafted
-          and carefully curated collection of smokes, flashbangs, molotovs, and
-          grenades.
+          Dominate {capitalize(map)} with our collection of smokes, flashbangs,
+          molotovs, and grenades.
         </h2>
         <TopContributors nades={nades} isLoading={isLoading} />
       </div>
@@ -47,7 +46,7 @@ export const SideJumbo: FC<Props> = ({ nades, map, isLoading }) => {
         }
 
         .jumbo h1 {
-          font-size: 18px;
+          font-size: 16px;
           margin: 0;
           padding: 0;
           margin-bottom: 10px;
