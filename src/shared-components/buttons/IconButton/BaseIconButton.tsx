@@ -44,7 +44,7 @@ export const BaseIconButton: FC<Props> = ({
             ? activeColor
             : colors.buttonDefaultIcon};
           transition: color 0.1s, background 0.1s;
-          border: 0px solid transparent;
+          border: none;
         }
 
         .btn:hover,

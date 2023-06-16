@@ -1,70 +1,22 @@
-import { FC, memo, useMemo } from "react";
+import { FC, memo } from "react";
 import { useTheme } from "../../../settings/useTheme";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { SquareButton } from "../../../../shared-components/buttons/IconButton/SquareButton";
 
 export const ThemeToggler: FC = memo(() => {
-  const { toggleTheme, theme, colors } = useTheme();
+  const { toggleTheme, theme } = useTheme();
 
-  const classNameBuild = useMemo(() => {
-    const base = ["toggle-btn"];
-
-    if (theme === "dark") {
-      base.push("selected");
-    }
-
-    return base.join(" ");
-  }, [theme]);
+  const activeColor = theme === "dark" ? "#b8af76" : "#768fb8";
 
   return (
     <>
       <div className="darkmode-toggle">
-        <button className={classNameBuild} onClick={toggleTheme}>
-          {theme === "dark" && (
-            <FaSun size={18} style={{ position: "relative", top: 2 }} />
-          )}
-          {theme === "light" && (
-            <FaMoon size={16} style={{ position: "relative", top: 2 }} />
-          )}
-        </button>
+        <SquareButton
+          icon={theme === "dark" ? <FaSun size={18} /> : <FaMoon size={16} />}
+          onClick={toggleTheme}
+          activeColor={activeColor}
+        ></SquareButton>
       </div>
-      <style jsx>{`
-        .darkmode-toggle {
-          display: block;
-          display: flex;
-          align-items: center;
-        }
-
-        .toggle-btn {
-          border: none;
-          padding: 0;
-          margin: 0;
-          border-radius: 8px;
-          outline: none;
-          background: ${colors.DP01};
-          width: 40px;
-          height: 40px;
-          border: 1px solid ${colors.buttonBorder};
-        }
-
-        .toggle-btn:hover {
-          background: #222;
-          color: white;
-          cursor: pointer;
-        }
-
-        .toggle-btn.selected {
-          color: white;
-        }
-
-        .toggle-btn.selected:hover {
-          background: #f2f2f2;
-          color: #111;
-        }
-
-        .toggle-btn:focus-visible {
-          outline: 1px auto ${colors.focusOutline};
-        }
-      `}</style>
     </>
   );
 });
