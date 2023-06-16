@@ -4,10 +4,10 @@ import { EditNadeCallbacks, useEditNadeActions } from "./useEditNadeActions";
 import { nadeEditReducer } from "./EditNadeReducer";
 import { EditNadeState } from "./NadeEditState";
 
-export interface EditNadeProviderContext {
+type EditNadeProviderContext = {
   nadeUpdates: EditNadeState;
   actions: EditNadeCallbacks;
-}
+};
 
 export const EditNadeContextCreator =
   createContext<EditNadeProviderContext | null>(null);

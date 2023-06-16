@@ -1,9 +1,9 @@
-export const GameModes = {
+const GameModes = {
   csgo: "csgo",
   cs2: "cs2",
 };
 
-export type GameModeKeys = keyof typeof GameModes;
+type GameModeKeys = keyof typeof GameModes;
 
 type GameModeOption = {
   key: GameModeKeys;
@@ -11,7 +11,7 @@ type GameModeOption = {
   value: GameModeKeys;
 };
 
-export function gameModeString(gameMode?: GameMode) {
+function gameModeString(gameMode?: GameMode) {
   if (!gameMode) {
     return "";
   }

@@ -4,5 +4,3 @@ export type Favorite = {
   nadeId: string;
   userId: string;
 };
-
-export type FavoriteCreateDTO = Omit<Favorite, "createdAt" | "id">;

@@ -17,7 +17,7 @@ import { NadeCommentTime } from "./NadeCommentTime";
 import { NadeCommentActions } from "./NadeCommentActions";
 import { NadeCommentArrow } from "./NadeCommentArrow";
 
-export type NadeCommentItemProps = {
+type NadeCommentItemProps = {
   nadeComment: NadeComment;
   signedInUser?: Pick<User, "role" | "steamId">;
   onUpdateComment: (commentUpdate: NadeCommentUpdateDTO) => void;

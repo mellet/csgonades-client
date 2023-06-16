@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { useTheme } from "../../../../core/settings/useTheme";
-import { Dimensions } from "../../../../constants/Constants";
 import { useFilterByType } from "../../../logic/useFilterByType";
 import { nadeTypeString } from "../../../../nade/models/NadeType";
 import { ContributorUser } from "./ContributorUser";

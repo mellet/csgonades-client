@@ -15,7 +15,7 @@ export type NadeComment = {
   role?: Role;
 };
 
-export type NadeCommentCreateDTO = {
+type NadeCommentCreateDTO = {
   message: string;
   nadeId: string;
 };

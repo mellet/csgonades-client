@@ -68,7 +68,7 @@ export const Adsense: FC<Props> = memo(({ adName }) => {
   );
 });
 
-export function adNameToConfig(adName: AdUnitName): AdsenseConfig {
+function adNameToConfig(adName: AdUnitName): AdsenseConfig {
   const sharedResponsiveConfig: Pick<
     AdsenseConfig,
     "adFormat" | "fullWidthResponsive" | "style"

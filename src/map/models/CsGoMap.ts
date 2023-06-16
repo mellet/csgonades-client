@@ -14,7 +14,7 @@ const CsGoMaps = {
 };
 
 export type CsgoMap = keyof typeof CsGoMaps;
-export type CsgoMapKeys = keyof typeof CsGoMaps;
+type CsgoMapKeys = keyof typeof CsGoMaps;
 
 type MapOption = {
   key: CsgoMapKeys;

@@ -106,7 +106,7 @@ const useSumbitNade = (nadeBody: Partial<NadeCreateBody>) => {
   return { isLoading, error, onSubmitClick };
 };
 
-export const validateState = (
+const validateState = (
   nade: Partial<NadeCreateBody>,
   gameMode: GameMode
 ): NadeCreateBody | false => {

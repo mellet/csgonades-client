@@ -116,14 +116,10 @@ export const NadeItemView: FC<Props> = memo(
   }
 );
 
-export function getNadeMainImage(nade: NadeLight) {
+function getNadeMainImage(nade: NadeLight) {
   return nade.imageMain?.url || "";
 }
 
-export function getNadeLineUpImageThumb(nade: NadeLight) {
+function getNadeLineUpImageThumb(nade: NadeLight) {
   return nade.imageLineupThumb?.url;
-}
-
-export function getNadeLineUpImage(nade: NadeLight) {
-  return nade.imageLineup?.url;
 }

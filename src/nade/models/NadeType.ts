@@ -1,4 +1,4 @@
-export const NadeTypes = {
+const NadeTypes = {
   flash: "Flash",
   hegrenade: "Grenade",
   molotov: "Molotov",
@@ -6,12 +6,6 @@ export const NadeTypes = {
 };
 
 export type NadeType = keyof typeof NadeTypes;
-
-type NadeTypeOption = {
-  key: NadeType;
-  text: string;
-  value: NadeType;
-};
 
 export function nadeTypeString(nadeType?: NadeType, plural?: boolean): string {
   if (!nadeType) {
@@ -23,18 +17,4 @@ export function nadeTypeString(nadeType?: NadeType, plural?: boolean): string {
   }
 
   return NadeTypes[nadeType];
-}
-
-export function nadeTypeOptions(): NadeTypeOption[] {
-  const options: NadeTypeOption[] = [];
-  for (const key in NadeTypes) {
-    const objKey = key as NadeType;
-    const text = nadeTypeString(objKey);
-    options.push({
-      key: objKey,
-      text,
-      value: objKey,
-    });
-  }
-  return options;
 }

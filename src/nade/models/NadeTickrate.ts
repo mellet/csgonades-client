@@ -1,4 +1,4 @@
-export const NadeTickrate = {
+const NadeTickrate = {
   any: "Any",
   tick128: "128 Tick",
   tick64: "64 Tick",

@@ -10,14 +10,15 @@ import { NadeCreateBody } from "../../../models/Nade";
 import { nadeAddReducer } from "./nadeAddReducer";
 import { NadeAddCallbacks, useNadeAddActions } from "./useNadeAddWidgetState";
 
-export interface NadeAddStateContext {
+interface NadeAddStateContext {
   step: NadeCreateSteps;
   nade: Partial<NadeCreateBody>;
   actions: NadeAddCallbacks;
 }
 
-export const NadeAddStateContextCreator =
-  createContext<NadeAddStateContext | null>(null);
+const NadeAddStateContextCreator = createContext<NadeAddStateContext | null>(
+  null
+);
 
 export const CreateNadeProvider: FC = ({ children }) => {
   const [state, dispatch] = useReducer(nadeAddReducer, initialNadeAddState);

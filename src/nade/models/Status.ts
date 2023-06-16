@@ -13,7 +13,7 @@ type NadeStatusOption = {
   value: NadeStatus;
 };
 
-export function nadeStatusString(status: NadeStatus): string {
+function nadeStatusString(status: NadeStatus): string {
   return StatusValues[status];
 }
 

@@ -199,5 +199,6 @@ const useVisibility = (ref: RefObject<HTMLElement>, callback: any) => {
     if (ref.current) {
       observer.observe(ref.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };

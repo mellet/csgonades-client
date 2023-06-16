@@ -8,7 +8,7 @@ import { ReportNotificationItem } from "../components/ReportNotificationItem";
 import { StatusNotificationItem } from "../components/StatusNotificationItem";
 import { Notification } from "../models/Notification";
 
-export type NotificationItemProps = {
+type NotificationItemProps = {
   notification: Notification;
 };
 

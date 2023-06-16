@@ -9,7 +9,7 @@ import { CsgoMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 import { GameMode } from "./GameMode";
 
-export type StatusInfo = string;
+type StatusInfo = string;
 
 export type MapCoordinates = {
   x: number;
@@ -144,9 +144,4 @@ export type NadeUpdateBody = {
   tickrate?: Tickrate;
   type?: NadeType;
   youTubeId?: string;
-};
-
-export type NadeStatusDTO = {
-  status: NadeStatus;
-  statusInfo?: StatusInfo;
 };

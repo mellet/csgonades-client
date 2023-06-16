@@ -117,7 +117,7 @@ type NadeItemProps = {
   nade: NadeLight;
 };
 
-export const NadeItem: FC<NadeItemProps> = ({ nade }) => {
+const NadeItem: FC<NadeItemProps> = ({ nade }) => {
   const { colors } = useTheme();
 
   const nadeMainImage = getNadeMainImage(nade);

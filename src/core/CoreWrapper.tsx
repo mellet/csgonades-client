@@ -69,7 +69,7 @@ export const CoreWrapperStory: FC = ({ children }) => {
   );
 };
 
-export const GlobalStyles: FC = ({ children }) => {
+const GlobalStyles: FC = ({ children }) => {
   return (
     <>
       {children}

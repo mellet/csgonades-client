@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { err, Result } from "neverthrow";
 
-export type AppError = {
+type AppError = {
   status: number;
   message: string;
 };

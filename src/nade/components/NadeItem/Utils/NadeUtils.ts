@@ -11,10 +11,6 @@ export function getNadeMainImage(nade: NadeLight) {
   return nade.imageMain?.url || "";
 }
 
-export function getNadeLineUpImageThumb(nade: NadeLight) {
-  return nade.imageLineupThumb?.url;
-}
-
 export function useIsLowEngagementNade(
   favoriteCount: number,
   viewCount: number,

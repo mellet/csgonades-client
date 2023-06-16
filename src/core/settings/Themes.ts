@@ -111,7 +111,7 @@ const DARK_THEME: ThemeColors = {
   smokeLogo: "#c7c7c7",
 };
 
-export const LIGHT_THEME: ThemeColors = {
+const LIGHT_THEME: ThemeColors = {
   DP00: "#ededed",
   DP01: "#f5f5f5",
   DP02: "#fafafa",
@@ -190,12 +190,6 @@ export const themes: Themes = {
   light_cs2: LIGHT_THEME_CS2,
   dark: DARK_THEME,
   dark_cs2: DARK_THEME_CS2,
-};
-
-export const DEFAULT_THEME = {
-  theme: {
-    colors: LIGHT_THEME,
-  },
 };
 
 export type ThemeKeys = keyof typeof themes;
