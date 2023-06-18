@@ -18,11 +18,11 @@ type Props = {
   tickrate?: Tickrate;
   type?: NadeType;
   teamSide?: TeamSide;
-  isPro?: boolean;
+  proUrl?: string;
 };
 
 export const NadeMeta: FC<Props> = memo(
-  ({ movement, type, technique, tickrate, teamSide, isPro }) => {
+  ({ movement, type, technique, tickrate, teamSide, proUrl }) => {
     const { isMobile } = useIsDeviceSize();
     const isJumpThrowThrow = isJumpthrowTechnique(technique);
 
@@ -43,10 +43,10 @@ export const NadeMeta: FC<Props> = memo(
             </div>
           )}
 
-          {isPro && (
+          {proUrl && (
             <div className="nade-meta-item">
               <h4>Pro</h4>
-              <ProDisplay size={22} />
+              <ProDisplay size={22} url={proUrl} />
             </div>
           )}
 

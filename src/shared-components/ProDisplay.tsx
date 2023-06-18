@@ -4,15 +4,18 @@ import { Popup } from "semantic-ui-react";
 
 type Props = {
   size?: number;
+  url: string;
 };
 
-export const ProDisplay: FC<Props> = ({ size = 12 }) => {
+export const ProDisplay: FC<Props> = ({ size = 12, url }) => {
+  const validUrl = isValidUrl(url);
+
   return (
     <>
       <Popup
         inverted
         openOnTriggerClick={false}
-        position="top center"
+        position="bottom center"
         size="mini"
         content={
           <div className="center">
@@ -29,7 +32,13 @@ export const ProDisplay: FC<Props> = ({ size = 12 }) => {
           <div className="pro-icon">
             <div className="white-bg" />
             <div className="icon">
-              <FaCheckCircle />
+              {validUrl ? (
+                <a href={url} target="_blank" rel="noreferrer">
+                  <FaCheckCircle />
+                </a>
+              ) : (
+                <FaCheckCircle />
+              )}
             </div>
           </div>
         }
@@ -65,3 +74,15 @@ export const ProDisplay: FC<Props> = ({ size = 12 }) => {
     </>
   );
 };
+
+function isValidUrl(proUrl: string) {
+  let url;
+
+  try {
+    url = new URL(proUrl);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}

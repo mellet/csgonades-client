@@ -30,7 +30,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
           tickrate={nade.tickrate}
           type={nade.type}
           teamSide={nade.teamSide}
-          isPro={Boolean(nade.proUrl)}
+          proUrl={nade.proUrl}
         />
 
         {hasLineUp && (
