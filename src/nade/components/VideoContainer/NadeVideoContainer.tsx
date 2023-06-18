@@ -27,7 +27,7 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
         <NadeMeta
           movement={nade.movement}
           technique={nade.technique}
-          tickrate={nade.tickrate}
+          tickrate={nade.gameMode === "csgo" ? nade.tickrate : undefined}
           type={nade.type}
           teamSide={nade.teamSide}
           proUrl={nade.proUrl}

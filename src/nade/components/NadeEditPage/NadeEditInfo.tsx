@@ -31,6 +31,9 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
   const isAdminOrModerator = useIsAdminOrModerator();
 
   const showTickrateSelector = useMemo(() => {
+    if (nadeUpdates.gameMode === "cs2") {
+      return false;
+    }
     const isJumpThrow = nadeUpdates.technique?.includes("jumpthrow");
     const isJumpthrowOriginal = nade.technique?.includes("jumpthrow");
 
@@ -38,7 +41,7 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
       return true;
     }
     return false;
-  }, [nade.technique, nadeUpdates.technique]);
+  }, [nade.technique, nadeUpdates.technique, nadeUpdates.gameMode]);
 
   return (
     <>
