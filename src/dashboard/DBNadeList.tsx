@@ -62,7 +62,6 @@ export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
         <table>
           <thead>
             <tr>
-              <td>Score</td>
               <td>Status</td>
               <td>Type</td>
               <td></td>
@@ -76,6 +75,8 @@ export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
               <td>
                 <FaComment />
               </td>
+              <td>Score</td>
+
               <td>Created</td>
               <td></td>
             </tr>
@@ -89,7 +90,10 @@ export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
       </div>
       <style jsx>{`
         #nade-list {
-          border: 1px solid rgba(0, 0, 0, 0.05);
+          border: 1px solid ${colors.BORDER};
+          background: ${colors.DP03};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
         }
 
         table {
@@ -102,8 +106,8 @@ export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
         table thead td {
           font-weight: 400;
           padding: 10px 20px;
-          border-right: 1px solid rgba(0, 0, 0, 0.05);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          border-right: 1px solid ${colors.BORDER};
+          border-bottom: 1px solid ${colors.DARK_BORDER};
         }
 
         table thead td:last-child {
@@ -127,17 +131,9 @@ const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
     <>
       <tr className="nade-item">
         <td align="center">
-          <ScoreIndicator
-            createdAt={nade.createdAt}
-            favoriteCount={nade.favoriteCount}
-            viewCount={nade.viewCount}
-            score={nade.score}
-          />
-        </td>
-        <td align="center">
           <StatusText status={nade.status} />
         </td>
-        <td className="nade-type">
+        <td className="nade-type" align="center">
           <NadeIcon nadeType={nade.type} size={30} />
         </td>
         <td className="nade-thumb">
@@ -169,6 +165,14 @@ const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
         <td className="nade-comments">{kFormatter(nade.viewCount)}</td>
         <td className="nade-fav">{kFormatter(nade.favoriteCount)}</td>
         <td className="nade-comments">{kFormatter(nade.commentCount)}</td>
+        <td align="center">
+          <ScoreIndicator
+            createdAt={nade.createdAt}
+            favoriteCount={nade.favoriteCount}
+            viewCount={nade.viewCount}
+            score={nade.score}
+          />
+        </td>
         <td>{prettyDate(nade.createdAt)}</td>
         <td>
           <Link
@@ -184,8 +188,8 @@ const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
       </tr>
       <style jsx>{`
         td {
-          border-right: 1px solid rgba(0, 0, 0, 0.05);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          border-right: 1px solid ${colors.BORDER};
+          border-bottom: 1px solid ${colors.BORDER};
           padding: 8px 16px;
         }
 

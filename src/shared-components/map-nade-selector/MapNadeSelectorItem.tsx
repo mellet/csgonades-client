@@ -23,7 +23,8 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
       <Popup
         content={mapString(map)}
         inverted
-        position="top center"
+        position="bottom center"
+        size="mini"
         trigger={
           <button className="user-map-nav-item" onClick={onItemClick}>
             <span className="nav-icon">
@@ -41,15 +42,15 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
 
       <style jsx>{`
         .user-map-nav-item {
-          border: none;
-          padding: 0px 10px;
           height: 40px;
+          width: 40px;
           display: flex;
           background: ${active ? colors.DP03 : "tranparent"};
           border: 1px solid ${colors.buttonBorder};
           cursor: pointer;
           border-right: none;
           align-items: center;
+          justify-content: center;
           transition: background 0.2s;
         }
 
@@ -73,7 +74,6 @@ export const MapNadeSelectorItem: FC<Props> = ({ map, onClick, active }) => {
           width: 20px;
           height: 20px;
           position: relative;
-          margin-right: 4px;
           border-radius: 50%;
           overflow: hidden;
         }

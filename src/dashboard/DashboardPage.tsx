@@ -19,37 +19,15 @@ export const DashboardPage: FC = () => {
   return (
     <>
       <SEO canonical="/dashboard" title="Dashboard" />
-      <div id="dashboard-page-wrap">
-        <div id="message">
-          There is currently and issue updating the view count for nades.
-          I&apos;m investigating the issue. I have hidden the view count in the
-          list items for now. You can still see it here, or on the nade page
-          under the video.
-        </div>
-        <div id="dashboard-page">
-          <h1 id="title">DASHBOARD</h1>
-          <div id="nade-list">
-            <h2>Your nades</h2>
-            <MapNadeSelector selectedMap={csgoMap} onMapSelect={setCsGoMap} />
-
-            <DashboardNades csgoMap={csgoMap} user={signedInUser} />
-          </div>
+      <div id="dashboard-page">
+        <h1 id="title">DASHBOARD</h1>
+        <div id="nade-list">
+          <MapNadeSelector selectedMap={csgoMap} onMapSelect={setCsGoMap} />
+          <DashboardNades csgoMap={csgoMap} user={signedInUser} />
         </div>
       </div>
       <style jsx>{`
-        #message {
-          display: none;
-          background: ${colors.WARNING};
-          color: white;
-          border-radius: 5px;
-          padding: 10px;
-          text-align: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
-        }
-
         #dashboard-page {
-          background: ${colors.DP02};
-          border-radius: ${Dimensions.BORDER_RADIUS};
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-rows: min-content min-content;
@@ -58,18 +36,14 @@ export const DashboardPage: FC = () => {
             "dbnades dbnades dbnades";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
           grid-row-gap: ${Dimensions.GUTTER_SIZE}px;
-          overflow: hidden;
-          border: 1px solid ${colors.BORDER};
         }
 
         #title {
           grid-area: dbtitle;
           margin: 0;
           padding: 0;
-          font-size: 20px;
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          background: ${colors.PRIMARY};
-          color: white;
+          font-size: 24px;
+          color: ${colors.TEXT};
         }
 
         h2 {
@@ -81,8 +55,6 @@ export const DashboardPage: FC = () => {
 
         #nade-list {
           grid-area: dbnades;
-          padding: ${Dimensions.GUTTER_SIZE}px;
-          padding-top: 0;
           color: ${colors.TEXT};
         }
       `}</style>
