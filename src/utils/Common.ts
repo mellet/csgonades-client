@@ -143,7 +143,7 @@ export function generateNadeItemTitle(
 }
 
 export function isNewNade(createdAt: Date | string) {
-  const newDurationDaysHours = 4 * 24;
+  const newDurationDaysHours = 7 * 24;
   const hoursAgoAdded = dateMinutesAgo(createdAt) / 60;
 
   return hoursAgoAdded < newDurationDaysHours;

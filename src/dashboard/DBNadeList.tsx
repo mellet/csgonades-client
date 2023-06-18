@@ -27,13 +27,14 @@ import Image from "next/image";
 import { Dimensions } from "../constants/Constants";
 import { getNadeMainImage } from "../nade/components/NadeItem/Utils/NadeUtils";
 import { useGameMode } from "../core/useGameMode";
+import { ScoreIndicator } from "./ScoreIndicator";
 
 type Props = {
   csgoMap: CsgoMap;
   user: User;
 };
 
-export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
+export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
   const { colors } = useTheme();
   const { gameMode } = useGameMode();
 
@@ -61,10 +62,10 @@ export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
         <table>
           <thead>
             <tr>
+              <td>Score</td>
               <td>Status</td>
               <td>Type</td>
               <td></td>
-
               <td>Title</td>
               <td>
                 <FaEye />
@@ -81,7 +82,7 @@ export const DBNadeList: FC<Props> = ({ csgoMap, user }) => {
           </thead>
           <tbody>
             {nades.map((n) => (
-              <NadeItem key={n.id} nade={n} />
+              <DasboardNadeItem key={n.id} nade={n} />
             ))}
           </tbody>
         </table>
@@ -117,7 +118,7 @@ type NadeItemProps = {
   nade: NadeLight;
 };
 
-const NadeItem: FC<NadeItemProps> = ({ nade }) => {
+const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
   const { colors } = useTheme();
 
   const nadeMainImage = getNadeMainImage(nade);
@@ -125,7 +126,15 @@ const NadeItem: FC<NadeItemProps> = ({ nade }) => {
   return (
     <>
       <tr className="nade-item">
-        <td>
+        <td align="center">
+          <ScoreIndicator
+            createdAt={nade.createdAt}
+            favoriteCount={nade.favoriteCount}
+            viewCount={nade.viewCount}
+            score={nade.score}
+          />
+        </td>
+        <td align="center">
           <StatusText status={nade.status} />
         </td>
         <td className="nade-type">

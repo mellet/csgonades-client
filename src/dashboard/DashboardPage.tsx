@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { DBNadeList } from "./DBNadeList";
+import { DashboardNades } from "./DBNadeList";
 import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../core/settings/useTheme";
 import { SEO } from "../shared-components/SEO";
@@ -32,7 +32,7 @@ export const DashboardPage: FC = () => {
             <h2>Your nades</h2>
             <MapNadeSelector selectedMap={csgoMap} onMapSelect={setCsGoMap} />
 
-            <DBNadeList csgoMap={csgoMap} user={signedInUser} />
+            <DashboardNades csgoMap={csgoMap} user={signedInUser} />
           </div>
         </div>
       </div>
