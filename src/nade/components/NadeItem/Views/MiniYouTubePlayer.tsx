@@ -12,7 +12,7 @@ export const MiniYouTubePlayer: FC<Props> = ({ youTubeId, speed = "fast" }) => {
   async function onReady(event: YouTubeEvent<any>) {
     setPlayer(event.target);
     event.target.mute();
-    event.target.setPlaybackRate(speed === "fast" ? 2.0 : 1.5);
+    event.target.setPlaybackRate(speed === "fast" ? 2.0 : 1);
     event.target.setPlaybackQuality("sd");
     event.target.playVideo();
   }

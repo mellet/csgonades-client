@@ -17,7 +17,7 @@ export const MiniGfycatIframe: FC<Props> = ({
 }) => {
   const [loaded, setLoaded] = useState(hasAllreadyLoaded);
   const { colors } = useTheme();
-  const baseSpeed = speed === "fast" ? 3 : 1.5;
+  const baseSpeed = speed === "fast" ? 3 : 1;
   const videoSpeed = isSafari ? 1 : baseSpeed;
 
   function onVideoLoaded() {
