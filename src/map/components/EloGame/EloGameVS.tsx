@@ -36,6 +36,7 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             smallVideoUrl={nadeOne.gfycat?.smallVideoUrl}
             thumbnailUrl={getNadeMainImage(nadeOne)}
             youTubeId={nadeOne.youTubeId}
+            quality="hd"
           />
         </div>
         <div

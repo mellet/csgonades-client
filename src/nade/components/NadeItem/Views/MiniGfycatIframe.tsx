@@ -6,12 +6,14 @@ type Props = {
   gfyId: string;
   hasAllreadyLoaded?: boolean;
   speed?: "normal" | "fast";
+  quality?: "hd" | "sd";
 };
 
 export const MiniGfycatIframe: FC<Props> = ({
   gfyId,
   hasAllreadyLoaded = false,
   speed = "fast",
+  quality = "sd",
 }) => {
   const [loaded, setLoaded] = useState(hasAllreadyLoaded);
   const { colors } = useTheme();
@@ -30,6 +32,8 @@ export const MiniGfycatIframe: FC<Props> = ({
     return () => clearTimeout(timer);
   }, []);
 
+  const hd = quality === "hd" ? 1 : 0;
+
   return (
     <>
       <div className="gfycat-super-wrap">
@@ -39,7 +43,7 @@ export const MiniGfycatIframe: FC<Props> = ({
             className="gfycat-iframe"
             height="100%"
             onLoad={onVideoLoaded}
-            src={`https://gfycat.com/ifr/${gfyId}?hd=0&controls=0&speed=${videoSpeed}`}
+            src={`https://gfycat.com/ifr/${gfyId}?hd=${hd}&controls=0&speed=${videoSpeed}`}
             width="100%"
           ></iframe>
         </div>

@@ -29,6 +29,7 @@ type Props = {
   thumbnailUrl?: string;
   youTubeId?: string;
   speed?: "normal" | "fast";
+  quality?: "hd" | "sd";
 };
 
 export const GfycatThumbnail: FC<Props> = ({
@@ -40,6 +41,7 @@ export const GfycatThumbnail: FC<Props> = ({
   nadeSlug,
   youTubeId,
   speed = "fast",
+  quality,
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
@@ -105,6 +107,7 @@ export const GfycatThumbnail: FC<Props> = ({
                   gfyId={gfyId}
                   hasAllreadyLoaded={hasHovered}
                   speed={speed}
+                  quality={quality}
                 />
               )}
               {youTubeId && (
