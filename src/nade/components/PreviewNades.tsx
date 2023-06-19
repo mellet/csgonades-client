@@ -44,6 +44,7 @@ export const PreviewNade: FC<Props> = ({
           startPosition={startPosition}
           status="accepted"
           type={type}
+          elo={0}
         />
         <GfycatThumbnail
           disableAction

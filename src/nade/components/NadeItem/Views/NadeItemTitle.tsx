@@ -4,6 +4,7 @@ import { useTheme } from "../../../../core/settings/useTheme";
 import { generateNadeItemTitle } from "../../../../utils/Common";
 import { NadeType } from "../../../models/NadeType";
 import { NadeIcon } from "../../../../shared-components/nade-icons";
+import { useIsAdmin } from "../../../../core/authentication/useIsAdmin";
 
 type Props = {
   endPosition?: string;
@@ -11,6 +12,7 @@ type Props = {
   startPosition?: string;
   status: NadeStatus;
   type?: NadeType;
+  elo: number;
 };
 
 export const NadeItemTitle: FC<Props> = ({
@@ -19,7 +21,9 @@ export const NadeItemTitle: FC<Props> = ({
   startPosition,
   status,
   type,
+  elo,
 }) => {
+  const isAdmin = useIsAdmin();
   const { colors } = useTheme();
   const [generatedTitle, subTitle] = generateNadeItemTitle(
     startPosition,
@@ -42,6 +46,7 @@ export const NadeItemTitle: FC<Props> = ({
   return (
     <>
       <div className={titleClassName}>
+        {isAdmin && <div className="elo">{elo}</div>}
         <h3 className="title-text">
           <span className="main-title">{generatedTitle}</span>
           <span className="sub-title">{subTitle}</span>
@@ -56,6 +61,15 @@ export const NadeItemTitle: FC<Props> = ({
           color: ${colors.TEXT};
           overflow: hidden;
           position: relative;
+        }
+
+        .elo {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          font-size: 12px;
+          opacity: 0.75;
+          color: purple;
         }
 
         .nade-type-icon {

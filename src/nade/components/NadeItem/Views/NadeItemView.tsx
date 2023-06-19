@@ -45,6 +45,7 @@ export const NadeItemView: FC<Props> = memo(
                   startPosition={nade.startPosition}
                   status={nade.status}
                   type={nade.type}
+                  elo={nade.eloScore}
                 />
                 <div className="video">
                   <GfycatThumbnail
