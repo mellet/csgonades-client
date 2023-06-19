@@ -15,6 +15,7 @@ import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
 import { FaTimesCircle } from "react-icons/fa";
 import { Button } from "../../../shared-components/buttons/Button";
+import { createPairings } from "../../../utils/PairingUtils";
 
 type Props = {
   nades: NadeLight[];
@@ -27,19 +28,8 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
   const [pairings, setPairings] = useState<NadeLight[][]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const shuffledPlayers = nades.sort(() => Math.random() - 0.5);
   const votesLeft = pairings.length - activeIndex;
   const isFinished = votesLeft === 0;
-
-  // Create pairs from the shuffled players
-  const createPairs = (playerList: NadeLight[]) => {
-    const pairs: NadeLight[][] = [];
-    while (playerList.length >= 2) {
-      const pair: NadeLight[] = playerList.splice(0, 2);
-      pairs.push(pair);
-    }
-    return pairs;
-  };
 
   const onBackgroundClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -47,19 +37,9 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
   };
 
   useEffect(() => {
-    // Check if the number of players is even
-    const isEven = shuffledPlayers.length % 2 === 0;
+    const pairings = createPairings(nades);
 
-    // Remove a random player if the number is not even
-    if (!isEven) {
-      shuffledPlayers.pop();
-    }
-
-    // Create pairs from the shuffled players
-    const matchups = createPairs(shuffledPlayers);
-
-    // Update pairings state
-    setPairings(matchups);
+    setPairings(pairings);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
