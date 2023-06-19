@@ -11,7 +11,7 @@ export const SortByBar: FC = () => {
   const { bySortingMethod, setSortingMethod } = useFilterBySortingMethod();
 
   function onSortByHot() {
-    setSortingMethod("score");
+    setSortingMethod("eloScore");
   }
 
   function onSortByTop() {
@@ -38,7 +38,7 @@ export const SortByBar: FC = () => {
               <FaRocket size={16} style={{ position: "relative", top: 1 }} />
             }
             onClick={onSortByHot}
-            active={bySortingMethod === "score"}
+            active={bySortingMethod === "eloScore"}
           />
           <ButtonWithIcon
             inGroup

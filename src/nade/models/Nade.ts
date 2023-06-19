@@ -26,6 +26,7 @@ export interface Nade {
   commentCount: number;
   createdAt: Date | string;
   description?: string;
+  eloScore: number;
   endPosition?: string;
   favoriteCount: number;
   gameMode?: GameMode;
@@ -37,8 +38,8 @@ export interface Nade {
   isFavorited?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
-  mapStartCoord?: MapCoordinates;
   mapEndCoord?: MapCoordinates;
+  mapStartCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;
@@ -63,6 +64,7 @@ export interface NadeLight {
   commentCount: number;
   createdAt: Date | string;
   downVoteCount?: number;
+  eloScore: number;
   endPosition?: string;
   favoriteCount: number;
   gameMode?: GameMode;
@@ -73,8 +75,8 @@ export interface NadeLight {
   imageLineupThumbUrl?: string;
   imageMain: NadeImageData;
   isFavorited?: boolean;
-  isPro?: boolean;
   isNew?: boolean;
+  isPro?: boolean;
   mapEndCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
@@ -95,7 +97,7 @@ export interface NadeLight {
 
 export type NadeLightSort = keyof Pick<
   NadeLight,
-  "score" | "viewCount" | "favoriteCount" | "createdAt"
+  "eloScore" | "viewCount" | "favoriteCount" | "createdAt"
 >;
 
 export type NadeCreateBody = {

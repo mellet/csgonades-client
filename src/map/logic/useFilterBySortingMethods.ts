@@ -8,7 +8,7 @@ export const useFilterBySortingMethod = () => {
 
   const [sortBy, setSortBy] = useLocalStorage<NadeLightSort>(
     "filterBySortingMethod",
-    "score"
+    "eloScore"
   );
 
   const setSortingMethod = useCallback(
@@ -23,7 +23,7 @@ export const useFilterBySortingMethod = () => {
   );
 
   const resetSortingMethod = useCallback(() => {
-    setSortBy("score");
+    setSortBy("eloScore");
   }, [setSortBy]);
 
   return {

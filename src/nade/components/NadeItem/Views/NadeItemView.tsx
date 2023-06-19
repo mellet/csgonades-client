@@ -14,6 +14,7 @@ interface Props {
   onRemoveAsFavorite: (nadeId: string) => void;
   isFavorited: boolean;
   width?: number;
+  disableLink?: boolean;
 }
 
 export const NadeItemView: FC<Props> = memo(
@@ -116,10 +117,10 @@ export const NadeItemView: FC<Props> = memo(
   }
 );
 
-function getNadeMainImage(nade: NadeLight) {
+export function getNadeMainImage(nade: NadeLight) {
   return nade.imageMain?.url || "";
 }
 
-function getNadeLineUpImageThumb(nade: NadeLight) {
+export function getNadeLineUpImageThumb(nade: NadeLight) {
   return nade.imageLineupThumb?.url;
 }

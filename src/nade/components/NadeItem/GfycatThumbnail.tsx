@@ -28,6 +28,7 @@ type Props = {
   smallVideoUrl?: string;
   thumbnailUrl?: string;
   youTubeId?: string;
+  speed?: "normal" | "fast";
 };
 
 export const GfycatThumbnail: FC<Props> = ({
@@ -38,6 +39,7 @@ export const GfycatThumbnail: FC<Props> = ({
   thumbnailUrl,
   nadeSlug,
   youTubeId,
+  speed = "fast",
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
@@ -102,9 +104,12 @@ export const GfycatThumbnail: FC<Props> = ({
                 <MiniGfycatIframe
                   gfyId={gfyId}
                   hasAllreadyLoaded={hasHovered}
+                  speed={speed}
                 />
               )}
-              {youTubeId && <MiniYouTubePlayer youTubeId={youTubeId} />}
+              {youTubeId && (
+                <MiniYouTubePlayer youTubeId={youTubeId} speed={speed} />
+              )}
             </>
           )}
         </div>

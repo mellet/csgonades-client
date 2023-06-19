@@ -13,6 +13,7 @@ import { CsgoMap } from "../models/CsGoMap";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
 import { NadeType } from "../../nade/models/NadeType";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
+import { EloGameModal, useEloGame } from "../components/EloGame/EloGameModal";
 
 const isServer = typeof window === "undefined";
 
@@ -30,9 +31,15 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
 
   const { onNadeClusterClick, suggestedNades, dismissSuggested } =
     useOnNadeClusterClick();
+  const { eloNades, showEloGame, closeEloGame, finishEloGame } = useEloGame();
 
   const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
   const displayListView = isMobile || !isOverviewView;
+
+  const onStartEloGame = (nades: NadeLight[]) => {
+    dismissSuggested();
+    showEloGame(nades);
+  };
 
   return (
     <>
@@ -61,6 +68,15 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
             <NadePreviewModal
               nades={suggestedNades}
               onDismiss={dismissSuggested}
+              onStartEloGame={onStartEloGame}
+            />
+          )}
+
+          {eloNades && (
+            <EloGameModal
+              nades={eloNades}
+              onClose={closeEloGame}
+              onFinish={finishEloGame}
             />
           )}
 

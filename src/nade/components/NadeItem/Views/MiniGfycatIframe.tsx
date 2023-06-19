@@ -5,16 +5,18 @@ import { isSafari } from "react-device-detect";
 type Props = {
   gfyId: string;
   hasAllreadyLoaded?: boolean;
+  speed?: "normal" | "fast";
 };
 
 export const MiniGfycatIframe: FC<Props> = ({
   gfyId,
   hasAllreadyLoaded = false,
+  speed = "fast",
 }) => {
   const [loaded, setLoaded] = useState(hasAllreadyLoaded);
   const { colors } = useTheme();
-
-  const videoSpeed = isSafari ? 1 : 3;
+  const baseSpeed = speed === "fast" ? 3 : 1.5;
+  const videoSpeed = isSafari ? 1 : baseSpeed;
 
   function onVideoLoaded() {
     setLoaded(true);

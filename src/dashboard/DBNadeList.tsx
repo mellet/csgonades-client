@@ -76,7 +76,6 @@ export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
                 <FaComment />
               </td>
               <td>Score</td>
-
               <td>Created</td>
               <td></td>
             </tr>

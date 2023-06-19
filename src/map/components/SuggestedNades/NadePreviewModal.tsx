@@ -7,15 +7,21 @@ import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
 import useSortedNades from "./useSortedNades";
 import { NadePreviewHeader } from "./NadePreviewHeader";
+import { FaStar } from "react-icons/fa";
 
 type Props = {
   nades: NadeLight[];
   onDismiss: () => void;
+  onStartEloGame: (nades: NadeLight[]) => void;
 };
 
 const MAX_MODAL_WIDTH = 1420;
 
-export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
+export const NadePreviewModal: FC<Props> = ({
+  nades,
+  onDismiss,
+  onStartEloGame,
+}) => {
   const { colors } = useTheme();
   const sortedNades = useSortedNades(nades);
   const ga = useGa();
@@ -66,6 +72,19 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
         </div>
         <div className="suggested-main">
           <div className="nade-list" onClick={(e) => e.stopPropagation()}>
+            {nades.length >= 2 && (
+              <div className="rate-wrapper">
+                <button
+                  className="rate-nades"
+                  onClick={() => {
+                    onStartEloGame([...nades]);
+                  }}
+                >
+                  <FaStar /> Help rate these nades! <FaStar />
+                </button>
+              </div>
+            )}
+
             {sortedNades && (
               <>
                 <CsgnList<NadeLight>
@@ -112,6 +131,7 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
         }
 
         .nade-list {
+          position: relative;
           max-width: ${MAX_MODAL_WIDTH}px;
           width: 100%;
           background: ${colors.DP00};
@@ -119,6 +139,30 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           border: 1px solid ${colors.BORDER};
           border-top: none;
           border-radius: 8px;
+        }
+
+        .rate-wrapper {
+          margin-top: ${-Dimensions.GUTTER_SIZE}px;
+          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          display: flex;
+          justify-content: flex-end;
+          padding-top: 10px;
+        }
+
+        .rate-nades {
+          background: ${colors.FAV_YELLOW};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          border: 1px solid ${colors.FAV_YELLOW};
+          color: white;
+          padding: 8px 16px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          opacity: 0.75;
+        }
+
+        .rate-nades:hover {
+          opacity: 1;
         }
       `}</style>
     </>

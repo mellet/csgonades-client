@@ -14,6 +14,12 @@ import AxiosApi from "../../core/AxiosInstance";
 import { NadeType } from "../models/NadeType";
 import { GameMode } from "../models/GameMode";
 
+type NadeEloGame = {
+  nadeOneId: string;
+  nadeTwoId: string;
+  winnerId: string;
+};
+
 export class NadeApi {
   static async favoriteNade(nadeId: string): AppResult<Favorite> {
     try {
@@ -176,6 +182,14 @@ export class NadeApi {
       return ok(true);
     } catch (error) {
       return extractApiError(error);
+    }
+  }
+
+  static async eloGame(eloGame: NadeEloGame) {
+    try {
+      await AxiosApi.post(`${AppConfig.API_URL}/nades/elogame`, eloGame);
+    } catch (error) {
+      return;
     }
   }
 }
