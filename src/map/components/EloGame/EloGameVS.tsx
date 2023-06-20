@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
-import { Dimensions } from "../../../constants/Constants";
 import { GfycatThumbnail } from "../../../nade/components/NadeItem/GfycatThumbnail";
 import {
   getNadeLineUpImageThumb,
@@ -40,6 +39,7 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             speed="normal"
           />
         </div>
+        <div className="vs">VS</div>
         <div
           className="right"
           onClick={() => {
@@ -62,14 +62,18 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
       <style jsx>{`
         .left,
         .right {
-          width: 50%;
+          flex: 1;
           opacity: 0.9;
           cursor: pointer;
           border: 1px solid rgba(0, 0, 0, 0.75);
         }
 
-        .left {
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
+        .vs {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+          font-size: 24px;
         }
 
         .left:hover,
@@ -80,7 +84,6 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
         .nade-view,
         .picker {
           display: flex;
-          justify-content: space-between;
         }
       `}</style>
     </>
