@@ -33,26 +33,26 @@ export function createPairings(nades: NadeLight[]): NadeLight[][] {
 
     // Select a ct nade if available
     if (ctNades.length > 0) {
-      const nade = ctNades.pop()!;
-      pair.push(nade);
+      const nade = ctNades.pop();
+      nade && pair.push(nade);
     } else if (bothNades.length > 0) {
-      const nade = bothNades.pop()!;
-      pair.push(nade);
+      const nade = bothNades.pop();
+      nade && pair.push(nade);
     } else if (tNades.length > 0) {
-      const nade = tNades.pop()!;
-      pair.push(nade);
+      const nade = tNades.pop();
+      nade && pair.push(nade);
     }
 
     // Select a t nade if available
     if (tNades.length > 0) {
-      const nade = tNades.pop()!;
-      pair.push(nade);
+      const nade = tNades.pop();
+      nade && pair.push(nade);
     } else if (bothNades.length > 0) {
-      const nade = bothNades.pop()!;
-      pair.push(nade);
+      const nade = bothNades.pop();
+      nade && pair.push(nade);
     } else if (ctNades.length > 0) {
-      const nade = ctNades.pop()!;
-      pair.push(nade);
+      const nade = ctNades.pop();
+      nade && pair.push(nade);
     }
 
     // Add the pair to the pairings array
