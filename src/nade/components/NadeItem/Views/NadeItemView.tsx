@@ -55,7 +55,7 @@ export const NadeItemView: FC<Props> = memo(
                     nadeId={nade.id}
                     nadeSlug={nade.slug}
                     smallVideoUrl={nade.gfycat?.smallVideoUrl}
-                    thumbnailUrl={getNadeMainImage(nade)}
+                    thumbnailUrl={getNadeMainThumbImage(nade)}
                     youTubeId={nade.youTubeId}
                   />
                 </div>
@@ -118,8 +118,12 @@ export const NadeItemView: FC<Props> = memo(
   }
 );
 
+export function getNadeMainThumbImage(nade: NadeLight) {
+  return nade.imageMainThumb?.url || nade.imageMain?.url || "";
+}
+
 export function getNadeMainImage(nade: NadeLight) {
-  return nade.imageMain?.url || "";
+  return nade.imageMain?.url || nade.imageMainThumb?.url || "";
 }
 
 export function getNadeLineUpImageThumb(nade: NadeLight) {

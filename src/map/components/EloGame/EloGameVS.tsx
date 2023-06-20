@@ -29,7 +29,9 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
           <GfycatThumbnail
             avgColor={nadeOne.gfycat?.avgColor}
             gfyId={nadeOne.gfycat?.gfyId}
-            lineUpThumnUrl={getNadeLineUpImageThumb(nadeOne)}
+            lineUpThumnUrl={
+              nadeOne.imageLineup?.url || getNadeLineUpImageThumb(nadeOne)
+            }
             nadeId={nadeOne.id}
             nadeSlug={nadeOne.slug}
             smallVideoUrl={nadeOne.gfycat?.smallVideoUrl}
