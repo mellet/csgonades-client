@@ -7,15 +7,14 @@ import {
   useState,
 } from "react";
 import { NadeLight } from "../../../nade/models/Nade";
-import { EloGameVS } from "./EloGameVS";
 import { useGa } from "../../../utils/Analytics";
-import { NadeApi } from "../../../nade/data/NadeApi";
-import ViewSlider from "react-view-slider";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
-import { FaTimesCircle } from "react-icons/fa";
-import { Button } from "../../../shared-components/buttons/Button";
 import { createPairings } from "../../../utils/PairingUtils";
+import { EloGameStartScreen } from "./EloGameStartScreen";
+import { EloGameGameScreen } from "./EloGameGameScreen";
+import { EloGameFinishScreen } from "./EloGameFinishScreen";
+import { FaTimesCircle } from "react-icons/fa";
 
 type Props = {
   nades: NadeLight[];
@@ -26,10 +25,7 @@ type Props = {
 export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
   const { colors } = useTheme();
   const [pairings, setPairings] = useState<NadeLight[][]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const votesLeft = pairings.length - activeIndex;
-  const isFinished = votesLeft === 0;
+  const [gameState, setGameState] = useState<"init" | "start" | "end">("init");
 
   const onBackgroundClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -47,45 +43,10 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
     return pairings[0];
   }, [pairings]);
 
-  // Callback function to select a winner and remove them from the pairings
-  const onSelectWinner = (
-    nadeOneId: string,
-    nadeTwoId: string,
-    winnerId: string
-  ) => {
-    setActiveIndex((curIndex) => curIndex + 1);
-    NadeApi.eloGame({
-      nadeOneId,
-      nadeTwoId,
-      winnerId,
-    });
-  };
-
   if (!currentGame) {
     // Show end screen!
     return null;
   }
-
-  const renderItem = ({ index }: { index: number }) => {
-    const currentGame = pairings[index];
-    if (!currentGame) {
-      return null;
-    }
-    const nadeOne = currentGame[0];
-    const nadeTwo = currentGame[1];
-
-    if (!nadeOne || !nadeTwo) {
-      return null;
-    }
-
-    return (
-      <EloGameVS
-        nadeOne={nadeOne}
-        nadeTwo={nadeTwo}
-        onSelectWinner={onSelectWinner}
-      />
-    );
-  };
 
   const onGameClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -95,37 +56,27 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
     <>
       <div className="modal" onClick={onBackgroundClick}>
         <div className="game-wrapper" onClick={onGameClick}>
-          {isFinished ? (
-            <>
-              <h3>Thanks for rating the nades!</h3>
-              <p>
-                The nades will be sorted by the best performers at the top!
-                <br /> Keep playing this with other nades to make it as accurate
-                as possible.
-              </p>
-              <p>
-                <Button onClick={onFinish} title="Back to nades" />
-              </p>
-            </>
-          ) : (
-            <>
-              <h2>
-                <span>Rate a Nade!</span>
-                <div className="close-btn" onClick={onClose}>
-                  <FaTimesCircle />
-                </div>
-              </h2>
-              <p>Select the nade you think is most useful!</p>
-              <div className="select-wrapper">
-                <ViewSlider
-                  renderView={renderItem}
-                  numViews={pairings.length}
-                  activeView={activeIndex}
-                />
+          <div className="game-header">
+            <h2>
+              <span>Nade Battle Royale</span>
+              <div className="close-btn" onClick={onClose}>
+                <FaTimesCircle />
               </div>
-              <div className="votes-left">{votesLeft} more votes left!</div>
-            </>
+            </h2>
+          </div>
+          {gameState === "init" && (
+            <EloGameStartScreen
+              numPairings={pairings.length}
+              onStart={() => setGameState("start")}
+            />
           )}
+          {gameState === "start" && (
+            <EloGameGameScreen
+              onFinish={() => setGameState("end")}
+              pairings={pairings}
+            />
+          )}
+          {gameState === "end" && <EloGameFinishScreen onFinish={onFinish} />}
         </div>
       </div>
       <style jsx>{`
@@ -166,13 +117,12 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
           z-index: 999;
           display: flex;
           justify-content: center;
-          align-items: flex-start;
+          align-items: center;
         }
 
         .game-wrapper {
           position: relative;
           background: white;
-          width: 100%;
           margin: ${Dimensions.GUTTER_SIZE}px;
           border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;

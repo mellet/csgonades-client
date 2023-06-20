@@ -37,14 +37,18 @@ export const AddNadeButton: FC = memo(() => {
           transition: background 0.1s;
           padding: 0;
           padding-right: 10px;
+          height: 32px;
         }
 
         .add-btn span {
-          font-size: 13px;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
           font-weight: 500;
           padding: 8px 6px 8px 10px;
           margin-right: 8px;
           border-right: 1px solid rgba(0, 0, 0, 0.25);
+          height: 100%;
         }
 
         .add-btn:hover {

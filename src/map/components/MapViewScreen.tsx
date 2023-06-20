@@ -1,4 +1,4 @@
-import { FC, useRef, useState, useEffect } from "react";
+import { FC, useRef, useState, useEffect, useCallback } from "react";
 import { useSetMapView } from "../logic/useSetMapView";
 import { Dimensions } from "../../constants/Constants";
 import { useNadeClusters } from "../logic/useNadesForMapView";
@@ -11,12 +11,15 @@ import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
 import { FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
+import { EloGameButton } from "./EloGame/EloGameButton";
+import { shuffleArray } from "../../utils/PairingUtils";
 
 type Props = {
   allNades: NadeLight[];
   map: CsgoMap;
   onClusterClick: (cluster: NadeLight[]) => void;
   isLoading: boolean;
+  onStartEloGame: (nades: NadeLight[]) => void;
 };
 
 const MapViewScreen: FC<Props> = ({
@@ -24,6 +27,7 @@ const MapViewScreen: FC<Props> = ({
   map,
   onClusterClick,
   isLoading,
+  onStartEloGame,
 }) => {
   const windowSize = useWindowSize();
   const filteredNades = useFilterServerSideNades(allNades);
@@ -50,6 +54,18 @@ const MapViewScreen: FC<Props> = ({
     }
   }, [windowSize]);
 
+  const onStartRatingGame = useCallback(() => {
+    const nadeClusters = [...clusters].filter(
+      (nadeList) => nadeList.length >= 4
+    );
+
+    shuffleArray(nadeClusters);
+    const nades = nadeClusters[0];
+    if (nades) {
+      onStartEloGame(nades);
+    }
+  }, [clusters, onStartEloGame]);
+
   if (mapView === "list") {
     return null;
   }
@@ -60,6 +76,9 @@ const MapViewScreen: FC<Props> = ({
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
+        <div id="rating-game">
+          <EloGameButton onClick={onStartRatingGame} />
+        </div>
         <div id="ad-nade-wrapper">
           <AddNadeButton />
         </div>
@@ -160,6 +179,13 @@ const MapViewScreen: FC<Props> = ({
           background-size: contain;
           width: ${canvasSize}px;
           height: ${canvasSize}px;
+        }
+
+        #rating-game {
+          position: absolute;
+          top: ${Dimensions.GUTTER_SIZE}px;
+          left: ${Dimensions.GUTTER_SIZE}px;
+          z-index: 1;
         }
       `}</style>
     </>

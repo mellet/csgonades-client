@@ -36,11 +36,6 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
   const displayListView = isMobile || !isOverviewView;
 
-  const onStartEloGame = (nades: NadeLight[]) => {
-    dismissSuggested();
-    showEloGame(nades);
-  };
-
   return (
     <>
       <SEO
@@ -68,7 +63,6 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
             <NadePreviewModal
               nades={suggestedNades}
               onDismiss={dismissSuggested}
-              onStartEloGame={onStartEloGame}
             />
           )}
 
@@ -86,6 +80,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
               allNades={allNades}
               onClusterClick={onNadeClusterClick}
               isLoading={isLoading}
+              onStartEloGame={showEloGame}
             />
           )}
         </div>

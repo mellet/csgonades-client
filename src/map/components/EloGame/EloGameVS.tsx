@@ -63,8 +63,9 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
         .left,
         .right {
           width: 50%;
-          opacity: 0.8;
+          opacity: 0.9;
           cursor: pointer;
+          border: 1px solid rgba(0, 0, 0, 0.75);
         }
 
         .left {

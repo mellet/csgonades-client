@@ -61,13 +61,11 @@ export function createPairings(nades: NadeLight[]): NadeLight[][] {
 
   shuffleArray(randomizedPairings);
 
-  console.log("Pairings", randomizedPairings);
-
   return randomizedPairings;
 }
 
 // Helper function to shuffle an array in place
-function shuffleArray<T>(array: T[]): void {
+export function shuffleArray<T>(array: T[]): void {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     // @ts-ignore
