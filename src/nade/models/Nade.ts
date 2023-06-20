@@ -97,7 +97,7 @@ export interface NadeLight {
 
 export type NadeLightSort = keyof Pick<
   NadeLight,
-  "eloScore" | "viewCount" | "favoriteCount" | "createdAt"
+  "score" | "viewCount" | "favoriteCount" | "createdAt"
 >;
 
 export type NadeCreateBody = {

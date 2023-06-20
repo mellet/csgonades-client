@@ -10,7 +10,7 @@ export default function useSortedNades(unsortedNades: NadeLight[]) {
   const theNades = useFilterServerSideNades(unsortedNades || []);
   const sortedNades = useSortNades(theNades, bySortingMethod);
 
-  if (bySortingMethod !== "eloScore") {
+  if (bySortingMethod !== "score") {
     return sortedNades;
   }
 
