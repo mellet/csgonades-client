@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { NadeLight } from "../nade/models/Nade";
 
 export function createPairings(nades: NadeLight[]): NadeLight[][] {
@@ -31,28 +32,42 @@ export function createPairings(nades: NadeLight[]): NadeLight[][] {
   while (ctNades.length > 0 || tNades.length > 0 || bothNades.length > 0) {
     const pair: NadeLight[] = [];
 
-    // Select a ct nade if available
     if (ctNades.length > 0) {
-      const nade = ctNades.pop();
-      nade && pair.push(nade);
-    } else if (bothNades.length > 0) {
-      const nade = bothNades.pop();
-      nade && pair.push(nade);
+      const ctNade = ctNades.pop();
+      if (ctNade) {
+        pair.push(ctNade);
+        const companion = selectSameIfPossible(
+          ctNade,
+          ctNades,
+          tNades,
+          bothNades
+        );
+        pair.push(companion);
+      }
     } else if (tNades.length > 0) {
-      const nade = tNades.pop();
-      nade && pair.push(nade);
-    }
-
-    // Select a t nade if available
-    if (tNades.length > 0) {
-      const nade = tNades.pop();
-      nade && pair.push(nade);
+      const tNade = tNades.pop();
+      if (tNade) {
+        pair.push(tNade);
+        const companion = selectSameIfPossible(
+          tNade,
+          ctNades,
+          tNades,
+          bothNades
+        );
+        pair.push(companion);
+      }
     } else if (bothNades.length > 0) {
       const nade = bothNades.pop();
-      nade && pair.push(nade);
-    } else if (ctNades.length > 0) {
-      const nade = ctNades.pop();
-      nade && pair.push(nade);
+      if (nade) {
+        pair.push(nade);
+        const companion = selectSameIfPossible(
+          nade,
+          ctNades,
+          tNades,
+          bothNades
+        );
+        pair.push(companion);
+      }
     }
 
     // Add the pair to the pairings array
@@ -62,6 +77,39 @@ export function createPairings(nades: NadeLight[]): NadeLight[][] {
   shuffleArray(randomizedPairings);
 
   return randomizedPairings;
+}
+
+function selectSameIfPossible(
+  selected: NadeLight,
+  ctNades: NadeLight[],
+  tNades: NadeLight[],
+  anyNades: NadeLight[]
+) {
+  if (selected.teamSide === "counterTerrorist") {
+    if (ctNades.length) {
+      return ctNades.pop()!;
+    } else if (anyNades.length) {
+      return anyNades.pop()!;
+    } else {
+      return tNades.pop()!;
+    }
+  } else if (selected.teamSide === "terrorist") {
+    if (tNades.length) {
+      return tNades.pop()!;
+    } else if (anyNades.length) {
+      return anyNades.pop()!;
+    } else {
+      return ctNades.pop()!;
+    }
+  } else {
+    if (tNades.length) {
+      return tNades.pop()!;
+    } else if (anyNades.length) {
+      return anyNades.pop()!;
+    } else {
+      return ctNades.pop()!;
+    }
+  }
 }
 
 // Helper function to shuffle an array in place
