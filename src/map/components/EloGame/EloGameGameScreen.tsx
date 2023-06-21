@@ -1,9 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import ViewSlider from "react-view-slider";
 import { NadeLight } from "../../../nade/models/Nade";
 import { EloGameVS } from "./EloGameVS";
 import { NadeApi } from "../../../nade/data/NadeApi";
 import { Dimensions } from "../../../constants/Constants";
+import { useGa } from "../../../utils/Analytics";
 
 type Props = {
   pairings: NadeLight[][];
@@ -11,28 +12,30 @@ type Props = {
 };
 
 export const EloGameGameScreen: FC<Props> = ({ pairings, onFinish }) => {
+  const ga = useGa();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const isDone = activeIndex >= pairings.length;
-    if (isDone) {
-      onFinish();
-    }
-  }, [activeIndex, onFinish, pairings.length]);
-
   // Callback function to select a winner and remove them from the pairings
-  const onSelectWinner = (
-    nadeOneId: string,
-    nadeTwoId: string,
-    winnerId: string
-  ) => {
-    setActiveIndex((curIndex) => curIndex + 1);
-    NadeApi.eloGame({
-      nadeOneId,
-      nadeTwoId,
-      winnerId,
-    });
-  };
+  const onSelectWinner = useCallback(
+    (nadeOneId: string, nadeTwoId: string, winnerId: string) => {
+      ga.event({
+        category: "map_page",
+        action: "elo_cast_vote",
+      });
+      NadeApi.eloGame({
+        nadeOneId,
+        nadeTwoId,
+        winnerId,
+      });
+      if (activeIndex === pairings.length - 1) {
+        onFinish();
+      } else {
+        setActiveIndex((curIndex) => curIndex + 1);
+      }
+    },
+    [ga, activeIndex, onFinish, pairings.length]
+  );
+
   const renderItem = ({ index }: { index: number }) => {
     const currentGame = pairings[index];
     if (!currentGame) {
