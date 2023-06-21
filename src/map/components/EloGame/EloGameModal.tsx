@@ -161,7 +161,7 @@ export const useEloGame = () => {
     (nades: NadeLight[]) => {
       ga.event({
         category: "map_page",
-        action: "start_elo_game",
+        action: "elo_start_click",
       });
       setEloNades(nades);
     },
@@ -171,7 +171,7 @@ export const useEloGame = () => {
   const closeEloGame = useCallback(() => {
     ga.event({
       category: "map_page",
-      action: "close_elo_game",
+      action: "elo_close_click",
     });
     setEloNades(null);
   }, [ga]);
@@ -179,7 +179,7 @@ export const useEloGame = () => {
   const finishEloGame = useCallback(() => {
     ga.event({
       category: "map_page",
-      action: "finish_elo_game",
+      action: "elo_finish",
     });
     setEloNades(null);
   }, [ga]);
