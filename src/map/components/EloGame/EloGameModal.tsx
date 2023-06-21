@@ -23,6 +23,7 @@ type Props = {
 };
 
 export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
+  const ga = useGa();
   const { colors } = useTheme();
   const [pairings, setPairings] = useState<NadeLight[][]>([]);
   const [gameState, setGameState] = useState<"init" | "start" | "end">("init");
@@ -67,7 +68,13 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
           {gameState === "init" && (
             <EloGameStartScreen
               numPairings={pairings.length}
-              onStart={() => setGameState("start")}
+              onStart={() => {
+                ga.event({
+                  category: "map_page",
+                  action: "elo_start_game",
+                });
+                setGameState("start");
+              }}
             />
           )}
           {gameState === "start" && (
@@ -161,7 +168,7 @@ export const useEloGame = () => {
     (nades: NadeLight[]) => {
       ga.event({
         category: "map_page",
-        action: "elo_start_click",
+        action: "elo_open_click",
       });
       setEloNades(nades);
     },
