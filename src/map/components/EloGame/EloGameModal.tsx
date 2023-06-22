@@ -35,9 +35,14 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
 
   useEffect(() => {
     const pairings = createPairings(nades);
-    const maxedPairings = pairings.slice(0, 10);
+    if (pairings.length > 10) {
+      const maxedPairings = pairings.slice(0, 10);
 
-    setPairings(maxedPairings);
+      setPairings(maxedPairings);
+    } else {
+      setPairings(pairings);
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
