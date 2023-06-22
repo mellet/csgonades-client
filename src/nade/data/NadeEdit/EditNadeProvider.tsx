@@ -25,7 +25,7 @@ export const EditNadeProvider: FC<EditNadeProviderProps> = ({
     endPosition: nade.endPosition,
     gameMode: nade.gameMode,
     gfycat: nade.gfycat,
-    imageBase64: nade.imageMain.url,
+    imageBase64: nade.imageMain.url || nade.imageMainThumb?.url,
     isPro: nade.isPro,
     lineUpImageBase64: nade.imageLineup?.url,
     map: nade.map,

@@ -1,5 +1,4 @@
 import { FC, useMemo } from "react";
-import { dateDaysAgo } from "../utils/DateUtils";
 import {
   FaFireAlt,
   FaRetweet,
@@ -19,30 +18,15 @@ type Props = {
 
 export const ScoreIndicator: FC<Props> = ({
   favoriteCount,
-  viewCount,
   createdAt,
   score,
 }) => {
-  const isLowEngagement = useIsLowEngagementNade(
-    favoriteCount,
-    viewCount,
-    createdAt
-  );
   const isNew = isNewNade(createdAt);
+  const lowScore = favoriteCount < 10 && score < 1350;
+  const isGood = score >= 1400 && favoriteCount > 20;
+  const isVeryGood = score >= 1450 && favoriteCount > 50;
 
   const iconSelector = useMemo(() => {
-    if (isLowEngagement) {
-      return (
-        <Popup
-          position="right center"
-          content="This nade is probably not very useful. Considerder deleting it."
-          inverted
-          size="tiny"
-          trigger={<FaSadCry color="#f20000" />}
-        />
-      );
-    }
-
     if (isNew) {
       return (
         <Popup
@@ -55,7 +39,7 @@ export const ScoreIndicator: FC<Props> = ({
       );
     }
 
-    if (score >= 100) {
+    if (isVeryGood) {
       return (
         <>
           <Popup
@@ -69,7 +53,7 @@ export const ScoreIndicator: FC<Props> = ({
       );
     }
 
-    if (score > 50) {
+    if (isGood) {
       return (
         <>
           <Popup
@@ -80,6 +64,18 @@ export const ScoreIndicator: FC<Props> = ({
             trigger={<FaSmileBeam color="#46a800" />}
           />
         </>
+      );
+    }
+
+    if (lowScore) {
+      return (
+        <Popup
+          position="right center"
+          content="This nade is probably not very useful."
+          inverted
+          size="tiny"
+          trigger={<FaSadCry color="#f20000" />}
+        />
       );
     }
 
@@ -94,7 +90,7 @@ export const ScoreIndicator: FC<Props> = ({
         />
       </>
     );
-  }, [isLowEngagement, isNew, score]);
+  }, [isGood, isNew, isVeryGood, lowScore]);
 
   return (
     <>
@@ -103,23 +99,3 @@ export const ScoreIndicator: FC<Props> = ({
     </>
   );
 };
-
-export function useIsLowEngagementNade(
-  favoriteCount: number,
-  viewCount: number,
-  created: Date | string
-) {
-  const isLowEngagementNade = useMemo(() => {
-    const isOldEnough = dateDaysAgo(created) > 60;
-
-    if (!isOldEnough || favoriteCount > 5) {
-      return false;
-    }
-
-    const popFactor = viewCount / 1000 / favoriteCount;
-
-    return popFactor > 1.5;
-  }, [favoriteCount, viewCount, created]);
-
-  return isLowEngagementNade;
-}
