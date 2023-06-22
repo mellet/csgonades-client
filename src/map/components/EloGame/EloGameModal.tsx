@@ -10,14 +10,14 @@ import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
-import { createPairings } from "../../../utils/PairingUtils";
+import { createPairings, shuffleArrays } from "../../../utils/PairingUtils";
 import { EloGameStartScreen } from "./EloGameStartScreen";
 import { EloGameGameScreen } from "./EloGameGameScreen";
 import { EloGameFinishScreen } from "./EloGameFinishScreen";
 import { FaTimesCircle } from "react-icons/fa";
 
 type Props = {
-  nades: NadeLight[];
+  nades: NadeLight[][];
   onClose: () => void;
   onFinish: () => void;
 };
@@ -34,15 +34,14 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
   };
 
   useEffect(() => {
-    const pairings = createPairings(nades);
-    if (pairings.length > 10) {
-      const maxedPairings = pairings.slice(0, 10);
-
-      setPairings(maxedPairings);
-    } else {
-      setPairings(pairings);
+    let pairings: NadeLight[][] = [];
+    for (const nadeList of nades) {
+      const theNadeList = nadeList as NadeLight[];
+      const pairList = createPairings(theNadeList);
+      pairings = [...pairings, ...pairList];
     }
-
+    const shuffledPairings = shuffleArrays(pairings);
+    setPairings(shuffledPairings);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -168,10 +167,10 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
 
 export const useEloGame = () => {
   const ga = useGa();
-  const [eloNades, setEloNades] = useState<NadeLight[] | null>(null);
+  const [eloNades, setEloNades] = useState<NadeLight[][] | null>(null);
 
   const showEloGame = useCallback(
-    (nades: NadeLight[]) => {
+    (nades: NadeLight[][]) => {
       ga.event({
         category: "map_page",
         action: "elo_open_click",
