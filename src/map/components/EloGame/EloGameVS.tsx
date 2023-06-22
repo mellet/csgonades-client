@@ -5,6 +5,7 @@ import {
   getNadeLineUpImageThumb,
   getNadeMainImage,
 } from "../../../nade/components/NadeItem/Views/NadeItemView";
+import { EloGameNadeTitle } from "./EloGameNadeTitle";
 
 type Props = {
   nadeOne: NadeLight;
@@ -26,6 +27,7 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             onSelectWinner(nadeOne.id, nadeTwo.id, nadeOne.id);
           }}
         >
+          <EloGameNadeTitle nade={nadeOne} />
           <GfycatThumbnail
             avgColor={nadeOne.gfycat?.avgColor}
             gfyId={nadeOne.gfycat?.gfyId}
@@ -48,6 +50,7 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             onSelectWinner(nadeOne.id, nadeTwo.id, nadeTwo.id);
           }}
         >
+          <EloGameNadeTitle nade={nadeTwo} />
           <GfycatThumbnail
             avgColor={nadeTwo.gfycat?.avgColor}
             gfyId={nadeTwo.gfycat?.gfyId}
@@ -67,7 +70,6 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
           flex: 1;
           opacity: 0.9;
           cursor: pointer;
-          border: 1px solid rgba(0, 0, 0, 0.75);
         }
 
         .vs {

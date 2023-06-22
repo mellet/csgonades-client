@@ -127,7 +127,7 @@ export function generateNadeItemTitle(
       `${
         map ? capitalize(map) + " " : ""
       }${endPosition} One-Way ${nadeTypeString(nadeType)}`,
-      `from ${starPosition}`,
+      ` from ${starPosition}`,
     ];
   }
   if (starPosition && endPosition && nadeType) {
@@ -135,7 +135,7 @@ export function generateNadeItemTitle(
       `${map ? capitalize(map) + " " : ""} ${endPosition} ${nadeTypeString(
         nadeType
       )}`,
-      `from ${starPosition}`,
+      ` from ${starPosition}`,
     ];
   } else {
     return ["No Title", "..."];

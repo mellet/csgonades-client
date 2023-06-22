@@ -79,6 +79,7 @@ export interface NadeLight {
   isFavorited?: boolean;
   isNew?: boolean;
   isPro?: boolean;
+  map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
