@@ -6,7 +6,6 @@ import { GfycatThumbnail } from "../GfycatThumbnail";
 import { NadeItemTitle } from "../Views/NadeItemTitle";
 import { NadeStats } from "../NadeStats/NadeStats";
 import Link from "next/link";
-import { useIsLowEngagementNade } from "../Utils/NadeUtils";
 
 interface Props {
   nade: NadeLight;
@@ -14,20 +13,11 @@ interface Props {
   onRemoveAsFavorite: (nadeId: string) => void;
   isFavorited: boolean;
   width?: number;
-  disableLink?: boolean;
 }
 
 export const NadeItemView: FC<Props> = memo(
   ({ nade, isFavorited, onAddAsFavorite, onRemoveAsFavorite, width }) => {
     const { colors } = useTheme();
-
-    const isLowEngagementNade = useIsLowEngagementNade(
-      nade.favoriteCount,
-      nade.viewCount,
-      nade.createdAt
-    );
-
-    const borderColor = isLowEngagementNade ? colors.WARNING : colors.BORDER;
 
     return (
       <>
@@ -35,17 +25,17 @@ export const NadeItemView: FC<Props> = memo(
           <div className={"nadebox"} style={{ display: "inline-block" }}>
             <Link
               href={`/nades/${nade.slug || nade.id}`}
-              scroll={true}
               legacyBehavior
+              scroll={true}
             >
               <a role="button">
                 <NadeItemTitle
+                  elo={nade.eloScore}
                   endPosition={nade.endPosition}
                   oneWay={nade.oneWay}
                   startPosition={nade.startPosition}
                   status={nade.status}
                   type={nade.type}
-                  elo={nade.eloScore}
                 />
                 <div className="video">
                   <GfycatThumbnail
@@ -62,20 +52,21 @@ export const NadeItemView: FC<Props> = memo(
               </a>
             </Link>
             <NadeStats
-              nadeId={nade.id}
-              slug={nade.slug}
+              addAsFavorite={onAddAsFavorite}
               commentCount={nade.commentCount}
               createdAt={nade.createdAt}
               favoriteCount={nade.favoriteCount}
+              gameMode={nade.gameMode || "csgo"}
               isFavorited={isFavorited}
               isPro={Boolean(nade.proUrl)}
               movement={nade.movement}
+              nadeId={nade.id}
+              removeAsFavorite={onRemoveAsFavorite}
+              side={nade.teamSide}
+              slug={nade.slug}
               technique={nade.technique}
               tickrate={nade.tickrate}
               viewCount={nade.viewCount}
-              side={nade.teamSide}
-              addAsFavorite={onAddAsFavorite}
-              removeAsFavorite={onRemoveAsFavorite}
             />
           </div>
         </div>
@@ -88,14 +79,13 @@ export const NadeItemView: FC<Props> = memo(
           .nadebox {
             background: ${colors.DP02};
             border-radius: ${Dimensions.BORDER_RADIUS};
-            border: 1px solid ${borderColor};
+            border: 1px solid ${colors.BORDER};
+            margin-bottom: -6px;
             max-width: 400px;
             min-width: 265px;
             overflow: hidden;
             transition: box-shadow ${AnimationTimings.fast}s;
             width: 100%;
-            margin-bottom: -6px;
-            background: ${colors.DP02};
           }
 
           .nadebox:hover {

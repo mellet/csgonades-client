@@ -4,6 +4,7 @@ import { useTheme } from "../../core/settings/useTheme";
 import { NadeItemTitle } from "./NadeItem/Views/NadeItemTitle";
 import { GfycatThumbnail } from "./NadeItem/GfycatThumbnail";
 import { NadeStats } from "./NadeItem/NadeStats/NadeStats";
+import { noOp } from "../../utils/Common";
 
 type Props = {
   nade: Partial<NadeCreateBody>;
@@ -21,17 +22,18 @@ export const PreviewNade: FC<Props> = ({
   const { colors } = useTheme();
   const {
     endPosition,
+    gameMode,
     gfycat,
     imageBase64,
+    lineUpImageBase64,
     movement,
     oneWay,
+    proUrl,
     startPosition,
+    teamSide,
     technique,
     tickrate,
     type,
-    lineUpImageBase64,
-    proUrl,
-    teamSide,
     youTubeId,
   } = nade;
 
@@ -39,60 +41,57 @@ export const PreviewNade: FC<Props> = ({
     <>
       <div className="nade-container">
         <NadeItemTitle
+          elo={0}
           endPosition={endPosition}
           oneWay={oneWay}
           startPosition={startPosition}
           status="accepted"
           type={type}
-          elo={0}
         />
         <GfycatThumbnail
           disableAction
           gfyId={gfycat?.gfyId || ""}
+          lineUpThumnUrl={lineUpImageBase64}
           nadeId=""
           smallVideoUrl={gfycat?.smallVideoUrl}
           thumbnailUrl={imageBase64}
-          lineUpThumnUrl={lineUpImageBase64}
           youTubeId={youTubeId}
         />
         <NadeStats
-          nadeId={"preview"}
+          addAsFavorite={noOp}
           commentCount={commentCount || 10}
           createdAt={createdAt || new Date()}
           favoriteCount={100}
+          gameMode={gameMode || "csgo"}
+          isPro={Boolean(proUrl)}
           movement={movement}
+          nadeId={"preview"}
+          removeAsFavorite={noOp}
+          side={teamSide}
           technique={technique}
           tickrate={tickrate}
-          isPro={Boolean(proUrl)}
-          side={teamSide}
           viewCount={viewCount || 10}
-          addAsFavorite={() => {
-            // no-op
-          }}
-          removeAsFavorite={() => {
-            // no-op
-          }}
         />
       </div>
       <style jsx>{`
         .nade-container {
           background: ${colors.DP03};
-          border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 5px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
           overflow: hidden;
         }
 
         .title-container {
           display: grid;
-          grid-template-columns: 20px 1fr 20px;
           grid-template-areas: ". title icon";
+          grid-template-columns: 20px 1fr 20px;
           padding: 10px 15px;
         }
 
         .title {
           grid-area: title;
-          white-space: nowrap;
           text-align: center;
+          white-space: nowrap;
         }
       `}</style>
     </>

@@ -11,17 +11,19 @@ import { isNewNade } from "../../../../utils/Common";
 import { StatFavorite } from "./StatFavorite";
 import Link from "next/link";
 import { TeamSide } from "../../../models/TeamSide";
+import { GameMode } from "../../../models/GameMode";
 
 type NadeStatsProps = {
-  slug?: string;
-  nadeId: string;
   commentCount: number;
   createdAt: Date | string;
   favoriteCount: number;
+  gameMode: GameMode;
   isFavorited?: boolean;
   isPro?: boolean;
   movement?: NadeMovement;
+  nadeId: string;
   side?: TeamSide;
+  slug?: string;
   technique?: Technique;
   tickrate?: Tickrate;
   viewCount: number;
@@ -30,16 +32,17 @@ type NadeStatsProps = {
 };
 
 export const NadeStats: FC<NadeStatsProps> = ({
-  nadeId,
-  slug,
   commentCount,
   createdAt,
   favoriteCount,
+  gameMode,
   isFavorited,
   isPro,
   movement,
-  technique,
+  nadeId,
   side,
+  slug,
+  technique,
   tickrate,
   viewCount,
   addAsFavorite,
@@ -51,6 +54,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
     movement === "crouchwalking" ||
     movement === "walking";
   const isJumpThrow = technique?.includes("jumpthrow");
+  const isCsgo = gameMode === "csgo";
   const nadeIsNew = isNewNade(createdAt);
 
   // Show minimum of 1 if favorited by user
@@ -115,7 +119,7 @@ export const NadeStats: FC<NadeStatsProps> = ({
             />
           )}
 
-          {isJumpThrow && (
+          {isJumpThrow && isCsgo && (
             <Popup
               content={tickrateTooltip(tickrate)}
               inverted

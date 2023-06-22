@@ -161,3 +161,7 @@ export function useGameString() {
     shortGameString: short,
   };
 }
+
+export const noOp = () => {
+  // No-op
+};
