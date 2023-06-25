@@ -1,4 +1,3 @@
-import { UserLight } from "../../users/models/User";
 import { GfycatData } from "./GfycatData";
 import { NadeMovement } from "./NadeMovement";
 import { Tickrate } from "./NadeTickrate";
@@ -9,42 +8,28 @@ import { CsgoMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 import { GameMode } from "./GameMode";
 import { MapCoordinates } from "./MapCoordinates";
-import { NadeImages } from "./NadeImages";
 
-type StatusInfo = string;
-
-export interface Nade {
-  commentCount: number;
-  createdAt: Date | string;
+export type NadeUpdateBody = {
   description?: string;
-  eloScore: number;
   endPosition?: string;
-  favoriteCount: number;
-  gameMode: GameMode;
+  gameMode?: GameMode;
   gfycat?: GfycatData;
-  id: string;
-  images: NadeImages;
-  isFavorited?: boolean;
+  imageBase64?: string;
   isPro?: boolean;
+  lineUpImageBase64?: string;
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
   mapStartCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;
-  score: number;
   setPos?: string;
   slug?: string;
   startPosition?: string;
-  status: NadeStatus;
-  statusInfo?: StatusInfo;
-  steamId: string;
+  status?: NadeStatus;
   teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;
-  updatedAt: string;
-  user: UserLight;
-  viewCount: number;
   youTubeId?: string;
-}
+};

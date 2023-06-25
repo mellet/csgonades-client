@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { NadeLight } from "../../models/Nade";
+import { NadeLight } from "../../models/NadeLight";
 import {
   useFavorites,
   useIsNadeFavorited,

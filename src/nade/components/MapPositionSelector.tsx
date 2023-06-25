@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from "react";
 import { CsgoMap } from "../../map/models/CsGoMap";
-import { MapCoordinates } from "../models/Nade";
+import { MapCoordinates } from "../models/MapCoordinates";
 import CsMapBaseCanvas from "../../map/components/CsMapCanvas/CsMapBaseCanvas";
 import { useTheme } from "../../core/settings/useTheme";
 import { Dimensions } from "../../constants/Constants";

@@ -1,4 +1,5 @@
-import { MapCoordinates, NadeLight } from "../nade/models/Nade";
+import { MapCoordinates } from "../nade/models/MapCoordinates";
+import { NadeLight } from "../nade/models/NadeLight";
 
 export function custerNades(nades: NadeLight[]) {
   const maxDistance = 30;

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { NadeType } from "../../nade/models/NadeType";
 import {

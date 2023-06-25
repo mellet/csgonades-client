@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { User } from "../models/User";
 import { useTheme } from "../../core/settings/useTheme";
 import { CsgnList } from "../../shared-components/list/CsgnList";

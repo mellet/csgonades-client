@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { GameMode } from "../models/GameMode";
 import { NadeApi } from "./NadeApi";
-import { NadeLight } from "../models/Nade";
+import { NadeLight } from "../models/NadeLight";
 import { useFavorites } from "../../favorites/data/useFavorites";
 import { useMemo } from "react";
 import { addFavoriteToNades } from "../../map/logic/helpers";

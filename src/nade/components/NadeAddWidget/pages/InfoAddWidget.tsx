@@ -4,7 +4,7 @@ import { Box } from "../../../../shared-components/box/Box";
 import { SplitLayout } from "../../../../shared-components/box/SplitBox";
 import { Seperator } from "../../../../shared-components/Seperator";
 import { Title } from "../../../../shared-components/title/Title";
-import { NadeCreateBody } from "../../../models/Nade";
+import { NadeCreateBody } from "../../../models/NadeCreateBody";
 import { Technique } from "../../../models/Technique";
 import { DescriptionInput } from "../../NadeInputs/DescriptionInput";
 import { NadeEndPosInput } from "../../NadeInputs/EndPosInput";

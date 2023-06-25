@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { generateNadeItemTitle } from "../../../utils/Common";
 import { useTheme } from "../../../core/settings/useTheme";
 import { Dimensions } from "../../../constants/Constants";

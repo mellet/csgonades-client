@@ -4,7 +4,7 @@ import { useFilterByType } from "../../../logic/useFilterByType";
 import { nadeTypeString } from "../../../../nade/models/NadeType";
 import { ContributorUser } from "./ContributorUser";
 import { useNadeContributors } from "./useNadeContributors";
-import { NadeLight } from "../../../../nade/models/Nade";
+import { NadeLight } from "../../../../nade/models/NadeLight";
 import { TopContributorLoading } from "./TopContributorLoading";
 
 type ContListProps = {

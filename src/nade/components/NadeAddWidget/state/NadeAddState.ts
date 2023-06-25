@@ -1,4 +1,4 @@
-import { NadeCreateBody } from "../../../models/Nade";
+import { NadeCreateBody } from "../../../models/NadeCreateBody";
 
 export type NadeCreateSteps =
   | "video"

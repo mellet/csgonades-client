@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { useCallback, useMemo, useState } from "react";
 import { useSignedInUser } from "../../../core/authentication/useSignedInUser";
 import { useDisplayToast } from "../../../core/toasts/hooks/useDisplayToast";
-import { Nade, NadeUpdateBody } from "../../models/Nade";
+import { Nade } from "../../models/Nade";
+import { NadeUpdateBody } from "../../models/NadeUpdateBody";
 import { NadeApi } from "../NadeApi";
 
 export const useUpdateNade = (nade: Nade, updateNadeBody: NadeUpdateBody) => {
@@ -76,7 +77,7 @@ function createNadeUpdateBody(
   const endPosition = newValueIfDifferent(nade.endPosition, update.endPosition);
   const gfycat = newValueIfDifferent(nade.gfycat, update.gfycat);
   const imageBase64 = newValueIfDifferent(
-    nade.imageMain.url,
+    nade.images.result.large,
     update.imageBase64
   );
   const map = newValueIfDifferent(nade.map, update.map);
@@ -96,7 +97,7 @@ function createNadeUpdateBody(
   const type = newValueIfDifferent(nade.type, update.type);
   const oneWay = newBooleanValueIfDifferent(nade.oneWay, update.oneWay);
   const lineUpImageBase64 = newValueIfDifferent(
-    nade.imageLineup?.url,
+    nade.images.lineup.large,
     update.lineUpImageBase64
   );
   const isPro = newBooleanValueIfDifferent(nade.isPro, update.isPro);

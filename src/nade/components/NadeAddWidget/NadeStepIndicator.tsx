@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FaCheck } from "react-icons/fa";
 import { useTheme } from "../../../core/settings/useTheme";
-import { NadeCreateBody } from "../../models/Nade";
+import { NadeCreateBody } from "../../models/NadeCreateBody";
 import { NadeCreateSteps } from "./state/NadeAddState";
 
 type Props = {

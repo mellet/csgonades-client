@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { AnimationTimings, Dimensions } from "../../../../constants/Constants";
-import { NadeLight } from "../../../models/Nade";
+import { NadeLight } from "../../../models/NadeLight";
 import { useTheme } from "../../../../core/settings/useTheme";
 import { GfycatThumbnail } from "../GfycatThumbnail";
 import { NadeItemTitle } from "../Views/NadeItemTitle";
@@ -41,11 +41,11 @@ export const NadeItemView: FC<Props> = memo(
                   <GfycatThumbnail
                     avgColor={nade.gfycat?.avgColor}
                     gfyId={nade.gfycat?.gfyId}
-                    lineUpThumnUrl={getNadeLineUpImageThumb(nade)}
+                    lineUpThumnUrl={nade.images.lineup.small}
                     nadeId={nade.id}
                     nadeSlug={nade.slug}
                     smallVideoUrl={nade.gfycat?.smallVideoUrl}
-                    thumbnailUrl={getNadeMainThumbImage(nade)}
+                    thumbnailUrl={nade.images.result.small}
                     youTubeId={nade.youTubeId}
                   />
                 </div>
@@ -107,15 +107,3 @@ export const NadeItemView: FC<Props> = memo(
     );
   }
 );
-
-export function getNadeMainThumbImage(nade: NadeLight) {
-  return nade.imageMainThumb?.url || nade.imageMain?.url || "";
-}
-
-export function getNadeMainImage(nade: NadeLight) {
-  return nade.imageMain?.url || nade.imageMainThumb?.url || "";
-}
-
-export function getNadeLineUpImageThumb(nade: NadeLight) {
-  return nade.imageLineupThumb?.url;
-}

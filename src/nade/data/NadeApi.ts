@@ -2,12 +2,10 @@ import axios from "axios";
 import { ok } from "neverthrow";
 import { AppConfig } from "../../constants/Constants";
 import { CsgoMap } from "../../map/models/CsGoMap";
-import {
-  Nade,
-  NadeLight,
-  NadeUpdateBody,
-  NadeCreateBody,
-} from "../models/Nade";
+import { Nade } from "../models/Nade";
+import { NadeUpdateBody } from "../models/NadeUpdateBody";
+import { NadeCreateBody } from "../models/NadeCreateBody";
+import { NadeLight } from "../models/NadeLight";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";

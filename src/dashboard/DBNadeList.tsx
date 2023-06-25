@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { NadeLight } from "../nade/models/Nade";
+import { NadeLight } from "../nade/models/NadeLight";
 import { NadeStatus } from "../nade/models/Status";
 import { generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../shared-components/PageLink";
@@ -25,7 +25,6 @@ import { User } from "../users/models/User";
 import { NadeIcon } from "../shared-components/nade-icons";
 import Image from "next/image";
 import { Dimensions } from "../constants/Constants";
-import { getNadeMainImage } from "../nade/components/NadeItem/Utils/NadeUtils";
 import { useGameMode } from "../core/useGameMode";
 import { ScoreIndicator } from "./ScoreIndicator";
 
@@ -124,8 +123,6 @@ type NadeItemProps = {
 const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
   const { colors } = useTheme();
 
-  const nadeMainImage = getNadeMainImage(nade);
-
   return (
     <>
       <tr className="nade-item">
@@ -141,7 +138,7 @@ const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
               <Image
                 fill
                 alt="Nade image"
-                src={nadeMainImage}
+                src={nade.images.result.small}
                 style={{
                   objectFit: "contain",
                 }}

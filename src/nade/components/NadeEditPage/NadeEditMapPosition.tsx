@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CsgoMap } from "../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../models/Nade";
+import { MapCoordinates } from "../../models/MapCoordinates";
 import { MapPositionSelector } from "../MapPositionSelector";
 
 type Props = {

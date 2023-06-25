@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { FC } from "react";
 import { useTheme } from "../../../core/settings/useTheme";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { capitalize, useGameString } from "../../../utils/Common";
 import { CsgoMap } from "../../models/CsGoMap";
 

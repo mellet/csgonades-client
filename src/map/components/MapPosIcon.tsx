@@ -1,5 +1,5 @@
 import { FC, memo, useMemo } from "react";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { NadeType } from "../../nade/models/NadeType";
 import { NadeIcon } from "../../shared-components/nade-icons";
 

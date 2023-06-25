@@ -4,7 +4,6 @@ import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
 import { NadeMeta } from "../NadeMeta/NadeMeta";
 import { Nade } from "../../models/Nade";
-import { getNadeLineUpImage } from "../NadeItem/Utils/NadeUtils";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 import { CsGoYouTubePlayer } from "./YouTubePlayer";
 import { NadeStats } from "./NadeStats";
@@ -17,8 +16,7 @@ type Tabs = "video" | "lineup";
 
 export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
   const [currentTab, setCurrentTab] = useState<Tabs>("video");
-  const lineUpUrl = getNadeLineUpImage(nade);
-  const hasLineUp = Boolean(lineUpUrl);
+  const hasLineUp = Boolean(nade.images.lineup.large);
   const { isMobile } = useIsDeviceSize();
 
   return (
@@ -54,8 +52,8 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
             </div>
           )}
 
-          {lineUpUrl && currentTab === "lineup" && (
-            <NadeLineUpImage url={lineUpUrl} />
+          {hasLineUp && currentTab === "lineup" && (
+            <NadeLineUpImage url={nade.images.lineup.large} />
           )}
         </div>
       </div>

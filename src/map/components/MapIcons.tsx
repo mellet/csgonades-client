@@ -1,5 +1,5 @@
 import { FC, memo } from "react";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { MapPosIcon } from "./MapPosIcon";
 
 type Props = {

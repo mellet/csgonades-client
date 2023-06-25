@@ -1,6 +1,6 @@
 import { CsgoMap } from "../../../map/models/CsGoMap";
 import { GameMode } from "../../models/GameMode";
-import { MapCoordinates } from "../../models/Nade";
+import { MapCoordinates } from "../../models/MapCoordinates";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
 import { NadeType } from "../../models/NadeType";

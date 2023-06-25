@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { custerNades } from "../../utils/Cluster";
 import { useFilterServerSideNades } from "./useFilteredNades";
 

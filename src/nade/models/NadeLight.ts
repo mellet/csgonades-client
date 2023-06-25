@@ -11,12 +11,9 @@ import { GameMode } from "./GameMode";
 import { MapCoordinates } from "./MapCoordinates";
 import { NadeImages } from "./NadeImages";
 
-type StatusInfo = string;
-
-export interface Nade {
+export interface NadeLight {
   commentCount: number;
   createdAt: Date | string;
-  description?: string;
   eloScore: number;
   endPosition?: string;
   favoriteCount: number;
@@ -25,25 +22,21 @@ export interface Nade {
   id: string;
   images: NadeImages;
   isFavorited?: boolean;
+  isNew?: boolean;
   isPro?: boolean;
   map?: CsgoMap;
   mapEndCoord?: MapCoordinates;
-  mapStartCoord?: MapCoordinates;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;
   score: number;
-  setPos?: string;
   slug?: string;
   startPosition?: string;
   status: NadeStatus;
-  statusInfo?: StatusInfo;
-  steamId: string;
   teamSide?: TeamSide;
   technique?: Technique;
   tickrate?: Tickrate;
   type?: NadeType;
-  updatedAt: string;
   user: UserLight;
   viewCount: number;
   youTubeId?: string;

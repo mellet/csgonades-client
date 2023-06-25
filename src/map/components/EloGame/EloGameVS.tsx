@@ -1,10 +1,6 @@
 import { FC } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { GfycatThumbnail } from "../../../nade/components/NadeItem/GfycatThumbnail";
-import {
-  getNadeLineUpImageThumb,
-  getNadeMainImage,
-} from "../../../nade/components/NadeItem/Views/NadeItemView";
 import { EloGameNadeTitle } from "./EloGameNadeTitle";
 
 type Props = {
@@ -32,13 +28,11 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             <GfycatThumbnail
               avgColor={nadeOne.gfycat?.avgColor}
               gfyId={nadeOne.gfycat?.gfyId}
-              lineUpThumnUrl={
-                nadeOne.imageLineup?.url || getNadeLineUpImageThumb(nadeOne)
-              }
+              lineUpThumnUrl={nadeOne.images.lineup.medium}
               nadeId={nadeOne.id}
               nadeSlug={nadeOne.slug}
               smallVideoUrl={nadeOne.gfycat?.smallVideoUrl}
-              thumbnailUrl={getNadeMainImage(nadeOne)}
+              thumbnailUrl={nadeOne.images.result.medium}
               youTubeId={nadeOne.youTubeId}
               quality="hd"
               speed="normal"
@@ -55,11 +49,11 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             <GfycatThumbnail
               avgColor={nadeTwo.gfycat?.avgColor}
               gfyId={nadeTwo.gfycat?.gfyId}
-              lineUpThumnUrl={getNadeLineUpImageThumb(nadeTwo)}
+              lineUpThumnUrl={nadeTwo.images.lineup.medium}
               nadeId={nadeTwo.id}
               nadeSlug={nadeTwo.slug}
               smallVideoUrl={nadeTwo.gfycat?.smallVideoUrl}
-              thumbnailUrl={getNadeMainImage(nadeTwo)}
+              thumbnailUrl={nadeTwo.images.result.medium}
               youTubeId={nadeTwo.youTubeId}
               speed="normal"
             />

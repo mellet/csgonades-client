@@ -1,5 +1,5 @@
 import { FC, MouseEventHandler } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";

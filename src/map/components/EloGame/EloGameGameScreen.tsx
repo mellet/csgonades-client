@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from "react";
 import ViewSlider from "react-view-slider";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { EloGameVS } from "./EloGameVS";
 import { NadeApi } from "../../../nade/data/NadeApi";
 import { Dimensions } from "../../../constants/Constants";

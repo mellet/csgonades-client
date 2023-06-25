@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { useGa } from "../../../utils/Analytics";
 
 function useSuggestedNades() {

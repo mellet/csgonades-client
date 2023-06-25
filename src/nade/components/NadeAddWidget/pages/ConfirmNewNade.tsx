@@ -7,7 +7,7 @@ import { Box } from "../../../../shared-components/box/Box";
 import { Button } from "../../../../shared-components/buttons/Button";
 import { Title } from "../../../../shared-components/title/Title";
 import { NadeApi } from "../../../data/NadeApi";
-import { NadeCreateBody } from "../../../models/Nade";
+import { NadeCreateBody } from "../../../models/NadeCreateBody";
 import { PreviewNade } from "../../PreviewNades";
 import { useCreateNade } from "../state/NadeAddStateProvider";
 import { useGameMode } from "../../../../core/useGameMode";

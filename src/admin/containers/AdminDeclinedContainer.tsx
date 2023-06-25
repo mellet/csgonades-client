@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { NadeApi } from "../../nade/data/NadeApi";

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../../../nade/models/Nade";
+import { NadeLight } from "../../../../nade/models/NadeLight";
 import { UserContributor } from "./UserContributor";
 
 export const useNadeContributors = (nades: NadeLight[], num: number) => {

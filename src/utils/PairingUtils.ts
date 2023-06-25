@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { NadeLight } from "../nade/models/Nade";
+import { NadeLight } from "../nade/models/NadeLight";
 
 export function createPairings(nades: NadeLight[]): NadeLight[][] {
   const updatedNades = [...nades];

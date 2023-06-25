@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { MapCoordinates } from "../../../nade/models/Nade";
+import { MapCoordinates } from "../../../nade/models/MapCoordinates";
 import { CsgoMap } from "../../models/CsGoMap";
 import {
   CanvasCircle,

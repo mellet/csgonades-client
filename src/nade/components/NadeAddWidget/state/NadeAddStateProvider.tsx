@@ -6,7 +6,7 @@ import React, {
   useReducer,
 } from "react";
 import { initialNadeAddState, NadeCreateSteps } from "./NadeAddState";
-import { NadeCreateBody } from "../../../models/Nade";
+import { NadeCreateBody } from "../../../models/NadeCreateBody";
 import { nadeAddReducer } from "./nadeAddReducer";
 import { NadeAddCallbacks, useNadeAddActions } from "./useNadeAddWidgetState";
 

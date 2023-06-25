@@ -1,3 +1,3 @@
-import { NadeUpdateBody } from "../../models/Nade";
+import { NadeUpdateBody } from "../../models/NadeUpdateBody";
 
 export type EditNadeState = NadeUpdateBody;

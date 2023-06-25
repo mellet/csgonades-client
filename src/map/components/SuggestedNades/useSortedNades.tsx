@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
-import { NadeLightSort } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
+import { NadeLightSort } from "../../../nade/models/NadeLightSort";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
 import { useFilterServerSideNades } from "../../logic/useFilteredNades";
 

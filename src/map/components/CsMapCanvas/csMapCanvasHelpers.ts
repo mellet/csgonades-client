@@ -1,4 +1,4 @@
-import { MapCoordinates } from "../../../nade/models/Nade";
+import { MapCoordinates } from "../../../nade/models/MapCoordinates";
 
 export interface CanvasCircle {
   x: number;

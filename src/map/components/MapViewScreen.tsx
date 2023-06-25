@@ -1,7 +1,7 @@
 import { FC, useRef, useState, useEffect, useCallback } from "react";
 import { useSetMapView } from "../logic/useSetMapView";
 import { Dimensions } from "../../constants/Constants";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { CsgoMap } from "../models/CsGoMap";
 import { useWindowSize } from "../../shared-components/MinSizeRender";
 import { AddNadeButton } from "./AddNadeButton";

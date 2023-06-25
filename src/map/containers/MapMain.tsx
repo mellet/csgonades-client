@@ -1,6 +1,6 @@
 import React, { FC, memo } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
-import { NadeLight } from "../../nade/models/Nade";
+import { NadeLight } from "../../nade/models/NadeLight";
 import { SEO } from "../../shared-components/SEO";
 import { capitalize } from "../../utils/Common";
 import { MapPageNades } from "../components/MapPageNades";

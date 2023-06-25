@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { NadeLight } from "../../../nade/models/Nade";
+import { NadeLight } from "../../../nade/models/NadeLight";
 import { useGa } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";

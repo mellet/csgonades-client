@@ -33,7 +33,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         key={`ld-${nade.id}`}
         name={seoTitle}
         description={descriptionSimplify(nade?.description)}
-        thumbnailUrls={[nade.imageMain?.url]}
+        thumbnailUrls={[nade.images.result.small]}
         uploadDate={createdAtString}
         contentUrl={
           nade.gfycat?.smallVideoUrl ||
@@ -49,7 +49,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         title={seoTitle}
         description={nade.description}
         canonical={`/nades/${nade.slug || nade.id}`}
-        thumbnail={nade.imageMain?.url}
+        thumbnail={nade.images.result.small}
         video={nade.gfycat?.smallVideoUrl || youTubeLink(nade.youTubeId)}
       />
 
