@@ -12,7 +12,6 @@ import { MapIcons } from "./MapIcons";
 import { FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
 import { EloGameButton } from "./EloGame/EloGameButton";
-import { shuffleArray, shuffleArrays } from "../../utils/PairingUtils";
 
 type Props = {
   allNades: NadeLight[];
@@ -55,14 +54,7 @@ const MapViewScreen: FC<Props> = ({
   }, [windowSize]);
 
   const onStartRatingGame = useCallback(() => {
-    const nadeClusters = [...clusters].filter(
-      (nadeList) => nadeList.length >= 2
-    );
-
-    const evenNadeClusters = shuffleAndMakeEven(nadeClusters);
-    shuffleArray(evenNadeClusters);
-    const nades = selectElements(evenNadeClusters, 16);
-    onStartEloGame(nades);
+    onStartEloGame(clusters);
   }, [clusters, onStartEloGame]);
 
   if (mapView === "list") {
@@ -190,39 +182,5 @@ const MapViewScreen: FC<Props> = ({
     </>
   );
 };
-
-function selectElements(arr: any[][], count: number): any[][] {
-  const result: any[][] = [];
-  let totalCount = 0;
-
-  for (const subarray of arr) {
-    const subArrayCopy = [...subarray];
-    shuffleArray(subArrayCopy);
-    const remainingCount = Math.min(count - totalCount, 8);
-    const selectedElements = subArrayCopy.slice(0, remainingCount);
-    result.push(selectedElements);
-    totalCount += selectedElements.length;
-
-    if (totalCount >= count) {
-      break;
-    }
-  }
-
-  return result;
-}
-
-function shuffleAndMakeEven(arr: NadeLight[][]): NadeLight[][] {
-  const shuffledArray = arr.map((subarray) => shuffleArrays(subarray));
-  const result: NadeLight[][] = [];
-
-  for (const subarray of shuffledArray) {
-    if (subarray.length % 2 === 1) {
-      subarray.pop();
-    }
-    result.push(subarray);
-  }
-
-  return result;
-}
 
 export default MapViewScreen;

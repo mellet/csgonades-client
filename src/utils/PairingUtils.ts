@@ -131,3 +131,109 @@ export function shuffleArrays<T>(arr: T[]): T[] {
   }
   return shuffled;
 }
+
+export const cleanAndSortNadeClusters = (nadeCluster: NadeLight[][]) => {
+  const onlyClustersWithTwoNadesOrMore = [...nadeCluster].filter(
+    (nadeList) => nadeList.length >= 2
+  );
+  const onlyEven = makeEven(onlyClustersWithTwoNadesOrMore);
+  const shuffled = shuffleArrays(onlyEven);
+
+  return shuffled;
+};
+
+function makeEven(arr: NadeLight[][]): NadeLight[][] {
+  const result: NadeLight[][] = [];
+
+  for (const subarray of arr) {
+    if (subarray.length % 2 === 1) {
+      subarray.pop();
+    }
+    result.push(subarray);
+  }
+
+  return result;
+}
+
+export function selectElements(arr: any[][], count: number): any[][] {
+  const result: any[][] = [];
+  let totalCount = 0;
+
+  for (const subarray of arr) {
+    const subArrayCopy = [...subarray];
+    shuffleArray(subArrayCopy);
+    const remainingCount = Math.min(count - totalCount, 8);
+    const selectedElements = subArrayCopy.slice(0, remainingCount);
+    result.push(selectedElements);
+    totalCount += selectedElements.length;
+
+    if (totalCount >= count) {
+      break;
+    }
+  }
+
+  return result;
+}
+
+type ExtractedNadePair = {
+  newNadePairing: NadeLight[];
+  clusters: NadeLight[][];
+};
+
+export function extractNewNadePair(clusters: NadeLight[][]): ExtractedNadePair {
+  const clustersCopy = clusters.map((cluster) => [...cluster]);
+  shuffleArray(clustersCopy);
+  let newNadePairing: NadeLight[] = [];
+  let selectedClusterIndex = -1;
+
+  for (let i = 0; i < clustersCopy.length; i++) {
+    const cluster = clustersCopy[i];
+    if (!cluster) continue; // Skip if cluster is undefined
+
+    const newNades = cluster.filter((nade) => nade.isNew);
+
+    if (newNades.length > 0 && cluster.length >= 2) {
+      const randomNewNadeIndex = getRandomIndex(newNades.length);
+      const newNade = newNades[randomNewNadeIndex];
+
+      const remainingNades = cluster.filter(
+        (_nade, index) => index !== randomNewNadeIndex
+      );
+      const randomNadeIndex = getRandomIndex(remainingNades.length);
+      const randomNade = remainingNades[randomNadeIndex];
+
+      if (newNade && randomNade) {
+        newNadePairing = [newNade, randomNade];
+        selectedClusterIndex = i;
+        break;
+      }
+    }
+  }
+
+  if (selectedClusterIndex === -1) {
+    return {
+      newNadePairing: [],
+      clusters: clustersCopy,
+    };
+  }
+
+  const clusterWithNewNade = clustersCopy[selectedClusterIndex];
+  const newNade = newNadePairing[0];
+  const randomNade = newNadePairing[1];
+
+  // Remove the selected nades from the clusters copy if it is defined
+  if (clusterWithNewNade && newNade && randomNade) {
+    clustersCopy[selectedClusterIndex] = clusterWithNewNade.filter(
+      (nade) => nade.id !== newNade.id && nade.id !== randomNade.id
+    );
+  }
+
+  return {
+    newNadePairing,
+    clusters: clustersCopy,
+  };
+}
+
+function getRandomIndex(length: number): number {
+  return Math.floor(Math.random() * length);
+}

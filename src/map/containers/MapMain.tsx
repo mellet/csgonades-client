@@ -68,7 +68,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
 
           {eloNades && (
             <EloGameModal
-              nades={eloNades}
+              nadeClusters={eloNades}
               onClose={closeEloGame}
               onFinish={finishEloGame}
             />

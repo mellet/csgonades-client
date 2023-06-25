@@ -10,19 +10,29 @@ import { NadeLight } from "../../../nade/models/Nade";
 import { useGa } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
-import { createPairings, shuffleArrays } from "../../../utils/PairingUtils";
+import {
+  cleanAndSortNadeClusters,
+  createPairings,
+  extractNewNadePair,
+  selectElements,
+  shuffleArrays,
+} from "../../../utils/PairingUtils";
 import { EloGameStartScreen } from "./EloGameStartScreen";
 import { EloGameGameScreen } from "./EloGameGameScreen";
 import { EloGameFinishScreen } from "./EloGameFinishScreen";
 import { FaTimesCircle } from "react-icons/fa";
 
 type Props = {
-  nades: NadeLight[][];
+  nadeClusters: NadeLight[][];
   onClose: () => void;
   onFinish: () => void;
 };
 
-export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
+export const EloGameModal: FC<Props> = ({
+  nadeClusters,
+  onClose,
+  onFinish,
+}) => {
   const ga = useGa();
   const { colors } = useTheme();
   const [pairings, setPairings] = useState<NadeLight[][]>([]);
@@ -35,13 +45,26 @@ export const EloGameModal: FC<Props> = ({ nades, onClose, onFinish }) => {
 
   useEffect(() => {
     let pairings: NadeLight[][] = [];
-    for (const nadeList of nades) {
+
+    const { clusters, newNadePairing } = extractNewNadePair(nadeClusters);
+
+    const numberOfPairsToSelect = newNadePairing.length ? 4 : 5;
+
+    pairings = [...pairings, newNadePairing];
+
+    const onlyBigCluster = cleanAndSortNadeClusters(clusters);
+    const cappedBigCluster = selectElements(
+      onlyBigCluster,
+      numberOfPairsToSelect * 2
+    );
+
+    for (const nadeList of cappedBigCluster) {
       const theNadeList = nadeList as NadeLight[];
       const pairList = createPairings(theNadeList);
       pairings = [...pairings, ...pairList];
     }
-    const shuffledPairings = shuffleArrays(pairings);
-    setPairings(shuffledPairings);
+
+    setPairings(shuffleArrays(pairings));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
