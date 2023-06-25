@@ -50,7 +50,9 @@ export const EloGameModal: FC<Props> = ({
 
     const numberOfPairsToSelect = newNadePairing.length ? 4 : 5;
 
-    pairings = [...pairings, newNadePairing];
+    if (newNadePairing.length) {
+      pairings = [...pairings, newNadePairing];
+    }
 
     const onlyBigCluster = cleanAndSortNadeClusters(clusters);
     const cappedBigCluster = selectElements(

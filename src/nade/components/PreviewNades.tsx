@@ -10,15 +10,9 @@ type Props = {
   nade: Partial<NadeCreateBody>;
   viewCount?: number;
   commentCount?: number;
-  createdAt?: Date | string;
 };
 
-export const PreviewNade: FC<Props> = ({
-  nade,
-  commentCount,
-  viewCount,
-  createdAt,
-}) => {
+export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
   const { colors } = useTheme();
   const {
     endPosition,
@@ -58,9 +52,9 @@ export const PreviewNade: FC<Props> = ({
           youTubeId={youTubeId}
         />
         <NadeStats
+          isNew
           addAsFavorite={noOp}
           commentCount={commentCount || 10}
-          createdAt={createdAt || new Date()}
           favoriteCount={100}
           gameMode={gameMode || "csgo"}
           isPro={Boolean(proUrl)}

@@ -7,7 +7,6 @@ import { Popup } from "semantic-ui-react";
 import { StatItem } from "./StatItem";
 import { Technique } from "../../../models/Technique";
 import { NadeMovement } from "../../../models/NadeMovement";
-import { isNewNade } from "../../../../utils/Common";
 import { StatFavorite } from "./StatFavorite";
 import Link from "next/link";
 import { TeamSide } from "../../../models/TeamSide";
@@ -15,11 +14,11 @@ import { GameMode } from "../../../models/GameMode";
 
 type NadeStatsProps = {
   commentCount: number;
-  createdAt: Date | string;
   favoriteCount: number;
   gameMode: GameMode;
   isFavorited?: boolean;
   isPro?: boolean;
+  isNew?: boolean;
   movement?: NadeMovement;
   nadeId: string;
   side?: TeamSide;
@@ -33,11 +32,11 @@ type NadeStatsProps = {
 
 export const NadeStats: FC<NadeStatsProps> = ({
   commentCount,
-  createdAt,
   favoriteCount,
   gameMode,
   isFavorited,
   isPro,
+  isNew,
   movement,
   nadeId,
   side,
@@ -55,7 +54,6 @@ export const NadeStats: FC<NadeStatsProps> = ({
     movement === "walking";
   const isJumpThrow = technique?.includes("jumpthrow");
   const isCsgo = gameMode === "csgo";
-  const nadeIsNew = isNewNade(createdAt);
 
   // Show minimum of 1 if favorited by user
   const favCount = isFavorited ? favoriteCount || 1 : favoriteCount;
@@ -64,13 +62,13 @@ export const NadeStats: FC<NadeStatsProps> = ({
     <>
       <div className="item-bottom">
         <div className="stats">
-          {nadeIsNew && (
+          {isNew && (
             <div className="new-badge">
               <span>NEW</span>
             </div>
           )}
 
-          {!nadeIsNew && (
+          {!isNew && (
             <div className="stat-item">
               <StatItem
                 count={viewCount}

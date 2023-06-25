@@ -14,6 +14,7 @@ import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
 import { NadeType } from "../../nade/models/NadeType";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 import { EloGameModal, useEloGame } from "../components/EloGame/EloGameModal";
+import { useNadeClusters } from "../logic/useNadesForMapView";
 
 const isServer = typeof window === "undefined";
 
@@ -28,6 +29,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   const { mapView } = useSetMapView();
   const { isMobile } = useIsDeviceSize();
   const isOverviewView = mapView === "overview";
+  const nadeClusters = useNadeClusters(allNades);
 
   const { onNadeClusterClick, suggestedNades, dismissSuggested } =
     useOnNadeClusterClick();
@@ -77,7 +79,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
           {displayMapOverview && (
             <MapViewScreen
               map={map}
-              allNades={allNades}
+              nadeClusters={nadeClusters}
               onClusterClick={onNadeClusterClick}
               isLoading={isLoading}
               onStartEloGame={showEloGame}

@@ -1,8 +1,11 @@
 import { useMemo } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { custerNades } from "../../utils/Cluster";
+import { useFilterServerSideNades } from "./useFilteredNades";
 
-export const useNadeClusters = (nades: NadeLight[]): NadeLight[][] => {
+export const useNadeClusters = (rawNades: NadeLight[]): NadeLight[][] => {
+  const nades = useFilterServerSideNades(rawNades);
+
   const unqiueNadesForPosition = useMemo(() => {
     if (!nades) {
       return [];

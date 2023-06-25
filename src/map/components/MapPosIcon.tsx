@@ -2,7 +2,6 @@ import { FC, memo, useMemo } from "react";
 import { NadeLight } from "../../nade/models/Nade";
 import { NadeType } from "../../nade/models/NadeType";
 import { NadeIcon } from "../../shared-components/nade-icons";
-import { isNewNade } from "../../utils/Common";
 
 type Props = {
   cluster: NadeLight[];
@@ -15,7 +14,7 @@ type Props = {
 export const MapPosIcon: FC<Props> = memo(
   ({ cluster, mapWidth, nade, numNades, onPress }) => {
     const { hasNew, position } = useMemo(() => {
-      const hasNew = cluster.find((n) => isNewNade(n.createdAt));
+      const hasNew = cluster.find((n) => n.isNew);
       const averageX =
         cluster.reduce((acc, cur) => acc + (cur.mapEndCoord?.x || 0), 0) /
         cluster.length;
@@ -102,15 +101,6 @@ export const MapPosIcon: FC<Props> = memo(
 
           .point:hover {
             z-index: 500;
-          }
-
-          @keyframes show {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
           }
         `}</style>
       </>

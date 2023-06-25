@@ -54,11 +54,11 @@ export const NadeItemView: FC<Props> = memo(
             <NadeStats
               addAsFavorite={onAddAsFavorite}
               commentCount={nade.commentCount}
-              createdAt={nade.createdAt}
               favoriteCount={nade.favoriteCount}
               gameMode={nade.gameMode || "csgo"}
               isFavorited={isFavorited}
               isPro={Boolean(nade.proUrl)}
+              isNew={nade.isNew}
               movement={nade.movement}
               nadeId={nade.id}
               removeAsFavorite={onRemoveAsFavorite}

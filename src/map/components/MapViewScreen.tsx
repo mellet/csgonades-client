@@ -1,10 +1,8 @@
 import { FC, useRef, useState, useEffect, useCallback } from "react";
 import { useSetMapView } from "../logic/useSetMapView";
 import { Dimensions } from "../../constants/Constants";
-import { useNadeClusters } from "../logic/useNadesForMapView";
 import { NadeLight } from "../../nade/models/Nade";
 import { CsgoMap } from "../models/CsGoMap";
-import { useFilterServerSideNades } from "../logic/useFilteredNades";
 import { useWindowSize } from "../../shared-components/MinSizeRender";
 import { AddNadeButton } from "./AddNadeButton";
 import { NoNadesMessage } from "./NoNadesMessage";
@@ -12,9 +10,10 @@ import { MapIcons } from "./MapIcons";
 import { FaSpinner } from "react-icons/fa";
 import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
 import { EloGameButton } from "./EloGame/EloGameButton";
+import { checkShouldShowBattleRoyalButton } from "../logic/useCanDisplayBattleRoyal";
 
 type Props = {
-  allNades: NadeLight[];
+  nadeClusters: NadeLight[][];
   map: CsgoMap;
   onClusterClick: (cluster: NadeLight[]) => void;
   isLoading: boolean;
@@ -22,18 +21,18 @@ type Props = {
 };
 
 const MapViewScreen: FC<Props> = ({
-  allNades,
   map,
   onClusterClick,
   isLoading,
+  nadeClusters,
   onStartEloGame,
 }) => {
   const windowSize = useWindowSize();
-  const filteredNades = useFilterServerSideNades(allNades);
   const { mapView } = useSetMapView();
   const [mapSize, setMapSize] = useState<number>();
   const mapViewRef = useRef<HTMLDivElement>(null);
-  const clusters = useNadeClusters(filteredNades);
+  const shouldShowBattleRoyalButton =
+    checkShouldShowBattleRoyalButton(nadeClusters);
 
   const mapUrl = `/mapsoverlays/${map}.jpg`;
 
@@ -54,22 +53,26 @@ const MapViewScreen: FC<Props> = ({
   }, [windowSize]);
 
   const onStartRatingGame = useCallback(() => {
-    onStartEloGame(clusters);
-  }, [clusters, onStartEloGame]);
+    onStartEloGame(nadeClusters);
+  }, [nadeClusters, onStartEloGame]);
 
   if (mapView === "list") {
     return null;
   }
 
   const canvasSize = mapSize;
-  const hasNades = clusters.length;
+  const hasNades = nadeClusters.length;
 
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
-        <div id="rating-game">
+        <div
+          id="rating-game"
+          className={shouldShowBattleRoyalButton ? "show" : "hide"}
+        >
           <EloGameButton onClick={onStartRatingGame} />
         </div>
+
         <div id="ad-nade-wrapper">
           <AddNadeButton />
         </div>
@@ -77,7 +80,7 @@ const MapViewScreen: FC<Props> = ({
           <div id="mapview">
             {!isLoading && (
               <MapIcons
-                clusters={clusters}
+                clusters={nadeClusters}
                 visible={true}
                 canvasSize={canvasSize || 0}
                 onClusterClick={onClusterClick}
@@ -177,6 +180,13 @@ const MapViewScreen: FC<Props> = ({
           top: ${Dimensions.GUTTER_SIZE}px;
           left: ${Dimensions.GUTTER_SIZE}px;
           z-index: 1;
+          opacity: 1;
+          transition: opacity 0.3s;
+        }
+
+        #rating-game.hide {
+          opacity: 0;
+          pointer-events: none;
         }
       `}</style>
     </>
