@@ -62,10 +62,17 @@ const MapViewScreen: FC<Props> = ({
 
   const canvasSize = mapSize;
   const hasNades = nadeClusters.length;
+  const showNoNadesView = !hasNades && !isLoading;
 
   return (
     <>
       <div id="mapview-wrap" ref={mapViewRef}>
+        <div
+          className={showNoNadesView ? "no-nades-wrap" : "no-nades-wrap hide"}
+        >
+          <NoNadesMessage />
+        </div>
+
         <div
           id="rating-game"
           className={shouldShowBattleRoyalButton ? "show" : "hide"}
@@ -85,12 +92,6 @@ const MapViewScreen: FC<Props> = ({
                 canvasSize={canvasSize || 0}
                 onClusterClick={onClusterClick}
               />
-            )}
-
-            {!hasNades && !isLoading && (
-              <div className="no-nades-wrap">
-                <NoNadesMessage />
-              </div>
             )}
 
             {isLoading && (
@@ -139,9 +140,21 @@ const MapViewScreen: FC<Props> = ({
           top: 0;
           left: 0;
           right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.75);
+          z-index: 999;
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
+          opacity: 1;
+          transition: opacity 0.3s;
+        }
+
+        .no-nades-wrap.hide {
+          opacity: 0;
+          pointer-events: none;
         }
 
         #mapview-wrap {

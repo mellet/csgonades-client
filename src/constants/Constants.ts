@@ -2,7 +2,7 @@ import packageJson from "../../package.json";
 import { GameMode } from "../nade/models/GameMode";
 
 // Set to true if you want to use API on localhost
-const USE_DEV_API = true;
+const USE_DEV_API = false;
 
 export const IS_PROD = process.env.NODE_ENV === "production";
 

@@ -16,7 +16,8 @@ export const NoNadesMessage: FC = memo(() => {
     <>
       <div className="no-nades-msg">
         <p>
-          We can&apos;t find any nades 😟
+          <b>We can&apos;t find any nades 😟</b>
+          <br />
           <br />
           Either no nades have been added or you can try{" "}
           <Link onClick={onReset}>resetting the filter.</Link>
@@ -24,17 +25,10 @@ export const NoNadesMessage: FC = memo(() => {
       </div>
       <style jsx>{`
         .no-nades-msg {
-          background: ${colors.DP03};
-          border-bottom-left-radius: ${Dimensions.BORDER_RADIUS};
-          border-bottom-right-radius: ${Dimensions.BORDER_RADIUS};
-          overflow: hidden;
-          color: ${colors.TEXT};
-          border: 1px solid ${colors.BORDER};
-          border-top: none;
+          color: white;
           display: flex;
           flex-direction: column;
-          padding: 0px ${Dimensions.PADDING_MEDIUM} ${Dimensions.PADDING_MEDIUM}
-            ${Dimensions.PADDING_MEDIUM};
+          text-align: center;
         }
 
         h3 {
