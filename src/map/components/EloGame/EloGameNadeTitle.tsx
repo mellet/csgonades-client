@@ -1,15 +1,18 @@
 import { FC } from "react";
 import { NadeLight } from "../../../nade/models/NadeLight";
 import { generateNadeItemTitle } from "../../../utils/Common";
+import { useIsAdmin } from "../../../core/authentication/useIsAdmin";
 
 type Props = {
   nade: NadeLight;
 };
 
 export const EloGameNadeTitle: FC<Props> = ({ nade }) => {
+  const isAdmin = useIsAdmin();
   return (
     <>
-      <div>
+      <div className="battle-royal-title">
+        {isAdmin && <div className="elo-score">{nade.eloScore}</div>}
         {generateNadeItemTitle(
           nade.startPosition,
           nade.endPosition,
@@ -19,10 +22,20 @@ export const EloGameNadeTitle: FC<Props> = ({ nade }) => {
         )}
       </div>
       <style jsx>{`
-        div {
+        .battle-royal-title {
+          position: relative;
           font-size: 22px;
           padding: 10px 20px;
           text-align: center;
+        }
+
+        .elo-score {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          color: maroon;
+          font-size: 16px;
+          opacity: 0.25;
         }
       `}</style>
     </>
