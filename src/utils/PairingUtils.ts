@@ -196,9 +196,7 @@ export function extractNewNadePair(clusters: NadeLight[][]): ExtractedNadePair {
       const randomNewNadeIndex = getRandomIndex(newNades.length);
       const newNade = newNades[randomNewNadeIndex];
 
-      const remainingNades = cluster.filter(
-        (_nade, index) => index !== randomNewNadeIndex
-      );
+      const remainingNades = cluster.filter((nade) => nade.id !== newNade?.id);
       const randomNadeIndex = getRandomIndex(remainingNades.length);
       const randomNade = remainingNades[randomNadeIndex];
 
