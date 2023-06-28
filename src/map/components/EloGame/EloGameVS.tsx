@@ -2,6 +2,9 @@ import { FC } from "react";
 import { NadeLight } from "../../../nade/models/NadeLight";
 import { GfycatThumbnail } from "../../../nade/components/NadeItem/GfycatThumbnail";
 import { EloGameNadeTitle } from "./EloGameNadeTitle";
+import { NadeStatsSpecials } from "../../../nade/components/NadeItem/NadeStats/NadeStatsSpecials";
+import { Dimensions } from "../../../constants/Constants";
+import { useTheme } from "../../../core/settings/useTheme";
 
 type Props = {
   nadeOne: NadeLight;
@@ -14,6 +17,8 @@ type Props = {
 };
 
 export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
+  const { colors } = useTheme();
+
   return (
     <>
       <div className="elo-game-vs">
@@ -37,6 +42,15 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
               quality="hd"
               speed="normal"
             />
+            <div className="nade-specials">
+              <NadeStatsSpecials
+                gameMode={nadeOne.gameMode}
+                movement={nadeOne.movement}
+                teamSide={nadeOne.teamSide}
+                technique={nadeOne.technique}
+                tickrate={nadeOne.tickrate}
+              />
+            </div>
           </div>
           <div className="vs">VS</div>
           <div
@@ -57,6 +71,15 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
               youTubeId={nadeTwo.youTubeId}
               speed="normal"
             />
+            <div className="nade-specials">
+              <NadeStatsSpecials
+                gameMode={nadeTwo.gameMode}
+                movement={nadeTwo.movement}
+                teamSide={nadeTwo.teamSide}
+                technique={nadeTwo.technique}
+                tickrate={nadeTwo.tickrate}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -64,8 +87,19 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
         .left,
         .right {
           flex: 1;
-          opacity: 0.9;
+          opacity: 0.95;
+          border: 1px solid ${colors.BORDER};
+          border-radius: ${Dimensions.BORDER_RADIUS};
+          overflow: hidden;
+          background: ${colors.DP02};
           cursor: pointer;
+        }
+
+        .nade-specials {
+          padding: 6px 12px;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
         }
 
         .vs {

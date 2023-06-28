@@ -1,25 +1,25 @@
 import { FC } from "react";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Dimensions } from "../constants/Constants";
+import { Skeleton } from "../shared-components/skeleton/Skeleton";
 
 export const RecentNadesLoading: FC = ({}) => {
   return (
     <>
-      <Skeleton count={1} height={30} />
+      <Skeleton type="text" height={20} />
       <div className="nade-items">
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
       </div>
       <div className="nade-items">
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
-        <Skeleton width={200} height={200} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
+        <Skeleton type="box" height={200} width={230} />
       </div>
 
       <style jsx>{`

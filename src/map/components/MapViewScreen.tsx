@@ -7,10 +7,9 @@ import { useWindowSize } from "../../shared-components/MinSizeRender";
 import { AddNadeButton } from "./AddNadeButton";
 import { NoNadesMessage } from "./NoNadesMessage";
 import { MapIcons } from "./MapIcons";
-import { FaSpinner } from "react-icons/fa";
-import { CSGNIcon } from "../../nade/components/NadeStatus/CSGNIcon";
-import { EloGameButton } from "./EloGame/EloGameButton";
+import { BattleRoyalButton } from "./EloGame/BattleRoyalButton";
 import { checkShouldShowBattleRoyalButton } from "../logic/useCanDisplayBattleRoyal";
+import { MapLoadingScreen } from "./MapLoadingScreen";
 
 type Props = {
   nadeClusters: NadeLight[][];
@@ -77,7 +76,7 @@ const MapViewScreen: FC<Props> = ({
           id="rating-game"
           className={shouldShowBattleRoyalButton ? "show" : "hide"}
         >
-          <EloGameButton onClick={onStartRatingGame} />
+          <BattleRoyalButton onClick={onStartRatingGame} />
         </div>
 
         <div id="ad-nade-wrapper">
@@ -94,47 +93,12 @@ const MapViewScreen: FC<Props> = ({
               />
             )}
 
-            {isLoading && (
-              <span className="spinner">
-                <div className="spinner-content">
-                  <CSGNIcon spin icon={<FaSpinner size={30} />} size={30} />
-                </div>
-              </span>
-            )}
+            <MapLoadingScreen isLoading={isLoading} />
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        .spinner {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          z-index: 999;
-        }
-
-        .spinner-content {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px ${Dimensions.GUTTER_SIZE}px;
-          color: rgba(255, 255, 255, 0.8);
-        }
-
-        .spinner-content p {
-          font-size: 16px;
-          font-weight: 500;
-          margin: 0;
-          padding: 0;
-          margin-right: ${Dimensions.GUTTER_SIZE / 2}px;
-        }
-
         .no-nades-wrap {
           position: absolute;
           top: 0;

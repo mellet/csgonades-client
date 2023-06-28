@@ -28,7 +28,7 @@ type Props = {
   onFinish: () => void;
 };
 
-export const EloGameModal: FC<Props> = ({
+export const BattleRoyalModal: FC<Props> = ({
   nadeClusters,
   onClose,
   onFinish,

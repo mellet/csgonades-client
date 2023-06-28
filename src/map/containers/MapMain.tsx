@@ -13,7 +13,10 @@ import { CsgoMap } from "../models/CsGoMap";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
 import { NadeType } from "../../nade/models/NadeType";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
-import { EloGameModal, useEloGame } from "../components/EloGame/EloGameModal";
+import {
+  BattleRoyalModal,
+  useEloGame,
+} from "../components/EloGame/BattleRoyalModal";
 import { useNadeClusters } from "../logic/useNadesForMapView";
 
 const isServer = typeof window === "undefined";
@@ -69,7 +72,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
           )}
 
           {eloNades && (
-            <EloGameModal
+            <BattleRoyalModal
               nadeClusters={eloNades}
               onClose={closeEloGame}
               onFinish={finishEloGame}

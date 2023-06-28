@@ -5,7 +5,7 @@ type Props = {
   onClick: () => void;
 };
 
-export const EloGameButton: FC<Props> = ({ onClick }) => {
+export const BattleRoyalButton: FC<Props> = ({ onClick }) => {
   return (
     <>
       <button onClick={onClick}>Nade Battle Royal 🎲</button>
