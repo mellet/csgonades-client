@@ -1,19 +1,19 @@
 import { FC, MouseEventHandler } from "react";
 import { FaTimes } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
-import { useTheme } from "../../../core/settings/useTheme";
 import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 import { TeamSelector } from "../nadefilter/component/TeamSelector";
 import { TickratePicker } from "../nadefilter/component/TickratePicker";
 import { SortByBar } from "./SortByBar";
 import { useGameMode } from "../../../core/useGameMode";
 
+const MAX_MODAL_WIDTH = 1420;
+
 type Props = {
   onDismiss: MouseEventHandler<HTMLDivElement>;
 };
 
 export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
-  const { colors } = useTheme();
   const { gameMode } = useGameMode();
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -55,12 +55,12 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
         .filter-header {
           width: 100%;
           display: flex;
+          max-width: ${MAX_MODAL_WIDTH}px;
         }
 
         .filter-wrapper {
           grid-area: filter;
           width: 100%;
-          margin: 0 auto;
         }
 
         .ad-wrap {
@@ -94,11 +94,6 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
         .title-content {
           display: flex;
           justify-content: space-between;
-          background: ${colors.DP03};
-          border-bottom: 1px solid ${colors.BORDER};
-          border-bottom-left-radius: 8px;
-          border-bottom-right-radius: 8px;
-          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .close-btn {

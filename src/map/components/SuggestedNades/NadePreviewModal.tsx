@@ -92,23 +92,26 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           flex-direction: column;
           background: rgba(0, 0, 0, 0.7);
           overflow-y: auto;
-          padding: 0px ${Dimensions.GUTTER_SIZE * 2}px;
+          padding-bottom: 50px;
         }
 
         .filter-header {
           position: sticky;
           top: 0;
           width: 100%;
-          max-width: ${MAX_MODAL_WIDTH}px;
           z-index: 999;
-          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          background: ${colors.DP03};
+          border-bottom: 1px solid ${colors.BORDER};
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+          padding: 0px ${Dimensions.GUTTER_SIZE * 2}px;
         }
 
         .suggested-main {
           width: 100%;
-          max-width: ${MAX_MODAL_WIDTH}px;
           margin: 0px 50px;
-          margin-bottom: 100px;
+          padding: 0px ${Dimensions.GUTTER_SIZE * 2}px;
         }
 
         .nade-list {
@@ -119,7 +122,8 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           padding: ${Dimensions.GUTTER_SIZE}px;
           border: 1px solid ${colors.BORDER};
           border-top: none;
-          border-radius: 8px;
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
         }
       `}</style>
     </>
