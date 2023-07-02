@@ -22,8 +22,8 @@ function createContributorsList(nades: NadeLight[]) {
     const steamId = nade.user.steamId;
     const currentUser = contCount[steamId];
 
-    // Skip very new nades as they have a artificially high score
-    if (nade.viewCount < 1000) {
+    // Skip new nades
+    if (nade.isNew) {
       return;
     }
 
