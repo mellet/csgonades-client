@@ -7,8 +7,6 @@ import { TickratePicker } from "../nadefilter/component/TickratePicker";
 import { SortByBar } from "./SortByBar";
 import { useGameMode } from "../../../core/useGameMode";
 
-const MAX_MODAL_WIDTH = 1420;
-
 type Props = {
   onDismiss: MouseEventHandler<HTMLDivElement>;
 };
@@ -55,16 +53,13 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
         .filter-header {
           width: 100%;
           display: flex;
-          max-width: ${MAX_MODAL_WIDTH}px;
         }
 
         .filter-wrapper {
-          grid-area: filter;
           width: 100%;
         }
 
         .ad-wrap {
-          grid-area: footer;
           display: flex;
           justify-content: space-around;
           margin-top: 3px;
@@ -78,22 +73,20 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
 
         .filter-wrap {
           display: flex;
-          padding: ${Dimensions.GUTTER_SIZE}px;
           align-self: center;
         }
 
         .filters {
-          margin-left: ${Dimensions.GUTTER_SIZE}px;
           display: flex;
-        }
-
-        .filter-btn {
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .title-content {
           display: flex;
           justify-content: space-between;
+        }
+
+        .filter-btn {
+          margin-left: ${Dimensions.GUTTER_SIZE}px;
         }
 
         .close-btn {
@@ -108,7 +101,6 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-right: ${Dimensions.GUTTER_SIZE}px;
           margin-top: ${Dimensions.GUTTER_SIZE}px;
         }
 

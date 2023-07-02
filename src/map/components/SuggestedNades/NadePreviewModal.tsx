@@ -62,7 +62,9 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
     <>
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
         <div className="filter-header">
-          <NadePreviewHeader onDismiss={onDismissCloseClick} />
+          <div className="header-inner">
+            <NadePreviewHeader onDismiss={onDismissCloseClick} />
+          </div>
         </div>
         <div className="suggested-main">
           <div className="nade-list" onClick={(e) => e.stopPropagation()}>
@@ -105,18 +107,22 @@ export const NadePreviewModal: FC<Props> = ({ nades, onDismiss }) => {
           background: ${colors.DP03};
           border-bottom: 1px solid ${colors.BORDER};
           box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-          padding: 0px ${Dimensions.GUTTER_SIZE * 2}px;
+        }
+
+        .header-inner {
+          width: 100%;
+          padding: 0px ${Dimensions.GUTTER_SIZE * 1.5}px;
+          max-width: ${MAX_MODAL_WIDTH}px;
         }
 
         .suggested-main {
           width: 100%;
           margin: 0px 50px;
-          padding: 0px ${Dimensions.GUTTER_SIZE * 2}px;
+          padding: 0px ${Dimensions.GUTTER_SIZE * 1.5}px;
+          max-width: ${MAX_MODAL_WIDTH}px;
         }
 
         .nade-list {
-          position: relative;
-          max-width: ${MAX_MODAL_WIDTH}px;
           width: 100%;
           background: ${colors.DP00};
           padding: ${Dimensions.GUTTER_SIZE}px;
