@@ -47,11 +47,14 @@ function createContributorsList(nades: NadeLight[]) {
 }
 
 function calculateScore(userContribution: UserContributor): UserContributor {
+  const averageEloScore = Math.log(
+    userContribution.totalScore / userContribution.nadeCount
+  );
+  const nadeCountBoost = Math.log(userContribution.nadeCount || 1);
+
   return {
     ...userContribution,
-    score:
-      Math.log(userContribution.totalScore / userContribution.nadeCount) +
-      Math.log(userContribution.nadeCount) / 3,
+    score: averageEloScore + nadeCountBoost,
   };
 }
 
