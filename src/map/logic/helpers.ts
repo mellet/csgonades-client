@@ -1,3 +1,4 @@
+import { NextRouter } from "next/router";
 import { NadeLight } from "../../nade/models/NadeLight";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { NadeType } from "../../nade/models/NadeType";
@@ -72,4 +73,21 @@ export function addFavoriteToNades(
       return n;
     }
   });
+}
+
+export function setQueryParameter(
+  router: NextRouter,
+  key: string,
+  value: string
+) {
+  router.replace(
+    {
+      query: {
+        ...router.query,
+        [key]: value,
+      },
+    },
+    undefined,
+    { shallow: true }
+  );
 }

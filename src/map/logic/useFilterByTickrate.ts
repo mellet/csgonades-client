@@ -1,27 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { useGa } from "../../utils/Analytics";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
-import { useLocalStorage } from "usehooks-ts";
+import { setQueryParameter } from "./helpers";
+import { useRouter } from "next/router";
+
+type QueryTickrate = "128" | "64" | "any";
 
 export const useFilterByTickrate = () => {
-  const { signedInUser } = useSignedInUser();
-
-  const defaultTickrate: Tickrate = signedInUser?.defaultTick || "any";
-
+  const router = useRouter();
   const ga = useGa();
-
-  const [byTickrate, setTicktrate] = useLocalStorage<Tickrate>(
-    "filterByTickrate",
-    defaultTickrate
-  );
-
-  const [hasChanged, setHasChanged] = useState(false);
+  const { signedInUser } = useSignedInUser();
+  const defaultTickrate: Tickrate = signedInUser?.defaultTick || "any";
+  const byTickrate = useQueryNadeTick(defaultTickrate);
 
   useEffect(() => {
-    if (!hasChanged) {
-      return;
-    }
     const delay = setTimeout(() => {
       ga.event({
         category: "map_page",
@@ -33,23 +26,46 @@ export const useFilterByTickrate = () => {
         clearTimeout(delay);
       }
     };
-  }, [byTickrate, hasChanged, ga]);
+  }, [byTickrate, ga]);
 
   const filterByTickrate = useCallback(
     (tick: Tickrate) => {
-      setHasChanged(true);
-      setTicktrate(tick);
+      setQueryParameter(router, "tickrate", convertTickrateToQuerySting(tick));
     },
-    [setTicktrate]
+    [router]
   );
-
-  const resetFilterByTickrate = useCallback(() => {
-    setTicktrate(defaultTickrate);
-  }, [setTicktrate, defaultTickrate]);
 
   return {
     byTickrate,
     filterByTickrate,
-    resetFilterByTickrate,
   };
+};
+
+const useQueryNadeTick = (defaultTick: Tickrate): Tickrate => {
+  const { query } = useRouter();
+
+  if (!query.tickrate) {
+    return defaultTick;
+  }
+
+  const queryTickRate = query.tickrate as QueryTickrate;
+
+  switch (queryTickRate) {
+    case "128":
+      return "tick128";
+    case "64":
+      return "tick64";
+    default:
+      return "any";
+  }
+};
+
+const convertTickrateToQuerySting = (tickrate: Tickrate): QueryTickrate => {
+  if (tickrate === "tick128") {
+    return "128";
+  } else if (tickrate === "tick64") {
+    return "64";
+  } else {
+    return "any";
+  }
 };

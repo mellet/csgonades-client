@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useCallback, useMemo } from "react";
 import { NadeType } from "../../nade/models/NadeType";
 import { useGa } from "../../utils/Analytics";
+import { setQueryParameter } from "./helpers";
 
 export const useFilterByType = () => {
   const queryType = useQueryNadeType();
@@ -14,16 +15,8 @@ export const useFilterByType = () => {
 
   const filterByType = useCallback(
     (nadeType: NadeType) => {
-      router.replace(
-        {
-          query: {
-            ...router.query,
-            type: nadeType,
-          },
-        },
-        undefined,
-        { shallow: true }
-      );
+      setQueryParameter(router, "type", nadeType);
+
       ga.event({
         category: "map_page",
         action: `click_filter_type_${nadeType}`,
@@ -32,20 +25,16 @@ export const useFilterByType = () => {
     [ga, router]
   );
 
-  const resetFilterByType = useCallback(() => {
-    const baseUrl = router.asPath.replace(/\?type=([^&#]*)/, "");
-    router.replace(baseUrl, undefined, { shallow: true });
-  }, [router]);
-
   return {
     byType,
     filterByType,
-    resetFilterByType,
   };
 };
 
 const useQueryNadeType = (): NadeType | undefined => {
   const { query } = useRouter();
+
+  console.log("## useQueryNadeType", query.type);
 
   if (!query.type) {
     return;

@@ -6,6 +6,7 @@ import { useFilterByFavorites } from "./useFilterByFavorites";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
+import { useRouter } from "next/router";
 
 type ResetFilterClickConfig = {
   disableAnalytics?: boolean;
@@ -16,18 +17,17 @@ export const useFilterReset = () => {
   const ga = useGa();
 
   const { byPro, resetFilterByPro } = useFilterByPro();
-  const { byTickrate, resetFilterByTickrate } = useFilterByTickrate();
+  const { byTickrate } = useFilterByTickrate();
   const { byFavorites, resetFilterByFavorites } = useFilterByFavorites();
-  const { byType, resetFilterByType } = useFilterByType();
-  const { byTeam, resetFilterByTeam } = useFilterByTeam();
+  const { byType } = useFilterByType();
+  const { byTeam } = useFilterByTeam();
+  const resetQueryFilters = useResetQueryFilters();
 
   const resetFilter = useCallback(
     (config?: ResetFilterClickConfig) => {
       resetFilterByPro();
-      resetFilterByTickrate();
       resetFilterByFavorites();
-      resetFilterByType();
-      resetFilterByTeam();
+      resetQueryFilters();
 
       if (!config?.disableAnalytics) {
         ga.event({
@@ -36,14 +36,7 @@ export const useFilterReset = () => {
         });
       }
     },
-    [
-      ga,
-      resetFilterByPro,
-      resetFilterByTickrate,
-      resetFilterByFavorites,
-      resetFilterByType,
-      resetFilterByTeam,
-    ]
+    [ga, resetFilterByPro, resetFilterByFavorites, resetQueryFilters]
   );
 
   const canReset = useMemo(() => {
@@ -75,4 +68,19 @@ export const useFilterReset = () => {
     resetFilter,
     canReset,
   };
+};
+
+const useResetQueryFilters = () => {
+  const router = useRouter();
+
+  return useCallback(() => {
+    const baseUrl = router.asPath
+      .replace(/\?type=([^&#]*)/, "")
+      .replace(/\&type=([^&#]*)/, "")
+      .replace(/\?team=([^&#]*)/, "")
+      .replace(/\&team=([^&#]*)/, "")
+      .replace(/\?tickrate=([^&#]*)/, "")
+      .replace(/\&tickrate=([^&#]*)/, "");
+    router.replace(baseUrl, undefined, { shallow: true });
+  }, [router]);
 };

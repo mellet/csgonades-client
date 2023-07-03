@@ -1,25 +1,22 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { TeamSide } from "../../nade/models/TeamSide";
 import { useGa } from "../../utils/Analytics";
-import { useLocalStorage } from "usehooks-ts";
+import { useRouter } from "next/router";
+import { setQueryParameter } from "./helpers";
 
 export const useFilterByTeam = () => {
-  const defaultTeam: TeamSide = "both";
-  const [byTeam, setByTeam] = useLocalStorage<TeamSide>(
-    "filterByTeam",
-    defaultTeam
-  );
-  const [hasChanged, setHasChanged] = useState(false);
+  const teamSide = useQueryNadeTeam();
+  const router = useRouter();
   const ga = useGa();
 
   useEffect(() => {
-    if (!hasChanged) {
+    if (!teamSide) {
       return;
     }
     const delay = setTimeout(() => {
       ga.event({
         category: "map_page",
-        action: `click_filter_${byTeam}`,
+        action: `click_filter_${teamSide}`,
       });
     }, 4000);
     return () => {
@@ -27,23 +24,52 @@ export const useFilterByTeam = () => {
         clearTimeout(delay);
       }
     };
-  }, [byTeam, hasChanged, ga]);
+  }, [teamSide, ga]);
+
+  const byTeamSide: TeamSide = useMemo(() => {
+    return teamSide || "both";
+  }, [teamSide]);
 
   const filterByTeam = useCallback(
-    (team: TeamSide) => {
-      setHasChanged(true);
-      setByTeam(team);
+    (selectedTeam: TeamSide) => {
+      setQueryParameter(
+        router,
+        "team",
+        convertTeamSideToQueryString(selectedTeam)
+      );
     },
-    [setByTeam]
+    [router]
   );
 
-  const resetFilterByTeam = useCallback(() => {
-    setByTeam(defaultTeam);
-  }, [setByTeam]);
-
   return {
-    byTeam,
+    byTeam: byTeamSide,
     filterByTeam,
-    resetFilterByTeam,
   };
+};
+
+const useQueryNadeTeam = (): TeamSide | undefined => {
+  const { query } = useRouter();
+
+  if (!query.team) {
+    return;
+  }
+
+  switch (query.team) {
+    case "ct":
+      return "counterTerrorist";
+    case "t":
+      return "terrorist";
+    default:
+      return "both";
+  }
+};
+
+const convertTeamSideToQueryString = (teamSide: TeamSide): string => {
+  if (teamSide === "counterTerrorist") {
+    return "ct";
+  } else if (teamSide === "terrorist") {
+    return "t";
+  } else {
+    return "both";
+  }
 };
