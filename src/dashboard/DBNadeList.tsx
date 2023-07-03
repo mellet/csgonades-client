@@ -27,6 +27,7 @@ import Image from "next/image";
 import { Dimensions } from "../constants/Constants";
 import { useGameMode } from "../core/useGameMode";
 import { ScoreIndicator } from "./ScoreIndicator";
+import { DashboardVideoLink } from "./VideoLink";
 
 type Props = {
   csgoMap: CsgoMap;
@@ -63,6 +64,7 @@ export const DashboardNades: FC<Props> = ({ csgoMap, user }) => {
             <tr>
               <td>Status</td>
               <td>Type</td>
+              <td>Video</td>
               <td></td>
               <td>Title</td>
               <td>
@@ -131,6 +133,12 @@ const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
         </td>
         <td className="nade-type" align="center">
           <NadeIcon nadeType={nade.type} size={30} />
+        </td>
+        <td align="center">
+          <DashboardVideoLink
+            gfycat={nade.gfycat}
+            youTubeUrl={nade.youTubeId}
+          />
         </td>
         <td className="nade-thumb">
           <PageLink href={`/nades/${nade.slug || nade.id}`}>
