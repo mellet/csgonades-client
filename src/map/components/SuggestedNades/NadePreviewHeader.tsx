@@ -74,6 +74,7 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
         .filter-wrap {
           display: flex;
           align-self: center;
+          padding: ${Dimensions.GUTTER_SIZE}px 0px;
         }
 
         .filters {
