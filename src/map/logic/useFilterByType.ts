@@ -34,8 +34,6 @@ export const useFilterByType = () => {
 const useQueryNadeType = (): NadeType | undefined => {
   const { query } = useRouter();
 
-  console.log("## useQueryNadeType", query.type);
-
   if (!query.type) {
     return;
   }
