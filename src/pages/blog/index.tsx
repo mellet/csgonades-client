@@ -7,6 +7,7 @@ import {
   bestDust2Nades,
   blogJumpthrowBind,
   blogNadeAlignCrosshair,
+  cs2Nades,
   blogPractiseConfig,
   blogTickrateAndJumpthrow,
 } from "../../blog/ArticleData/blogPosts";
@@ -22,6 +23,7 @@ const BlogPage: FC = () => {
     blogNadeAlignCrosshair,
     blogPractiseConfig,
     blogTickrateAndJumpthrow,
+    cs2Nades,
   ];
 
   return (

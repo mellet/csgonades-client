@@ -1,5 +1,16 @@
 import { BlogPost } from "../models/BlogPost";
 
+export const cs2Nades: BlogPost = {
+  title: "CS2 Nades Ready to Be Added",
+  slug: "cs2-nades",
+  imageUrl: "/blogimg/cs2.jpg",
+  thumbnailUrl: "/blogimg/cs2_thumb.jpg",
+  createdAt: "2023-07-10T04:58:10.864Z",
+  updatedAt: "2023-07-10T04:58:10.864Z",
+  intro:
+    "Counter-Strike 2 (CS2) is just around the corner, currently undergoing limited testing and set to be released this summer. With the anticipation building up, we have made significant updates to our website to accommodate the new CS2 nades.",
+};
+
 export const bestDust2Nades: BlogPost = {
   title: "Best Grenade Spots for Dust2 - Must Know!",
   slug: "best-dust2-nades",

@@ -8,12 +8,14 @@ import {
   blogJumpthrowBind,
   blogNadeAlignCrosshair,
   blogPractiseConfig,
+  cs2Nades,
 } from "../blog/ArticleData/blogPosts";
 import { AdUnit } from "../shared-components/adunits/AdUnit";
 import { useIsDeviceSize } from "../core/layout/useDeviceSize";
 import { RecentNades } from "./RecentNades";
 
 const recentPosts = [
+  cs2Nades,
   blogJumpthrowBind,
   bestDust2Nades,
   blogNadeAlignCrosshair,
