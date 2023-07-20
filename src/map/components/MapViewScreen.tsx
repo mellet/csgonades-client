@@ -106,7 +106,7 @@ const MapViewScreen: FC<Props> = ({
           right: 0;
           bottom: 0;
           background: rgba(0, 0, 0, 0.75);
-          z-index: 999;
+          z-index: 1;
           border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
           display: flex;
@@ -139,7 +139,7 @@ const MapViewScreen: FC<Props> = ({
           position: absolute;
           top: ${Dimensions.GUTTER_SIZE}px;
           right: ${Dimensions.GUTTER_SIZE}px;
-          z-index: 1;
+          z-index: 2;
         }
 
         #mapview {
