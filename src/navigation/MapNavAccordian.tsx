@@ -90,7 +90,7 @@ const useActiveDutyMaps = (): CsgoMap[] => {
           "vertigo",
           "anubis",
         ]
-      : ["mirage", "dust2", "nuke"];
+      : ["mirage", "dust2", "nuke", "overpass", "vertigo"];
 
   return maps;
 };
