@@ -3,8 +3,6 @@ import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { NadeLight } from "../../nade/models/NadeLight";
 import { SEO } from "../../shared-components/SEO";
 import { capitalize } from "../../utils/Common";
-import { MapPageNades } from "../components/MapPageNades";
-import MapViewScreen from "../components/MapViewScreen";
 import FilterBar from "../components/nadefilter/FilterBar";
 import { NadePreviewModal } from "../components/SuggestedNades/NadePreviewModal";
 import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
@@ -18,6 +16,14 @@ import {
   useEloGame,
 } from "../components/EloGame/BattleRoyalModal";
 import { useNadeClusters } from "../logic/useNadesForMapView";
+import dynamic from "next/dynamic";
+
+const CsMapView = dynamic(
+  () => import("../components/mapview/CsMapView").then((m) => m.CsMapView),
+  {
+    ssr: false,
+  }
+);
 
 const isServer = typeof window === "undefined";
 
@@ -38,8 +44,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
     useOnNadeClusterClick();
   const { eloNades, showEloGame, closeEloGame, finishEloGame } = useEloGame();
 
-  const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
-  const displayListView = isMobile || !isOverviewView;
+  const displayMapOverview = !isServer;
 
   return (
     <>
@@ -62,9 +67,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
           )}
         </div>
         <div id="nade-nades">
-          {displayListView && <MapPageNades allNades={allNades} />}
-
-          {displayMapOverview && suggestedNades && (
+          {suggestedNades && (
             <NadePreviewModal
               nades={suggestedNades}
               onDismiss={dismissSuggested}
@@ -78,16 +81,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
               onFinish={finishEloGame}
             />
           )}
-
-          {displayMapOverview && (
-            <MapViewScreen
-              map={map}
-              nadeClusters={nadeClusters}
-              onClusterClick={onNadeClusterClick}
-              isLoading={isLoading}
-              onStartEloGame={showEloGame}
-            />
-          )}
+          <CsMapView />
         </div>
       </div>
       <style jsx>{`
