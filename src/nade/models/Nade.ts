@@ -5,10 +5,10 @@ import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
 import { Technique } from "./Technique";
 import { NadeStatus } from "./Status";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 import { GameMode } from "./GameMode";
-import { MapCoordinates } from "./MapCoordinates";
+import { CsCanvasCoordinate } from "./MapCoordinates";
 import { NadeImages } from "./NadeImages";
 
 type StatusInfo = string;
@@ -26,9 +26,9 @@ export interface Nade {
   images: NadeImages;
   isFavorited?: boolean;
   isPro?: boolean;
-  map?: CsgoMap;
-  mapEndCoord?: MapCoordinates;
-  mapStartCoord?: MapCoordinates;
+  map?: CsMap;
+  mapEndCoord?: CsCanvasCoordinate;
+  mapStartCoord?: CsCanvasCoordinate;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

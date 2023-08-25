@@ -4,14 +4,14 @@ import { Dimensions } from "../constants/Constants";
 import { useTheme } from "../core/settings/useTheme";
 import { SEO } from "../shared-components/SEO";
 import { MapNadeSelector } from "../shared-components/map-nade-selector/MapNadeSelector";
-import { CsgoMap } from "../map/models/CsGoMap";
+import { CsMap } from "../map/models/CsGoMap";
 import { useSignedInUser } from "../core/authentication/useSignedInUser";
 import { GfycatWarning } from "./GfycatWarning";
 
 export const DashboardPage: FC = () => {
   const { colors } = useTheme();
   const { signedInUser } = useSignedInUser();
-  const [csgoMap, setCsGoMap] = useState<CsgoMap>("mirage");
+  const [csgoMap, setCsGoMap] = useState<CsMap>("mirage");
 
   if (!signedInUser) {
     return null;

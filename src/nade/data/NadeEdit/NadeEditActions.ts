@@ -1,6 +1,6 @@
-import { CsgoMap } from "../../../map/models/CsGoMap";
+import { CsMap } from "../../../map/models/CsGoMap";
 import { GameMode } from "../../models/GameMode";
-import { MapCoordinates } from "../../models/MapCoordinates";
+import { CsCanvasCoordinate } from "../../models/MapCoordinates";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
 import { NadeType } from "../../models/NadeType";
@@ -10,7 +10,7 @@ import { Technique } from "../../models/Technique";
 
 type SetMap = {
   type: "EditNade/SetMap";
-  map: CsgoMap;
+  map: CsMap;
 };
 
 type SetYouTubeId = {
@@ -56,8 +56,8 @@ type SetLineUpImage = {
 type SetNadeCoords = {
   type: "EditNade/SetEndPosCoords";
   data: {
-    mapStartCoord: MapCoordinates;
-    mapEndCoord: MapCoordinates;
+    mapStartCoord: CsCanvasCoordinate;
+    mapEndCoord: CsCanvasCoordinate;
   };
 };
 

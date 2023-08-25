@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
-import { CsgoMap } from "../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../models/MapCoordinates";
+import { CsMap } from "../../../map/models/CsGoMap";
+import { CsCanvasCoordinate } from "../../models/MapCoordinates";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
 import { NadeType } from "../../models/NadeType";
@@ -23,7 +23,7 @@ export const useEditNadeActions = (
   );
 
   const onSetMap = useCallback(
-    (map: CsgoMap) => {
+    (map: CsMap) => {
       dispatch({ type: "EditNade/SetMap", map });
     },
     [dispatch]
@@ -129,7 +129,7 @@ export const useEditNadeActions = (
   );
 
   const onSetCoords = useCallback(
-    (mapStartCoord: MapCoordinates, mapEndCoord: MapCoordinates) => {
+    (mapStartCoord: CsCanvasCoordinate, mapEndCoord: CsCanvasCoordinate) => {
       dispatch({
         type: "EditNade/SetEndPosCoords",
         data: {

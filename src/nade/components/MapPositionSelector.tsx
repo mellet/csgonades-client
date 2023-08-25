@@ -1,17 +1,17 @@
 import { FC, useCallback, useState } from "react";
-import { CsgoMap } from "../../map/models/CsGoMap";
-import { MapCoordinates } from "../models/MapCoordinates";
+import { CsMap } from "../../map/models/CsGoMap";
+import { CsCanvasCoordinate } from "../models/MapCoordinates";
 import CsMapBaseCanvas from "../../map/components/CsMapCanvas/CsMapBaseCanvas";
 import { useTheme } from "../../core/settings/useTheme";
 import { Dimensions } from "../../constants/Constants";
 
 type Props = {
-  selectedStartPosition?: MapCoordinates;
-  selectedEndPosition?: MapCoordinates;
-  selectedMap: CsgoMap;
+  selectedStartPosition?: CsCanvasCoordinate;
+  selectedEndPosition?: CsCanvasCoordinate;
+  selectedMap: CsMap;
   onPositionChange: (
-    startPosition: MapCoordinates,
-    endPosition: MapCoordinates
+    startPosition: CsCanvasCoordinate,
+    endPosition: CsCanvasCoordinate
   ) => void;
 };
 

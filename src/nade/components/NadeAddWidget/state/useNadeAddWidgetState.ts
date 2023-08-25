@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
-import { CsgoMap } from "../../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../../models/MapCoordinates";
+import { CsMap } from "../../../../map/models/CsGoMap";
+import { CsCanvasCoordinate } from "../../../models/MapCoordinates";
 import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
 import { NadeType } from "../../../models/NadeType";
@@ -16,7 +16,7 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetCurrentStep", step });
   }
 
-  function setNadeMap(map: CsgoMap) {
+  function setNadeMap(map: CsMap) {
     dispatch({ type: "CreateNade/SetMap", map });
   }
 
@@ -25,8 +25,8 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
   }
 
   function setMapPosition(
-    startPosition: MapCoordinates,
-    endPosition: MapCoordinates
+    startPosition: CsCanvasCoordinate,
+    endPosition: CsCanvasCoordinate
   ) {
     dispatch({
       type: "CreateNade/SetEndPosCoords",
@@ -50,7 +50,7 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetLineUpImage", img });
   }
 
-  function setMap(map: CsgoMap) {
+  function setMap(map: CsMap) {
     dispatch({ type: "CreateNade/SetMap", map });
   }
 

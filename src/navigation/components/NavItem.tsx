@@ -1,13 +1,13 @@
 import { FC } from "react";
 import Image from "next/image";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { useTheme } from "../../core/settings/useTheme";
 import { capitalize } from "../../utils/Common";
 import { Dimensions } from "../../constants/Constants";
 
 type Props = {
   selected: boolean;
-  csMap: CsgoMap;
+  csMap: CsMap;
   isFirst?: boolean;
   isLast?: boolean;
   isNew?: boolean;

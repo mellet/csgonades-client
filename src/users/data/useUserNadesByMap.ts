@@ -1,10 +1,10 @@
 import useSWR from "swr";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { sortByDate } from "../../utils/Common";
 import { GameMode } from "../../nade/models/GameMode";
 
-async function fetcher(userId: string, csMap: CsgoMap, gameMode: GameMode) {
+async function fetcher(userId: string, csMap: CsMap, gameMode: GameMode) {
   try {
     const result = await NadeApi.byUser(userId, gameMode, csMap);
 
@@ -20,7 +20,7 @@ async function fetcher(userId: string, csMap: CsgoMap, gameMode: GameMode) {
 
 export const useUserNadesByMap = (
   userId: string,
-  csMap: CsgoMap,
+  csMap: CsMap,
   gameMode: GameMode
 ) => {
   const { data, error, isValidating } = useSWR(

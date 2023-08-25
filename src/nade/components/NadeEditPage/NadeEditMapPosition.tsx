@@ -1,13 +1,16 @@
 import { FC } from "react";
-import { CsgoMap } from "../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../models/MapCoordinates";
+import { CsMap } from "../../../map/models/CsGoMap";
+import { CsCanvasCoordinate } from "../../models/MapCoordinates";
 import { MapPositionSelector } from "../MapPositionSelector";
 
 type Props = {
-  map: CsgoMap;
-  currentEndCoords?: MapCoordinates;
-  currentStartCoords?: MapCoordinates;
-  setEndCoords: (startCoord: MapCoordinates, endCoord: MapCoordinates) => void;
+  map: CsMap;
+  currentEndCoords?: CsCanvasCoordinate;
+  currentStartCoords?: CsCanvasCoordinate;
+  setEndCoords: (
+    startCoord: CsCanvasCoordinate,
+    endCoord: CsCanvasCoordinate
+  ) => void;
 };
 
 export const NadeEditMapPosition: FC<Props> = ({

@@ -7,7 +7,7 @@ import FilterBar from "../components/nadefilter/FilterBar";
 import { NadePreviewModal } from "../components/SuggestedNades/NadePreviewModal";
 import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
 import { useSetMapView } from "../logic/useSetMapView";
-import { CsgoMap } from "../models/CsGoMap";
+import { CsMap } from "../models/CsGoMap";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
 import { NadeType } from "../../nade/models/NadeType";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
@@ -28,7 +28,7 @@ const CsMapView = dynamic(
 const isServer = typeof window === "undefined";
 
 type Props = {
-  map: CsgoMap;
+  map: CsMap;
   allNades: NadeLight[];
   isLoading: boolean;
   initialType?: NadeType;
@@ -131,7 +131,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   );
 });
 
-function mapPageTitleSeo(map: CsgoMap) {
+function mapPageTitleSeo(map: CsMap) {
   if (!map) {
     return "Not found";
   }

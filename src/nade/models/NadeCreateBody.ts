@@ -3,10 +3,10 @@ import { NadeMovement } from "./NadeMovement";
 import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
 import { Technique } from "./Technique";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 import { GameMode } from "./GameMode";
-import { MapCoordinates } from "./MapCoordinates";
+import { CsCanvasCoordinate } from "./MapCoordinates";
 
 export type NadeCreateBody = {
   description: string;
@@ -16,9 +16,9 @@ export type NadeCreateBody = {
   imageBase64: string;
   isPro?: boolean;
   lineUpImageBase64?: string;
-  map: CsgoMap;
-  mapEndCoord: MapCoordinates;
-  mapStartCoord: MapCoordinates;
+  map: CsMap;
+  mapEndCoord: CsCanvasCoordinate;
+  mapStartCoord: CsCanvasCoordinate;
   movement: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

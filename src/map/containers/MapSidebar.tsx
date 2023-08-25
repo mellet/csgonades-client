@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { DiscordJoinAction } from "../components/Sidebar/DiscordJoinAction";
 import { NadeLight } from "../../nade/models/NadeLight";
-import { CsgoMap } from "../models/CsGoMap";
+import { CsMap } from "../models/CsGoMap";
 import { Spacer } from "../../shared-components/Spacer";
 import { BuyMeABeerAction } from "../components/Sidebar/BuyMeABeerAction";
 import { SideJumbo } from "../components/Sidebar/SideJumbo";
 import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 type Props = {
-  map: CsgoMap;
+  map: CsMap;
   nades: NadeLight[];
   isLoading: boolean;
 };

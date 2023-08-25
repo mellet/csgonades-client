@@ -1,4 +1,4 @@
-export type MapCoordinates = {
+export type CsCanvasCoordinate = {
   x: number;
   y: number;
 };

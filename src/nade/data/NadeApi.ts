@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ok } from "neverthrow";
 import { AppConfig } from "../../constants/Constants";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { Nade } from "../models/Nade";
 import { NadeUpdateBody } from "../models/NadeUpdateBody";
 import { NadeCreateBody } from "../models/NadeCreateBody";
@@ -94,7 +94,7 @@ export class NadeApi {
   }
 
   static async getByMap(
-    mapName: CsgoMap,
+    mapName: CsMap,
     gameMode: GameMode,
     nadeType?: NadeType
   ): AppResult<NadeLight[]> {
@@ -104,7 +104,7 @@ export class NadeApi {
         url += `&type=${nadeType}`;
       }
       const res = await axios.get<NadeLight[]>(url);
-      const nades = res.data;
+      const nades = res.data.filter((n) => Boolean(n.youTubeId));
 
       return ok(nades);
     } catch (error) {
@@ -128,7 +128,7 @@ export class NadeApi {
   static async byUser(
     steamId: string,
     gameMode: GameMode,
-    csgoMap: CsgoMap
+    csgoMap: CsMap
   ): AppResult<NadeLight[]> {
     try {
       let url = `${AppConfig.API_URL}/nades/user/${steamId}?gameMode=${gameMode}`;

@@ -1,4 +1,4 @@
-import { MapCoordinates } from "../../../nade/models/MapCoordinates";
+import { CsCanvasCoordinate } from "../../../nade/models/MapCoordinates";
 
 export interface CanvasCircle {
   x: number;
@@ -103,7 +103,7 @@ export const isInsideCircle = (
 
 export function convertRealCoordsToDomCoords(
   width: number,
-  coords?: MapCoordinates
+  coords?: CsCanvasCoordinate
 ) {
   if (!coords) {
     return;
@@ -116,7 +116,7 @@ export function convertRealCoordsToDomCoords(
 
 export function covertToSavedCoordinates(
   width: number,
-  coords: MapCoordinates
+  coords: CsCanvasCoordinate
 ) {
   const sizeRatio = 1024 / width;
   const x = Math.round(coords.x * sizeRatio);
