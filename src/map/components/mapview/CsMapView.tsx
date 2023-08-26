@@ -2,18 +2,53 @@ import { FC, useCallback, useEffect, useRef, useState } from "react";
 import Konva from "konva";
 import { Stage, Layer, Image } from "react-konva";
 import useImage from "use-image";
-import { Polygon } from "./Polygon";
-import { Shape } from "./Shape";
+import { EditStartLocation } from "./Polygon";
+import { useMapStartLocations } from "../../data/useNadeEndLocations";
+import { CsMap } from "../../models/CsGoMap";
+import {
+  NadeStartLocation,
+  NadeStartLocationCreate,
+} from "../../models/NadeStartLocation";
+import { StartLocations } from "./StartLocation";
+import { CsCanvasCoordinate } from "../../../nade/models/MapCoordinates";
+import { CreateStartLocation } from "./CreateStartLocation";
+import { Toolbar } from "./Toolbar";
+import { EditPane } from "./EditPane";
 
-export const CsMapView: FC = () => {
+export type Coordinate = {
+  id: string;
+  x: number;
+  y: number;
+};
+
+type Props = {
+  csMap: CsMap;
+};
+
+export const CsMapView: FC<Props> = ({ csMap }) => {
   const konvaRef = useRef<Konva.Stage>(null);
-  const [shapes, setShapes] = useState<Shape[]>([]);
-  const [shape, setShape] = useState<Shape>([]);
-  const [isCreating, setIsCreating] = useState(false);
+  const { mapLocations, addMapStartLocation, updateMapStartLocation } =
+    useMapStartLocations(csMap);
+  const [selectedLocation, setSelectedLocation] =
+    useState<NadeStartLocation | null>(null);
+  const [createLocation, setCreateLocation] =
+    useState<NadeStartLocationCreate | null>(null);
+  const [showEditPane, setShowEditPane] = useState(false);
+
+  const onCallOutChange = useCallback((calloutName: string) => {
+    console.log("Updateing callout", calloutName);
+    setSelectedLocation((curVal) => {
+      if (!curVal) return curVal;
+      return {
+        ...curVal,
+        calloutName,
+      };
+    });
+  }, []);
 
   const onStageClick = useCallback(
     (evt: Konva.KonvaEventObject<MouseEvent>) => {
-      if (isCreating) {
+      if (createLocation) {
         const stage = evt.target.getStage();
         const position = stage?.getPointerPosition();
         const zoom = stage?.scaleX();
@@ -22,21 +57,51 @@ export const CsMapView: FC = () => {
 
         const realX = position.x / zoom;
         const realY = position.y / zoom;
-        setShape((curShape) => {
-          return [...curShape, { x: realX, y: realY }];
+        setCreateLocation((curCreateLocation) => {
+          if (!curCreateLocation) {
+            return null;
+          }
+          return {
+            ...curCreateLocation,
+            position: [...curCreateLocation.position, { x: realX, y: realY }],
+          };
         });
       }
     },
-    [isCreating]
+    [createLocation]
   );
 
-  const onFinishShape = useCallback(() => {
-    setIsCreating(false);
-    if (shape.length) {
-      setShapes((curShapes) => [...curShapes, shape]);
+  const onSaveEdit = useCallback(() => {
+    if (!selectedLocation) {
+      return;
     }
-    setShape([]);
-  }, [shape]);
+    console.log("Saving edit", selectedLocation);
+    updateMapStartLocation({
+      id: selectedLocation.id,
+      position: selectedLocation.position,
+      calloutName: selectedLocation.calloutName,
+    });
+    setSelectedLocation(null);
+  }, [selectedLocation, updateMapStartLocation]);
+
+  const onFinishShape = useCallback(() => {
+    if (!createLocation) return;
+    addMapStartLocation(createLocation);
+    setCreateLocation(null);
+  }, [addMapStartLocation, createLocation]);
+
+  const onUpdateSelectedPosition = (position: CsCanvasCoordinate[]) => {
+    setSelectedLocation((cur) => {
+      if (!cur) {
+        return cur;
+      }
+
+      return {
+        ...cur,
+        position,
+      };
+    });
+  };
 
   useEffect(() => {
     if (!konvaRef || !konvaRef.current) {
@@ -51,25 +116,54 @@ export const CsMapView: FC = () => {
     stage.scaleY(scaleFactor);
   }, []);
 
+  const onNew = useCallback(() => {
+    setCreateLocation({ calloutName: "", map: csMap, position: [] });
+  }, [csMap]);
+
   return (
     <>
       <div className="konva-stage">
-        <div>
-          <button onClick={() => setIsCreating(true)}>
-            New Start Location
-          </button>
-          <button onClick={onFinishShape}>Save Location</button>
-        </div>
+        <Toolbar
+          displayEditActions={Boolean(selectedLocation)}
+          displayAddActions={Boolean(createLocation)}
+          onSaveEdit={onSaveEdit}
+          onCancelEdit={() => {
+            setSelectedLocation(null);
+          }}
+          onCreateNew={onNew}
+          onSaveNew={onFinishShape}
+          onCancelNew={() => setCreateLocation(null)}
+          onToggleEditPane={() => setShowEditPane((show) => !show)}
+        />
+
+        {showEditPane && selectedLocation && (
+          <EditPane
+            mapStartLocation={selectedLocation}
+            onCallOutChange={onCallOutChange}
+          />
+        )}
+
         <Stage ref={konvaRef} width={650} height={650} onClick={onStageClick}>
           <Layer>
             <MapImage />
+            {!selectedLocation && !createLocation && (
+              <StartLocations
+                startLocations={mapLocations}
+                onStartLocationSelected={(sL) => setSelectedLocation(sL)}
+              />
+            )}
           </Layer>
 
           <Layer>
-            <Polygon isEditing={isCreating} points={shape} />
-            {shapes.map((shape, idx) => (
-              <Polygon key={idx + "shape"} points={shape} />
-            ))}
+            {selectedLocation && !createLocation && (
+              <EditStartLocation
+                startLocation={selectedLocation}
+                onUpdatePosition={onUpdateSelectedPosition}
+              />
+            )}
+            {createLocation && (
+              <CreateStartLocation coordinates={createLocation.position} />
+            )}
           </Layer>
         </Stage>
       </div>
@@ -78,6 +172,7 @@ export const CsMapView: FC = () => {
           border: 1px solid red;
           width: 650px;
           height: 650px;
+          position: relative;
         }
       `}</style>
     </>

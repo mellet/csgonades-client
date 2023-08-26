@@ -1,56 +1,64 @@
 import { FC, useState } from "react";
-import { Shape, Circle } from "react-konva";
+import { Circle, Line } from "react-konva";
+import { nanoid } from "nanoid";
+import { NadeStartLocation } from "../../models/NadeStartLocation";
+import { CsCanvasCoordinate } from "../../../nade/models/MapCoordinates";
 
 type Point = {
+  id: string;
   x: number;
   y: number;
-  angle?: number;
 };
 
 type Props = {
-  isEditing?: boolean;
-  points: Point[];
+  startLocation: NadeStartLocation;
+  onUpdatePosition: (position: CsCanvasCoordinate[]) => void;
 };
 
-export const Polygon: FC<Props> = ({ points, isEditing }) => {
-  const [shapeOpacity, setShapeOpacity] = useState(0.1);
-  const [start, ...rest] = points;
+export const EditStartLocation: FC<Props> = ({
+  startLocation,
+  onUpdatePosition,
+}) => {
+  const [positions, setPositions] = useState<Point[]>(
+    startLocation.position.map((p) => ({ ...p, id: nanoid() }))
+  );
 
-  if (!start) {
-    return null;
-  }
+  const pointsAsArray = positions.reduce((res, cur) => {
+    return [...res, cur.x, cur.y];
+  }, []);
 
   return (
     <>
-      <Shape
-        onMouseEnter={() => setShapeOpacity(0.3)}
-        onMouseLeave={() => setShapeOpacity(0.1)}
-        fill={`rgba(140, 255, 0, ${shapeOpacity})`}
+      <Line
+        closed
+        points={pointsAsArray}
+        fill={`rgba(140, 255, 0, 0.5`}
         stroke="rgba(140, 255, 0, 1)"
-        strokeWidth={1}
-        sceneFunc={function (ctx) {
-          ctx.beginPath();
-          ctx.moveTo(start.x, start.y);
-          for (const point of rest) {
-            ctx.lineTo(point.x, point.y);
-          }
-          ctx.closePath();
-          ctx.fillStrokeShape(this);
-        }}
       />
-
-      {isEditing &&
-        points.map((point) => {
-          return (
-            <Circle
-              key={`${point.x}${point.y}`}
-              x={point.x}
-              y={point.y}
-              radius={3}
-              fill="rgba(255,255,255,0.5)"
-            />
-          );
-        })}
+      {positions.map((p) => {
+        return (
+          <Circle
+            key={p.id}
+            draggable
+            x={p.x}
+            y={p.y}
+            radius={5}
+            fill="rgba(255,255,255,0.5)"
+            onDragMove={(evt) =>
+              setPositions((prev) => {
+                const copy = [...prev];
+                const idx = copy.findIndex((v) => v.id === p.id);
+                const item = copy[idx];
+                if (!item) return prev;
+                item.x = evt.target.x();
+                item.y = evt.target.y();
+                onUpdatePosition(copy);
+                return copy;
+              })
+            }
+          />
+        );
+      })}
       <style jsx>{``}</style>
     </>
   );

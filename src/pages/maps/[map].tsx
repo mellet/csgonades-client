@@ -22,7 +22,7 @@ const Map: NextPage<Props> = ({ mapName }) => {
       main={
         <MapMain
           key={mapName}
-          map={mapName}
+          csMap={mapName}
           allNades={nades}
           isLoading={isLoading}
         />

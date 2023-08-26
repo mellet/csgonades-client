@@ -28,13 +28,13 @@ const CsMapView = dynamic(
 const isServer = typeof window === "undefined";
 
 type Props = {
-  map: CsMap;
+  csMap: CsMap;
   allNades: NadeLight[];
   isLoading: boolean;
   initialType?: NadeType;
 };
 
-export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
+export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
   const { mapView } = useSetMapView();
   const { isMobile } = useIsDeviceSize();
   const isOverviewView = mapView === "overview";
@@ -49,10 +49,10 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   return (
     <>
       <SEO
-        title={mapPageTitleSeo(map)}
-        canonical={`/maps/${map}`}
+        title={mapPageTitleSeo(csMap)}
+        canonical={`/maps/${csMap}`}
         description={`Find and learn the best smoke, flashbang, molotov and grenade spots for ${capitalize(
-          map
+          csMap
         )}. Browse our large collection of nades for CS:GO.`}
       />
 
@@ -81,7 +81,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
               onFinish={finishEloGame}
             />
           )}
-          <CsMapView />
+          <CsMapView csMap={csMap} />
         </div>
       </div>
       <style jsx>{`
