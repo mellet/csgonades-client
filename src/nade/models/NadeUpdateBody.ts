@@ -7,7 +7,6 @@ import { NadeStatus } from "./Status";
 import { CsMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 import { GameMode } from "./GameMode";
-import { CsCanvasCoordinate } from "./MapCoordinates";
 
 export type NadeUpdateBody = {
   description?: string;
@@ -18,8 +17,8 @@ export type NadeUpdateBody = {
   isPro?: boolean;
   lineUpImageBase64?: string;
   map?: CsMap;
-  mapEndCoord?: CsCanvasCoordinate;
-  mapStartCoord?: CsCanvasCoordinate;
+  mapStartLocationId?: string;
+  mapEndLocationId?: string;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

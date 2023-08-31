@@ -1,20 +1,30 @@
 import { FC } from "react";
 import { CsgnInput } from "../../../shared-components/inputs/TextInput/CsgnInput";
-import { NadeStartLocation } from "../../models/NadeStartLocation";
+import { MapStartLocation } from "../../models/NadeStartLocation";
+import { FaTimes } from "react-icons/fa";
+import { MapEndLocation } from "../../models/NadeEndLocation";
 
 type Props = {
-  mapStartLocation: NadeStartLocation;
+  mapStartLocation: MapStartLocation | MapEndLocation | null;
   onCallOutChange: (val: string) => void;
+  onDeleteClick: () => void;
 };
 
-export const EditPane: FC<Props> = ({ mapStartLocation, onCallOutChange }) => {
+export const EditPane: FC<Props> = ({
+  mapStartLocation,
+  onCallOutChange,
+  onDeleteClick,
+}) => {
+  const calloutName = mapStartLocation?.calloutName || "";
+
   return (
     <>
       <div>
-        <CsgnInput
-          onChange={onCallOutChange}
-          initialValue={mapStartLocation.calloutName}
-        />
+        <CsgnInput onChange={onCallOutChange} initialValue={calloutName} />
+
+        <button onClick={onDeleteClick}>
+          <FaTimes /> Delete
+        </button>
       </div>
       <style jsx>{`
         div {

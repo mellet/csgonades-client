@@ -1,6 +1,5 @@
 import { CsMap } from "../../../map/models/CsGoMap";
 import { GameMode } from "../../models/GameMode";
-import { CsCanvasCoordinate } from "../../models/MapCoordinates";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
 import { NadeType } from "../../models/NadeType";
@@ -51,14 +50,6 @@ type SetImage = {
 type SetLineUpImage = {
   type: "EditNade/SetLineUpImage";
   image: string;
-};
-
-type SetNadeCoords = {
-  type: "EditNade/SetEndPosCoords";
-  data: {
-    mapStartCoord: CsCanvasCoordinate;
-    mapEndCoord: CsCanvasCoordinate;
-  };
 };
 
 type SetTechnique = {
@@ -114,9 +105,20 @@ type SetGameMode = {
   gameMode: GameMode;
 };
 
+type SetMapStartLocation = {
+  type: "EditNade/SetMapStartLocation";
+  mapStartLocationId: string;
+};
+
+type SetMapEndLocation = {
+  type: "EditNade/SetMapEndLocation";
+  mapEndLocationId: string;
+};
+
 export type NadeEditAction =
+  | SetMapStartLocation
+  | SetMapEndLocation
   | SetDescription
-  | SetNadeCoords
   | SetEndPosition
   | SetGameMode
   | SetImage

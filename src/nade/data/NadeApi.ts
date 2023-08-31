@@ -11,6 +11,7 @@ import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";
 import { NadeType } from "../models/NadeType";
 import { GameMode } from "../models/GameMode";
+import { MapNadeLocations } from "../../map/models/MapNadeLocations";
 
 type NadeEloGame = {
   nadeOneId: string;
@@ -104,12 +105,35 @@ export class NadeApi {
         url += `&type=${nadeType}`;
       }
       const res = await axios.get<NadeLight[]>(url);
-      const nades = res.data.filter((n) => Boolean(n.youTubeId));
+      const nades = res.data
+        .filter((n) => Boolean(n.youTubeId))
+        .filter((n) => !n.mapEndLocationId && !n.mapStartLocationId);
 
       return ok(nades);
     } catch (error) {
       return extractApiError(error);
     }
+  }
+
+  static async getMapNadeLocations(
+    mapName: CsMap,
+    gameMode: GameMode,
+    nadeType: NadeType
+  ): Promise<MapNadeLocations[]> {
+    const url = `${AppConfig.API_URL}/nademap/${mapName}?nadeType=${nadeType}&gameMode=${gameMode}`;
+    const res = await axios.get<MapNadeLocations[]>(url);
+
+    return res.data;
+  }
+
+  static async getByStartAndEndLocation(
+    startLocationId: string,
+    endLocationId: string
+  ) {
+    const url = `${AppConfig.API_URL}/nades/start/${startLocationId}/end/${endLocationId}`;
+    const res = await axios.get<NadeLight[]>(url);
+
+    return res.data;
   }
 
   static async byId(id: string): AppResult<Nade> {

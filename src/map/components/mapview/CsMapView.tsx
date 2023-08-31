@@ -1,54 +1,90 @@
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import Konva from "konva";
-import { Stage, Layer, Image } from "react-konva";
-import useImage from "use-image";
-import { EditStartLocation } from "./Polygon";
-import { useMapStartLocations } from "../../data/useNadeEndLocations";
+import { Stage, Layer } from "react-konva";
+import { EditStartLocation } from "./EditStartLocation";
+import { useMapStartLocations } from "../../data/useMapStartLocations";
 import { CsMap } from "../../models/CsGoMap";
 import {
-  NadeStartLocation,
-  NadeStartLocationCreate,
+  MapStartLocation,
+  MapStartLocationCreate,
 } from "../../models/NadeStartLocation";
 import { StartLocations } from "./StartLocation";
 import { CsCanvasCoordinate } from "../../../nade/models/MapCoordinates";
 import { CreateStartLocation } from "./CreateStartLocation";
 import { Toolbar } from "./Toolbar";
 import { EditPane } from "./EditPane";
-
-export type Coordinate = {
-  id: string;
-  x: number;
-  y: number;
-};
+import { MapEndLocation } from "../../models/NadeEndLocation";
+import { EditEndLocation } from "./EditEndLocations";
+import { NadeType } from "../../../nade/models/NadeType";
+import { useMapEndLocations } from "../../data/useMapEndLocations";
+import { EndLocations } from "./EndLocations";
+import { MapImage } from "./MapViewImage";
 
 type Props = {
-  csMap: CsMap;
+  initCsMap: CsMap;
 };
 
-export const CsMapView: FC<Props> = ({ csMap }) => {
+export const CsMapView: FC<Props> = ({ initCsMap }) => {
   const konvaRef = useRef<Konva.Stage>(null);
-  const { mapLocations, addMapStartLocation, updateMapStartLocation } =
-    useMapStartLocations(csMap);
+  const [csMap, setCsMap] = useState(initCsMap);
+  const [nadeType, setNadeType] = useState<NadeType>("smoke");
+  const [mode, setMode] = useState<"start" | "end">("start");
+  const {
+    mapStartLocations,
+    addMapStartLocation,
+    updateMapStartLocation,
+    deleteMapStartLocation,
+  } = useMapStartLocations(csMap);
+  const { mapEndLocations, addMapEndLocation, updateMapEndLocation } =
+    useMapEndLocations(csMap, nadeType);
   const [selectedLocation, setSelectedLocation] =
-    useState<NadeStartLocation | null>(null);
-  const [createLocation, setCreateLocation] =
-    useState<NadeStartLocationCreate | null>(null);
+    useState<MapStartLocation | null>(null);
+  const [createStartLocation, setcreateStartLocation] =
+    useState<MapStartLocationCreate | null>(null);
   const [showEditPane, setShowEditPane] = useState(false);
+  const [selectedEndLocation, setSelectedEndLocation] =
+    useState<MapEndLocation | null>(null);
 
-  const onCallOutChange = useCallback((calloutName: string) => {
-    console.log("Updateing callout", calloutName);
-    setSelectedLocation((curVal) => {
-      if (!curVal) return curVal;
-      return {
-        ...curVal,
-        calloutName,
-      };
-    });
-  }, []);
+  const showStartLocations = mode === "start";
+  const showEndLocations = mode === "end";
+  const isEditing = Boolean(selectedEndLocation || selectedLocation);
+
+  const onCallOutChange = useCallback(
+    (calloutName: string) => {
+      if (mode === "start") {
+        setSelectedLocation((curVal) => {
+          if (!curVal) return curVal;
+          return {
+            ...curVal,
+            calloutName,
+          };
+        });
+      } else {
+        setSelectedEndLocation((curVal) => {
+          if (!curVal) return curVal;
+          return {
+            ...curVal,
+            calloutName,
+          };
+        });
+      }
+    },
+    [mode]
+  );
+
+  const onDeleteClick = useCallback(() => {
+    if (!selectedLocation) {
+      return;
+    }
+
+    deleteMapStartLocation(selectedLocation);
+    setShowEditPane(false);
+    setSelectedLocation(null);
+  }, [deleteMapStartLocation, selectedLocation]);
 
   const onStageClick = useCallback(
     (evt: Konva.KonvaEventObject<MouseEvent>) => {
-      if (createLocation) {
+      if (createStartLocation) {
         const stage = evt.target.getStage();
         const position = stage?.getPointerPosition();
         const zoom = stage?.scaleX();
@@ -57,38 +93,60 @@ export const CsMapView: FC<Props> = ({ csMap }) => {
 
         const realX = position.x / zoom;
         const realY = position.y / zoom;
-        setCreateLocation((curCreateLocation) => {
-          if (!curCreateLocation) {
-            return null;
-          }
-          return {
-            ...curCreateLocation,
-            position: [...curCreateLocation.position, { x: realX, y: realY }],
-          };
-        });
+
+        if (mode === "start") {
+          setcreateStartLocation((curCreateLocation) => {
+            if (!curCreateLocation) {
+              return null;
+            }
+            return {
+              ...curCreateLocation,
+              position: [...curCreateLocation.position, { x: realX, y: realY }],
+            };
+          });
+        }
       }
     },
-    [createLocation]
+    [createStartLocation, mode]
   );
 
   const onSaveEdit = useCallback(() => {
-    if (!selectedLocation) {
-      return;
+    if (mode == "start") {
+      if (!selectedLocation) {
+        return;
+      }
+      updateMapStartLocation({
+        id: selectedLocation.id,
+        position: selectedLocation.position,
+        calloutName: selectedLocation.calloutName,
+        labelPosition: selectedLocation.labelPosition,
+      });
+      setSelectedLocation(null);
+    } else {
+      if (!selectedEndLocation) {
+        return;
+      }
+      updateMapEndLocation({
+        id: selectedEndLocation.id,
+        calloutName: selectedEndLocation.calloutName,
+        map: selectedEndLocation.map,
+        position: selectedEndLocation.position,
+      });
+      setSelectedEndLocation(null);
     }
-    console.log("Saving edit", selectedLocation);
-    updateMapStartLocation({
-      id: selectedLocation.id,
-      position: selectedLocation.position,
-      calloutName: selectedLocation.calloutName,
-    });
-    setSelectedLocation(null);
-  }, [selectedLocation, updateMapStartLocation]);
+  }, [
+    mode,
+    selectedEndLocation,
+    selectedLocation,
+    updateMapEndLocation,
+    updateMapStartLocation,
+  ]);
 
   const onFinishShape = useCallback(() => {
-    if (!createLocation) return;
-    addMapStartLocation(createLocation);
-    setCreateLocation(null);
-  }, [addMapStartLocation, createLocation]);
+    if (!createStartLocation) return;
+    addMapStartLocation(createStartLocation);
+    setcreateStartLocation(null);
+  }, [addMapStartLocation, createStartLocation]);
 
   const onUpdateSelectedPosition = (position: CsCanvasCoordinate[]) => {
     setSelectedLocation((cur) => {
@@ -103,6 +161,13 @@ export const CsMapView: FC<Props> = ({ csMap }) => {
     });
   };
 
+  const onUpdateLabelPosition = (labelPosition: CsCanvasCoordinate) => {
+    setSelectedLocation((cur) => {
+      if (!cur) return cur;
+      return { ...cur, labelPosition };
+    });
+  };
+
   useEffect(() => {
     if (!konvaRef || !konvaRef.current) {
       return;
@@ -111,75 +176,103 @@ export const CsMapView: FC<Props> = ({ csMap }) => {
     const stage = konvaRef.current;
 
     const scaleFactor = stage.width() / 1024;
-
     stage.scaleX(scaleFactor);
     stage.scaleY(scaleFactor);
   }, []);
 
   const onNew = useCallback(() => {
-    setCreateLocation({ calloutName: "", map: csMap, position: [] });
+    setcreateStartLocation({
+      calloutName: "",
+      map: csMap,
+      position: [],
+      labelPosition: { x: 100, y: 100 },
+    });
   }, [csMap]);
 
   return (
     <>
       <div className="konva-stage">
         <Toolbar
-          displayEditActions={Boolean(selectedLocation)}
-          displayAddActions={Boolean(createLocation)}
+          mode={mode}
+          selectedType={nadeType}
+          onNadeTypeChange={setNadeType}
+          displayEditActions={isEditing}
+          displayAddActions={Boolean(createStartLocation)}
           onSaveEdit={onSaveEdit}
           onCancelEdit={() => {
             setSelectedLocation(null);
+            setSelectedEndLocation(null);
           }}
           onCreateNew={onNew}
           onSaveNew={onFinishShape}
-          onCancelNew={() => setCreateLocation(null)}
+          onCancelNew={() => setcreateStartLocation(null)}
           onToggleEditPane={() => setShowEditPane((show) => !show)}
+          onChangeCsMap={setCsMap}
+          onSetMode={setMode}
+          onCreateNewEndLocation={addMapEndLocation}
         />
 
-        {showEditPane && selectedLocation && (
+        {showEditPane && (selectedLocation || selectedEndLocation) && (
           <EditPane
-            mapStartLocation={selectedLocation}
+            mapStartLocation={selectedLocation || selectedEndLocation}
             onCallOutChange={onCallOutChange}
+            onDeleteClick={onDeleteClick}
           />
         )}
 
         <Stage ref={konvaRef} width={650} height={650} onClick={onStageClick}>
           <Layer>
-            <MapImage />
-            {!selectedLocation && !createLocation && (
+            <MapImage csMap={csMap} />
+            {showStartLocations && mapStartLocations && (
               <StartLocations
-                startLocations={mapLocations}
-                onStartLocationSelected={(sL) => setSelectedLocation(sL)}
+                hideLocationId={selectedLocation?.id}
+                startLocations={mapStartLocations}
+                onStartLocationSelected={(sL) => {
+                  setSelectedLocation(sL);
+                  setShowEditPane(true);
+                }}
+              />
+            )}
+            {showEndLocations && mapEndLocations && (
+              <EndLocations
+                endLocations={mapEndLocations}
+                onEndLocationSelected={setSelectedEndLocation}
+                hideEndLocationId={selectedEndLocation?.id}
               />
             )}
           </Layer>
 
           <Layer>
-            {selectedLocation && !createLocation && (
+            {selectedLocation && !createStartLocation && showStartLocations && (
               <EditStartLocation
                 startLocation={selectedLocation}
                 onUpdatePosition={onUpdateSelectedPosition}
+                onUpdateLabelPosition={onUpdateLabelPosition}
               />
             )}
-            {createLocation && (
-              <CreateStartLocation coordinates={createLocation.position} />
+            {createStartLocation && showStartLocations && (
+              <CreateStartLocation coordinates={createStartLocation.position} />
+            )}
+            {selectedEndLocation && (
+              <EditEndLocation
+                endLocation={selectedEndLocation}
+                onUpdateEndLocation={(position) => {
+                  setSelectedEndLocation((prev) => {
+                    if (!prev) return prev;
+                    return { ...prev, position };
+                  });
+                }}
+              />
             )}
           </Layer>
         </Stage>
       </div>
       <style jsx>{`
         .konva-stage {
-          border: 1px solid red;
           width: 650px;
-          height: 650px;
           position: relative;
         }
       `}</style>
     </>
   );
-};
-
-const MapImage = () => {
-  const [image] = useImage("/mapsoverlays/mirage.jpg");
-  return <Image image={image} width={1024} height={1024} />;
 };

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { NadeStartLocation } from "../../models/NadeStartLocation";
+import { MapStartLocation } from "../../models/NadeStartLocation";
 
 export const useEditStartLocation = () => {
-  const [selectedLocation] = useState<NadeStartLocation | null>(null);
+  const [selectedLocation] = useState<MapStartLocation | null>(null);
 
   return {
     selectStartLocation: selectedLocation ? selectedLocation.id : null,

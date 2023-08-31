@@ -26,6 +26,7 @@
     "neverthrow": "^6.0.0",
     "next": "^13.1.5",
     "next-seo": "^5.15.0",
+    "polylabel": "^1.1.0",
     "react": "^18.2.0",
     "react-accessible-accordion": "^5.0.0",
     "react-debounce-input": "^3.3.0",
@@ -48,6 +49,7 @@
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "swr": "^1.1.2",
+    "tinyqueue": "^2.0.3",
     "twemoji": "^14.0.2",
     "use-image": "^1.1.1",
     "usehooks-ts": "^2.2.1"

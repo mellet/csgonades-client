@@ -29,6 +29,8 @@ export interface Nade {
   map?: CsMap;
   mapEndCoord?: CsCanvasCoordinate;
   mapStartCoord?: CsCanvasCoordinate;
+  mapStartLocationId?: string;
+  mapEndLocationId?: string;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

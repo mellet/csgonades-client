@@ -2,23 +2,25 @@ import { CsCanvasCoordinate } from "../../nade/models/MapCoordinates";
 import { NadeType } from "../../nade/models/NadeType";
 import { CsMap } from "./CsGoMap";
 
-export type NadeEndLocation = {
+export type MapEndLocation = {
   id: string;
   calloutName: string;
   map: CsMap;
-  type: NadeType;
   position: CsCanvasCoordinate;
+  type: NadeType;
 };
 
-export type NadeEndLocationCreate = {
+export type MapEndLocationCreate = {
   calloutName: string;
   map: CsMap;
-  type: NadeType;
   position: CsCanvasCoordinate;
+  type: NadeType;
 };
 
-export type NadeEndLocationUpdate = {
+export type MapEndLocationUpdate = {
   id: string;
   calloutName?: string;
+  map?: CsMap;
   position?: CsCanvasCoordinate;
+  type?: NadeType;
 };

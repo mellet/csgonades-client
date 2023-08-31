@@ -1,32 +1,35 @@
 import { FC } from "react";
 import { CsMap } from "../../../map/models/CsGoMap";
-import { CsCanvasCoordinate } from "../../models/MapCoordinates";
 import { MapPositionSelector } from "../MapPositionSelector";
+import { NadeType } from "../../models/NadeType";
 
 type Props = {
   map: CsMap;
-  currentEndCoords?: CsCanvasCoordinate;
-  currentStartCoords?: CsCanvasCoordinate;
-  setEndCoords: (
-    startCoord: CsCanvasCoordinate,
-    endCoord: CsCanvasCoordinate
-  ) => void;
+  nadeType: NadeType;
+  selectedMapStartLocationId?: string;
+  selectedMapEndLocationId?: string;
+  onSetMapStartLocation: (mapStartLocationId: string) => void;
+  onSetMapEndLocation: (mapEndLocationString: string) => void;
 };
 
 export const NadeEditMapPosition: FC<Props> = ({
-  currentEndCoords,
-  currentStartCoords,
   map,
-  setEndCoords,
+  nadeType,
+  onSetMapEndLocation,
+  onSetMapStartLocation,
+  selectedMapEndLocationId,
+  selectedMapStartLocationId,
 }) => {
   return (
     <>
       <div>
         <MapPositionSelector
           selectedMap={map}
-          selectedEndPosition={currentEndCoords}
-          selectedStartPosition={currentStartCoords}
-          onPositionChange={setEndCoords}
+          selectedType={nadeType}
+          onSetMapEndLocation={onSetMapEndLocation}
+          onSetMapStartLocation={onSetMapStartLocation}
+          selectedMapEndLocationId={selectedMapEndLocationId}
+          selectedMapStartLocationId={selectedMapStartLocationId}
         />
       </div>
       <style jsx>{`

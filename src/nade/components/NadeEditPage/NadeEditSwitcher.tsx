@@ -6,8 +6,15 @@ import { NadeEditPaneMenu } from "../NadeEditPane/NadeEditPaneMenu";
 import { NadeEditActions } from "./NadeEditActions";
 import { NadeEditInfo } from "./NadeEditInfo";
 import { NadeEditLineupImage } from "./NadeEditLineupImage";
-import { NadeEditMapPosition } from "./NadeEditMapPosition";
 import { NadeEditResultImage } from "./NadeEditResultImage";
+import dynamic from "next/dynamic";
+
+const NadeEditMapPosition = dynamic(
+  () => import("./NadeEditMapPosition").then((m) => m.NadeEditMapPosition),
+  {
+    ssr: false,
+  }
+);
 
 type Props = {
   nade: Nade;
@@ -23,6 +30,8 @@ export const NadeEditSwitcher: FC<Props> = ({ nade }) => {
   const [currentPane, setCurrentPane] = useState<NadeEditPaneOption>("info");
   const { nadeUpdates, actions } = useEditNade();
 
+  console.log("# nadeUpdates", nadeUpdates);
+
   return (
     <>
       <div className="nade-edit-wrapper">
@@ -37,10 +46,12 @@ export const NadeEditSwitcher: FC<Props> = ({ nade }) => {
           {currentPane === "info" && <NadeEditInfo nade={nade} />}
           {currentPane === "mapPosition" && nadeUpdates.map && (
             <NadeEditMapPosition
-              currentEndCoords={nadeUpdates.mapEndCoord}
-              currentStartCoords={nadeUpdates.mapStartCoord}
-              setEndCoords={actions.onSetCoords}
-              map={nadeUpdates.map}
+              map={nadeUpdates.map || "dust2"}
+              nadeType={nadeUpdates.type || "smoke"}
+              selectedMapEndLocationId={nadeUpdates.mapEndLocationId}
+              selectedMapStartLocationId={nadeUpdates.mapStartLocationId}
+              onSetMapEndLocation={actions.onSetMapEndLocation}
+              onSetMapStartLocation={actions.onSetMapStartLocation}
             />
           )}
           {currentPane === "resultImage" && (

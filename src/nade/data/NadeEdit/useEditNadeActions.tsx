@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { CsMap } from "../../../map/models/CsGoMap";
-import { CsCanvasCoordinate } from "../../models/MapCoordinates";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
 import { NadeType } from "../../models/NadeType";
@@ -128,19 +127,6 @@ export const useEditNadeActions = (
     [dispatch]
   );
 
-  const onSetCoords = useCallback(
-    (mapStartCoord: CsCanvasCoordinate, mapEndCoord: CsCanvasCoordinate) => {
-      dispatch({
-        type: "EditNade/SetEndPosCoords",
-        data: {
-          mapEndCoord,
-          mapStartCoord,
-        },
-      });
-    },
-    [dispatch]
-  );
-
   const onSetLineUpImage = useCallback(
     (image: string) => {
       dispatch({ type: "EditNade/SetLineUpImage", image });
@@ -155,9 +141,22 @@ export const useEditNadeActions = (
     [dispatch]
   );
 
+  const onSetMapStartLocation = useCallback(
+    (mapStartLocationId: string) => {
+      dispatch({ type: "EditNade/SetMapStartLocation", mapStartLocationId });
+    },
+    [dispatch]
+  );
+
+  const onSetMapEndLocation = useCallback(
+    (mapEndLocationId: string) => {
+      dispatch({ type: "EditNade/SetMapEndLocation", mapEndLocationId });
+    },
+    [dispatch]
+  );
+
   return {
     onSetDescription,
-    onSetCoords,
     onSetEndPosition,
     onSetGameMode,
     onSetImage,
@@ -176,5 +175,7 @@ export const useEditNadeActions = (
     onSetTickrate,
     onSetYouTubeId,
     onUnSetIsPro,
+    onSetMapStartLocation,
+    onSetMapEndLocation,
   };
 };

@@ -26,6 +26,8 @@ export interface NadeLight {
   isPro?: boolean;
   map?: CsMap;
   mapEndCoord?: CsCanvasCoordinate;
+  mapEndLocationId?: string;
+  mapStartLocationId?: string;
   movement?: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

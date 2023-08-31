@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useState } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { NadeLight } from "../../nade/models/NadeLight";
 import { SEO } from "../../shared-components/SEO";
@@ -16,10 +16,12 @@ import {
   useEloGame,
 } from "../components/EloGame/BattleRoyalModal";
 import { useNadeClusters } from "../logic/useNadesForMapView";
+import MapViewScreen from "../components/MapViewScreen";
 import dynamic from "next/dynamic";
+import { NadeView } from "../components/NadeView/NadeView";
 
-const CsMapView = dynamic(
-  () => import("../components/mapview/CsMapView").then((m) => m.CsMapView),
+const NewMapView = dynamic(
+  () => import("./NewMapView/NewMapView").then((m) => m.NewMapView),
   {
     ssr: false,
   }
@@ -43,6 +45,10 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
   const { onNadeClusterClick, suggestedNades, dismissSuggested } =
     useOnNadeClusterClick();
   const { eloNades, showEloGame, closeEloGame, finishEloGame } = useEloGame();
+  const [displayNades, setDisplayNades] = useState<{
+    mapStartLocationId: string;
+    mapEndLocationId: string;
+  }>();
 
   const displayMapOverview = !isServer;
 
@@ -81,7 +87,28 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
               onFinish={finishEloGame}
             />
           )}
-          <CsMapView csMap={csMap} />
+
+          {true && displayMapOverview && isOverviewView && (
+            <MapViewScreen
+              isLoading={isLoading}
+              map={csMap}
+              nadeClusters={nadeClusters}
+              onClusterClick={onNadeClusterClick}
+              onStartEloGame={showEloGame}
+            />
+          )}
+
+          {displayNades && (
+            <NadeView
+              displayNades={displayNades}
+              onDismiss={() => setDisplayNades(undefined)}
+            />
+          )}
+
+          <NewMapView
+            csMap={csMap}
+            onDisplayNadesForLocation={setDisplayNades}
+          />
         </div>
       </div>
       <style jsx>{`

@@ -6,7 +6,6 @@ import { Technique } from "./Technique";
 import { CsMap } from "../../map/models/CsGoMap";
 import { TeamSide } from "./TeamSide";
 import { GameMode } from "./GameMode";
-import { CsCanvasCoordinate } from "./MapCoordinates";
 
 export type NadeCreateBody = {
   description: string;
@@ -17,8 +16,8 @@ export type NadeCreateBody = {
   isPro?: boolean;
   lineUpImageBase64?: string;
   map: CsMap;
-  mapEndCoord: CsCanvasCoordinate;
-  mapStartCoord: CsCanvasCoordinate;
+  mapStartLocationId: string;
+  mapEndLocationId: string;
   movement: NadeMovement;
   oneWay?: boolean;
   proUrl?: string;

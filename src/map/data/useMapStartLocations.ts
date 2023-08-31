@@ -3,13 +3,14 @@ import { CsMap } from "../models/CsGoMap";
 import { MapLocationApi } from "./NadeLocationApi";
 import { useCallback } from "react";
 import {
-  NadeStartLocationCreate,
-  NadeStartLocationUpdate,
+  MapStartLocation,
+  MapStartLocationCreate,
+  MapStartLocationUpdate,
 } from "../models/NadeStartLocation";
 
 async function fetcher(_url: string, csMap: CsMap) {
   const result = await MapLocationApi.getMapStartLocation(csMap);
-  return result.data;
+  return result;
 }
 
 export const useMapStartLocations = (csMap: CsMap) => {
@@ -18,10 +19,12 @@ export const useMapStartLocations = (csMap: CsMap) => {
     fetcher
   );
 
+  console.log("## Start locations", data);
+
   const isLoading = !data && isValidating;
 
   const addMapStartLocation = useCallback(
-    async (newMapStartLocation: NadeStartLocationCreate) => {
+    async (newMapStartLocation: MapStartLocationCreate) => {
       await MapLocationApi.addMapStartLocation(newMapStartLocation);
       mutate();
     },
@@ -29,17 +32,27 @@ export const useMapStartLocations = (csMap: CsMap) => {
   );
 
   const updateMapStartLocation = useCallback(
-    async (mapStartLocation: NadeStartLocationUpdate) => {
+    async (mapStartLocation: MapStartLocationUpdate) => {
       await MapLocationApi.updateNadeLocation(mapStartLocation);
       mutate();
     },
     [mutate]
   );
 
+  const deleteMapStartLocation = useCallback(
+    async (location: MapStartLocation) => {
+      await MapLocationApi.deleteMapStartLocation(location);
+      const updatedLocations = data?.filter((l) => l.id !== location.id);
+      mutate(updatedLocations);
+    },
+    [mutate, data]
+  );
+
   return {
     isLoading,
-    mapLocations: data || [],
+    mapStartLocations: data || [],
     addMapStartLocation,
     updateMapStartLocation,
+    deleteMapStartLocation,
   };
 };

@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Circle, Line } from "react-konva";
 import { nanoid } from "nanoid";
-import { NadeStartLocation } from "../../models/NadeStartLocation";
+import { MapStartLocation } from "../../models/NadeStartLocation";
 import { CsCanvasCoordinate } from "../../../nade/models/MapCoordinates";
 
 type Point = {
@@ -11,13 +11,15 @@ type Point = {
 };
 
 type Props = {
-  startLocation: NadeStartLocation;
+  startLocation: MapStartLocation;
   onUpdatePosition: (position: CsCanvasCoordinate[]) => void;
+  onUpdateLabelPosition: (labelPosition: CsCanvasCoordinate) => void;
 };
 
 export const EditStartLocation: FC<Props> = ({
   startLocation,
   onUpdatePosition,
+  onUpdateLabelPosition,
 }) => {
   const [positions, setPositions] = useState<Point[]>(
     startLocation.position.map((p) => ({ ...p, id: nanoid() }))
@@ -34,6 +36,19 @@ export const EditStartLocation: FC<Props> = ({
         points={pointsAsArray}
         fill={`rgba(140, 255, 0, 0.5`}
         stroke="rgba(140, 255, 0, 1)"
+      />
+      <Circle
+        draggable
+        x={startLocation.labelPosition?.x || 100}
+        y={startLocation.labelPosition?.y || 100}
+        fill="red"
+        radius={20}
+        onDragEnd={(evt) => {
+          onUpdateLabelPosition({
+            x: evt.target.x(),
+            y: evt.target.y(),
+          });
+        }}
       />
       {positions.map((p) => {
         return (
@@ -52,7 +67,7 @@ export const EditStartLocation: FC<Props> = ({
                 if (!item) return prev;
                 item.x = evt.target.x();
                 item.y = evt.target.y();
-                onUpdatePosition(copy);
+                onUpdatePosition(copy.map((p) => ({ x: p.x, y: p.y })));
                 return copy;
               })
             }
