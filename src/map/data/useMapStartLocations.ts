@@ -1,25 +1,24 @@
 import useSWR from "swr";
 import { CsMap } from "../models/CsGoMap";
-import { MapLocationApi } from "./NadeLocationApi";
+import { MapLocationApi } from "./MapLocationApi";
 import { useCallback } from "react";
 import {
   MapStartLocation,
   MapStartLocationCreate,
   MapStartLocationUpdate,
 } from "../models/NadeStartLocation";
+import { GameMode } from "../../nade/models/GameMode";
 
-async function fetcher(_url: string, csMap: CsMap) {
-  const result = await MapLocationApi.getMapStartLocation(csMap);
+async function fetcher(_url: string, csMap: CsMap, gameMode: GameMode) {
+  const result = await MapLocationApi.getMapStartLocation(csMap, gameMode);
   return result;
 }
 
-export const useMapStartLocations = (csMap: CsMap) => {
+export const useMapStartLocations = (csMap: CsMap, gameMode: GameMode) => {
   const { data, isValidating, mutate } = useSWR(
-    ["mapStartLocation", csMap],
+    ["mapStartLocation", csMap, gameMode],
     fetcher
   );
-
-  console.log("## Start locations", data);
 
   const isLoading = !data && isValidating;
 

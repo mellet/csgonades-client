@@ -20,7 +20,8 @@ export const EditEndLocation: FC<Props> = ({
         y={endLocation.position.y}
         radius={24}
         fill={`rgba(140, 255, 0, 0.5`}
-        stroke={`rgba(255, 255, 255, 1`}
+        stroke={`black`}
+        strokeWidth={2}
         onDragMove={(evt) => {
           onUpdateEndLocation({
             x: evt.target.x(),

@@ -10,6 +10,7 @@ import { useMapStartLocations } from "../../map/data/useMapStartLocations";
 import { useMapEndLocations } from "../../map/data/useMapEndLocations";
 import { EndLocations } from "../../map/components/mapview/EndLocations";
 import { StartLocations } from "../../map/components/mapview/StartLocation";
+import { useGameMode } from "../../core/useGameMode";
 
 type Props = {
   selectedMapStartLocationId?: string;
@@ -21,19 +22,24 @@ type Props = {
 };
 
 export const MapPositionSelector: FC<Props> = ({
-  selectedMap = "mirage",
-  selectedType = "smoke",
+  selectedMap,
+  selectedType,
   selectedMapStartLocationId,
   selectedMapEndLocationId,
   onSetMapStartLocation,
   onSetMapEndLocation,
 }) => {
   const { colors } = useTheme();
+  const { gameMode } = useGameMode();
   const [mode, setMode] = useState<"start" | "end">("start");
   const konvaRef = useRef<Konva.Stage>(null);
 
-  const { mapStartLocations } = useMapStartLocations(selectedMap);
-  const { mapEndLocations } = useMapEndLocations(selectedMap, selectedType);
+  const { mapStartLocations } = useMapStartLocations(selectedMap, gameMode);
+  const { mapEndLocations } = useMapEndLocations(
+    selectedMap,
+    selectedType,
+    gameMode
+  );
 
   useEffect(() => {
     if (!konvaRef || !konvaRef.current) {

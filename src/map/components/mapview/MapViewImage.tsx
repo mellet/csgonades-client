@@ -8,16 +8,6 @@ type MapImageProps = {
 };
 
 export const MapImage: FC<MapImageProps> = ({ csMap }) => {
-  const format = mapFormatPicker(csMap);
-
-  const [image] = useImage(`/mapsoverlays/${csMap}${format}`);
+  const [image] = useImage(`/mapsoverlays/${csMap}.svg`);
   return <Image image={image} width={1024} height={1024} />;
 };
-
-function mapFormatPicker(csMap: CsMap) {
-  if (csMap === "overpass" || csMap === "ancient" || csMap === "nuke") {
-    return ".svg";
-  }
-
-  return ".jpg";
-}

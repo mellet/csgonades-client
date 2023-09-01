@@ -19,6 +19,7 @@ import { NadeType } from "../../../nade/models/NadeType";
 import { useMapEndLocations } from "../../data/useMapEndLocations";
 import { EndLocations } from "./EndLocations";
 import { MapImage } from "./MapViewImage";
+import { useGameMode } from "../../../core/useGameMode";
 
 type Props = {
   initCsMap: CsMap;
@@ -26,6 +27,7 @@ type Props = {
 
 export const CsMapView: FC<Props> = ({ initCsMap }) => {
   const konvaRef = useRef<Konva.Stage>(null);
+  const { gameMode } = useGameMode();
   const [csMap, setCsMap] = useState(initCsMap);
   const [nadeType, setNadeType] = useState<NadeType>("smoke");
   const [mode, setMode] = useState<"start" | "end">("start");
@@ -34,9 +36,9 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
     addMapStartLocation,
     updateMapStartLocation,
     deleteMapStartLocation,
-  } = useMapStartLocations(csMap);
+  } = useMapStartLocations(csMap, gameMode);
   const { mapEndLocations, addMapEndLocation, updateMapEndLocation } =
-    useMapEndLocations(csMap, nadeType);
+    useMapEndLocations(csMap, nadeType, gameMode);
   const [selectedLocation, setSelectedLocation] =
     useState<MapStartLocation | null>(null);
   const [createStartLocation, setcreateStartLocation] =
@@ -120,6 +122,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
         position: selectedLocation.position,
         calloutName: selectedLocation.calloutName,
         labelPosition: selectedLocation.labelPosition,
+        gameMode: gameMode,
       });
       setSelectedLocation(null);
     } else {
@@ -131,6 +134,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
         calloutName: selectedEndLocation.calloutName,
         map: selectedEndLocation.map,
         position: selectedEndLocation.position,
+        gameMode,
       });
       setSelectedEndLocation(null);
     }
@@ -140,6 +144,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
     selectedLocation,
     updateMapEndLocation,
     updateMapStartLocation,
+    gameMode,
   ]);
 
   const onFinishShape = useCallback(() => {
@@ -186,8 +191,9 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
       map: csMap,
       position: [],
       labelPosition: { x: 100, y: 100 },
+      gameMode,
     });
-  }, [csMap]);
+  }, [csMap, gameMode]);
 
   return (
     <>

@@ -4,8 +4,10 @@ import { MapNadeLocations } from "../../models/MapNadeLocations";
 import useImage from "use-image";
 import { NadeType } from "../../../nade/models/NadeType";
 import Konva from "konva";
+import { CsMap } from "../../models/CsGoMap";
 
 type Props = {
+  csMap: CsMap;
   mapNadeLocations: MapNadeLocations[];
   onNadeClick: (mapLocation: MapNadeLocations) => void;
   onUnselect: () => void;
@@ -13,6 +15,7 @@ type Props = {
 };
 
 export const GrenadeView: FC<Props> = ({
+  csMap,
   mapNadeLocations,
   onNadeClick,
   onUnselect,
@@ -22,6 +25,7 @@ export const GrenadeView: FC<Props> = ({
     <>
       {mapNadeLocations.map((loc) => (
         <NadeImage
+          csMap={csMap}
           count={loc.endLocation.count}
           hide={
             selectedLocationId
@@ -43,6 +47,7 @@ export const GrenadeView: FC<Props> = ({
 };
 
 type MapImageProps = {
+  csMap: CsMap;
   nadeType: NadeType;
   x: number;
   y: number;
@@ -54,6 +59,7 @@ type MapImageProps = {
 };
 
 export const NadeImage: FC<MapImageProps> = ({
+  csMap,
   nadeType,
   x,
   y,
@@ -64,6 +70,7 @@ export const NadeImage: FC<MapImageProps> = ({
   count,
 }) => {
   const size = 55;
+  const scale = nadeScale(csMap);
   const grenadeIconRef = useRef<Konva.Image>(null);
   const textRef = useRef<Konva.Text>(null);
   const [image] = useImage(`/icons/grenades/${nadeType}.svg`);
@@ -71,14 +78,14 @@ export const NadeImage: FC<MapImageProps> = ({
   const zoomIn = () => {
     // to() is a method of `Konva.Node` instances
     grenadeIconRef.current?.to({
-      scaleX: 1.1,
-      scaleY: 1.1,
+      scaleX: scale.x + 0.1,
+      scaleY: scale.y + 0.1,
       opacity: 1,
       duration: 0.1,
     });
     textRef.current?.to({
-      scaleX: 1.1,
-      scaleY: 1.1,
+      scaleX: scale.x + 0.1,
+      scaleY: scale.y + 0.1,
       duration: 0.1,
     });
   };
@@ -86,14 +93,14 @@ export const NadeImage: FC<MapImageProps> = ({
   const zoomOut = () => {
     // to() is a method of `Konva.Node` instances
     grenadeIconRef.current?.to({
-      scaleX: 1,
-      scaleY: 1,
+      scaleX: scale.x,
+      scaleY: scale.y,
       opacity: 0.9,
       duration: 0.1,
     });
     textRef.current?.to({
-      scaleX: 1,
-      scaleY: 1,
+      scaleX: scale.x,
+      scaleY: scale.y,
       duration: 0.1,
     });
   };
@@ -113,6 +120,7 @@ export const NadeImage: FC<MapImageProps> = ({
   return (
     <>
       <Image
+        scale={scale}
         opacity={0.9}
         ref={grenadeIconRef}
         onClick={onClick}
@@ -138,6 +146,7 @@ export const NadeImage: FC<MapImageProps> = ({
         }}
       />
       <Text
+        scale={scale}
         ref={textRef}
         listening={false}
         x={x}
@@ -149,13 +158,19 @@ export const NadeImage: FC<MapImageProps> = ({
         offset={{ x: 50, y: 15 }}
         width={100}
         fill={isSelected ? "white" : "white"}
-        shadowColor="black"
-        shadowBlur={4}
-        shadowOffset={{ x: 1, y: 1 }}
-        shadowOpacity={0.4}
+        strokeWidth={2}
+        stroke="rgba(0,0,0,0.8)"
+        fillAfterStrokeEnabled
         align="center"
         verticalAlign="middle"
       />
     </>
   );
 };
+
+function nadeScale(csMap: CsMap): { x: number; y: number } {
+  if (csMap === "mirage" || csMap === "inferno") {
+    return { x: 0.9, y: 0.9 };
+  }
+  return { x: 1, y: 1 };
+}

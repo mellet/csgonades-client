@@ -107,7 +107,7 @@ export class NadeApi {
       const res = await axios.get<NadeLight[]>(url);
       const nades = res.data
         .filter((n) => Boolean(n.youTubeId))
-        .filter((n) => !n.mapEndLocationId && !n.mapStartLocationId);
+        .filter((n) => !n.mapEndLocationId || !n.mapStartLocationId);
 
       return ok(nades);
     } catch (error) {

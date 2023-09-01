@@ -58,6 +58,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
             )}
             {mapNadeLocations && (
               <GrenadeView
+                csMap={csMap}
                 selectedLocationId={selectedMapNadeLocation?.endLocation.id}
                 mapNadeLocations={mapNadeLocations}
                 onNadeClick={setSelectedMapNadeLocation}

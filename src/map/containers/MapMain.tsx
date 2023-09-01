@@ -88,6 +88,11 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
             />
           )}
 
+          <NewMapView
+            csMap={csMap}
+            onDisplayNadesForLocation={setDisplayNades}
+          />
+
           {true && displayMapOverview && isOverviewView && (
             <MapViewScreen
               isLoading={isLoading}
@@ -104,11 +109,6 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
               onDismiss={() => setDisplayNades(undefined)}
             />
           )}
-
-          <NewMapView
-            csMap={csMap}
-            onDisplayNadesForLocation={setDisplayNades}
-          />
         </div>
       </div>
       <style jsx>{`

@@ -12,12 +12,14 @@ import {
   MapEndLocationCreate,
   MapEndLocationUpdate,
 } from "../models/NadeEndLocation";
+import { GameMode } from "../../nade/models/GameMode";
 
 export class MapLocationApi {
   public static async getMapStartLocation(
-    csMap: CsMap
+    csMap: CsMap,
+    gameMode: GameMode
   ): Promise<MapStartLocation[]> {
-    const url = `${AppConfig.API_URL}/mapstartlocation/${csMap}`;
+    const url = `${AppConfig.API_URL}/mapstartlocation/${csMap}?gameMode=${gameMode}`;
     const res = await AxiosApi.get<MapStartLocation[]>(url);
 
     return res.data;
@@ -25,9 +27,10 @@ export class MapLocationApi {
 
   public static async getMapEndLocation(
     csMap: CsMap,
-    nadeType: NadeType
+    nadeType: NadeType,
+    gameMode: GameMode
   ): Promise<MapEndLocation[]> {
-    const url = `${AppConfig.API_URL}/mapendlocation/${csMap}/${nadeType}`;
+    const url = `${AppConfig.API_URL}/mapendlocation/${csMap}/${nadeType}?gameMode=${gameMode}`;
     const res = await AxiosApi.get<MapEndLocation[]>(url);
 
     return res.data;

@@ -1,3 +1,4 @@
+import { GameMode } from "../../nade/models/GameMode";
 import { CsCanvasCoordinate } from "../../nade/models/MapCoordinates";
 import { CsMap } from "./CsGoMap";
 
@@ -7,6 +8,7 @@ export type MapStartLocation = {
   map: CsMap;
   position: CsCanvasCoordinate[];
   labelPosition: CsCanvasCoordinate;
+  gameMode: GameMode;
 };
 
 export type MapStartLocationCreate = {
@@ -14,6 +16,7 @@ export type MapStartLocationCreate = {
   map: CsMap;
   position: CsCanvasCoordinate[];
   labelPosition: CsCanvasCoordinate;
+  gameMode: GameMode;
 };
 
 export type MapStartLocationUpdate = {
@@ -22,4 +25,5 @@ export type MapStartLocationUpdate = {
   map?: CsMap;
   position?: CsCanvasCoordinate[];
   labelPosition?: CsCanvasCoordinate;
+  gameMode?: GameMode;
 };

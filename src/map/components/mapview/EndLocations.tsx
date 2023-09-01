@@ -48,32 +48,27 @@ const EndLocation: FC<EndLocationProp> = ({
   onEndLocationSelected,
   hightlight,
 }) => {
-  const [shapeOpacity, setShapeOpacity] = useState(0.1);
-  const [strongOpacity, setStrokeOpacity] = useState(0.5);
+  const REST_OPACITY = 0.3;
+  const HOVER_OPACITY = 0.7;
+  const [shapeOpacity, setShapeOpacity] = useState(REST_OPACITY);
 
   return (
     <Circle
       onClick={() => onEndLocationSelected(endLocation)}
       onMouseEnter={() => {
         if (!hightlight) {
-          setShapeOpacity(0.3);
-          setStrokeOpacity(1);
+          setShapeOpacity(HOVER_OPACITY);
         }
       }}
       onMouseLeave={() => {
-        setShapeOpacity(0.1);
-        setStrokeOpacity(0.7);
+        setShapeOpacity(REST_OPACITY);
       }}
       x={endLocation.position.x}
       y={endLocation.position.y}
       radius={24}
-      fill={
-        hightlight
-          ? `rgba(140, 255, 0, 0.7`
-          : `rgba(140, 255, 0, ${shapeOpacity})`
-      }
-      stroke={hightlight ? `white` : `rgba(255, 255, 255, ${strongOpacity}`}
-      strokeWidth={hightlight ? 2 : 1}
+      fill={hightlight ? `blue` : `rgba(140, 255, 0, ${shapeOpacity})`}
+      stroke={hightlight ? `#33ff00` : `rgba(0, 0, 0, 0.75)`}
+      strokeWidth={2}
     />
   );
 };

@@ -57,9 +57,10 @@ const StartLocation: FC<StartLocationProp> = ({
   onStartLocationSelected,
   count,
 }) => {
+  const REST_OPACITY = 0.2;
+  const HOVER_OPACITY = 0.4;
   const textRef = useRef<Konva.Text>(null);
-  const [shapeOpacity, setShapeOpacity] = useState(0.1);
-  const [strongOpacity, setStrokeOpacity] = useState(0.5);
+  const [shapeOpacity, setShapeOpacity] = useState(REST_OPACITY);
 
   const zoomInText = () => {
     // to() is a method of `Konva.Node` instances
@@ -97,8 +98,7 @@ const StartLocation: FC<StartLocationProp> = ({
             if (container) {
               container.style.cursor = "pointer";
             }
-            setShapeOpacity(0.3);
-            setStrokeOpacity(1);
+            setShapeOpacity(HOVER_OPACITY);
             zoomInText();
           }
         }}
@@ -107,8 +107,7 @@ const StartLocation: FC<StartLocationProp> = ({
           if (container) {
             container.style.cursor = "defualt";
           }
-          setShapeOpacity(0.1);
-          setStrokeOpacity(0.7);
+          setShapeOpacity(REST_OPACITY);
           zoomOutText();
         }}
         closed
@@ -116,9 +115,9 @@ const StartLocation: FC<StartLocationProp> = ({
         fill={
           highlight
             ? "rgba(0, 167, 250, 0.5)"
-            : `rgba(0, 167, 250, ${shapeOpacity})`
+            : `rgba(55, 178, 230, ${shapeOpacity})`
         }
-        stroke={"#00a7fa"}
+        stroke={"white"}
       />
       {count && (
         <Text
