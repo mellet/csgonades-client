@@ -104,7 +104,7 @@ export class NadeApi {
         url += `&type=${nadeType}`;
       }
       const res = await axios.get<NadeLight[]>(url);
-      const nades = res.data;
+      const nades = res.data.filter((n) => Boolean(n.youTubeId));
 
       return ok(nades);
     } catch (error) {
