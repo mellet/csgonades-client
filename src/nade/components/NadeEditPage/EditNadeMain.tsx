@@ -14,9 +14,8 @@ export const EditNadeMain: FC<Props> = ({ nade }) => {
   const canEdit = useCanEditNade(nade.steamId);
   const { setGameMode } = useGameMode();
 
-  // Make sure we are on the correct game mode
   useEffect(() => {
-    setGameMode(nade.gameMode || "csgo");
+    setGameMode(nade.gameMode);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

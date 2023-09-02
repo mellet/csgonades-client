@@ -27,9 +27,8 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
     nade.map
   );
 
-  // Make sure we are on the correct game mode
   useEffect(() => {
-    setGameMode(nade.gameMode || "csgo");
+    setGameMode(nade.gameMode);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

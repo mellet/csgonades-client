@@ -90,7 +90,16 @@ const useActiveDutyMaps = (): CsMap[] => {
           "vertigo",
           "anubis",
         ]
-      : ["ancient", "anubis", "mirage", "dust2", "nuke", "overpass", "vertigo"];
+      : [
+          "mirage",
+          "inferno",
+          "overpass",
+          "ancient",
+          "nuke",
+          "vertigo",
+          "anubis",
+          "dust2",
+        ];
 
   return maps;
 };
