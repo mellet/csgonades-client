@@ -35,7 +35,7 @@ export const SideJumbo: FC<Props> = ({ nades, map, isLoading }) => {
           Dominate {capitalize(map)} with our collection of smokes, flashbangs,
           molotovs, and grenades.
         </h2>
-        <TopContributors nades={nades} isLoading={isLoading} />
+        {false && <TopContributors nades={nades} isLoading={isLoading} />}
       </div>
       <style jsx>{`
         .jumbo {

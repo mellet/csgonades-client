@@ -89,11 +89,12 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
           )}
 
           <NewMapView
+            key={csMap}
             csMap={csMap}
             onDisplayNadesForLocation={setDisplayNades}
           />
 
-          {true && displayMapOverview && isOverviewView && (
+          {false && displayMapOverview && isOverviewView && (
             <MapViewScreen
               isLoading={isLoading}
               map={csMap}
@@ -119,6 +120,7 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
           grid-template-columns: min-content 1fr;
           grid-template-areas: "filter nades";
           grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+          height: 100%;
         }
 
         #filter {

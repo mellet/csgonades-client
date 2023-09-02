@@ -39,6 +39,7 @@
     "react-konva": "^18.2.10",
     "react-loading-skeleton": "^3.3.1",
     "react-markdown": "^8.0.5",
+    "react-resize-detector": "^9.1.0",
     "react-responsive": "9.0.2",
     "react-share": "^4.4.1",
     "react-ssr-adsense": "^1.0.1",

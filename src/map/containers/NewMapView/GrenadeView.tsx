@@ -1,5 +1,5 @@
 import { FC, useRef } from "react";
-import { Image, Text } from "react-konva";
+import { Circle, Image, Text } from "react-konva";
 import { MapNadeLocations } from "../../models/MapNadeLocations";
 import useImage from "use-image";
 import { NadeType } from "../../../nade/models/NadeType";
@@ -73,7 +73,36 @@ export const NadeImage: FC<MapImageProps> = ({
   const scale = nadeScale(csMap);
   const grenadeIconRef = useRef<Konva.Image>(null);
   const textRef = useRef<Konva.Text>(null);
+  const closeBtnRef = useRef<Konva.Circle>(null);
   const [image] = useImage(`/icons/grenades/${nadeType}.svg`);
+
+  const onCloseHover = () => {
+    closeBtnRef.current?.to({
+      scaleX: scale.x + 0.1,
+      scaleY: scale.y + 0.1,
+      opacity: 1,
+      duration: 0.1,
+    });
+    textRef.current?.to({
+      scaleX: scale.x + 0.1,
+      scaleY: scale.y + 0.1,
+      duration: 0.1,
+    });
+  };
+
+  const onCloseLeave = () => {
+    closeBtnRef.current?.to({
+      scaleX: scale.x,
+      scaleY: scale.y,
+      opacity: 1,
+      duration: 0.1,
+    });
+    textRef.current?.to({
+      scaleX: scale.x,
+      scaleY: scale.y,
+      duration: 0.1,
+    });
+  };
 
   const zoomIn = () => {
     // to() is a method of `Konva.Node` instances
@@ -119,32 +148,59 @@ export const NadeImage: FC<MapImageProps> = ({
 
   return (
     <>
-      <Image
-        scale={scale}
-        opacity={0.9}
-        ref={grenadeIconRef}
-        onClick={onClick}
-        x={x}
-        y={y}
-        offset={{ x: size / 2, y: size / 2 }}
-        image={image}
-        width={size}
-        height={size}
-        onMouseEnter={(evt) => {
-          const container = evt.target.getStage()?.container();
-          if (container) {
-            container.style.cursor = "pointer";
-          }
-          zoomIn();
-        }}
-        onMouseLeave={(evt) => {
-          const container = evt.target.getStage()?.container();
-          if (container) {
-            container.style.cursor = "default";
-          }
-          zoomOut();
-        }}
-      />
+      {isSelected && (
+        <Circle
+          ref={closeBtnRef}
+          onClick={onClick}
+          x={x}
+          y={y}
+          radius={size / 2.3}
+          fill="rgba(184, 13, 13, 0.9)"
+          onMouseEnter={(evt) => {
+            const container = evt.target.getStage()?.container();
+            if (container) {
+              container.style.cursor = "pointer";
+            }
+            onCloseHover();
+          }}
+          onMouseLeave={(evt) => {
+            const container = evt.target.getStage()?.container();
+            if (container) {
+              container.style.cursor = "default";
+            }
+            onCloseLeave();
+          }}
+        />
+      )}
+      {!isSelected && (
+        <Image
+          scale={scale}
+          opacity={0.9}
+          ref={grenadeIconRef}
+          onClick={onClick}
+          x={x}
+          y={y}
+          offset={{ x: size / 2, y: size / 2 }}
+          image={image}
+          width={size}
+          height={size}
+          onMouseEnter={(evt) => {
+            const container = evt.target.getStage()?.container();
+            if (container) {
+              container.style.cursor = "pointer";
+            }
+            zoomIn();
+          }}
+          onMouseLeave={(evt) => {
+            const container = evt.target.getStage()?.container();
+            if (container) {
+              container.style.cursor = "default";
+            }
+            zoomOut();
+          }}
+        />
+      )}
+
       <Text
         scale={scale}
         ref={textRef}
@@ -158,7 +214,7 @@ export const NadeImage: FC<MapImageProps> = ({
         offset={{ x: 50, y: 15 }}
         width={100}
         fill={isSelected ? "white" : "white"}
-        strokeWidth={2}
+        strokeWidth={isSelected ? 0 : 2}
         stroke="rgba(0,0,0,0.8)"
         fillAfterStrokeEnabled
         align="center"

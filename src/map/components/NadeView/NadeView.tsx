@@ -7,6 +7,8 @@ import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
 import { useNadesForLocation } from "./useNadesForLocation";
 import { NadePreviewHeader } from "../SuggestedNades/NadePreviewHeader";
+import { useFilterNadeView } from "../../logic/useFilteredNades";
+import { LoadingView } from "./LoadingView";
 
 export type DisplayNades = {
   mapStartLocationId: string;
@@ -22,8 +24,10 @@ const MAX_MODAL_WIDTH = 1420;
 
 export const NadeView: FC<Props> = ({ displayNades, onDismiss }) => {
   const { colors } = useTheme();
-  const { isLoading, nades } = useNadesForLocation(displayNades);
+  const { nades, isLoading } = useNadesForLocation(displayNades);
   const ga = useGa();
+
+  const nadesToShow = useFilterNadeView(nades || []);
 
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -73,10 +77,13 @@ export const NadeView: FC<Props> = ({ displayNades, onDismiss }) => {
         </div>
         <div className="suggested-main">
           <div className="nade-list" onClick={(e) => e.stopPropagation()}>
-            {nades && (
+            {isLoading && <LoadingView />}
+
+            {nadesToShow && !isLoading && (
               <>
                 <CsgnList<NadeLight>
-                  data={nades}
+                  isLoading={isLoading}
+                  data={nadesToShow}
                   renderItem={renderItem}
                   keyExtractor={keyExtractor}
                   enableAds={false}
