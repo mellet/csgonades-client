@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import { SEO } from "../shared-components/SEO";
 import { NadeVideoContainer } from "./components/VideoContainer/NadeVideoContainer";
 import { NadeComments } from "./components/comments/NadeComments";
@@ -11,12 +11,15 @@ import { NadeDescription } from "./components/NadeDescription";
 import { NadeMainLayout } from "./NadeMainLayout";
 import { NadeActions } from "./containers/NadeActions";
 import { GfycatData } from "./models/GfycatData";
+import { useGameMode } from "../core/useGameMode";
 
 type Props = {
   nade: Nade;
 };
 
 export const NadeMain: FC<Props> = memo(({ nade }) => {
+  const { setGameMode } = useGameMode();
+
   const seoTitle = generateSeoTitle(
     nade.startPosition,
     nade.endPosition,
@@ -24,6 +27,11 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
     nade.oneWay,
     nade.map
   );
+
+  useEffect(() => {
+    setGameMode(nade.gameMode);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const createdAtString = new Date(nade.createdAt).toISOString();
 
