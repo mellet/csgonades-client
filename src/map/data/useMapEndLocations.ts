@@ -55,12 +55,9 @@ export const useMapEndLocations = (
   const deleteMapEndLocation = useCallback(
     async (location: MapEndLocation) => {
       await MapLocationApi.deleteMapEndLocation(location);
-      mutate(
-        data?.filter((l) => l.id !== location.id),
-        { revalidate: true }
-      );
+      mutate();
     },
-    [data, mutate]
+    [mutate]
   );
 
   return {

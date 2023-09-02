@@ -30,8 +30,6 @@ export const NadeEditSwitcher: FC<Props> = ({ nade }) => {
   const [currentPane, setCurrentPane] = useState<NadeEditPaneOption>("info");
   const { nadeUpdates, actions } = useEditNade();
 
-  console.log("# nadeUpdates", nadeUpdates);
-
   return (
     <>
       <div className="nade-edit-wrapper">
@@ -48,6 +46,7 @@ export const NadeEditSwitcher: FC<Props> = ({ nade }) => {
             <NadeEditMapPosition
               map={nadeUpdates.map || "dust2"}
               nadeType={nadeUpdates.type || "smoke"}
+              gameMode={nadeUpdates.gameMode || nade.gameMode}
               selectedMapEndLocationId={nadeUpdates.mapEndLocationId}
               selectedMapStartLocationId={nadeUpdates.mapStartLocationId}
               onSetMapEndLocation={actions.onSetMapEndLocation}

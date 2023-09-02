@@ -22,14 +22,16 @@ export const EditPane: FC<Props> = ({
       <div>
         <CsgnInput onChange={onCallOutChange} initialValue={calloutName} />
 
-        <button onClick={onDeleteClick}>
-          <FaTimes /> Delete
-        </button>
+        {false && (
+          <button onClick={onDeleteClick}>
+            <FaTimes /> Delete
+          </button>
+        )}
       </div>
       <style jsx>{`
         div {
           position: absolute;
-          bottom: 5px;
+          top: 100px;
           right: 5px;
           background: white;
           z-index: 1;

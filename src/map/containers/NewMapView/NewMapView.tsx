@@ -9,7 +9,6 @@ import { GrenadeView } from "./GrenadeView";
 import { StartLocations } from "../../components/mapview/StartLocation";
 import { DisplayNades } from "../../components/NadeView/NadeView";
 import { useFilterByType } from "../../logic/useFilterByType";
-import { useGameMode } from "../../../core/useGameMode";
 
 type Props = {
   csMap: CsMap;
@@ -19,12 +18,9 @@ type Props = {
 export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
   const konvaRef = useRef<Konva.Stage>(null);
   const { byType } = useFilterByType();
-  const { gameMode } = useGameMode();
-  const { mapNadeLocations } = useMapNadeLocations(csMap, byType, gameMode);
+  const { mapNadeLocations } = useMapNadeLocations(csMap, byType);
   const [selectedMapNadeLocation, setSelectedMapNadeLocation] =
     useState<MapNadeLocations | null>(null);
-
-  console.log("NewMapView", byType, gameMode);
 
   useEffect(() => {
     if (!konvaRef || !konvaRef.current) {

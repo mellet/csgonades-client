@@ -2,9 +2,11 @@ import { FC } from "react";
 import { CsMap } from "../../../map/models/CsGoMap";
 import { MapPositionSelector } from "../MapPositionSelector";
 import { NadeType } from "../../models/NadeType";
+import { GameMode } from "../../models/GameMode";
 
 type Props = {
   map: CsMap;
+  gameMode: GameMode;
   nadeType: NadeType;
   selectedMapStartLocationId?: string;
   selectedMapEndLocationId?: string;
@@ -14,6 +16,7 @@ type Props = {
 
 export const NadeEditMapPosition: FC<Props> = ({
   map,
+  gameMode,
   nadeType,
   onSetMapEndLocation,
   onSetMapStartLocation,
@@ -24,6 +27,7 @@ export const NadeEditMapPosition: FC<Props> = ({
     <>
       <div>
         <MapPositionSelector
+          gameMode={gameMode}
           selectedMap={map}
           selectedType={nadeType}
           onSetMapEndLocation={onSetMapEndLocation}

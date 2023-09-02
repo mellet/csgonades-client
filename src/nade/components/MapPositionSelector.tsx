@@ -10,9 +10,10 @@ import { useMapStartLocations } from "../../map/data/useMapStartLocations";
 import { useMapEndLocations } from "../../map/data/useMapEndLocations";
 import { EndLocations } from "../../map/components/mapview/EndLocations";
 import { StartLocations } from "../../map/components/mapview/StartLocation";
-import { useGameMode } from "../../core/useGameMode";
+import { GameMode } from "../models/GameMode";
 
 type Props = {
+  gameMode: GameMode;
   selectedMapStartLocationId?: string;
   selectedMapEndLocationId?: string;
   selectedMap: CsMap;
@@ -28,9 +29,9 @@ export const MapPositionSelector: FC<Props> = ({
   selectedMapEndLocationId,
   onSetMapStartLocation,
   onSetMapEndLocation,
+  gameMode,
 }) => {
   const { colors } = useTheme();
-  const { gameMode } = useGameMode();
   const [mode, setMode] = useState<"start" | "end">("start");
   const konvaRef = useRef<Konva.Stage>(null);
 

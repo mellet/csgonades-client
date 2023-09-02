@@ -30,7 +30,7 @@ export class MapLocationApi {
     nadeType: NadeType,
     gameMode: GameMode
   ): Promise<MapEndLocation[]> {
-    const url = `${AppConfig.API_URL}/mapendlocation/${csMap}/${nadeType}?gameMode=${gameMode}`;
+    const url = `${AppConfig.API_URL}/mapendlocation/${csMap}?nadeType=${nadeType}&gameMode=${gameMode}`;
     const res = await AxiosApi.get<MapEndLocation[]>(url);
 
     return res.data;

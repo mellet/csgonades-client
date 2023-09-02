@@ -12,6 +12,7 @@ import AxiosApi from "../../core/AxiosInstance";
 import { NadeType } from "../models/NadeType";
 import { GameMode } from "../models/GameMode";
 import { MapNadeLocations } from "../../map/models/MapNadeLocations";
+import { Tickrate } from "../models/NadeTickrate";
 
 type NadeEloGame = {
   nadeOneId: string;
@@ -118,10 +119,15 @@ export class NadeApi {
   static async getMapNadeLocations(
     mapName: CsMap,
     gameMode: GameMode,
-    nadeType: NadeType
+    nadeType: NadeType,
+    tickRate: Tickrate
   ): Promise<MapNadeLocations[]> {
-    const url = `${AppConfig.API_URL}/nademap/${mapName}?nadeType=${nadeType}&gameMode=${gameMode}`;
-    const res = await axios.get<MapNadeLocations[]>(url);
+    const url = new URL(`/nademap/${mapName}`, AppConfig.API_URL);
+    url.searchParams.set("nadeType", nadeType);
+    url.searchParams.set("gameMode", gameMode);
+    url.searchParams.set("tickRate", tickRate);
+
+    const res = await axios.get<MapNadeLocations[]>(url.toString());
 
     return res.data;
   }

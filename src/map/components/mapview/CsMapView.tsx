@@ -37,8 +37,12 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
     updateMapStartLocation,
     deleteMapStartLocation,
   } = useMapStartLocations(csMap, gameMode);
-  const { mapEndLocations, addMapEndLocation, updateMapEndLocation } =
-    useMapEndLocations(csMap, nadeType, gameMode);
+  const {
+    mapEndLocations,
+    addMapEndLocation,
+    updateMapEndLocation,
+    deleteMapEndLocation,
+  } = useMapEndLocations(csMap, nadeType, gameMode);
   const [selectedLocation, setSelectedLocation] =
     useState<MapStartLocation | null>(null);
   const [createStartLocation, setcreateStartLocation] =
@@ -50,6 +54,12 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
   const showStartLocations = mode === "start";
   const showEndLocations = mode === "end";
   const isEditing = Boolean(selectedEndLocation || selectedLocation);
+
+  const onEndLocationClick = (endLocation: MapEndLocation) => {
+    setcreateStartLocation(null);
+    setSelectedEndLocation(endLocation);
+    setShowEditPane(true);
+  };
 
   const onCallOutChange = useCallback(
     (calloutName: string) => {
@@ -75,14 +85,21 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
   );
 
   const onDeleteClick = useCallback(() => {
-    if (!selectedLocation) {
-      return;
+    if (selectedLocation) {
+      deleteMapStartLocation(selectedLocation);
+      setShowEditPane(false);
+      setSelectedLocation(null);
+    } else if (selectedEndLocation) {
+      deleteMapEndLocation(selectedEndLocation);
+      setShowEditPane(false);
+      setSelectedEndLocation(null);
     }
-
-    deleteMapStartLocation(selectedLocation);
-    setShowEditPane(false);
-    setSelectedLocation(null);
-  }, [deleteMapStartLocation, selectedLocation]);
+  }, [
+    deleteMapEndLocation,
+    deleteMapStartLocation,
+    selectedEndLocation,
+    selectedLocation,
+  ]);
 
   const onStageClick = useCallback(
     (evt: Konva.KonvaEventObject<MouseEvent>) => {
@@ -220,6 +237,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
 
         {showEditPane && (selectedLocation || selectedEndLocation) && (
           <EditPane
+            key={selectedLocation?.id || selectedEndLocation?.id}
             mapStartLocation={selectedLocation || selectedEndLocation}
             onCallOutChange={onCallOutChange}
             onDeleteClick={onDeleteClick}
@@ -242,7 +260,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
             {showEndLocations && mapEndLocations && (
               <EndLocations
                 endLocations={mapEndLocations}
-                onEndLocationSelected={setSelectedEndLocation}
+                onEndLocationSelected={onEndLocationClick}
                 hideEndLocationId={selectedEndLocation?.id}
               />
             )}
@@ -251,6 +269,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
           <Layer>
             {selectedLocation && !createStartLocation && showStartLocations && (
               <EditStartLocation
+                key={selectedLocation.id}
                 startLocation={selectedLocation}
                 onUpdatePosition={onUpdateSelectedPosition}
                 onUpdateLabelPosition={onUpdateLabelPosition}
@@ -261,6 +280,7 @@ export const CsMapView: FC<Props> = ({ initCsMap }) => {
             )}
             {selectedEndLocation && (
               <EditEndLocation
+                key={selectedEndLocation.id}
                 endLocation={selectedEndLocation}
                 onUpdateEndLocation={(position) => {
                   setSelectedEndLocation((prev) => {
