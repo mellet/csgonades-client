@@ -28,7 +28,7 @@ export const MapAddWidget: FC = ({}) => {
   return (
     <>
       <Box>
-        <Title titleStyle="primary" title="Nade landing location" />
+        <Title titleStyle="primary" title="Nade locations" />
         <Seperator />
         <div className="add-map-container">
           <div className="map-position-container">

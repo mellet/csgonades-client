@@ -59,7 +59,7 @@ export const MapPositionSelector: FC<Props> = ({
   const infoString =
     mode === "start"
       ? "First select where you throw the nade from!"
-      : "Now select where your nade lands.";
+      : "Now select where your nade lands. If you can't find the exact location, select the closest";
 
   return (
     <>
