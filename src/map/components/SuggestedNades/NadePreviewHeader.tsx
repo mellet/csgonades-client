@@ -1,12 +1,19 @@
 import { FC, MouseEventHandler } from "react";
 import { FaTimes } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
+import { BattleRoyalButton } from "../EloGame/BattleRoyalButton";
 
 type Props = {
+  showBattleRoyal: boolean;
   onDismiss: MouseEventHandler<HTMLDivElement>;
+  onStartBattleRoyal: () => void;
 };
 
-export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
+export const NadePreviewHeader: FC<Props> = ({
+  showBattleRoyal,
+  onDismiss,
+  onStartBattleRoyal,
+}) => {
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
   };
@@ -16,6 +23,11 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
       <div className="filter-header" onClick={stopPropagation}>
         <div className="filter-wrapper">
           <div className="title-content">
+            <div className="battle-royal">
+              {showBattleRoyal && (
+                <BattleRoyalButton onClick={onStartBattleRoyal} />
+              )}
+            </div>
             <div id="close-wrap">
               <div className="close-btn" onClick={onDismiss}>
                 <FaTimes />
@@ -41,7 +53,8 @@ export const NadePreviewHeader: FC<Props> = ({ onDismiss }) => {
 
         .title-content {
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
+          align-items: center;
           padding-top: ${Dimensions.GUTTER_SIZE}px;
           padding-bottom: ${Dimensions.GUTTER_SIZE}px;
         }

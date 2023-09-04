@@ -10,26 +10,22 @@ import { NadeLight } from "../../../nade/models/NadeLight";
 import { useGa } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
-import {
-  cleanAndSortNadeClusters,
-  createPairings,
-  extractNewNadePair,
-  selectElements,
-  shuffleArrays,
-} from "../../../utils/PairingUtils";
+import { createNewPairings } from "../../../utils/PairingUtils";
 import { EloGameStartScreen } from "./EloGameStartScreen";
 import { EloGameGameScreen } from "./EloGameGameScreen";
 import { EloGameFinishScreen } from "./EloGameFinishScreen";
 import { FaTimesCircle } from "react-icons/fa";
+import { DisplayNades } from "../NadeView/NadeView";
+import { useNadesForLocation } from "../NadeView/useNadesForLocation";
 
 type Props = {
-  nadeClusters: NadeLight[][];
+  displayNades: DisplayNades;
   onClose: () => void;
   onFinish: () => void;
 };
 
 export const BattleRoyalModal: FC<Props> = ({
-  nadeClusters,
+  displayNades,
   onClose,
   onFinish,
 }) => {
@@ -37,38 +33,19 @@ export const BattleRoyalModal: FC<Props> = ({
   const { colors } = useTheme();
   const [pairings, setPairings] = useState<NadeLight[][]>([]);
   const [gameState, setGameState] = useState<"init" | "start" | "end">("init");
+  const { nades } = useNadesForLocation(displayNades);
+
+  useEffect(() => {
+    if (nades?.length) {
+      const createdPairing = createNewPairings(nades);
+      setPairings(createdPairing);
+    }
+  }, [nades]);
 
   const onBackgroundClick: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
     onClose();
   };
-
-  useEffect(() => {
-    let pairings: NadeLight[][] = [];
-
-    const { clusters, newNadePairing } = extractNewNadePair(nadeClusters);
-
-    const numberOfPairsToSelect = newNadePairing.length ? 4 : 5;
-
-    if (newNadePairing.length) {
-      pairings = [...pairings, newNadePairing];
-    }
-
-    const onlyBigCluster = cleanAndSortNadeClusters(clusters);
-    const cappedBigCluster = selectElements(
-      onlyBigCluster,
-      numberOfPairsToSelect * 2
-    );
-
-    for (const nadeList of cappedBigCluster) {
-      const theNadeList = nadeList as NadeLight[];
-      const pairList = createPairings(theNadeList);
-      pairings = [...pairings, ...pairList];
-    }
-
-    setPairings(shuffleArrays(pairings));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const currentGame = useMemo(() => {
     return pairings[0];

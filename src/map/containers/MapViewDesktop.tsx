@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { DisplayNades, NadeView } from "../components/NadeView/NadeView";
 import { CsMap } from "../models/CsGoMap";
 import dynamic from "next/dynamic";
+import { BattleRoyalModal } from "../components/EloGame/BattleRoyalModal";
 
 const NewMapView = dynamic(
   () => import("./NewMapView/NewMapView").then((m) => m.NewMapView),
@@ -12,15 +13,19 @@ const NewMapView = dynamic(
 
 type Props = {
   csMap: CsMap;
-  setDisplayNades: (displayNades?: DisplayNades) => void;
-  displayNades?: DisplayNades;
 };
 
-export const MapViewDesktop: FC<Props> = ({
-  csMap,
-  setDisplayNades,
-  displayNades,
-}) => {
+export const MapViewDesktop: FC<Props> = ({ csMap }) => {
+  const [displayNades, setDisplayNades] = useState<{
+    mapStartLocationId: string;
+    mapEndLocationId: string;
+  }>();
+  const [battleRoyalNades, setBattleRoyalNades] = useState<DisplayNades>();
+
+  const onBattleRoyalClose = () => {
+    setBattleRoyalNades(undefined);
+  };
+
   return (
     <>
       <NewMapView
@@ -33,6 +38,15 @@ export const MapViewDesktop: FC<Props> = ({
         <NadeView
           displayNades={displayNades}
           onDismiss={() => setDisplayNades(undefined)}
+          onStartBattleRoyal={setBattleRoyalNades}
+        />
+      )}
+
+      {battleRoyalNades && (
+        <BattleRoyalModal
+          displayNades={battleRoyalNades}
+          onClose={onBattleRoyalClose}
+          onFinish={onBattleRoyalClose}
         />
       )}
     </>

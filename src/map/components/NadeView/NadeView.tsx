@@ -18,16 +18,23 @@ export type DisplayNades = {
 type Props = {
   displayNades: DisplayNades;
   onDismiss: () => void;
+  onStartBattleRoyal: (nadeLocation: DisplayNades) => void;
 };
 
 const MAX_MODAL_WIDTH = 1420;
 
-export const NadeView: FC<Props> = ({ displayNades, onDismiss }) => {
+export const NadeView: FC<Props> = ({
+  displayNades,
+  onDismiss,
+  onStartBattleRoyal,
+}) => {
   const { colors } = useTheme();
   const { nades, isLoading } = useNadesForLocation(displayNades);
   const ga = useGa();
 
   const nadesToShow = useFilterNadeView(nades || []);
+
+  const showBattleRoyal = (nades?.length || 0) >= 2;
 
   const stopPropagation: MouseEventHandler<HTMLDivElement> = (e) => {
     e.stopPropagation();
@@ -72,7 +79,14 @@ export const NadeView: FC<Props> = ({ displayNades, onDismiss }) => {
       <div className="map-view-wrapper" onClick={onBackgroundClick}>
         <div className="filter-header">
           <div className="header-inner">
-            <NadePreviewHeader onDismiss={onDismissCloseClick} />
+            <NadePreviewHeader
+              showBattleRoyal={showBattleRoyal}
+              onDismiss={onDismissCloseClick}
+              onStartBattleRoyal={() => {
+                onStartBattleRoyal(displayNades);
+                onDismiss();
+              }}
+            />
           </div>
         </div>
         <div className="suggested-main">

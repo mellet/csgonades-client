@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from "react";
+import React, { FC, memo } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
 import { SEO } from "../../shared-components/SEO";
 import { capitalize } from "../../utils/Common";
@@ -16,10 +16,6 @@ type Props = {
 
 export const MapMain: FC<Props> = memo(({ csMap }) => {
   const { isMobile } = useIsDeviceSize();
-  const [displayNades, setDisplayNades] = useState<{
-    mapStartLocationId: string;
-    mapEndLocationId: string;
-  }>();
 
   return (
     <>
@@ -44,11 +40,7 @@ export const MapMain: FC<Props> = memo(({ csMap }) => {
           {isMobile ? (
             <MapViewMobile csMap={csMap} />
           ) : (
-            <MapViewDesktop
-              csMap={csMap}
-              setDisplayNades={setDisplayNades}
-              displayNades={displayNades}
-            />
+            <MapViewDesktop csMap={csMap} />
           )}
         </div>
       </div>

@@ -8,7 +8,7 @@ type Props = {
 export const BattleRoyalButton: FC<Props> = ({ onClick }) => {
   return (
     <>
-      <button onClick={onClick}>Nade Battle Royal 🎲</button>
+      <button onClick={onClick}>Rate Nades 🎲</button>
       <style jsx>{`
         button {
           border: none;
