@@ -8,6 +8,7 @@ import { useFilterByTickrate } from "../logic/useFilterByTickrate";
 import { useGameMode } from "../../core/useGameMode";
 import { TeamSide } from "../../nade/models/TeamSide";
 import { useFilterByTeam } from "../logic/useFilterByTeam";
+import { useFilterByFavorites } from "../logic/useFilterByFavorites";
 
 async function fetcher(
   _url: string,
@@ -15,14 +16,16 @@ async function fetcher(
   type: NadeType,
   gameMode: GameMode,
   tickRate: Tickrate,
-  teamSide: TeamSide
+  teamSide: TeamSide,
+  byFavorites: boolean
 ) {
   const result = await NadeApi.getMapNadeLocations(
     csMap,
     gameMode,
     type,
     tickRate,
-    teamSide
+    teamSide,
+    byFavorites
   );
   return result;
 }
@@ -31,9 +34,10 @@ export const useMapNadeLocations = (map: CsMap, type: NadeType) => {
   const { gameMode } = useGameMode();
   const { byTickrate } = useFilterByTickrate();
   const { byTeam } = useFilterByTeam();
+  const { byFavorites } = useFilterByFavorites();
 
   const { data, isValidating } = useSWR(
-    ["mapNadeLocations", map, type, gameMode, byTickrate, byTeam],
+    ["mapNadeLocations", map, type, gameMode, byTickrate, byTeam, byFavorites],
     fetcher
   );
 

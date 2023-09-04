@@ -21,14 +21,18 @@ import { useFavorites } from "../../favorites/data/useFavorites";
 export const useFilterNadeView = (nades: NadeLight[]) => {
   const { byTickrate } = useFilterByTickrate();
   const { byTeam } = useFilterByTeam();
+  const { byFavorites } = useFilterByFavorites();
+  const { favoritedNades } = useFavorites();
 
   const filteredNades = useMemo(() => {
     let thenades = nades;
+    thenades = addFavoriteToNades(thenades, favoritedNades);
     thenades.sort(sortByScore);
     thenades = filterByTickrate(thenades, byTickrate);
     thenades = filterByTeam(thenades, byTeam);
+    thenades = filterByFavorite(thenades, byFavorites);
     return thenades;
-  }, [byTeam, byTickrate, nades]);
+  }, [nades, favoritedNades, byTickrate, byTeam, byFavorites]);
 
   return filteredNades;
 };

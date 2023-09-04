@@ -122,15 +122,17 @@ export class NadeApi {
     gameMode: GameMode,
     nadeType: NadeType,
     tickRate: Tickrate,
-    teamSide: TeamSide
+    teamSide: TeamSide,
+    byFavorites: boolean
   ): Promise<MapNadeLocations[]> {
     const url = new URL(`/nademap/${mapName}`, AppConfig.API_URL);
     url.searchParams.set("nadeType", nadeType);
     url.searchParams.set("gameMode", gameMode);
     url.searchParams.set("tickRate", tickRate);
     url.searchParams.set("teamSide", teamSide);
+    url.searchParams.set("favorites", byFavorites ? "1" : "0");
 
-    const res = await axios.get<MapNadeLocations[]>(url.toString());
+    const res = await AxiosApi.get<MapNadeLocations[]>(url.toString());
 
     return res.data;
   }
