@@ -9,20 +9,11 @@ export const Spacer: FC<SpacerProps> = ({ children, vertical }) => {
   return (
     <>
       <div className="spacer">{children}</div>
-      <style jsx global>{`
+      <style jsx>{`
         .spacer {
           display: inline-flex;
           flex-direction: ${vertical ? "column" : "row"};
-        }
-
-        .spacer > * {
-          margin-right: ${vertical ? 0 : Dimensions.GUTTER_SIZE}px;
-          margin-bottom: ${vertical ? Dimensions.GUTTER_SIZE : 0}px;
-        }
-
-        .spacer > *:last-child {
-          margin-right: 0;
-          margin-bottom: 0;
+          gap: ${Dimensions.GUTTER_SIZE}px;
         }
       `}</style>
     </>

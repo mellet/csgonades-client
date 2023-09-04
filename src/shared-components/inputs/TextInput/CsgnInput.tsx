@@ -27,6 +27,8 @@ export const CsgnInput: FC<CsgnInputProps> = ({
               const value = e.target.value;
               if (value.length > 0) {
                 onChange(e.target.value);
+              } else {
+                onChange("");
               }
             }}
             placeholder={placeholder}

@@ -149,6 +149,10 @@ function newValueIfDifferent<T>(
   const originalValueCheck = JSON.stringify(originalValue);
   const newValueCheck = JSON.stringify(newValue);
 
+  if (newValue === "") {
+    return newValue;
+  }
+
   if (!newValue) {
     return undefined;
   } else if (originalValueCheck === newValueCheck) {
