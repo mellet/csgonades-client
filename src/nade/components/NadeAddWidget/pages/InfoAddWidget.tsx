@@ -18,12 +18,10 @@ import { NadeMovementSelector } from "../NadeMovementSelector";
 import { NadeTypeSelector } from "../NadeTypeSelector";
 import { NextNavigation } from "../NextNavigation";
 import { useCreateNade } from "../state/NadeAddStateProvider";
-import { useGameMode } from "../../../../core/useGameMode";
 import { NadeGameModeSelector } from "../NadeGameModeSelector";
 
 export const InfoAddWidget: FC = ({}) => {
   const { nade, actions } = useCreateNade();
-  const { gameMode } = useGameMode();
 
   return (
     <>
@@ -73,7 +71,7 @@ export const InfoAddWidget: FC = ({}) => {
           <SplitLayout
             left={<></>}
             right={
-              gameMode === "csgo" &&
+              nade.gameMode === "csgo" &&
               doesRequireTickrateTechnique(nade.technique) ? (
                 <TickrateSelector
                   defaultValue={nade.tickrate}
@@ -102,12 +100,10 @@ export const InfoAddWidget: FC = ({}) => {
             }
           />
 
-          {gameMode === "csgo" && (
-            <OneWaySelector
-              initialValue={nade.oneWay}
-              onClick={actions.setOneWay}
-            />
-          )}
+          <OneWaySelector
+            initialValue={nade.oneWay}
+            onClick={actions.setOneWay}
+          />
 
           <DescriptionInput
             defaultValue={nade.description}

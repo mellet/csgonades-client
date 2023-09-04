@@ -9,6 +9,7 @@ import { initialNadeAddState, NadeCreateSteps } from "./NadeAddState";
 import { NadeCreateBody } from "../../../models/NadeCreateBody";
 import { nadeAddReducer } from "./nadeAddReducer";
 import { NadeAddCallbacks, useNadeAddActions } from "./useNadeAddWidgetState";
+import { useGameMode } from "../../../../core/useGameMode";
 
 interface NadeAddStateContext {
   step: NadeCreateSteps;
@@ -21,7 +22,14 @@ const NadeAddStateContextCreator = createContext<NadeAddStateContext | null>(
 );
 
 export const CreateNadeProvider: FC = ({ children }) => {
-  const [state, dispatch] = useReducer(nadeAddReducer, initialNadeAddState);
+  const { gameMode } = useGameMode();
+  const [state, dispatch] = useReducer(nadeAddReducer, {
+    ...initialNadeAddState,
+    nadeData: {
+      ...initialNadeAddState.nadeData,
+      gameMode,
+    },
+  });
   const actions = useNadeAddActions(dispatch);
 
   const createNadeInternalState = useMemo<NadeAddStateContext>(() => {
