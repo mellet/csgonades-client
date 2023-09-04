@@ -49,7 +49,6 @@ export const MapMain: FC<Props> = memo(({ csMap }) => {
           position: relative;
           width: 100%;
           display: flex;
-
           height: 100%;
         }
 
