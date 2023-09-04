@@ -56,6 +56,10 @@ export const MapPositionSelector: FC<Props> = ({
     stage.scaleY(scaleFactor);
   }, []);
 
+  const endLocationCallout =
+    mapEndLocations.find((n) => n.id === selectedMapEndLocationId)
+      ?.calloutName || "";
+
   const infoString =
     mode === "start"
       ? "First select where you throw the nade from!"
@@ -85,6 +89,7 @@ export const MapPositionSelector: FC<Props> = ({
         </button>
       </div>
       <div className="position-selector">
+        <div className="callout-name">{endLocationCallout}</div>
         <Stage ref={konvaRef} width={650} height={650}>
           <Layer>
             <MapImage csMap={selectedMap} />
@@ -145,6 +150,15 @@ export const MapPositionSelector: FC<Props> = ({
 
         .map-wrapper {
           border: 1px solid ${colors.BORDER};
+        }
+
+        .callout-name {
+          position: absolute;
+          top: 0;
+          right: 0;
+          border: 1px solid #ccc;
+          padding: 4px;
+          border-radius: 5px;
         }
       `}</style>
     </>
