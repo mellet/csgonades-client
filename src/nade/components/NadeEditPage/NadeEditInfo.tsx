@@ -67,18 +67,23 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
             onSetYouTubeId={actions.onSetYouTubeId}
           />
         </div>
-        <div id="end-pos">
-          <NadeEndPosInput
-            defaultValue={nadeUpdates.endPosition}
-            onChange={actions.onSetEndPosition}
-          />
-        </div>
-        <div id="start-pos">
-          <ThrownFromInput
-            defaultValue={nadeUpdates.startPosition}
-            onChange={actions.onSetStartPosition}
-          />
-        </div>
+        {isAdminOrModerator && (
+          <div id="end-pos">
+            <NadeEndPosInput
+              defaultValue={nadeUpdates.endPosition}
+              onChange={actions.onSetEndPosition}
+            />
+          </div>
+        )}
+
+        {isAdminOrModerator && (
+          <div id="start-pos">
+            <ThrownFromInput
+              defaultValue={nadeUpdates.startPosition}
+              onChange={actions.onSetStartPosition}
+            />
+          </div>
+        )}
 
         <div id="set-pos">
           <SetPosInput
