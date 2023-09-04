@@ -23,16 +23,6 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         },
       };
     }
-    case "CreateNade/SetEndPosCoords": {
-      return {
-        ...state,
-        nadeData: {
-          ...state.nadeData,
-          mapEndCoord: action.positions.endPosition,
-          mapStartCoord: action.positions.startPosition,
-        },
-      };
-    }
     case "CreateNade/SetEndPosition": {
       return {
         ...state,
@@ -154,6 +144,33 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         nadeData: {
           ...state.nadeData,
           proUrl: action.proUrl,
+        },
+      };
+    }
+    case "CreateNade/SetMapEndLocation": {
+      return {
+        ...state,
+        nadeData: {
+          ...state.nadeData,
+          mapEndLocationId: action.mapEndLocationId,
+        },
+      };
+    }
+    case "CreateNade/SetMapStartLocation": {
+      return {
+        ...state,
+        nadeData: {
+          ...state.nadeData,
+          mapStartLocationId: action.mapStartLocationId,
+        },
+      };
+    }
+    case "CreateNade/SetGameMode": {
+      return {
+        ...state,
+        nadeData: {
+          ...state.nadeData,
+          gameMode: action.gameMode,
         },
       };
     }

@@ -11,6 +11,7 @@ import { useMapEndLocations } from "../../map/data/useMapEndLocations";
 import { EndLocations } from "../../map/components/mapview/EndLocations";
 import { StartLocations } from "../../map/components/mapview/StartLocation";
 import { GameMode } from "../models/GameMode";
+import { FaCheck } from "react-icons/fa";
 
 type Props = {
   gameMode: GameMode;
@@ -55,46 +56,91 @@ export const MapPositionSelector: FC<Props> = ({
     stage.scaleY(scaleFactor);
   }, []);
 
+  const infoString =
+    mode === "start"
+      ? "First select where you throw the nade from!"
+      : "Now select where your nade lands.";
+
   return (
     <>
+      <div className="info">{infoString}</div>
       <div className="toolbar">
-        <button onClick={() => setMode("start")}>Start position</button>
-        <button onClick={() => setMode("end")}>End position</button>
+        <button onClick={() => setMode("start")}>
+          <FaCheck
+            style={{
+              marginRight: 4,
+              color: selectedMapStartLocationId ? "green" : "#bbb",
+            }}
+          />
+          Start Location
+        </button>
+        <button onClick={() => setMode("end")}>
+          <FaCheck
+            style={{
+              marginRight: 4,
+              color: selectedMapEndLocationId ? "green" : "#bbb",
+            }}
+          />
+          End Location
+        </button>
       </div>
-      <Stage ref={konvaRef} width={650} height={650}>
-        <Layer>
-          <MapImage csMap={selectedMap} />
-          {mode === "end" && mapEndLocations && (
-            <EndLocations
-              endLocations={mapEndLocations}
-              onEndLocationSelected={(endLocation) => {
-                onSetMapEndLocation(endLocation.id);
-              }}
-              highlightEndLocationId={selectedMapEndLocationId}
-            />
-          )}
+      <div className="position-selector">
+        <Stage ref={konvaRef} width={650} height={650}>
+          <Layer>
+            <MapImage csMap={selectedMap} />
+            {mode === "end" && mapEndLocations && (
+              <EndLocations
+                endLocations={mapEndLocations}
+                onEndLocationSelected={(endLocation) => {
+                  onSetMapEndLocation(endLocation.id);
+                }}
+                highlightEndLocationId={selectedMapEndLocationId}
+              />
+            )}
 
-          {mode === "start" && mapStartLocations && (
-            <StartLocations
-              highlightLocationId={selectedMapStartLocationId}
-              startLocations={mapStartLocations}
-              onStartLocationSelected={(startLocation) => {
-                onSetMapStartLocation(startLocation.id);
-                setMode("end");
-              }}
-            />
-          )}
-        </Layer>
-      </Stage>
+            {mode === "start" && mapStartLocations && (
+              <StartLocations
+                highlightLocationId={selectedMapStartLocationId}
+                startLocations={mapStartLocations}
+                onStartLocationSelected={(startLocation) => {
+                  onSetMapStartLocation(startLocation.id);
+                  setMode("end");
+                }}
+              />
+            )}
+          </Layer>
+        </Stage>
+      </div>
       <style jsx>{`
+        .position-selector {
+          position: relative;
+        }
+
+        .toolbar {
+          display: flex;
+          gap: 4px;
+          justify-content: center;
+        }
+
+        .toolbar button {
+          border: 1px solid #ccc;
+          background: white;
+          border-radius: 5px;
+          padding: 4px 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
         .info {
           background: ${colors.DP02};
           padding: 4px 8px;
           color: ${colors.TEXT};
-          border-top-left-radius: ${Dimensions.BORDER_RADIUS};
-          border-top-right-radius: ${Dimensions.BORDER_RADIUS};
+          border-radius: ${Dimensions.BORDER_RADIUS};
           border: 1px solid ${colors.BORDER};
-          border-bottom: none;
+          margin-bottom: 10px;
+          text-align: center;
         }
 
         .map-wrapper {

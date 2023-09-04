@@ -1,5 +1,5 @@
 import { CsMap } from "../../../../map/models/CsGoMap";
-import { CsCanvasCoordinate } from "../../../models/MapCoordinates";
+import { GameMode } from "../../../models/GameMode";
 import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
 import { NadeType } from "../../../models/NadeType";
@@ -47,14 +47,6 @@ type SetImage = {
   image: string;
 };
 
-type SetEndPosCoords = {
-  type: "CreateNade/SetEndPosCoords";
-  positions: {
-    startPosition: CsCanvasCoordinate;
-    endPosition: CsCanvasCoordinate;
-  };
-};
-
 type SetTechnique = {
   type: "CreateNade/SetTechnique";
   technique: Technique;
@@ -95,10 +87,24 @@ type SetProLink = {
   proUrl?: string;
 };
 
+type SetMapStartLocation = {
+  type: "CreateNade/SetMapStartLocation";
+  mapStartLocationId: string;
+};
+
+type SetMapEndLocation = {
+  type: "CreateNade/SetMapEndLocation";
+  mapEndLocationId: string;
+};
+
+type SetGameMode = {
+  type: "CreateNade/SetGameMode";
+  gameMode: GameMode;
+};
+
 export type NadeAddActions =
   | SetCurrentStep
   | SetDescription
-  | SetEndPosCoords
   | SetEndPosition
   | SetImage
   | SetLineUpImage
@@ -107,6 +113,9 @@ export type NadeAddActions =
   | SetNadeType
   | SetOneWay
   | SetProLink
+  | SetMapStartLocation
+  | SetMapEndLocation
+  | SetGameMode
   | SetStartPosition
   | SetTeamSide
   | SetTechnique

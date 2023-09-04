@@ -1,4 +1,3 @@
-import { GfycatData } from "./GfycatData";
 import { NadeMovement } from "./NadeMovement";
 import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
@@ -9,12 +8,10 @@ import { GameMode } from "./GameMode";
 
 export type NadeCreateBody = {
   description: string;
-  endPosition: string;
   gameMode: GameMode;
-  gfycat?: GfycatData;
   imageBase64: string;
   isPro?: boolean;
-  lineUpImageBase64?: string;
+  lineUpImageBase64: string;
   map: CsMap;
   mapStartLocationId: string;
   mapEndLocationId: string;
@@ -22,10 +19,9 @@ export type NadeCreateBody = {
   oneWay?: boolean;
   proUrl?: string;
   setPos?: string;
-  startPosition: string;
-  teamSide?: TeamSide;
+  teamSide: TeamSide;
   technique: Technique;
   tickrate?: Tickrate;
   type: NadeType;
-  youTubeId?: string;
+  youTubeId: string;
 };

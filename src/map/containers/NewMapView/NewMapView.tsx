@@ -9,9 +9,12 @@ import { GrenadeView } from "./GrenadeView";
 import { StartLocations } from "../../components/mapview/StartLocation";
 import { DisplayNades } from "../../components/NadeView/NadeView";
 import { useFilterByType } from "../../logic/useFilterByType";
-import { useResizeDetector } from "react-resize-detector";
 import { useTheme } from "../../../core/settings/useTheme";
 import { Dimensions } from "../../../constants/Constants";
+import { useElementSize } from "usehooks-ts";
+import { useGameMode } from "../../../core/useGameMode";
+import { useFilterByTeam } from "../../logic/useFilterByTeam";
+import { useFilterByTickrate } from "../../logic/useFilterByTickrate";
 
 type Props = {
   csMap: CsMap;
@@ -19,13 +22,20 @@ type Props = {
 };
 
 export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
+  const { gameMode } = useGameMode();
   const { colors } = useTheme();
   const konvaRef = useRef<Konva.Stage>(null);
   const { byType } = useFilterByType();
+  const { byTeam } = useFilterByTeam();
+  const { byTickrate } = useFilterByTickrate();
   const { mapNadeLocations, isLoading } = useMapNadeLocations(csMap, byType);
   const [selectedMapNadeLocation, setSelectedMapNadeLocation] =
     useState<MapNadeLocations | null>(null);
-  const { width, height, ref } = useResizeDetector();
+  const [squareRef, { width, height }] = useElementSize();
+
+  useEffect(() => {
+    setSelectedMapNadeLocation(null);
+  }, [gameMode, byType, csMap, byTeam, byTickrate]);
 
   const size = useMemo(() => {
     if (!width || !height) {
@@ -34,7 +44,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
 
     const smallestSide = width < height ? width : height;
 
-    return Math.floor(smallestSide / 20) * 20;
+    return smallestSide - 10;
   }, [width, height]);
 
   useEffect(() => {
@@ -52,7 +62,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
 
   return (
     <>
-      <div ref={ref} className="map-wrapper">
+      <div ref={squareRef} className="map-wrapper">
         {size && (
           <Stage ref={konvaRef} width={size} height={size}>
             <Layer>

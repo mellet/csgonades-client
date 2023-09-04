@@ -25,6 +25,7 @@ export const GrenadeView: FC<Props> = ({
     <>
       {mapNadeLocations.map((loc) => (
         <NadeImage
+          hasNew={loc.endLocation.hasNew}
           csMap={csMap}
           count={loc.endLocation.count}
           hide={
@@ -56,6 +57,7 @@ type MapImageProps = {
   hide?: boolean;
   isSelected?: boolean;
   count: number;
+  hasNew?: boolean;
 };
 
 export const NadeImage: FC<MapImageProps> = ({
@@ -68,6 +70,7 @@ export const NadeImage: FC<MapImageProps> = ({
   hide,
   isSelected,
   count,
+  hasNew,
 }) => {
   const size = 55;
   const scale = nadeScale(csMap);
@@ -213,7 +216,7 @@ export const NadeImage: FC<MapImageProps> = ({
         fontFamily="Changa One"
         offset={{ x: 50, y: 15 }}
         width={100}
-        fill={isSelected ? "white" : "white"}
+        fill={hasNew ? "green" : "white"}
         strokeWidth={isSelected ? 0 : 2}
         stroke="rgba(0,0,0,0.8)"
         fillAfterStrokeEnabled

@@ -158,7 +158,6 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
               gfycat: nadeUpdates.gfycat,
               imageBase64: nadeUpdates.imageBase64,
               map: nadeUpdates.map,
-              mapEndCoord: nadeUpdates.mapEndCoord,
               movement: nadeUpdates.movement,
               oneWay: nadeUpdates.oneWay,
               startPosition: nadeUpdates.startPosition,

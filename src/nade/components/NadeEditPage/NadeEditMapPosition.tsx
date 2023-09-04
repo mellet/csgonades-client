@@ -1,8 +1,15 @@
 import { FC } from "react";
 import { CsMap } from "../../../map/models/CsGoMap";
-import { MapPositionSelector } from "../MapPositionSelector";
 import { NadeType } from "../../models/NadeType";
 import { GameMode } from "../../models/GameMode";
+import dynamic from "next/dynamic";
+
+const MapPositionSelector = dynamic(
+  () => import("../MapPositionSelector").then((m) => m.MapPositionSelector),
+  {
+    ssr: false,
+  }
+);
 
 type Props = {
   map: CsMap;

@@ -7,20 +7,19 @@ import { Title } from "../../../../shared-components/title/Title";
 import { NadeCreateBody } from "../../../models/NadeCreateBody";
 import { Technique } from "../../../models/Technique";
 import { DescriptionInput } from "../../NadeInputs/DescriptionInput";
-import { NadeEndPosInput } from "../../NadeInputs/EndPosInput";
 import { MapSelector } from "../../NadeInputs/MapSelector";
 import { OneWaySelector } from "../../NadeInputs/OneWaySelector";
 import { ProLinkInput } from "../../NadeInputs/ProLinkInput";
 import { SetPosInput } from "../../NadeInputs/SetPosInput";
 import { TeamSideSelector } from "../../NadeInputs/TeamSideSelector";
 import { TechniqueSelector } from "../../NadeInputs/TechniqueSelector";
-import { ThrownFromInput } from "../../NadeInputs/ThrownFromInput";
 import { TickrateSelector } from "../../NadeInputs/TickrateSelector";
 import { NadeMovementSelector } from "../NadeMovementSelector";
 import { NadeTypeSelector } from "../NadeTypeSelector";
 import { NextNavigation } from "../NextNavigation";
 import { useCreateNade } from "../state/NadeAddStateProvider";
 import { useGameMode } from "../../../../core/useGameMode";
+import { NadeGameModeSelector } from "../NadeGameModeSelector";
 
 export const InfoAddWidget: FC = ({}) => {
   const { nade, actions } = useCreateNade();
@@ -40,28 +39,14 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
             right={
+              <MapSelector defaultValue={nade.map} onChange={actions.setMap} />
+            }
+          />
+          <SplitLayout
+            left={
               <TeamSideSelector
                 defaultValue={nade.teamSide}
                 onChange={actions.setTeamSide}
-              />
-            }
-          />
-          <SplitLayout
-            left={
-              <MapSelector defaultValue={nade.map} onChange={actions.setMap} />
-            }
-            right={
-              <NadeMovementSelector
-                selectedMovement={nade.movement}
-                onMovementSelect={actions.setMovement}
-              />
-            }
-          />
-          <SplitLayout
-            left={
-              <ThrownFromInput
-                defaultValue={nade.startPosition}
-                onChange={actions.setStartPosition}
               />
             }
             right={
@@ -71,12 +56,11 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
           />
-
           <SplitLayout
             left={
-              <NadeEndPosInput
-                defaultValue={nade.endPosition}
-                onChange={actions.setEndPosition}
+              <NadeMovementSelector
+                selectedMovement={nade.movement}
+                onMovementSelect={actions.setMovement}
               />
             }
             right={
@@ -90,6 +74,15 @@ export const InfoAddWidget: FC = ({}) => {
                 <></>
               )
             }
+          />
+          <SplitLayout
+            left={
+              <NadeGameModeSelector
+                defaultValue={nade.gameMode}
+                onChange={actions.setGameMode}
+              />
+            }
+            right={<></>}
           />
 
           <Seperator />
@@ -142,8 +135,6 @@ const canClickNext = (nadeCreatBody: Partial<NadeCreateBody>): boolean => {
   return (
     Boolean(nadeCreatBody.type) &&
     Boolean(nadeCreatBody.map) &&
-    Boolean(nadeCreatBody.startPosition) &&
-    Boolean(nadeCreatBody.endPosition) &&
     Boolean(nadeCreatBody.teamSide) &&
     Boolean(nadeCreatBody.movement) &&
     Boolean(nadeCreatBody.technique) &&

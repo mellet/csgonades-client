@@ -1,6 +1,5 @@
 import { Dispatch } from "react";
 import { CsMap } from "../../../../map/models/CsGoMap";
-import { CsCanvasCoordinate } from "../../../models/MapCoordinates";
 import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
 import { NadeType } from "../../../models/NadeType";
@@ -8,6 +7,7 @@ import { TeamSide } from "../../../models/TeamSide";
 import { Technique } from "../../../models/Technique";
 import { NadeAddActions } from "./nadeAddActions";
 import { NadeCreateSteps } from "./NadeAddState";
+import { GameMode } from "../../../models/GameMode";
 
 export type NadeAddCallbacks = ReturnType<typeof useNadeAddActions>;
 
@@ -22,16 +22,6 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
 
   function setDescription(description: string) {
     dispatch({ type: "CreateNade/SetDescription", description });
-  }
-
-  function setMapPosition(
-    startPosition: CsCanvasCoordinate,
-    endPosition: CsCanvasCoordinate
-  ) {
-    dispatch({
-      type: "CreateNade/SetEndPosCoords",
-      positions: { endPosition, startPosition },
-    });
   }
 
   function setEndPosition(endPosition: string) {
@@ -93,13 +83,27 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetProUrl", proUrl });
   }
 
+  function setMapEndLocation(mapEndLocationId: string) {
+    dispatch({ type: "CreateNade/SetMapEndLocation", mapEndLocationId });
+  }
+
+  function setMapStartLocation(mapStartLocationId: string) {
+    dispatch({ type: "CreateNade/SetMapStartLocation", mapStartLocationId });
+  }
+
+  function setGameMode(gameMode: GameMode) {
+    dispatch({ type: "CreateNade/SetGameMode", gameMode });
+  }
+
   return {
     setCurrentStep,
     setDescription,
     setEndPosition,
     setLineUpImage,
     setMap,
-    setMapPosition,
+    setMapEndLocation,
+    setMapStartLocation,
+    setGameMode,
     setMovement,
     setNadeMap,
     setNadeType,

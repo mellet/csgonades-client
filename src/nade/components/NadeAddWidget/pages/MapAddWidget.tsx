@@ -2,16 +2,26 @@ import { FC } from "react";
 import { Box } from "../../../../shared-components/box/Box";
 import { Seperator } from "../../../../shared-components/Seperator";
 import { Title } from "../../../../shared-components/title/Title";
-import { MapPositionSelector } from "../../MapPositionSelector";
 import { NextNavigation } from "../NextNavigation";
 import { useCreateNade } from "../state/NadeAddStateProvider";
+import dynamic from "next/dynamic";
+
+const MapPositionSelector = dynamic(
+  () => import("../../MapPositionSelector").then((m) => m.MapPositionSelector),
+  {
+    ssr: false,
+  }
+);
 
 export const MapAddWidget: FC = ({}) => {
   const { nade, actions } = useCreateNade();
 
-  if (!nade.map) {
+  if (!nade.map || !nade.type || !nade.gameMode) {
     return (
-      <Box>Select a map before you can select the nade landing position.</Box>
+      <Box>
+        Select a map, nade type and before you can select the nade landing
+        position.
+      </Box>
     );
   }
 
@@ -23,16 +33,19 @@ export const MapAddWidget: FC = ({}) => {
         <div className="add-map-container">
           <div className="map-position-container">
             <MapPositionSelector
+              gameMode={nade.gameMode}
               selectedMap={nade.map}
-              selectedStartPosition={nade.mapStartCoord}
-              selectedEndPosition={nade.mapEndCoord}
-              onPositionChange={actions.setMapPosition}
+              selectedType={nade.type}
+              selectedMapEndLocationId={nade.mapEndLocationId}
+              selectedMapStartLocationId={nade.mapStartLocationId}
+              onSetMapEndLocation={actions.setMapEndLocation}
+              onSetMapStartLocation={actions.setMapStartLocation}
             />
           </div>
         </div>
         <NextNavigation
           onNextStep={() => actions.setCurrentStep("resultImage")}
-          enabled={Boolean(nade.mapEndCoord)}
+          enabled={Boolean(nade.mapEndLocationId && nade.mapStartLocationId)}
         />
       </Box>
       <style jsx>{`
