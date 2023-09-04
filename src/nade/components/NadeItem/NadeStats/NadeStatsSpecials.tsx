@@ -54,9 +54,9 @@ export const NadeStatsSpecials: FC<Props> = ({
           />
         )}
 
-        {isJumpThrow && isCsgo && (
+        {isJumpThrow && (
           <Popup
-            content={tickrateTooltip(tickrate)}
+            content={tickrateTooltip(gameMode, tickrate)}
             inverted
             position="top center"
             size="mini"
@@ -65,9 +65,11 @@ export const NadeStatsSpecials: FC<Props> = ({
                 <div className="special-icon">
                   <RiMouseLine />
                 </div>
-                <span className="special-text">
-                  {tickrateShortString(tickrate || "any")}
-                </span>
+                {gameMode === "csgo" && (
+                  <span className="special-text">
+                    {tickrateShortString(tickrate || "any")}
+                  </span>
+                )}
               </div>
             }
           />
@@ -165,7 +167,10 @@ export const NadeStatsSpecials: FC<Props> = ({
   );
 };
 
-function tickrateTooltip(tickrate?: Tickrate) {
+function tickrateTooltip(gameMode: GameMode, tickrate?: Tickrate) {
+  if (gameMode === "cs2") {
+    return <div className="center">Requires Jumpthrow</div>;
+  }
   switch (tickrate) {
     case "tick128":
       return (
