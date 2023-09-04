@@ -4,6 +4,7 @@ import { ThumbImage } from "./Views/ThumbImage";
 import { useTheme } from "../../../core/settings/useTheme";
 import { useGa } from "../../../utils/Analytics";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
+import { GameMode } from "../../models/GameMode";
 
 const MiniGfycatIframe = dynamic(
   () =>
@@ -21,6 +22,7 @@ const MiniYouTubePlayer = dynamic(
 type Props = {
   avgColor?: string;
   disableAction?: boolean;
+  gameMode: GameMode;
   gfyId?: string;
   lineUpThumnUrl?: string;
   nadeId: string;
@@ -42,6 +44,7 @@ export const GfycatThumbnail: FC<Props> = ({
   youTubeId,
   speed = "fast",
   quality,
+  gameMode,
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
@@ -96,7 +99,11 @@ export const GfycatThumbnail: FC<Props> = ({
         onMouseLeave={onMouseLeave}
       >
         <div className="front">
-          <ThumbImage thumbUrl={thumbnailUrl} lineupThumbUrl={lineUpThumnUrl} />
+          <ThumbImage
+            thumbUrl={thumbnailUrl}
+            lineupThumbUrl={lineUpThumnUrl}
+            gameMode={gameMode}
+          />
         </div>
 
         <div className={displayBack ? "back visible" : "back"}>
