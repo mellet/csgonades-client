@@ -39,7 +39,10 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
             right={
-              <MapSelector defaultValue={nade.map} onChange={actions.setMap} />
+              <NadeGameModeSelector
+                defaultValue={nade.gameMode}
+                onChange={actions.setGameMode}
+              />
             }
           />
           <SplitLayout
@@ -50,10 +53,7 @@ export const InfoAddWidget: FC = ({}) => {
               />
             }
             right={
-              <TechniqueSelector
-                defaultValue={nade.technique}
-                onChange={actions.setTechnique}
-              />
+              <MapSelector defaultValue={nade.map} onChange={actions.setMap} />
             }
           />
           <SplitLayout
@@ -63,6 +63,15 @@ export const InfoAddWidget: FC = ({}) => {
                 onMovementSelect={actions.setMovement}
               />
             }
+            right={
+              <TechniqueSelector
+                defaultValue={nade.technique}
+                onChange={actions.setTechnique}
+              />
+            }
+          />
+          <SplitLayout
+            left={<></>}
             right={
               gameMode === "csgo" &&
               doesRequireTickrateTechnique(nade.technique) ? (
@@ -74,15 +83,6 @@ export const InfoAddWidget: FC = ({}) => {
                 <></>
               )
             }
-          />
-          <SplitLayout
-            left={
-              <NadeGameModeSelector
-                defaultValue={nade.gameMode}
-                onChange={actions.setGameMode}
-              />
-            }
-            right={<></>}
           />
 
           <Seperator />

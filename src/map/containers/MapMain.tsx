@@ -19,6 +19,7 @@ import { useNadeClusters } from "../logic/useNadesForMapView";
 import MapViewScreen from "../components/MapViewScreen";
 import dynamic from "next/dynamic";
 import { NadeView } from "../components/NadeView/NadeView";
+import { AddNadeButton } from "./NewAddNadeButton";
 
 const NewMapView = dynamic(
   () => import("./NewMapView/NewMapView").then((m) => m.NewMapView),
@@ -72,6 +73,9 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
             </div>
           )}
         </div>
+
+        <AddNadeButton />
+
         <div id="nade-nades">
           {suggestedNades && (
             <NadePreviewModal
@@ -116,25 +120,19 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
         #nade-page {
           position: relative;
           width: 100%;
-          display: grid;
-          grid-template-columns: min-content 1fr;
-          grid-template-areas: "filter nades";
-          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+          display: flex;
+
           height: 100%;
         }
 
         #filter {
-          grid-area: filter;
-        }
-
-        .sticky {
-          position: sticky;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          position: absolute;
+          top: 15px;
+          left: 15px;
         }
 
         #nade-nades {
           flex: 1;
-          grid-area: nades;
           width: 100%;
         }
 
