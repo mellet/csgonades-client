@@ -15,6 +15,8 @@ import { useElementSize } from "usehooks-ts";
 import { useGameMode } from "../../../core/useGameMode";
 import { useFilterByTeam } from "../../logic/useFilterByTeam";
 import { useFilterByTickrate } from "../../logic/useFilterByTickrate";
+import { CSGNIcon } from "../../../nade/components/NadeStatus/CSGNIcon";
+import { ImSpinner8 } from "react-icons/im";
 
 type Props = {
   csMap: CsMap;
@@ -78,7 +80,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
                   }}
                 />
               )}
-              {mapNadeLocations && (
+              {mapNadeLocations && !isLoading && (
                 <GrenadeView
                   csMap={csMap}
                   selectedLocationId={selectedMapNadeLocation?.endLocation.id}
@@ -90,6 +92,11 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
             </Layer>
           </Stage>
         )}
+        {isLoading && (
+          <div className="loading-indicator">
+            <CSGNIcon spin icon={<ImSpinner8 size={18} />} size={18} />
+          </div>
+        )}
       </div>
       <style jsx>{`
         .map-wrapper {
@@ -100,6 +107,18 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
           background: ${colors.DP01};
           border: 1px solid ${colors.BORDER};
           border-radius: ${Dimensions.BORDER_RADIUS};
+        }
+
+        .loading-indicator {
+          position: absolute;
+          right: 0;
+          top: ${Dimensions.GUTTER_SIZE}px;
+          left: 0;
+          z-index: 1;
+          color: #28a4c9;
+          display: flex;
+          justify-content: center;
+          border: none;
         }
       `}</style>
     </>
