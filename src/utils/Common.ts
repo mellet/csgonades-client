@@ -138,7 +138,7 @@ export function generateNadeItemTitle(
       ` from ${starPosition}`,
     ];
   } else {
-    return ["No Title", "..."];
+    return ["PREVIEW", "-"];
   }
 }
 
