@@ -7,7 +7,7 @@ import { useCreateNade } from "../state/NadeAddStateProvider";
 import dynamic from "next/dynamic";
 
 const MapPositionSelector = dynamic(
-  () => import("../../MapPositionSelector").then((m) => m.MapPositionSelector),
+  () => import("../MapPositionSelector").then((m) => m.MapPositionSelector),
   {
     ssr: false,
   }
@@ -53,7 +53,6 @@ export const MapAddWidget: FC = ({}) => {
         }
 
         .map-position-container {
-          max-width: 75vh;
           margin: 0 auto;
         }
       `}</style>

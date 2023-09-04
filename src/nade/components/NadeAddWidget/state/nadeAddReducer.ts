@@ -65,6 +65,8 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         nadeData: {
           ...state.nadeData,
           map: action.map,
+          mapEndLocationId: undefined,
+          mapStartLocationId: undefined,
         },
       };
     case "CreateNade/SetMovement": {
@@ -82,6 +84,8 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         nadeData: {
           ...state.nadeData,
           type: action.nadeType,
+          mapEndLocationId: undefined,
+          mapStartLocationId: undefined,
         },
       };
     case "CreateNade/SetOneWay": {
@@ -171,6 +175,8 @@ export const nadeAddReducer: Reducer<NadeAddState, NadeAddActions> = (
         nadeData: {
           ...state.nadeData,
           gameMode: action.gameMode,
+          mapEndLocationId: undefined,
+          mapStartLocationId: undefined,
         },
       };
     }

@@ -5,7 +5,10 @@ import { GameMode } from "../../models/GameMode";
 import dynamic from "next/dynamic";
 
 const MapPositionSelector = dynamic(
-  () => import("../MapPositionSelector").then((m) => m.MapPositionSelector),
+  () =>
+    import("../NadeAddWidget/MapPositionSelector").then(
+      (m) => m.MapPositionSelector
+    ),
   {
     ssr: false,
   }

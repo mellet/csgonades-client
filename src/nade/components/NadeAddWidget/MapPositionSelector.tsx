@@ -1,17 +1,16 @@
 import { FC, useEffect, useRef, useState } from "react";
-import { CsMap } from "../../map/models/CsGoMap";
-import { useTheme } from "../../core/settings/useTheme";
-import { Dimensions } from "../../constants/Constants";
-import { NadeType } from "../models/NadeType";
+import { CsMap } from "../../../map/models/CsGoMap";
+import { useTheme } from "../../../core/settings/useTheme";
+import { NadeType } from "../../models/NadeType";
 import { Layer, Stage } from "react-konva";
 import Konva from "konva";
-import { MapImage } from "../../map/components/mapview/MapViewImage";
-import { useMapStartLocations } from "../../map/data/useMapStartLocations";
-import { useMapEndLocations } from "../../map/data/useMapEndLocations";
-import { EndLocations } from "../../map/components/mapview/EndLocations";
-import { StartLocations } from "../../map/components/mapview/StartLocation";
-import { GameMode } from "../models/GameMode";
-import { FaCheck } from "react-icons/fa";
+import { MapImage } from "../../../map/components/mapview/MapViewImage";
+import { useMapStartLocations } from "../../../map/data/useMapStartLocations";
+import { useMapEndLocations } from "../../../map/data/useMapEndLocations";
+import { EndLocations } from "../../../map/components/mapview/EndLocations";
+import { StartLocations } from "../../../map/components/mapview/StartLocation";
+import { GameMode } from "../../models/GameMode";
+import { HintBox } from "./HintBox";
 
 type Props = {
   gameMode: GameMode;
@@ -59,38 +58,49 @@ export const MapPositionSelector: FC<Props> = ({
   const endLocationCallout =
     mapEndLocations.find((n) => n.id === selectedMapEndLocationId)
       ?.calloutName || "";
-
-  const infoString =
-    mode === "start"
-      ? "First select where you throw the nade from!"
-      : "Now select where your nade lands. If you can't find the exact location, select the closest";
+  const startLocationCallout =
+    mapStartLocations.find((n) => n.id === selectedMapStartLocationId)
+      ?.calloutName || "";
 
   return (
     <>
-      <div className="info">{infoString}</div>
+      <HintBox>
+        <div className="hint">
+          {mode === "start" && (
+            <p>First select where you throw the nade from!</p>
+          )}
+          {mode === "end" && (
+            <p>
+              Now select where your nade lands.
+              <br />
+              If you can&apos;t find the exact location, select the closest.
+            </p>
+          )}
+        </div>
+      </HintBox>
       <div className="toolbar">
-        <button onClick={() => setMode("start")}>
-          <FaCheck
-            style={{
-              marginRight: 4,
-              color: selectedMapStartLocationId ? "green" : "#bbb",
-            }}
-          />
-          Start Location
-        </button>
-        <button onClick={() => setMode("end")}>
-          <FaCheck
-            style={{
-              marginRight: 4,
-              color: selectedMapEndLocationId ? "green" : "#bbb",
-            }}
-          />
-          End Location
-        </button>
+        <div className="toolbar-actions">
+          <button
+            className={mode === "start" ? "selected" : undefined}
+            onClick={() => setMode("start")}
+          >
+            Start Location
+          </button>
+          <button
+            className={mode === "end" ? "selected" : undefined}
+            onClick={() => setMode("end")}
+          >
+            End Location
+          </button>
+        </div>
+        <div className="callout-name">
+          {startLocationCallout && <span>From {startLocationCallout}</span>}
+          {endLocationCallout && <span> to {endLocationCallout}</span>}
+        </div>
       </div>
+
       <div className="position-selector">
-        <div className="callout-name">{endLocationCallout}</div>
-        <Stage ref={konvaRef} width={650} height={650}>
+        <Stage ref={konvaRef} width={600} height={600}>
           <Layer>
             <MapImage csMap={selectedMap} />
             {mode === "end" && mapEndLocations && (
@@ -119,17 +129,26 @@ export const MapPositionSelector: FC<Props> = ({
       <style jsx>{`
         .position-selector {
           position: relative;
+          width: 600px;
+          margin: 0 auto;
         }
 
         .toolbar {
+          background: ${colors.DP02};
+          border-radius: 4px;
           display: flex;
-          gap: 4px;
-          justify-content: center;
+          justify-content: space-between;
+          padding: 6px;
+          margin-top: 10px;
+        }
+
+        .toolbar-actions {
+          display: flex;
         }
 
         .toolbar button {
-          border: 1px solid #ccc;
-          background: white;
+          background: ${colors.DP03};
+          border: 1px solid ${colors.BORDER};
           border-radius: 5px;
           padding: 4px 8px;
           cursor: pointer;
@@ -138,14 +157,23 @@ export const MapPositionSelector: FC<Props> = ({
           justify-content: center;
         }
 
-        .info {
-          background: ${colors.DP02};
-          padding: 4px 8px;
-          color: ${colors.TEXT};
-          border-radius: ${Dimensions.BORDER_RADIUS};
-          border: 1px solid ${colors.BORDER};
-          margin-bottom: 10px;
-          text-align: center;
+        .toolbar button:first-child {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border-right: none;
+        }
+
+        .toolbar button:last-child {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        .selected {
+          background: ${colors.SUCCESS} !important;
+        }
+
+        .hint {
+          min-height: 50px;
         }
 
         .map-wrapper {
@@ -153,12 +181,7 @@ export const MapPositionSelector: FC<Props> = ({
         }
 
         .callout-name {
-          position: absolute;
-          top: 0;
-          right: 0;
-          border: 1px solid #ccc;
-          padding: 4px;
-          border-radius: 5px;
+          color: ${colors.GREY};
         }
       `}</style>
     </>

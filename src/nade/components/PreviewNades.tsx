@@ -42,6 +42,7 @@ export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
           type={type}
         />
         <GfycatThumbnail
+          gameMode={gameMode || "csgo"}
           disableAction
           lineUpThumnUrl={lineUpImageBase64}
           nadeId=""
