@@ -164,13 +164,14 @@ export class NadeApi {
     csgoMap: CsMap
   ): AppResult<NadeLight[]> {
     try {
-      let url = `${AppConfig.API_URL}/nades/user/${steamId}?gameMode=${gameMode}`;
+      const url = new URL(`/nades/user/${steamId}`, AppConfig.API_URL);
+      url.searchParams.append("gameMode", gameMode);
 
       if (csgoMap) {
-        url = url + `&map=${csgoMap}`;
+        url.searchParams.append("map", csgoMap);
       }
 
-      const res = await axios.get(url);
+      const res = await axios.get(url.toString());
       const nades = res.data as NadeLight[];
       return ok(nades);
     } catch (error) {
