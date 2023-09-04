@@ -33,7 +33,6 @@ export const NadeStatsSpecials: FC<Props> = ({
     movement === "walking";
 
   const isJumpThrow = technique?.includes("jumpthrow");
-  const isCsgo = gameMode === "csgo";
 
   return (
     <>
