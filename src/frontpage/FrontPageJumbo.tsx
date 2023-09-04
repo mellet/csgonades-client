@@ -5,12 +5,14 @@ import { kFormatter } from "../utils/Common";
 import { NadeIcon } from "../shared-components/nade-icons";
 import { FaUserFriends } from "react-icons/fa";
 import { FrontPageMapSelector } from "./FrontPageMapSelector";
+import { useGameMode } from "../core/useGameMode";
 
 type Props = {
   stats: SiteStats | null;
 };
 
 export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
+  const { gameMode } = useGameMode();
   const { colors } = useTheme();
 
   return (
@@ -43,7 +45,9 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
                 </span>
               </FrontPageMapSelector>
 
-              <span className="stat-count">{stats.numSmokes}</span>
+              <span className="stat-count">
+                {gameMode === "cs2" ? stats.numCs2Smokes : stats.numSmokes}
+              </span>
             </div>
             <div className="stat-item">
               <FrontPageMapSelector nadeType="flash">
@@ -52,7 +56,9 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
                 </span>
               </FrontPageMapSelector>
 
-              <span className="stat-count">{stats.numFlashes}</span>
+              <span className="stat-count">
+                {gameMode === "cs2" ? stats.numCs2Flashes : stats.numFlashes}
+              </span>
             </div>
             <div className="stat-item">
               <FrontPageMapSelector nadeType="molotov">
@@ -60,7 +66,10 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
                   <NadeIcon nadeType="molotov" />
                 </span>
               </FrontPageMapSelector>
-              <span className="stat-count">{stats.numMolotovs}</span>
+              <span className="stat-count">
+                {" "}
+                {gameMode === "cs2" ? stats.numCs2Molotovs : stats.numMolotovs}
+              </span>
             </div>
             <div className="stat-item">
               <FrontPageMapSelector nadeType="hegrenade">
@@ -68,7 +77,10 @@ export const FrontPageJumbo: FC<Props> = memo(({ stats }) => {
                   <NadeIcon nadeType="hegrenade" />
                 </span>
               </FrontPageMapSelector>
-              <span className="stat-count">{stats.numGrenades}</span>
+              <span className="stat-count">
+                {" "}
+                {gameMode === "cs2" ? stats.numCs2Grenades : stats.numGrenades}
+              </span>
             </div>
             <div className="stat-item">
               <span className="stat-label">
