@@ -18,65 +18,22 @@ export const NadeImage: FC<MapImageProps> = ({
 }) => {
   const size = 55;
   const scale = nadeScale(csMap);
-  const grenadeIconRef = useRef<Konva.Image>(null);
-  const textRef = useRef<Konva.Text>(null);
-  const closeBtnRef = useRef<Konva.Circle>(null);
+  const groupRef = useRef<Konva.Group>(null);
   const [image] = useImage(`/icons/grenades/${nadeType}.svg`);
 
-  const onCloseHover = () => {
-    closeBtnRef.current?.to({
-      scaleX: scale.x + 0.1,
-      scaleY: scale.y + 0.1,
-      opacity: 1,
-      duration: 0.1,
-    });
-    textRef.current?.to({
-      scaleX: scale.x + 0.1,
-      scaleY: scale.y + 0.1,
-      duration: 0.1,
-    });
-  };
-
-  const onCloseLeave = () => {
-    closeBtnRef.current?.to({
-      scaleX: scale.x,
-      scaleY: scale.y,
-      opacity: 1,
-      duration: 0.1,
-    });
-    textRef.current?.to({
-      scaleX: scale.x,
-      scaleY: scale.y,
-      duration: 0.1,
-    });
-  };
-
   const zoomIn = () => {
-    // to() is a method of `Konva.Node` instances
-    grenadeIconRef.current?.to({
-      scaleX: scale.x + 0.1,
-      scaleY: scale.y + 0.1,
-      opacity: 1,
+    groupRef.current?.to({
+      scaleX: 1.1,
+      scaleY: 1.1,
       duration: 0.1,
     });
-    textRef.current?.to({
-      scaleX: scale.x + 0.1,
-      scaleY: scale.y + 0.1,
-      duration: 0.1,
-    });
+    return;
   };
 
   const zoomOut = () => {
-    // to() is a method of `Konva.Node` instances
-    grenadeIconRef.current?.to({
-      scaleX: scale.x,
-      scaleY: scale.y,
-      opacity: 0.9,
-      duration: 0.1,
-    });
-    textRef.current?.to({
-      scaleX: scale.x,
-      scaleY: scale.y,
+    groupRef.current?.to({
+      scaleX: 1,
+      scaleY: 1,
       duration: 0.1,
     });
   };
@@ -95,10 +52,9 @@ export const NadeImage: FC<MapImageProps> = ({
 
   return (
     <>
-      <Group x={x} y={y}>
+      <Group ref={groupRef} x={x} y={y}>
         {isSelected && (
           <Circle
-            ref={closeBtnRef}
             onClick={onClick}
             radius={size / 2.3}
             fill="rgba(184, 13, 13, 0.9)"
@@ -107,22 +63,21 @@ export const NadeImage: FC<MapImageProps> = ({
               if (container) {
                 container.style.cursor = "pointer";
               }
-              onCloseHover();
+              zoomIn();
             }}
             onMouseLeave={(evt) => {
               const container = evt.target.getStage()?.container();
               if (container) {
                 container.style.cursor = "default";
               }
-              onCloseLeave();
+              zoomOut();
             }}
           />
         )}
         {!isSelected && (
           <Image
             scale={scale}
-            opacity={0.9}
-            ref={grenadeIconRef}
+            opacity={0.95}
             onClick={onClick}
             offset={{ x: size / 2, y: size / 2 }}
             image={image}
@@ -146,22 +101,45 @@ export const NadeImage: FC<MapImageProps> = ({
         )}
 
         <Text
+          x={0}
+          y={0}
           scale={scale}
-          ref={textRef}
           listening={false}
           text={isSelected ? "X" : count.toString()}
           fontSize={28}
           fontStyle="bold"
           fontFamily="Helvetica Neue, Helvetica, Verdana"
-          offset={{ x: 50, y: 12 }}
           width={100}
-          fill={hasNew ? "green" : "white"}
+          height={100}
+          offsetX={100 / 2}
+          offsetY={100 / 2 - 3}
+          fill={"white"}
           strokeWidth={isSelected ? 0 : 2}
           stroke="rgba(0,0,0,1)"
           fillAfterStrokeEnabled
           align="center"
           verticalAlign="middle"
         />
+        {hasNew && !isSelected && (
+          <Text
+            listening={false}
+            text="New"
+            x={0}
+            y={0}
+            width={size}
+            fontSize={10}
+            fill="#c3ff00"
+            fontFamily="Helvetica Neue, Helvetica, Verdana"
+            fontStyle="bold"
+            strokeWidth={1}
+            stroke="#123301"
+            fillAfterStrokeEnabled
+            height={size}
+            offsetX={55 / 2}
+            offsetY={-10}
+            align="center"
+          />
+        )}
       </Group>
     </>
   );

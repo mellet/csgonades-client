@@ -25,10 +25,13 @@ export const StartLocations: FC<Props> = ({
         if (sL.id === hideLocationId) {
           return null;
         }
+
         return (
           <StartLocation
             // @ts-ignore
             count={sL.count}
+            // @ts-ignore
+            hasNew={sL.hasNew}
             highlight={highlightLocationId === sL.id}
             key={sL.id}
             startLocation={sL}
@@ -44,6 +47,7 @@ export const StartLocations: FC<Props> = ({
 
 type StartLocationProp = {
   count?: number;
+  hasNew?: boolean;
   highlight?: boolean;
   startLocation: MapStartLocation | MapNadeStartLocation;
   onStartLocationSelected: (
@@ -52,6 +56,7 @@ type StartLocationProp = {
 };
 
 const StartLocation: FC<StartLocationProp> = ({
+  hasNew,
   highlight,
   startLocation,
   onStartLocationSelected,
@@ -119,6 +124,27 @@ const StartLocation: FC<StartLocationProp> = ({
         }
         stroke={"white"}
       />
+      {hasNew && (
+        <Text
+          listening={false}
+          text="New"
+          x={startLocation.labelPosition?.x || 0}
+          y={startLocation.labelPosition?.y || 0}
+          width={55}
+          fontSize={10}
+          fill="#c3ff00"
+          fontFamily="Helvetica Neue, Helvetica, Verdana"
+          fontStyle="bold"
+          strokeWidth={1}
+          stroke="#123301"
+          fillAfterStrokeEnabled
+          height={55}
+          offsetX={55 / 2}
+          offsetY={-13}
+          align="center"
+        />
+      )}
+
       {count && (
         <Text
           ref={textRef}
