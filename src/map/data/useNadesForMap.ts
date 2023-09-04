@@ -3,13 +3,13 @@ import { NadeApi } from "../../nade/data/NadeApi";
 import { NadeType } from "../../nade/models/NadeType";
 import { endMeasurement, startMeasurement } from "../../utils/Instrumentation";
 import { useFilterByType } from "../logic/useFilterByType";
-import { CsgoMap } from "../models/CsGoMap";
+import { CsMap } from "../models/CsGoMap";
 import { GameMode } from "../../nade/models/GameMode";
 import { useGameMode } from "../../core/useGameMode";
 
 async function nadeForMapFetcher(
   _url: string,
-  mapName: CsgoMap,
+  mapName: CsMap,
   gameMode: GameMode,
   nadeType: NadeType
 ) {
@@ -24,7 +24,7 @@ async function nadeForMapFetcher(
   }
 }
 
-export const useNadesForMapFromApi = (mapName: CsgoMap) => {
+export const useNadesForMapFromApi = (mapName: CsMap) => {
   const { byType } = useFilterByType();
   const { gameMode } = useGameMode();
 

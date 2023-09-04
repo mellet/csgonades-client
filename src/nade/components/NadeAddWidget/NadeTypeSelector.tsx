@@ -8,12 +8,17 @@ import { MiniLabel } from "../NadeLabels/MiniLabel";
 type Props = {
   onTypeSelect: (type: NadeType) => void;
   selectedType?: NadeType;
+  hideLabel?: boolean;
 };
 
-export const NadeTypeSelector: FC<Props> = ({ onTypeSelect, selectedType }) => {
+export const NadeTypeSelector: FC<Props> = ({
+  onTypeSelect,
+  selectedType,
+  hideLabel,
+}) => {
   return (
     <div className="type-selector-container">
-      <MiniLabel value="Type" />
+      {!hideLabel && <MiniLabel value="Type" />}
       <ButtonGroup>
         <SquareButton
           inGroup

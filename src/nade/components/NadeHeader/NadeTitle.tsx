@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { useTheme } from "../../../core/settings/useTheme";
 import { generateNadeItemTitle } from "../../../utils/Common";
 import { NadeType } from "../../models/NadeType";
-import { CsgoMap } from "../../../map/models/CsGoMap";
+import { CsMap } from "../../../map/models/CsGoMap";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   nadeEndPosition?: string;
   nadeType?: NadeType;
   isOneWay?: boolean;
-  csGoMap?: CsgoMap;
+  csGoMap?: CsMap;
 };
 
 export const NadeTitle: FC<Props> = memo(

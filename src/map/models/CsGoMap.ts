@@ -13,19 +13,19 @@ const CsGoMaps = {
   vertigo: "Vertigo",
 };
 
-export type CsgoMap = keyof typeof CsGoMaps;
-type CsgoMapKeys = keyof typeof CsGoMaps;
+export type CsMap = keyof typeof CsGoMaps;
+type CsMapKey = keyof typeof CsGoMaps;
 
 type MapOption = {
-  key: CsgoMapKeys;
+  key: CsMapKey;
   text: string;
-  value: CsgoMapKeys;
+  value: CsMapKey;
 };
 
 export function nadeMapOptions(): MapOption[] {
   const options: MapOption[] = [];
   for (const key in CsGoMaps) {
-    const map = key as CsgoMapKeys;
+    const map = key as CsMapKey;
     options.push({
       key: map,
       text: CsGoMaps[map],
@@ -35,14 +35,14 @@ export function nadeMapOptions(): MapOption[] {
   return options;
 }
 
-export function mapString(csgoMap: CsgoMap): string {
+export function mapString(csgoMap: CsMap): string {
   return CsGoMaps[csgoMap];
 }
 
-export function getAllCsGoMaps(): CsgoMap[] {
-  const maps: CsgoMap[] = [];
+export function getAllCsMaps(): CsMap[] {
+  const maps: CsMap[] = [];
   for (const key in CsGoMaps) {
-    const map = key as CsgoMapKeys;
+    const map = key as CsMapKey;
     maps.push(map);
   }
   return maps;

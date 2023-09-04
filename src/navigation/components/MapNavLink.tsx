@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import Link from "next/link";
 import { useFilterReset } from "../../map/logic/useFilterReset";
 import { useTheme } from "../../core/settings/useTheme";
 
 type Props = {
-  map: CsgoMap;
+  map: CsMap;
 };
 
 export const MapPageLink: FC<Props> = ({ map, children }) => {

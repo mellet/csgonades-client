@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useTheme } from "../../../core/settings/useTheme";
 import { NadeLight } from "../../../nade/models/NadeLight";
 import { capitalize, useGameString } from "../../../utils/Common";
-import { CsgoMap } from "../../models/CsGoMap";
+import { CsMap } from "../../models/CsGoMap";
 
 const TopContributors = dynamic(
   () =>
@@ -15,7 +15,7 @@ const TopContributors = dynamic(
 
 type Props = {
   nades: NadeLight[];
-  map: CsgoMap;
+  map: CsMap;
   isLoading: boolean;
 };
 
@@ -35,7 +35,7 @@ export const SideJumbo: FC<Props> = ({ nades, map, isLoading }) => {
           Dominate {capitalize(map)} with our collection of smokes, flashbangs,
           molotovs, and grenades.
         </h2>
-        <TopContributors nades={nades} isLoading={isLoading} />
+        {false && <TopContributors nades={nades} isLoading={isLoading} />}
       </div>
       <style jsx>{`
         .jumbo {

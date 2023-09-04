@@ -187,31 +187,13 @@ const Step: FC<StepProps> = ({
 };
 
 const isValidVideo = (newNade: Partial<NadeCreateBody>) => {
-  return Boolean(newNade.youTubeId) || Boolean(newNade.gfycat);
+  return Boolean(newNade.youTubeId);
 };
 
 const isValidInfo = (newNade: Partial<NadeCreateBody>) => {
-  const {
-    description,
-    endPosition,
-    map,
-    movement,
-    startPosition,
-    technique,
-    type,
-    teamSide,
-  } = newNade;
+  const { description, map, movement, technique, type, teamSide } = newNade;
 
-  if (
-    !description ||
-    !endPosition ||
-    !map ||
-    !movement ||
-    !startPosition ||
-    !technique ||
-    !type ||
-    !teamSide
-  ) {
+  if (!description || !map || !movement || !technique || !type || !teamSide) {
     return false;
   }
 
@@ -219,5 +201,5 @@ const isValidInfo = (newNade: Partial<NadeCreateBody>) => {
 };
 
 const isValidMap = (newNade: Partial<NadeCreateBody>) => {
-  return Boolean(newNade.mapEndCoord);
+  return Boolean(newNade.mapEndLocationId && newNade.mapStartLocationId);
 };

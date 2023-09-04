@@ -81,11 +81,6 @@ function createNadeUpdateBody(
     update.imageBase64
   );
   const map = newValueIfDifferent(nade.map, update.map);
-  const mapEndCoord = newValueIfDifferent(nade.mapEndCoord, update.mapEndCoord);
-  const mapStartCoord = newValueIfDifferent(
-    nade.mapStartCoord,
-    update.mapStartCoord
-  );
   const movement = newValueIfDifferent(nade.movement, update.movement);
   const startPosition = newValueIfDifferent(
     nade.startPosition,
@@ -106,6 +101,14 @@ function createNadeUpdateBody(
   const proUrl = newValueIfDifferent(nade.proUrl, update.proUrl);
   const youTubeId = newValueIfDifferent(nade.youTubeId, update.youTubeId);
   const gameMode = newValueIfDifferent(nade.gameMode, update.gameMode);
+  const mapEndLocationId = newValueIfDifferent(
+    nade.mapEndLocationId,
+    update.mapEndLocationId
+  );
+  const mapStartLocationId = newValueIfDifferent(
+    nade.mapStartLocationId,
+    update.mapStartLocationId
+  );
 
   const updateBody: NadeUpdateBody = {
     description,
@@ -116,8 +119,6 @@ function createNadeUpdateBody(
     isPro,
     lineUpImageBase64,
     map,
-    mapEndCoord,
-    mapStartCoord,
     movement,
     oneWay,
     proUrl,
@@ -129,6 +130,8 @@ function createNadeUpdateBody(
     tickrate,
     type,
     youTubeId,
+    mapEndLocationId,
+    mapStartLocationId,
   };
 
   // Remove undefine keys

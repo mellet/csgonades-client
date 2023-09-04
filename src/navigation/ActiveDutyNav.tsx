@@ -2,15 +2,15 @@ import { FC } from "react";
 import { useRouter } from "next/router";
 import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
-import { CsgoMap } from "../map/models/CsGoMap";
+import { CsMap } from "../map/models/CsGoMap";
 
 type Props = {
-  csMapList: CsgoMap[];
+  csMapList: CsMap[];
 };
 
 export const ActiveDutyNav: FC<Props> = ({ csMapList }) => {
   const { query } = useRouter();
-  const selectedMap = query.map as CsgoMap;
+  const selectedMap = query.map as CsMap;
 
   return (
     <>

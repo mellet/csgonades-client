@@ -2,7 +2,7 @@ import { FC, useRef, useState, useEffect, useCallback } from "react";
 import { useSetMapView } from "../logic/useSetMapView";
 import { Dimensions } from "../../constants/Constants";
 import { NadeLight } from "../../nade/models/NadeLight";
-import { CsgoMap } from "../models/CsGoMap";
+import { CsMap } from "../models/CsGoMap";
 import { useWindowSize } from "../../shared-components/MinSizeRender";
 import { AddNadeButton } from "./AddNadeButton";
 import { NoNadesMessage } from "./NoNadesMessage";
@@ -13,7 +13,7 @@ import { MapLoadingScreen } from "./MapLoadingScreen";
 
 type Props = {
   nadeClusters: NadeLight[][];
-  map: CsgoMap;
+  map: CsMap;
   onClusterClick: (cluster: NadeLight[]) => void;
   isLoading: boolean;
   onStartEloGame: (nades: NadeLight[][]) => void;

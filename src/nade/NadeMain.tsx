@@ -19,7 +19,6 @@ type Props = {
 
 export const NadeMain: FC<Props> = memo(({ nade }) => {
   const { setGameMode } = useGameMode();
-
   const seoTitle = generateSeoTitle(
     nade.startPosition,
     nade.endPosition,

@@ -1,18 +1,23 @@
 import { FC } from "react";
 import { MiniLabel } from "../NadeLabels/MiniLabel";
-import { CsgoMap, nadeMapOptions } from "../../../map/models/CsGoMap";
+import { CsMap, nadeMapOptions } from "../../../map/models/CsGoMap";
 import { CsgnDropdown } from "../../../shared-components/inputs/CsgnDropdown";
 
 type Props = {
-  defaultValue?: CsgoMap;
-  onChange: (value: CsgoMap) => void;
+  defaultValue?: CsMap;
+  hideLabel?: boolean;
+  onChange: (value: CsMap) => void;
 };
 
-export const MapSelector: FC<Props> = ({ onChange, defaultValue }) => {
+export const MapSelector: FC<Props> = ({
+  onChange,
+  defaultValue,
+  hideLabel,
+}) => {
   return (
     <div>
-      <MiniLabel value="Map" />
-      <CsgnDropdown<CsgoMap>
+      {!hideLabel && <MiniLabel value="Map" />}
+      <CsgnDropdown<CsMap>
         defaultValue={defaultValue}
         hintText={"Select map"}
         onChange={onChange}

@@ -9,6 +9,7 @@ type Props<T> = {
   keyExtractor: (item: T) => string;
   renderItem: (item: T) => JSX.Element;
   emptyMessage?: string;
+  isLoading?: boolean;
 };
 
 function ListBase<T>(props: Props<T>): JSX.Element {
@@ -25,16 +26,24 @@ function ListBase<T>(props: Props<T>): JSX.Element {
 }
 
 const List: FC<Props<any>> = memo(
-  ({ data, keyExtractor, renderItem, enableAds = false, emptyMessage }) => {
+  ({
+    data,
+    keyExtractor,
+    renderItem,
+    enableAds = false,
+    emptyMessage,
+    isLoading,
+  }) => {
     const { colors } = useTheme();
     const numItems = data.length;
     const isEmpty = numItems === 0;
+    const displayEmptyMessage = isEmpty && !isLoading;
 
     const enableInListAds = enableAds;
 
     return (
       <>
-        {isEmpty && (
+        {displayEmptyMessage && (
           <div className="empty-list">
             {emptyMessage
               ? emptyMessage

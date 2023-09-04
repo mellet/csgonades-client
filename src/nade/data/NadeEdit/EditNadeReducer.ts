@@ -43,13 +43,6 @@ export const nadeEditReducer: Reducer<EditNadeState, NadeEditAction> = (
         ...state,
         imageBase64: action.image,
       };
-
-    case "EditNade/SetEndPosCoords":
-      return {
-        ...state,
-        mapEndCoord: action.data.mapEndCoord,
-        mapStartCoord: action.data.mapStartCoord,
-      };
     case "EditNade/SetTechnique":
       return {
         ...state,
@@ -114,6 +107,16 @@ export const nadeEditReducer: Reducer<EditNadeState, NadeEditAction> = (
       return {
         ...state,
         gameMode: action.gameMode,
+      };
+    case "EditNade/SetMapEndLocation":
+      return {
+        ...state,
+        mapEndLocationId: action.mapEndLocationId,
+      };
+    case "EditNade/SetMapStartLocation":
+      return {
+        ...state,
+        mapStartLocationId: action.mapStartLocationId,
       };
     default:
       assertNever(action);

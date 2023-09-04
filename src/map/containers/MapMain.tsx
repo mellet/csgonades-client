@@ -1,91 +1,53 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useState } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { SEO } from "../../shared-components/SEO";
 import { capitalize } from "../../utils/Common";
-import { MapPageNades } from "../components/MapPageNades";
-import MapViewScreen from "../components/MapViewScreen";
 import FilterBar from "../components/nadefilter/FilterBar";
-import { NadePreviewModal } from "../components/SuggestedNades/NadePreviewModal";
-import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
-import { useSetMapView } from "../logic/useSetMapView";
-import { CsgoMap } from "../models/CsGoMap";
+import { CsMap } from "../models/CsGoMap";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
-import { NadeType } from "../../nade/models/NadeType";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
-import {
-  BattleRoyalModal,
-  useEloGame,
-} from "../components/EloGame/BattleRoyalModal";
-import { useNadeClusters } from "../logic/useNadesForMapView";
-
-const isServer = typeof window === "undefined";
+import { AddNadeButton } from "./NewAddNadeButton";
+import { MapViewMobile } from "./MapViewMobile";
+import { MapViewDesktop } from "./MapViewDesktop";
 
 type Props = {
-  map: CsgoMap;
-  allNades: NadeLight[];
-  isLoading: boolean;
-  initialType?: NadeType;
+  csMap: CsMap;
 };
 
-export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
-  const { mapView } = useSetMapView();
+export const MapMain: FC<Props> = memo(({ csMap }) => {
   const { isMobile } = useIsDeviceSize();
-  const isOverviewView = mapView === "overview";
-  const nadeClusters = useNadeClusters(allNades);
-
-  const { onNadeClusterClick, suggestedNades, dismissSuggested } =
-    useOnNadeClusterClick();
-  const { eloNades, showEloGame, closeEloGame, finishEloGame } = useEloGame();
-
-  const displayMapOverview: boolean = !isMobile && isOverviewView && !isServer;
-  const displayListView = isMobile || !isOverviewView;
+  const [displayNades, setDisplayNades] = useState<{
+    mapStartLocationId: string;
+    mapEndLocationId: string;
+  }>();
 
   return (
     <>
       <SEO
-        title={mapPageTitleSeo(map)}
-        canonical={`/maps/${map}`}
+        title={mapPageTitleSeo(csMap)}
+        canonical={`/maps/${csMap}`}
         description={`Find and learn the best smoke, flashbang, molotov and grenade spots for ${capitalize(
-          map
+          csMap
         )}. Browse our large collection of nades for CS:GO.`}
       />
 
       <div id="nade-page">
-        <div id="filter">
-          {isMobile ? (
-            <FilterBarMobile />
-          ) : (
-            <div className="sticky">
-              <FilterBar />
-            </div>
-          )}
-        </div>
+        <div id="filter">{isMobile ? <FilterBarMobile /> : <FilterBar />}</div>
+
+        {!isMobile && (
+          <div id="add-nade">
+            <AddNadeButton />
+          </div>
+        )}
+
         <div id="nade-nades">
-          {displayListView && <MapPageNades allNades={allNades} />}
-
-          {displayMapOverview && suggestedNades && (
-            <NadePreviewModal
-              nades={suggestedNades}
-              onDismiss={dismissSuggested}
-            />
-          )}
-
-          {eloNades && (
-            <BattleRoyalModal
-              nadeClusters={eloNades}
-              onClose={closeEloGame}
-              onFinish={finishEloGame}
-            />
-          )}
-
-          {displayMapOverview && (
-            <MapViewScreen
-              map={map}
-              nadeClusters={nadeClusters}
-              onClusterClick={onNadeClusterClick}
-              isLoading={isLoading}
-              onStartEloGame={showEloGame}
+          {isMobile ? (
+            <MapViewMobile csMap={csMap} />
+          ) : (
+            <MapViewDesktop
+              csMap={csMap}
+              setDisplayNades={setDisplayNades}
+              displayNades={displayNades}
             />
           )}
         </div>
@@ -94,24 +56,19 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
         #nade-page {
           position: relative;
           width: 100%;
-          display: grid;
-          grid-template-columns: min-content 1fr;
-          grid-template-areas: "filter nades";
-          grid-column-gap: ${Dimensions.GUTTER_SIZE}px;
+          display: flex;
+
+          height: 100%;
         }
 
         #filter {
-          grid-area: filter;
-        }
-
-        .sticky {
-          position: sticky;
-          top: ${Dimensions.HEADER_HEIGHT + Dimensions.GUTTER_SIZE}px;
+          position: absolute;
+          top: 15px;
+          left: 15px;
         }
 
         #nade-nades {
           flex: 1;
-          grid-area: nades;
           width: 100%;
         }
 
@@ -128,8 +85,12 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
           }
 
           #filter {
+            position: relative;
+            top: 0;
+            left: 0;
             padding: ${Dimensions.GUTTER_SIZE}px;
             padding-bottom: 0;
+            width: 100%;
           }
         }
       `}</style>
@@ -137,7 +98,7 @@ export const MapMain: FC<Props> = memo(({ map, allNades, isLoading }) => {
   );
 });
 
-function mapPageTitleSeo(map: CsgoMap) {
+function mapPageTitleSeo(map: CsMap) {
   if (!map) {
     return "Not found";
   }

@@ -1,4 +1,4 @@
-import { MapCoordinates } from "../nade/models/MapCoordinates";
+import { CsCanvasCoordinate } from "../nade/models/MapCoordinates";
 import { NadeLight } from "../nade/models/NadeLight";
 
 export function custerNades(nades: NadeLight[]) {
@@ -39,7 +39,10 @@ export function custerNades(nades: NadeLight[]) {
   return clusters;
 }
 
-function distanceBetween(coordA: MapCoordinates, coordB: MapCoordinates) {
+function distanceBetween(
+  coordA: CsCanvasCoordinate,
+  coordB: CsCanvasCoordinate
+) {
   const dist = Math.sqrt(
     Math.pow(coordA.x - coordB.x, 2) + Math.pow(coordA.y - coordB.y, 2)
   );

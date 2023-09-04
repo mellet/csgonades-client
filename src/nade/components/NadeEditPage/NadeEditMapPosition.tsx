@@ -1,29 +1,46 @@
 import { FC } from "react";
-import { CsgoMap } from "../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../models/MapCoordinates";
-import { MapPositionSelector } from "../MapPositionSelector";
+import { CsMap } from "../../../map/models/CsGoMap";
+import { NadeType } from "../../models/NadeType";
+import { GameMode } from "../../models/GameMode";
+import dynamic from "next/dynamic";
+
+const MapPositionSelector = dynamic(
+  () => import("../MapPositionSelector").then((m) => m.MapPositionSelector),
+  {
+    ssr: false,
+  }
+);
 
 type Props = {
-  map: CsgoMap;
-  currentEndCoords?: MapCoordinates;
-  currentStartCoords?: MapCoordinates;
-  setEndCoords: (startCoord: MapCoordinates, endCoord: MapCoordinates) => void;
+  map: CsMap;
+  gameMode: GameMode;
+  nadeType: NadeType;
+  selectedMapStartLocationId?: string;
+  selectedMapEndLocationId?: string;
+  onSetMapStartLocation: (mapStartLocationId: string) => void;
+  onSetMapEndLocation: (mapEndLocationString: string) => void;
 };
 
 export const NadeEditMapPosition: FC<Props> = ({
-  currentEndCoords,
-  currentStartCoords,
   map,
-  setEndCoords,
+  gameMode,
+  nadeType,
+  onSetMapEndLocation,
+  onSetMapStartLocation,
+  selectedMapEndLocationId,
+  selectedMapStartLocationId,
 }) => {
   return (
     <>
       <div>
         <MapPositionSelector
+          gameMode={gameMode}
           selectedMap={map}
-          selectedEndPosition={currentEndCoords}
-          selectedStartPosition={currentStartCoords}
-          onPositionChange={setEndCoords}
+          selectedType={nadeType}
+          onSetMapEndLocation={onSetMapEndLocation}
+          onSetMapStartLocation={onSetMapStartLocation}
+          selectedMapEndLocationId={selectedMapEndLocationId}
+          selectedMapStartLocationId={selectedMapStartLocationId}
         />
       </div>
       <style jsx>{`

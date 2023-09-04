@@ -31,34 +31,9 @@ export const FilterBarMobile: FC = () => {
       </div>
       <style jsx>{`
         #fiter-bar-mobile {
-          display: grid;
-          grid-template-columns: min-content min-content min-content min-content;
-          grid-column-gap: 12px;
-          grid-row-gap: 12px;
-          grid-template-areas:
-            "type type type reset"
-            "tick team fav pro";
-        }
-
-        .fav-filter {
-          grid-area: fav;
-        }
-
-        .type-filter {
-          grid-area: type;
-        }
-
-        .tick-filter {
-          grid-area: tick;
-        }
-
-        .team-filter {
-          grid-area: team;
-        }
-
-        .reset-filter {
-          grid-area: reset;
-          padding-top: 14px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
         }
       `}</style>
     </>

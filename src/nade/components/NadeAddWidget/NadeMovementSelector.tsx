@@ -52,7 +52,7 @@ export const NadeMovementSelector: FC<Props> = ({
           onClick={() => onMovementSelect("running")}
         />
       </ButtonGroup>
-
+      <br />
       <span className="movment-string">{movementString(selectedMovement)}</span>
       <style jsx>{`
         .movment-string {

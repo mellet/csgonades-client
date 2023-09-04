@@ -1,6 +1,5 @@
 import { Dispatch } from "react";
-import { CsgoMap } from "../../../../map/models/CsGoMap";
-import { MapCoordinates } from "../../../models/MapCoordinates";
+import { CsMap } from "../../../../map/models/CsGoMap";
 import { NadeMovement } from "../../../models/NadeMovement";
 import { Tickrate } from "../../../models/NadeTickrate";
 import { NadeType } from "../../../models/NadeType";
@@ -8,6 +7,7 @@ import { TeamSide } from "../../../models/TeamSide";
 import { Technique } from "../../../models/Technique";
 import { NadeAddActions } from "./nadeAddActions";
 import { NadeCreateSteps } from "./NadeAddState";
+import { GameMode } from "../../../models/GameMode";
 
 export type NadeAddCallbacks = ReturnType<typeof useNadeAddActions>;
 
@@ -16,22 +16,12 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetCurrentStep", step });
   }
 
-  function setNadeMap(map: CsgoMap) {
+  function setNadeMap(map: CsMap) {
     dispatch({ type: "CreateNade/SetMap", map });
   }
 
   function setDescription(description: string) {
     dispatch({ type: "CreateNade/SetDescription", description });
-  }
-
-  function setMapPosition(
-    startPosition: MapCoordinates,
-    endPosition: MapCoordinates
-  ) {
-    dispatch({
-      type: "CreateNade/SetEndPosCoords",
-      positions: { endPosition, startPosition },
-    });
   }
 
   function setEndPosition(endPosition: string) {
@@ -50,7 +40,7 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetLineUpImage", img });
   }
 
-  function setMap(map: CsgoMap) {
+  function setMap(map: CsMap) {
     dispatch({ type: "CreateNade/SetMap", map });
   }
 
@@ -93,13 +83,27 @@ export const useNadeAddActions = (dispatch: Dispatch<NadeAddActions>) => {
     dispatch({ type: "CreateNade/SetProUrl", proUrl });
   }
 
+  function setMapEndLocation(mapEndLocationId: string) {
+    dispatch({ type: "CreateNade/SetMapEndLocation", mapEndLocationId });
+  }
+
+  function setMapStartLocation(mapStartLocationId: string) {
+    dispatch({ type: "CreateNade/SetMapStartLocation", mapStartLocationId });
+  }
+
+  function setGameMode(gameMode: GameMode) {
+    dispatch({ type: "CreateNade/SetGameMode", gameMode });
+  }
+
   return {
     setCurrentStep,
     setDescription,
     setEndPosition,
     setLineUpImage,
     setMap,
-    setMapPosition,
+    setMapEndLocation,
+    setMapStartLocation,
+    setGameMode,
     setMovement,
     setNadeMap,
     setNadeType,

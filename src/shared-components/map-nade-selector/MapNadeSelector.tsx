@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Dimensions } from "../../constants/Constants";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { MapNadeSelectorItem } from "./MapNadeSelectorItem";
 
 type Props = {
-  selectedMap: CsgoMap;
-  onMapSelect: (csgoMap: CsgoMap) => void;
+  selectedMap: CsMap;
+  onMapSelect: (csgoMap: CsMap) => void;
 };
 
 export const MapNadeSelector: FC<Props> = ({ onMapSelect, selectedMap }) => {

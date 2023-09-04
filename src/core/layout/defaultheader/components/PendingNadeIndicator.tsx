@@ -17,7 +17,7 @@ export const PendingNadeIndicator: FC = ({}) => {
   return (
     <>
       <div className="pending-nade-indicator">
-        <Link href="/admin/pending" passHref legacyBehavior>
+        <Link href="/admin/pending" legacyBehavior>
           <SquareButton
             icon={<FaBox />}
             labelCount={pendingNades.length}

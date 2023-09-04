@@ -1,7 +1,7 @@
 import { NadeType } from "../nade/models/NadeType";
 import removeMd from "remove-markdown";
 import { nadeTypeString } from "../nade/models/NadeType";
-import { CsgoMap } from "../map/models/CsGoMap";
+import { CsMap } from "../map/models/CsGoMap";
 import { dateMinutesAgo } from "./DateUtils";
 import { useGameMode } from "../core/useGameMode";
 
@@ -95,7 +95,7 @@ export function generateSeoTitle(
   endPosition?: string,
   nadeType?: NadeType,
   oneWay?: boolean,
-  map?: CsgoMap
+  map?: CsMap
 ): string {
   if (oneWay && endPosition && nadeType && map) {
     return `${capitalize(map)} ${endPosition} One-Way ${nadeTypeString(
@@ -120,7 +120,7 @@ export function generateNadeItemTitle(
   endPosition?: string,
   nadeType?: NadeType,
   oneWay?: boolean,
-  map?: CsgoMap
+  map?: CsMap
 ): string[] {
   if (oneWay && endPosition && nadeType) {
     return [

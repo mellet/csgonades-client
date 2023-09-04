@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { MapCoordinates } from "../../../nade/models/MapCoordinates";
-import { CsgoMap } from "../../models/CsGoMap";
+import { CsCanvasCoordinate } from "../../../nade/models/MapCoordinates";
+import { CsMap } from "../../models/CsGoMap";
 import {
   CanvasCircle,
   convertRealCoordsToDomCoords,
@@ -13,13 +13,13 @@ import {
 } from "./csMapCanvasHelpers";
 
 type Props = {
-  csMap: CsgoMap;
+  csMap: CsMap;
   canvasSize: number;
-  defaultStartPosition?: MapCoordinates;
-  defaultEndPosition?: MapCoordinates;
+  defaultStartPosition?: CsCanvasCoordinate;
+  defaultEndPosition?: CsCanvasCoordinate;
   onPostionChange: (
-    startPosition: MapCoordinates,
-    endPosition: MapCoordinates
+    startPosition: CsCanvasCoordinate,
+    endPosition: CsCanvasCoordinate
   ) => void;
 };
 

@@ -32,7 +32,7 @@ export const ConfirmNewNade: FC = () => {
           impressive nade soon!
         </p>
         <div className="preview-nade">
-          <PreviewNade nade={nade} />
+          <PreviewNade nade={{ ...nade }} />
         </div>
         <div className="submit-btn-container">
           <Button
@@ -72,7 +72,13 @@ const useSumbitNade = (nadeBody: Partial<NadeCreateBody>) => {
 
     if (!nadeCreateBody) {
       setIsLoading(false);
-      return setError("Failed to verify nade");
+      setError("Failed to verify nade");
+      console.error(nadeCreateBody);
+      return showToast({
+        severity: "error",
+        message: `Failed to verify`,
+        durationSeconds: 20,
+      });
     }
     if (!isAuthenticated) {
       setIsLoading(false);
@@ -112,18 +118,15 @@ const validateState = (
 ): NadeCreateBody | false => {
   const {
     description,
-    endPosition,
-    gfycat,
     imageBase64,
     lineUpImageBase64,
     map,
-    mapEndCoord,
-    mapStartCoord,
+    mapEndLocationId,
+    mapStartLocationId,
     movement,
     oneWay,
     proUrl,
     setPos,
-    startPosition,
     teamSide,
     technique,
     tickrate,
@@ -132,16 +135,16 @@ const validateState = (
   } = nade;
   if (
     !description ||
-    !endPosition ||
     !imageBase64 ||
     !lineUpImageBase64 ||
     !map ||
-    !mapEndCoord ||
-    !mapStartCoord ||
+    !mapEndLocationId ||
+    !mapStartLocationId ||
     !movement ||
-    !startPosition ||
     !technique ||
-    !type
+    !type ||
+    !youTubeId ||
+    !teamSide
   ) {
     return false;
   }
@@ -149,13 +152,10 @@ const validateState = (
   return {
     map,
     description,
-    endPosition,
-    gfycat,
     imageBase64,
-    mapEndCoord,
-    mapStartCoord,
+    mapStartLocationId,
+    mapEndLocationId,
     movement,
-    startPosition,
     technique,
     type,
     tickrate,
@@ -164,8 +164,8 @@ const validateState = (
     teamSide,
     setPos: setPosStringFix(setPos),
     proUrl,
-    youTubeId,
     gameMode,
+    youTubeId,
   };
 };
 

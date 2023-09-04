@@ -24,9 +24,13 @@ export const FilterBarLayout: FC<Props> = ({
   return (
     <>
       <FilterBarLayoutWrapper>
-        <div style={{ gridArea: "fav", marginBottom: Dimensions.GUTTER_SIZE }}>
-          {favoriteFilter}
-        </div>
+        {false && (
+          <div
+            style={{ gridArea: "fav", marginBottom: Dimensions.GUTTER_SIZE }}
+          >
+            {favoriteFilter}
+          </div>
+        )}
         <div style={{ gridArea: "type", marginBottom: Dimensions.GUTTER_SIZE }}>
           {typeFilter}
         </div>
@@ -40,9 +44,14 @@ export const FilterBarLayout: FC<Props> = ({
         <div style={{ gridArea: "team", marginBottom: Dimensions.GUTTER_SIZE }}>
           {teamFilter}
         </div>
-        <div style={{ gridArea: "pro", marginBottom: Dimensions.GUTTER_SIZE }}>
-          {proFilter}
-        </div>
+        {false && (
+          <div
+            style={{ gridArea: "pro", marginBottom: Dimensions.GUTTER_SIZE }}
+          >
+            {proFilter}
+          </div>
+        )}
+
         <div style={{ gridArea: "reset" }}>{resetFilter}</div>
       </FilterBarLayoutWrapper>
     </>

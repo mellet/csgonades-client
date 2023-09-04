@@ -7,7 +7,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
-import { CsgoMap } from "../map/models/CsGoMap";
+import { CsMap } from "../map/models/CsGoMap";
 import { AccordianTitle } from "./AccordionTitle";
 import { ActiveDutyNav } from "./ActiveDutyNav";
 import { ReserveNav } from "./ReserveNav";
@@ -19,7 +19,7 @@ type ActiveAccordion = typeof ACTIVE_DUTY_ACCORDION | typeof RESERVE_ACCORDION;
 
 export const MapNavAccordian: FC = ({}) => {
   const { query } = useRouter();
-  const selectedMap = query.map as CsgoMap;
+  const selectedMap = query.map as CsMap;
   const mapList = useActiveDutyMaps();
   const reserveCsMapList = useReserveMaps();
 
@@ -76,10 +76,10 @@ export const MapNavAccordian: FC = ({}) => {
   );
 };
 
-const useActiveDutyMaps = (): CsgoMap[] => {
+const useActiveDutyMaps = (): CsMap[] => {
   const { gameMode } = useGameMode();
 
-  const maps: CsgoMap[] =
+  const maps: CsMap[] =
     gameMode === "csgo"
       ? [
           "mirage",
@@ -104,10 +104,10 @@ const useActiveDutyMaps = (): CsgoMap[] => {
   return maps;
 };
 
-const useReserveMaps = (): CsgoMap[] => {
+const useReserveMaps = (): CsMap[] => {
   const { gameMode } = useGameMode();
 
-  const maps: CsgoMap[] =
+  const maps: CsMap[] =
     gameMode === "csgo"
       ? ["dust2", "tuscan", "train", "cache", "cobblestone"]
       : [];

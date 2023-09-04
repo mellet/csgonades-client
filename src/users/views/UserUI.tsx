@@ -4,7 +4,7 @@ import { User } from "../models/User";
 import { useTheme } from "../../core/settings/useTheme";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
-import { CsgoMap, mapString } from "../../map/models/CsGoMap";
+import { CsMap, mapString } from "../../map/models/CsGoMap";
 import { MapNadeSelector } from "../../shared-components/map-nade-selector/MapNadeSelector";
 import { useUserNadesByMap } from "../data/useUserNadesByMap";
 import { LoadingSpinner } from "./LoadingSpinner";
@@ -17,7 +17,7 @@ type Props = {
 export const UserUI: FC<Props> = ({ user }) => {
   const { colors } = useTheme();
   const { gameMode } = useGameMode();
-  const [csgoMap, setCsGoMap] = useState<CsgoMap>("mirage");
+  const [csgoMap, setCsGoMap] = useState<CsMap>("mirage");
   const { nades, isLoading } = useUserNadesByMap(
     user.steamId,
     csgoMap,

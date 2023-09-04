@@ -2,11 +2,11 @@ import { FC } from "react";
 import { useRouter } from "next/router";
 import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
-import { CsgoMap } from "../map/models/CsGoMap";
+import { CsMap } from "../map/models/CsGoMap";
 
 export const ReserveNav: FC = () => {
   const { query } = useRouter();
-  const selectedMap = query.map as CsgoMap;
+  const selectedMap = query.map as CsMap;
 
   return (
     <>

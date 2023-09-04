@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ok } from "neverthrow";
 import { AppConfig } from "../../constants/Constants";
-import { CsgoMap } from "../../map/models/CsGoMap";
+import { CsMap } from "../../map/models/CsGoMap";
 import { Nade } from "../models/Nade";
 import { NadeUpdateBody } from "../models/NadeUpdateBody";
 import { NadeCreateBody } from "../models/NadeCreateBody";
@@ -11,6 +11,9 @@ import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";
 import { NadeType } from "../models/NadeType";
 import { GameMode } from "../models/GameMode";
+import { MapNadeLocations } from "../../map/models/MapNadeLocations";
+import { Tickrate } from "../models/NadeTickrate";
+import { TeamSide } from "../models/TeamSide";
 
 type NadeEloGame = {
   nadeOneId: string;
@@ -94,22 +97,52 @@ export class NadeApi {
   }
 
   static async getByMap(
-    mapName: CsgoMap,
+    mapName: CsMap,
     gameMode: GameMode,
     nadeType?: NadeType
   ): AppResult<NadeLight[]> {
     try {
-      let url = `${AppConfig.API_URL}/nades/map/${mapName}?gameMode=${gameMode}`;
+      const url = new URL(`/nades/map/${mapName}`, AppConfig.API_URL);
+      url.searchParams.append("gameMode", gameMode);
       if (nadeType) {
-        url += `&type=${nadeType}`;
+        url.searchParams.append("type", nadeType);
       }
-      const res = await axios.get<NadeLight[]>(url);
+      console.log("# Fetching url", url.toString());
+      const res = await axios.get<NadeLight[]>(url.toString());
       const nades = res.data.filter((n) => Boolean(n.youTubeId));
 
       return ok(nades);
     } catch (error) {
       return extractApiError(error);
     }
+  }
+
+  static async getMapNadeLocations(
+    mapName: CsMap,
+    gameMode: GameMode,
+    nadeType: NadeType,
+    tickRate: Tickrate,
+    teamSide: TeamSide
+  ): Promise<MapNadeLocations[]> {
+    const url = new URL(`/nademap/${mapName}`, AppConfig.API_URL);
+    url.searchParams.set("nadeType", nadeType);
+    url.searchParams.set("gameMode", gameMode);
+    url.searchParams.set("tickRate", tickRate);
+    url.searchParams.set("teamSide", teamSide);
+
+    const res = await axios.get<MapNadeLocations[]>(url.toString());
+
+    return res.data;
+  }
+
+  static async getByStartAndEndLocation(
+    startLocationId: string,
+    endLocationId: string
+  ) {
+    const url = `${AppConfig.API_URL}/nades/start/${startLocationId}/end/${endLocationId}`;
+    const res = await axios.get<NadeLight[]>(url);
+
+    return res.data;
   }
 
   static async byId(id: string): AppResult<Nade> {
@@ -128,7 +161,7 @@ export class NadeApi {
   static async byUser(
     steamId: string,
     gameMode: GameMode,
-    csgoMap: CsgoMap
+    csgoMap: CsMap
   ): AppResult<NadeLight[]> {
     try {
       let url = `${AppConfig.API_URL}/nades/user/${steamId}?gameMode=${gameMode}`;

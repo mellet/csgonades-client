@@ -20,6 +20,11 @@ export const AdminNavigation: FC = () => {
         <Link href="/admin/deleted" passHref legacyBehavior>
           <button>Deleted nades</button>
         </Link>
+        {isAdmin && (
+          <Link href="/admin/maplocations" passHref legacyBehavior>
+            <button>Map Locations</button>
+          </Link>
+        )}
         <Link href="/admin/comments" passHref legacyBehavior>
           <button>Recent comments</button>
         </Link>

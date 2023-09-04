@@ -18,6 +18,21 @@ import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
 import { useFavorites } from "../../favorites/data/useFavorites";
 
+export const useFilterNadeView = (nades: NadeLight[]) => {
+  const { byTickrate } = useFilterByTickrate();
+  const { byTeam } = useFilterByTeam();
+
+  const filteredNades = useMemo(() => {
+    let thenades = nades;
+    thenades.sort(sortByScore);
+    thenades = filterByTickrate(thenades, byTickrate);
+    thenades = filterByTeam(thenades, byTeam);
+    return thenades;
+  }, [byTeam, byTickrate, nades]);
+
+  return filteredNades;
+};
+
 export const useFilterServerSideNades = (
   ssrNades: NadeLight[]
 ): NadeLight[] => {

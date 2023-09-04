@@ -1,6 +1,5 @@
-import { CsgoMap } from "../../../map/models/CsGoMap";
+import { CsMap } from "../../../map/models/CsGoMap";
 import { GameMode } from "../../models/GameMode";
-import { MapCoordinates } from "../../models/MapCoordinates";
 import { NadeMovement } from "../../models/NadeMovement";
 import { Tickrate } from "../../models/NadeTickrate";
 import { NadeType } from "../../models/NadeType";
@@ -10,7 +9,7 @@ import { Technique } from "../../models/Technique";
 
 type SetMap = {
   type: "EditNade/SetMap";
-  map: CsgoMap;
+  map: CsMap;
 };
 
 type SetYouTubeId = {
@@ -51,14 +50,6 @@ type SetImage = {
 type SetLineUpImage = {
   type: "EditNade/SetLineUpImage";
   image: string;
-};
-
-type SetNadeCoords = {
-  type: "EditNade/SetEndPosCoords";
-  data: {
-    mapStartCoord: MapCoordinates;
-    mapEndCoord: MapCoordinates;
-  };
 };
 
 type SetTechnique = {
@@ -114,9 +105,20 @@ type SetGameMode = {
   gameMode: GameMode;
 };
 
+type SetMapStartLocation = {
+  type: "EditNade/SetMapStartLocation";
+  mapStartLocationId: string;
+};
+
+type SetMapEndLocation = {
+  type: "EditNade/SetMapEndLocation";
+  mapEndLocationId: string;
+};
+
 export type NadeEditAction =
+  | SetMapStartLocation
+  | SetMapEndLocation
   | SetDescription
-  | SetNadeCoords
   | SetEndPosition
   | SetGameMode
   | SetImage

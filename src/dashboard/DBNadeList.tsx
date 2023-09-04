@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 import { Popup } from "semantic-ui-react";
 import { useUserNadesByMap } from "../users/data/useUserNadesByMap";
-import { CsgoMap, mapString } from "../map/models/CsGoMap";
+import { CsMap, mapString } from "../map/models/CsGoMap";
 import { LoadingSpinner } from "../users/views/LoadingSpinner";
 import { User } from "../users/models/User";
 import { NadeIcon } from "../shared-components/nade-icons";
@@ -30,7 +30,7 @@ import { ScoreIndicator } from "./ScoreIndicator";
 import { DashboardVideoLink } from "./VideoLink";
 
 type Props = {
-  csgoMap: CsgoMap;
+  csgoMap: CsMap;
   user: User;
 };
 
