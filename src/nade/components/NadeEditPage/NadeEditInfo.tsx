@@ -154,8 +154,6 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
             viewCount={nade.viewCount}
             nade={{
               description: nadeUpdates.description,
-              endPosition: nadeUpdates.endPosition,
-              gfycat: nadeUpdates.gfycat,
               imageBase64: nadeUpdates.imageBase64,
               map: nadeUpdates.map,
               movement: nadeUpdates.movement,

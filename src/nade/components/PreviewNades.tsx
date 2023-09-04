@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { NadeCreateBody } from "../models/NadeCreateBody";
 import { useTheme } from "../../core/settings/useTheme";
 import { NadeItemTitle } from "./NadeItem/Views/NadeItemTitle";
 import { GfycatThumbnail } from "./NadeItem/GfycatThumbnail";
 import { NadeStats } from "./NadeItem/NadeStats/NadeStats";
 import { noOp } from "../../utils/Common";
+import { NadeUpdateBody } from "../models/NadeUpdateBody";
 
 type Props = {
-  nade: Partial<NadeCreateBody>;
+  nade: Partial<NadeUpdateBody>;
   viewCount?: number;
   commentCount?: number;
 };
@@ -15,9 +15,7 @@ type Props = {
 export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
   const { colors } = useTheme();
   const {
-    endPosition,
     gameMode,
-    gfycat,
     imageBase64,
     lineUpImageBase64,
     movement,
@@ -29,6 +27,7 @@ export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
     tickrate,
     type,
     youTubeId,
+    endPosition,
   } = nade;
 
   return (
@@ -44,10 +43,8 @@ export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
         />
         <GfycatThumbnail
           disableAction
-          gfyId={gfycat?.gfyId || ""}
           lineUpThumnUrl={lineUpImageBase64}
           nadeId=""
-          smallVideoUrl={gfycat?.smallVideoUrl}
           thumbnailUrl={imageBase64}
           youTubeId={youTubeId}
         />

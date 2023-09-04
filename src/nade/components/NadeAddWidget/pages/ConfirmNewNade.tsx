@@ -116,7 +116,6 @@ const validateState = (
   nade: Partial<NadeCreateBody>,
   gameMode: GameMode
 ): NadeCreateBody | false => {
-  console.log("Verifying nade", nade);
   const {
     description,
     imageBase64,
@@ -144,7 +143,8 @@ const validateState = (
     !movement ||
     !technique ||
     !type ||
-    !youTubeId
+    !youTubeId ||
+    !teamSide
   ) {
     return false;
   }

@@ -187,7 +187,7 @@ const Step: FC<StepProps> = ({
 };
 
 const isValidVideo = (newNade: Partial<NadeCreateBody>) => {
-  return Boolean(newNade.youTubeId) || Boolean(newNade.gfycat);
+  return Boolean(newNade.youTubeId);
 };
 
 const isValidInfo = (newNade: Partial<NadeCreateBody>) => {
