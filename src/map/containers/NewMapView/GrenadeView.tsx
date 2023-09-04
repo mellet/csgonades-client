@@ -1,5 +1,5 @@
 import { FC, useRef } from "react";
-import { Circle, Image, Text } from "react-konva";
+import { Circle, Group, Image, Text } from "react-konva";
 import { MapNadeLocations } from "../../models/MapNadeLocations";
 import useImage from "use-image";
 import { NadeType } from "../../../nade/models/NadeType";
@@ -151,78 +151,74 @@ export const NadeImage: FC<MapImageProps> = ({
 
   return (
     <>
-      {isSelected && (
-        <Circle
-          ref={closeBtnRef}
-          onClick={onClick}
-          x={x}
-          y={y}
-          radius={size / 2.3}
-          fill="rgba(184, 13, 13, 0.9)"
-          onMouseEnter={(evt) => {
-            const container = evt.target.getStage()?.container();
-            if (container) {
-              container.style.cursor = "pointer";
-            }
-            onCloseHover();
-          }}
-          onMouseLeave={(evt) => {
-            const container = evt.target.getStage()?.container();
-            if (container) {
-              container.style.cursor = "default";
-            }
-            onCloseLeave();
-          }}
-        />
-      )}
-      {!isSelected && (
-        <Image
-          scale={scale}
-          opacity={0.9}
-          ref={grenadeIconRef}
-          onClick={onClick}
-          x={x}
-          y={y}
-          offset={{ x: size / 2, y: size / 2 }}
-          image={image}
-          width={size}
-          height={size}
-          onMouseEnter={(evt) => {
-            const container = evt.target.getStage()?.container();
-            if (container) {
-              container.style.cursor = "pointer";
-            }
-            zoomIn();
-          }}
-          onMouseLeave={(evt) => {
-            const container = evt.target.getStage()?.container();
-            if (container) {
-              container.style.cursor = "default";
-            }
-            zoomOut();
-          }}
-        />
-      )}
+      <Group x={x} y={y}>
+        {isSelected && (
+          <Circle
+            ref={closeBtnRef}
+            onClick={onClick}
+            radius={size / 2.3}
+            fill="rgba(184, 13, 13, 0.9)"
+            onMouseEnter={(evt) => {
+              const container = evt.target.getStage()?.container();
+              if (container) {
+                container.style.cursor = "pointer";
+              }
+              onCloseHover();
+            }}
+            onMouseLeave={(evt) => {
+              const container = evt.target.getStage()?.container();
+              if (container) {
+                container.style.cursor = "default";
+              }
+              onCloseLeave();
+            }}
+          />
+        )}
+        {!isSelected && (
+          <Image
+            scale={scale}
+            opacity={0.9}
+            ref={grenadeIconRef}
+            onClick={onClick}
+            offset={{ x: size / 2, y: size / 2 }}
+            image={image}
+            width={size}
+            height={size}
+            onMouseEnter={(evt) => {
+              const container = evt.target.getStage()?.container();
+              if (container) {
+                container.style.cursor = "pointer";
+              }
+              zoomIn();
+            }}
+            onMouseLeave={(evt) => {
+              const container = evt.target.getStage()?.container();
+              if (container) {
+                container.style.cursor = "default";
+              }
+              zoomOut();
+            }}
+          />
+        )}
 
-      <Text
-        scale={scale}
-        ref={textRef}
-        listening={false}
-        x={x}
-        y={y}
-        text={isSelected ? "X" : count.toString()}
-        fontSize={32}
-        fontStyle="bold"
-        fontFamily="Changa One"
-        offset={{ x: 50, y: 15 }}
-        width={100}
-        fill={hasNew ? "green" : "white"}
-        strokeWidth={isSelected ? 0 : 2}
-        stroke="rgba(0,0,0,0.8)"
-        fillAfterStrokeEnabled
-        align="center"
-        verticalAlign="middle"
-      />
+        <Text
+          scale={scale}
+          ref={textRef}
+          listening={false}
+          text={isSelected ? "X" : count.toString()}
+          fontSize={32}
+          fontStyle="bold"
+          fontFamily="Changa One"
+          offset={{ x: 50, y: 15 }}
+          width={100}
+          fill={hasNew ? "green" : "white"}
+          strokeWidth={isSelected ? 0 : 2}
+          stroke="rgba(0,0,0,0.8)"
+          fillAfterStrokeEnabled
+          align="center"
+          verticalAlign="middle"
+        />
+      </Group>
     </>
   );
 };

@@ -102,14 +102,14 @@ export class NadeApi {
     nadeType?: NadeType
   ): AppResult<NadeLight[]> {
     try {
-      let url = `${AppConfig.API_URL}/nades/map/${mapName}?gameMode=${gameMode}`;
+      const url = new URL(`/nades/map/${mapName}`, AppConfig.API_URL);
+      url.searchParams.append("gameMode", gameMode);
       if (nadeType) {
-        url += `&type=${nadeType}`;
+        url.searchParams.append("type", nadeType);
       }
-      const res = await axios.get<NadeLight[]>(url);
-      const nades = res.data
-        .filter((n) => Boolean(n.youTubeId))
-        .filter((n) => !n.mapEndLocationId || !n.mapStartLocationId);
+      console.log("# Fetching url", url.toString());
+      const res = await axios.get<NadeLight[]>(url.toString());
+      const nades = res.data.filter((n) => Boolean(n.youTubeId));
 
       return ok(nades);
     } catch (error) {

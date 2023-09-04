@@ -6,34 +6,19 @@ import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 import { AppConfig } from "../../constants/Constants";
 import { MapMain } from "../../map/containers/MapMain";
 import { MapSidebar } from "../../map/containers/MapSidebar";
-import { useNadesForMapFromApi } from "../../map/data/useNadesForMap";
 
 interface Props {
   mapName: CsMap;
 }
 
 const Map: NextPage<Props> = ({ mapName }) => {
-  const { nades, isLoading } = useNadesForMapFromApi(mapName);
-
   return (
     <LayoutBuilder
       header={<HeaderDefault />}
       nav={<Navigation />}
-      main={
-        <MapMain
-          key={mapName}
-          csMap={mapName}
-          allNades={nades}
-          isLoading={isLoading}
-        />
-      }
+      main={<MapMain key={mapName} csMap={mapName} />}
       sidebar={
-        <MapSidebar
-          key={mapName}
-          map={mapName}
-          nades={nades}
-          isLoading={isLoading}
-        />
+        <MapSidebar key={mapName} map={mapName} nades={[]} isLoading={false} />
       }
     />
   );

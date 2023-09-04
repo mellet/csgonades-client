@@ -1,57 +1,25 @@
 import React, { FC, memo, useState } from "react";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { SEO } from "../../shared-components/SEO";
 import { capitalize } from "../../utils/Common";
 import FilterBar from "../components/nadefilter/FilterBar";
-import { NadePreviewModal } from "../components/SuggestedNades/NadePreviewModal";
-import { useOnNadeClusterClick } from "../components/SuggestedNades/useOnNadeClick";
-import { useSetMapView } from "../logic/useSetMapView";
 import { CsMap } from "../models/CsGoMap";
 import { FilterBarMobile } from "../components/nadefilter/FilterBarMobile";
-import { NadeType } from "../../nade/models/NadeType";
 import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
-import {
-  BattleRoyalModal,
-  useEloGame,
-} from "../components/EloGame/BattleRoyalModal";
-import { useNadeClusters } from "../logic/useNadesForMapView";
-import MapViewScreen from "../components/MapViewScreen";
-import dynamic from "next/dynamic";
-import { NadeView } from "../components/NadeView/NadeView";
 import { AddNadeButton } from "./NewAddNadeButton";
-
-const NewMapView = dynamic(
-  () => import("./NewMapView/NewMapView").then((m) => m.NewMapView),
-  {
-    ssr: false,
-  }
-);
-
-const isServer = typeof window === "undefined";
+import { MapViewMobile } from "./MapViewMobile";
+import { MapViewDesktop } from "./MapViewDesktop";
 
 type Props = {
   csMap: CsMap;
-  allNades: NadeLight[];
-  isLoading: boolean;
-  initialType?: NadeType;
 };
 
-export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
-  const { mapView } = useSetMapView();
+export const MapMain: FC<Props> = memo(({ csMap }) => {
   const { isMobile } = useIsDeviceSize();
-  const isOverviewView = mapView === "overview";
-  const nadeClusters = useNadeClusters(allNades);
-
-  const { onNadeClusterClick, suggestedNades, dismissSuggested } =
-    useOnNadeClusterClick();
-  const { eloNades, showEloGame, closeEloGame, finishEloGame } = useEloGame();
   const [displayNades, setDisplayNades] = useState<{
     mapStartLocationId: string;
     mapEndLocationId: string;
   }>();
-
-  const displayMapOverview = !isServer;
 
   return (
     <>
@@ -64,54 +32,22 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
       />
 
       <div id="nade-page">
-        <div id="filter">
-          {isMobile ? (
-            <FilterBarMobile />
-          ) : (
-            <div className="sticky">
-              <FilterBar />
-            </div>
-          )}
-        </div>
+        <div id="filter">{isMobile ? <FilterBarMobile /> : <FilterBar />}</div>
 
-        <AddNadeButton />
+        {!isMobile && (
+          <div id="add-nade">
+            <AddNadeButton />
+          </div>
+        )}
 
         <div id="nade-nades">
-          {suggestedNades && (
-            <NadePreviewModal
-              nades={suggestedNades}
-              onDismiss={dismissSuggested}
-            />
-          )}
-
-          {eloNades && (
-            <BattleRoyalModal
-              nadeClusters={eloNades}
-              onClose={closeEloGame}
-              onFinish={finishEloGame}
-            />
-          )}
-
-          <NewMapView
-            key={csMap}
-            csMap={csMap}
-            onDisplayNadesForLocation={setDisplayNades}
-          />
-
-          {false && displayMapOverview && isOverviewView && (
-            <MapViewScreen
-              isLoading={isLoading}
-              map={csMap}
-              nadeClusters={nadeClusters}
-              onClusterClick={onNadeClusterClick}
-              onStartEloGame={showEloGame}
-            />
-          )}
-
-          {displayNades && (
-            <NadeView
+          {isMobile ? (
+            <MapViewMobile csMap={csMap} />
+          ) : (
+            <MapViewDesktop
+              csMap={csMap}
+              setDisplayNades={setDisplayNades}
               displayNades={displayNades}
-              onDismiss={() => setDisplayNades(undefined)}
             />
           )}
         </div>
@@ -149,8 +85,12 @@ export const MapMain: FC<Props> = memo(({ csMap, allNades, isLoading }) => {
           }
 
           #filter {
+            position: relative;
+            top: 0;
+            left: 0;
             padding: ${Dimensions.GUTTER_SIZE}px;
             padding-bottom: 0;
+            width: 100%;
           }
         }
       `}</style>
