@@ -14,6 +14,7 @@ import { GameMode } from "../models/GameMode";
 import { MapNadeLocations } from "../../map/models/MapNadeLocations";
 import { Tickrate } from "../models/NadeTickrate";
 import { TeamSide } from "../models/TeamSide";
+import { UserLight } from "../../users/models/User";
 
 type NadeEloGame = {
   nadeOneId: string;
@@ -22,6 +23,16 @@ type NadeEloGame = {
 };
 
 export class NadeApi {
+  static async getMapContributors(map: CsMap, gameMode: GameMode) {
+    const urlBuilder = new URL(`/nades/contributors/${map}`, AppConfig.API_URL);
+    urlBuilder.searchParams.append("gameMode", gameMode);
+    const url = urlBuilder.toString();
+
+    const res = await axios.get<UserLight[]>(url);
+
+    return res;
+  }
+
   static async favoriteNade(nadeId: string): AppResult<Favorite> {
     try {
       const res = await AxiosApi.post<Favorite>(

@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { DiscordJoinAction } from "../components/Sidebar/DiscordJoinAction";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { CsMap } from "../models/CsGoMap";
 import { Spacer } from "../../shared-components/Spacer";
 import { BuyMeABeerAction } from "../components/Sidebar/BuyMeABeerAction";
@@ -9,15 +8,13 @@ import { AdUnit } from "../../shared-components/adunits/AdUnit";
 
 type Props = {
   map: CsMap;
-  nades: NadeLight[];
-  isLoading: boolean;
 };
 
-export const MapSidebar: FC<Props> = ({ map, nades, isLoading }) => {
+export const MapSidebar: FC<Props> = ({ map }) => {
   return (
     <>
       <Spacer vertical>
-        <SideJumbo nades={nades} map={map} isLoading={isLoading} />
+        <SideJumbo map={map} />
         <div className="ctas">
           <DiscordJoinAction />
           {false && <BuyMeABeerAction />}

@@ -1,32 +1,27 @@
 import { FC } from "react";
 import { useTheme } from "../../../../core/settings/useTheme";
-import { useFilterByType } from "../../../logic/useFilterByType";
-import { nadeTypeString } from "../../../../nade/models/NadeType";
 import { ContributorUser } from "./ContributorUser";
-import { useNadeContributors } from "./useNadeContributors";
-import { NadeLight } from "../../../../nade/models/NadeLight";
 import { TopContributorLoading } from "./TopContributorLoading";
+import { useMapContributors } from "./useMapContributors";
+import { CsMap } from "../../../models/CsGoMap";
 
 type ContListProps = {
-  nades: NadeLight[];
-  isLoading: boolean;
+  csMap: CsMap;
 };
 
-export const TopContributorList: FC<ContListProps> = ({ nades, isLoading }) => {
-  const { byType } = useFilterByType();
+export const TopContributorList: FC<ContListProps> = ({ csMap }) => {
   const { colors } = useTheme();
-  const contributors = useNadeContributors(nades, 16);
+
+  const { contributors, isLoading } = useMapContributors(csMap);
 
   if (isLoading) {
     return <TopContributorLoading />;
-  } else if (!isLoading && nades.length === 0) {
-    return null;
   }
 
   return (
     <>
       <div className="cont-list">
-        <div className="label">{nadeTypeString(byType)} Contributors</div>
+        <div className="label">Nade Contributors</div>
         <div className="contributors">
           {contributors.map((c) => (
             <ContributorUser key={c.steamId} user={c} />

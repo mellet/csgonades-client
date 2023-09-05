@@ -17,9 +17,7 @@ const Map: NextPage<Props> = ({ mapName }) => {
       header={<HeaderDefault />}
       nav={<Navigation />}
       main={<MapMain key={mapName} csMap={mapName} />}
-      sidebar={
-        <MapSidebar key={mapName} map={mapName} nades={[]} isLoading={false} />
-      }
+      sidebar={<MapSidebar key={mapName} map={mapName} />}
     />
   );
 };

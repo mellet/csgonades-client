@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { Popup } from "semantic-ui-react";
 import { UserAvatar } from "../../../../shared-components/UserAvatar";
-import { UserContributor } from "./UserContributor";
+import { UserLight } from "../../../../users/models/User";
 
 type Props = {
-  user: UserContributor;
+  user: UserLight;
 };
 
 export const ContributorUser: FC<Props> = ({ user }) => {
