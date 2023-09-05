@@ -17,7 +17,7 @@ export const AppConfig = {
     : "https://api.csgonades.com/auth/steam",
   revalidationTime: 60 * 30, // Refetch time for map and frontpage
   maintenance: false,
-  defaultGameMode: "csgo" as GameMode,
+  defaultGameMode: "cs2" as GameMode,
 } as const;
 
 export const Dimensions = {
