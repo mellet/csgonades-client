@@ -26,7 +26,7 @@ type Props = {
 
 export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
   const { gameMode } = useGameMode();
-  const { colors } = useTheme();
+  const { colors, theme } = useTheme();
   const konvaRef = useRef<Konva.Stage>(null);
   const { byType } = useFilterByType();
   const { byTeam } = useFilterByTeam();
@@ -36,6 +36,11 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
   const [selectedMapNadeLocation, setSelectedMapNadeLocation] =
     useState<MapNadeLocations | null>(null);
   const [squareRef, { width, height }] = useElementSize();
+
+  const dotsColor =
+    theme === "dark" || theme === "dark_cs2"
+      ? "rgba(255,255,255,0.1)"
+      : "rgba(0,0,0,0.1)";
 
   useEffect(() => {
     setSelectedMapNadeLocation(null);
@@ -116,6 +121,9 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
           background: ${colors.DP01};
           border: 1px solid ${colors.BORDER};
           border-radius: ${Dimensions.BORDER_RADIUS};
+          background-image: radial-gradient(${dotsColor} 1px, transparent 0);
+          background-size: 20px 20px;
+          background-position: 9px -15px;
         }
 
         .loading-indicator {
