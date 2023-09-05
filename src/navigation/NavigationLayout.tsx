@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
 import { useTheme } from "../core/settings/useTheme";
 import { GameModeToggle } from "../core/layout/defaultheader/components/GameModeToggle";
+import { GameToggleHint } from "../hints/components/GameToggleHint";
 
 type Props = {
   mainNav: JSX.Element;
@@ -19,7 +20,9 @@ export const NavigationLayout: FC<Props> = ({
     <>
       <nav>
         <div className="game-toggle">
-          <GameModeToggle />
+          <GameToggleHint>
+            <GameModeToggle />
+          </GameToggleHint>
         </div>
         <div className="main">{mainNav}</div>
         <div className="secondary">{secondaryNav}</div>
