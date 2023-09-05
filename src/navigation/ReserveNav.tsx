@@ -4,7 +4,11 @@ import { MapPageLink } from "./components/MapNavLink";
 import { NavItem } from "./components/NavItem";
 import { CsMap } from "../map/models/CsGoMap";
 
-export const ReserveNav: FC = () => {
+type Props = {
+  reserveMaps: CsMap[];
+};
+
+export const ReserveNav: FC<Props> = ({ reserveMaps }) => {
   const { query } = useRouter();
   const selectedMap = query.map as CsMap;
 
@@ -12,34 +16,18 @@ export const ReserveNav: FC = () => {
     <>
       <div id="map-nav-wrap">
         <ul>
-          <li>
-            <MapPageLink map="dust2">
-              <NavItem csMap="dust2" selected={selectedMap === "dust2"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="tuscan">
-              <NavItem csMap="tuscan" selected={selectedMap === "tuscan"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="train">
-              <NavItem csMap="train" selected={selectedMap === "train"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="cache">
-              <NavItem csMap="cache" selected={selectedMap === "cache"} />
-            </MapPageLink>
-          </li>
-          <li>
-            <MapPageLink map="cobblestone">
-              <NavItem
-                csMap="cobblestone"
-                selected={selectedMap === "cobblestone"}
-              />
-            </MapPageLink>
-          </li>
+          {reserveMaps.map((csMapName) => {
+            return (
+              <li key={csMapName}>
+                <MapPageLink map={csMapName}>
+                  <NavItem
+                    csMap={csMapName}
+                    selected={selectedMap === csMapName}
+                  />
+                </MapPageLink>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <style jsx>{`

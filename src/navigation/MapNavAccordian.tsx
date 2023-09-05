@@ -20,7 +20,7 @@ type ActiveAccordion = typeof ACTIVE_DUTY_ACCORDION | typeof RESERVE_ACCORDION;
 export const MapNavAccordian: FC = ({}) => {
   const { query } = useRouter();
   const selectedMap = query.map as CsMap;
-  const mapList = useActiveDutyMaps();
+  const activeDutyMaps = useActiveDutyMaps();
   const reserveCsMapList = useReserveMaps();
 
   const preExpanded = useMemo(
@@ -52,7 +52,7 @@ export const MapNavAccordian: FC = ({}) => {
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <ActiveDutyNav csMapList={mapList} />
+            <ActiveDutyNav csMapList={activeDutyMaps} />
           </AccordionItemPanel>
         </AccordionItem>
         {reserveCsMapList.length > 0 && (
@@ -66,7 +66,7 @@ export const MapNavAccordian: FC = ({}) => {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <ReserveNav />
+              <ReserveNav reserveMaps={reserveCsMapList} />
             </AccordionItemPanel>
           </AccordionItem>
         )}
@@ -98,7 +98,6 @@ const useActiveDutyMaps = (): CsMap[] => {
           "nuke",
           "vertigo",
           "anubis",
-          "dust2",
         ];
 
   return maps;
@@ -110,7 +109,7 @@ const useReserveMaps = (): CsMap[] => {
   const maps: CsMap[] =
     gameMode === "csgo"
       ? ["dust2", "tuscan", "train", "cache", "cobblestone"]
-      : [];
+      : ["dust2"];
 
   return maps;
 };
