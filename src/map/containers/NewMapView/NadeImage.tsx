@@ -136,7 +136,7 @@ export const NadeImage: FC<MapImageProps> = ({
             fillAfterStrokeEnabled
             height={size}
             offsetX={55 / 2}
-            offsetY={-10}
+            offsetY={-14}
             align="center"
           />
         )}
