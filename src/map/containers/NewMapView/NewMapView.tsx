@@ -17,6 +17,7 @@ import { useFilterByTeam } from "../../logic/useFilterByTeam";
 import { useFilterByTickrate } from "../../logic/useFilterByTickrate";
 import { CSGNIcon } from "../../../nade/components/NadeStatus/CSGNIcon";
 import { ImSpinner8 } from "react-icons/im";
+import { useFilterByFavorites } from "../../logic/useFilterByFavorites";
 
 type Props = {
   csMap: CsMap;
@@ -30,6 +31,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
   const { byType } = useFilterByType();
   const { byTeam } = useFilterByTeam();
   const { byTickrate } = useFilterByTickrate();
+  const { byFavorites } = useFilterByFavorites();
   const { mapNadeLocations, isLoading } = useMapNadeLocations(csMap, byType);
   const [selectedMapNadeLocation, setSelectedMapNadeLocation] =
     useState<MapNadeLocations | null>(null);
@@ -37,7 +39,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
 
   useEffect(() => {
     setSelectedMapNadeLocation(null);
-  }, [gameMode, byType, csMap, byTeam, byTickrate]);
+  }, [gameMode, byType, csMap, byTeam, byTickrate, byFavorites]);
 
   const size = useMemo(() => {
     if (!width || !height) {
