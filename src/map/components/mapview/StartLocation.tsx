@@ -96,7 +96,22 @@ const StartLocation: FC<StartLocationProp> = ({
   return (
     <>
       <Line
-        onClick={() => onStartLocationSelected(startLocation)}
+        onTap={(e) => {
+          e.cancelBubble = true;
+          const container = e.target.getStage()?.container();
+          if (container) {
+            container.style.cursor = "default";
+          }
+          onStartLocationSelected(startLocation);
+        }}
+        onClick={(e) => {
+          e.cancelBubble = true;
+          const container = e.target.getStage()?.container();
+          if (container) {
+            container.style.cursor = "default";
+          }
+          onStartLocationSelected(startLocation);
+        }}
         onMouseEnter={(evt) => {
           if (!highlight) {
             const container = evt.target.getStage()?.container();
@@ -110,7 +125,7 @@ const StartLocation: FC<StartLocationProp> = ({
         onMouseLeave={(evt) => {
           const container = evt.target.getStage()?.container();
           if (container) {
-            container.style.cursor = "defualt";
+            container.style.cursor = "default";
           }
           setShapeOpacity(REST_OPACITY);
           zoomOutText();

@@ -3,6 +3,7 @@ import { Circle, Group, Image, Text } from "react-konva";
 import useImage from "use-image";
 import Konva from "konva";
 import { MapImageProps, nadeScale } from "./GrenadeView";
+import { KonvaEventObject } from "konva/lib/Node";
 
 export const NadeImage: FC<MapImageProps> = ({
   csMap,
@@ -46,6 +47,11 @@ export const NadeImage: FC<MapImageProps> = ({
     }
   }
 
+  function handleNadeClick(event: KonvaEventObject<Event>) {
+    event.cancelBubble = true;
+    onClick();
+  }
+
   if (hide) {
     return null;
   }
@@ -55,7 +61,14 @@ export const NadeImage: FC<MapImageProps> = ({
       <Group ref={groupRef} x={x} y={y}>
         {isSelected && (
           <Circle
-            onClick={onClick}
+            onTap={(e) => {
+              e.cancelBubble = true;
+              onClick();
+            }}
+            onClick={(e) => {
+              e.cancelBubble = true;
+              onClick();
+            }}
             radius={size / 2.3}
             fill="rgba(184, 13, 13, 0.9)"
             onMouseEnter={(evt) => {
@@ -78,7 +91,8 @@ export const NadeImage: FC<MapImageProps> = ({
           <Image
             scale={scale}
             opacity={0.95}
-            onClick={onClick}
+            onTap={handleNadeClick}
+            onClick={handleNadeClick}
             offset={{ x: size / 2, y: size / 2 }}
             image={image}
             width={size}

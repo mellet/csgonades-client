@@ -68,7 +68,14 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
     <>
       <div ref={squareRef} className="map-wrapper">
         {size && (
-          <Stage ref={konvaRef} width={size} height={size}>
+          <Stage
+            ref={konvaRef}
+            width={size}
+            height={size}
+            onClick={() => {
+              setSelectedMapNadeLocation(null);
+            }}
+          >
             <Layer>
               <MapImage csMap={csMap} />
               {selectedMapNadeLocation && (
