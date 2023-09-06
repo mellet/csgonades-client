@@ -29,15 +29,6 @@ export const StartLocations: FC<Props> = ({
 }) => {
   return (
     <>
-      {onUnselect && (
-        <CloseButton
-          visible={Boolean(selectedLocation)}
-          x={selectedLocation?.endLocation.position.x || 0}
-          y={selectedLocation?.endLocation.position.y || 0}
-          onClick={onUnselect}
-        />
-      )}
-
       {startLocations.map((sL) => {
         if (sL.id === hideLocationId) {
           return null;
@@ -56,6 +47,15 @@ export const StartLocations: FC<Props> = ({
           />
         );
       })}
+
+      {onUnselect && (
+        <CloseButton
+          visible={Boolean(selectedLocation)}
+          x={selectedLocation?.endLocation.position.x || 0}
+          y={selectedLocation?.endLocation.position.y || 0}
+          onClick={onUnselect}
+        />
+      )}
 
       <style jsx>{``}</style>
     </>
