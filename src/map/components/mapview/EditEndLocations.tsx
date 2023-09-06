@@ -18,7 +18,7 @@ export const EditEndLocation: FC<Props> = ({
         draggable
         x={endLocation.position.x}
         y={endLocation.position.y}
-        radius={24}
+        radius={22}
         fill={`rgba(140, 255, 0, 1`}
         stroke={`black`}
         strokeWidth={2}
