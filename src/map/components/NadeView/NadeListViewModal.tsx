@@ -108,7 +108,7 @@ export const NadeListViewModal: FC<Props> = ({
           </div>
           <div className="spacer"></div>
           <div className="ad-spot">
-            <AdUnit name="nadeModal" />
+            <AdUnit name="nadeModalFixed" />
           </div>
         </div>
       </div>
