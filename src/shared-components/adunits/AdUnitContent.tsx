@@ -37,6 +37,10 @@ export const AdUnitContent: FC<Props> = memo(({ name, horizontalSpacing }) => {
         )}
       </div>
       <style jsx>{`
+        .ad-wrap {
+          text-align: center;
+        }
+
         .ad-unit {
           max-width: ${width}px;
         }
