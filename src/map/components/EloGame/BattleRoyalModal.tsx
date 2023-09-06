@@ -15,7 +15,7 @@ import { EloGameStartScreen } from "./EloGameStartScreen";
 import { EloGameGameScreen } from "./EloGameGameScreen";
 import { EloGameFinishScreen } from "./EloGameFinishScreen";
 import { FaTimesCircle } from "react-icons/fa";
-import { DisplayNades } from "../NadeView/NadeView";
+import { DisplayNades } from "../NadeView/NadeListViewModal";
 import { useNadesForLocation } from "../NadeView/useNadesForLocation";
 
 type Props = {

@@ -1,5 +1,8 @@
 import { FC, useState } from "react";
-import { DisplayNades, NadeView } from "../components/NadeView/NadeView";
+import {
+  DisplayNades,
+  NadeListViewModal,
+} from "../components/NadeView/NadeListViewModal";
 import { CsMap } from "../models/CsGoMap";
 import dynamic from "next/dynamic";
 import { BattleRoyalModal } from "../components/EloGame/BattleRoyalModal";
@@ -35,7 +38,7 @@ export const MapViewDesktop: FC<Props> = ({ csMap }) => {
       />
 
       {displayNades && (
-        <NadeView
+        <NadeListViewModal
           displayNades={displayNades}
           onDismiss={() => setDisplayNades(undefined)}
           onStartBattleRoyal={setBattleRoyalNades}

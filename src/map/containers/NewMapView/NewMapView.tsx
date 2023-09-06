@@ -7,7 +7,7 @@ import { useMapNadeLocations } from "../../data/useMapNadeLocations";
 import { MapNadeLocations } from "../../models/MapNadeLocations";
 import { GrenadeView } from "./GrenadeView";
 import { StartLocations } from "../../components/mapview/StartLocation";
-import { DisplayNades } from "../../components/NadeView/NadeView";
+import { DisplayNades } from "../../components/NadeView/NadeListViewModal";
 import { useFilterByType } from "../../logic/useFilterByType";
 import { useTheme } from "../../../core/settings/useTheme";
 import { Dimensions } from "../../../constants/Constants";
@@ -73,18 +73,12 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
     <>
       <div ref={squareRef} className="map-wrapper">
         {size && (
-          <Stage
-            ref={konvaRef}
-            width={size}
-            height={size}
-            onClick={() => {
-              setSelectedMapNadeLocation(null);
-            }}
-          >
+          <Stage ref={konvaRef} width={size} height={size}>
             <Layer>
               <MapImage csMap={csMap} />
               {selectedMapNadeLocation && (
                 <StartLocations
+                  selectedLocation={selectedMapNadeLocation}
                   startLocations={selectedMapNadeLocation.startPositions}
                   onStartLocationSelected={(startLocation) => {
                     onDisplayNadesForLocation({
@@ -92,6 +86,7 @@ export const NewMapView: FC<Props> = ({ csMap, onDisplayNadesForLocation }) => {
                       mapEndLocationId: selectedMapNadeLocation.endLocation.id,
                     });
                   }}
+                  onUnselect={() => setSelectedMapNadeLocation(null)}
                 />
               )}
               {mapNadeLocations && !isLoading && (

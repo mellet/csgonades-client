@@ -23,7 +23,7 @@ type Props = {
 
 const MAX_MODAL_WIDTH = 1420;
 
-export const NadeView: FC<Props> = ({
+export const NadeListViewModal: FC<Props> = ({
   displayNades,
   onDismiss,
   onStartBattleRoyal,

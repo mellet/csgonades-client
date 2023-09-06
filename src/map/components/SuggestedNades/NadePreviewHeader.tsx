@@ -2,6 +2,7 @@ import { FC, MouseEventHandler } from "react";
 import { FaTimes } from "react-icons/fa";
 import { Dimensions } from "../../../constants/Constants";
 import { BattleRoyalButton } from "../EloGame/BattleRoyalButton";
+import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 
 type Props = {
   showBattleRoyal: boolean;
@@ -28,7 +29,10 @@ export const NadePreviewHeader: FC<Props> = ({
                 <BattleRoyalButton onClick={onStartBattleRoyal} />
               )}
             </div>
-            <div id="close-wrap">
+            <div className="gau">
+              <AdUnit name="skinnyHorizontal" />
+            </div>
+            <div className="close-wrap">
               <div className="close-btn" onClick={onDismiss}>
                 <FaTimes />
               </div>
@@ -38,6 +42,21 @@ export const NadePreviewHeader: FC<Props> = ({
       </div>
 
       <style jsx>{`
+        .battle-royal,
+        .close-wrap {
+          flex: 1;
+        }
+
+        .close-wrap {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .gau {
+          width: 300px;
+          height: 50px;
+        }
+
         .filter-header {
           width: 100%;
           display: flex;

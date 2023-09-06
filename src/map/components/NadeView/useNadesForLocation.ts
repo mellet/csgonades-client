@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { NadeApi } from "../../../nade/data/NadeApi";
-import { DisplayNades } from "./NadeView";
+import { DisplayNades } from "./NadeListViewModal";
 
 async function fetcher(
   _url: string,

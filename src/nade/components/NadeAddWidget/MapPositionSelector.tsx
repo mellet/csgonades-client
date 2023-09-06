@@ -119,7 +119,9 @@ export const MapPositionSelector: FC<Props> = ({
                 startLocations={mapStartLocations}
                 onStartLocationSelected={(startLocation) => {
                   onSetMapStartLocation(startLocation.id);
-                  setMode("end");
+                  setTimeout(() => {
+                    setMode("end");
+                  }, 200);
                 }}
               />
             )}

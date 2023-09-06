@@ -15,7 +15,6 @@ export const EndLocations: FC<Props> = ({
   hideEndLocationId,
   highlightEndLocationId,
 }) => {
-  console.log("Rendering end location");
   return (
     <>
       {endLocations.map((sL) => {
@@ -66,7 +65,7 @@ const EndLocation: FC<EndLocationProp> = ({
       x={endLocation.position.x}
       y={endLocation.position.y}
       radius={24}
-      fill={hightlight ? `blue` : `rgba(140, 255, 0, ${shapeOpacity})`}
+      fill={hightlight ? `green` : `rgba(235, 158, 52, ${shapeOpacity})`}
       stroke={hightlight ? `#33ff00` : `rgba(0, 0, 0, 0.75)`}
       strokeWidth={2}
     />

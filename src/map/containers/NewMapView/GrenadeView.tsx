@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { MapNadeLocations } from "../../models/MapNadeLocations";
 import { NadeType } from "../../../nade/models/NadeType";
 import { CsMap } from "../../models/CsGoMap";
 import { NadeImage } from "./NadeImage";
+import { Group } from "react-konva";
+import Konva from "konva";
 
 type Props = {
   csMap: CsMap;
@@ -16,31 +18,33 @@ export const GrenadeView: FC<Props> = ({
   csMap,
   mapNadeLocations,
   onNadeClick,
-  onUnselect,
   selectedLocationId,
 }) => {
+  const groupRef = useRef<Konva.Group>(null);
+  const selectedLocation = mapNadeLocations.find(
+    (mNL) => mNL.endLocation.id === selectedLocationId
+  );
+
   return (
     <>
-      {mapNadeLocations.map((loc) => (
-        <NadeImage
-          hasNew={loc.endLocation.hasNew}
-          csMap={csMap}
-          count={loc.endLocation.count}
-          hide={
-            selectedLocationId
-              ? selectedLocationId !== loc.endLocation.id
-              : false
-          }
-          key={loc.endLocation.id}
-          nadeType={loc.endLocation.type}
-          x={loc.endLocation.position.x}
-          y={loc.endLocation.position.y}
-          onNadeClick={() => onNadeClick(loc)}
-          onUnselect={onUnselect}
-          isSelected={loc.endLocation.id === selectedLocationId}
-        />
-      ))}
-      <style jsx>{``}</style>
+      <Group ref={groupRef} visible={!selectedLocation}>
+        {mapNadeLocations.map((loc) => {
+          return (
+            <NadeImage
+              key={loc.endLocation.id}
+              count={loc.endLocation.count}
+              csMap={csMap}
+              hasNew={loc.endLocation.hasNew}
+              nadeType={loc.endLocation.type}
+              onNadeClick={() => {
+                onNadeClick(loc);
+              }}
+              x={loc.endLocation.position.x}
+              y={loc.endLocation.position.y}
+            />
+          );
+        })}
+      </Group>
     </>
   );
 };
@@ -57,13 +61,3 @@ export type MapImageProps = {
   count: number;
   hasNew?: boolean;
 };
-
-export function nadeScale(csMap: CsMap): { x: number; y: number } {
-  if (csMap === "mirage" || csMap === "inferno") {
-    return { x: 0.9, y: 0.9 };
-  }
-  if (csMap === "nuke") {
-    return { x: 0.8, y: 0.8 };
-  }
-  return { x: 1, y: 1 };
-}

@@ -1,9 +1,20 @@
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { Circle, Group, Image, Text } from "react-konva";
 import useImage from "use-image";
 import Konva from "konva";
-import { MapImageProps, nadeScale } from "./GrenadeView";
 import { KonvaEventObject } from "konva/lib/Node";
+import { CsMap } from "../../models/CsGoMap";
+import { NadeType } from "../../../nade/models/NadeType";
+
+type MapImageProps = {
+  csMap: CsMap;
+  nadeType: NadeType;
+  x: number;
+  y: number;
+  onNadeClick: () => void;
+  count: number;
+  hasNew?: boolean;
+};
 
 export const NadeImage: FC<MapImageProps> = ({
   csMap,
@@ -11,150 +22,150 @@ export const NadeImage: FC<MapImageProps> = ({
   x,
   y,
   onNadeClick,
-  onUnselect,
-  hide,
-  isSelected,
   count,
   hasNew,
 }) => {
-  const size = 55;
   const scale = nadeScale(csMap);
   const groupRef = useRef<Konva.Group>(null);
+  const nadeCircleRef = useRef<Konva.Circle>(null);
   const [image] = useImage(`/icons/grenades/${nadeType}.svg`);
+
+  useEffect(() => {
+    showImage();
+  }, []);
+
+  const showImage = () => {
+    return;
+  };
 
   const zoomIn = () => {
     groupRef.current?.to({
-      scaleX: 1.1,
-      scaleY: 1.1,
+      scaleX: scale.x + 0.1,
+      scaleY: scale.y + 0.1,
       duration: 0.1,
+    });
+    nadeCircleRef.current?.to({
+      opacity: 1,
+      duration: 0.2,
     });
     return;
   };
 
   const zoomOut = () => {
     groupRef.current?.to({
-      scaleX: 1,
-      scaleY: 1,
+      scaleX: scale.x,
+      scaleY: scale.x,
       duration: 0.1,
+    });
+    nadeCircleRef.current?.to({
+      opacity: 0.4,
+      duration: 0.2,
     });
   };
 
   function onClick() {
-    if (isSelected) {
-      onUnselect();
-    } else {
-      onNadeClick();
-    }
+    onNadeClick();
   }
 
   function handleNadeClick(event: KonvaEventObject<Event>) {
     event.cancelBubble = true;
+    const container = event.target.getStage()?.container();
+    if (container) {
+      container.style.cursor = "default";
+    }
     onClick();
   }
 
-  if (hide) {
-    return null;
+  function onMouseEnter(event: KonvaEventObject<Event>) {
+    const container = event.target.getStage()?.container();
+    if (container) {
+      container.style.cursor = "pointer";
+    }
+    zoomIn();
   }
+
+  function onMouseLeave(event: KonvaEventObject<Event>) {
+    const container = event.target.getStage()?.container();
+    if (container) {
+      container.style.cursor = "default";
+    }
+    zoomOut();
+  }
+
+  const iconSize = 32;
 
   return (
     <>
-      <Group ref={groupRef} x={x} y={y}>
-        {isSelected && (
-          <Circle
-            onTap={(e) => {
-              e.cancelBubble = true;
-              onClick();
-            }}
-            onClick={(e) => {
-              e.cancelBubble = true;
-              onClick();
-            }}
-            radius={size / 2.3}
-            fill="rgba(184, 13, 13, 0.9)"
-            onMouseEnter={(evt) => {
-              const container = evt.target.getStage()?.container();
-              if (container) {
-                container.style.cursor = "pointer";
-              }
-              zoomIn();
-            }}
-            onMouseLeave={(evt) => {
-              const container = evt.target.getStage()?.container();
-              if (container) {
-                container.style.cursor = "default";
-              }
-              zoomOut();
-            }}
-          />
-        )}
-        {!isSelected && (
-          <Image
-            scale={scale}
-            opacity={0.95}
-            onTap={handleNadeClick}
-            onClick={handleNadeClick}
-            offset={{ x: size / 2, y: size / 2 }}
-            image={image}
-            width={size}
-            height={size}
-            onMouseEnter={(evt) => {
-              const container = evt.target.getStage()?.container();
-              if (container) {
-                container.style.cursor = "pointer";
-              }
-              zoomIn();
-            }}
-            onMouseLeave={(evt) => {
-              const container = evt.target.getStage()?.container();
-              if (container) {
-                container.style.cursor = "default";
-              }
-              zoomOut();
-            }}
-          />
+      <Group
+        ref={groupRef}
+        x={x}
+        y={y}
+        onMouseOver={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={handleNadeClick}
+        onTap={handleNadeClick}
+        scale={scale}
+      >
+        <Circle radius={22} stroke="black" strokeWidth={1} />
+        <Circle ref={nadeCircleRef} radius={22} fill="black" opacity={0.4} />
+        <Image
+          listening={false}
+          offsetX={iconSize / 2}
+          offsetY={iconSize / 2}
+          image={image}
+          width={iconSize}
+          height={iconSize}
+        />
+        {count > 1 && (
+          <Group x={16} y={-16}>
+            <Circle radius={12} fill="rgba(0, 0, 0, 1)" />
+            <Text
+              listening={false}
+              x={0}
+              y={0}
+              offsetX={14}
+              offsetY={13}
+              text={count.toString()}
+              fontSize={16}
+              fontStyle="bold"
+              fontFamily="Helvetica Neue, Helvetica, Verdana"
+              fill={"white"}
+              strokeWidth={2}
+              stroke="rgba(0,0,0,1)"
+              fillAfterStrokeEnabled
+              width={28}
+              height={28}
+              align="center"
+              verticalAlign="middle"
+            />
+          </Group>
         )}
 
-        <Text
-          x={0}
-          y={0}
-          scale={scale}
-          listening={false}
-          text={isSelected ? "X" : count.toString()}
-          fontSize={28}
-          fontStyle="bold"
-          fontFamily="Helvetica Neue, Helvetica, Verdana"
-          width={100}
-          height={100}
-          offsetX={100 / 2}
-          offsetY={100 / 2 - 3}
-          fill={"white"}
-          strokeWidth={isSelected ? 0 : 2}
-          stroke="rgba(0,0,0,1)"
-          fillAfterStrokeEnabled
-          align="center"
-          verticalAlign="middle"
-        />
-        {hasNew && !isSelected && (
-          <Text
+        {hasNew && (
+          <Circle
             listening={false}
-            text="New"
-            x={0}
-            y={0}
-            width={size}
-            fontSize={10}
-            fill="#c3ff00"
-            fontFamily="Helvetica Neue, Helvetica, Verdana"
-            fontStyle="bold"
+            fill="#aeff00"
+            radius={4}
+            offsetX={-22}
+            offsetY={0}
+            stroke={"black"}
             strokeWidth={1}
-            stroke="#123301"
-            fillAfterStrokeEnabled
-            height={size}
-            offsetX={55 / 2}
-            offsetY={-14}
-            align="center"
           />
         )}
       </Group>
     </>
   );
 };
+
+function nadeScale(csMap: CsMap): { x: number; y: number } {
+  if (csMap === "nuke") {
+    return { x: 0.9, y: 0.9 };
+  }
+  if (csMap === "vertigo") {
+    return { x: 1.2, y: 1.2 };
+  }
+  if (csMap === "dust2") {
+    return { x: 1.1, y: 1.1 };
+  }
+  return { x: 1, y: 1 };
+}

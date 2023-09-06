@@ -27,7 +27,7 @@ export const LoadingView: FC = () => {
 
         .loading-nade {
           width: 24%;
-          height: 240px;
+          height: 300px;
         }
       `}</style>
     </>

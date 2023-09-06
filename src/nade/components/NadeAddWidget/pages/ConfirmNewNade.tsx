@@ -12,8 +12,10 @@ import { PreviewNade } from "../../PreviewNades";
 import { useCreateNade } from "../state/NadeAddStateProvider";
 import { useGameMode } from "../../../../core/useGameMode";
 import { GameMode } from "../../../models/GameMode";
+import { useSignedInUser } from "../../../../core/authentication/useSignedInUser";
 
 export const ConfirmNewNade: FC = () => {
+  const { signedInUser } = useSignedInUser();
   const { nade } = useCreateNade();
   const { isLoading, onSubmitClick } = useSumbitNade(nade);
 
@@ -21,19 +23,40 @@ export const ConfirmNewNade: FC = () => {
     <>
       <Box>
         <Title titleStyle="primary" title="Review Your Nade" bottomSpacing />
-        <p>Thank you for creating your nade!</p>
-        <p>
-          After submission, our dedicated moderators will review your nade for
-          approval. The review process typically takes less than 24 hours. If
-          everything meets the criteria, your nade will be approved.
-        </p>
-        <p>
-          We appreciate your patience and look forward to showcasing your
-          impressive nade soon!
-        </p>
-        <div className="preview-nade">
-          <PreviewNade nade={{ ...nade }} />
+        {(signedInUser?.numNades || 0) <= 0 && (
+          <div className="first-nade-warning">
+            <h3>IMPORTANT!</h3>
+            <p>It seems like you&apos;re submitting your first nade!</p>
+            <p>
+              Please wait for this nade to be approved before submitting more
+              nades. We may provide feedback if you&apos;ve made any errors.
+            </p>
+            <p>
+              This is to prevent you from wasting time on re-recording videos to
+              correct mistakes.
+            </p>
+          </div>
+        )}
+
+        <div className="split">
+          <div className="left">
+            <p>Thank you for creating your nade!</p>
+            <p>
+              After submission, our dedicated moderators will review your nade
+              for approval. The review process typically takes less than 24
+              hours. If everything meets the criteria, your nade will be
+              approved.
+            </p>
+            <p>
+              We appreciate your patience and look forward to showcasing your
+              impressive nade soon!
+            </p>
+          </div>
+          <div className="right">
+            <PreviewNade nade={{ ...nade }} />
+          </div>
         </div>
+
         <div className="submit-btn-container">
           <Button
             icon={<FaCheck />}
@@ -45,8 +68,27 @@ export const ConfirmNewNade: FC = () => {
         </div>
       </Box>
       <style jsx>{`
-        .preview-nade {
-          max-width: 350px;
+        .split {
+          display: flex;
+          gap: 15px;
+          margin-bottom: 15px;
+        }
+
+        .right {
+          min-width: 350px;
+        }
+
+        .first-nade-warning {
+          border: 5px solid #fc5e03;
+          border-radius: 5px;
+          padding: 15px;
+          margin-bottom: 15px;
+        }
+
+        .first-nade-warning h3 {
+          font-size: 20px;
+          margin-bottom: 15px;
+          font-weight: bold;
         }
 
         .submit-btn-container {

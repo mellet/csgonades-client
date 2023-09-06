@@ -14,7 +14,8 @@ export type AdUnitName =
   | "suggestedNadesHorizontal"
   | "nadeComment"
   | "nadeModal"
-  | "nadeModalFixed";
+  | "nadeModalFixed"
+  | "skinnyHorizontal";
 
 type AdsenseConfig = {
   style: CSSProperties;
@@ -151,6 +152,15 @@ function adNameToConfig(adName: AdUnitName): AdsenseConfig {
           display: "inline-block",
           width: 728,
           height: 90,
+        },
+      };
+    case "skinnyHorizontal":
+      return {
+        adSlot: "5996746995",
+        style: {
+          display: "inline-block",
+          width: 300,
+          height: 50,
         },
       };
     default:
