@@ -64,7 +64,7 @@ const EndLocation: FC<EndLocationProp> = ({
       }}
       x={endLocation.position.x}
       y={endLocation.position.y}
-      radius={24}
+      radius={22}
       fill={hightlight ? `green` : `rgba(235, 158, 52, ${shapeOpacity})`}
       stroke={hightlight ? `#33ff00` : `rgba(0, 0, 0, 0.75)`}
       strokeWidth={2}
