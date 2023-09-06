@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import Image from "next/image";
 import { CsMap } from "../../map/models/CsGoMap";
 import { useTheme } from "../../core/settings/useTheme";
 import { capitalize } from "../../utils/Common";
 import { Dimensions } from "../../constants/Constants";
+import { useGameMode } from "../../core/useGameMode";
 
 type Props = {
   selected: boolean;
@@ -20,19 +21,22 @@ export const NavItem: FC<Props> = ({
   isLast,
   isNew,
 }) => {
+  const { gameMode } = useGameMode();
   const { colors } = useTheme();
+
+  const imageUrl = useMemo(() => {
+    if (gameMode === "cs2") {
+      return `/mapicons/${csMap}_cs2.png`;
+    }
+
+    return `/mapicons/${csMap}.png`;
+  }, [gameMode, csMap]);
 
   return (
     <>
       <span className={selected ? "map-link selected" : "map-link"}>
         <div className="nav-icon">
-          <Image
-            fill
-            priority
-            src={`/mapicons/${csMap}.png`}
-            quality={100}
-            alt="Mirage icon"
-          />
+          <Image fill priority src={imageUrl} quality={100} alt="Mirage icon" />
         </div>
         <span className="map-link-label">{capitalize(csMap)}</span>
         {isNew && <span className="new">NEW</span>}
@@ -89,8 +93,6 @@ export const NavItem: FC<Props> = ({
           width: 24px;
           height: 24px;
           opacity: 0.8;
-          border-radius: 50%;
-          overflow: hidden;
         }
 
         .selected {
