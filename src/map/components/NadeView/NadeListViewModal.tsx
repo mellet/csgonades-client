@@ -115,6 +115,8 @@ export const NadeListViewModal: FC<Props> = ({
       <style jsx>{`
         .ad-spot {
           margin-top: 50px;
+          display: flex;
+          justify-content: center;
         }
 
         .map-view-wrapper {
@@ -162,7 +164,6 @@ export const NadeListViewModal: FC<Props> = ({
         .spacer {
           flex: 1;
           min-height:: 50px;
-
         }
 
         .nade-list {
