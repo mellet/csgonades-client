@@ -9,6 +9,7 @@ import { useNadesForLocation } from "./useNadesForLocation";
 import { NadePreviewHeader } from "../SuggestedNades/NadePreviewHeader";
 import { useFilterNadeView } from "../../logic/useFilteredNades";
 import { LoadingView } from "./LoadingView";
+import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 
 export type DisplayNades = {
   mapStartLocationId: string;
@@ -105,9 +106,17 @@ export const NadeListViewModal: FC<Props> = ({
               </>
             )}
           </div>
+          <div className="spacer"></div>
+          <div className="ad-spot">
+            <AdUnit name="nadeModal" />
+          </div>
         </div>
       </div>
       <style jsx>{`
+        .ad-spot {
+          margin-top: 50px;
+        }
+
         .map-view-wrapper {
           position: fixed;
           top: 0;
@@ -120,7 +129,6 @@ export const NadeListViewModal: FC<Props> = ({
           flex-direction: column;
           background: rgba(0, 0, 0, 0.7);
           overflow-y: auto;
-          padding-bottom: 50px;
         }
 
         .filter-header {
@@ -146,6 +154,15 @@ export const NadeListViewModal: FC<Props> = ({
           margin: 0px 50px;
           padding: 0px ${Dimensions.GUTTER_SIZE * 1.5}px;
           max-width: ${MAX_MODAL_WIDTH}px;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+
+        .spacer {
+          flex: 1;
+          min-height:: 50px;
+
         }
 
         .nade-list {
