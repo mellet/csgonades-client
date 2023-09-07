@@ -25,7 +25,6 @@ export const ContributorUser: FC<Props> = ({ user }) => {
       <style jsx>{`
         .contributor-wrap {
           display: flex;
-          margin: 3px;
         }
       `}</style>
     </>

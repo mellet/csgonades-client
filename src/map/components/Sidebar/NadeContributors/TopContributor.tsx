@@ -40,8 +40,7 @@ export const TopContributorList: FC<ContListProps> = ({ csMap }) => {
           display: flex;
           flex-wrap: wrap;
           align-items: flex-start;
-          margin-left: -3px;
-          margin-right: -3px;
+          gap: 6px;
         }
 
         .cont-list span {

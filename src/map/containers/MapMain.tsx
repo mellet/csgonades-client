@@ -82,6 +82,7 @@ export const MapMain: FC<Props> = memo(({ csMap }) => {
             padding: ${Dimensions.GUTTER_SIZE}px;
             padding-bottom: 0;
             width: 100%;
+            z-index: 2;
           }
         }
       `}</style>
