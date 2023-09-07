@@ -56,6 +56,11 @@ export const MapMain: FC<Props> = memo(({ csMap }) => {
           position: absolute;
           top: 15px;
           left: 15px;
+          z-index: 2;
+        }
+
+        #add-nade {
+          z-index: 2;
         }
 
         #nade-nades {
