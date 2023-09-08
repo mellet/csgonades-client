@@ -9,6 +9,7 @@ import { useIsDeviceSize } from "../../core/layout/useDeviceSize";
 import { AddNadeButton } from "./NewAddNadeButton";
 import { MapViewMobile } from "./MapViewMobile";
 import { MapViewDesktop } from "./MapViewDesktop";
+import { BraveBrowserWarning } from "./BraveBrowserWarning";
 
 type Props = {
   csMap: CsMap;
@@ -28,6 +29,8 @@ export const MapMain: FC<Props> = memo(({ csMap }) => {
       />
 
       <div id="nade-page">
+        <BraveBrowserWarning />
+
         <div id="filter">{isMobile ? <FilterBarMobile /> : <FilterBar />}</div>
 
         {!isMobile && (
