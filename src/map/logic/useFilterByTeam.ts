@@ -1,30 +1,11 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { TeamSide } from "../../nade/models/TeamSide";
-import { useGa } from "../../utils/Analytics";
 import { useRouter } from "next/router";
 import { setQueryParameter } from "./helpers";
 
 export const useFilterByTeam = () => {
   const teamSide = useQueryNadeTeam();
   const router = useRouter();
-  const ga = useGa();
-
-  useEffect(() => {
-    if (!teamSide) {
-      return;
-    }
-    const delay = setTimeout(() => {
-      ga.event({
-        category: "map_page",
-        action: `click_filter_${teamSide}`,
-      });
-    }, 4000);
-    return () => {
-      if (delay) {
-        clearTimeout(delay);
-      }
-    };
-  }, [teamSide, ga]);
 
   const byTeamSide: TeamSide = useMemo(() => {
     return teamSide || "both";

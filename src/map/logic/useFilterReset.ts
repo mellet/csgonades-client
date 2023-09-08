@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from "react";
-import { useGa } from "../../utils/Analytics";
 import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByTickrate } from "./useFilterByTickrate";
 import { useFilterByFavorites } from "./useFilterByFavorites";
@@ -8,14 +7,8 @@ import { useFilterByTeam } from "./useFilterByTeam";
 import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 import { useRouter } from "next/router";
 
-type ResetFilterClickConfig = {
-  disableAnalytics?: boolean;
-};
-
 export const useFilterReset = () => {
   const { signedInUser } = useSignedInUser();
-  const ga = useGa();
-
   const { byPro, resetFilterByPro } = useFilterByPro();
   const { byTickrate } = useFilterByTickrate();
   const { byFavorites, resetFilterByFavorites } = useFilterByFavorites();
@@ -23,21 +16,11 @@ export const useFilterReset = () => {
   const { byTeam } = useFilterByTeam();
   const resetQueryFilters = useResetQueryFilters();
 
-  const resetFilter = useCallback(
-    (config?: ResetFilterClickConfig) => {
-      resetFilterByPro();
-      resetFilterByFavorites();
-      resetQueryFilters();
-
-      if (!config?.disableAnalytics) {
-        ga.event({
-          category: "map_page",
-          action: "click_reset_filter",
-        });
-      }
-    },
-    [ga, resetFilterByPro, resetFilterByFavorites, resetQueryFilters]
-  );
+  const resetFilter = useCallback(() => {
+    resetFilterByPro();
+    resetFilterByFavorites();
+    resetQueryFilters();
+  }, [resetFilterByPro, resetFilterByFavorites, resetQueryFilters]);
 
   const canReset = useMemo(() => {
     const userDefaultTickrate = signedInUser?.defaultTick;

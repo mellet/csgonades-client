@@ -14,7 +14,7 @@ export const MapPageLink: FC<Props> = ({ map, children }) => {
   const { colors } = useTheme();
 
   function onMapLinkClick() {
-    resetFilter({ disableAnalytics: true });
+    resetFilter();
   }
 
   return (

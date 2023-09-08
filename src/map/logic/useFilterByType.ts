@@ -1,13 +1,11 @@
 import { useRouter } from "next/router";
 import { useCallback, useMemo } from "react";
 import { NadeType } from "../../nade/models/NadeType";
-import { useGa } from "../../utils/Analytics";
 import { setQueryParameter } from "./helpers";
 
 export const useFilterByType = () => {
   const queryType = useQueryNadeType();
   const router = useRouter();
-  const ga = useGa();
 
   const byType = useMemo(() => {
     return queryType || "smoke";
@@ -16,13 +14,8 @@ export const useFilterByType = () => {
   const filterByType = useCallback(
     (nadeType: NadeType) => {
       setQueryParameter(router, "type", nadeType);
-
-      ga.event({
-        category: "map_page",
-        action: `click_filter_type_${nadeType}`,
-      });
     },
-    [ga, router]
+    [router]
   );
 
   return {
