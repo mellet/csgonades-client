@@ -10,7 +10,6 @@ import { NadeTitle } from "./components/NadeHeader/NadeTitle";
 import { NadeDescription } from "./components/NadeDescription";
 import { NadeMainLayout } from "./NadeMainLayout";
 import { NadeActions } from "./containers/NadeActions";
-import { GfycatData } from "./models/GfycatData";
 import { useGameMode } from "../core/useGameMode";
 
 type Props = {
@@ -42,13 +41,9 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         description={descriptionSimplify(nade?.description)}
         thumbnailUrls={[nade.images.result.small]}
         uploadDate={createdAtString}
-        contentUrl={
-          nade.gfycat?.smallVideoUrl ||
-          `https://www.youtube.com/watch?v=${nade.youTubeId}`
-        }
-        duration={nade.gfycat?.duration}
+        contentUrl={`https://www.youtube.com/watch?v=${nade.youTubeId}`}
         watchCount={nade.viewCount}
-        embedUrl={embedUrl(nade.gfycat, nade.youTubeId)}
+        embedUrl={embedUrl(nade.youTubeId)}
       />
 
       <SEO
@@ -57,7 +52,7 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
         description={nade.description}
         canonical={`/nades/${nade.slug || nade.id}`}
         thumbnail={nade.images.result.small}
-        video={nade.gfycat?.smallVideoUrl || youTubeLink(nade.youTubeId)}
+        video={youTubeLink(nade.youTubeId)}
       />
 
       <NadeMainLayout
@@ -80,12 +75,8 @@ export const NadeMain: FC<Props> = memo(({ nade }) => {
   );
 });
 
-function embedUrl(gfycat?: GfycatData, youTubeId?: string) {
-  if (gfycat) {
-    return `https://gfycat.com/ifr/${gfycat.gfyId}`;
-  } else {
-    return `https://www.youtube.com/embed/${youTubeId}`;
-  }
+function embedUrl(youTubeId?: string) {
+  return `https://www.youtube.com/embed/${youTubeId}`;
 }
 
 function youTubeLink(youTubeId?: string) {

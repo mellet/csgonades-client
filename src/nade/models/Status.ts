@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 const StatusValues = {
   accepted: "Accepted",
   declined: "Declined",
@@ -5,7 +7,14 @@ const StatusValues = {
   pending: "Pending",
 };
 
-export type NadeStatus = keyof typeof StatusValues;
+export const nadeStatusSchema = z.enum([
+  "accepted",
+  "declined",
+  "deleted",
+  "pending",
+]);
+
+export type NadeStatus = z.infer<typeof nadeStatusSchema>;
 
 type NadeStatusOption = {
   key: NadeStatus;

@@ -1,5 +1,4 @@
 import { FC, memo } from "react";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { useFilterServerSideNades } from "../logic/useFilteredNades";
@@ -7,6 +6,7 @@ import { useTheme } from "../../core/settings/useTheme";
 import { SortByBar } from "./SuggestedNades/SortByBar";
 import useSortedNades from "./SuggestedNades/useSortedNades";
 import { Dimensions, LayoutBreakpoint } from "../../constants/Constants";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 type Props = {
   allNades: NadeLight[];

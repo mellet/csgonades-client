@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 const CsGoMaps = {
   ancient: "Ancient",
   anubis: "Anubis",
@@ -13,7 +15,23 @@ const CsGoMaps = {
   vertigo: "Vertigo",
 };
 
-export type CsMap = keyof typeof CsGoMaps;
+export const CsMapSchema = z.enum([
+  "ancient",
+  "anubis",
+  "cache",
+  "cobblestone",
+  "dust2",
+  "inferno",
+  "mirage",
+  "nuke",
+  "overpass",
+  "train",
+  "tuscan",
+  "vertigo",
+]);
+
+export type CsMap = z.infer<typeof CsMapSchema>;
+
 type CsMapKey = keyof typeof CsGoMaps;
 
 type MapOption = {

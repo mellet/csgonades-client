@@ -1,4 +1,3 @@
-import { GfycatData } from "./GfycatData";
 import { NadeMovement } from "./NadeMovement";
 import { Tickrate } from "./NadeTickrate";
 import { NadeType } from "./NadeType";
@@ -12,7 +11,6 @@ export type NadeUpdateBody = {
   description?: string;
   endPosition?: string;
   gameMode?: GameMode;
-  gfycat?: GfycatData;
   imageBase64?: string;
   isPro?: boolean;
   lineUpImageBase64?: string;

@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 
 export type Role = "administrator" | "moderator" | "user";
@@ -24,8 +25,10 @@ export type UserUpdateDTO = {
   defaultTick?: Tickrate;
 };
 
-export type UserLight = {
-  avatar: string;
-  nickname: string;
-  steamId: string;
-};
+export const UserPartialSchema = z.object({
+  avatar: z.string(),
+  nickname: z.string(),
+  steamId: z.string(),
+});
+
+export type UserLight = z.infer<typeof UserPartialSchema>;

@@ -1,5 +1,4 @@
 import { FC, useMemo } from "react";
-import { NadeLight } from "../nade/models/NadeLight";
 import { NadeStatus } from "../nade/models/Status";
 import { generateTitle, kFormatter } from "../utils/Common";
 import { PageLink } from "../shared-components/PageLink";
@@ -28,6 +27,7 @@ import { Dimensions } from "../constants/Constants";
 import { useGameMode } from "../core/useGameMode";
 import { ScoreIndicator } from "./ScoreIndicator";
 import { DashboardVideoLink } from "./VideoLink";
+import { NadeLight } from "../nade/models/NadePartial";
 
 type Props = {
   csgoMap: CsMap;
@@ -135,10 +135,7 @@ const DasboardNadeItem: FC<NadeItemProps> = ({ nade }) => {
           <NadeIcon nadeType={nade.type} size={30} />
         </td>
         <td align="center">
-          <DashboardVideoLink
-            gfycat={nade.gfycat}
-            youTubeUrl={nade.youTubeId}
-          />
+          <DashboardVideoLink youTubeUrl={nade.youTubeId} />
         </td>
         <td className="nade-thumb">
           <PageLink href={`/nades/${nade.slug || nade.id}`}>

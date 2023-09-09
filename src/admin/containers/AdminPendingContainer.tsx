@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useAdminPendingNades } from "../data/hooks/useAdminPendingNades";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { AdminPageTitle } from "../components/AdminPageTitle";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 export const AdminPendingContainer: FC = () => {
   const { pendingNades } = useAdminPendingNades();

@@ -37,15 +37,9 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async ({
 
   const nadeResult = await NadeApi.byId(nadeId);
 
-  if (nadeResult.isErr()) {
-    return {
-      notFound: true,
-    };
-  }
-
   return {
     props: {
-      nade: nadeResult.value,
+      nade: nadeResult,
     },
   };
 };

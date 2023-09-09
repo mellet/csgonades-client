@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { AdminPageTitle } from "../components/AdminPageTitle";
 import { useAdminDeletedNades } from "../data/hooks/useAdminDeletedNades";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 export const AdminDeletedContainer: FC = () => {
   const { deletedNades } = useAdminDeletedNades();

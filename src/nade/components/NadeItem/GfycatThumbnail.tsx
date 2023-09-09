@@ -6,14 +6,6 @@ import { useGa } from "../../../utils/Analytics";
 import { useIsDeviceSize } from "../../../core/layout/useDeviceSize";
 import { GameMode } from "../../models/GameMode";
 
-const MiniGfycatIframe = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: "minigfycatiframe" */ "./Views/MiniGfycatIframe"
-    ).then((m) => m.MiniGfycatIframe),
-  { ssr: false }
-);
-
 const MiniYouTubePlayer = dynamic(
   () => import("./Views/MiniYouTubePlayer").then((m) => m.MiniYouTubePlayer),
   { ssr: false }
@@ -27,7 +19,6 @@ type Props = {
   lineUpThumnUrl?: string;
   nadeId: string;
   nadeSlug?: string;
-  smallVideoUrl?: string;
   thumbnailUrl?: string;
   youTubeId?: string;
   speed?: "normal" | "fast";
@@ -35,21 +26,17 @@ type Props = {
 };
 
 export const GfycatThumbnail: FC<Props> = ({
-  gfyId,
   nadeId,
   lineUpThumnUrl,
-  smallVideoUrl,
   thumbnailUrl,
   nadeSlug,
   youTubeId,
   speed = "fast",
-  quality,
   gameMode,
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
   const [isReadyForHover, setIsReadyForHover] = useState(false);
-  const [hasHovered, setHasHovered] = useState(false);
   const [hovering, setHovering] = useState(false);
   const { isMobile } = useIsDeviceSize();
 
@@ -69,7 +56,6 @@ export const GfycatThumbnail: FC<Props> = ({
           action: "play_small_video",
           label: nadeSlug || nadeId,
         });
-        setHasHovered(true);
       }
     }, 2000);
     return () => clearTimeout(timer);
@@ -88,9 +74,6 @@ export const GfycatThumbnail: FC<Props> = ({
     setHovering(false);
   }
 
-  const displayBack =
-    hovering && (Boolean(smallVideoUrl) || Boolean(youTubeId));
-
   return (
     <>
       <div
@@ -106,20 +89,10 @@ export const GfycatThumbnail: FC<Props> = ({
           />
         </div>
 
-        <div className={displayBack ? "back visible" : "back"}>
-          {displayBack && (
+        <div className={hovering ? "back visible" : "back"}>
+          {hovering && youTubeId && (
             <>
-              {gfyId && (
-                <MiniGfycatIframe
-                  gfyId={gfyId}
-                  hasAllreadyLoaded={hasHovered}
-                  speed={speed}
-                  quality={quality}
-                />
-              )}
-              {youTubeId && (
-                <MiniYouTubePlayer youTubeId={youTubeId} speed={speed} />
-              )}
+              <MiniYouTubePlayer youTubeId={youTubeId} speed={speed} />
             </>
           )}
         </div>

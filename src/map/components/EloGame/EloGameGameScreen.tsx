@@ -1,10 +1,10 @@
 import { FC, useCallback, useState } from "react";
 import ViewSlider from "react-view-slider";
-import { NadeLight } from "../../../nade/models/NadeLight";
 import { EloGameVS } from "./EloGameVS";
 import { NadeApi } from "../../../nade/data/NadeApi";
 import { Dimensions } from "../../../constants/Constants";
 import { useGa } from "../../../utils/Analytics";
+import { NadeLight } from "../../../nade/models/NadePartial";
 
 type Props = {
   pairings: NadeLight[][];

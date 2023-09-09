@@ -1,11 +1,11 @@
 import { FC, memo } from "react";
 import { AnimationTimings, Dimensions } from "../../../../constants/Constants";
-import { NadeLight } from "../../../models/NadeLight";
 import { useTheme } from "../../../../core/settings/useTheme";
 import { GfycatThumbnail } from "../GfycatThumbnail";
 import { NadeItemTitle } from "../Views/NadeItemTitle";
 import { NadeStats } from "../NadeStats/NadeStats";
 import Link from "next/link";
+import { NadeLight } from "../../../models/NadePartial";
 
 interface Props {
   nade: NadeLight;
@@ -40,12 +40,9 @@ export const NadeItemView: FC<Props> = memo(
                 <div className="video">
                   <GfycatThumbnail
                     gameMode={nade.gameMode}
-                    avgColor={nade.gfycat?.avgColor}
-                    gfyId={nade.gfycat?.gfyId}
                     lineUpThumnUrl={nade.images.lineup.small}
                     nadeId={nade.id}
                     nadeSlug={nade.slug}
-                    smallVideoUrl={nade.gfycat?.smallVideoUrl}
                     thumbnailUrl={nade.images.result.small}
                     youTubeId={nade.youTubeId}
                   />

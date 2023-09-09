@@ -75,7 +75,6 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
 
         <NadeBlogList>
-          <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-long-doors" />
           <BlogNadeItem nadeSlug="dust2-smoke-long-corner-from-outside-long" />
         </NadeBlogList>
 
@@ -101,7 +100,6 @@ export const BestDust2NadesBlogPost = (): JSX.Element => {
         </p>
         <NadeBlogList>
           <BlogNadeItem nadeSlug="dust2-smoke-ct-spawn-from-xbox" />
-          <BlogNadeItem nadeSlug="flash-mid-doors-from-xbox" />
         </NadeBlogList>
 
         <h2>5. B Door Smoke</h2>

@@ -12,7 +12,7 @@ import { useTheme } from "../../../../core/settings/useTheme";
 type Props = {
   movement?: NadeMovement;
   technique?: Technique;
-  tickrate?: Tickrate;
+  tickrate: Tickrate;
   gameMode?: GameMode;
   teamSide?: TeamSide;
   isPro?: boolean;
@@ -166,7 +166,7 @@ export const NadeStatsSpecials: FC<Props> = ({
   );
 };
 
-function tickrateTooltip(gameMode: GameMode, tickrate?: Tickrate) {
+function tickrateTooltip(gameMode: GameMode, tickrate: Tickrate) {
   if (gameMode === "cs2") {
     return <div className="center">Requires Jumpthrow</div>;
   }

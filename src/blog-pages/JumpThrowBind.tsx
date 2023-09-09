@@ -83,9 +83,7 @@ export const JumpThrowBindBlogMain: FC = () => {
 
         <NadeBlogList>
           <BlogNadeItem nadeSlug="smoke-mid-window-from-t-spawn" />
-          <BlogNadeItem nadeSlug="mirage-smoke-snipers-nest-from-t-spawn" />
           <BlogNadeItem nadeSlug="smoke-monster-from-ct-spawn-overpass" />
-          <BlogNadeItem nadeSlug="smoke-monster-from-ct" />
           <BlogNadeItem nadeSlug="dust2-smoke-b-window-from-upper-tunnel" />
         </NadeBlogList>
 

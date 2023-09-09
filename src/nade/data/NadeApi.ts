@@ -2,10 +2,9 @@ import axios from "axios";
 import { ok } from "neverthrow";
 import { AppConfig } from "../../constants/Constants";
 import { CsMap } from "../../map/models/CsGoMap";
-import { Nade } from "../models/Nade";
+import { Nade, NadeSchema } from "../models/Nade";
 import { NadeUpdateBody } from "../models/NadeUpdateBody";
 import { NadeCreateBody } from "../models/NadeCreateBody";
-import { NadeLight } from "../models/NadeLight";
 import { AppResult, extractApiError } from "../../utils/ErrorUtil";
 import { Favorite } from "../../favorites/models/Favorite";
 import AxiosApi from "../../core/AxiosInstance";
@@ -15,6 +14,7 @@ import { MapNadeLocations } from "../../map/models/MapNadeLocations";
 import { Tickrate } from "../models/NadeTickrate";
 import { TeamSide } from "../models/TeamSide";
 import { UserLight } from "../../users/models/User";
+import { NadeLight, nadeLightSchema } from "../models/NadePartial";
 
 type NadeEloGame = {
   nadeOneId: string;
@@ -56,76 +56,42 @@ export class NadeApi {
     }
   }
 
-  static async isSlugAvailable(slug: string): Promise<boolean> {
-    try {
-      const res = await axios.get<boolean>(
-        `${AppConfig.API_URL}/nades/${slug}/checkslug`
-      );
+  static async getRecent(gameMode: GameMode): Promise<NadeLight[]> {
+    const url = `${AppConfig.API_URL}/nades?gameMode=${gameMode}`;
+    const res = await axios.get(url);
 
-      const isFree = res.data;
-      return isFree;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  static async getRecent(gameMode: GameMode): AppResult<NadeLight[]> {
-    try {
-      const url = `${AppConfig.API_URL}/nades?gameMode=${gameMode}`;
-      const res = await axios.get(url);
-      const nades = res.data as NadeLight[];
-
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    return parseAndFilterNadeLight(res.data);
   }
 
   static async getPending(): Promise<NadeLight[]> {
-    const res = await AxiosApi.get<NadeLight[]>(
-      `${AppConfig.API_URL}/nades/pending`
-    );
-    const nades = res.data;
-
-    return nades;
+    const res = await AxiosApi.get(`${AppConfig.API_URL}/nades/pending`);
+    return parseAndFilterNadeLight(res.data);
   }
 
   static async getDeclined(): Promise<NadeLight[]> {
-    const res = await AxiosApi.get<NadeLight[]>(
-      `${AppConfig.API_URL}/nades/declined`
-    );
-    const nades = res.data;
-
-    return nades;
+    const res = await AxiosApi.get(`${AppConfig.API_URL}/nades/declined`);
+    return parseAndFilterNadeLight(res.data);
   }
 
   static async getDeleted(): Promise<NadeLight[]> {
-    const res = await AxiosApi.get<NadeLight[]>(
-      `${AppConfig.API_URL}/nades/deleted`
-    );
+    const res = await AxiosApi.get(`${AppConfig.API_URL}/nades/deleted`);
 
-    return res.data;
+    return parseAndFilterNadeLight(res.data);
   }
 
   static async getByMap(
     mapName: CsMap,
     gameMode: GameMode,
     nadeType?: NadeType
-  ): AppResult<NadeLight[]> {
-    try {
-      const url = new URL(`/nades/map/${mapName}`, AppConfig.API_URL);
-      url.searchParams.append("gameMode", gameMode);
-      if (nadeType) {
-        url.searchParams.append("type", nadeType);
-      }
-      console.log("# Fetching url", url.toString());
-      const res = await axios.get<NadeLight[]>(url.toString());
-      const nades = res.data.filter((n) => Boolean(n.youTubeId));
+  ): Promise<NadeLight[]> {
+    const url = new URL(`/nades/map/${mapName}`, AppConfig.API_URL);
+    url.searchParams.append("gameMode", gameMode);
+    nadeType && url.searchParams.append("type", nadeType);
 
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    const res = await axios.get<NadeLight[]>(url.toString());
+    const nades = parseAndFilterNadeLight(res.data);
+
+    return nades;
   }
 
   static async getMapNadeLocations(
@@ -139,7 +105,7 @@ export class NadeApi {
     const url = new URL(`/nademap/${mapName}`, AppConfig.API_URL);
     url.searchParams.set("nadeType", nadeType);
     url.searchParams.set("gameMode", gameMode);
-    url.searchParams.set("tickRate", tickRate);
+    tickRate && url.searchParams.set("tickRate", tickRate);
     url.searchParams.set("teamSide", teamSide);
     url.searchParams.set("favorites", byFavorites ? "1" : "0");
 
@@ -151,26 +117,23 @@ export class NadeApi {
   static async getByStartAndEndLocation(
     startLocationId: string,
     endLocationId: string
-  ) {
+  ): Promise<NadeLight[]> {
     const url = `${AppConfig.API_URL}/nades/start/${startLocationId}/end/${endLocationId}`;
     const res = await axios.get<NadeLight[]>(url);
 
-    const nades = res.data.filter((n) => Boolean(n));
+    const nades = parseAndFilterNadeLight(res.data);
 
     return nades;
   }
 
-  static async byId(id: string): AppResult<Nade> {
-    try {
-      const res = await axios.get(`${AppConfig.API_URL}/nades/${id}`, {
-        withCredentials: true,
-      });
+  static async byId(id: string): Promise<Nade> {
+    const res = await axios.get(`${AppConfig.API_URL}/nades/${id}`, {
+      withCredentials: true,
+    });
 
-      const nades = res.data as Nade;
-      return ok(nades);
-    } catch (error) {
-      return extractApiError(error);
-    }
+    const nade = NadeSchema.parse(res.data);
+
+    return nade;
   }
 
   static async byUser(
@@ -239,4 +202,18 @@ export class NadeApi {
       return;
     }
   }
+}
+
+function parseAndFilterNadeLight(data: any[]): NadeLight[] {
+  const validNades: NadeLight[] = [];
+
+  for (const nade of data) {
+    const parsed = nadeLightSchema.safeParse(nade);
+    if (parsed.success) {
+      validNades.push(parsed.data);
+    } else {
+      console.log("Failed to parse nade", parsed.error, nade);
+    }
+  }
+  return validNades;
 }

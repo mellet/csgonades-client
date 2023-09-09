@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 const GameModes = {
   csgo: "csgo",
   cs2: "cs2",
@@ -35,4 +37,6 @@ export function nadeGameModeOptions(): GameModeOption[] {
   return options;
 }
 
-export type GameMode = keyof typeof GameModes;
+export const gameModeSchema = z.enum(["csgo", "cs2"]);
+
+export type GameMode = z.infer<typeof gameModeSchema>;

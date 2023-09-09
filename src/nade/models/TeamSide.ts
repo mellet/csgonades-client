@@ -1,7 +1,5 @@
-const TeamSideValues = {
-  both: "Both",
-  counterTerrorist: "Counter-Terrorist",
-  terrorist: "Terrorist",
-};
+import { z } from "zod";
 
-export type TeamSide = keyof typeof TeamSideValues;
+export const TeamSideSchema = z.enum(["both", "counterTerrorist", "terrorist"]);
+
+export type TeamSide = z.infer<typeof TeamSideSchema>;

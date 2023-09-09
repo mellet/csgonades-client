@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 const NadeTypes = {
   flash: "Flash",
   hegrenade: "Grenade",
@@ -5,7 +7,14 @@ const NadeTypes = {
   smoke: "Smoke",
 };
 
-export type NadeType = keyof typeof NadeTypes;
+export const NadeTypeSchema = z.enum([
+  "flash",
+  "hegrenade",
+  "molotov",
+  "smoke",
+]);
+
+export type NadeType = z.infer<typeof NadeTypeSchema>;
 
 export function nadeTypeString(nadeType?: NadeType, plural?: boolean): string {
   if (!nadeType) {

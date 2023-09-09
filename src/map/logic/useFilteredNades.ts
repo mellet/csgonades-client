@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { NadeType } from "../../nade/models/NadeType";
 import {
@@ -17,6 +16,7 @@ import { useFilterByPro } from "./useFilterByPro";
 import { useFilterByType } from "./useFilterByType";
 import { useFilterByTeam } from "./useFilterByTeam";
 import { useFavorites } from "../../favorites/data/useFavorites";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 export const useFilterNadeView = (nades: NadeLight[]) => {
   const { byTickrate } = useFilterByTickrate();

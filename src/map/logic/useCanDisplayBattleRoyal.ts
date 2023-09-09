@@ -1,4 +1,4 @@
-import { NadeLight } from "../../nade/models/NadeLight";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 export const checkShouldShowBattleRoyalButton = (
   nadeClusters: NadeLight[][]

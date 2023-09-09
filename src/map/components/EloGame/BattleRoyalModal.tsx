@@ -6,7 +6,6 @@ import {
   useMemo,
   useState,
 } from "react";
-import { NadeLight } from "../../../nade/models/NadeLight";
 import { useGa } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
@@ -17,6 +16,7 @@ import { EloGameFinishScreen } from "./EloGameFinishScreen";
 import { FaTimesCircle } from "react-icons/fa";
 import { DisplayNades } from "../NadeView/NadeListViewModal";
 import { useNadesForLocation } from "../NadeView/useNadesForLocation";
+import { NadeLight } from "../../../nade/models/NadePartial";
 
 type Props = {
   displayNades: DisplayNades;

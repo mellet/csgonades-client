@@ -75,7 +75,6 @@ function createNadeUpdateBody(
 ): NadeUpdateBody {
   const description = newValueIfDifferent(nade.description, update.description);
   const endPosition = newValueIfDifferent(nade.endPosition, update.endPosition);
-  const gfycat = newValueIfDifferent(nade.gfycat, update.gfycat);
   const imageBase64 = newValueIfDifferent(
     nade.images.result.large,
     update.imageBase64
@@ -114,7 +113,6 @@ function createNadeUpdateBody(
     description,
     endPosition,
     gameMode,
-    gfycat,
     imageBase64,
     isPro,
     lineUpImageBase64,

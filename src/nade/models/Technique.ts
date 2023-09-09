@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 const TechniqueValues = {
   left: "Mouse left",
   right: "Mouse right",
@@ -8,7 +10,17 @@ const TechniqueValues = {
   jumpthrowW: "Jumpthrow + W",
 };
 
-export type Technique = keyof typeof TechniqueValues;
+export const TechniqueSchema = z.enum([
+  "left",
+  "right",
+  "both",
+  "jumpthrow",
+  "jumpthrowBoth",
+  "jumpthrowRight",
+  "jumpthrowW",
+]);
+
+export type Technique = z.infer<typeof TechniqueSchema>;
 
 type TechniqueOption = {
   key: Technique;

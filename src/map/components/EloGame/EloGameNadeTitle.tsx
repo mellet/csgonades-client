@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { NadeLight } from "../../../nade/models/NadeLight";
 import { generateNadeItemTitle } from "../../../utils/Common";
 import { useIsAdmin } from "../../../core/authentication/useIsAdmin";
+import { NadeLight } from "../../../nade/models/NadePartial";
 
 type Props = {
   nade: NadeLight;
@@ -17,8 +17,7 @@ export const EloGameNadeTitle: FC<Props> = ({ nade }) => {
           nade.startPosition,
           nade.endPosition,
           nade.type,
-          nade.oneWay,
-          nade.map
+          nade.oneWay
         )}
       </div>
       <style jsx>{`

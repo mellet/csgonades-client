@@ -63,7 +63,7 @@ export const NadeEditInfo: FC<Props> = ({ nade }) => {
         </div>
         <div id="gfy-input">
           <VideoUrlInput
-            defaultValue={nadeUpdates.youTubeId || nadeUpdates.gfycat?.gfyId}
+            defaultValue={nadeUpdates.youTubeId}
             onSetYouTubeId={actions.onSetYouTubeId}
           />
         </div>

@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { User } from "../models/User";
 import { useTheme } from "../../core/settings/useTheme";
 import { CsgnList } from "../../shared-components/list/CsgnList";
@@ -9,6 +8,7 @@ import { MapNadeSelector } from "../../shared-components/map-nade-selector/MapNa
 import { useUserNadesByMap } from "../data/useUserNadesByMap";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { useGameMode } from "../../core/useGameMode";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 type Props = {
   user: User;

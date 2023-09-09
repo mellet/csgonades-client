@@ -1,5 +1,4 @@
 import { FC, memo, useState } from "react";
-import { GfycatIframe } from "./GfycatIframe";
 import { NadeTabSelector } from "./NadeTabSelector";
 import { NadeLineUpImage } from "./NadeLineupImage";
 import { NadeMeta } from "../NadeMeta/NadeMeta";
@@ -48,7 +47,6 @@ export const NadeVideoContainer: FC<Props> = memo(({ nade }) => {
               {nade.youTubeId && (
                 <CsGoYouTubePlayer youTubeId={nade.youTubeId} />
               )}
-              {nade.gfycat && <GfycatIframe gfyId={nade.gfycat.gfyId} />}
             </div>
           )}
 

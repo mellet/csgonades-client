@@ -1,8 +1,8 @@
 import { NextRouter } from "next/router";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { Tickrate } from "../../nade/models/NadeTickrate";
 import { NadeType } from "../../nade/models/NadeType";
 import { TeamSide } from "../../nade/models/TeamSide";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 export function filterByPro(nades: NadeLight[], byPro?: boolean): NadeLight[] {
   if (byPro) {

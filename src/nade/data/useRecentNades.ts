@@ -1,25 +1,23 @@
 import useSWR from "swr";
 import { GameMode } from "../models/GameMode";
 import { NadeApi } from "./NadeApi";
-import { NadeLight } from "../models/NadeLight";
 import { useFavorites } from "../../favorites/data/useFavorites";
 import { useMemo } from "react";
 import { addFavoriteToNades } from "../../map/logic/helpers";
+import { NadeLight } from "../models/NadePartial";
 
-async function recentNadesFetcher(gameMode: GameMode) {
-  const result = await NadeApi.getRecent(gameMode);
-
-  if (result.isOk()) {
-    return result.value;
-  } else {
-    throw result.error;
-  }
+async function recentNadesFetcher(_url: string, gameMode: GameMode) {
+  return NadeApi.getRecent(gameMode);
 }
 
 export const useRecentNades = (gameMode: GameMode) => {
-  const { data, isValidating } = useSWR([gameMode], recentNadesFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data, isValidating } = useSWR(
+    ["/nades/recent", gameMode],
+    recentNadesFetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
 
   return {
     recentNades: data || [],

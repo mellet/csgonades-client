@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { NadeLight } from "../nade/models/NadeLight";
+import { NadeLight } from "../nade/models/NadePartial";
 
 export function createNewPairings(items: NadeLight[]): NadeLight[][] {
   const shuffledItems = [...items]; // Create a shallow copy of the original list

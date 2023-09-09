@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 const NadeMovements = {
   crouching: "Crouching",
   crouchwalking: "Crouch walking",
@@ -13,4 +15,12 @@ export function movementString(movement?: NadeMovement) {
   return NadeMovements[movement];
 }
 
-export type NadeMovement = keyof typeof NadeMovements;
+export const NadeMovementSchema = z.enum([
+  "stationary",
+  "crouching",
+  "walking",
+  "running",
+  "crouchwalking",
+]);
+
+export type NadeMovement = z.infer<typeof NadeMovementSchema>;

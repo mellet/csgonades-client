@@ -14,9 +14,7 @@ export const BlogNadeItem: FC<Props> = memo(({ nadeSlug }) => {
   useEffect(() => {
     (async () => {
       const res = await NadeApi.byId(nadeSlug);
-      if (res.isOk()) {
-        setNade(res.value);
-      }
+      setNade(res);
       setLoading(false);
     })();
   }, [nadeSlug]);

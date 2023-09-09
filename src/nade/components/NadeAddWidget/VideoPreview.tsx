@@ -1,22 +1,19 @@
 import { FC } from "react";
 import { FaVideo } from "react-icons/fa";
 import { useTheme } from "../../../core/settings/useTheme";
-import { GfycatData } from "../../models/GfycatData";
-import { GfycatIframe } from "../VideoContainer/GfycatIframe";
 import { CsGoYouTubePlayer } from "../VideoContainer/YouTubePlayer";
 
 type Props = {
-  gfycat?: GfycatData;
   youTubeId?: string;
 };
 
-export const VideoPreview: FC<Props> = ({ gfycat, youTubeId }) => {
+export const VideoPreview: FC<Props> = ({ youTubeId }) => {
   const { colors } = useTheme();
 
   return (
     <>
       <div className="video-preview-container">
-        {!gfycat && !youTubeId && (
+        {!youTubeId && (
           <div className="no-video-content">
             <div className="no-video-message">
               <span className="icon">
@@ -26,7 +23,7 @@ export const VideoPreview: FC<Props> = ({ gfycat, youTubeId }) => {
             </div>
           </div>
         )}
-        {gfycat && <GfycatIframe gfyId={gfycat.gfyId} />}
+
         {youTubeId && <CsGoYouTubePlayer youTubeId={youTubeId} />}
       </div>
       <style jsx>{`

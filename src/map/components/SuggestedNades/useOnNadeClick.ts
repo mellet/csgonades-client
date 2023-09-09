@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import { NadeLight } from "../../../nade/models/NadeLight";
 import { useGa } from "../../../utils/Analytics";
+import { NadeLight } from "../../../nade/models/NadePartial";
 
 function useSuggestedNades() {
   const [suggestedNades, setSuggestedNadesForMap] = useState<

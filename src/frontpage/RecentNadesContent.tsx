@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { useTheme } from "../core/settings/useTheme";
-import { NadeLight } from "../nade/models/NadeLight";
 import { CsgnList } from "../shared-components/list/CsgnList";
 import { Dimensions } from "../constants/Constants";
 import { NadeItem } from "../nade/components/NadeItem/NadeItem";
+import { NadeLight } from "../nade/models/NadePartial";
 
 type Props = {
   recentNades: NadeLight[];

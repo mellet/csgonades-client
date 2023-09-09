@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { FaEye, FaCommentDots } from "react-icons/fa";
-import { Tickrate } from "../../../models/NadeTickrate";
 import { useTheme } from "../../../../core/settings/useTheme";
 import { StatItem } from "./StatItem";
 import { Technique } from "../../../models/Technique";
@@ -10,6 +9,7 @@ import Link from "next/link";
 import { TeamSide } from "../../../models/TeamSide";
 import { GameMode } from "../../../models/GameMode";
 import { NadeStatsSpecials } from "./NadeStatsSpecials";
+import { Tickrate } from "../../../models/NadeTickrate";
 
 type NadeStatsProps = {
   commentCount: number;
@@ -23,7 +23,7 @@ type NadeStatsProps = {
   side?: TeamSide;
   slug?: string;
   technique?: Technique;
-  tickrate?: Tickrate;
+  tickrate: Tickrate;
   viewCount: number;
   addAsFavorite: (nadeId: string) => void;
   removeAsFavorite: (nadeId: string) => void;

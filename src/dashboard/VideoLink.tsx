@@ -1,32 +1,25 @@
 import { FC, useMemo } from "react";
-import { GfycatData } from "../nade/models/GfycatData";
 import { FaYoutube } from "react-icons/fa";
 import { useTheme } from "../core/settings/useTheme";
 
 type Props = {
-  gfycat?: GfycatData;
   youTubeUrl?: string;
 };
 
-export const DashboardVideoLink: FC<Props> = ({ gfycat, youTubeUrl }) => {
+export const DashboardVideoLink: FC<Props> = ({ youTubeUrl }) => {
   const { colors } = useTheme();
 
   const url = useMemo(() => {
-    if (gfycat) {
-      return `https://gfycat.com/${gfycat.gfyId}`;
-    } else {
-      return `https://www.youtube.com/watch?v=${youTubeUrl}`;
-    }
-  }, [gfycat, youTubeUrl]);
+    return `https://www.youtube.com/watch?v=${youTubeUrl}`;
+  }, [youTubeUrl]);
 
-  if (!gfycat && !youTubeUrl) {
+  if (!youTubeUrl) {
     return null;
   }
 
   return (
     <>
       <a href={url} target="_blank" rel="noreferrer">
-        {gfycat && <img src="/icons/gfycatlogo.png" />}
         {youTubeUrl && <FaYoutube size={24} />}
       </a>
       <style jsx>{`

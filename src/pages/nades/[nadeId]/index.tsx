@@ -50,30 +50,28 @@ export const getServerSideProps: GetServerSideProps<
 
   const requestedSlug = checkIsSlug(nadeIdOrSlug);
 
-  const result = await NadeApi.byId(nadeIdOrSlug);
+  try {
+    const nade = await NadeApi.byId(nadeIdOrSlug);
 
-  if (result.isErr()) {
-    // Might need to display a better error
+    // Redirect to slug url if using non slug url
+    if (!requestedSlug && nade.slug) {
+      return {
+        redirect: {
+          destination: `/nades/${nade.slug}`,
+          statusCode: 301,
+        },
+      };
+    }
+
+    return {
+      props: { nade },
+    };
+  } catch (error) {
+    console.error("Err", error);
     return {
       notFound: true,
     };
   }
-
-  // Redirect to slug url if using non slug url
-  if (!requestedSlug && result.value.slug) {
-    return {
-      redirect: {
-        destination: `/nades/${result.value.slug}`,
-        statusCode: 301,
-      },
-    };
-  }
-
-  return {
-    props: {
-      nade: result.value,
-    },
-  };
 };
 
 function checkIsSlug(value: string) {

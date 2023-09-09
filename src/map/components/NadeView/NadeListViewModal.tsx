@@ -1,5 +1,4 @@
 import { FC, MouseEventHandler } from "react";
-import { NadeLight } from "../../../nade/models/NadeLight";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
@@ -10,6 +9,7 @@ import { NadePreviewHeader } from "../SuggestedNades/NadePreviewHeader";
 import { useFilterNadeView } from "../../logic/useFilteredNades";
 import { LoadingView } from "./LoadingView";
 import { AdUnit } from "../../../shared-components/adunits/AdUnit";
+import { NadeLight } from "../../../nade/models/NadePartial";
 
 export type DisplayNades = {
   mapStartLocationId: string;

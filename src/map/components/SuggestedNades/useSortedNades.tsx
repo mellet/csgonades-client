@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { NadeLight } from "../../../nade/models/NadeLight";
 import { NadeLightSort } from "../../../nade/models/NadeLightSort";
 import { useFilterBySortingMethod } from "../../logic/useFilterBySortingMethods";
 import { useFilterServerSideNades } from "../../logic/useFilteredNades";
+import { NadeLight } from "../../../nade/models/NadePartial";
 
 export default function useSortedNades(unsortedNades: NadeLight[]) {
   const { bySortingMethod } = useFilterBySortingMethod();

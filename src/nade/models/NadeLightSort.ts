@@ -1,4 +1,4 @@
-import { NadeLight } from "./NadeLight";
+import { NadeLight } from "./NadePartial";
 
 export type NadeLightSort = keyof Pick<
   NadeLight,

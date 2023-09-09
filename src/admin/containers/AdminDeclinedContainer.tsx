@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { NadeLight } from "../../nade/models/NadeLight";
 import { CsgnList } from "../../shared-components/list/CsgnList";
 import { NadeItem } from "../../nade/components/NadeItem/NadeItem";
 import { NadeApi } from "../../nade/data/NadeApi";
 import { AdminPageTitle } from "../components/AdminPageTitle";
 import useSWR from "swr";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 async function fetchDeclinedNades() {
   const res = await NadeApi.getDeclined();
