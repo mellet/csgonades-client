@@ -27,10 +27,10 @@ export const useFilterNadeView = (nades: NadeLight[]) => {
   const filteredNades = useMemo(() => {
     let thenades = nades;
     thenades = addFavoriteToNades(thenades, favoritedNades);
-    thenades.sort(sortByScore);
     thenades = filterByTickrate(thenades, byTickrate);
     thenades = filterByTeam(thenades, byTeam);
     thenades = filterByFavorite(thenades, byFavorites);
+
     return thenades;
   }, [nades, favoritedNades, byTickrate, byTeam, byFavorites]);
 
