@@ -155,7 +155,9 @@ export class NadeApi {
     const url = `${AppConfig.API_URL}/nades/start/${startLocationId}/end/${endLocationId}`;
     const res = await axios.get<NadeLight[]>(url);
 
-    return res.data;
+    const nades = res.data.filter((n) => Boolean(n));
+
+    return nades;
   }
 
   static async byId(id: string): AppResult<Nade> {
