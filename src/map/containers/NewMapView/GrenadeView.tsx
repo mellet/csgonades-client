@@ -1,6 +1,5 @@
 import { FC, useRef } from "react";
 import { MapNadeLocations } from "../../models/MapNadeLocations";
-import { NadeType } from "../../../nade/models/NadeType";
 import { CsMap } from "../../models/CsGoMap";
 import { NadeImage } from "./NadeImage";
 import { Group } from "react-konva";
@@ -47,17 +46,4 @@ export const GrenadeView: FC<Props> = ({
       </Group>
     </>
   );
-};
-
-export type MapImageProps = {
-  csMap: CsMap;
-  nadeType: NadeType;
-  x: number;
-  y: number;
-  onNadeClick: () => void;
-  onUnselect: () => void;
-  hide?: boolean;
-  isSelected?: boolean;
-  count: number;
-  hasNew?: boolean;
 };

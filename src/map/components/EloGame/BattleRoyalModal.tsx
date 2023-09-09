@@ -1,11 +1,4 @@
-import {
-  FC,
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { FC, MouseEventHandler, useEffect, useMemo, useState } from "react";
 import { useGa } from "../../../utils/Analytics";
 import { Dimensions } from "../../../constants/Constants";
 import { useTheme } from "../../../core/settings/useTheme";
@@ -165,43 +158,4 @@ export const BattleRoyalModal: FC<Props> = ({
       `}</style>
     </>
   );
-};
-
-export const useEloGame = () => {
-  const ga = useGa();
-  const [eloNades, setEloNades] = useState<NadeLight[][] | null>(null);
-
-  const showEloGame = useCallback(
-    (nades: NadeLight[][]) => {
-      ga.event({
-        category: "map_page",
-        action: "elo_open_click",
-      });
-      setEloNades(nades);
-    },
-    [ga]
-  );
-
-  const closeEloGame = useCallback(() => {
-    ga.event({
-      category: "map_page",
-      action: "elo_close_click",
-    });
-    setEloNades(null);
-  }, [ga]);
-
-  const finishEloGame = useCallback(() => {
-    ga.event({
-      category: "map_page",
-      action: "elo_finish",
-    });
-    setEloNades(null);
-  }, [ga]);
-
-  return {
-    showEloGame,
-    closeEloGame,
-    finishEloGame,
-    eloNades,
-  };
 };
