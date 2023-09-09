@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { GfycatThumbnail } from "../../../nade/components/NadeItem/GfycatThumbnail";
+import { NadeItemThumbnail } from "../../../nade/components/NadeItem/NadeItemThumbnail";
 import { EloGameNadeTitle } from "./EloGameNadeTitle";
 import { NadeStatsSpecials } from "../../../nade/components/NadeItem/NadeStats/NadeStatsSpecials";
 import { Dimensions } from "../../../constants/Constants";
@@ -30,7 +30,7 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             }}
           >
             <EloGameNadeTitle nade={nadeOne} />
-            <GfycatThumbnail
+            <NadeItemThumbnail
               gameMode={nadeOne.gameMode}
               lineUpThumnUrl={nadeOne.images.lineup.medium}
               nadeId={nadeOne.id}
@@ -58,7 +58,7 @@ export const EloGameVS: FC<Props> = ({ nadeOne, nadeTwo, onSelectWinner }) => {
             }}
           >
             <EloGameNadeTitle nade={nadeTwo} />
-            <GfycatThumbnail
+            <NadeItemThumbnail
               gameMode={nadeTwo.gameMode}
               lineUpThumnUrl={nadeTwo.images.lineup.medium}
               nadeId={nadeTwo.id}

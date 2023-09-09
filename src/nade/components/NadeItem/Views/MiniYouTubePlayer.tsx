@@ -4,16 +4,21 @@ import YouTube, { YouTubeEvent, YouTubePlayer } from "react-youtube";
 type Props = {
   youTubeId: string;
   speed?: "normal" | "fast";
+  quality?: "hd" | "sd";
 };
 
-export const MiniYouTubePlayer: FC<Props> = ({ youTubeId, speed = "fast" }) => {
+export const MiniYouTubePlayer: FC<Props> = ({
+  youTubeId,
+  speed = "fast",
+  quality = "sd",
+}) => {
   const [player, setPlayer] = useState<YouTubePlayer>();
 
   async function onReady(event: YouTubeEvent<any>) {
     setPlayer(event.target);
     event.target.mute();
     event.target.setPlaybackRate(speed === "fast" ? 2.0 : 1.5);
-    event.target.setPlaybackQuality("sd");
+    event.target.setPlaybackQuality(quality);
     event.target.playVideo();
   }
 

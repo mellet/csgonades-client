@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useTheme } from "../../core/settings/useTheme";
 import { NadeItemTitle } from "./NadeItem/Views/NadeItemTitle";
-import { GfycatThumbnail } from "./NadeItem/GfycatThumbnail";
+import { NadeItemThumbnail } from "./NadeItem/NadeItemThumbnail";
 import { NadeStats } from "./NadeItem/NadeStats/NadeStats";
 import { noOp } from "../../utils/Common";
 import { NadeUpdateBody } from "../models/NadeUpdateBody";
@@ -41,9 +41,8 @@ export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
           status="accepted"
           type={type}
         />
-        <GfycatThumbnail
+        <NadeItemThumbnail
           gameMode={gameMode || "csgo"}
-          disableAction
           lineUpThumnUrl={lineUpImageBase64}
           nadeId=""
           thumbnailUrl={imageBase64}

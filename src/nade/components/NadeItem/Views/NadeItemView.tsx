@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { AnimationTimings, Dimensions } from "../../../../constants/Constants";
 import { useTheme } from "../../../../core/settings/useTheme";
-import { GfycatThumbnail } from "../GfycatThumbnail";
+import { NadeItemThumbnail } from "../NadeItemThumbnail";
 import { NadeItemTitle } from "../Views/NadeItemTitle";
 import { NadeStats } from "../NadeStats/NadeStats";
 import Link from "next/link";
@@ -38,7 +38,7 @@ export const NadeItemView: FC<Props> = memo(
                   type={nade.type}
                 />
                 <div className="video">
-                  <GfycatThumbnail
+                  <NadeItemThumbnail
                     gameMode={nade.gameMode}
                     lineUpThumnUrl={nade.images.lineup.small}
                     nadeId={nade.id}

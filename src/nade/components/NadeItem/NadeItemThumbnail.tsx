@@ -12,10 +12,7 @@ const MiniYouTubePlayer = dynamic(
 );
 
 type Props = {
-  avgColor?: string;
-  disableAction?: boolean;
   gameMode: GameMode;
-  gfyId?: string;
   lineUpThumnUrl?: string;
   nadeId: string;
   nadeSlug?: string;
@@ -25,7 +22,7 @@ type Props = {
   quality?: "hd" | "sd";
 };
 
-export const GfycatThumbnail: FC<Props> = ({
+export const NadeItemThumbnail: FC<Props> = ({
   nadeId,
   lineUpThumnUrl,
   thumbnailUrl,
@@ -33,6 +30,7 @@ export const GfycatThumbnail: FC<Props> = ({
   youTubeId,
   speed = "fast",
   gameMode,
+  quality,
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
@@ -92,7 +90,11 @@ export const GfycatThumbnail: FC<Props> = ({
         <div className={hovering ? "back visible" : "back"}>
           {hovering && youTubeId && (
             <>
-              <MiniYouTubePlayer youTubeId={youTubeId} speed={speed} />
+              <MiniYouTubePlayer
+                youTubeId={youTubeId}
+                speed={speed}
+                quality={quality}
+              />
             </>
           )}
         </div>
