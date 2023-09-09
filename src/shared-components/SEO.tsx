@@ -12,7 +12,7 @@ type Props = {
 
 export const SEO: FC<Props> = memo(
   ({ description, title, canonical, thumbnail, video }) => {
-    const pageTitle = title ? `${title} - CSGO Nades` : `CSGO Nades`;
+    const pageTitle = title ? `${title} - CS Nades` : `CS Nades`;
     const pageDescription = descriptionSimplify(description);
 
     return (
