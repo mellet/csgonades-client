@@ -17,25 +17,13 @@ export const GfycatWarning: FC<Props> = ({ user }) => {
       <div className="gfycat-warning">
         <HintBox title="Important Announcement: Gfycat Shutdown Notice">
           <p>
-            We regret to inform you that Gfycat will be permanently shutting
-            down in September. To ensure that your videos are not lost, please
-            follow these steps:
-          </p>
-          <ol>
-            <li>Download your videos from Gfycat as soon as possible.</li>
-            <li>Upload the downloaded videos to YouTube.</li>
-            <li>
-              Update the video URLs of your nades with the new YouTube links.
-            </li>
-          </ol>
-          <p>
-            In the event that you are unable to complete these actions within
-            the given timeframe, we will take the initiative to perform them on
-            your behalf. The videos will be uploaded to our YouTube Channel.
+            We are sorry to announce that Gfycat has permanently shut down in
+            September. Prior to the shutdown, we were able to upload the most
+            popular nades to YouTube.
           </p>
           <p>
-            Please act promptly to preserve your content. If you have any
-            questions or need assistance, feel free to reach out to us.
+            However, numerous GIFs were deleted, leading to the removal of their
+            corresponding content.
           </p>
         </HintBox>
       </div>
