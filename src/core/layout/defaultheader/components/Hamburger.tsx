@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, MouseEventHandler, memo } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { LayoutBreakpoint } from "../../../../constants/Constants";
 import { useNavigation } from "../../../global/hooks/useNavigation";
@@ -8,9 +8,13 @@ export const Hamburger: FC = memo(({}) => {
   const { colors } = useTheme();
   const { toggleNav, isNavOpen } = useNavigation();
 
+  const onClick: MouseEventHandler<HTMLButtonElement> = () => {
+    toggleNav();
+  };
+
   return (
     <>
-      <button className="hamburger" onClick={toggleNav}>
+      <button className="hamburger" onClick={onClick}>
         {isNavOpen ? (
           <FaTimes
             size={30}

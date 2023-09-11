@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from "react";
+import { FC, MouseEventHandler, useEffect } from "react";
 import { NadeItem } from "../../../nade/components/NadeItem/NadeItem";
 import { CsgnList } from "../../../shared-components/list/CsgnList";
 import { Dimensions } from "../../../constants/Constants";
@@ -10,6 +10,7 @@ import { useFilterNadeView } from "../../logic/useFilteredNades";
 import { LoadingView } from "./LoadingView";
 import { AdUnit } from "../../../shared-components/adunits/AdUnit";
 import { NadeLight } from "../../../nade/models/NadePartial";
+import { useNavigation } from "../../../core/global/hooks/useNavigation";
 
 export type DisplayNades = {
   mapStartLocationId: string;
@@ -29,9 +30,15 @@ export const NadeListViewModal: FC<Props> = ({
   onDismiss,
   onStartBattleRoyal,
 }) => {
+  const { closeNav } = useNavigation();
   const { colors } = useTheme();
   const { nades, isLoading } = useNadesForLocation(displayNades);
   const ga = useGa();
+
+  useEffect(() => {
+    closeNav();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const nadesToShow = useFilterNadeView(nades || []);
 
