@@ -20,6 +20,7 @@ type Props = {
   youTubeId?: string;
   speed?: "normal" | "fast";
   quality?: "hd" | "sd";
+  avatar: string;
 };
 
 export const NadeItemThumbnail: FC<Props> = ({
@@ -31,6 +32,7 @@ export const NadeItemThumbnail: FC<Props> = ({
   speed = "fast",
   gameMode,
   quality,
+  avatar,
 }) => {
   const ga = useGa();
   const { colors } = useTheme();
@@ -85,6 +87,9 @@ export const NadeItemThumbnail: FC<Props> = ({
             lineupThumbUrl={lineUpThumnUrl}
             gameMode={gameMode}
           />
+          <div className="user-avatar">
+            <img src={avatar} alt="user avatar" />
+          </div>
         </div>
 
         <div className={hovering ? "back visible" : "back"}>
@@ -105,6 +110,22 @@ export const NadeItemThumbnail: FC<Props> = ({
         }
       `}</style>
       <style jsx>{`
+        .user-avatar {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          overflow: hidden;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          border: 1px solid #404040;
+        }
+
+        .user-avatar img {
+          width: 100%;
+          height: 100%;
+        }
+
         .player {
           background: ${colors.DP01};
           display: block;

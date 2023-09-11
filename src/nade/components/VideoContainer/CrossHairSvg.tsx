@@ -2,14 +2,15 @@ import { FC } from "react";
 
 type Props = {
   size?: number;
+  color?: string;
 };
 
-export const CrossHairSvg: FC<Props> = ({ size }) => {
+export const CrossHairSvg: FC<Props> = ({ size, color = "#fff" }) => {
   return (
     <>
       <svg width={size || 43} height={size ? size + 1 : 44} viewBox="0 0 43 44">
         <style>
-          {".prefix__st0{fill:#fff;stroke:#000;stroke-miterlimit:10}"}
+          {`.prefix__st0{fill:${color};stroke:#000;stroke-miterlimit:10}`}
         </style>
         <path
           className="prefix__st0"

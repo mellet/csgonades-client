@@ -64,11 +64,12 @@ export const ThumbImage: FC<Props> = memo(
                 quality={100}
                 style={{
                   objectFit: "cover",
+                  transform: "scale(1.4)",
                 }}
               />
             )}
             <div className="crosshair">
-              <CrossHairSvg size={20} />
+              <CrossHairSvg size={16} color="#c1f516" />
             </div>
           </div>
           {thumbUrl && (
@@ -115,12 +116,12 @@ export const ThumbImage: FC<Props> = memo(
 
           .lineup-image {
             width: ${LINEUP_SIZE}px;
-            height: ${LINEUP_SIZE * (9 / 14)}px;
-            border-radius: 12px;
+            height: ${LINEUP_SIZE * (9 / 16)}px;
+            border-radius: 5px;
             position: absolute;
             bottom: 12px;
             left: 12px;
-            border: 2px solid white;
+            border: 1px solid #404040;
             overflow: hidden;
           }
 

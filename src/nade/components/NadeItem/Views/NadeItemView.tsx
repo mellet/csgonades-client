@@ -45,6 +45,7 @@ export const NadeItemView: FC<Props> = memo(
                     nadeSlug={nade.slug}
                     thumbnailUrl={nade.images.result.small}
                     youTubeId={nade.youTubeId}
+                    avatar={nade.user.avatar}
                   />
                 </div>
               </a>
