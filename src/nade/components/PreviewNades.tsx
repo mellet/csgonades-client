@@ -5,6 +5,7 @@ import { NadeItemThumbnail } from "./NadeItem/NadeItemThumbnail";
 import { NadeStats } from "./NadeItem/NadeStats/NadeStats";
 import { noOp } from "../../utils/Common";
 import { NadeUpdateBody } from "../models/NadeUpdateBody";
+import { useSignedInUser } from "../../core/authentication/useSignedInUser";
 
 type Props = {
   nade: Partial<NadeUpdateBody>;
@@ -13,6 +14,7 @@ type Props = {
 };
 
 export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
+  const { signedInUser } = useSignedInUser();
   const { colors } = useTheme();
   const {
     gameMode,
@@ -47,6 +49,7 @@ export const PreviewNade: FC<Props> = ({ nade, commentCount, viewCount }) => {
           nadeId=""
           thumbnailUrl={imageBase64}
           youTubeId={youTubeId}
+          avatar={signedInUser?.avatar}
         />
         <NadeStats
           isNew

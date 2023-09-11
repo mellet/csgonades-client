@@ -20,7 +20,7 @@ type Props = {
   youTubeId?: string;
   speed?: "normal" | "fast";
   quality?: "hd" | "sd";
-  avatar: string;
+  avatar?: string;
 };
 
 export const NadeItemThumbnail: FC<Props> = ({
@@ -87,9 +87,11 @@ export const NadeItemThumbnail: FC<Props> = ({
             lineupThumbUrl={lineUpThumnUrl}
             gameMode={gameMode}
           />
-          <div className="user-avatar">
-            <img src={avatar} alt="user avatar" />
-          </div>
+          {avatar && (
+            <div className="user-avatar">
+              <img src={avatar} alt="user avatar" />
+            </div>
+          )}
         </div>
 
         <div className={hovering ? "back visible" : "back"}>
