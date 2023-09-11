@@ -85,7 +85,7 @@ const TeamSideImage: FC<TeamSideImageProps> = ({ teamSide }) => {
       src={imageUrl}
       width={26}
       height={26}
-      quality={100}
+      quality={80}
     />
   );
 };

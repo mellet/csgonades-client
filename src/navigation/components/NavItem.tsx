@@ -36,7 +36,14 @@ export const NavItem: FC<Props> = ({
     <>
       <span className={selected ? "map-link selected" : "map-link"}>
         <div className="nav-icon">
-          <Image fill priority src={imageUrl} quality={100} alt="Mirage icon" />
+          <Image
+            width={24}
+            height={24}
+            priority
+            src={imageUrl}
+            quality={100}
+            alt="Mirage icon"
+          />
         </div>
         <span className="map-link-label">{capitalize(csMap)}</span>
         {isNew && <span className="new">NEW</span>}

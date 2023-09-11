@@ -48,7 +48,7 @@ export const NadeLineUpImage: FC<Props> = ({ url }) => {
         </div>
         <div className="img-container">
           <div className="img-wrap">
-            <Image alt="Nade lineup image" fill src={url} />
+            <Image alt="Nade lineup image" fill src={url} sizes="1080px" />
           </div>
         </div>
         <div className="line-up-img">

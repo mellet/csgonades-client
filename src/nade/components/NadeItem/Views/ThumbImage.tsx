@@ -10,7 +10,8 @@ type Props = {
   gameMode: GameMode;
 };
 
-const LINEUP_SIZE = 100;
+const LINEUP_SIZE_WIDTH = 100;
+const LINEUP_SIZE_HEIGHT = LINEUP_SIZE_WIDTH * (9 / 16);
 
 export const ThumbImage: FC<Props> = memo(
   ({ lineupThumbUrl, thumbUrl, gameMode }) => {
@@ -57,8 +58,8 @@ export const ThumbImage: FC<Props> = memo(
             {lineupThumbUrl && (
               <Image
                 fill
+                sizes="400px"
                 alt="Nade lineup image"
-                unoptimized
                 onLoad={onLineupImgRdy}
                 src={lineupThumbUrl}
                 quality={100}
@@ -79,13 +80,14 @@ export const ThumbImage: FC<Props> = memo(
                   <Image
                     alt="Nade result image"
                     fill
+                    sizes="100px"
                     onLoad={onResultImgRdy}
                     src={thumbUrl}
                     style={{
+                      transform: "scale(1.3)",
                       objectFit: "cover",
-                      transform: "scale(1.6)",
                     }}
-                  ></Image>
+                  />
                 </div>
               </div>
             </>
@@ -106,6 +108,7 @@ export const ThumbImage: FC<Props> = memo(
           }
 
           .image-container {
+            position: relative;
             background: ${colors.DP01};
             align-items: center;
             display: flex;
@@ -114,9 +117,15 @@ export const ThumbImage: FC<Props> = memo(
             width: 100%;
           }
 
+          .lineup-img-wrap {
+            position: relative;
+            height: 100%;
+            width: 100%;
+          }
+
           .lineup-image {
-            width: ${LINEUP_SIZE}px;
-            height: ${LINEUP_SIZE * (9 / 16)}px;
+            width: ${LINEUP_SIZE_WIDTH}px;
+            height: ${LINEUP_SIZE_HEIGHT}px;
             border-radius: 5px;
             position: absolute;
             bottom: 12px;

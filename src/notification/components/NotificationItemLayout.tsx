@@ -27,7 +27,7 @@ export const NotificationItemLayout: FC<Props> = ({
         <span className="date">{prettyDateTime(createdAt)}</span>
         {imageUrl && (
           <div className="image">
-            <Image alt="Nade image" fill src={imageUrl} />
+            <Image alt="Nade image" fill src={imageUrl} sizes="200px" />
           </div>
         )}
       </div>
