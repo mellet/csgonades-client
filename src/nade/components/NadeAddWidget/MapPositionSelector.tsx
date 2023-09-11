@@ -11,6 +11,7 @@ import { EndLocations } from "../../../map/components/mapview/EndLocations";
 import { StartLocations } from "../../../map/components/mapview/StartLocation";
 import { GameMode } from "../../models/GameMode";
 import { HintBox } from "./HintBox";
+import { MissingLocationInfo } from "./MissingLocationInfo";
 
 type Props = {
   gameMode: GameMode;
@@ -99,35 +100,40 @@ export const MapPositionSelector: FC<Props> = ({
         </div>
       </div>
 
-      <div className="position-selector">
-        <Stage ref={konvaRef} width={600} height={600}>
-          <Layer>
-            <MapImage csMap={selectedMap} />
-            {mode === "end" && mapEndLocations && (
-              <EndLocations
-                endLocations={mapEndLocations}
-                onEndLocationSelected={(endLocation) => {
-                  onSetMapEndLocation(endLocation.id);
-                }}
-                highlightEndLocationId={selectedMapEndLocationId}
-              />
-            )}
+      <div className="map-selector-wrapper">
+        <MissingLocationInfo />
 
-            {mode === "start" && mapStartLocations && (
-              <StartLocations
-                highlightLocationId={selectedMapStartLocationId}
-                startLocations={mapStartLocations}
-                onStartLocationSelected={(startLocation) => {
-                  onSetMapStartLocation(startLocation.id);
-                  setTimeout(() => {
-                    setMode("end");
-                  }, 200);
-                }}
-              />
-            )}
-          </Layer>
-        </Stage>
+        <div className="position-selector">
+          <Stage ref={konvaRef} width={600} height={600}>
+            <Layer>
+              <MapImage csMap={selectedMap} />
+              {mode === "end" && mapEndLocations && (
+                <EndLocations
+                  endLocations={mapEndLocations}
+                  onEndLocationSelected={(endLocation) => {
+                    onSetMapEndLocation(endLocation.id);
+                  }}
+                  highlightEndLocationId={selectedMapEndLocationId}
+                />
+              )}
+
+              {mode === "start" && mapStartLocations && (
+                <StartLocations
+                  highlightLocationId={selectedMapStartLocationId}
+                  startLocations={mapStartLocations}
+                  onStartLocationSelected={(startLocation) => {
+                    onSetMapStartLocation(startLocation.id);
+                    setTimeout(() => {
+                      setMode("end");
+                    }, 200);
+                  }}
+                />
+              )}
+            </Layer>
+          </Stage>
+        </div>
       </div>
+
       <style jsx>{`
         .position-selector {
           position: relative;
@@ -184,6 +190,10 @@ export const MapPositionSelector: FC<Props> = ({
 
         .callout-name {
           color: ${colors.GREY};
+        }
+
+        .map-selector-wrapper {
+          position: relative;
         }
       `}</style>
     </>
