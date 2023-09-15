@@ -21,6 +21,7 @@ type Props = {
   displayNades: DisplayNades;
   onDismiss: () => void;
   onStartBattleRoyal: (nadeLocation: DisplayNades) => void;
+  onNadeClick?: (nade: NadeLight) => void;
 };
 
 const MAX_MODAL_WIDTH = 1420;
@@ -29,6 +30,7 @@ export const NadeListViewModal: FC<Props> = ({
   displayNades,
   onDismiss,
   onStartBattleRoyal,
+  onNadeClick,
 }) => {
   const { closeNav } = useNavigation();
   const { colors } = useTheme();
@@ -51,7 +53,7 @@ export const NadeListViewModal: FC<Props> = ({
   function renderItem(item: NadeLight) {
     return (
       <div onClick={stopPropagation}>
-        <NadeItem nade={item} />
+        <NadeItem nade={item} onClick={onNadeClick} />
       </div>
     );
   }
@@ -126,7 +128,7 @@ export const NadeListViewModal: FC<Props> = ({
         }
 
         .map-view-wrapper {
-          position: fixed;
+          position: absolute;
           top: 0;
           bottom: 0;
           right: 0;

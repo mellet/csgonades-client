@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Nade } from "../models/Nade";
 import { useTheme } from "../../core/settings/useTheme";
 import { NadeDescriptionDisplay } from "./NadeDescriptionDisplay";
 import { AdUnit } from "../../shared-components/adunits/AdUnit";
@@ -8,21 +7,27 @@ import { prettyDateTime } from "../../utils/DateUtils";
 import { Dimensions } from "../../constants/Constants";
 
 type Props = {
-  nade: Nade;
+  commentCount: number;
+  description?: string;
+  createdAt: string;
 };
 
-export const NadeDescription: FC<Props> = ({ nade }) => {
+export const NadeDescription: FC<Props> = ({
+  commentCount,
+  createdAt,
+  description,
+}) => {
   const { colors } = useTheme();
-  const displayAd = useDisplayDescriptionAd(nade.commentCount);
+  const displayAd = useDisplayDescriptionAd(commentCount);
 
   return (
     <>
       <div className="nade-info" id="description">
         <h3>Description</h3>
         <div className="nade-desc-meta">
-          <NadeDescriptionDisplay value={nade.description} />
+          <NadeDescriptionDisplay value={description} />
           <div className="nade-created-at">
-            Created {prettyDateTime(nade.createdAt)}
+            Created {prettyDateTime(createdAt)}
           </div>
         </div>
       </div>

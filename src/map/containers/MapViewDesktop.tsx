@@ -6,6 +6,8 @@ import {
 import { CsMap } from "../models/CsGoMap";
 import dynamic from "next/dynamic";
 import { BattleRoyalModal } from "../components/EloGame/BattleRoyalModal";
+import { NadePreview } from "./NadePreview";
+import { NadeLight } from "../../nade/models/NadePartial";
 
 const NewMapView = dynamic(
   () => import("./NewMapView/NewMapView").then((m) => m.NewMapView),
@@ -24,6 +26,7 @@ export const MapViewDesktop: FC<Props> = ({ csMap }) => {
     mapEndLocationId: string;
   }>();
   const [battleRoyalNades, setBattleRoyalNades] = useState<DisplayNades>();
+  const [selectedNade, setSelectedNade] = useState<NadeLight>();
 
   const onBattleRoyalClose = () => {
     setBattleRoyalNades(undefined);
@@ -42,6 +45,7 @@ export const MapViewDesktop: FC<Props> = ({ csMap }) => {
           displayNades={displayNades}
           onDismiss={() => setDisplayNades(undefined)}
           onStartBattleRoyal={setBattleRoyalNades}
+          onNadeClick={setSelectedNade}
         />
       )}
 
@@ -50,6 +54,13 @@ export const MapViewDesktop: FC<Props> = ({ csMap }) => {
           displayNades={battleRoyalNades}
           onClose={onBattleRoyalClose}
           onFinish={onBattleRoyalClose}
+        />
+      )}
+
+      {selectedNade && (
+        <NadePreview
+          partialNade={selectedNade}
+          onDismiss={() => setSelectedNade(undefined)}
         />
       )}
     </>

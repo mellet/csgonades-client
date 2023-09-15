@@ -8,9 +8,10 @@ import { NadeLight } from "../../models/NadePartial";
 
 interface Props {
   nade: NadeLight;
+  onClick?: (nade: NadeLight) => void;
 }
 
-export const NadeItem: FC<Props> = memo(({ nade }) => {
+export const NadeItem: FC<Props> = memo(({ nade, onClick }) => {
   const { addNadeAsFavorite, removeNadeAsFavorite } = useFavorites();
   const isFavorited = useIsNadeFavorited(nade.id);
 
@@ -20,6 +21,7 @@ export const NadeItem: FC<Props> = memo(({ nade }) => {
       nade={nade}
       onAddAsFavorite={addNadeAsFavorite}
       onRemoveAsFavorite={removeNadeAsFavorite}
+      onClick={onClick}
     />
   );
 });
