@@ -1,10 +1,15 @@
 import { FC } from "react";
 import { useTheme } from "../../core/settings/useTheme";
 
-export const BlogAuthor: FC = ({}) => {
+type Props = {
+  name?: string;
+  avatarUrl?: string;
+};
+
+export const BlogAuthor: FC<Props> = ({ avatarUrl, name }) => {
   const { colors } = useTheme();
-  const defaultName = "Mellet Solbakk";
-  const defaultAvatar = "/mellet.jpeg";
+  const defaultName = name || "Mellet Solbakk";
+  const defaultAvatar = avatarUrl || "/mellet.jpeg";
 
   return (
     <>

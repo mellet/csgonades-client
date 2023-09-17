@@ -10,6 +10,7 @@ import {
   cs2Nades,
   blogPractiseConfig,
   blogTickrateAndJumpthrow,
+  recordingNades,
 } from "../../blog/ArticleData/blogPosts";
 import { LayoutBuilder } from "../../core/layout/LayoutBuilder";
 import { Navigation } from "../../navigation/Navigation";
@@ -18,6 +19,7 @@ import { HeaderDefault } from "../../core/layout/defaultheader/Header";
 const BlogPage: FC = () => {
   const { colors } = useTheme();
   const blogPosts = [
+    recordingNades,
     blogJumpthrowBind,
     bestDust2Nades,
     blogNadeAlignCrosshair,

@@ -66,3 +66,13 @@ export const blogTickrateAndJumpthrow: BlogPost = {
   intro:
     "You just set up jumpthrow bind and practised offline for a sick smoke for Mirage. Your friends ask you to join a game on FACEIT, and you throw your smoke, but it missed! What the heck? You just tried it out... Why did this happen?",
 };
+
+export const recordingNades: BlogPost = {
+  title: "A Beginner's Guide to Submitting Nades",
+  slug: "recording-nades",
+  imageUrl: "/blogimg/jump.jpg",
+  thumbnailUrl: "/blogimg/jump_thumb.jpg",
+  createdAt: "2022-09-14T10:00:00.000Z",
+  intro:
+    "Have you ever wanted to share your impressive CS:GO grenade throws with the world but felt overwhelmed by the process? Maybe you've tried before but had your submissions declined. Fret not! This guide is here to help you navigate the world of nade submissions, whether you're a newbie or just looking to refine your skills.",
+};
