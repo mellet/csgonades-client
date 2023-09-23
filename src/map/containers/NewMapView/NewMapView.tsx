@@ -11,13 +11,13 @@ import { DisplayNades } from "../../components/NadeView/NadeListViewModal";
 import { useFilterByType } from "../../logic/useFilterByType";
 import { useTheme } from "../../../core/settings/useTheme";
 import { Dimensions } from "../../../constants/Constants";
-import { useElementSize } from "usehooks-ts";
 import { useGameMode } from "../../../core/useGameMode";
 import { useFilterByTeam } from "../../logic/useFilterByTeam";
 import { useFilterByTickrate } from "../../logic/useFilterByTickrate";
 import { CSGNIcon } from "../../../nade/components/NadeStatus/CSGNIcon";
 import { ImSpinner8 } from "react-icons/im";
 import { useFilterByFavorites } from "../../logic/useFilterByFavorites";
+import { useElementSize } from "./useElementSize";
 
 type Props = {
   csMap: CsMap;
