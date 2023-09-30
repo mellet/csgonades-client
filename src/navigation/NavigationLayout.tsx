@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Dimensions, LayoutBreakpoint } from "../constants/Constants";
 import { useTheme } from "../core/settings/useTheme";
 import { GameModeToggle } from "../core/layout/defaultheader/components/GameModeToggle";
-import { GameToggleHint } from "../hints/components/GameToggleHint";
 
 type Props = {
   mainNav: JSX.Element;
@@ -19,15 +18,15 @@ export const NavigationLayout: FC<Props> = ({
   return (
     <>
       <nav>
-        <div className="game-toggle">
-          <GameToggleHint>
-            <GameModeToggle />
-          </GameToggleHint>
-        </div>
         <div className="main">{mainNav}</div>
         <div className="secondary">{secondaryNav}</div>
 
-        <div className="footer">{footer}</div>
+        <div className="footer">
+          <div className="game-toggle">
+            <GameModeToggle />
+          </div>
+          {footer}
+        </div>
       </nav>
       <style jsx>{`
         nav {
@@ -56,7 +55,8 @@ export const NavigationLayout: FC<Props> = ({
         .game-toggle {
           display: flex;
           justify-content: center;
-          margin-bottom: ${Dimensions.GUTTER_SIZE}px;
+          padding: 10px;
+          background: ${colors.DP03};
         }
 
         .footer {
@@ -64,7 +64,6 @@ export const NavigationLayout: FC<Props> = ({
           border-bottom-right-radius: 8px;
           overflow: hidden;
           border: 1px solid ${colors.BORDER};
-          border-top: 0;
         }
 
         @media only screen and (max-width: ${LayoutBreakpoint.TABLET}px) {

@@ -13,22 +13,19 @@ export const GameModeToggle: FC = () => {
         <div className="btn-wrapper">
           <button
             className={
-              gameMode === "csgo" ? "game-btn right active" : "game-btn right"
-            }
-            style={{ width: "54%" }}
-            onClick={() => setGameMode("csgo")}
-          >
-            CS:GO
-            <div className="slant-right"></div>
-          </button>
-          <button
-            className={
               gameMode === "cs2" ? "game-btn cs2 active" : "game-btn cs2"
             }
-            style={{ width: "46%" }}
             onClick={() => setGameMode("cs2")}
           >
             CS2
+          </button>
+          <button
+            className={
+              gameMode === "csgo" ? "game-btn right active" : "game-btn right"
+            }
+            onClick={() => setGameMode("csgo")}
+          >
+            CS:GO
           </button>
         </div>
       </div>
@@ -44,41 +41,19 @@ export const GameModeToggle: FC = () => {
           border-radius: ${Dimensions.BORDER_RADIUS};
           overflow: hidden;
           width: 100%;
+          display: flex;
         }
 
         .game-btn {
           border: none;
-          height: 30px;
           background: ${colors.DP01};
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 500;
           color: ${colors.TEXT};
           cursor: pointer;
           position: relative;
-        }
-
-        .right.active:after {
-          content: "";
-          background-color: ${colors.DP01};
-          display: block;
-          height: 100%;
-          position: absolute;
-          right: -5px;
-          top: 0;
-          width: 10px;
-          transform: skewX(-15deg);
-        }
-
-        .right:after {
-          content: "";
-          background-color: ${colors.PRIMARY};
-          display: block;
-          height: 100%;
-          position: absolute;
-          right: -5px;
-          top: 0;
-          width: 10px;
-          transform: skewX(-15deg);
+          height: 24px;
+          flex: 1;
         }
 
         .active {

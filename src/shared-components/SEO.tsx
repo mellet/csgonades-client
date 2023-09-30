@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import Head from "next/head";
-import { descriptionSimplify } from "../utils/Common";
+import { descriptionSimplify, useGameString } from "../utils/Common";
 
 type Props = {
   title?: string;
@@ -14,6 +14,7 @@ export const SEO: FC<Props> = memo(
   ({ description, title, canonical, thumbnail, video }) => {
     const pageTitle = title ? `${title} - CS Nades` : `CS Nades`;
     const pageDescription = descriptionSimplify(description);
+    const { shortGameString } = useGameString();
 
     return (
       <>
@@ -29,11 +30,11 @@ export const SEO: FC<Props> = memo(
           <meta name="description" content={pageDescription} />
           <meta
             name="keywords"
-            content="gaming dust2 train mirage inferno cobblestone overpass cache nades flashbang smoke incendiary molotov grenade csgo cs:go learn practice improve esport e-sport counter-strike global offensive"
+            content={`${shortGameString} gaming dust2 train mirage inferno cobblestone overpass cache nades flashbang smoke incendiary molotov grenade learn practice improve esport e-sport counter-strike`}
           />
           <meta property="og:description" content={pageDescription} />
           <meta property="og:title" content={pageTitle} />
-          <meta property="og:site_name" content="CSGO Nades" />
+          <meta property="og:site_name" content="CS Nades" />
           <meta property="og:type" content="website" />
           <meta property="og:locale" content="en_EN" />
 

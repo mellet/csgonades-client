@@ -35,7 +35,7 @@ export const pluralize = (count: number, noun: string, suffix = "s"): string =>
 
 export const descriptionSimplify = (value?: string): string => {
   if (!value) {
-    return "CS Nades is a website that collects nades for Counter-Strike 2 and Counter-Strike Global Offensive. You can browse smokes, flashbangs, molotovs or he-grenades for the most popular maps in CS2 and CS:GO.";
+    return `CS Nades is a website that collects nades for Counter-Strike 2. You can browse CS2 smokes, CS2 flashbangs, CS2 molotovs or he-grenades for the most popular maps.`;
   }
 
   let desc = removeMd(value);

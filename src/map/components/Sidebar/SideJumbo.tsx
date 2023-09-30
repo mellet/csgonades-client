@@ -19,14 +19,14 @@ type Props = {
 export const SideJumbo: FC<Props> = ({ map }) => {
   const { colors } = useTheme();
 
-  const { fullGameString } = useGameString();
+  const { fullGameString, shortGameString } = useGameString();
 
   return (
     <>
       <div className="jumbo">
         <h1>
-          Find the Best Smokes, Flashbangs, Molotovs, and Grenades on{" "}
-          {capitalize(map)} in {fullGameString}.
+          Find the Best {shortGameString} Smokes, Flashbangs, Molotovs, and
+          Grenades on {capitalize(map)} in {fullGameString}.
         </h1>
         <h2>
           Dominate {capitalize(map)} with our collection of smokes, flashbangs,
